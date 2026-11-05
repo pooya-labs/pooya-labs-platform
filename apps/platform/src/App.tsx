@@ -10,6 +10,7 @@ import {
   type FormEvent, type PointerEvent as ReactPointerEvent, type ReactNode,
 } from 'react';
 import { isHtmlServiceHost, rpcCall, type RpcResponse } from './lib/rpc';
+import { APP_MANIFEST } from './lib/app-manifest';
 
 type Language = 'fa' | 'en';
 type Theme = 'dark' | 'light';
@@ -43,12 +44,17 @@ interface DragState {
   originY: number;
 }
 
-const appRegistry: AppDefinition[] = [
-  { id: 'overview', title: { fa: 'نمای کلی', en: 'Overview' }, description: { fa: 'نمای کلی فضای کاری', en: 'Your workspace at a glance' }, icon: LayoutDashboard, accent: 'cyan', shortcut: '⌘ 1' },
-  { id: 'files', title: { fa: 'فایل‌ها', en: 'Files' }, description: { fa: 'فایل‌ها و پروژه‌های اخیر', en: 'Recent files and projects' }, icon: Folder, accent: 'violet', shortcut: '⌘ 2' },
-  { id: 'terminal', title: { fa: 'ترمینال', en: 'Terminal' }, description: { fa: 'محیط فرمان محلی و امن', en: 'A safe local command space' }, icon: TerminalSquare, accent: 'mint', shortcut: '⌘ 3' },
-  { id: 'settings', title: { fa: 'تنظیمات', en: 'Settings' }, description: { fa: 'ظاهر و ترجیحات محیط', en: 'Appearance and preferences' }, icon: Settings, accent: 'amber', shortcut: '⌘ 4' },
-];
+const iconByKey = {
+  overview: LayoutDashboard,
+  files: Folder,
+  terminal: TerminalSquare,
+  settings: Settings,
+} satisfies Record<AppId, LucideIcon>;
+
+const appRegistry: AppDefinition[] = APP_MANIFEST.map((entry) => ({
+  ...entry,
+  icon: iconByKey[entry.iconKey],
+}));
 
 const copy = {
   fa: {
