@@ -1,73 +1,58 @@
 # Project Status
 
 **Last updated:** 2026-11-05  
-**Repository:** `pooya-labs/pooya-labs-platform`  
-**Branch:** `main`  
-**Current phase:** Phase 3 — Manifest-driven platform (initial registry slice)  
-**Release:** Pre-alpha / planning baseline
+**Repository:** pooya-labs/pooya-labs-platform  
+**Branch:** main  
+**Current phase:** Phase 2 — Public portfolio foundation  
+**Release:** Pre-alpha / portfolio draft
 
-## Verified facts
-- Repository identity and scope are established; previous-project repositories remain untouched.
-- The owner deployed the revised HtmlService-first source and confirmed a successful `rpcCall` response with `ok: true`, `data.transport: "google.script.run"`, `error: null`, and a returned `requestId` at 2026-11-05 12:49:53 UTC.
-- The GitHub Pages harness was reachable from the GitHub-hosted Chromium runner.
-- The real-browser POST to the supplied GAS `/exec` URL failed with `TypeError: Failed to fetch`; repeatable diagnostic run [42028842302](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42028842302) classified it as `blocked_by_cors`.
-- Chromium reported that the response lacked `Access-Control-Allow-Origin`. The browser could not read the response; this does not establish whether Apps Script executed `doPost`.
-- Latest repository CI run [42031242334](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42031242334) passed all 9 source-contract tests.
-- Latest GitHub Pages build/deployment run [42031242859](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42031242859) succeeded.
-
-## Completed
-- [x] Repository identity, scope, and agent rules established.
-- [x] Ten-phase roadmap added; previous-project integration is Phase 9.
-- [x] Recovery/handoff protocol and machine-readable project state added.
-- [x] Architecture, API envelope, and deployment plan documented.
-- [x] ADR-0001 records the decision to defer integrations.
-- [x] Read-only integration inventory recorded for all eight existing projects.
-- [x] Official GAS documentation reviewed and constraints recorded.
-- [x] ADR-0002 records the original external-transport validation gate.
-- [x] Minimal HtmlService RPC and external ContentService POST proof harness added.
-- [x] Owner deployed the proof and confirmed HtmlService RPC works.
-- [x] Real Chromium reproduced and classified the direct Pages-to-GAS CORS block.
-- [x] ADR-0003 selects HtmlService as the primary app runtime and GitHub Pages as static showcase/docs hosting.
-- [x] Owner copied the revised `Code.gs` and `Index.html`, published a new Web App version, and verified the `rpcCall` health response with a request ID.
-- [x] Provisional performance budgets and measurement method documented in `PERFORMANCE-BUDGETS.md`.
-- [x] Manual deployment, rollback, backup, and restore procedures documented in `DEPLOYMENT-RUNBOOK.md`.
-- [x] Public/admin deployment separation recorded in ADR-0004 and approved by the owner; actual admin deployment implementation remains future work.
-- [x] Initial threat model and data-classification baseline drafted.
-- [x] Dependency-free Node.js contract tests and GitHub Actions CI added; latest verified run passes 9/9.
-- [x] GitHub Pages build and deployment verified.
+## Product direction — owner clarified
+- The main purpose is to introduce Pooya and showcase his software projects to visitors.
+- The root website is the public personal portfolio, not a SaaS dashboard or generic customer portal.
+- The Spatial OS shell is secondary and remains accessible as a separate workspace experience.
+- An owner-only content/management console may be considered after the project content model is stable.
+- Full site redesign using Pooya's feedback is a mandatory pre-release Phase 7 gate.
+- Apps Script is deferred and is not required to publish the static portfolio on GitHub Pages.
 
 ## Newly implemented
-- [x] Created the React 19 + TypeScript + Vite npm workspace in `apps/platform`.
-- [x] Added separate Vite build targets for static Pages and single-file HtmlService distribution.
-- [x] Implemented the initial responsive Spatial OS UI: top bar, app rail, hero, app cards, status surfaces, dock, and window manager.
-- [x] Added Overview, Files (sample only), Terminal (local allowlist only), and Settings app windows.
-- [x] Added Ctrl/Cmd+K command palette and Ctrl/Cmd+1–4 shortcuts.
-- [x] Added Persian RTL / English LTR and persistent local theme/language preferences.
-- [x] Added cursor refraction lens with fine-pointer detection, eased animation, touch disable, and reduced-motion disable.
-- [x] Added CI for type-checking, Pages/GAS builds, the single-file GAS artifact, and source-contract tests.
-- [x] Added a dedicated GitHub Pages deployment workflow; repository Pages source may need a one-time switch to GitHub Actions.
+- [x] Added bilingual Persian/English public portfolio as the default root experience.
+- [x] Added hero, About, selected project cards, focus areas, technology list, contact section, and secondary workspace entry.
+- [x] Added responsive dark obsidian design with cyan/emerald accents and an Antigravity-inspired decorative pointer lens.
+- [x] Added explicit prototype / in-development labels and withheld unverified repository links.
+- [x] Retained the Spatial OS shell as a secondary workspace, with a return link to the public portfolio.
+- [x] Added versioned built-in app manifest v1 and validation for unique IDs/shortcuts, localized metadata, and owner-workspace scope.
+- [x] Reframed README, architecture, product surfaces, design direction, next task, and roadmap around the portfolio-first purpose.
+- [x] Added ADR-0006 to record portfolio-first hosting and scope.
+- [x] Added portfolio contract tests and corrected a manifest-test counting issue.
 
-## Not yet done / not yet verified
-- [x] Owner approved the public-app / owner-only-admin separation. Exact deployment access and execution settings remain to be verified before privileged features.
-- [ ] Performance targets are documented provisionally but not yet measured on target devices/networks.
-- [ ] Operational deployment rollback and data backup/restore procedures are documented but need an owner-side rehearsal before production data.
-- [x] Workspace CI passed TypeScript, Pages/GAS builds, artifact upload, and all 14 source-contract tests in run [42036638066](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42036638066).
-- [x] Vite Pages workflow successfully built and deployed its artifact in run [42036636856](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42036636856).
-- [ ] The legacy branch/Jekyll Pages deployment also ran successfully afterward in [42036881076](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42036881076); set the repository Pages source to GitHub Actions and rerun `Platform GitHub Pages` so the Vite preview remains canonical.
-- [ ] The new bundled `dist/gas/index.html` has not yet been synced into Apps Script; current deployment remains the Phase 0 proof page.
-- [ ] No production Sheets schema, booking, admin, telemetry, or customer-data feature exists.
-- [ ] No previous-project code has been imported or any previous repository modified.
+## CI and publishing status
+- The initial portfolio CI run passed type-check and both builds, but failed one contract test because its manifest fixture count included a validator predicate. The test was corrected.
+- Latest relevant CI run [42044256942](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42044256942) is queued at the time of this status update; its outcome is not yet verified.
+- Pages deployment [42043972152](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42043972152) succeeded for the preceding portfolio commit. A later Pages run for the next UI commit is still being validated.
+- The active GitHub Pages source must remain GitHub Actions rather than the legacy branch/Jekyll source so the Vite portfolio remains canonical.
 
-## Current risks
-1. HtmlService is proven for the simple health RPC only; application scale, auth, and quotas still need validation.
-2. A public deployment executing as the owner must not expose privileged actions.
-3. GAS quotas and execution ceilings constrain workloads.
-4. Google Sheets is not a relational ACID database.
-5. CacheService is best-effort and cannot be a durable queue.
-6. Time-driven triggers are quota-bound scheduled executions, not always-on workers.
-7. A fully offline browser cannot receive server confirmation until connectivity returns.
+## Pending owner review
+- [ ] Review and approve the public biography and positioning.
+- [ ] Curate the featured project order and descriptions.
+- [ ] Confirm project statuses, exact repository/demo links, screenshots, and public evidence.
+- [ ] Decide which contact channel should be published.
+- [ ] Review the complete portfolio design on desktop and mobile. The current implementation is a draft, not final.
+
+## Not implemented
+- [ ] Individual case-study pages and typed published/draft content registry.
+- [ ] Verified project-specific screenshots, demos, documentation, and links beyond those already confirmed.
+- [ ] Private owner content-management console.
+- [ ] Customer accounts or customer dashboard; excluded from the portfolio by default.
+- [ ] Production contact form, CMS/backend, Apps Script sync, or data persistence.
+- [ ] Final full-site redesign and owner approval before V1.
+- [ ] Production performance, accessibility, and recovery review.
+
+## Historical architecture and security evidence
+- Apps Script HtmlService with google.script.run health RPC was previously owner-verified.
+- Direct external browser-to-GAS fetch from GitHub Pages was blocked by CORS in Chromium; see diagnostic run [42028842302](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42028842302).
+- These findings remain relevant only if a future server-backed/private feature is approved. They do not block the static portfolio.
+- Public/admin separation remains a security requirement for any future protected tool.
+- Previous project repositories remain untouched; project integration stays in Phase 9.
 
 ## Latest checkpoint
-The current UI is the owner Spatial OS workspace foundation. Versioned built-in app manifest v1 has now been added, with validation for supported schema version, unique app IDs and shortcuts, complete Persian/English metadata, and explicit `owner-workspace` audience. The existing rail, dock, cards, and command palette now read from the manifest-backed registry. Contract tests were added; the CI result for this latest commit is pending.
-
-The product will have two additional distinct surfaces: a customer-facing portal and a separate owner-only administration console. They are not implemented yet; the separation is specified in `PRODUCT-SURFACES.md` and ADR-0004. Google Apps Script bundle synchronization and deployment are intentionally deferred until the application and backend contracts are substantially complete. The current live RPC remains health-only. Previous-project integration remains deferred to Phase 9.
+The public root now introduces Pooya and his projects instead of opening directly into the Spatial OS workspace. The first portfolio draft is in the repository; its content and design remain subject to Pooya's review. CI validated TypeScript and the Pages/GAS builds before a single contract-test assertion failed. That test was corrected, and the latest CI run is pending verification. Next, stabilize the current build and move project content into a typed registry so case-study pages can be built without hardcoding presentation content.
