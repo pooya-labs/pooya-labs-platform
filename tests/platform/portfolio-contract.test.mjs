@@ -87,7 +87,7 @@ test('project artwork and interface screenshots are sourced from pinned commits 
   assert.equal((projectData.match(/visualAsset: \{/g) ?? []).length, 7);
   assert.equal((projectData.match(/raw\.githubusercontent\.com\/pooya-labs\//g) ?? []).length, 9);
   assert.equal((projectData.match(/caseStudyMedia: \[/g) ?? []).length, 1);
-  assert.equal((projectData.match(/device: '(?:desktop|mobile)'/g) ?? []).length, 2);
+  assert.equal((projectData.match(/^\s+device: '(?:desktop|mobile)',?$/gm) ?? []).length, 2);
   assert.equal((projectData.match(/alt: \{ fa: '[^']+', en: '[^']+' \}/g) ?? []).length, 9);
   assert.match(projectData, /Project visual assets must be pinned to an immutable source commit/);
   assert.match(projectData, /Project visual asset URL/);
