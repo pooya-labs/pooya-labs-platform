@@ -19,6 +19,12 @@ export interface PortfolioProject {
     kind: 'interface' | 'brand' | 'illustration';
     alt: { fa: string; en: string };
   };
+  caseStudyMedia?: Array<{
+    url: string;
+    caption: { fa: string; en: string };
+    alt: { fa: string; en: string };
+    device: 'desktop' | 'mobile' | 'detail';
+  }>; 
   caseStudy: {
     challenge: { fa: string; en: string };
     approach: { fa: string; en: string };
@@ -170,6 +176,20 @@ const projectEntries: PortfolioProject[] = [
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/globalcart/88a7efae6c67dfb7401cd7e4926576261f4adde5/docs/screenshots/storefront-home-desktop.png', kind: 'interface', alt: { fa: 'تصویر واقعی صفحه اصلی فروشگاه GlobalCart', en: 'Actual GlobalCart storefront homepage screenshot' } },
     slug: 'global-cart',
     name: 'GlobalCart',
+    caseStudyMedia: [
+      {
+        url: 'https://raw.githubusercontent.com/pooya-labs/globalcart/5ca43e40ff101e673ee7cf261850bff0a679047c/docs/screenshots/storefront-home-desktop.png',
+        caption: { fa: 'نمای واقعی فروشگاه روی دسکتاپ', en: 'Actual storefront on desktop' },
+        alt: { fa: 'تصویر رابط کاربری صفحه اصلی GlobalCart در اندازه دسکتاپ', en: 'GlobalCart storefront homepage interface at desktop size' },
+        device: 'desktop',
+      },
+      {
+        url: 'https://raw.githubusercontent.com/pooya-labs/globalcart/5ca43e40ff101e673ee7cf261850bff0a679047c/docs/screenshots/storefront-home-mobile.png',
+        caption: { fa: 'نمای واقعی فروشگاه روی موبایل', en: 'Actual storefront on mobile' },
+        alt: { fa: 'تصویر رابط کاربری صفحه اصلی GlobalCart در اندازه موبایل', en: 'GlobalCart storefront homepage interface at mobile size' },
+        device: 'mobile',
+      },
+    ],
     caseStudy: {
       challenge: { fa: "ساخت تجربه فروشگاهی قانع‌کننده فقط به کارت محصول محدود نیست؛ جست‌وجو، دسته‌بندی، صفحه جزئیات، گالری تصاویر و رفتار سبد خرید باید در کنار عملکرد و شفافیت منبع داده درست کار کنند.", en: "A convincing storefront is more than product cards: search, categories, detail pages, image galleries, and cart behavior must work alongside performance and transparent data sourcing." },
       approach: { fa: "یک marketplace simulation با Next.js و React ساخته شده که از snapshot محلی کاتالوگ، تصاویر self-host شده و منطق قیمت‌گذاری دقیق استفاده می‌کند. رابط فارسی RTL و انگلیسی LTR دارد.", en: "A marketplace simulation built with Next.js and React uses a local catalog snapshot, self-hosted imagery, and decimal-safe pricing logic. It supports Persian RTL and English LTR." },
