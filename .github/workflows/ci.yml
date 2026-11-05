@@ -10,9 +10,10 @@ permissions:
   contents: read
 
 jobs:
-  transport-harness-contract:
-    name: Transport harness contract tests
+  validate:
+    name: Typecheck, build, and contract tests
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -20,5 +21,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Run dependency-free tests
+          cache: npm
+      - name: Install workspace dependencies
+        run: npm install --no-audit --no-fund
+      - name: Type-check platform
+        run: npm run typecheck
+      - name: Build GitHub Pages and Apps Script bundles
+        run: npm run build
+      - name: Run repository contract tests
         run: npm test
