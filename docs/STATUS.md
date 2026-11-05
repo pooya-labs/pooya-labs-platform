@@ -7,16 +7,14 @@
 **Release:** Pre-alpha / planning baseline
 
 ## Verified facts
-- Repository is public and uses `main`.
-- The separate `pooya-labs/pooya-labs` repository is the personal profile README and remains untouched.
-- This repository is the canonical home for the new platform.
-- The owner requested previous-project integration only in Phase 9, after independent completion.
-- Read-only README/metadata inspection has been performed for all eight existing project repositories.
-- Owner deployed Apps Script proof as Version 1.
-- Owner ran the HtmlService page and reported `ok: true`, `status: "ok"`, and `transport: "google.script.run"`.
-- Owner published and opened the GitHub Pages external transport harness.
-- The external `fetch()` POST returned `TypeError: NetworkError when attempting to fetch resource` after approximately 704 ms.
-- In the Apps Script Executions rows supplied by the owner, `doGet` and `rpcHealth` were present, but no `doPost` execution was present. This is an observation, not yet a complete root-cause diagnosis.
+- Repository identity and scope are established; previous-project repositories remain untouched.
+- The owner deployed the Apps Script Phase 0 proof and confirmed that the HtmlService page returned `ok: true` through `google.script.run`.
+- The GitHub Pages harness was reachable from the GitHub-hosted Chromium runner.
+- The real-browser POST to the supplied GAS `/exec` URL failed with `TypeError: Failed to fetch`.
+- Chromium's Console explicitly reported that the response had no `Access-Control-Allow-Origin` header.
+- The browser therefore could not expose an HTTP status or response body. This proves a browser CORS block for the direct Pages-to-GAS call; it does not prove whether Apps Script executed `doPost`.
+- The earlier Apps Script Executions rows supplied by the owner showed `doGet` and `rpcHealth`, but no `doPost` row at that time.
+- Repository CI contract tests passed in run [42026786562](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42026786562).
 
 ## Completed
 - [x] Repository identity, scope, and agent rules established.
@@ -26,23 +24,23 @@
 - [x] ADR-0001 records the decision to defer integrations.
 - [x] Read-only integration inventory recorded for all eight existing projects.
 - [x] Official GAS documentation reviewed and constraints recorded.
-- [x] ADR-0002 requires real-browser proof before relying on external Pages-to-GAS transport.
-- [x] Minimal GAS HtmlService RPC and ContentService POST health-check harness added.
-- [x] External fetch test harness and owner deployment runbook added.
-- [x] Owner deployed the GAS proof and confirmed HtmlService RPC success.
-- [x] GitHub Pages harness published and external POST test attempted.
+- [x] ADR-0002 records the original external-transport validation gate.
+- [x] Minimal HtmlService RPC and external ContentService POST proof harness added.
+- [x] Owner deployed the proof and confirmed HtmlService RPC works.
+- [x] A real Chromium test reproduced and identified the browser CORS block.
+- [x] ADR-0003 selects HtmlService as the primary app runtime and GitHub Pages as static showcase/docs hosting.
+- [x] Dependency-free Node.js contract tests and GitHub Actions CI added.
+- [x] The last verified repository CI run passed.
 
 ## Not yet done / not yet verified
-- [ ] External POST request arrival at `doPost` and browser redirect/CORS failure stage are not diagnosed.
-- [ ] External browser transport has not passed.
-- [x] Dependency-free Node.js transport-harness contract tests added.
-- [x] GitHub Actions CI workflow added for pushes and pull requests to `main`.
-- [ ] CI execution result is pending the first workflow run; tests are not yet marked as passing.
-- [ ] No app source, production backend, Sheets database, booking, admin, or telemetry feature exists.
+- [ ] Owner has not yet copied the revised HtmlService-first `Code.gs` and `Index.html` into the deployed Apps Script project.
+- [ ] Admin authentication, threat model, abuse controls, data retention, and authorization model remain to be designed before protected features.
+- [ ] Performance budgets have not yet been measured on target devices/networks.
+- [ ] No production Sheets schema, booking, admin, telemetry, or customer-data feature exists.
 - [ ] No previous-project code has been imported or any previous repository modified.
 
 ## Current risks
-1. External GitHub Pages to GAS transport remains unproven; the browser fetch failed and no matching `doPost` execution appeared in the supplied execution list.
+1. HtmlService is proven for the simple health RPC only; application scale, auth, and quotas still need validation.
 2. GAS quotas and execution ceilings constrain workloads.
 3. Google Sheets is not a relational ACID database.
 4. CacheService is best-effort and cannot be a durable queue.
@@ -50,4 +48,4 @@
 6. A fully offline browser cannot receive server confirmation until connectivity returns.
 
 ## Latest checkpoint
-The GAS proof is deployed. HtmlService RPC passed in the owner's browser. GitHub Pages is published, but its external POST test failed with a browser NetworkError; no `doPost` row was present in the supplied Apps Script Executions list. The next task is to inspect Firefox/Chromium DevTools Network and Console evidence before deciding whether the failure is network-level, redirect-related, or CORS-related. Repository-side contract tests and CI have been added independently; they do not replace the live browser transport test.
+The external GitHub Pages → GAS fetch path is rejected as a production dependency because Chromium observed a missing CORS allow-origin header. The platform is now specified as HtmlService-first, with GitHub Pages retained for public static content. The next task is to sync the revised RPC proof files into the owner's Apps Script project and verify the updated deployed version. Remaining Phase 0 work covers security, data semantics, performance budgets, and release/deployment controls.
