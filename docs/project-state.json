@@ -5,16 +5,16 @@
   "defaultBranch": "main",
   "release": "pre-alpha",
   "phase": 2,
-  "phaseName": "Core Spatial OS shell",
+  "phaseName": "Public portfolio foundation",
   "currentTask": {
-    "id": "P2-01",
-    "title": "Review the Antigravity-inspired Spatial OS preview and sync the single-file HtmlService bundle",
-    "status": "pages-preview-deployed-gas-bundle-sync-and-visual-review-pending"
+    "id": "P3-01",
+    "title": "Curate verified project content and build case-study structure",
+    "status": "portfolio-root-implemented-content-review-and-latest-ci-verification-pending"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCodeCommit": "f7cff92f953d2f857d9e062c9828e078eb756aac",
+  "latestVerifiedCodeCommit": "a44a94576fd4998252c27209d7349572bf5a3a3b",
   "tests": {
-    "repositoryCi": "passed-run-42037266997",
+    "repositoryCi": "pending-run-42044256942",
     "repositoryCiTestCount": 14,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
@@ -23,18 +23,20 @@
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
     "githubPagesDeployment": "passed-run-42036636856",
-    "platformTypecheck": "passed-run-42037266997",
-    "pagesAndGasBuilds": "passed-run-42037266997",
+    "platformTypecheck": "passed-in-run-42043972269",
+    "pagesAndGasBuilds": "passed-in-run-42043972269",
     "cursorFieldContract": "passed-in-14-test-suite-run-42037266997",
     "visualBrowserReview": "pending-owner-review",
     "vitePagesWorkflow": "passed-run-42036636856",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
-    "activePagesSource": "not-yet-verified-after-legacy-branch-build"
+    "activePagesSource": "not-yet-verified-after-legacy-branch-build",
+    "portfolioContractTests": "pending-run-42044256942",
+    "latestPreviousPagesDeployment": "passed-run-42043972152"
   },
   "hosting": {
-    "primaryApplicationRuntime": "google-apps-script-html-service",
-    "rpcTransport": "google.script.run",
-    "githubPagesRole": "public-documentation-showcase-and-live-spatial-os-preview",
+    "primaryApplicationRuntime": "static-react-vite-on-github-pages",
+    "rpcTransport": "none-for-core-portfolio",
+    "githubPagesRole": "primary-public-personal-portfolio",
     "directPagesToGasFetch": "not-supported"
   },
   "deployment": {
@@ -49,7 +51,8 @@
     "latestGasBundleArtifactRun": "42037266997",
     "latestGasBundleArtifactId": 13418468853,
     "vitePagesBuildAndDeployPassed": true,
-    "activePagesSource": "needs-one-time-switch-to-github-actions"
+    "activePagesSource": "requires-verification-as-github-actions",
+    "appsScriptSync": "deferred-not-a-portfolio-release-blocker"
   },
   "previousProjects": {
     "inspected": true,
@@ -59,13 +62,13 @@
     "ownerRequestedDeferral": true
   },
   "blockers": [
-    "Repository Settings → Pages → Build and deployment → Source must be switched to GitHub Actions; otherwise the automatic branch/Jekyll deployment can supersede the Vite preview.",
-    "After the source switch, run the Platform GitHub Pages workflow once to publish the Vite preview as the active site.",
-    "The single-file Apps Script bundle artifact must be copied into Apps Script HTML file Index and deployed as a new Web App version.",
-    "Visual review of the cursor lens and responsive states remains pending.",
-    "Performance baseline and operational rollback/backup rehearsals remain pending before production data."
+    "Latest repository CI run 42044256942 must complete and its result must be verified.",
+    "Confirm GitHub Pages source is GitHub Actions so the Vite portfolio remains the canonical public site.",
+    "Pooya must review and approve the public biography, featured project order, project descriptions, statuses, and verified links.",
+    "Individual case-study pages and a typed draft/published content registry remain to be implemented.",
+    "A full-site redesign based on Pooya's feedback is a mandatory pre-release gate."
   ],
-  "nextAction": "Owner: set repository Pages source to GitHub Actions and run Actions → Platform GitHub Pages → Run workflow. Then inspect the live preview. Download the pooya-labs-gas-htmlservice-bundle artifact from CI run 42037266997, replace Apps Script HTML file Index with the artifact index.html content, and deploy a new Web App version.",
+  "nextAction": "Verify the latest CI run; then move project data into a typed, validated portfolio content registry and build reusable case-study pages. Collect Pooya's approved bio, featured project order, accurate project statuses, proof assets, and contact destination before final copy.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -91,15 +94,17 @@
     "browserDiagnosticUrlStoredInActionsSecret": true
   },
   "visualDesign": {
-    "direction": "google-antigravity-inspired-original-command-center",
+    "direction": "portfolio-first-dark-obsidian-cyan-emerald-antigravity-inspired",
     "cursorRefractionField": true,
     "touchDisabled": true,
     "reducedMotionDisabled": true,
     "languageDefault": "fa-RTL",
     "themeDefault": "dark",
     "reviewPending": true,
+    "finalRedesignRequired": true,
+    "ownerFeedbackRounds": 2,
     "designDocument": "docs/DESIGN-DIRECTION.md",
-    "decision": "docs/decisions/ADR-0005-antigravity-inspired-design.md"
+    "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
   },
   "latestVerifiedCommit": "83fac54743a11e7ccf2a78ed08ae7758e7c20d44"
 }
