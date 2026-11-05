@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-05 — Persian SVG typography and GlobalCart interface evidence
+- Improved generated Persian architecture diagrams and social cards with an Amiri/Tahoma fallback stack, RTL alignment, more compact labels, and stable node-number positioning; constrained Persian social-card descriptions to prevent horizontal overflow.
+- Added a source-pinned GlobalCart desktop homepage screenshot as the case-study hero and a separate mobile homepage capture section, both with bilingual captions/alt text and lazy loading.
+- Added source validation for case-study screenshot URLs, immutable commit pins, and localized captions/alt text.
+- Expanded build smoke checks to assert the desktop hero and mobile screenshot appear in the static Persian and English GlobalCart pages.
+- Repository CI [42070270418](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42070270418) passed TypeScript, Pages/GAS builds, artifact upload, and **34/34 contract tests**.
+- Pages deployment with Persian SVG font/RTL corrections and GlobalCart screenshot integration [42069853533](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42069853533) succeeded.
+- GlobalCart's product-detail/gallery screenshot coverage and manual release QA remain open.
+
 ## 2026-11-05 — GlobalCart responsive UI evidence
 - Added the actual GlobalCart desktop and mobile storefront homepage captures to the case study; the desktop image is the pinned hero visual and the mobile image is shown in a dedicated responsive gallery section.
 - Both images were visually inspected: they show the storefront UI and do not expose customer personal data. Asset URLs are pinned to source commit `5ca43e40ff101e673ee7cf261850bff0a679047c`.
