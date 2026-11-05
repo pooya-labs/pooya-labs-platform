@@ -108,14 +108,18 @@ test('portfolio includes canonical, social, structured-data, and brand metadata'
   assert.match(portfolio, /link\[rel="canonical"\]/);
 });
 
-test('sitemap lists the public portfolio and all eight shareable case-study URLs', () => {
-  assert.match(sitemap, /<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/);
+test('sitemap lists canonical Persian and English static case-study routes', () => {
+  assert.match(sitemap, /xmlns:xhtml="http:\/\/www\.w3\.org\/1999\/xhtml"/);
   const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-  assert.equal(locations.length, 9);
-  assert.ok(locations.includes('https://pooya-labs.github.io/pooya-labs-platform/'));
+  assert.equal(locations.length, 17);
+  const base = 'https://pooya-labs.github.io/pooya-labs-platform/';
+  assert.ok(locations.includes(base));
   for (const slug of ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'global-cart', 'salon-booking']) {
-    assert.ok(locations.includes('https://pooya-labs.github.io/pooya-labs-platform/?project=' + slug));
+    assert.ok(locations.includes(base + 'projects/' + slug + '/'));
+    assert.ok(locations.includes(base + 'en/projects/' + slug + '/'));
   }
+  assert.match(sitemap, /hreflang="x-default"/);
+  assert.match(sitemap, /hreflang="en"/);
 });
 
 test('all eight case studies include bilingual roles, architecture, implementation, decisions, verification, and source links', () => {
@@ -145,4 +149,14 @@ test('portfolio distinguishes in-progress release lines from stable demo release
   assert.match(projectData, /Apps Script 1\.4\.0 target/);
   assert.match(productDossiers, /do not process real sales|No real payment/i);
   assert.match(productDossiers, /not assumed to have passed/i);
+});
+
+test('portfolio routes static bilingual case studies and updates the URL without a reload', () => {
+  assert.match(portfolio, /function getProjectSlugFromLocation/);
+  assert.match(portfolio, /\/(?:en\/)?projects\/\(\[\^\/\]\+\)/);
+  assert.match(portfolio, /function getProjectRouteHref/);
+  assert.match(portfolio, /import\.meta\.env\.BASE_URL/);
+  assert.match(portfolio, /new URL\(getProjectRouteHref\(project\.slug, language\)/);
+  assert.match(portfolio, /onLanguageChange\('en'\)/);
+  assert.match(portfolio, /onLanguageChange\('fa'\)/);
 });
