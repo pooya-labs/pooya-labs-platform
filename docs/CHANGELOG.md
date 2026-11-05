@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-05 — Raster social previews for reliable link sharing
+- Added pinned build dependency `@resvg/resvg-js@2.6.2` to render social-card SVGs into real PNG files during the Pages build; editable SVG sources remain available beside each PNG.
+- Switched homepage and all 16 localized project case-study Open Graph images to PNG.
+- Standardized all 17 PNG cards at **1200×627 (1.91:1)**, matching LinkedIn's published share-preview recommendation; retained large-image Twitter/X card metadata.
+- Extended built-output tests to verify PNG signatures, exact pixel dimensions, correct per-project routes, and image/png metadata.
+- Repository CI [42071877192](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42071877192) passed TypeScript, Pages/GAS builds, artifact upload, and **34/34 contract tests**.
+- Pages deployment containing the PNG generator and social image references [42071642813](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42071642813) succeeded.
+- External share-client cache/rendering validation remains open; see the [LinkedIn sharing requirements](https://www.linkedin.com/help/linkedin/answer/a1322434) and [resvg-js package](https://www.npmjs.com/package/@resvg/resvg-js).
+
 ## 2026-11-05 — Persian SVG typography and GlobalCart interface evidence
 - Improved generated Persian architecture diagrams and social cards with an Amiri/Tahoma fallback stack, RTL alignment, more compact labels, and stable node-number positioning; constrained Persian social-card descriptions to prevent horizontal overflow.
 - Added a source-pinned GlobalCart desktop homepage screenshot as the case-study hero and a separate mobile homepage capture section, both with bilingual captions/alt text and lazy loading.
