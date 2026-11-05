@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-05 — Portfolio-first public website
+- Reframed the product around Pooya's personal profile and project showcase; the portfolio is now the default root experience.
+- Added bilingual intro, About, selected project cards, focus areas, technology list, contact section, and a secondary entry to the Spatial OS workspace.
+- Added dark obsidian / cyan / emerald portfolio styling with a restrained, touch-safe and reduced-motion-safe pointer refraction effect.
+- Changed the roadmap so a complete redesign using Pooya's feedback is a mandatory pre-release gate with two review rounds and explicit approval.
+- Clarified that a generic customer login/dashboard is not part of the portfolio by default and that Apps Script is deferred.
+- Added ADR-0006, portfolio product-surface and architecture documentation, and contract tests.
+- CI [42044256942](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42044256942) passed TypeScript, both build targets, artifact upload, and 22/22 contract tests. Pages deployment [42044251451](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42044251451) succeeded.
+
+# Changelog
+
 ## 2026-11-05 — Antigravity-inspired Spatial OS visual foundation
 - Added the React + TypeScript + Vite npm workspace with separate Pages and single-file HtmlService build targets.
 - Implemented the responsive desktop/mobile workspace shell, app windows, Dock, command palette, dark/light theme, and Persian/English direction switching.
