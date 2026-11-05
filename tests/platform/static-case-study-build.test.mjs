@@ -54,6 +54,17 @@ test('GlobalCart static case studies include real pinned desktop and mobile stor
   assert.ok(!unrelated.includes('storefront-home-mobile.png'), 'GlobalCart screenshots must not appear on another project');
 });
 
+test('GlobalCart case study includes pinned desktop and mobile interface captures', { skip: !rootHtml }, async () => {
+  const faPage = await readFile(new URL('projects/global-cart/index.html', outputRoot), 'utf8');
+  const enPage = await readFile(new URL('en/projects/global-cart/index.html', outputRoot), 'utf8');
+  for (const html of [faPage, enPage]) {
+    assert.ok(html.includes('storefront-home-desktop.png'), 'The desktop storefront screenshot must remain the hero media.');
+    assert.ok(html.includes('case-study-media-section'), 'The case study must include the interface-capture section.');
+    assert.ok(html.includes('storefront-home-mobile.png'), 'The mobile storefront screenshot must be rendered in the capture section.');
+    assert.ok(html.includes('Actual storefront on mobile') || html.includes('نمای واقعی فروشگاه روی موبایل'));
+  }
+});
+
 test('built sitemap and robots file advertise the new static routes', { skip: !rootHtml }, async () => {
   const sitemap = await readFile(new URL('sitemap.xml', outputRoot), 'utf8');
   const robots = await readFile(new URL('robots.txt', outputRoot), 'utf8');
