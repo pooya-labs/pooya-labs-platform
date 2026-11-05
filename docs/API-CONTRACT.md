@@ -1,20 +1,18 @@
-# API Contract — Initial Rules
+# API Contract — HtmlService RPC v1
 
-The concrete endpoint schema is intentionally not frozen until Phase 0 transport testing is complete.
+The canonical browser-to-backend transport is `google.script.run` from a page served by the same Apps Script HtmlService deployment. The contract is an RPC argument/return value, not an external HTTP JSON API.
 
-## Envelope
-All backend operations should use a versioned envelope:
+## Request envelope
 ```json
 {
   "apiVersion": 1,
   "requestId": "client-generated-unique-id",
-  "idempotencyKey": "required-for-mutations",
   "action": "health.check",
   "payload": {}
 }
 ```
 
-Responses:
+## Response envelope
 ```json
 {
   "apiVersion": 1,
@@ -26,14 +24,17 @@ Responses:
 }
 ```
 
+## Invocation
+The client invokes the public `rpcCall(request)` function using `google.script.run`, registering both success and failure handlers. The wrapper may expose a Promise to application code, but it must not pretend the underlying RPC is synchronous.
+
 ## Contract rules
-- Validate envelope, action, payload shape, size, and version on the server.
+- Validate envelope, action, payload shape, serialized size, and version on the server.
 - Normalize errors; do not leak stack traces, secrets, or internal identifiers.
-- Mutating operations require idempotency keys and durable deduplication records.
+- Mutating operations require idempotency keys and durable deduplication records before they are enabled.
 - Request IDs are for tracing; they are not authorization.
 - Admin routes require server-side authentication and authorization.
-- Public endpoints expose only intentionally public data.
-- Transport adapters must preserve the same logical contract.
-- Booking responses distinguish `pending`, `accepted`, `rejected`, and `confirmed`; only server-persisted acceptance can be confirmed.
-- Do not rely on arbitrary browser-supplied IP or fingerprint values as identity.
-- CORS, redirects, credentials, and origin behavior are deployment-specific and must be tested.
+- Public routes expose only intentionally public data.
+- Keep at most 10 calls in flight and serialize operations whose order matters; Google does not guarantee invocation order.
+- Only explicit allowlisted actions are dispatchable. Unknown actions fail closed.
+- Do not call GAS ContentService from GitHub Pages as an application RPC. The real Chromium test observed a missing `Access-Control-Allow-Origin` header and an unreadable response.
+- JSONP is not an alternative for protected data or mutations; Google's guidance limits it to read-only, non-sensitive data.
