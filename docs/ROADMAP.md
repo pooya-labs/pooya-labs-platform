@@ -1,95 +1,92 @@
 # Roadmap
 
-The platform is developed in gated phases. A phase is not complete until its acceptance criteria are evidenced in `STATUS.md` and the relevant tests/checks are recorded.
+The release target is a credible, distinctive personal portfolio that introduces Pooya and makes his strongest engineering projects easy to inspect. A phase is complete only when its acceptance criteria are evidenced in STATUS.md and relevant checks have passed.
 
-## Phase 0 — Feasibility, inventory, and architecture proof
-- [x] Confirm repository baseline and establish durable project-state tracking.
-- [x] Inventory current platform-relevant capabilities and constraints in the existing project repositories without modifying them.
-- [x] Prove GAS HtmlService + `google.script.run` request/response behavior in a minimal deployable spike.
-- [x] Prove external browser-to-GAS transport from a real GitHub Pages origin; record the negative CORS result and browser evidence.
-- [x] Decide that HtmlService is the primary app runtime and GitHub Pages is static showcase/documentation hosting.
-- [x] Verify GAS quotas, execution limits, trigger behavior, and Sheets/Drive constraints against official documentation.
-- [x] Owner approved the public-app / owner-only-admin deployment boundary; finalize authentication, abuse controls, and actual deployment access settings before protected features.
-- [x] Define provisional measurable performance budgets and a repeatable measurement strategy (baseline measurements remain pending).
-- [x] Document deployment, source sync, rollback, backup, and restore procedures (rehearsal remains pending).
-- [ ] Approve remaining architecture decisions and phase exit review.
+## Phase 0 — Product positioning and audience
+- [x] Define Pooya Labs as a personal portfolio and engineering project showcase.
+- [x] Set the primary visitor journey: understand Pooya → explore selected work → inspect case studies/evidence → connect.
+- [x] Separate the public portfolio from the secondary owner workspace.
+- [x] Decide that portfolio visitors do not need a generic customer account or dashboard.
+- [x] Define guardrails against fake metrics, inflated skills, guessed project links, and unsupported completion claims.
+- [ ] Review and approve the public biography, positioning, and featured-project priorities with Pooya.
 
-**Exit gate:** transport decision is evidence-based; backend security model and data semantics are documented; integration inventory exists; no unresolved critical feasibility blocker is hidden.
+**Exit gate:** the website has one clear audience and purpose; the content and feature scope supports the portfolio journey.
 
 ## Phase 1 — Repository foundation and engineering toolchain
-- [x] Select npm workspaces and configure the React/Vite/TypeScript platform workspace plus the Node test runner.
-- [ ] Add linting and formatting conventions.
-- [x] Add CI for dependency install, TypeScript checks, dual-host builds, and contract tests (first full green run pending).
-- [x] Add a typed versioned Google Apps Script RPC request/response adapter for the HtmlService host.
-- [ ] Add contribution, branching, commit, and release conventions.
+- [x] Establish the repository, agent instructions, recovery/handoff state, and ten-phase delivery plan.
+- [x] Configure React, TypeScript, Vite, npm workspaces, and Node contract tests.
+- [x] Add GitHub Actions CI for type-check, builds, tests, and Pages deployment.
+- [x] Add bilingual and RTL/LTR foundations.
+- [ ] Add linting, formatting, contribution, and release conventions.
+- [ ] Verify the active GitHub Pages source is GitHub Actions and that the canonical public site tracks the latest successful build.
 
-## Phase 2 — Core Spatial OS shell
+## Phase 2 — Public portfolio foundation
+- [x] Make the personal portfolio the default root experience.
+- [x] Add the first bilingual intro / hero, about, selected-projects, tools, and contact sections.
+- [x] Add honest prototype / in-development labels and verified repository links only.
+- [x] Retain the Antigravity-inspired refraction lens as a restrained optional effect.
+- [x] Keep the Spatial OS shell as a secondary workspace, not the homepage.
+- [ ] Refine the responsive navigation, keyboard behavior, focus states, and mobile reading flow.
+- [ ] Replace draft content with owner-approved biography, project summaries, and links.
 
-Initial visual reference and cursor behavior are recorded in [DESIGN-DIRECTION.md](DESIGN-DIRECTION.md) and [ADR-0005](decisions/ADR-0005-antigravity-inspired-design.md).
-- [x] Add initial dark/light design tokens, layered surfaces, and responsive primitives; full accessibility review remains.
-- [ ] Desktop shell: status bar, window manager, dock, snapping, resize; initial z-order, drag, minimize, and maximize are implemented.
-- [x] Add initial touch-first mobile navigation and full-screen app windows.
-- [x] Add the initial Persian/English UI dictionary and automatic RTL/LTR document direction.
-- [x] Add dark/light theme, reduced-motion handling, and keyboard shortcuts; full focus-management review remains.
-- [x] Add an app command palette and a strictly local allowlisted demo terminal.
+## Phase 3 — Portfolio content architecture and case studies
+- [ ] Create validated typed profile and project content schemas with draft/published states.
+- [ ] Move project data out of page components into a content registry.
+- [ ] Curate the featured project order with Pooya; highlight only the strongest and most presentable work.
+- [ ] Create individual case-study pages with problem, context, Pooya's role, architecture, implementation, technologies, key decisions, validation, outcomes, and current status.
+- [ ] Add verified repository, live-demo, release, and documentation links where available.
+- [ ] Add responsive image/media handling, captions, alt text, and lazy loading.
+- [ ] Add page titles, descriptions, social preview metadata, sitemap, and useful shareable URLs.
 
-## Phase 3 — Manifest-driven plugin platform
-- [x] Versioned and validated built-in app manifest v1 with localized metadata and owner-workspace audience checks.
-- [ ] Registry, compatibility checks, permissions, and feature flags.
-- [ ] Built-in application loader.
-- [ ] Sandboxed iframe loader with strict origin allowlist and validated postMessage protocol.
-- [ ] Sanitized Markdown/case-study viewer.
-- [ ] Registry-driven dock and command palette.
+## Phase 4 — Secondary private workspace and owner tools
+- [ ] Decide which existing Spatial OS tools are useful enough to retain after the public portfolio is complete.
+- [ ] Keep private workspace tools separate from the public project catalogue and visitor experience.
+- [ ] Define the minimum owner console scope: edit profile, curate projects, update case studies, and control draft/publication state.
+- [ ] Enforce owner authorization server-side before any protected operation.
+- [ ] Do not build a customer login/dashboard unless a separate product requirement is approved.
 
-## Phase 4 — Google Apps Script backend
-- [ ] Typed action router and input validation.
-- [ ] Sheets repository adapter with schema migrations and explicit consistency semantics.
-- [ ] LockService critical sections and bounded retry/backoff.
-- [ ] CacheService read-through caching only.
-- [ ] Durable idempotency and rate-limit records with retention.
-- [ ] Server-side admin authentication, authorization, audit logs, and secret handling.
-- [ ] Structured logs, correlation IDs, health endpoint, and quota-aware behavior.
-- [ ] Trigger-driven maintenance and backup jobs with observable outcomes.
+## Phase 5 — Backend and contact capabilities (only where needed)
+- [ ] Decide whether the contact section needs a real submission endpoint or direct contact links are sufficient.
+- [ ] If a form is approved, define consent, validation, spam/abuse controls, retention, deletion, and server-confirmed receipt semantics.
+- [ ] Choose the smallest appropriate backend after requirements are known.
+- [ ] Keep Apps Script as an optional deferred adapter; it is not required to publish the static portfolio.
+- [ ] Never expose privileged credentials or treat browser-supplied identity as authorization.
 
-## Phase 5 — Runtime services and offline-first behavior
-- [ ] Typed `google.script.run` adapter for the primary HtmlService host.
-- [ ] Explicit local mock adapter for development; never present mock results as live backend results.
-- [ ] Request correlation, bounded concurrency, error normalization, and mutation ordering.
-- [ ] IndexedDB offline queue with idempotency and replay policy.
-- [ ] Service Worker only for static Pages content and other explicitly cacheable resources; validate HtmlService restrictions before attempting to register one inside the GAS app.
-- [ ] Conflict handling, sync status, and user-visible pending/confirmed states.
-- [ ] Browser integration tests for online, offline, reconnect, and duplicate submission.
+## Phase 6 — Interactive project showcases
+- [ ] Add only interactive demos that help explain a featured project's engineering value.
+- [ ] Define per-demo performance and accessibility budgets.
+- [ ] Lazy-load heavy interactive experiences and provide static fallbacks.
+- [ ] Keep experiments clearly labeled; do not let them overwhelm core portfolio content.
 
-## Phase 6 — Native interactive mini-apps
-- [ ] Topology canvas and validated export format.
-- [ ] Live telemetry visualization with honest polling cadence and source timestamps.
-- [ ] Web Audio equalizer and local audio lab.
-- [ ] Performance profiling; only then decide whether workers, OffscreenCanvas, or WASM are justified.
+## Phase 7 — Full pre-release redesign with Pooya's feedback (release blocker)
+This phase is mandatory. The current portfolio layout is an initial working draft, not the final design.
 
-## Phase 7 — Booking, inquiries, and protected admin workspace
-- [ ] Availability model and timezone-safe scheduling.
-- [ ] Idempotent inquiry/booking submission and server-confirmed receipt.
-- [ ] Admin review, status transitions, audit trail, and notification strategy.
-- [ ] Abuse prevention, retention, export, and deletion policies.
+- [ ] Run a complete review of the site with Pooya on desktop and mobile.
+- [ ] Collect and record his feedback on identity, biography, visual references, page hierarchy, project order, case-study format, imagery, color, typography, motion, and navigation.
+- [ ] Compare alternative design directions and agree on the final visual language before polishing.
+- [ ] Redesign the entire public website using the accepted direction, not merely patch individual sections.
+- [ ] Present the revised version for a second feedback round; record changes and unresolved decisions.
+- [ ] Verify that the final design gives the strongest projects enough context and evidence.
+- [ ] Obtain explicit owner approval before marking this phase complete.
 
-## Phase 8 — Release hardening and first-party launch
-- [ ] Security, accessibility, responsive, performance, and browser compatibility review.
-- [ ] Backup/restore drill and disaster recovery verification.
-- [ ] Deployment automation and documented rollback.
-- [ ] Public launch checklist, versioning, changelog, and V1 acceptance review.
+**Exit gate:** Pooya has reviewed and explicitly approved the complete final portfolio design. No V1 release is allowed before this gate passes.
 
-## Phase 9 — Previous-project integration (intentionally last)
-This phase begins only after the owner confirms the relevant source projects are stable enough to integrate. It must not block the standalone platform V1.
+## Phase 8 — Release hardening and V1 launch
+- [ ] Complete accessibility, keyboard, RTL/LTR, responsive, browser, and reduced-motion checks.
+- [ ] Measure loading performance on representative desktop and mobile conditions.
+- [ ] Verify every public statement, skill, project status, image, and external link.
+- [ ] Validate SEO metadata, social previews, custom-domain readiness if desired, and analytics/privacy decisions.
+- [ ] Complete CI, Pages publishing, rollback, and recovery rehearsal.
+- [ ] Publish a versioned V1 and document the release.
 
-- [ ] Reassess AetherFlow readiness and select reusable, self-contained modules.
-- [ ] Reassess ORBIT readiness and select reusable observability concepts/components.
-- [ ] Reassess Pooya.OS and migrate only validated shell/UI capabilities.
-- [ ] Reassess LuminaGlass and migrate selected glass/audio lab modules.
-- [ ] Reassess NexusCanvas and migrate topology editor capabilities.
-- [ ] Reassess AuraPulse and migrate chart/command-palette capabilities.
-- [ ] Reassess Salon Booking and migrate booking/admin patterns only after its own backend is stable.
-- [ ] Reassess GlobalCart only if a relevant independent showcase module is identified.
-- [ ] Add each integration behind a manifest and feature flag, with attribution, tests, and rollback.
+## Phase 9 — Previous-project integration (after the standalone portfolio)
+This phase must not block V1. Source projects remain independent unless Pooya explicitly approves an integration.
+
+- [ ] Reassess AetherFlow and select verified milestones and presentable case-study evidence.
+- [ ] Reassess ORBIT and select verified milestones and presentable case-study evidence.
+- [ ] Reassess Pooya.OS, LuminaGlass, NexusCanvas, AuraPulse, GlobalCart, and Salon Booking.
+- [ ] Add project-specific case studies and links before considering source-code reuse.
+- [ ] Integrate reusable modules only behind clear boundaries, with attribution, tests, and rollback.
 - [ ] Verify licenses, dependency compatibility, security boundaries, and avoid duplicate implementations.
 
-**Integration rule:** no source project is changed by this repository. Integration is pull-in/adaptation work performed here after explicit readiness review.
+**Integration rule:** the portfolio may showcase independent projects without importing their code. Any source integration is separate work performed only after explicit approval.
