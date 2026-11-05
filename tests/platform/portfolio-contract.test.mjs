@@ -23,11 +23,14 @@ test('portfolio contains the core personal introduction and project sections', (
   assert.match(portfolio, /selectedSub/);
 });
 
-test('portfolio project cards expose honest statuses and do not invent links', () => {
-  assert.match(projectData, /status: \{ fa: 'در حال توسعه', en: 'In development' \}/);
-  assert.match(projectData, /status: \{ fa: 'نمونه و آزمایش', en: 'Prototype' \}/);
-  assert.match(projectData, /https:\/\/github\.com\/pooya16pg-spec\/aetherflow/);
-  assert.doesNotMatch(projectData, /github\.com\/pooya16pg-spec\/(?:ORBIT|Pooya\.OS|NexusCanvas|LuminaGlass|AuraPulse|GlobalCart)/);
+test('portfolio project cards expose verified demos and source repositories', () => {
+  assert.match(projectData, /status: \{ fa: 'در حال توسعه · M08', en: 'In development · M08' \}/);
+  assert.match(projectData, /status: \{ fa: 'نسخه پایدار ۱٫۰٫۰', en: 'Stable v1.0.0' \}/);
+  assert.match(projectData, /repositoryUrl: 'https:\/\/github\.com\/pooya-labs\/aetherflow'/);
+  assert.match(projectData, /previewUrl: 'https:\/\/pooya16pg-spec\.github\.io\/aetherflow\//);
+  assert.match(projectData, /caseStudyUrl: 'https:\/\/pooya-labs\.github\.io\/globalcart\/case-study\//);
+  assert.equal((projectData.match(/repositoryUrl: 'https:\/\/github\.com\/pooya-labs\//g) ?? []).length, 8);
+  assert.equal((projectData.match(/previewUrl: 'https:\/\/[^']+\.github\.io\//g) ?? []).length, 8);
 });
 
 test('portfolio is bilingual, responsive, and honors reduced motion', () => {
