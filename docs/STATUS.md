@@ -37,8 +37,8 @@
 - [x] Added ADR-0006 to record portfolio-first hosting and scope.
 
 ## CI and publishing status
-- Latest static SEO/architecture implementation passed CI [42066575496](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42066575496): TypeScript, Pages/Apps Script builds, artifact upload, and **32/32 contract tests**, including built-output checks for every bilingual page, diagram, and social card.
-- Pages deployment containing the architecture and static-page generator [42066311960](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42066311960) succeeded. The later 42e61f7 commit only hardened tests.
+- Latest portfolio and GlobalCart screenshot implementation passed CI [42070270418](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42070270418): TypeScript, Pages/Apps Script builds, artifact upload, and **34/34 contract tests**.
+- Pages deployment containing the bilingual static-page generator, architecture diagrams, and GlobalCart desktop/mobile UI evidence [42069853533](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42069853533) succeeded.
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
 - Current repo status and unresolved pre-release evidence are tracked in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 - Confirm the repository Pages source remains GitHub Actions so a legacy branch/Jekyll deployment cannot supersede the Vite portfolio.
@@ -53,7 +53,8 @@
 - [ ] Review the complete portfolio design on desktop and mobile. The current implementation is a draft, not final.
 
 ## Not implemented
-- [ ] Actual interface screenshots for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; the new architecture diagrams are clearly labelled as diagrams, not product screenshots.
+- [x] Added actual GlobalCart desktop and mobile storefront screenshots to its case study; both are visually inspected, contain no customer data, and are pinned to source commit `5ca43e40ff101e673ee7cf261850bff0a679047c`.
+- [ ] Actual interface screenshots for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; Salon Booking requires owner-approved redacted UI evidence. Architecture diagrams are not product screenshots.
 - [x] Source-backed role/architecture/implementation/decision/verification sections are populated for all eight projects; owner-confirmed personal contribution and any additional measured outcomes remain pending.
 - [x] Static crawler-readable bilingual case-study pages and per-project social preview SVGs are generated and included in the published build.
 - [ ] Validate real-world rendering of SVG social previews in external platforms/crawlers and add PNG/JPEG fallbacks only where required.
@@ -71,4 +72,4 @@
 - Previous project repositories remain untouched; project integration stays in Phase 9.
 
 ## Latest checkpoint
-The root website now introduces Pooya and his projects. Eight bilingual case-study views are available as shareable query routes and now include source-grounded engineering dossiers. The per-project missing-information and evidence gate is documented in PROJECT-CONTENT-AUDIT.md. Seven source-repository visual assets are pinned to immutable commits and carry bilingual alt text; one is the GlobalCart storefront screenshot while the rest are clearly treated as brand/project artwork. Case-study titles/descriptions and canonical/Open Graph metadata update in the browser, and the sitemap covers the homepage plus all eight case-study URLs. CI run 42066575496 passed 32/32 tests, including static HTML/diagram/social-card output checks; Pages run 42066311960 deployed the architecture and static case-study implementation. Public copy, featured order, project contribution details, and richer project evidence still require Pooya's review. Owner-confirmed details, actual UI screenshots, manual project evidence, external social-preview validation, and the complete two-round feedback-driven redesign remain mandatory pre-release work.
+The root website now introduces Pooya and his projects. Eight bilingual case-study views are available as shareable query routes and now include source-grounded engineering dossiers. The per-project missing-information and evidence gate is documented in PROJECT-CONTENT-AUDIT.md. Seven source-repository visual assets are pinned to immutable commits and carry bilingual alt text; one is the GlobalCart storefront screenshot while the rest are clearly treated as brand/project artwork. Case-study titles/descriptions and canonical/Open Graph metadata update in the browser, and the sitemap covers the homepage plus all eight case-study URLs. CI run 42070270418 passed 34/34 tests, including static HTML, architecture-diagram, social-card, and screenshot output contracts; Pages run 42069853533 deployed the GlobalCart desktop/mobile screenshot evidence alongside the static case-study implementation. Public copy, featured order, project contribution details, and richer project evidence still require Pooya's review. Owner-confirmed details, missing UI screenshots for six projects plus owner-approved Salon Booking evidence, manual project QA, external social-preview validation, and the complete two-round feedback-driven redesign remain mandatory pre-release work.
