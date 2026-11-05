@@ -251,7 +251,7 @@ export function validatePortfolioProjects(entries: readonly PortfolioProject[]):
     if (project.visualAsset) {
       assertHttpsUrl(project.visualAsset.url, ['raw.githubusercontent.com'], 'Project visual asset URL');
       const assetPath = new URL(project.visualAsset.url).pathname;
-      if (!/^\\/pooya-labs\\/[a-z0-9-]+\\/[a-f0-9]{40}\\//.test(assetPath)) {
+      if (!/^\/pooya-labs\/[a-z0-9-]+\/[a-f0-9]{40}\//.test(assetPath)) {
         throw new Error('Project visual assets must be pinned to an immutable source commit.');
       }
       if (!project.visualAsset.alt.fa.trim() || !project.visualAsset.alt.en.trim()) {
