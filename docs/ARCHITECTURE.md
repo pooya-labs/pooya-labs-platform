@@ -1,57 +1,57 @@
-# Architecture — HtmlService-first baseline
+# Architecture — portfolio-first public website
 
 ## Product shape
-A bilingual, responsive, installable SPA presented as a Spatial Web OS. The platform shell owns window management, navigation, app registry, theme, localization, accessibility, and host adapters. Individual mini-apps are isolated modules loaded through a versioned manifest.
 
-## Hosting decision
-- **Primary application runtime:** Google Apps Script HtmlService. The browser loads the application from the deployed GAS Web App and calls server functions with `google.script.run`.
-- **GitHub Pages:** public documentation, changelog, design previews, static case studies, and non-privileged demos only. It is not a production client for the GAS backend.
-- **Local development:** Vite/dev server with explicitly labeled mock adapters. Local mocks do not prove that a static external origin can call GAS.
-- **External clients:** not supported by this backend. Reconsider only if a separately approved backend provides a browser-tested CORS contract; do not add an unreviewed proxy or expose secrets in static assets.
+The primary product is a bilingual personal portfolio and engineering project showcase. The public route is a static, responsive website. The existing Spatial OS shell is secondary and can remain as a separate workspace experience.
 
-The decision is based on a real Chromium run from the published GitHub Pages origin. Fetch to the deployed GAS `/exec` URL was rejected by browser CORS because the response lacked `Access-Control-Allow-Origin`. The browser could not read an HTTP status or body. This does not prove whether `doPost` executed. The owner separately confirmed that HtmlService `google.script.run` worked.
+The system is intentionally split by purpose:
+1. **Public portfolio:** identity, project catalogue, case studies, technology focus, and contact links.
+2. **Private owner workspace:** optional tools and future portfolio content management.
+3. **Independent project repositories:** remain separate; the portfolio links to them and documents them without importing source code by default.
 
-## Logical layers
-1. Presentation shell — desktop/mobile navigation, windows, dock, command palette.
-2. App runtime — built-in application modules, sandboxed external apps, sanitized Markdown.
-3. Registry — schema validation, compatibility, permissions, feature flags.
-4. Client platform services — storage, offline queue, localization, telemetry.
-5. Host adapter — a Promise wrapper over HtmlService `google.script.run`; development mocks are separate and clearly labeled.
-6. Backend application — allowlisted RPC router, validation, authorization, domain services.
-7. Persistence adapters — Sheets for structured low-volume records, Drive for artifacts/backups, CacheService for expendable cache.
-8. Operations — triggers, health checks, audit events, backup/restore.
+A generic public customer dashboard is not part of the portfolio architecture. A product-specific customer surface may be added only when a real product requirement exists.
 
-## RPC contract
-- Browser calls are asynchronous and must use success/failure handlers.
-- Do not assume calls complete in invocation order.
-- Keep concurrent in-flight calls below the documented limit of 10; serialize dependent mutations.
-- Use versioned request/response envelopes, request IDs, normalized errors, and explicit action allowlists.
-- Only top-level functions deliberately exposed to `google.script.run` are public entry points; implementation helpers should end in an underscore.
+## Hosting and runtime
 
-## Consistency and reliability
-- Sheets operations are not ACID transactions. Use a single-writer/lock discipline for critical mutations, explicit idempotency keys, append-only audit records where feasible, and compensating actions where atomic multi-row changes cannot be guaranteed.
-- LockService coordinates script executions; it does not create database transactions.
-- CacheService entries may disappear and must be reconstructible.
-- Triggers are maintenance schedulers, not durable always-on workers.
-- Use batch reads/writes, bounded lock waits, and quota-aware jobs.
-- Durable server-side acceptance must precede user-visible confirmation.
-- Client offline operations remain pending until reconciled with the server.
+- **Primary public host:** GitHub Pages static build.
+- **Frontend development:** React + TypeScript + Vite.
+- **Build and delivery:** GitHub Actions with type-checks, contract tests, static build, and Pages deployment.
+- **No backend required for the core portfolio:** project content can be compiled from reviewed local data files.
+- **Apps Script:** deferred compatibility/operations option, not the primary public runtime and not a release blocker for the static portfolio.
+- **Private administration:** if implemented, it must be isolated from public content and protected by server-side access control. Choose the smallest feasible backend after requirements are known.
 
-See [SECURITY-MODEL.md](SECURITY-MODEL.md) and [DATA-CLASSIFICATION.md](DATA-CLASSIFICATION.md) for the Phase 0 threat model, data classes, and deployment-authentication constraints.
+The earlier HtmlService transport experiment remains documented as historical evidence for a possible Apps Script-hosted application. It does not require the personal portfolio to be served by Apps Script. Do not call Apps Script directly from the GitHub Pages origin; the previous real-browser test observed a CORS block.
 
-## Security boundaries
-- Backend validates all input and authorizes every privileged operation.
-- Admin credentials and signing material remain in Script Properties or another server-side secret store.
-- Never embed admin tokens in static JS or expose them to third-party iframes.
-- Use expiring sessions, CSRF/origin strategy appropriate to HtmlService, rate limits, audit logs, and secret rotation.
-- Sandboxed iframe messages require exact origin/source checks, schema validation, nonce/handshake, and capability scoping.
-- Markdown and README content must be sanitized; external links should use safe rel attributes.
+## Public content model
 
-## Performance principles
-- Define budgets after measuring baseline devices and target networks.
-- Do not promise sub-50ms or sub-100ms GAS responses.
-- Keep animation local to the browser; server telemetry is polled and timestamped.
-- Add workers, OffscreenCanvas, or WASM only after profiling proves a bottleneck.
+Use a typed, validated source for:
+- Profile identity and approved public biography.
+- Project metadata, status, featured order, language-specific summaries, and verified links.
+- Case-study sections and evidence assets.
+- Skill/tool tags with evidence references.
+- Social and contact destinations.
 
-## Deferred by design
-Integration of existing repositories is Phase 9 and must not block the first standalone release.
+The data model must distinguish a draft entry from a published entry. Never render an item as released solely because a local boolean or unreviewed label says so.
+
+## Engineering boundaries
+
+- Keep content separate from presentational components.
+- External project links must be exact and verified; no guessed repository paths.
+- Use lazy loading and dimensioned assets for project media.
+- Respect reduced-motion, keyboard navigation, semantic headings, color contrast, and RTL/LTR behavior.
+- No analytics, tracking, contact form backend, or private account system until purpose, privacy, and retention are defined.
+- If a contact form is added, report accepted only after server confirmation; otherwise provide direct approved contact links.
+
+## Private workspace and security
+
+The current Spatial OS shell is retained as a secondary owner workspace / experiment. Do not expose private workspace data in the public portfolio. Any future admin surface must use server-side authorization; a hidden link, localStorage flag, or browser-supplied role is not an authorization boundary.
+
+## Deferred
+
+- Apps Script data sync and deployment.
+- Customer accounts or booking flows.
+- Owner CMS and protected admin functions.
+- Offline queues, telemetry, AI agents, and embedded external applications.
+- Source-code integration from earlier project repositories.
+
+These are added only when they serve the portfolio or a clearly defined standalone product.
