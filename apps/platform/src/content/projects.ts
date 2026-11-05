@@ -11,124 +11,149 @@ export interface PortfolioProject {
   statusKey: ProjectStatus;
   reviewState: ProjectReviewState;
   tags: string[];
-  href?: string;
+  repositoryUrl: string;
+  previewUrl: string;
+  caseStudyUrl?: string;
 }
 
 const projectEntries: PortfolioProject[] = [
   {
     number: '01',
-    name: 'AetherFlow',
     slug: 'aetherflow',
+    name: 'AetherFlow',
+    category: { fa: 'سیستم‌های توزیع‌شده و گردش‌کار', en: 'Distributed systems & workflows' },
+    description: {
+      fa: 'پلتفرم اجرای گردش‌کار توزیع‌شده با Rust؛ با تمرکز بر وضعیت پایدار، بازیابی Workerها، تحویل قابل اتکا و مشاهده‌پذیری. پروژه همچنان در حال توسعه است و هنوز محصول آماده تولید محسوب نمی‌شود.',
+      en: 'A Rust-based distributed workflow execution platform focused on durable state, recoverable workers, reliable delivery, and observability. It remains under active development and is not production-ready.',
+    },
+    status: { fa: 'در حال توسعه · M08', en: 'In development · M08' },
     statusKey: 'in-development',
     reviewState: 'needs-owner-review',
-    category: { fa: 'مهندسی نرم‌افزار', en: 'Software engineering' },
-    description: {
-      fa: 'یک پروژه مستقل در حال توسعه؛ تمرکز این ویترین روی تصمیم‌های فنی، روند ساخت و خروجی‌های قابل ارائه آن خواهد بود.',
-      en: 'An independent project in active development. Its case study will focus on engineering decisions, the build process, and demonstrable outcomes.',
-    },
-    status: { fa: 'در حال توسعه', en: 'In development' },
-    tags: ['Engineering', 'Workflow'],
-    href: 'https://github.com/pooya16pg-spec/aetherflow',
+    tags: ['Rust', 'PostgreSQL', 'NATS JetStream', 'OpenTelemetry'],
+    repositoryUrl: 'https://github.com/pooya-labs/aetherflow',
+    previewUrl: 'https://pooya16pg-spec.github.io/aetherflow/',
   },
   {
     number: '02',
-    name: 'ORBIT',
     slug: 'orbit',
-    statusKey: 'in-development',
-    reviewState: 'needs-owner-review',
-    category: { fa: 'محصول نرم‌افزاری', en: 'Software product' },
+    name: 'ORBIT',
+    category: { fa: 'مانیتورینگ و مشاهده‌پذیری', en: 'Observability & monitoring' },
     description: {
-      fa: 'پروژه‌ای مستقل با نقشه راه مرحله‌ای؛ جزئیات قابلیت‌ها و نسخه‌های تکمیل‌شده در مطالعه موردی آن ثبت می‌شود.',
-      en: 'An independently developed product with a staged roadmap. Its case study will document capabilities and completed releases.',
+      fa: 'محیط مهندسی برای بررسی سلامت سرویس‌ها، رخدادها و جریان‌های عملیاتی؛ با نماهای Metrics، Logs و Traces. نسخه ۱٫۰٫۰ برای محدوده دموی پورتفولیو منتشر شده است؛ نه به‌عنوان سرویس تولیدی میزبانی‌شده.',
+      en: 'An engineering workspace for service health, incidents, and operational workflows across metrics, logs, and traces. Version 1.0.0 is released for the portfolio-demo scope, not as a hosted production service.',
     },
-    status: { fa: 'در حال توسعه', en: 'In development' },
-    tags: ['Product design', 'Systems'],
+    status: { fa: 'نسخه پایدار ۱٫۰٫۰', en: 'Stable v1.0.0' },
+    statusKey: 'released',
+    reviewState: 'needs-owner-review',
+    tags: ['Go', 'React', 'PostgreSQL', 'Observability'],
+    repositoryUrl: 'https://github.com/pooya-labs/orbit',
+    previewUrl: 'https://pooya-labs.github.io/orbit/',
   },
   {
     number: '03',
-    name: 'Pooya.OS',
     slug: 'pooya-os',
+    name: 'Pooya.OS',
+    category: { fa: 'پورتفولیو و محیط دسکتاپ تعاملی', en: 'Portfolio & interactive desktop' },
+    description: {
+      fa: 'پورتفولیویی با ظاهر یک محیط دسکتاپ؛ شامل مطالعه موردی پروژه‌ها، خط فرمان محلی نمایشی، بازرس Design Token و مدیر پنجره. فرمان‌ها داخل مرورگر اجرا می‌شوند و به سیستم‌عامل دسترسی ندارند.',
+      en: 'A portfolio presented as an interactive desktop workspace, with project case studies, a local command sandbox, a design-token inspector, and a window manager. Commands run in the browser and do not access the operating system.',
+    },
+    status: { fa: 'دموی عمومی', en: 'Public demo' },
     statusKey: 'prototype',
     reviewState: 'needs-owner-review',
-    category: { fa: 'رابط و تجربه کاربری', en: 'Interface & experience' },
-    description: {
-      fa: 'کاوشی در ساخت یک محیط کاری دسکتاپ با رابط مدرن، پنجره‌های تعاملی و تجربه‌ای منسجم.',
-      en: 'An exploration of a modern desktop workspace with interactive windows and a cohesive interface.',
-    },
-    status: { fa: 'نمونه و آزمایش', en: 'Prototype' },
-    tags: ['UI engineering', 'Interaction'],
+    tags: ['Next.js', 'React', 'TypeScript', 'Framer Motion'],
+    repositoryUrl: 'https://github.com/pooya-labs/pooya-os',
+    previewUrl: 'https://pooya16pg-spec.github.io/pooya-os/',
   },
   {
     number: '04',
-    name: 'NexusCanvas',
     slug: 'nexus-canvas',
-    statusKey: 'in-development',
-    reviewState: 'needs-owner-review',
-    category: { fa: 'ابزار بصری', en: 'Visual tool' },
+    name: 'NexusCanvas',
+    category: { fa: 'طراحی بصری معماری سیستم', en: 'Visual system architecture' },
     description: {
-      fa: 'ابزاری برای نمایش و کار با ساختارها و ارتباطات به‌شکل بصری و قابل تعامل.',
-      en: 'A visual tool for exploring structures and relationships through an interactive canvas.',
+      fa: 'استودیوی ترسیم توپولوژی سرویس‌ها؛ برای ساخت گراف معماری، بررسی چرخه‌های وابستگی و نقاط ضعف ساختاری و خروجی گرفتن از Snapshot یا قالب اولیه Docker Compose. اعداد عملکردی آن شبیه‌سازی‌شده‌اند.',
+      en: 'A service-topology studio for building architecture graphs, checking dependency cycles and structural risks, and exporting snapshots or Docker Compose starters. Performance values are illustrative simulations.',
     },
-    status: { fa: 'در حال توسعه', en: 'In development' },
-    tags: ['Canvas', 'Visualization'],
+    status: { fa: 'دموی عمومی', en: 'Public demo' },
+    statusKey: 'prototype',
+    reviewState: 'needs-owner-review',
+    tags: ['Next.js', 'TypeScript', 'SVG', 'Docker Compose'],
+    repositoryUrl: 'https://github.com/pooya-labs/nexus-canvas',
+    previewUrl: 'https://pooya16pg-spec.github.io/nexus-canvas/',
   },
   {
     number: '05',
-    name: 'LuminaGlass',
     slug: 'lumina-glass',
+    name: 'LuminaGlass',
+    category: { fa: 'آزمایشگاه شیشه و صوت', en: 'Glass & audio lab' },
+    description: {
+      fa: 'آزمایشگاه مرورگری برای تنظیم سطوح Liquid Glass و جلوه‌های اپتیکی، خروجی PNG و پردازش صوت با Web Audio API؛ تنظیمات و Presetها به‌صورت محلی در مرورگر ذخیره می‌شوند.',
+      en: 'A browser-native lab for tuning Liquid Glass surfaces and optical effects, exporting PNGs, and processing audio with the Web Audio API. Preferences and presets are stored locally in the browser.',
+    },
+    status: { fa: 'دموی عمومی', en: 'Public demo' },
     statusKey: 'prototype',
     reviewState: 'needs-owner-review',
-    category: { fa: 'آزمایشگاه رابط', en: 'Interface lab' },
-    description: {
-      fa: 'آزمایش جلوه‌های شیشه‌ای، لایه‌بندی و تعاملات بصری برای تجربه‌های دیجیتال.',
-      en: 'An exploration of glass surfaces, layered interfaces, and visual interactions for digital experiences.',
-    },
-    status: { fa: 'نمونه و آزمایش', en: 'Prototype' },
-    tags: ['Visual design', 'Motion'],
+    tags: ['SVG', 'Canvas', 'Web Audio API', 'TypeScript'],
+    repositoryUrl: 'https://github.com/pooya-labs/lumina-glass',
+    previewUrl: 'https://pooya16pg-spec.github.io/lumina-glass/',
   },
   {
     number: '06',
-    name: 'AuraPulse',
     slug: 'aura-pulse',
+    name: 'AuraPulse',
+    category: { fa: 'داده بازار و شبیه‌ساز معاملاتی', en: 'Market data & paper trading' },
+    description: {
+      fa: 'داشبورد داده بازار با یک شبیه‌ساز Paper Trading داخل مرورگر. سفارش‌ها واقعی نیستند، API Key صرافی دریافت نمی‌شود و اطلاعات حساب آزمایشی روی همان مرورگر ذخیره می‌شوند.',
+      en: 'A market-data dashboard paired with an in-browser paper-trading simulator. Orders are simulated, no exchange API key is used, and demo account data stays in the current browser.',
+    },
+    status: { fa: 'دموی عمومی', en: 'Public demo' },
     statusKey: 'prototype',
     reviewState: 'needs-owner-review',
-    category: { fa: 'داشبورد و داده', en: 'Dashboards & data' },
-    description: {
-      fa: 'تمرکز بر نمایش داده، مؤلفه‌های نموداری و ابزارهای تعاملی در یک تجربه منسجم.',
-      en: 'A focused exploration of data presentation, chart components, and interactive tooling.',
-    },
-    status: { fa: 'نمونه و آزمایش', en: 'Prototype' },
-    tags: ['Data UI', 'Components'],
+    tags: ['Next.js', 'TypeScript', 'SVG Charts', 'Market Data'],
+    repositoryUrl: 'https://github.com/pooya-labs/aurapulse',
+    previewUrl: 'https://pooya16pg-spec.github.io/aurapulse/',
   },
   {
     number: '07',
-    name: 'GlobalCart',
     slug: 'global-cart',
+    name: 'GlobalCart',
+    category: { fa: 'شبیه‌ساز مارکت‌پلیس', en: 'Marketplace simulation' },
+    description: {
+      fa: 'شبیه‌سازی فروشگاه چنددسته‌ای با کاتالوگ محلی، صفحات جزئیات محصول، گالری چندتصویری، جست‌وجو و سبد خرید آزمایشی. فروش، پرداخت، موجودی و ارسال واقعی انجام نمی‌شود.',
+      en: 'A commerce-grade marketplace simulation with a local catalog, product detail pages, multi-image galleries, search, and a demo cart. It does not process real sales, payments, inventory reservations, or shipments.',
+    },
+    status: { fa: 'نسخه آزمایشی · ۰٫۲٫۳', en: 'Development · v0.2.3' },
     statusKey: 'in-development',
     reviewState: 'needs-owner-review',
-    category: { fa: 'تجربه تجارت الکترونیک', en: 'Commerce experience' },
-    description: {
-      fa: 'دموی فروشگاه آنلاین با تمرکز بر مرور محصولات، صفحه جزئیات و تجربه خرید یکپارچه.',
-      en: 'An online storefront demo focused on product discovery, detail pages, and a cohesive shopping experience.',
-    },
-    status: { fa: 'در حال توسعه', en: 'In development' },
-    tags: ['E-commerce', 'Frontend'],
+    tags: ['Next.js', 'React', 'TypeScript', 'Playwright'],
+    repositoryUrl: 'https://github.com/pooya-labs/globalcart',
+    previewUrl: 'https://pooya-labs.github.io/globalcart/',
+    caseStudyUrl: 'https://pooya-labs.github.io/globalcart/case-study/',
   },
   {
     number: '08',
-    name: 'Salon Booking',
     slug: 'salon-booking',
+    name: 'Salon Booking',
+    category: { fa: 'سامانه رزرو نوبت', en: 'Appointment booking' },
+    description: {
+      fa: 'سامانه رزرو نوبت برای یک آرایشگاه؛ شامل مسیر مشتری و فضای مدیریت مالک، زمان‌بندی شمسی و مهاجرت Backend به Google Apps Script و Sheets. اطلاعات مشتریان واقعی نباید در دموی عمومی وارد شود.',
+      en: 'An appointment-booking platform for a barber studio, with a customer journey, owner workspace, Jalali scheduling, and an ongoing Google Apps Script / Sheets backend migration. Real customer data must not be entered in the public demo.',
+    },
+    status: { fa: 'در حال توسعه · ۰٫۷٫۰', en: 'In development · 0.7.0' },
     statusKey: 'in-development',
     reviewState: 'needs-owner-review',
-    category: { fa: 'سامانه رزرو', en: 'Booking system' },
-    description: {
-      fa: 'سامانه رزرو نوبت با مسیر مشتری و ابزارهای مستقل برای مدیریت درخواست‌ها.',
-      en: 'An appointment-booking system with a customer flow and a separate request-management surface.',
-    },
-    status: { fa: 'در حال توسعه', en: 'In development' },
-    tags: ['Web app', 'Operations'],
+    tags: ['React', 'TypeScript', 'Vite', 'Google Apps Script'],
+    repositoryUrl: 'https://github.com/pooya-labs/salon-booking',
+    previewUrl: 'https://pooya-labs.github.io/salon-booking/',
   },
 ];
+
+function assertHttpsUrl(value: string, allowedHosts: readonly string[], label: string): void {
+  const url = new URL(value);
+  if (url.protocol !== 'https:' || !allowedHosts.includes(url.hostname)) {
+    throw new Error(label + ' must use HTTPS on an approved host.');
+  }
+}
 
 export function validatePortfolioProjects(entries: readonly PortfolioProject[]): PortfolioProject[] {
   const slugs = new Set<string>();
@@ -152,11 +177,10 @@ export function validatePortfolioProjects(entries: readonly PortfolioProject[]):
     if (!['in-development', 'prototype', 'released', 'paused'].includes(project.statusKey)) {
       throw new Error('Unsupported project status.');
     }
-    if (project.href) {
-      const url = new URL(project.href);
-      if (url.protocol !== 'https:' || !['github.com', 'gitlab.com'].includes(url.hostname)) {
-        throw new Error('Public source links must use HTTPS on an approved source host.');
-      }
+    assertHttpsUrl(project.repositoryUrl, ['github.com'], 'Source repository URL');
+    assertHttpsUrl(project.previewUrl, ['github.io'], 'Project preview URL');
+    if (project.caseStudyUrl) {
+      assertHttpsUrl(project.caseStudyUrl, ['pooya-labs.github.io'], 'Project case-study URL');
     }
     slugs.add(project.slug);
     names.add(project.name.toLowerCase());
