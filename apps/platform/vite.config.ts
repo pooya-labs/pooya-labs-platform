@@ -290,7 +290,8 @@ function socialCard(project: PortfolioProject, locale: Locale): string {
   const textFont = isRtl ? 'Amiri,Tahoma,Arial,sans-serif' : 'Inter,Arial,Tahoma,sans-serif';
   const textX = isRtl ? 1110 : 92;
   const textAnchor = isRtl ? 'end' : 'start';
-  const descriptionText = description.length > 100 ? description.slice(0, 98) + '…' : description;
+  const descriptionLimit = isRtl ? 58 : 90;
+  const descriptionText = description.length > descriptionLimit ? description.slice(0, descriptionLimit - 1) + '…' : description;
   const chipX = isRtl ? 680 : 90;
   const chipTextX = isRtl ? 1090 : 110;
   const chipAnchor = isRtl ? 'end' : 'start';
@@ -313,7 +314,7 @@ function socialCard(project: PortfolioProject, locale: Locale): string {
   <text x="1115" y="102" text-anchor="end" font-family="ui-monospace,monospace" font-size="15" letter-spacing="2" fill="#8ba8b2">${index}</text>
   <text x="88" y="300" font-family="Inter,Arial,Tahoma,sans-serif" font-size="82" font-weight="760" letter-spacing="-3" fill="url(#title)">${name}</text>
   <text x="${textX}" y="358" text-anchor="${textAnchor}" direction="${isRtl ? 'rtl' : 'ltr'}" font-family="${textFont}" font-size="${isRtl ? 29 : 25}" fill="#85d9d8">${category}</text>
-  <text x="${textX}" y="423" text-anchor="${textAnchor}" direction="${isRtl ? 'rtl' : 'ltr'}" font-family="${textFont}" font-size="${isRtl ? 22 : 20}" fill="#b5c8ce">${descriptionText}</text>
+  <text x="${textX}" y="423" text-anchor="${textAnchor}" direction="${isRtl ? 'rtl' : 'ltr'}" font-family="${textFont}" font-size="${isRtl ? 18 : 20}" fill="#b5c8ce">${descriptionText}</text>
   <rect x="${chipX}" y="478" width="430" height="38" rx="19" fill="#193b39" stroke="#64e0b1" stroke-opacity=".5"/>
   <text x="${chipTextX}" y="503" text-anchor="${chipAnchor}" direction="${isRtl ? 'rtl' : 'ltr'}" font-family="${textFont}" font-size="${isRtl ? 22 : 17}" fill="#96edc8">${status}</text>
   <path d="M90 560H1110" stroke="#9cc5ce" stroke-opacity=".18"/>
