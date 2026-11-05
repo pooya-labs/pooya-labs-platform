@@ -19,6 +19,7 @@
 4. Build artifact `dist/gas/index.html` is the single-file HtmlService app. Once CI uploads it, sync its content into the Apps Script HTML file named `Index`; keep the existing `Code.gs` RPC router and publish a new Web App version. Do not copy the Vite source module entrypoint into Apps Script.
 
 ## Important boundaries
+- The owner approved ADR-0004: public app and owner-only admin app are separate deployments. No privileged admin code is added in this visual milestone.
 - Cursor lens is decorative only and must not intercept pointer interactions.
 - Files are labeled sample content, not real Drive files.
 - Terminal commands are local allowlisted demo responses only, not shell execution.
