@@ -3,7 +3,7 @@
 **Last updated:** 2026-11-05  
 **Repository:** `pooya-labs/pooya-labs-platform`  
 **Branch:** `main`  
-**Current phase:** Phase 0 — feasibility and architecture proof  
+**Current phase:** Phase 2 — Core Spatial OS shell (initial visual slice)  
 **Release:** Pre-alpha / planning baseline
 
 ## Verified facts
@@ -36,10 +36,24 @@
 - [x] Dependency-free Node.js contract tests and GitHub Actions CI added; latest verified run passes 9/9.
 - [x] GitHub Pages build and deployment verified.
 
+## Newly implemented
+- [x] Created the React 19 + TypeScript + Vite npm workspace in `apps/platform`.
+- [x] Added separate Vite build targets for static Pages and single-file HtmlService distribution.
+- [x] Implemented the initial responsive Spatial OS UI: top bar, app rail, hero, app cards, status surfaces, dock, and window manager.
+- [x] Added Overview, Files (sample only), Terminal (local allowlist only), and Settings app windows.
+- [x] Added Ctrl/Cmd+K command palette and Ctrl/Cmd+1–4 shortcuts.
+- [x] Added Persian RTL / English LTR and persistent local theme/language preferences.
+- [x] Added cursor refraction lens with fine-pointer detection, eased animation, touch disable, and reduced-motion disable.
+- [x] Added CI for type-checking, Pages/GAS builds, and source-contract tests.
+- [x] Added a dedicated GitHub Pages deployment workflow; repository Pages source may need a one-time switch to GitHub Actions.
+
 ## Not yet done / not yet verified
 - [ ] Owner approval of the proposed public/admin security boundary and final deployment access settings.
 - [ ] Performance targets are documented provisionally but not yet measured on target devices/networks.
 - [ ] Operational deployment rollback and data backup/restore procedures are documented but need an owner-side rehearsal before production data.
+- [ ] New workspace CI build has not yet been verified green.
+- [ ] GitHub Pages deployment of the Vite preview has not yet been confirmed; repository Pages source may currently point to branch/Jekyll deployment.
+- [ ] The new bundled `dist/gas/index.html` has not yet been synced into Apps Script; current deployment remains the Phase 0 proof page.
 - [ ] No production Sheets schema, booking, admin, telemetry, or customer-data feature exists.
 - [ ] No previous-project code has been imported or any previous repository modified.
 
@@ -53,4 +67,4 @@
 7. A fully offline browser cannot receive server confirmation until connectivity returns.
 
 ## Latest checkpoint
-The revised HtmlService runtime is now deployed and its new `rpcCall` endpoint has passed the owner's real-browser health check. The platform remains HtmlService-first; GitHub Pages is limited to public static content. The next task is P0-05: finalize the public/admin security boundary and record an approval-ready security/deployment model. Performance budgets and operational runbooks are drafted as proposals and remain unmeasured/unrehearsed. Previous-project integration remains deferred to Phase 9.
+The revised HtmlService runtime is now deployed and its new `rpcCall` endpoint has passed the owner's real-browser health check. The platform remains HtmlService-first; GitHub Pages is limited to public static content. Phase 0 transport proof is complete. The first Phase 2 UI slice is now in the repository; the immediate gate is full CI build validation and publishing the Vite Pages preview. The HtmlService build must then be synced as a single `Index.html` file to the existing GAS project. Performance budgets and operational runbooks are drafted as proposals and remain unmeasured/unrehearsed. Previous-project integration remains deferred to Phase 9.
