@@ -4,6 +4,11 @@
 **Title:** Diagnose the failed external GAS POST in browser DevTools  
 **Status:** Waiting for owner-side Network and Console evidence
 
+## Repository-side progress
+- Added Node.js built-in contract tests for the static external transport harness.
+- Added GitHub Actions CI to run the tests on pushes and pull requests to `main`.
+- The first CI run is pending; these tests validate the harness source contract only and do not prove browser-to-GAS connectivity.
+
 ## Current evidence
 - The owner deployed the Apps Script proof as Version 1.
 - HtmlService `google.script.run.rpcHealth()` passed; the returned object had `ok: true` and `transport: "google.script.run"`.
