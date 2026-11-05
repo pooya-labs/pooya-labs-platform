@@ -7,30 +7,30 @@
   "phase": 3,
   "phaseName": "Portfolio content architecture and case studies",
   "currentTask": {
-    "id": "P3-04",
-    "title": "Owner content review and evidence-rich case studies",
-    "status": "seven-source-pinned-visual-assets-dynamic-metadata-sitemap-ci-green-27-of-27-pages-deployed-owner-review-pending"
+    "id": "P3-05",
+    "title": "Close project-content audit and prepare redesign review",
+    "status": "eight-source-backed-bilingual-dossiers-complete-audit-documented-ci-green-29-of-29-owner-evidence-release-gates-pending"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCodeCommit": "f9d6f6c18fa46fb9206268d34f2eef9529f6eed2",
+  "latestVerifiedCodeCommit": "18baea6e31a28ff95fc2964c89d9b8787e3ecf7f",
   "tests": {
-    "repositoryCi": "passed-run-42053063421",
-    "repositoryCiTestCount": 27,
+    "repositoryCi": "passed-run-42059342492",
+    "repositoryCiTestCount": 29,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
-    "githubPagesDeployment": "passed-run-42053052111",
-    "platformTypecheck": "passed-run-42053063421",
-    "pagesAndGasBuilds": "passed-run-42053063421",
+    "githubPagesDeployment": "passed-run-42058556955",
+    "platformTypecheck": "passed-run-42059342492",
+    "pagesAndGasBuilds": "passed-run-42059342492",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "pending-owner-review",
-    "vitePagesWorkflow": "passed-run-42053052111",
+    "vitePagesWorkflow": "passed-run-42058556955",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "not-yet-verified-after-legacy-branch-build",
-    "portfolioContractTests": "passed-27-of-27-run-42053063421",
+    "portfolioContractTests": "passed-29-of-29-run-42059342492",
     "latestPreviousPagesDeployment": "passed-run-42043972152"
   },
   "hosting": {
@@ -54,7 +54,7 @@
     "activePagesSource": "GitHub Actions deployment succeeded; repository setting still should be confirmed",
     "appsScriptSync": "deferred-not-required-for-static-portfolio",
     "portfolioPagesPublished": true,
-    "portfolioPagesRun": "42053052111"
+    "portfolioPagesRun": "42058556955"
   },
   "previousProjects": {
     "inspected": true,
@@ -64,13 +64,17 @@
     "ownerRequestedDeferral": true
   },
   "blockers": [
-    "Pooya must review and approve the public biography, positioning, project order, project descriptions/statuses, and contribution/role for each project.",
-    "Actual UI screenshots and architecture diagrams are still missing for AetherFlow and ORBIT; several other project assets are brand artwork rather than interface evidence.",
-    "Static crawler-readable case-study pages and per-project social preview images remain pending; current case-study metadata is updated at runtime.",
-    "Complete accessibility, responsive, keyboard, browser, and performance review remains pending.",
-    "A full-site redesign based on Pooya's feedback is a mandatory pre-release gate with two review rounds and explicit approval."
+    "Pooya must approve the public biography, positioning, featured project order, project statuses, personal contribution/attribution wording, contact channel, and approved visual assets.",
+    "Per-project screenshots and architecture diagrams are missing or incomplete; consult docs/PROJECT-CONTENT-AUDIT.md for each project.",
+    "AetherFlow's individual author/contribution wording and M08 operational/licensing gates remain open.",
+    "ORBIT Apps Script live demo smoke and real TalkBack/VoiceOver/human accessibility review remain open.",
+    "Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse need current-source consolidated browser/accessibility evidence and real UI screenshots/diagrams.",
+    "GlobalCart M09.6 full gallery/deploy E2E acceptance and stale source-document reconciliation remain open.",
+    "Salon Booking Apps Script 1.4.0, TimeBlocks, relay/bootstrap/booking acceptance, actual salon configuration, and FCM device push proof remain open.",
+    "Static crawler-readable case-study pages and per-project social preview images remain pending.",
+    "Full site redesign with two feedback rounds and explicit Pooya approval remains a mandatory V1 release blocker."
   ],
-  "nextAction": "Collect Pooya's approval of positioning, biography, top three featured projects, project roles/contributions, statuses, and contact channel; then add missing screenshots/architecture evidence and static case-study SEO pages/social images before Phase 7's two-round full redesign.",
+  "nextAction": "Use docs/PROJECT-CONTENT-AUDIT.md as the authoritative per-project checklist: gather owner attribution/bio/contact decisions, obtain missing screenshots and diagrams, verify current-SHA/manual evidence for every project, reconcile GlobalCart docs and complete Salon Booking runtime acceptance, then start the two-round full redesign.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -109,7 +113,7 @@
     "designDocument": "docs/DESIGN-DIRECTION.md",
     "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
   },
-  "latestVerifiedCommit": "f9d6f6c18fa46fb9206268d34f2eef9529f6eed2",
+  "latestVerifiedCommit": "9c2c035b2a14a0946383276cc34fa3f77e9c266e",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -134,5 +138,22 @@
     "staticCrawlerCaseStudyPages": false,
     "perProjectSocialImages": false,
     "sitemap": true
-  }
+  },
+  "latestVerifiedTestCommit": "9c2c035b2a14a0946383276cc34fa3f77e9c266e",
+  "caseStudyDossiers": {
+    "bilingual": true,
+    "projectCount": 8,
+    "sections": [
+      "role-attribution",
+      "architecture",
+      "implementation",
+      "engineering-decisions",
+      "verification-evidence",
+      "source-references"
+    ],
+    "perProjectAudit": "docs/PROJECT-CONTENT-AUDIT.md",
+    "sourceReposModified": [],
+    "ownerReviewRequired": true
+  },
+  "projectContentAudit": "docs/PROJECT-CONTENT-AUDIT.md"
 }
