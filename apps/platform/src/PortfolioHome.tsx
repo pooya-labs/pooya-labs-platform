@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent, type R
 import { portfolioProjects as projects, type PortfolioProject } from './content/projects';
 import { coreDossiers } from './content/case-study-dossiers-core';
 import { productDossiers } from './content/case-study-dossiers-products';
+import { architectureDiagrams } from './content/architecture-diagrams';
 import type { CaseStudyDossier } from './content/case-study-dossiers-types';
 
 type Language = 'fa' | 'en';
@@ -149,6 +150,8 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
   const t = text[language];
   const rtl = language === 'fa';
   const dossier = ((coreDossiers as unknown as Record<string, CaseStudyDossier>)[project.slug] ?? (productDossiers as unknown as Record<string, CaseStudyDossier>)[project.slug])!;
+  const architectureDiagram = architectureDiagrams[project.slug];
+  const architectureImage = import.meta.env.BASE_URL === './' ? null : `${import.meta.env.BASE_URL}architecture/${project.slug}${language === 'en' ? '-en' : ''}.svg`;
   return (
     <div className={`portfolio-page portfolio-case-study ${rtl ? 'is-rtl' : 'is-ltr'}`}>
       <PointerLens />
@@ -210,6 +213,12 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
             <p>{dossier.architecture[language]}</p>
           </article>
         </section>
+        {architectureImage && architectureDiagram && (
+          <figure className="case-study-architecture-figure">
+            <img src={architectureImage} alt={architectureDiagram.title[language]} width={1600} height={900} loading="lazy" decoding="async" />
+            <figcaption>{architectureDiagram.caption[language]}</figcaption>
+          </figure>
+        )}
         <section className="case-study-detail-grid">
           <article className="case-study-highlights">
             <div className="portfolio-eyebrow"><span className="eyebrow-index">05 /</span>{t.implementation}</div>
