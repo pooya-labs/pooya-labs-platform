@@ -61,6 +61,7 @@ export const productDossiers = {
       { label: { fa: "Architecture", en: "Architecture" }, url: "https://github.com/pooya-labs/globalcart/blob/main/docs/ARCHITECTURE.md" },
       { label: { fa: "Data sources", en: "Data sources" }, url: "https://github.com/pooya-labs/globalcart/blob/main/docs/DATA_SOURCES.md" },
       { label: { fa: "Real catalog migration", en: "Real catalog migration" }, url: "https://github.com/pooya-labs/globalcart/blob/main/docs/REAL_CATALOG_MIGRATION.md" },
+      { label: { fa: "تصاویر واقعی رابط دسکتاپ و موبایل", en: "Actual desktop and mobile UI screenshots" }, url: "https://github.com/pooya-labs/globalcart/tree/5ca43e40ff101e673ee7cf261850bff0a679047c/docs/screenshots" },
       { label: { fa: "Database ERD", en: "Database ERD" }, url: "https://github.com/pooya-labs/globalcart/blob/main/docs/DATABASE_ERD.md" },
       { label: { fa: "Lighthouse lab", en: "Lighthouse lab" }, url: "https://github.com/pooya-labs/globalcart/actions/runs/42054988939" },
       { label: { fa: "Shopify smoke", en: "Shopify smoke" }, url: "https://github.com/pooya-labs/globalcart/actions/runs/42054988648" },
