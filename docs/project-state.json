@@ -4,33 +4,33 @@
   "repository": "pooya-labs/pooya-labs-platform",
   "defaultBranch": "main",
   "release": "pre-alpha",
-  "phase": 2,
-  "phaseName": "Public portfolio foundation",
+  "phase": 3,
+  "phaseName": "Portfolio content architecture and case studies",
   "currentTask": {
-    "id": "P3-01",
-    "title": "Curate verified project content and build case-study structure",
-    "status": "portfolio-root-implemented-ci-green-content-review-pending"
+    "id": "P3-02",
+    "title": "Build project case-study pages",
+    "status": "typed-project-registry-implemented-23-tests-passed-case-study-pages-next"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCodeCommit": "a854ff585c2b59873211ea5be6e2f4aff41efb70",
+  "latestVerifiedCodeCommit": "6e6ce6053154d49ba0bf5af23f5dcb88182dbf52",
   "tests": {
-    "repositoryCi": "passed-run-42044256942",
-    "repositoryCiTestCount": 22,
+    "repositoryCi": "passed-run-42045396058",
+    "repositoryCiTestCount": 23,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
-    "githubPagesDeployment": "passed-run-42044251451",
-    "platformTypecheck": "passed-run-42044256942",
-    "pagesAndGasBuilds": "passed-run-42044256942",
+    "githubPagesDeployment": "passed-run-42045184015",
+    "platformTypecheck": "passed-run-42045396058",
+    "pagesAndGasBuilds": "passed-run-42045396058",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "pending-owner-review",
-    "vitePagesWorkflow": "passed-run-42044251451",
+    "vitePagesWorkflow": "passed-run-42045184015",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "not-yet-verified-after-legacy-branch-build",
-    "portfolioContractTests": "passed-run-42044256942",
+    "portfolioContractTests": "passed-23-of-23-run-42045396058",
     "latestPreviousPagesDeployment": "passed-run-42043972152"
   },
   "hosting": {
@@ -54,7 +54,7 @@
     "activePagesSource": "GitHub Actions deployment succeeded; repository setting still should be confirmed",
     "appsScriptSync": "deferred-not-required-for-static-portfolio",
     "portfolioPagesPublished": true,
-    "portfolioPagesRun": "42044251451"
+    "portfolioPagesRun": "42045184015"
   },
   "previousProjects": {
     "inspected": true,
@@ -65,11 +65,11 @@
   },
   "blockers": [
     "Pooya must review and approve the public biography, featured-project order, project descriptions, statuses, and verified links.",
-    "Individual case-study pages and a typed draft/published content registry remain to be implemented.",
+    "Individual case-study pages and owner-reviewed publication flow remain to be implemented.",
     "Confirm the repository Pages source remains GitHub Actions to prevent legacy branch/Jekyll deployment from superseding the Vite portfolio.",
     "A full-site redesign based on Pooya's feedback is a mandatory pre-release gate."
   ],
-  "nextAction": "Move project data into a typed, validated portfolio content registry and build reusable case-study pages. Ask Pooya to confirm the featured projects, public positioning, project statuses, verified repositories/demos, and contact channel. Before V1, complete the mandatory full redesign after two feedback rounds.",
+  "nextAction": "Build reusable project case-study pages from the typed registry. Curate the featured project order and collect Pooya-approved descriptions, screenshots, verified demos/repositories, and contact details. Keep the complete owner-reviewed redesign in Phase 7 as a blocker before V1.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -108,5 +108,5 @@
     "designDocument": "docs/DESIGN-DIRECTION.md",
     "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
   },
-  "latestVerifiedCommit": "a854ff585c2b59873211ea5be6e2f4aff41efb70"
+  "latestVerifiedCommit": "6e6ce6053154d49ba0bf5af23f5dcb88182dbf52"
 }
