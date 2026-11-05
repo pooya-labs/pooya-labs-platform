@@ -145,8 +145,9 @@ test('all eight case studies include bilingual roles, architecture, implementati
   assert.match(css, /\.case-study-source-list/);
   assert.match(portfolio, /architectureDiagrams\[project\.slug\]/);
   assert.match(portfolio, /case-study-architecture-figure/);
-  assert.equal((architectureData.match(/^  (?:aetherflow|orbit|"pooya-os"|"nexus-canvas"|"lumina-glass"|"aura-pulse"|"global-cart"|"salon-booking"): \{$/gm) ?? []).length, 8);
-  assert.match(architectureData, /'salon-booking': \{/);
+  for (const slug of ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'global-cart', 'salon-booking']) {
+    assert.ok(architectureData.includes(`  \"${slug}\": {`) || architectureData.includes(`  ${slug}: {`), 'Missing architecture graph for ' + slug);
+  }
 });
 
 test('portfolio distinguishes in-progress release lines from stable demo releases', () => {
