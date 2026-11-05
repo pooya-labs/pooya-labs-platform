@@ -7,28 +7,28 @@
   "phase": 0,
   "phaseName": "Feasibility, inventory, and architecture proof",
   "currentTask": {
-    "id": "P0-01",
-    "title": "Build the feasibility and integration inventory",
-    "status": "ready"
+    "id": "P0-02",
+    "title": "Deploy and run the minimal GAS transport proof",
+    "status": "waiting-for-owner-deployment"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCommit": "8352bda9ee6ca1581e5d597958553342cd306c95",
+  "latestVerifiedCommit": "593d956a1924c18493d822d782c73627377703fc",
   "tests": {
     "automated": "not-created",
-    "gasHtmlServiceTransport": "not-tested",
-    "externalCorsTransport": "not-tested"
+    "gasHtmlServiceTransport": "harness-committed-not-run",
+    "externalCorsTransport": "harness-committed-not-run"
   },
   "deployment": {
     "configured": false,
     "production": false
   },
   "previousProjects": {
-    "inspected": false,
+    "inspected": true,
     "imported": [],
     "modified": [],
     "integrationPhase": 9,
     "ownerRequestedDeferral": true
   },
   "blockers": [],
-  "nextAction": "Execute P0-01: inspect existing project repositories read-only and build the evidence-based integration inventory; then verify current GAS constraints and design the transport spike."
+  "nextAction": "Owner: follow docs/PHASE-0-TRANSPORT-TEST.md to deploy the health-only GAS proof and report sanitized browser test results."
 }
