@@ -55,7 +55,7 @@ test('projects live in a typed registry with unique slugs and editorial review s
   assert.match(content, /challenge: \{ fa: string; en: string \}/);
   assert.match(content, /approach: \{ fa: string; en: string \}/);
   assert.match(content, /highlights: \{ fa: string\[\]; en: string\[\] \}/);
-  assert.equal((content.match(/caseStudy: \{/g) ?? []).length, 8);
+  assert.equal((content.match(/^    caseStudy: \{$/gm) ?? []).length, 8);
   assert.match(content, /ProjectReviewState = 'needs-owner-review' \| 'owner-reviewed'/);
   assert.equal((content.match(/reviewState: 'needs-owner-review'/g) ?? []).length, 8);
   assert.match(content, /slugs\.has\(project\.slug\)/);
