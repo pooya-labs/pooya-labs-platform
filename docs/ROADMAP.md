@@ -17,18 +17,21 @@ The platform is developed in gated phases. A phase is not complete until its acc
 **Exit gate:** transport decision is evidence-based; backend security model and data semantics are documented; integration inventory exists; no unresolved critical feasibility blocker is hidden.
 
 ## Phase 1 — Repository foundation and engineering toolchain
-- [ ] Select and configure package manager, workspace layout, linting, formatting, type-checking, and test runner.
-- [ ] Establish CI for install, lint, type-check, unit tests, and production build.
-- [ ] Add typed shared contracts and environment configuration validation.
+- [x] Select npm workspaces and configure the React/Vite/TypeScript platform workspace plus the Node test runner.
+- [ ] Add linting and formatting conventions.
+- [x] Add CI for dependency install, TypeScript checks, dual-host builds, and contract tests (first full green run pending).
+- [x] Add a typed versioned Google Apps Script RPC request/response adapter for the HtmlService host.
 - [ ] Add contribution, branching, commit, and release conventions.
 
 ## Phase 2 — Core Spatial OS shell
-- [ ] Design tokens and accessible component primitives.
-- [ ] Desktop shell: status bar, window manager, dock, snapping, z-order, resize, minimize, maximize.
-- [ ] Mobile shell with touch-first navigation and full-screen app surfaces.
-- [ ] EN/FA localization with correct RTL/LTR layout.
-- [ ] Theme system, reduced-motion support, keyboard navigation, and focus management.
-- [ ] Command palette and safe virtual terminal.
+
+Initial visual reference and cursor behavior are recorded in [DESIGN-DIRECTION.md](DESIGN-DIRECTION.md) and [ADR-0005](decisions/ADR-0005-antigravity-inspired-design.md).
+- [x] Add initial dark/light design tokens, layered surfaces, and responsive primitives; full accessibility review remains.
+- [ ] Desktop shell: status bar, window manager, dock, snapping, resize; initial z-order, drag, minimize, and maximize are implemented.
+- [x] Add initial touch-first mobile navigation and full-screen app windows.
+- [x] Add the initial Persian/English UI dictionary and automatic RTL/LTR document direction.
+- [x] Add dark/light theme, reduced-motion handling, and keyboard shortcuts; full focus-management review remains.
+- [x] Add an app command palette and a strictly local allowlisted demo terminal.
 
 ## Phase 3 — Manifest-driven plugin platform
 - [ ] Versioned and validated `PooyaAppManifest` schema.
