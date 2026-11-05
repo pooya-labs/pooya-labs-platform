@@ -143,6 +143,13 @@ test('all eight case studies include bilingual roles, architecture, implementati
   assert.match(portfolio, /dossier\.references\.map/);
   assert.match(css, /\.case-study-dossier-grid/);
   assert.match(css, /\.case-study-source-list/);
+  assert.match(portfolio, /caseStudyMedia \?\? \[\]/);
+  assert.match(portfolio, /case-study-media-section/);
+  assert.match(css, /\.case-study-media-grid/);
+  assert.match(projectData, /storefront-home-desktop\.png/);
+  assert.match(projectData, /storefront-home-mobile\.png/);
+  assert.match(projectData, /5ca43e40ff101e673ee7cf261850bff0a679047c/);
+
   assert.match(portfolio, /architectureDiagrams\[project\.slug\]/);
   assert.match(portfolio, /case-study-architecture-figure/);
   for (const slug of ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'global-cart', 'salon-booking']) {
