@@ -160,7 +160,7 @@ function staticPageHtml(template: string, project: PortfolioProject, locale: Loc
   html = replaceTag(html, /<meta property="og:locale"[^>]*>/, `<meta property="og:locale" content="${locale === 'fa' ? 'fa_IR' : 'en_US'}" />`, 'Open Graph locale');
   html = replaceTag(html, /<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${canonical}" />`, 'canonical link');
   html = replaceTag(html, /<meta name="twitter:card"[^>]*>/, '<meta name="twitter:card" content="summary_large_image" />', 'Twitter card');
-  html = html.replace(/<meta property="og:image(?::[^"]+)?"[^>]*>\\s*/g, '');
+  html = html.replace(/<meta property="og:image(?::[^"]+)?"[^>]*>\s*/g, '');
   html = html.replace('</head>', `
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta property="og:image" content="${socialImage}" />
