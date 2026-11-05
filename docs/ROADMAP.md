@@ -34,7 +34,7 @@ Initial visual reference and cursor behavior are recorded in [DESIGN-DIRECTION.m
 - [x] Add an app command palette and a strictly local allowlisted demo terminal.
 
 ## Phase 3 — Manifest-driven plugin platform
-- [ ] Versioned and validated `PooyaAppManifest` schema.
+- [x] Versioned and validated built-in app manifest v1 with localized metadata and owner-workspace audience checks.
 - [ ] Registry, compatibility checks, permissions, and feature flags.
 - [ ] Built-in application loader.
 - [ ] Sandboxed iframe loader with strict origin allowlist and validated postMessage protocol.
