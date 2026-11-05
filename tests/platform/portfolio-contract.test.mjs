@@ -123,7 +123,7 @@ test('sitemap lists canonical Persian and English static case-study routes', () 
 });
 
 test('all eight case studies include bilingual roles, architecture, implementation, decisions, verification, and source links', () => {
-  const slugs = ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aurapulse', 'global-cart', 'salon-booking'];
+  const slugs = ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'global-cart', 'salon-booking'];
   for (const slug of slugs) {
     assert.ok(coreDossiers.includes(slug) || productDossiers.includes(slug), 'Missing dossier for ' + slug);
   }
