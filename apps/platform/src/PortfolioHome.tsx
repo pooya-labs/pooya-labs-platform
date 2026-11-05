@@ -64,7 +64,7 @@ const text = {
     status: 'وضعیت پروژه',
     caseStudy: 'مطالعه موردی به‌زودی',
     demo: 'دمو', source: 'سورس', caseStudyReady: 'مطالعه موردی',
-    details: 'جزئیات پروژه', challenge: 'مسئله', approach: 'راهکار و رویکرد', highlights: 'قابلیت‌ها و پیاده‌سازی', boundaries: 'محدوده و محدودیت‌ها', role: 'نقش در پروژه', architecture: 'معماری فنی', implementation: 'جزئیات پیاده‌سازی', decisions: 'تصمیم‌های مهندسی', validation: 'تست و شواهد اعتبارسنجی', sources: 'مستندات و منابع', backProjects: 'بازگشت به پروژه‌ها',
+    details: 'جزئیات پروژه', challenge: 'مسئله', approach: 'راهکار و رویکرد', highlights: 'قابلیت‌ها و پیاده‌سازی', boundaries: 'محدوده و محدودیت‌ها', role: 'نقش در پروژه', architecture: 'معماری فنی', implementation: 'جزئیات پیاده‌سازی', decisions: 'تصمیم‌های مهندسی', validation: 'تست و شواهد اعتبارسنجی', sources: 'مستندات و منابع', interfaceCaptures: 'تصاویر واقعی رابط کاربری', backProjects: 'بازگشت به پروژه‌ها',
   },
   en: {
     navAbout: 'About',
@@ -103,7 +103,7 @@ const text = {
     status: 'Project status',
     caseStudy: 'Case study coming soon',
     demo: 'Live demo', source: 'Source', caseStudyReady: 'Case study',
-    details: 'Project details', challenge: 'The challenge', approach: 'Approach', highlights: 'Capabilities & implementation', boundaries: 'Scope & boundaries', role: 'Project role', architecture: 'Technical architecture', implementation: 'Implementation details', decisions: 'Engineering decisions', validation: 'Verification & evidence', sources: 'Documentation & sources', backProjects: 'Back to projects',
+    details: 'Project details', challenge: 'The challenge', approach: 'Approach', highlights: 'Capabilities & implementation', boundaries: 'Scope & boundaries', role: 'Project role', architecture: 'Technical architecture', implementation: 'Implementation details', decisions: 'Engineering decisions', validation: 'Verification & evidence', sources: 'Documentation & sources', interfaceCaptures: 'Interface captures', backProjects: 'Back to projects',
   },
 } satisfies Record<Language, Record<string, string>>;
 
@@ -193,6 +193,19 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
             </div>
           </div>
         </section>
+        {(project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop').length > 0 && (
+          <section className="case-study-media-section">
+            <div className="portfolio-eyebrow"><span className="eyebrow-index">05 /</span>{t.interfaceCaptures}</div>
+            <div className="case-study-media-grid">
+              {(project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop').map((item) => (
+                <figure className={`case-study-media-card device-${item.device}`} key={item.url}>
+                  <img src={item.url} alt={item.alt[language]} loading="lazy" decoding="async" />
+                  <figcaption>{item.caption[language]}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
         <section className="case-study-section-grid">
           <article className="case-study-panel">
             <div className="portfolio-eyebrow"><span className="eyebrow-index">01 /</span>{t.challenge}</div>
