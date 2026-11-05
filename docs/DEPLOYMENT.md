@@ -25,6 +25,10 @@ No production deployment has been configured. The owner's current Apps Script de
 
 Do not build the production frontend around a cross-origin fetch from GitHub Pages. Deployment execute-as/access settings and the eventual admin authentication model must be decided before any sensitive feature is added.
 
+## Operational runbook
+
+See [DEPLOYMENT-RUNBOOK.md](DEPLOYMENT-RUNBOOK.md) for the manual source-sync, rollback rehearsal, spreadsheet backup, and restore procedures. The procedures are documented but have not yet been rehearsed with a production data store.
+
 ## Release discipline
 - Separate development and production Apps Script deployments and spreadsheets.
 - Keep script IDs and spreadsheet IDs out of public source when they are sensitive.
