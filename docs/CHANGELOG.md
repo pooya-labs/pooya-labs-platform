@@ -12,7 +12,7 @@
 - Added dependency-free Node.js contract tests for the external transport harness.
 - Added `npm test`, `npm run test:transport`, and a separate browser diagnostic script.
 - Added GitHub Actions CI for pushes and pull requests to `main`.
-- Verified the repository CI test run passed: [42026786562](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42026786562).
+- Added four HtmlService RPC source-contract checks; latest repository CI run passed all 9 tests: [42028621321](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42028621321).
 
 ## 2026-11-05 — Owner-side GAS transport test results
 - Owner deployed the Apps Script proof as Version 1.
