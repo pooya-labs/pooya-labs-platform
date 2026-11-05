@@ -23,27 +23,30 @@ The release target is a credible, distinctive personal portfolio that introduces
 ## Phase 2 — Public portfolio foundation
 - [x] Make the personal portfolio the default root experience.
 - [x] Add the first bilingual intro / hero, about, selected-projects, tools, and contact sections.
-- [x] Add honest prototype / in-development labels and verified repository links only.
+- [x] Add honest prototype / in-development / released labels based on project source records.
 - [x] Retain the Antigravity-inspired refraction lens as a restrained optional effect.
 - [x] Keep the Spatial OS shell as a secondary workspace, not the homepage.
 - [ ] Refine the responsive navigation, keyboard behavior, focus states, and mobile reading flow.
-- [ ] Replace draft content with owner-approved biography, project summaries, and links.
+- [ ] Replace draft personal copy with owner-approved biography, project summaries, and links.
 
 ## Phase 3 — Portfolio content architecture and case studies
 - [x] Create a typed project content schema with explicit project status and owner-review state.
 - [x] Move project data out of the portfolio component into a validated content registry with unique slugs and verified-link rules.
-- [ ] Curate the featured project order with Pooya; highlight only the strongest and most presentable work.
-- [ ] Create individual case-study pages with problem, context, Pooya's role, architecture, implementation, technologies, key decisions, validation, outcomes, and current status.
-- [ ] Add verified repository, live-demo, release, and documentation links where available.
-- [ ] Add responsive image/media handling, captions, alt text, and lazy loading.
-- [ ] Add page titles, descriptions, social preview metadata, sitemap, and useful shareable URLs.
+- [x] Add verified repository and public preview links for the eight current projects.
+- [x] Add initial bilingual project case-study views with shareable query-string routes.
+- [x] Add project-specific challenge, approach, engineering highlights, and scope/boundary sections based on repository documentation.
+- [ ] Curate the featured-project order with Pooya; highlight only the strongest and most presentable work.
+- [ ] Review and approve every public project description and status with Pooya.
+- [ ] Expand the case studies with owner-confirmed role/contribution, architecture, implementation decisions, validation evidence, and outcomes.
+- [ ] Add project screenshots, captions, alt text, responsive media handling, and lazy loading.
+- [ ] Add robust per-project page metadata, social preview assets, sitemap, and canonical share URLs.
 
 ## Phase 4 — Secondary private workspace and owner tools
 - [ ] Decide which existing Spatial OS tools are useful enough to retain after the public portfolio is complete.
 - [ ] Keep private workspace tools separate from the public project catalogue and visitor experience.
 - [ ] Define the minimum owner console scope: edit profile, curate projects, update case studies, and control draft/publication state.
 - [ ] Enforce owner authorization server-side before any protected operation.
-- [ ] Do not build a customer login/dashboard unless a separate product requirement is approved.
+- [ ] Do not build a generic customer login/dashboard into the portfolio. A separate future product may require its own customer surface.
 
 ## Phase 5 — Backend and contact capabilities (only where needed)
 - [ ] Decide whether the contact section needs a real submission endpoint or direct contact links are sufficient.
@@ -59,7 +62,7 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [ ] Keep experiments clearly labeled; do not let them overwhelm core portfolio content.
 
 ## Phase 7 — Full pre-release redesign with Pooya's feedback (release blocker)
-This phase is mandatory. The current portfolio layout is an initial working draft, not the final design.
+This phase is mandatory. The current portfolio layout is an initial working draft, not the final visual identity.
 
 - [ ] Run a complete review of the site with Pooya on desktop and mobile.
 - [ ] Collect and record his feedback on identity, biography, visual references, page hierarchy, project order, case-study format, imagery, color, typography, motion, and navigation.
