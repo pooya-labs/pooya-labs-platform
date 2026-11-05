@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import { viteSingleFile } from 'vite-plugin-singlefile';
 import { fileURLToPath } from 'node:url';
 import { readFileSync } from 'node:fs';
+import { Resvg } from '@resvg/resvg-js';
 import { portfolioProjects, type PortfolioProject } from './src/content/projects';
 import { coreDossiers } from './src/content/case-study-dossiers-core';
 import { productDossiers } from './src/content/case-study-dossiers-products';
@@ -164,7 +165,7 @@ function staticPageHtml(template: string, project: PortfolioProject, locale: Loc
   const slug = project.slug;
   const pagePath = locale === 'en' ? `en/projects/${slug}/` : `projects/${slug}/`;
   const canonical = SITE_ORIGIN + SITE_BASE + pagePath;
-  const socialImage = SITE_ORIGIN + SITE_BASE + `og/${slug}${locale === 'en' ? '-en' : ''}.svg`;
+  const socialImage = SITE_ORIGIN + SITE_BASE + `og/${slug}${locale === 'en' ? '-en' : ''}.png`;
   const title = locale === 'fa'
     ? `${project.name} | مطالعه موردی در Pooya Labs`
     : `${project.name} | Engineering Case Study — Pooya Labs`;
@@ -187,9 +188,9 @@ function staticPageHtml(template: string, project: PortfolioProject, locale: Loc
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta property="og:image" content="${socialImage}" />
     <meta property="og:image:secure_url" content="${socialImage}" />
-    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image:height" content="627" />
     <meta property="og:image:alt" content="${escapeHtml(project.name + ' — ' + t.portfolio)}" />
     <link rel="alternate" hreflang="fa" href="${SITE_ORIGIN + SITE_BASE}projects/${slug}/" />
     <link rel="alternate" hreflang="en" href="${SITE_ORIGIN + SITE_BASE}en/projects/${slug}/" />
@@ -308,15 +309,15 @@ function socialCard(project: PortfolioProject, locale: Locale): string {
   const chipX = isRtl ? 680 : 90;
   const chipTextX = isRtl ? 1090 : 110;
   const chipAnchor = isRtl ? 'end' : 'start';
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" lang="${locale}" direction="${isRtl ? 'rtl' : 'ltr'}" aria-label="${name} — ${escapeXml(t.portfolio)}">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="627" viewBox="0 0 1200 627" role="img" lang="${locale}" direction="${isRtl ? 'rtl' : 'ltr'}" aria-label="${name} — ${escapeXml(t.portfolio)}">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#070d15"/><stop offset=".58" stop-color="#10212d"/><stop offset="1" stop-color="#102e2c"/></linearGradient>
     <linearGradient id="title" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#efffff"/><stop offset=".58" stop-color="#74e5ea"/><stop offset="1" stop-color="#79e1b9"/></linearGradient>
     <radialGradient id="glow"><stop stop-color="#42d4d3" stop-opacity=".28"/><stop offset="1" stop-color="#42d4d3" stop-opacity="0"/></radialGradient>
     <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#b6d9df" stroke-opacity=".07" stroke-width="1"/></pattern>
   </defs>
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="627" fill="url(#bg)"/>
+  <rect width="1200" height="627" fill="url(#grid)"/>
   <circle cx="990" cy="115" r="360" fill="url(#glow)"/>
   <circle cx="990" cy="115" r="205" fill="none" stroke="#66e6ee" stroke-opacity=".18" stroke-width="2"/>
   <circle cx="990" cy="115" r="160" fill="none" stroke="#64e0b1" stroke-opacity=".16" stroke-width="1" stroke-dasharray="6 12"/>
@@ -333,6 +334,11 @@ function socialCard(project: PortfolioProject, locale: Locale): string {
   <path d="M90 560H1110" stroke="#9cc5ce" stroke-opacity=".18"/>
   <text x="90" y="592" font-family="ui-monospace,monospace" font-size="13" letter-spacing="3" fill="#78929c">SOFTWARE / SYSTEMS / PRODUCT ENGINEERING</text>
 </svg>`;
+}
+
+function renderSocialPng(svg: string): Uint8Array {
+  const rendered = new Resvg(svg, { font: { loadSystemFonts: true } }).render();
+  return rendered.asPng();
 }
 
 function staticCaseStudyPages(): Plugin {
@@ -357,15 +363,16 @@ function staticCaseStudyPages(): Plugin {
         for (const locale of ['fa', 'en'] as const) {
           const route = locale === 'en' ? `en/projects/${project.slug}/index.html` : `projects/${project.slug}/index.html`;
           this.emitFile({ type: 'asset', fileName: route, source: staticPageHtml(homeWithSocial, project, locale) });
-          this.emitFile({ type: 'asset', fileName: `og/${project.slug}${locale === 'en' ? '-en' : ''}.svg`, source: socialCard(project, locale) });
+          const socialSvg = socialCard(project, locale);
+          const socialName = `og/${project.slug}${locale === 'en' ? '-en' : ''}`;
+          this.emitFile({ type: 'asset', fileName: `${socialName}.svg`, source: socialSvg });
+          this.emitFile({ type: 'asset', fileName: `${socialName}.png`, source: renderSocialPng(socialSvg) });
           this.emitFile({ type: 'asset', fileName: `architecture/${project.slug}${locale === 'en' ? '-en' : ''}.svg`, source: renderArchitectureDiagram(project.slug, locale) });
         }
       }
-      this.emitFile({
-        type: 'asset',
-        fileName: 'og/pooya-labs.svg',
-        source: `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><defs><linearGradient id="b" x2="1" y2="1"><stop stop-color="#070d15"/><stop offset="1" stop-color="#102e2c"/></linearGradient><linearGradient id="t"><stop stop-color="#efffff"/><stop offset="1" stop-color="#79e1b9"/></linearGradient></defs><rect width="1200" height="630" fill="url(#b)"/><circle cx="900" cy="130" r="350" fill="#43d4d3" opacity=".09"/><text x="90" y="160" font-family="Arial,sans-serif" font-size="28" letter-spacing="8" fill="#dceced">POOYA LABS</text><text x="90" y="330" font-family="Arial,sans-serif" font-size="100" font-weight="700" fill="url(#t)">Pooya</text><text x="96" y="405" font-family="Arial,sans-serif" font-size="34" fill="#9bb4be">Software engineering &amp; selected projects</text><path d="M90 500H1110" stroke="#8fe8d5" opacity=".35"/><text x="90" y="555" font-family="monospace" font-size="18" letter-spacing="5" fill="#80a0aa">PRODUCT / SYSTEMS / ENGINEERING</text></svg>`
-      });
+      const homeSocialSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="627" viewBox="0 0 1200 627"><defs><linearGradient id="b" x2="1" y2="1"><stop stop-color="#070d15"/><stop offset="1" stop-color="#102e2c"/></linearGradient><linearGradient id="t"><stop stop-color="#efffff"/><stop offset="1" stop-color="#79e1b9"/></linearGradient></defs><rect width="1200" height="627" fill="url(#b)"/><circle cx="900" cy="130" r="350" fill="#43d4d3" opacity=".09"/><text x="90" y="160" font-family="Arial,sans-serif" font-size="28" letter-spacing="8" fill="#dceced">POOYA LABS</text><text x="90" y="330" font-family="Arial,sans-serif" font-size="100" font-weight="700" fill="url(#t)">Pooya</text><text x="96" y="405" font-family="Arial,sans-serif" font-size="34" fill="#9bb4be">Software engineering &amp; selected projects</text><path d="M90 500H1110" stroke="#8fe8d5" opacity=".35"/><text x="90" y="555" font-family="monospace" font-size="18" letter-spacing="5" fill="#80a0aa">PRODUCT / SYSTEMS / ENGINEERING</text></svg>`;
+      this.emitFile({ type: 'asset', fileName: 'og/pooya-labs.svg', source: homeSocialSvg });
+      this.emitFile({ type: 'asset', fileName: 'og/pooya-labs.png', source: renderSocialPng(homeSocialSvg) });
     }
   };
 }
