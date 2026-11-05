@@ -45,7 +45,8 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [x] Add seven source-repository visual assets pinned to immutable commits, bilingual alt text, lazy loading, responsive rendering, and graceful fallbacks.
 - [x] Add dynamic browser titles/descriptions, base Open Graph metadata, canonical URL updates, Person JSON-LD, and a branded SVG favicon.
 - [x] Add an XML sitemap for the portfolio homepage and eight shareable project-detail URLs.
-- [ ] Add static crawler-readable case-study pages and per-project social preview images.
+- [x] Generate crawler-readable static Persian and English case-study pages for all eight projects, with canonical URLs, hreflang, JSON-LD, source links, and per-project/per-language social preview SVGs.
+- [ ] Validate the social preview SVGs in external crawler/share clients and confirm whether any platform requires a PNG/JPEG fallback.
 
 ## Phase 4 — Secondary private workspace and owner tools
 - [ ] Decide which existing Spatial OS tools are useful enough to retain after the public portfolio is complete.
@@ -87,7 +88,7 @@ This phase is mandatory. The current portfolio layout is an initial working draf
 - [ ] Complete accessibility, keyboard, RTL/LTR, responsive, browser, and reduced-motion checks.
 - [ ] Measure loading performance on representative desktop and mobile conditions.
 - [ ] Verify every public statement, skill, project status, image, and external link against [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md); close every mandatory per-project item.
-- [ ] Validate SEO metadata, social previews, custom-domain readiness if desired, and analytics/privacy decisions.
+- [ ] Validate SEO metadata and social previews in external crawler/share clients, custom-domain readiness if desired, and analytics/privacy decisions.
 - [ ] Complete CI, Pages publishing, rollback, and recovery rehearsal.
 - [ ] Confirm all owner approvals (biography, project order/roles, assets, contact channel, redesigned UI) and all mandatory audit checkboxes are complete.
 - [ ] Publish a versioned V1 and document the release. No V1 tag is permitted while any required audit/release checkbox remains open.
