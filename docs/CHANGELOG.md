@@ -5,7 +5,7 @@
 - Switched homepage and all 16 localized project case-study Open Graph images to PNG.
 - Standardized all 17 PNG cards at **1200×627 (1.91:1)**, matching LinkedIn's published share-preview recommendation; retained large-image Twitter/X card metadata.
 - Extended built-output tests to verify PNG signatures, exact pixel dimensions, correct per-project routes, and image/png metadata.
-- Repository CI [42071877192](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42071877192) passed TypeScript, Pages/GAS builds, artifact upload, and **34/34 contract tests**.
+- Repository CI [42072937855](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42072937855) passed TypeScript, Pages/GAS builds, artifact upload, and **34/34 contract tests**.
 - Pages deployment containing the PNG generator and social image references [42071642813](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42071642813) succeeded.
 - External share-client cache/rendering validation remains open; see the [LinkedIn sharing requirements](https://www.linkedin.com/help/linkedin/answer/a1322434) and [resvg-js package](https://www.npmjs.com/package/@resvg/resvg-js).
 
