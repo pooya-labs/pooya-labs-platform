@@ -181,7 +181,7 @@ const projectEntries: PortfolioProject[] = [
       fa: 'شبیه‌سازی فروشگاه چنددسته‌ای با کاتالوگ محلی، صفحات جزئیات محصول، گالری چندتصویری، جست‌وجو و سبد خرید آزمایشی. فروش، پرداخت، موجودی و ارسال واقعی انجام نمی‌شود.',
       en: 'A commerce-grade marketplace simulation with a local catalog, product detail pages, multi-image galleries, search, and a demo cart. It does not process real sales, payments, inventory reservations, or shipments.',
     },
-    status: { fa: 'نسخه آزمایشی · ۰٫۲٫۳', en: 'Development · v0.2.3' },
+    status: { fa: 'در حال توسعه · ۰٫۲٫۳-dev / M09.6', en: 'In development · v0.2.3-dev / M09.6' },
     statusKey: 'in-development',
     reviewState: 'needs-owner-review',
     tags: ['Next.js', 'React', 'TypeScript', 'Playwright'],
@@ -191,7 +191,7 @@ const projectEntries: PortfolioProject[] = [
   },
   {
     number: '08',
-        visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/salon-booking/787160782f82929fa0d8395f8f5d067f2f028257/public/images/shayan-barber-logo.webp', kind: 'brand', alt: { fa: 'تصویر هدر برند نمونه Salon Booking', en: 'Salon Booking demo brand hero image' } },
+        visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/salon-booking/787160782f82929fa0d8395f8f5d067f2f028257/public/images/shayan-barber-logo.webp', kind: 'brand', alt: { fa: 'نشان برند شایان برای پروژه سامانه رزرو نوبت', en: 'Shayan Barber Studio brand mark used by the booking project' } },
     slug: 'salon-booking',
     name: 'Salon Booking',
     caseStudy: {
@@ -205,7 +205,7 @@ const projectEntries: PortfolioProject[] = [
       fa: 'سامانه رزرو نوبت برای یک آرایشگاه؛ شامل مسیر مشتری و فضای مدیریت مالک، زمان‌بندی شمسی و مهاجرت Backend به Google Apps Script و Sheets. اطلاعات مشتریان واقعی نباید در دموی عمومی وارد شود.',
       en: 'An appointment-booking platform for a barber studio, with a customer journey, owner workspace, Jalali scheduling, and an ongoing Google Apps Script / Sheets backend migration. Real customer data must not be entered in the public demo.',
     },
-    status: { fa: 'در حال توسعه · ۰٫۷٫۰', en: 'In development · 0.7.0' },
+    status: { fa: 'در حال توسعه · ۰٫۷٫۰ / Apps Script ۱٫۴٫۰', en: 'In development · frontend 0.7.0 / Apps Script 1.4.0 target' },
     statusKey: 'in-development',
     reviewState: 'needs-owner-review',
     tags: ['React', 'TypeScript', 'Vite', 'Google Apps Script'],
