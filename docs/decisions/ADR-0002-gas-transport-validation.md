@@ -1,17 +1,18 @@
-# ADR-0002: Treat GAS external transport as unproven until browser validation
+# ADR-0002: Require real-browser evidence for GAS transport
 
-- **Status:** Accepted
+- **Status:** Accepted (experiment record; superseded by the concrete hosting choice in ADR-0003)
 - **Date:** 2026-11-05
 
 ## Context
-The proposed design assumes that GitHub Pages can call a Google Apps Script web app using a POST with `Content-Type: text/plain`, avoiding preflight. Apps Script ContentService documents a redirect to a one-time `script.googleusercontent.com` URL. Avoiding a preflight does not itself grant CORS permission, and the final redirect response must also be readable by the browser.
+The initial proposal assumed GitHub Pages could call a Google Apps Script web app using a POST with `Content-Type: text/plain`, avoiding a CORS preflight. Avoiding preflight does not grant browser permission to read a response. Google also documents a ContentService redirect to a one-time `script.googleusercontent.com` URL.
 
 ## Decision
-Keep two explicit transport adapters in the architecture, but do not promise production support for external GitHub Pages-to-GAS calls until a real browser integration test succeeds. HtmlService + `google.script.run` is the initial candidate for the integrated runtime. GitHub Pages remains a candidate static presentation host, demo host, or external client depending on the test outcome.
+Do not rely on external Pages-to-GAS browser transport unless a real browser can read the response and the authentication model is verified. Keep HtmlService + `google.script.run` as the proven candidate pending that experiment.
+
+## Evidence
+A real Chromium session launched by GitHub Actions opened the GitHub Pages harness and attempted the health-only POST against the deployed GAS `/exec` URL. Its Console reported a missing `Access-Control-Allow-Origin` header and Fetch failed with `TypeError: Failed to fetch`. The browser could not read an HTTP status or body. This does not prove whether `doPost` executed.
 
 ## Consequences
-- Phase 0 includes a minimal deployed GAS transport spike.
-- Test both `text/plain` and JSON request content types, record preflight and redirect behavior, and inspect browser console/network results.
-- No secrets may be embedded in GitHub Pages assets.
-- If external authenticated transport is blocked or fragile, the product must not rely on a CORS workaround that cannot be verified. Prefer HtmlService-hosted app runtime or a different explicitly approved architecture.
-- This decision may be revisited only with recorded browser evidence.
+- The browser experiment has closed the external transport proof gate with a negative result.
+- ADR-0003 chooses HtmlService as the primary runtime and GitHub Pages as static documentation/showcase hosting.
+- Keep this record as the rationale for not shipping a CORS workaround.
