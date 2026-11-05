@@ -21,6 +21,6 @@ test('manifest validator rejects duplicate IDs and shortcuts and incomplete loca
 });
 
 test('current workspace apps are explicitly owner-workspace scoped', () => {
-  assert.equal((manifest.match(/audience: 'owner-workspace'/g) ?? []).length, 4);
+  assert.equal((manifest.match(/audience: 'owner-workspace', manifestVersion: 1/g) ?? []).length, 4);
   assert.match(manifest, /entry\.audience !== 'owner-workspace'/);
 });
