@@ -40,3 +40,14 @@ test('HTML metadata introduces a personal portfolio rather than a generic worksp
   assert.match(metadata, /Personal Portfolio & Projects/);
   assert.match(metadata, /computer engineering student and software builder/);
 });
+
+test('projects live in a typed registry with unique slugs and editorial review state', async () => {
+  const content = await readFile(new URL('../../apps/platform/src/content/projects.ts', import.meta.url), 'utf8');
+  assert.match(portfolio, /portfolioProjects as projects/);
+  assert.match(content, /export function validatePortfolioProjects/);
+  assert.match(content, /ProjectReviewState = 'needs-owner-review' \| 'owner-reviewed'/);
+  assert.equal((content.match(/reviewState: 'needs-owner-review'/g) ?? []).length, 8);
+  assert.match(content, /slugs\.has\(project\.slug\)/);
+  assert.match(content, /url\.protocol !== 'https:'/);
+  assert.equal((content.match(/href: 'https:\/\//g) ?? []).length, 1);
+});
