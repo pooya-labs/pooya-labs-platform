@@ -37,6 +37,8 @@ The decision is based on a real Chromium run from the published GitHub Pages ori
 - Durable server-side acceptance must precede user-visible confirmation.
 - Client offline operations remain pending until reconciled with the server.
 
+See [SECURITY-MODEL.md](SECURITY-MODEL.md) and [DATA-CLASSIFICATION.md](DATA-CLASSIFICATION.md) for the Phase 0 threat model, data classes, and deployment-authentication constraints.
+
 ## Security boundaries
 - Backend validates all input and authorizes every privileged operation.
 - Admin credentials and signing material remain in Script Properties or another server-side secret store.
