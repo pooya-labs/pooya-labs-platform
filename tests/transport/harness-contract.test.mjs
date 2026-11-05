@@ -32,5 +32,5 @@ test('probe is restricted to the health.check action and does not use opaque no-
 
 test('failure output preserves a neutral diagnosis instead of claiming a root cause', () => {
   assert.match(html, /do not label this a server outage without evidence/i);
-  assert.match(html, /NetworkError/);
+  assert.match(html, /browser TypeError/);
 });
