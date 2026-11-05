@@ -17,7 +17,7 @@ Build a polished, bilingual (Persian/English), responsive, offline-capable Spati
 
 ## Platform preview
 
-**Live preview:** https://pooya-labs.github.io/pooya-labs-platform/
+**Preview URL:** https://pooya-labs.github.io/pooya-labs-platform/ (the repository Pages source must be set to GitHub Actions for the Vite workspace preview to remain the published site).
 
 The React + TypeScript workspace source lives in [`apps/platform`](apps/platform). It has dual build targets: a static GitHub Pages preview and a single-file HtmlService bundle. The current first slice includes the responsive desktop/mobile shell, app windows, command palette, Persian/English toggle, light/dark theme, and an optional cursor refraction field. See [DESIGN-DIRECTION.md](docs/DESIGN-DIRECTION.md) for the visual rules and known demo-only features. The Pages preview is published; the same bundle still needs to be copied into the deployed Apps Script `Index` file to replace the current proof screen.
 
