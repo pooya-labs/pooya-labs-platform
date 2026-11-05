@@ -1,6 +1,9 @@
 import { ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Layers3, Monitor, Sparkles, TerminalSquare, Workflow } from 'lucide-react';
 import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
 import { portfolioProjects as projects, type PortfolioProject } from './content/projects';
+import { coreDossiers } from './content/case-study-dossiers-core';
+import { productDossiers } from './content/case-study-dossiers-products';
+import type { CaseStudyDossier } from './content/case-study-dossiers-types';
 
 type Language = 'fa' | 'en';
 
@@ -48,7 +51,7 @@ const text = {
     status: 'وضعیت پروژه',
     caseStudy: 'مطالعه موردی به‌زودی',
     demo: 'دمو', source: 'سورس', caseStudyReady: 'مطالعه موردی',
-    details: 'جزئیات پروژه', challenge: 'مسئله', approach: 'راهکار و رویکرد', highlights: 'نکات فنی', boundaries: 'محدوده و محدودیت‌ها', backProjects: 'بازگشت به پروژه‌ها',
+    details: 'جزئیات پروژه', challenge: 'مسئله', approach: 'راهکار و رویکرد', highlights: 'قابلیت‌ها و پیاده‌سازی', boundaries: 'محدوده و محدودیت‌ها', role: 'نقش در پروژه', architecture: 'معماری فنی', implementation: 'جزئیات پیاده‌سازی', decisions: 'تصمیم‌های مهندسی', validation: 'تست و شواهد اعتبارسنجی', sources: 'مستندات و منابع', backProjects: 'بازگشت به پروژه‌ها',
   },
   en: {
     navAbout: 'About',
@@ -87,7 +90,7 @@ const text = {
     status: 'Project status',
     caseStudy: 'Case study coming soon',
     demo: 'Live demo', source: 'Source', caseStudyReady: 'Case study',
-    details: 'Project details', challenge: 'The challenge', approach: 'Approach', highlights: 'Engineering highlights', boundaries: 'Scope & boundaries', backProjects: 'Back to projects',
+    details: 'Project details', challenge: 'The challenge', approach: 'Approach', highlights: 'Capabilities & implementation', boundaries: 'Scope & boundaries', role: 'Project role', architecture: 'Technical architecture', implementation: 'Implementation details', decisions: 'Engineering decisions', validation: 'Verification & evidence', sources: 'Documentation & sources', backProjects: 'Back to projects',
   },
 } satisfies Record<Language, Record<string, string>>;
 
@@ -133,6 +136,7 @@ function PointerLens(): ReactNode {
 function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { project: PortfolioProject; language: Language; onLanguageChange: (language: Language) => void; onBack: () => void }): ReactNode {
   const t = text[language];
   const rtl = language === 'fa';
+  const dossier = ((coreDossiers as Record<string, CaseStudyDossier>)[project.slug] ?? (productDossiers as Record<string, CaseStudyDossier>)[project.slug])!;
   return (
     <div className={`portfolio-page portfolio-case-study ${rtl ? 'is-rtl' : 'is-ltr'}`}>
       <PointerLens />
@@ -182,6 +186,42 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
           <article className="case-study-panel">
             <div className="portfolio-eyebrow"><span className="eyebrow-index">02 /</span>{t.approach}</div>
             <p>{project.caseStudy.approach[language]}</p>
+          </article>
+        </section>
+        <section className="case-study-dossier-grid">
+          <article className="case-study-panel">
+            <div className="portfolio-eyebrow"><span className="eyebrow-index">03 /</span>{t.role}</div>
+            <p>{dossier.role[language]}</p>
+          </article>
+          <article className="case-study-panel">
+            <div className="portfolio-eyebrow"><span className="eyebrow-index">04 /</span>{t.architecture}</div>
+            <p>{dossier.architecture[language]}</p>
+          </article>
+        </section>
+        <section className="case-study-detail-grid">
+          <article className="case-study-highlights">
+            <div className="portfolio-eyebrow"><span className="eyebrow-index">05 /</span>{t.implementation}</div>
+            <ul>{dossier.implementation[language].map((item, index) => <li key={index}><span>{String(index + 1).padStart(2, '0')}</span>{item}</li>)}</ul>
+          </article>
+          <article className="case-study-highlights">
+            <div className="portfolio-eyebrow"><span className="eyebrow-index">06 /</span>{t.decisions}</div>
+            <ul>{dossier.decisions[language].map((item, index) => <li key={index}><span>{String(index + 1).padStart(2, '0')}</span>{item}</li>)}</ul>
+          </article>
+        </section>
+        <section className="case-study-detail-grid">
+          <article className="case-study-highlights">
+            <div className="portfolio-eyebrow"><span className="eyebrow-index">07 /</span>{t.validation}</div>
+            <ul>{dossier.verification[language].map((item, index) => <li key={index}><span>{String(index + 1).padStart(2, '0')}</span>{item}</li>)}</ul>
+          </article>
+          <article className="case-study-panel case-study-source-panel">
+            <div className="portfolio-eyebrow"><span className="eyebrow-index">08 /</span>{t.sources}</div>
+            <div className="case-study-source-list">
+              {dossier.references.map((reference) => (
+                <a key={reference.url} href={reference.url} target="_blank" rel="noreferrer">
+                  <span>{reference.label[language]}</span><ExternalLink size={13} />
+                </a>
+              ))}
+            </div>
           </article>
         </section>
         <section className="case-study-highlights">
