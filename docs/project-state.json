@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "project": "Pooya Labs Platform",
+  "repository": "pooya-labs/pooya-labs-platform",
+  "defaultBranch": "main",
+  "release": "pre-alpha",
+  "phase": 0,
+  "phaseName": "Feasibility, inventory, and architecture proof",
+  "currentTask": {
+    "id": "P0-01",
+    "title": "Build the feasibility and integration inventory",
+    "status": "ready"
+  },
+  "lastCheckpointDate": "2026-11-05",
+  "latestVerifiedCommit": "TO_BE_FILLED_AFTER_COMMIT",
+  "tests": {
+    "automated": "not-created",
+    "gasHtmlServiceTransport": "not-tested",
+    "externalCorsTransport": "not-tested"
+  },
+  "deployment": {
+    "configured": false,
+    "production": false
+  },
+  "previousProjects": {
+    "inspected": false,
+    "imported": [],
+    "modified": [],
+    "integrationPhase": 9,
+    "ownerRequestedDeferral": true
+  },
+  "blockers": [],
+  "nextAction": "Follow docs/NEXT.md task P0-01."
+}
