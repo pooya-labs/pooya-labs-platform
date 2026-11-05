@@ -212,6 +212,22 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
   });
 
   useEffect(() => {
+    const pageTitle = selectedProject
+      ? (rtl ? `${selectedProject.name} | مطالعه پروژه در Pooya Labs` : `${selectedProject.name} | Project Study — Pooya Labs`)
+      : (rtl ? 'پویا | مهندسی نرم‌افزار و پروژه‌ها — Pooya Labs' : 'Pooya | Software Engineering & Projects — Pooya Labs');
+    const pageDescription = selectedProject ? selectedProject.description[language] : text[language].intro;
+    const canonicalUrl = new URL(window.location.href);
+    canonicalUrl.hash = '';
+    document.title = pageTitle;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', pageDescription);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', pageTitle);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', pageDescription);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl.toString());
+    document.querySelector('meta[property="og:locale"]')?.setAttribute('content', language === 'fa' ? 'fa_IR' : 'en_US');
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonicalUrl.toString());
+  }, [selectedProject, language, rtl]);
+
+  useEffect(() => {
     const syncProjectRoute = () => {
       const slug = new URLSearchParams(window.location.search).get('project');
       setSelectedProject(projects.find((project) => project.slug === slug) ?? null);
