@@ -1,40 +1,33 @@
-# Next Task — Runtime service contracts and customer/admin domain
+# Next Task — Curate project content and build case-study structure
 
-**Task ID:** P3-02  
-**Title:** Define runtime service interfaces and the customer request lifecycle  
-**Status:** Versioned owner-workspace manifest implemented; CI validation pending
+**Task ID:** P3-01
+**Title:** Turn the portfolio draft into a verified project showcase
+**Status:** Root portfolio implemented; project content is still draft; latest CI verification pending
 
-## What is now implemented
-- React + TypeScript + Vite shell with desktop/mobile layout, dock, floating windows, command palette, Persian/English, and dark/light themes.
-- Cursor refraction field with touch and reduced-motion fallbacks.
-- Version 1 built-in app manifest in `apps/platform/src/lib/app-manifest.ts`.
-- Manifest validation for supported version, unique IDs and shortcuts, complete Persian/English labels, and explicit owner-workspace audience.
-- Existing dock, rail, cards, and command palette now consume the manifest-backed registry.
-- Product surface boundaries documented in [PRODUCT-SURFACES.md](PRODUCT-SURFACES.md).
+## Current implementation
+- Public portfolio is now the default root experience.
+- Persian/English hero, About, selected projects, focus areas, technology stack, and contact sections.
+- Eight project cards with explicit prototype / in-development status.
+- One exact verified AetherFlow source link; other repository links are intentionally withheld until verified.
+- Dark obsidian visual direction with cyan/emerald accents, layered glass surfaces, and reduced-motion/touch-safe pointer refraction.
+- Existing Spatial OS shell remains accessible as a secondary workspace.
+- Versioned built-in app manifest v1 powers the workspace rail, dock, app cards, and command palette.
 
-## Important product distinction
-The current Spatial OS shell is the **owner workspace foundation**, not a finished customer portal and not yet the operational admin console. The product will include both:
-1. A separate customer-facing portal for customers to discover services, submit requests/bookings, and track confirmed status.
-2. A separate owner-only administration console for reviewing requests, changing statuses, managing operations, and viewing audit history.
+## Priority next
+1. Validate the root portfolio build and CI. Do not treat a queued workflow as passed.
+2. Establish a validated typed content schema for the public profile, project cards, links, status, and case-study sections.
+3. Move the inline project list into a content registry with draft/published states.
+4. Curate the initial featured-project order with Pooya and request only facts needed to make the public descriptions accurate.
+5. Build reusable case-study page templates and connect each featured card to a real case-study route as content becomes available.
+6. Add verified links, screenshots, demos, page metadata, and accessible media handling.
 
-These will not be a shared dashboard with hidden role buttons. The owner-approved separation in ADR-0004 remains mandatory.
+## Mandatory release requirement
+A complete public-site redesign based on Pooya's feedback is a release-blocking Phase 7. The current homepage is a functional draft only. Before V1, present a full design for review, record Pooya's feedback, redesign the whole site, run a second review, and obtain explicit approval. See DESIGN-DIRECTION.md and ROADMAP.md.
 
-## Current boundaries
-- All current built-in apps are explicitly marked `owner-workspace`.
-- Files remain sample content; terminal is local demo only.
-- Only `health.check` is a live RPC action.
-- No customer identity, persistent customer records, booking mutations, privileged admin actions, or notifications are enabled.
-- Google Apps Script source sync and deployment are intentionally deferred until the platform implementation is substantially complete.
-- Existing project repositories remain untouched; integration is still Phase 9.
-
-## Next implementation sequence
-1. Add typed runtime service interfaces and explicit mock/live adapters; mocks must never be presented as server-confirmed results.
-2. Define customer identity, request/booking lifecycle, ownership, status transitions, and idempotency contracts before building mutations.
-3. Build the customer-facing portal as a separate application surface against those contracts.
-4. Build the owner-only administration console as a separate deployment and enforce authorization server-side.
-5. Complete persistence, notifications, security, accessibility, recovery, and release gates.
-6. Sync the final HtmlService bundle and deploy Apps Script only near the end, after the application and backend contracts are ready.
-
-## Validation
-- Run the repository CI after this manifest milestone and record its actual result here.
-- Keep the Pages preview as the fast visual review surface; it is not the production customer runtime.
+## Boundaries
+- Keep the public portfolio as the product center of gravity.
+- Do not add a generic customer login/dashboard to the portfolio.
+- Keep the owner workspace secondary and protected if private management features are added.
+- Apps Script sync/deployment is deferred; the static Pages portfolio can ship without it.
+- Never invent project accomplishments, skill levels, metrics, contact details, or links.
+- Do not modify previous project repositories. Source integration remains Phase 9.
