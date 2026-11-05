@@ -91,3 +91,15 @@ test('project artwork is sourced from pinned project commits with localized alt 
   assert.match(css, /\.project-art\.visual-interface \.project-art-image/);
   assert.match(css, /\.case-study-visual\.has-visual \.case-study-art-fallback/);
 });
+
+test('portfolio includes canonical, social, structured-data, and brand metadata', () => {
+  assert.match(metadata, /property="og:title"/);
+  assert.match(metadata, /property="og:description"/);
+  assert.match(metadata, /name="twitter:card"/);
+  assert.match(metadata, /rel="canonical"/);
+  assert.match(metadata, /application\/ld\+json/);
+  assert.match(metadata, /favicon\.svg/);
+  assert.match(portfolio, /document\.title = pageTitle/);
+  assert.match(portfolio, /og:url/);
+  assert.match(portfolio, /link\[rel="canonical"\]/);
+});
