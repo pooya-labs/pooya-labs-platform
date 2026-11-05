@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-05 — Antigravity-inspired Spatial OS visual foundation
+- Added the React + TypeScript + Vite npm workspace with separate Pages and single-file HtmlService build targets.
+- Implemented the responsive desktop/mobile workspace shell, app windows, Dock, command palette, dark/light theme, and Persian/English direction switching.
+- Added the mouse-following glow + translucent cursor refraction lens, disabled for touch and reduced-motion settings.
+- Added design-direction notes and ADR-0005; the UI remains a local/sample-only foundation, not a live AI-agent platform.
+- Added build/type-check/contract-test CI, a dedicated Pages deployment workflow, and an Apps Script HTML bundle artifact.
+- Owner approved public-app / owner-only-admin separation under ADR-0004.
+
+
 ## 2026-11-05 — Owner verified revised GAS RPC and Phase 0 runbooks
 - Owner deployed the updated HtmlService page and confirmed `rpcCall` returned `ok: true`, `transport: google.script.run`, `error: null`, and a correlated `requestId`.
 - Closed owner-side P0-04 deployment sync verification.
