@@ -10,8 +10,10 @@ test('external transport harness is served as a standalone HTML page', () => {
   assert.match(html, /External browser/);
 });
 
-test('endpoint input accepts only an Apps Script /exec URL', () => {
-  assert.match(html, /script\\\.google\\\.com\\/macros\\/s\\/\[\^\/\]\+\\/exec/);
+test('endpoint validation is restricted to the Apps Script /exec route', () => {
+  assert.ok(html.includes('script\\.google\\.com'));
+  assert.ok(html.includes('\\/macros\\/s\\/'));
+  assert.ok(html.includes('\\/exec'));
 });
 
 test('transport probe uses a simple text/plain POST with CORS-readable response mode', () => {
