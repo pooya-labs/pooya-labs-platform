@@ -144,5 +144,5 @@ test('portfolio distinguishes in-progress release lines from stable demo release
   assert.match(projectData, /In development · v0\.2\.3-dev \/ M09\.6/);
   assert.match(projectData, /Apps Script 1\.4\.0 target/);
   assert.match(productDossiers, /do not process real sales|No real payment/i);
-  assert.match(productDossiers, /not assumed successful|not be assumed successful/i);
+  assert.match(productDossiers, /not assumed to have passed/i);
 });
