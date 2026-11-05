@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-05 — Owner verified revised GAS RPC and Phase 0 runbooks
+- Owner deployed the updated HtmlService page and confirmed `rpcCall` returned `ok: true`, `transport: google.script.run`, `error: null`, and a correlated `requestId`.
+- Closed owner-side P0-04 deployment sync verification.
+- Added provisional performance budgets, deployment rollback/backup/restore runbook, and proposed public/admin deployment boundary.
+- Latest repository CI passed 9/9 tests: [42031242334](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42031242334).
+- Latest GitHub Pages deployment succeeded: [42031242859](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42031242859).
+- Moved the optional browser diagnostic deployment URL to the `GAS_WEB_APP_URL` Actions secret; the diagnostic workflow is manual-only.
+
+
 ## 2026-11-05 — Security and data handling baseline
 - Added a Phase 0 threat model and data-classification policy.
 - Recorded why execute-as-owner deployments must not use `Session.getActiveUser().getEmail()` as a universal identity check.
