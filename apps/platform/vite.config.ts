@@ -2,6 +2,7 @@ import { defineConfig, type Plugin, type OutputAsset, type OutputBundle } from '
 import react from '@vitejs/plugin-react';
 import { viteSingleFile } from 'vite-plugin-singlefile';
 import { fileURLToPath } from 'node:url';
+import { readFileSync } from 'node:fs';
 import { portfolioProjects, type PortfolioProject } from './src/content/projects';
 import { coreDossiers } from './src/content/case-study-dossiers-core';
 import { productDossiers } from './src/content/case-study-dossiers-products';
@@ -230,13 +231,17 @@ function staticCaseStudyPages(): Plugin {
     name: 'pooya-labs-static-case-study-pages',
     apply: 'build',
     generateBundle(_options, bundle: OutputBundle) {
-      const indexAsset = bundle['index.html'];
-      if (!indexAsset || indexAsset.type !== 'asset') {
-        this.error('Expected Vite to emit index.html before generating static case-study pages.');
+      const entry = Object.values(bundle).find((item) => item.type === 'chunk' && item.isEntry);
+      if (!entry || entry.type !== 'chunk') {
+        this.error('Expected a JavaScript entry chunk before generating static case-study pages.');
       }
-      const template = typeof indexAsset.source === 'string'
-        ? indexAsset.source
-        : new TextDecoder().decode(indexAsset.source);
+      const cssFiles = Object.values(bundle)
+        .filter((item) => item.type === 'asset' && item.fileName.endsWith('.css'))
+        .map((item) => item.fileName);
+      let template = readFileSync(new URL('./index.html', import.meta.url), 'utf8');
+      template = template.replace('src="/src/main.tsx"', `crossorigin src="${SITE_BASE}${entry.fileName}"`);
+      template = template.replace('href="%BASE_URL%favicon.svg"', `href="${SITE_BASE}favicon.svg"`);
+      template = template.replace('</head>', `${cssFiles.map((file) => `<link rel="stylesheet" crossorigin href="${SITE_BASE}${file}" />`).join('')}\n</head>`);
       const baseSocial = `${SITE_ORIGIN}${SITE_BASE}og/pooya-labs.svg`;
       const homeWithSocial = template.replace('</head>', `
         <meta property="og:image" content="${baseSocial}" />
