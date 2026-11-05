@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpLeft, ArrowUpRight, ExternalLink, Github, Layers3, Sparkles, TerminalSquare, Workflow } from 'lucide-react';
+import { ArrowDown, ArrowUpLeft, ArrowUpRight, Code2, ExternalLink, Layers3, Sparkles, TerminalSquare, Workflow } from 'lucide-react';
 import { useEffect, useRef, type ReactNode } from 'react';
 
 type Language = 'fa' | 'en';
@@ -258,7 +258,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
             <p className="portfolio-intro">{t.intro}</p>
             <div className="portfolio-hero-actions">
               <a className="portfolio-primary" href="#projects">{t.explore}<ArrowDown size={16} /></a>
-              <a className="portfolio-secondary" href="https://github.com/pooya16pg-spec" target="_blank" rel="noreferrer"><Github size={17} />{t.github}<ArrowUpRightFromSquare size={13} /></a>
+              <a className="portfolio-secondary" href="https://github.com/pooya16pg-spec" target="_blank" rel="noreferrer"><Code2 size={17} />{t.github}<ExternalLink size={13} /></a>
             </div>
             <div className="portfolio-social-proof"><span className="proof-line" /><span>POOYA LABS</span><span className="proof-dot">·</span><span>BUILDING IN PUBLIC</span></div>
           </div>
@@ -297,7 +297,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
                   <div className="project-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
                   <div className="project-card-footer">
                     <span>{t.status}: {project.status[language]}</span>
-                    {project.href ? <a href={project.href} target="_blank" rel="noreferrer" aria-label={`${project.name} GitHub repository`}><Github size={15} /> <ArrowUpRight size={14} /></a> : <span className="project-coming-soon">{t.caseStudy}</span>}
+                    {project.href ? <a href={project.href} target="_blank" rel="noreferrer" aria-label={`${project.name} GitHub repository`}><Code2 size={15} /> <ArrowUpRight size={14} /></a> : <span className="project-coming-soon">{t.caseStudy}</span>}
                   </div>
                 </div>
               </article>
@@ -342,7 +342,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
       <footer className="portfolio-footer portfolio-container">
         <a className="portfolio-brand" href="#top"><span className="portfolio-brand-mark">P<span>.</span></span><span><strong>POOYA LABS</strong><small>PERSONAL PORTFOLIO</small></span></a>
         <span>{t.footer}</span>
-        <a href="https://github.com/pooya16pg-spec" target="_blank" rel="noreferrer"><Github size={17} /> GitHub</a>
+        <a href="https://github.com/pooya16pg-spec" target="_blank" rel="noreferrer"><Code2 size={17} /> GitHub</a>
         <small>© {new Date().getFullYear()} POOYA LABS</small>
       </footer>
     </div>
