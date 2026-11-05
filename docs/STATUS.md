@@ -14,7 +14,7 @@
 - Chromium's Console explicitly reported that the response had no `Access-Control-Allow-Origin` header.
 - The browser therefore could not expose an HTTP status or response body. This proves a browser CORS block for the direct Pages-to-GAS call; it does not prove whether Apps Script executed `doPost`.
 - The earlier Apps Script Executions rows supplied by the owner showed `doGet` and `rpcHealth`, but no `doPost` row at that time.
-- Repository CI contract tests passed in run [42026786562](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42026786562).
+- The repository CI run [42028621321](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42028621321) passed all 9 tests, including the new HtmlService RPC contract checks.
 
 ## Completed
 - [x] Repository identity, scope, and agent rules established.
@@ -30,7 +30,7 @@
 - [x] A real Chromium test reproduced and identified the browser CORS block.
 - [x] ADR-0003 selects HtmlService as the primary app runtime and GitHub Pages as static showcase/docs hosting.
 - [x] Dependency-free Node.js contract tests and GitHub Actions CI added.
-- [x] The last verified repository CI run passed.
+- [x] Repository CI passes all 9 contract tests, including the HtmlService RPC source checks.
 
 ## Not yet done / not yet verified
 - [ ] Owner has not yet copied the revised HtmlService-first `Code.gs` and `Index.html` into the deployed Apps Script project.
@@ -48,4 +48,4 @@
 6. A fully offline browser cannot receive server confirmation until connectivity returns.
 
 ## Latest checkpoint
-The external GitHub Pages → GAS fetch path is rejected as a production dependency because Chromium observed a missing CORS allow-origin header. The platform is now specified as HtmlService-first, with GitHub Pages retained for public static content. The next task is to sync the revised RPC proof files into the owner's Apps Script project and verify the updated deployed version. Remaining Phase 0 work covers security, data semantics, performance budgets, and release/deployment controls.
+The external GitHub Pages → GAS fetch path is rejected as a production dependency because Chromium observed a missing CORS allow-origin header. The platform is now specified as HtmlService-first, with GitHub Pages retained for public static content. The next task is to sync the revised RPC proof files into the owner's Apps Script project and verify the updated deployed version. The repository test suite currently passes 9/9. Remaining Phase 0 work covers security, data semantics, performance budgets, and release/deployment controls.
