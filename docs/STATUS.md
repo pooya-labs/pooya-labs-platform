@@ -23,6 +23,8 @@
 - [x] Added versioned built-in app manifest v1 and validation for unique IDs/shortcuts, localized metadata, and owner-workspace scope.
 - [x] Added a typed portfolio content registry with explicit review state, localized copy, unique slugs, and verified HTTPS source/demo URLs.
 - [x] Added eight bilingual internal case-study views with challenge, approach, engineering highlights, scope boundaries, and shareable query-string routes.
+- [x] Expanded all eight case studies with source-backed role/attribution, architecture, implementation details, engineering decisions, verification evidence, and direct source/CI references.
+- [x] Added a per-project content audit that explicitly separates source-confirmed facts from release-blocking owner inputs and missing evidence.
 - [x] Added demo, source, and case-study actions to project cards.
 - [x] Added seven verified source-repository visual assets with pinned commit URLs and bilingual alt text; card media is lazy-loaded, responsive, and falls back cleanly.
 - [x] Added the actual GlobalCart storefront screenshot; other current visuals are correctly identified as brand marks or project artwork, not product screenshots.
@@ -32,13 +34,15 @@
 - [x] Added ADR-0006 to record portfolio-first hosting and scope.
 
 ## CI and publishing status
-- CI status: green.
-- Repository CI [42048674359](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42048674359) passed TypeScript, both Pages/Apps Script build targets, artifact upload, and **24/24 contract tests**.
-- GitHub Pages deployment [42047985066](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42047985066) succeeded with the bilingual project case-study layouts.
+- Dossier-enabled code passed CI [42059342492](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42059342492): TypeScript, both Pages/Apps Script builds, artifact upload, and **29/29 contract tests**.
+- Pages deployment containing the dossier code [42058556955](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42058556955) succeeded. The later 9c2c035 commit only corrected a test assertion.
+- Public preview: https://pooya-labs.github.io/pooya-labs-platform/
+- Current repo status and unresolved pre-release evidence are tracked in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
 - Confirm the repository Pages source remains GitHub Actions so a legacy branch/Jekyll deployment cannot supersede the Vite portfolio.
 
 ## Pending owner review
+- [ ] Work through every project-specific release item in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md); it identifies missing attribution, screenshots/diagrams, current-SHA evidence, manual QA, and runtime acceptance for each project.
 - [ ] Review and approve the public biography and positioning.
 - [ ] Curate the featured project order and descriptions.
 - [ ] Confirm project statuses, links, screenshots, and public evidence.
@@ -47,8 +51,8 @@
 - [ ] Review the complete portfolio design on desktop and mobile. The current implementation is a draft, not final.
 
 ## Not implemented
-- [ ] Actual interface screenshots and architecture diagrams for AetherFlow, ORBIT, and other projects that currently have no UI evidence or only brand artwork.
-- [ ] Fully detailed case studies with owner-confirmed role, architecture, decisions, validation, and outcomes.
+- [ ] Actual interface screenshots and architecture diagrams for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; current assets do not all represent product UI.
+- [x] Source-backed role/architecture/implementation/decision/verification sections are populated for all eight projects; owner-confirmed personal contribution and any additional measured outcomes remain pending.
 - [ ] Static crawler-readable case-study pages and per-project social preview images; current case-study metadata is dynamically updated in the browser.
 - [ ] Private owner content-management console.
 - [ ] Customer accounts or customer dashboard; excluded from the portfolio by default.
@@ -64,4 +68,4 @@
 - Previous project repositories remain untouched; project integration stays in Phase 9.
 
 ## Latest checkpoint
-The root website now introduces Pooya and his projects. Eight bilingual case-study views are available as shareable query routes. Seven source-repository visual assets are pinned to immutable commits and carry bilingual alt text; one is the GlobalCart storefront screenshot while the rest are clearly treated as brand/project artwork. Case-study titles/descriptions and canonical/Open Graph metadata update in the browser, and the sitemap covers the homepage plus all eight case-study URLs. CI run 42053063421 passed 27/27 tests and Pages run 42053052111 deployed the sitemap-enabled portfolio. Public copy, featured order, project contribution details, and richer project evidence still require Pooya's review. Static crawler-oriented case-study metadata/sitemap and the complete feedback-driven redesign remain pre-release work.
+The root website now introduces Pooya and his projects. Eight bilingual case-study views are available as shareable query routes and now include source-grounded engineering dossiers. The per-project missing-information and evidence gate is documented in PROJECT-CONTENT-AUDIT.md. Seven source-repository visual assets are pinned to immutable commits and carry bilingual alt text; one is the GlobalCart storefront screenshot while the rest are clearly treated as brand/project artwork. Case-study titles/descriptions and canonical/Open Graph metadata update in the browser, and the sitemap covers the homepage plus all eight case-study URLs. CI run 42059342492 passed 29/29 tests and Pages run 42058556955 deployed the dossier-enabled code. Public copy, featured order, project contribution details, and richer project evidence still require Pooya's review. Static crawler-readable case-study pages and per-project social images, owner-confirmed details, project evidence, and the complete two-round feedback-driven redesign remain mandatory pre-release work.
