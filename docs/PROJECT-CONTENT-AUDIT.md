@@ -105,6 +105,7 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 
 **Recorded from source**
 - README identifies Pooya as owner and product engineer.
+- The source repository contains actual desktop and mobile storefront homepage screenshots; both are now embedded in the GlobalCart case study and pinned to immutable source commit `5ca43e40ff101e673ee7cf261850bff0a679047c`.
 - Current line is **0.2.3-dev / M09.6**, not 1.0.0.
 - Static Next.js storefront with a local 1,000-product Amazon Berkeley Objects snapshot and self-hosted WebP galleries, plus a separate runtime Shopify Global Catalog discovery path through a constrained Cloudflare Worker.
 - Shopify runtime search is not a persisted local catalog: results and merchant images are not cached or re-hosted; merchant identity, seller URL, and seller-supplied price/availability remain visible.
@@ -117,7 +118,8 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 - [ ] Read and record the final Browser E2E result and publish the same successful code SHA to Pages.
 - [ ] Reconcile stale/conflicting source-document statements about which catalog path is active (local ABO snapshot versus Shopify runtime discovery) across README, PROJECT_CONTEXT, ARCHITECTURE, DATA_SOURCES, and REAL_CATALOG_MIGRATION.
 - [x] Add a bilingual architecture diagram for the local ABO snapshot, no-store Shopify discovery proxy, TGJU FX snapshot, storefront, and simulated cart.
-- [ ] Capture current desktop and mobile storefront/product-detail/gallery screenshots and verify they match the published HEAD.
+- [x] Locate and embed the actual desktop and mobile storefront homepage screenshots from the source repository; both are shown with device-specific captions and pinned to commit `5ca43e40ff101e673ee7cf261850bff0a679047c`.
+- [ ] Review the embedded screenshots against the latest published GlobalCart HEAD and capture missing product-detail/gallery states if they materially improve the case study.
 - [ ] Complete physical-device, manual screen-reader, human RTL/LTR, and normal-network checks.
 - [ ] Keep 0.2.3-dev and do not tag 1.0.0 until manual visual approval and all repository release gates pass.
 
