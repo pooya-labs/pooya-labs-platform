@@ -52,6 +52,10 @@ test('projects live in a typed registry with unique slugs and editorial review s
   assert.match(portfolio, /project\.repositoryUrl/);
   assert.match(portfolio, /project\.caseStudyUrl/);
   assert.match(content, /export function validatePortfolioProjects/);
+  assert.match(content, /challenge: \{ fa: string; en: string \}/);
+  assert.match(content, /approach: \{ fa: string; en: string \}/);
+  assert.match(content, /highlights: \{ fa: string\[\]; en: string\[\] \}/);
+  assert.equal((content.match(/caseStudy: \{/g) ?? []).length, 8);
   assert.match(content, /ProjectReviewState = 'needs-owner-review' \| 'owner-reviewed'/);
   assert.equal((content.match(/reviewState: 'needs-owner-review'/g) ?? []).length, 8);
   assert.match(content, /slugs\.has\(project\.slug\)/);
@@ -60,4 +64,16 @@ test('projects live in a typed registry with unique slugs and editorial review s
   assert.ok(content.includes("host.startsWith('.')"));
   assert.ok(content.includes('url.hostname.endsWith(host)'));
   assert.ok(content.includes("assertHttpsUrl(project.previewUrl, ['.github.io']"));
+});
+
+test('project cards and shareable query routes expose in-site case studies', () => {
+  assert.match(portfolio, /function ProjectCaseStudy/);
+  assert.match(portfolio, /URLSearchParams\(window\.location\.search\)\.get\('project'\)/);
+  assert.match(portfolio, /window\.history\.pushState/);
+  assert.match(portfolio, /project\.caseStudy\.challenge\[language\]/);
+  assert.match(portfolio, /project\.caseStudy\.approach\[language\]/);
+  assert.match(portfolio, /project\.caseStudy\.highlights\[language\]/);
+  assert.match(portfolio, /project\.caseStudy\.boundaries\[language\]/);
+  assert.match(portfolio, /\?project=\$\{project\.slug\}/);
+  assert.match(css, /\.case-study-main/);
 });
