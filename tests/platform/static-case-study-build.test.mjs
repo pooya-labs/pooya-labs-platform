@@ -8,6 +8,13 @@ const slugs = ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass'
 
 test('Vite emits crawler-readable Persian and English case-study pages', { skip: !rootHtml }, async () => {
   assert.match(rootHtml, /og:image/);
+  assert.match(rootHtml, /og:image:type" content="image\/png/);
+  assert.match(rootHtml, /og:image:height" content="627/);
+  const homePng = await readFile(new URL('og/pooya-labs.png', outputRoot));
+  assert.deepEqual(homePng.subarray(0, 8), Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+  assert.equal(homePng.readUInt32BE(16), 1200);
+  assert.equal(homePng.readUInt32BE(20), 627);
+
   assert.match(rootHtml, /og\/pooya-labs\.png/);
   assert.match(rootHtml, /og:image:type" content="image\/png/);
   assert.match(rootHtml, /og:image:height" content="627/);
