@@ -1,6 +1,6 @@
 # Security Model — Phase 0 baseline
 
-**Status:** Initial threat model drafted; final access configuration remains unapproved.  
+**Status:** Initial threat model drafted; owner approved the public-app / owner-only-admin separation on 2026-11-05. Exact access and execution settings still require deployment verification.  
 **Applies to:** HtmlService-hosted public application, Google Apps Script RPC, future Sheets/Drive data, and the separate static GitHub Pages showcase.
 
 ## Security objectives
@@ -58,6 +58,12 @@ Therefore:
 
 ## Phase 0 RPC constraints
 The current canonical `rpcCall(request)` exposes only `health.check`. This is a proof endpoint, not a production authentication system. The temporary `rpcHealth()` compatibility wrapper must be removed after the owner updates the deployment. No data mutation or privileged operation is enabled.
+
+## Owner-approved boundary
+- Public application and privileged administration are separate deployments/projects.
+- The initial admin deployment is restricted to the deploying owner (`MYSELF`).
+- The public project exposes no privileged admin actions. The current public RPC still permits only `health.check`.
+- This approval does not authorize storing private data or exposing protected operations until their validation, authorization, retention, and backup controls are implemented and tested.
 
 ## Open decisions before protected features
 - Whether the public app needs anonymous visitors or Google-account sign-in.
