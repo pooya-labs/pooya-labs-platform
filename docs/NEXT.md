@@ -2,7 +2,7 @@
 
 **Task ID:** P3-01
 **Title:** Turn the portfolio draft into a verified project showcase
-**Status:** Root portfolio implemented; project content is still draft; latest CI verification pending
+**Status:** Root portfolio implemented; CI green (22/22 tests), Pages UI build deployed; content review pending
 
 ## Current implementation
 - Public portfolio is now the default root experience.
@@ -14,7 +14,7 @@
 - Versioned built-in app manifest v1 powers the workspace rail, dock, app cards, and command palette.
 
 ## Priority next
-1. Validate the root portfolio build and CI. Do not treat a queued workflow as passed.
+1. Keep the root portfolio build green as content work proceeds.
 2. Establish a validated typed content schema for the public profile, project cards, links, status, and case-study sections.
 3. Move the inline project list into a content registry with draft/published states.
 4. Curate the initial featured-project order with Pooya and request only facts needed to make the public descriptions accurate.
