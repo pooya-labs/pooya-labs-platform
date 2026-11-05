@@ -30,12 +30,13 @@
 - [x] A real Chromium test reproduced and identified the browser CORS block.
 - [x] A second Chromium diagnostic run reproduced the same classification and uploaded a redacted diagnostic artifact.
 - [x] ADR-0003 selects HtmlService as the primary app runtime and GitHub Pages as static showcase/docs hosting.
+- [x] Initial threat model and data-classification baseline drafted; final authentication and access settings remain open.
 - [x] Dependency-free Node.js contract tests and GitHub Actions CI added.
 - [x] Repository CI passes all 9 contract tests, including the HtmlService RPC source checks.
 
 ## Not yet done / not yet verified
 - [ ] Owner has not yet copied the revised HtmlService-first `Code.gs` and `Index.html` into the deployed Apps Script project.
-- [ ] Admin authentication, threat model, abuse controls, data retention, and authorization model remain to be designed before protected features.
+- [ ] Admin authentication, abuse controls, data retention, and authorization model still require final design and owner approval before protected features.
 - [ ] Performance budgets have not yet been measured on target devices/networks.
 - [ ] No production Sheets schema, booking, admin, telemetry, or customer-data feature exists.
 - [ ] No previous-project code has been imported or any previous repository modified.
