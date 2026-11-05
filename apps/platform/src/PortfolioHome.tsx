@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowUpLeft, ArrowUpRight, Code2, ExternalLink, Layers3, Sparkles, TerminalSquare, Workflow } from 'lucide-react';
 import { useEffect, useRef, type ReactNode } from 'react';
+import { portfolioProjects as projects } from './content/projects';
 
 type Language = 'fa' | 'en';
 
@@ -8,98 +9,6 @@ interface PortfolioHomeProps {
   onLanguageChange: (language: Language) => void;
   onOpenWorkspace: () => void;
 }
-
-const projects = [
-  {
-    number: '01',
-    name: 'AetherFlow',
-    category: { fa: 'مهندسی نرم‌افزار', en: 'Software engineering' },
-    description: {
-      fa: 'یک پروژه مستقل در حال توسعه؛ تمرکز این ویترین روی تصمیم‌های فنی، روند ساخت و خروجی‌های قابل ارائه آن خواهد بود.',
-      en: 'An independent project in active development. Its case study will focus on engineering decisions, the build process, and demonstrable outcomes.',
-    },
-    status: { fa: 'در حال توسعه', en: 'In development' },
-    tags: ['Engineering', 'Workflow'],
-    href: 'https://github.com/pooya16pg-spec/aetherflow',
-  },
-  {
-    number: '02',
-    name: 'ORBIT',
-    category: { fa: 'محصول نرم‌افزاری', en: 'Software product' },
-    description: {
-      fa: 'پروژه‌ای مستقل با نقشه راه مرحله‌ای؛ جزئیات قابلیت‌ها و نسخه‌های تکمیل‌شده در مطالعه موردی آن ثبت می‌شود.',
-      en: 'An independently developed product with a staged roadmap. Its case study will document capabilities and completed releases.',
-    },
-    status: { fa: 'در حال توسعه', en: 'In development' },
-    tags: ['Product design', 'Systems'],
-  },
-  {
-    number: '03',
-    name: 'Pooya.OS',
-    category: { fa: 'رابط و تجربه کاربری', en: 'Interface & experience' },
-    description: {
-      fa: 'کاوشی در ساخت یک محیط کاری دسکتاپ با رابط مدرن، پنجره‌های تعاملی و تجربه‌ای منسجم.',
-      en: 'An exploration of a modern desktop workspace with interactive windows and a cohesive interface.',
-    },
-    status: { fa: 'نمونه و آزمایش', en: 'Prototype' },
-    tags: ['UI engineering', 'Interaction'],
-  },
-  {
-    number: '04',
-    name: 'NexusCanvas',
-    category: { fa: 'ابزار بصری', en: 'Visual tool' },
-    description: {
-      fa: 'ابزاری برای نمایش و کار با ساختارها و ارتباطات به‌شکل بصری و قابل تعامل.',
-      en: 'A visual tool for exploring structures and relationships through an interactive canvas.',
-    },
-    status: { fa: 'در حال توسعه', en: 'In development' },
-    tags: ['Canvas', 'Visualization'],
-  },
-  {
-    number: '05',
-    name: 'LuminaGlass',
-    category: { fa: 'آزمایشگاه رابط', en: 'Interface lab' },
-    description: {
-      fa: 'آزمایش جلوه‌های شیشه‌ای، لایه‌بندی و تعاملات بصری برای تجربه‌های دیجیتال.',
-      en: 'An exploration of glass surfaces, layered interfaces, and visual interactions for digital experiences.',
-    },
-    status: { fa: 'نمونه و آزمایش', en: 'Prototype' },
-    tags: ['Visual design', 'Motion'],
-  },
-  {
-    number: '06',
-    name: 'AuraPulse',
-    category: { fa: 'داشبورد و داده', en: 'Dashboards & data' },
-    description: {
-      fa: 'تمرکز بر نمایش داده، مؤلفه‌های نموداری و ابزارهای تعاملی در یک تجربه منسجم.',
-      en: 'A focused exploration of data presentation, chart components, and interactive tooling.',
-    },
-    status: { fa: 'نمونه و آزمایش', en: 'Prototype' },
-    tags: ['Data UI', 'Components'],
-  },
-  {
-    number: '07',
-    name: 'GlobalCart',
-    category: { fa: 'تجربه تجارت الکترونیک', en: 'Commerce experience' },
-    description: {
-      fa: 'دموی فروشگاه آنلاین با تمرکز بر مرور محصولات، صفحه جزئیات و تجربه خرید یکپارچه.',
-      en: 'An online storefront demo focused on product discovery, detail pages, and a cohesive shopping experience.',
-    },
-    status: { fa: 'در حال توسعه', en: 'In development' },
-    tags: ['E-commerce', 'Frontend'],
-  },
-  {
-    number: '08',
-    name: 'Salon Booking',
-    category: { fa: 'سامانه رزرو', en: 'Booking system' },
-    description: {
-      fa: 'سامانه رزرو نوبت با مسیر مشتری و ابزارهای مستقل برای مدیریت درخواست‌ها.',
-      en: 'An appointment-booking system with a customer flow and a separate request-management surface.',
-    },
-    status: { fa: 'در حال توسعه', en: 'In development' },
-    tags: ['Web app', 'Operations'],
-  },
-];
 
 const text = {
   fa: {
