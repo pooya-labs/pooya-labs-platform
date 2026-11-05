@@ -504,3 +504,5 @@ kbd { display: inline-flex; align-items: center; gap: 3px; padding: 3px 6px; bor
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .cursor-field { display: none !important; }
 }
+
+.portfolio-return { padding: 7px 10px; border-radius: 8px; font-size: 10px; white-space: nowrap; }
