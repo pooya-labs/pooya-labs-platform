@@ -1,52 +1,81 @@
 /**
- * Pooya Labs Platform — Phase 0 transport proof only.
- * No persistent data, secrets, or privileged actions are exposed here.
+ * Pooya Labs Platform — HtmlService-first RPC entry point.
+ * The UI is served by doGet() and calls rpcCall() through google.script.run.
+ * This is intentionally not a cross-origin ContentService HTTP API.
  */
-
 function doGet() {
   return HtmlService.createHtmlOutputFromFile('Index')
-    .setTitle('Pooya Labs GAS Transport Proof')
+    .setTitle('Pooya Labs Platform')
     .addMetaTag('viewport', 'width=device-width, initial-scale=1');
 }
 
-function doPost(e) {
+/**
+ * Single allowlisted RPC entry point.
+ * Add actions only after validation, authorization, and persistence semantics
+ * have been designed and tested.
+ *
+ * @param {Object} request Versioned RPC envelope.
+ * @return {Object} JSON-serializable response envelope.
+ */
+function rpcCall(request) {
+  var requestId = request && typeof request.requestId === 'string'
+    ? request.requestId.slice(0, 128)
+    : '';
+
   try {
-    var raw = e && e.postData && e.postData.contents ? e.postData.contents : '';
-    var request = raw ? JSON.parse(raw) : {};
-    if (request.action !== 'health.check') {
-      return jsonOutput_({
-        apiVersion: 1,
-        ok: false,
-        error: { code: 'ACTION_NOT_ALLOWED', message: 'Only health.check is enabled in this proof.' }
-      });
+    if (!request || typeof request !== 'object' || Array.isArray(request)) {
+      return rpcError_(requestId, 'INVALID_ENVELOPE', 'A request object is required.');
     }
-    return jsonOutput_({
-      apiVersion: 1,
-      requestId: String(request.requestId || ''),
-      ok: true,
-      data: { status: 'ok', transport: 'content-service-post' },
-      serverTime: new Date().toISOString()
-    });
+
+    if (JSON.stringify(request).length > 16000) {
+      return rpcError_(requestId, 'PAYLOAD_TOO_LARGE', 'The request exceeds the allowed size.');
+    }
+    if (request.apiVersion !== 1) {
+      return rpcError_(requestId, 'UNSUPPORTED_API_VERSION', 'This API version is not supported.');
+    }
+    if (typeof request.action !== 'string' || request.action.length > 64) {
+      return rpcError_(requestId, 'INVALID_ACTION', 'A valid action is required.');
+    }
+    if (request.payload != null &&
+        (typeof request.payload !== 'object' || Array.isArray(request.payload))) {
+      return rpcError_(requestId, 'INVALID_PAYLOAD', 'Payload must be an object.');
+    }
+
+    // Phase 0 allowlist: a health check only. No data is read or written.
+    if (request.action === 'health.check') {
+      return {
+        apiVersion: 1,
+        requestId: requestId,
+        ok: true,
+        data: { status: 'ok', transport: 'google.script.run' },
+        error: null,
+        serverTime: new Date().toISOString()
+      };
+    }
+    return rpcError_(requestId, 'ACTION_NOT_ALLOWED', 'This action is not enabled.');
   } catch (error) {
-    return jsonOutput_({
-      apiVersion: 1,
-      ok: false,
-      error: { code: 'INVALID_REQUEST', message: 'Request body must be valid JSON.' }
-    });
+    // Never return stack traces or internal exception details to the browser.
+    return rpcError_(requestId, 'INTERNAL_ERROR', 'The request could not be completed.');
   }
 }
 
+/** Temporary compatibility wrapper; remove after the owner updates the deployment. */
 function rpcHealth() {
-  return {
+  return rpcCall({
     apiVersion: 1,
-    ok: true,
-    data: { status: 'ok', transport: 'google.script.run' },
-    serverTime: new Date().toISOString()
-  };
+    requestId: 'legacy-health-check',
+    action: 'health.check',
+    payload: {}
+  });
 }
 
-function jsonOutput_(value) {
-  return ContentService
-    .createTextOutput(JSON.stringify(value))
-    .setMimeType(ContentService.MimeType.JSON);
+function rpcError_(requestId, code, message) {
+  return {
+    apiVersion: 1,
+    requestId: requestId,
+    ok: false,
+    data: null,
+    error: { code: code, message: message },
+    serverTime: new Date().toISOString()
+  };
 }
