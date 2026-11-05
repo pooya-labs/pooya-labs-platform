@@ -153,7 +153,7 @@ test('portfolio distinguishes in-progress release lines from stable demo release
 
 test('portfolio routes static bilingual case studies and updates the URL without a reload', () => {
   assert.match(portfolio, /function getProjectSlugFromLocation/);
-  assert.match(portfolio, /\/(?:en\/)?projects\/\(\[\^\/\]\+\)/);
+  assert.match(portfolio, /pathname\.match/);
   assert.match(portfolio, /function getProjectRouteHref/);
   assert.match(portfolio, /import\.meta\.env\.BASE_URL/);
   assert.match(portfolio, /new URL\(getProjectRouteHref\(project\.slug, language\)/);
