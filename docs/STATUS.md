@@ -29,6 +29,9 @@
 - [x] Real Chromium reproduced and classified the direct Pages-to-GAS CORS block.
 - [x] ADR-0003 selects HtmlService as the primary app runtime and GitHub Pages as static showcase/docs hosting.
 - [x] Owner copied the revised `Code.gs` and `Index.html`, published a new Web App version, and verified the `rpcCall` health response with a request ID.
+- [x] Provisional performance budgets and measurement method documented in `PERFORMANCE-BUDGETS.md`.
+- [x] Manual deployment, rollback, backup, and restore procedures documented in `DEPLOYMENT-RUNBOOK.md`.
+- [x] Proposed public/admin deployment separation recorded in ADR-0004; owner approval remains pending.
 - [x] Initial threat model and data-classification baseline drafted.
 - [x] Dependency-free Node.js contract tests and GitHub Actions CI added; latest verified run passes 9/9.
 - [x] GitHub Pages build and deployment verified.
@@ -36,7 +39,7 @@
 ## Not yet done / not yet verified
 - [ ] Owner approval of the proposed public/admin security boundary and final deployment access settings.
 - [ ] Performance targets are documented provisionally but not yet measured on target devices/networks.
-- [ ] Operational deployment rollback and data backup/restore procedures need an owner-side rehearsal before production data.
+- [ ] Operational deployment rollback and data backup/restore procedures are documented but need an owner-side rehearsal before production data.
 - [ ] No production Sheets schema, booking, admin, telemetry, or customer-data feature exists.
 - [ ] No previous-project code has been imported or any previous repository modified.
 
