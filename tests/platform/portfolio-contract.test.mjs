@@ -7,6 +7,9 @@ const portfolio = await readFile(new URL('../../apps/platform/src/PortfolioHome.
 const projectData = await readFile(new URL('../../apps/platform/src/content/projects.ts', import.meta.url), 'utf8');
 const metadata = await readFile(new URL('../../apps/platform/index.html', import.meta.url), 'utf8');
 const css = await readFile(new URL('../../apps/platform/src/portfolio.css', import.meta.url), 'utf8');
+const coreDossiers = await readFile(new URL('../../apps/platform/src/content/case-study-dossiers-core.ts', import.meta.url), 'utf8');
+const productDossiers = await readFile(new URL('../../apps/platform/src/content/case-study-dossiers-products.ts', import.meta.url), 'utf8');
+const dossierTypes = await readFile(new URL('../../apps/platform/src/content/case-study-dossiers-types.ts', import.meta.url), 'utf8');
 const sitemap = await readFile(new URL('../../apps/platform/public/sitemap.xml', import.meta.url), 'utf8');
 
 test('the root experience is the personal portfolio and the workspace is secondary', () => {
@@ -113,4 +116,33 @@ test('sitemap lists the public portfolio and all eight shareable case-study URLs
   for (const slug of ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'global-cart', 'salon-booking']) {
     assert.ok(locations.includes('https://pooya-labs.github.io/pooya-labs-platform/?project=' + slug));
   }
+});
+
+test('all eight case studies include bilingual roles, architecture, implementation, decisions, verification, and source links', () => {
+  const slugs = ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aurapulse', 'global-cart', 'salon-booking'];
+  for (const slug of slugs) {
+    assert.ok(coreDossiers.includes(slug) || productDossiers.includes(slug), 'Missing dossier for ' + slug);
+  }
+  assert.equal((coreDossiers.match(/^  (?:aetherflow|orbit|"pooya-os"|"nexus-canvas"):\s*\{$/gm) ?? []).length, 4);
+  assert.equal((productDossiers.match(/^  (?:"lumina-glass"|aurapulse|"global-cart"|"salon-booking"):\s*\{$/gm) ?? []).length, 4);
+  for (const field of ['role:', 'architecture:', 'implementation:', 'decisions:', 'verification:', 'references:']) {
+    assert.ok(coreDossiers.includes(field), 'Core dossier missing ' + field);
+    assert.ok(productDossiers.includes(field), 'Product dossier missing ' + field);
+  }
+  assert.match(dossierTypes, /export interface CaseStudyDossier/);
+  assert.match(portfolio, /dossier\.role\[language\]/);
+  assert.match(portfolio, /dossier\.architecture\[language\]/);
+  assert.match(portfolio, /dossier\.implementation\[language\]/);
+  assert.match(portfolio, /dossier\.decisions\[language\]/);
+  assert.match(portfolio, /dossier\.verification\[language\]/);
+  assert.match(portfolio, /dossier\.references\.map/);
+  assert.match(css, /\.case-study-dossier-grid/);
+  assert.match(css, /\.case-study-source-list/);
+});
+
+test('portfolio distinguishes in-progress release lines from stable demo releases', () => {
+  assert.match(projectData, /In development · v0\.2\.3-dev \/ M09\.6/);
+  assert.match(projectData, /Apps Script 1\.4\.0 target/);
+  assert.match(productDossiers, /do not process real sales|No real payment or fulfillment/i);
+  assert.match(productDossiers, /not assumed successful|not be assumed successful/i);
 });
