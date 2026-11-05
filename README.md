@@ -15,6 +15,10 @@ Build a polished, bilingual (Persian/English), responsive, offline-capable Spati
 - **Not supported:** direct cross-origin fetch from GitHub Pages to the GAS ContentService endpoint. A real Chromium test observed a missing `Access-Control-Allow-Origin` header.
 - **No Cloudflare dependency** and no mandatory paid backend service.
 
+## Platform preview
+
+The React + TypeScript workspace source lives in [`apps/platform`](apps/platform). It has dual build targets: a static GitHub Pages preview and a single-file HtmlService bundle. The current first slice includes the responsive desktop/mobile shell, app windows, command palette, Persian/English toggle, light/dark theme, and an optional cursor refraction field. See [DESIGN-DIRECTION.md](docs/DESIGN-DIRECTION.md) for the visual rules and known demo-only features.
+
 ## Non-negotiable project constraints
 
 - Do not claim that Google Apps Script + Sheets provides relational ACID transactions or guaranteed real-time latency.
@@ -39,10 +43,10 @@ Start here:
 ## Repository map
 
 - `docs/`: roadmap, architecture, contracts, deployment, security/data classification, recovery, and decision records.
-- `apps/`: user-facing applications (introduced after the shell architecture is settled).
+- `apps/platform/`: React + TypeScript Spatial OS shell and dual-host Vite build.
 - `packages/`: reusable platform packages (introduced after Phase 0).
 - `apps-script/`: Google Apps Script application entry and backend RPC.
-- `tests/`: automated and browser integration tests.
+- `tests/`: automated source-contract and browser integration tests.
 
 ## Project identity
 
