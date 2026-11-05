@@ -1,28 +1,27 @@
-# Next Task — Curate project content and build case-study structure
+# Next Task — Build project case-study pages
 
-**Task ID:** P3-01
-**Title:** Turn the portfolio draft into a verified project showcase
-**Status:** Root portfolio implemented; CI green (22/22 tests), Pages UI build deployed; content review pending
+**Task ID:** P3-02  
+**Title:** Turn the typed project catalogue into evidence-rich case studies  
+**Status:** Typed project registry implemented; latest contract-test correction is awaiting CI; Pages build for registry-backed UI succeeded
 
 ## Current implementation
-- Public portfolio is now the default root experience.
-- Persian/English hero, About, selected projects, focus areas, technology stack, and contact sections.
-- Eight project cards with explicit prototype / in-development status.
-- One exact verified AetherFlow source link; other repository links are intentionally withheld until verified.
-- Dark obsidian visual direction with cyan/emerald accents, layered glass surfaces, and reduced-motion/touch-safe pointer refraction.
-- Existing Spatial OS shell remains accessible as a secondary workspace.
-- Versioned built-in app manifest v1 powers the workspace rail, dock, app cards, and command palette.
+- Public portfolio is the default root experience, with Persian/English introduction, About, selected work, focus areas, technologies, and contact.
+- Eight project entries live in a separate typed registry at apps/platform/src/content/projects.ts.
+- The registry checks URL-safe unique slugs, unique names, complete bilingual descriptions, non-empty tags, supported project statuses, and HTTPS source links restricted to approved hosts.
+- Every current project entry is marked needs-owner-review. Only the exact verified AetherFlow repository link is published.
+- Root portfolio includes the dark portfolio layout and optional refraction lens; the Spatial OS is a secondary workspace.
+- Full-site redesign with Pooya's feedback is a required pre-release Phase 7 gate.
 
 ## Priority next
-1. Keep the root portfolio build green as content work proceeds.
-2. Establish a validated typed content schema for the public profile, project cards, links, status, and case-study sections.
-3. Move the inline project list into a content registry with draft/published states.
-4. Curate the initial featured-project order with Pooya and request only facts needed to make the public descriptions accurate.
-5. Build reusable case-study page templates and connect each featured card to a real case-study route as content becomes available.
-6. Add verified links, screenshots, demos, page metadata, and accessible media handling.
+1. Verify CI run 42045396058 after the latest test update; the previous TypeScript and build stages passed, but a test still referenced the old in-component project data location.
+2. Add a typed case-study model with sections for context, problem, Pooya's contribution, architecture, implementation, decisions, validation, outcomes, and media.
+3. Add project detail routes using the stable project slugs.
+4. Curate the featured-project order with Pooya and request only the facts needed to make each public case study accurate.
+5. Add verified repository/demo/release links, screenshots, captions, alt text, and lazy-loaded media.
+6. Add page-level SEO and social preview metadata for shareable project pages.
 
-## Mandatory release requirement
-A complete public-site redesign based on Pooya's feedback is a release-blocking Phase 7. The current homepage is a functional draft only. Before V1, present a full design for review, record Pooya's feedback, redesign the whole site, run a second review, and obtain explicit approval. See DESIGN-DIRECTION.md and ROADMAP.md.
+## Owner review and release gate
+The current homepage and project descriptions are drafts. The final release must wait for the complete redesign and two owner feedback rounds in Phase 7. Record Pooya's feedback and obtain his explicit approval before V1.
 
 ## Boundaries
 - Keep the public portfolio as the product center of gravity.
