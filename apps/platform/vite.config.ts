@@ -29,6 +29,7 @@ const pageCopy = {
     highlights: 'قابلیت‌ها و نکات فنی',
     boundaries: 'محدوده و محدودیت‌ها',
     sources: 'مستندات و منابع',
+    interfaceCaptures: 'تصاویر واقعی رابط کاربری',
     portfolio: 'پورتفولیوی مهندسی نرم‌افزار',
     siteDescription: 'پروژه‌ها، تصمیم‌های فنی و آزمایش‌های نرم‌افزاری Pooya Labs.'
   },
@@ -46,6 +47,7 @@ const pageCopy = {
     highlights: 'Capabilities & highlights',
     boundaries: 'Scope & boundaries',
     sources: 'Documentation & sources',
+    interfaceCaptures: 'Interface captures',
     portfolio: 'Software engineering portfolio',
     siteDescription: 'Software projects, engineering decisions, and experiments by Pooya Labs.'
   }
@@ -92,6 +94,16 @@ function renderStaticCaseStudy(project: PortfolioProject, locale: Locale): strin
   const references = dossier.references.map((reference) =>
     `<a href="${escapeHtml(reference.url)}" target="_blank" rel="noopener noreferrer"><span>${escapeHtml(reference.label[locale])}</span><span aria-hidden="true">↗</span></a>`
   ).join('');
+  const media = (project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop');
+  const mediaSection = media.length
+    ? `<section class="case-study-media-section">
+        <div class="portfolio-eyebrow"><span class="eyebrow-index">05 /</span>${t.interfaceCaptures}</div>
+        <div class="case-study-media-grid">${media.map((item) => `<figure class="case-study-media-card device-${item.device}">
+          <img src="${escapeHtml(item.url)}" alt="${escapeHtml(item.alt[locale])}" loading="lazy" decoding="async">
+          <figcaption>${escapeHtml(item.caption[locale])}</figcaption>
+        </figure>`).join('')}</div>
+      </section>`
+    : '';
 
   return `<main class="case-study-main portfolio-container">
     <a class="case-study-back" href="${SITE_BASE}#projects">← ${t.back}</a>
@@ -114,6 +126,7 @@ function renderStaticCaseStudy(project: PortfolioProject, locale: Locale): strin
           </div>
         </div>
       </header>
+      ${mediaSection}
       <section class="case-study-section-grid">
         <article class="case-study-panel"><div class="portfolio-eyebrow"><span class="eyebrow-index">01 /</span>${t.challenge}</div><p>${escapeHtml(project.caseStudy.challenge[locale])}</p></article>
         <article class="case-study-panel"><div class="portfolio-eyebrow"><span class="eyebrow-index">02 /</span>${t.approach}</div><p>${escapeHtml(project.caseStudy.approach[locale])}</p></article>
