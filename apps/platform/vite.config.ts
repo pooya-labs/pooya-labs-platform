@@ -88,8 +88,9 @@ function renderStaticCaseStudy(project: PortfolioProject, locale: Locale): strin
   const diagram = architectureDiagrams[project.slug];
   if (!diagram) throw new Error('Missing architecture diagram for ' + project.slug);
   const diagramPath = `${SITE_BASE}architecture/${project.slug}${locale === 'en' ? '-en' : ''}.svg`;
-  const visual = project.visualAsset
-    ? `<img class="case-study-visual-image visual-${project.visualAsset.kind}" src="${escapeHtml(project.visualAsset.url)}" alt="${escapeHtml(project.visualAsset.alt[locale])}" loading="eager" decoding="async">`
+  const heroVisual = project.caseStudyHeroAsset ?? project.visualAsset;
+  const visual = heroVisual
+    ? `<img class="case-study-visual-image visual-${heroVisual.kind}" src="${escapeHtml(heroVisual.url)}" alt="${escapeHtml(heroVisual.alt[locale])}" loading="eager" decoding="async">`
     : '';
   const tags = project.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('');
   const references = dossier.references.map((reference) =>
