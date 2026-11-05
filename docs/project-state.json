@@ -14,7 +14,7 @@
   "lastCheckpointDate": "2026-11-05",
   "latestVerifiedCodeCommit": "18baea6e31a28ff95fc2964c89d9b8787e3ecf7f",
   "tests": {
-    "repositoryCi": "passed-run-42059342492",
+    "repositoryCi": "passed-run-42060558950",
     "repositoryCiTestCount": 29,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
@@ -23,15 +23,16 @@
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
     "githubPagesDeployment": "passed-run-42058556955",
-    "platformTypecheck": "passed-run-42059342492",
-    "pagesAndGasBuilds": "passed-run-42059342492",
+    "platformTypecheck": "passed-run-42060558950",
+    "pagesAndGasBuilds": "passed-run-42060558950",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "pending-owner-review",
     "vitePagesWorkflow": "passed-run-42058556955",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "not-yet-verified-after-legacy-branch-build",
-    "portfolioContractTests": "passed-29-of-29-run-42059342492",
-    "latestPreviousPagesDeployment": "passed-run-42043972152"
+    "portfolioContractTests": "passed-29-of-29-run-42060558950",
+    "latestPreviousPagesDeployment": "passed-run-42043972152",
+    "docsCheckpoint": "passed-run-42060558950"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -113,7 +114,7 @@
     "designDocument": "docs/DESIGN-DIRECTION.md",
     "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
   },
-  "latestVerifiedCommit": "9c2c035b2a14a0946383276cc34fa3f77e9c266e",
+  "latestVerifiedCommit": "b8329f3ebf2db733bdf1fea0d095a83892dfe459",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -139,7 +140,7 @@
     "perProjectSocialImages": false,
     "sitemap": true
   },
-  "latestVerifiedTestCommit": "9c2c035b2a14a0946383276cc34fa3f77e9c266e",
+  "latestVerifiedTestCommit": "b8329f3ebf2db733bdf1fea0d095a83892dfe459",
   "caseStudyDossiers": {
     "bilingual": true,
     "projectCount": 8,
