@@ -26,7 +26,7 @@
 - [x] Added portfolio contract tests and corrected a manifest-test counting issue.
 
 ## CI and publishing status
-- <badge>CI green</badge>
+- CI status: green.
 - Repository CI [42044256942](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42044256942) passed TypeScript, both Pages/Apps Script build targets, artifact upload, and **22/22 contract tests**.
 - GitHub Pages deployment [42044251451](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42044251451) succeeded for the portfolio UI commit.
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
