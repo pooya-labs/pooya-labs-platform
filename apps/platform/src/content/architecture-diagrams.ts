@@ -112,7 +112,7 @@ export const architectureDiagrams: Record<string, ArchitectureDiagram> = {
       { from: 'controls', to: 'storage' }
     ]
   },
-  aurapulse: {
+  'aura-pulse': {
     title: { fa: 'داده بازار در برابر معامله آزمایشی', en: 'Market data versus paper trading' },
     caption: { fa: 'ticker عمومی در صورت دسترسی؛ chart و حساب آزمایشی در مرورگر، بدون سفارش واقعی', en: 'Public tickers when reachable; charts and demo account stay in-browser with no real orders' },
     nodes: [
