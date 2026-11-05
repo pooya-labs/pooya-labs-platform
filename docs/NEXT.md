@@ -1,34 +1,37 @@
 # Next Task — Phase 0
 
-**Task ID:** P0-04  
-**Title:** Consolidate the HtmlService-first runtime and verify the revised deployed proof  
-**Status:** Repository changes prepared; owner-side GAS sync is the remaining verification step
+**Task ID:** P0-05  
+**Title:** Finalize the public/admin security boundary and approve Phase 0 release gates  
+**Status:** Repository-side proposal prepared; owner approval required before privileged features
 
-## Evidence and decision
-- The owner previously confirmed that `google.script.run.rpcHealth()` works from the deployed HtmlService page.
-- GitHub-hosted Chromium loaded the published Pages harness and attempted the `text/plain` POST against the supplied GAS `/exec` URL.
-- Chromium Console reported that the response had no `Access-Control-Allow-Origin` header; Fetch failed with `TypeError: Failed to fetch`.
-- The result proves the browser cannot read the direct cross-origin response. It does not independently prove whether `doPost` executed.
-- ADR-0003 records the HtmlService-first decision.
+## Confirmed progress
+- The owner copied the revised `Code.gs` and `Index.html` into the existing Apps Script project, deployed a new Web App version, and ran the revised page.
+- The returned response included `ok: true`, `data.transport: "google.script.run"`, `error: null`, and a new `requestId`. This closes the owner-side portion of P0-04.
+- Real Chromium reproduced the external Pages-to-GAS CORS restriction. HtmlService is the primary runtime; Pages is public/static only.
+- Repository CI passes the current 9 contract tests.
 
-## Repository-side changes
-- The canonical Apps Script entry serves the UI through `doGet`.
-- The public `rpcCall(request)` method accepts a versioned envelope and dispatches only `health.check` during Phase 0.
-- The old `rpcHealth()` method remains as a temporary compatibility wrapper.
-- The direct ContentService `doPost` endpoint has been removed from the canonical source.
-- GitHub Pages is designated for static docs, showcase pages, and isolated demos; it is not a direct GAS API client.
+## Recommended security boundary
+- Public app: a deliberately limited HtmlService deployment. Never expose admin, secret-management, export, or privileged data operations in it.
+- Admin app: separate Apps Script project/deployment with access restricted to the deploying owner (`MYSELF`) unless a tested Workspace multi-admin model is later approved.
+- Do not use a hidden admin button, a client-side role flag, request IDs, temporary user keys, or `Session.getActiveUser().getEmail()` in an execute-as-owner public deployment as the authorization boundary.
+- Keep private/restricted data out of public GitHub Pages and public app responses.
+- No protected operation is enabled in the Phase 0 RPC.
 
-## Owner-side verification needed
-1. Copy the current `apps-script/Code.gs` and `apps-script/Index.html` into the already-created Apps Script project.
-2. Save and create a new Web App deployment version.
-3. Open the new `/exec` URL and run the health check.
-4. Verify a response with `ok: true` and `data.transport: "google.script.run"`.
+## Owner approval needed
+Review:
+- [SECURITY-MODEL.md](SECURITY-MODEL.md)
+- [DATA-CLASSIFICATION.md](DATA-CLASSIFICATION.md)
+- [PERFORMANCE-BUDGETS.md](PERFORMANCE-BUDGETS.md)
+- [DEPLOYMENT.md](DEPLOYMENT.md)
 
-Do not paste the deployment URL into the repository or add customer/admin data to this proof.
+Confirm the direction before any admin, private-data, or mutation endpoint is implemented.
 
-## Remaining Phase 0 gates
-- Review and approve [SECURITY-MODEL.md](SECURITY-MODEL.md) and [DATA-CLASSIFICATION.md](DATA-CLASSIFICATION.md); finalize admin authorization, abuse controls, and retention/deletion policy.
-- Set measurable UI and RPC performance budgets using the intended devices and networks.
-- Document data consistency semantics and the operational backup/restore path.
-- Establish a repeatable Apps Script source sync/deployment workflow (evaluate `clasp` only after the manual proof is updated).
-- No previous project repository may be modified; all integrations remain deferred to Phase 9.
+## Remaining Phase 0 verification
+1. Measure first-load and interaction performance on the target desktop and mobile devices.
+2. Run the documented deployment rollback rehearsal while the app still contains only the health check.
+3. Approve the eventual storage ownership, access list, backup frequency, retention, and restore procedure before creating production Sheets.
+4. Recheck the current Apps Script quotas when estimating a real workload; Google may change limits without notice.
+5. Complete the Phase 0 review and only then begin the Phase 1 toolchain.
+
+## Non-negotiable scope
+Do not modify or import any previous project repository. All integration remains deferred to Phase 9.
