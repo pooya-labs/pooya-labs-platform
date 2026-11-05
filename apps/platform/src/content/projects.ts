@@ -191,7 +191,7 @@ const projectEntries: PortfolioProject[] = [
   },
   {
     number: '08',
-        visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/salon-booking/787160782f82929fa0d8395f8f5d067f2f028257/public/images/shayan-hero.webp', kind: 'brand', alt: { fa: 'تصویر هدر برند نمونه Salon Booking', en: 'Salon Booking demo brand hero image' } },
+        visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/salon-booking/787160782f82929fa0d8395f8f5d067f2f028257/public/images/shayan-barber-logo.webp', kind: 'brand', alt: { fa: 'تصویر هدر برند نمونه Salon Booking', en: 'Salon Booking demo brand hero image' } },
     slug: 'salon-booking',slug: 'salon-booking',
     name: 'Salon Booking',
     caseStudy: {
@@ -247,6 +247,16 @@ export function validatePortfolioProjects(entries: readonly PortfolioProject[]):
     assertHttpsUrl(project.previewUrl, ['.github.io'], 'Project preview URL');
     if (project.caseStudyUrl) {
       assertHttpsUrl(project.caseStudyUrl, ['.github.io'], 'Project case-study URL');
+    }
+    if (project.visualAsset) {
+      assertHttpsUrl(project.visualAsset.url, ['raw.githubusercontent.com'], 'Project visual asset URL');
+      const assetPath = new URL(project.visualAsset.url).pathname;
+      if (!/^\\/pooya-labs\\/[a-z0-9-]+\\/[a-f0-9]{40}\\//.test(assetPath)) {
+        throw new Error('Project visual assets must be pinned to an immutable source commit.');
+      }
+      if (!project.visualAsset.alt.fa.trim() || !project.visualAsset.alt.en.trim()) {
+        throw new Error('Every project visual asset requires Persian and English alternative text.');
+      }
     }
     slugs.add(project.slug);
     names.add(project.name.toLowerCase());
