@@ -12,8 +12,8 @@
 - The GitHub Pages harness was reachable from the GitHub-hosted Chromium runner.
 - The real-browser POST to the supplied GAS `/exec` URL failed with `TypeError: Failed to fetch`; repeatable diagnostic run [42028842302](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42028842302) classified it as `blocked_by_cors`.
 - Chromium reported that the response lacked `Access-Control-Allow-Origin`. The browser could not read the response; this does not establish whether Apps Script executed `doPost`.
-- Repository CI run [42029509895](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42029509895) passed all 9 source-contract tests.
-- GitHub Pages build/deployment run [42029509859](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42029509859) succeeded.
+- Latest repository CI run [42031242334](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42031242334) passed all 9 source-contract tests.
+- Latest GitHub Pages build/deployment run [42031242859](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42031242859) succeeded.
 
 ## Completed
 - [x] Repository identity, scope, and agent rules established.
