@@ -9,7 +9,7 @@ This repository, not chat history, is the source of truth.
 4. Read `docs/STATUS.md`, `docs/NEXT.md`, and the relevant `docs/ROADMAP.md) phase.
 5. Inspect the latest commits and working tree before editing.
 6. Read the architecture and ADRs related to the next task.
-7. Continue only the task named in `docs/NEXT.md). Do not redo completed work without evidence of regression.
+7. Continue only the task named in `docs/NEXT.md`. Do not redo completed work without evidence of regression.
 8. After a milestone, run checks and update all state/handoff files in the same commit.
 
 ## Required checkpoint fields
@@ -43,4 +43,4 @@ Also keep a normal remote clone where possible. Do not commit the bundle to the 
 - Never reset, force-push, or overwrite unknown user changes without explicit authorization.
 
 ## Security
-Never store tokens, passwords, private keys, deployment credentials, customer records, or personal booking information in Git. Use local ignored environment files and server-side script properties.
+Never store tokens, passwords, private keys, deployment URLs/IDs when avoidable, customer records, or personal booking information in Git. Use GitHub Actions secrets for CI-only values and server-side Script Properties for runtime secrets. The browser diagnostic workflow expects `GAS_WEB_APP_URL` as a repository Actions secret; it is intentionally not stored in the workflow source.
