@@ -208,7 +208,11 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
                   <div className="project-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
                   <div className="project-card-footer">
                     <span>{t.status}: {project.status[language]}</span>
-                    <div className="project-actions">{project.previewUrl && <a href={project.previewUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.demo}`}><Monitor size={13} />{t.demo}<ExternalLink size={11} /></a>}{project.caseStudyUrl && <a href={project.caseStudyUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.caseStudyReady}`}><BookOpen size={13} />{t.caseStudyReady}<ExternalLink size={11} /></a>}{project.repositoryUrl && <a href={project.repositoryUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.source}`}><Code2 size={13} />{t.source}<ExternalLink size={11} /></a>}</div>
+                    <div className="project-actions">
+                      <a href={project.previewUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.demo}`}><Monitor size={13} />{t.demo}<ExternalLink size={11} /></a>
+                      {project.caseStudyUrl && <a href={project.caseStudyUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.caseStudyReady}`}><BookOpen size={13} />{t.caseStudyReady}<ExternalLink size={11} /></a>}
+                      <a href={project.repositoryUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.source}`}><Code2 size={13} />{t.source}<ExternalLink size={11} /></a>
+                    </div>
                   </div>
                 </div>
               </article>
