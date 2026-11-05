@@ -7,6 +7,7 @@ const portfolio = await readFile(new URL('../../apps/platform/src/PortfolioHome.
 const projectData = await readFile(new URL('../../apps/platform/src/content/projects.ts', import.meta.url), 'utf8');
 const metadata = await readFile(new URL('../../apps/platform/index.html', import.meta.url), 'utf8');
 const css = await readFile(new URL('../../apps/platform/src/portfolio.css', import.meta.url), 'utf8');
+const sitemap = await readFile(new URL('../../apps/platform/public/sitemap.xml', import.meta.url), 'utf8');
 
 test('the root experience is the personal portfolio and the workspace is secondary', () => {
   assert.match(app, /return <PortfolioHome language=/);
@@ -102,4 +103,14 @@ test('portfolio includes canonical, social, structured-data, and brand metadata'
   assert.match(portfolio, /document\.title = pageTitle/);
   assert.match(portfolio, /og:url/);
   assert.match(portfolio, /link\[rel="canonical"\]/);
+});
+
+test('sitemap lists the public portfolio and all eight shareable case-study URLs', () => {
+  assert.match(sitemap, /<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/);
+  const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  assert.equal(locations.length, 9);
+  assert.ok(locations.includes('https://pooya-labs.github.io/pooya-labs-platform/'));
+  for (const slug of ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'global-cart', 'salon-booking']) {
+    assert.ok(locations.includes('https://pooya-labs.github.io/pooya-labs-platform/?project=' + slug));
+  }
 });
