@@ -150,7 +150,7 @@ const projectEntries: PortfolioProject[] = [
 
 function assertHttpsUrl(value: string, allowedHosts: readonly string[], label: string): void {
   const url = new URL(value);
-  if (url.protocol !== 'https:' || !allowedHosts.includes(url.hostname)) {
+  if (url.protocol !== 'https:' || !allowedHosts.some((host) => host.startsWith('.') ? url.hostname.endsWith(host) : url.hostname === host)) {
     throw new Error(label + ' must use HTTPS on an approved host.');
   }
 }
@@ -178,9 +178,9 @@ export function validatePortfolioProjects(entries: readonly PortfolioProject[]):
       throw new Error('Unsupported project status.');
     }
     assertHttpsUrl(project.repositoryUrl, ['github.com'], 'Source repository URL');
-    assertHttpsUrl(project.previewUrl, ['github.io'], 'Project preview URL');
+    assertHttpsUrl(project.previewUrl, ['.github.io'], 'Project preview URL');
     if (project.caseStudyUrl) {
-      assertHttpsUrl(project.caseStudyUrl, ['pooya-labs.github.io'], 'Project case-study URL');
+      assertHttpsUrl(project.caseStudyUrl, ['.github.io'], 'Project case-study URL');
     }
     slugs.add(project.slug);
     names.add(project.name.toLowerCase());
