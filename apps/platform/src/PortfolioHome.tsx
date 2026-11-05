@@ -136,7 +136,7 @@ function PointerLens(): ReactNode {
 function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { project: PortfolioProject; language: Language; onLanguageChange: (language: Language) => void; onBack: () => void }): ReactNode {
   const t = text[language];
   const rtl = language === 'fa';
-  const dossier = ((coreDossiers as Record<string, CaseStudyDossier>)[project.slug] ?? (productDossiers as Record<string, CaseStudyDossier>)[project.slug])!;
+  const dossier = ((coreDossiers as unknown as Record<string, CaseStudyDossier>)[project.slug] ?? (productDossiers as unknown as Record<string, CaseStudyDossier>)[project.slug])!;
   return (
     <div className={`portfolio-page portfolio-case-study ${rtl ? 'is-rtl' : 'is-ltr'}`}>
       <PointerLens />
