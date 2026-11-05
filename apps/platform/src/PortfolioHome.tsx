@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpLeft, ArrowUpRight, Code2, ExternalLink, Layers3, Sparkles, TerminalSquare, Workflow } from 'lucide-react';
+import { ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Layers3, Monitor, Sparkles, TerminalSquare, Workflow } from 'lucide-react';
 import { useEffect, useRef, type ReactNode } from 'react';
 import { portfolioProjects as projects } from './content/projects';
 
@@ -20,7 +20,7 @@ const text = {
     headlineA: 'ایده‌ها را',
     headlineB: 'به تجربه‌های دیجیتال',
     headlineC: 'تبدیل می‌کنم.',
-    intro: 'من پویا هستم؛ دانشجوی مهندسی کامپیوتر و سازنده پروژه‌های نرم‌افزاری. اینجا مسیر ساخت، آزمایش‌ها و پروژه‌هایی را می‌بینی که روی آن‌ها کار می‌کنم.',
+    intro: 'من پویا هستم؛ دانشجوی مهندسی کامپیوتر با تمرکز بر طراحی محصول، مهندسی فرانت‌اند و تفکر سیستمی. اینجا پروژه‌هایی را می‌بینی که می‌سازم، همراه با مسیر فنی، تصمیم‌ها و وضعیت واقعی هرکدام.',
     explore: 'دیدن پروژه‌ها',
     github: 'گیت‌هاب من',
     scroll: 'برای آشنایی بیشتر پایین برو',
@@ -28,13 +28,13 @@ const text = {
     selectedSub: 'پروژه‌ها و آزمایش‌هایی که بخشی از مسیر یادگیری و مهندسی من هستند.',
     allProjects: '۸ پروژه در ویترین',
     aboutEyebrow: 'کمی درباره من',
-    aboutTitle: 'از کنجکاوی فنی تا ساخت محصول.',
-    aboutBody: 'برای من برنامه‌نویسی فقط نوشتن کد نیست؛ مسئله را می‌فهمم، راه‌حل را طراحی می‌کنم، رابط را می‌سازم و با تست و بازبینی بهبودش می‌دهم. این وب‌سایت هم قرار است روایت شفاف همین مسیر باشد؛ با نمونه‌های واقعی، تصمیم‌های فنی و پیشرفت پروژه‌ها.',
+    aboutTitle: 'از طراحی محصول تا ساخت سیستم‌های نرم‌افزاری.',
+    aboutBody: 'در پروژه‌هایم از رابط‌های تعاملی و ابزارهای بصری تا سیستم‌های توزیع‌شده، داشبوردهای داده و محصولات وب کار کرده‌ام. تلاشم این است که هر پروژه با معماری مشخص، مرزهای روشن، تست و توضیح صادقانه از وضعیت واقعی ارائه شود.',
     focus: 'حوزه‌های تمرکز',
-    focus1: 'ساخت رابط‌های مدرن و واکنش‌گرا',
-    focus2: 'معماری و توسعه اپلیکیشن‌های وب',
-    focus3: 'ابزارهای تعاملی و تجربه‌های بصری',
-    focus4: 'اتوماسیون، یکپارچه‌سازی و تحویل نرم‌افزار',
+    focus1: 'طراحی محصول و مهندسی فرانت‌اند',
+    focus2: 'سیستم‌های توزیع‌شده و مشاهده‌پذیری',
+    focus3: 'ابزارهای بصری و تجربه‌های تعاملی',
+    focus4: 'محصولات داده‌محور و اتوماسیون',
     stackEyebrow: 'جعبه ابزار',
     stackTitle: 'فناوری‌هایی که با آن‌ها می‌سازم.',
     stackSub: 'فهرست اولیه ابزارهای استفاده‌شده در پروژه‌ها؛ با رشد نمونه‌کارها دقیق‌تر می‌شود.',
@@ -47,6 +47,7 @@ const text = {
     language: 'English',
     status: 'وضعیت پروژه',
     caseStudy: 'مطالعه موردی به‌زودی',
+    demo: 'دمو', source: 'سورس', caseStudyReady: 'مطالعه موردی',
   },
   en: {
     navAbout: 'About',
@@ -57,7 +58,7 @@ const text = {
     headlineA: 'Turning ideas',
     headlineB: 'into thoughtful',
     headlineC: 'digital experiences.',
-    intro: 'I’m Pooya, a computer engineering student building software projects. This is where I share the process, experiments, and products I work on.',
+    intro: 'I’m Pooya, a computer engineering student focused on product design, frontend engineering, and systems thinking. Here I share the projects I build, along with their technical journey, decisions, and honest current status.',
     explore: 'Explore projects',
     github: 'My GitHub',
     scroll: 'Scroll to explore',
@@ -65,13 +66,13 @@ const text = {
     selectedSub: 'Projects and experiments that are part of my engineering journey.',
     allProjects: '8 projects featured',
     aboutEyebrow: 'A little about me',
-    aboutTitle: 'From technical curiosity to building products.',
-    aboutBody: 'For me, software is more than writing code: understand the problem, shape the solution, build the interface, then improve it through testing and review. This site is the transparent story of that process—with real work, engineering decisions, and project progress.',
+    aboutTitle: 'From product design to building software systems.',
+    aboutBody: 'My projects span interactive interfaces and visual tools, distributed systems, data dashboards, and web products. I aim to present each one with a clear architecture, honest boundaries, testing, and an accurate account of its current state.',
     focus: 'Areas of focus',
-    focus1: 'Modern, responsive interfaces',
-    focus2: 'Web application architecture and development',
-    focus3: 'Interactive tools and visual experiences',
-    focus4: 'Automation, integrations, and software delivery',
+    focus1: 'Product design and frontend engineering',
+    focus2: 'Distributed systems and observability',
+    focus3: 'Visual tools and interactive experiences',
+    focus4: 'Data-driven products and automation',
     stackEyebrow: 'Toolbox',
     stackTitle: 'Technologies I build with.',
     stackSub: 'An initial list of tools used across these projects; it will become more precise as case studies are published.',
@@ -84,6 +85,7 @@ const text = {
     language: 'فارسی',
     status: 'Project status',
     caseStudy: 'Case study coming soon',
+    demo: 'Live demo', source: 'Source', caseStudyReady: 'Case study',
   },
 } satisfies Record<Language, Record<string, string>>;
 
@@ -167,7 +169,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
             <p className="portfolio-intro">{t.intro}</p>
             <div className="portfolio-hero-actions">
               <a className="portfolio-primary" href="#projects">{t.explore}<ArrowDown size={16} /></a>
-              <a className="portfolio-secondary" href="https://github.com/pooya16pg-spec" target="_blank" rel="noreferrer"><Code2 size={17} />{t.github}<ExternalLink size={13} /></a>
+              <a className="portfolio-secondary" href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><Code2 size={17} />{t.github}<ExternalLink size={13} /></a>
             </div>
             <div className="portfolio-social-proof"><span className="proof-line" /><span>POOYA LABS</span><span className="proof-dot">·</span><span>BUILDING IN PUBLIC</span></div>
           </div>
@@ -206,7 +208,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
                   <div className="project-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
                   <div className="project-card-footer">
                     <span>{t.status}: {project.status[language]}</span>
-                    {project.href ? <a href={project.href} target="_blank" rel="noreferrer" aria-label={`${project.name} GitHub repository`}><Code2 size={15} /> <ArrowUpRight size={14} /></a> : <span className="project-coming-soon">{t.caseStudy}</span>}
+                    <div className="project-actions">{project.previewUrl && <a href={project.previewUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.demo}`}><Monitor size={13} />{t.demo}<ExternalLink size={11} /></a>}{project.caseStudyUrl && <a href={project.caseStudyUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.caseStudyReady}`}><BookOpen size={13} />{t.caseStudyReady}<ExternalLink size={11} /></a>}{project.repositoryUrl && <a href={project.repositoryUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.source}`}><Code2 size={13} />{t.source}<ExternalLink size={11} /></a>}</div>
                   </div>
                 </div>
               </article>
@@ -233,7 +235,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
             <TerminalSquare size={32} strokeWidth={1.2} />
           </div>
           <div className="stack-list">
-            {['React', 'TypeScript', 'JavaScript', 'Vite', 'HTML & CSS', 'Google Apps Script', 'GitHub Actions', 'Node.js'].map((technology, index) => (
+            {['Rust', 'Next.js', 'React', 'TypeScript', 'Go', 'PostgreSQL', 'NATS JetStream', 'OpenTelemetry', 'Vite', 'Google Apps Script', 'SVG / Canvas', 'Web Audio API'].map((technology, index) => (
               <span key={technology}><small>0{index + 1}</small>{technology}</span>
             ))}
           </div>
@@ -244,14 +246,14 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
           <div className="portfolio-eyebrow"><span className="eyebrow-index">04 /</span>{t.contactEyebrow}</div>
           <h2>{t.contactTitle}</h2>
           <p>{t.contactBody}</p>
-          <a className="portfolio-primary" href="https://github.com/pooya16pg-spec" target="_blank" rel="noreferrer">{t.contactAction}<ArrowUpRight size={16} /></a>
+          <a className="portfolio-primary" href="https://github.com/pooya-labs" target="_blank" rel="noreferrer">{t.contactAction}<ArrowUpRight size={16} /></a>
         </section>
       </main>
 
       <footer className="portfolio-footer portfolio-container">
         <a className="portfolio-brand" href="#top"><span className="portfolio-brand-mark">P<span>.</span></span><span><strong>POOYA LABS</strong><small>PERSONAL PORTFOLIO</small></span></a>
         <span>{t.footer}</span>
-        <a href="https://github.com/pooya16pg-spec" target="_blank" rel="noreferrer"><Code2 size={17} /> GitHub</a>
+        <a href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><Code2 size={17} /> GitHub</a>
         <small>© {new Date().getFullYear()} POOYA LABS</small>
       </footer>
     </div>
