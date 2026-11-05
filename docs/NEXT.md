@@ -1,44 +1,34 @@
 # Next Task — Phase 0
 
-**Task ID:** P0-03  
-**Title:** Diagnose the failed external GAS POST in browser DevTools  
-**Status:** Waiting for owner-side Network and Console evidence
+**Task ID:** P0-04  
+**Title:** Consolidate the HtmlService-first runtime and verify the revised deployed proof  
+**Status:** Repository changes prepared; owner-side GAS sync is the remaining verification step
 
-## Repository-side progress
-- Added Node.js built-in contract tests for the static external transport harness.
-- Added GitHub Actions CI to run the tests on pushes and pull requests to `main`.
-- The first CI run is pending; these tests validate the harness source contract only and do not prove browser-to-GAS connectivity.
+## Evidence and decision
+- The owner previously confirmed that `google.script.run.rpcHealth()` works from the deployed HtmlService page.
+- GitHub-hosted Chromium loaded the published Pages harness and attempted the `text/plain` POST against the supplied GAS `/exec` URL.
+- Chromium Console reported that the response had no `Access-Control-Allow-Origin` header; Fetch failed with `TypeError: Failed to fetch`.
+- The result proves the browser cannot read the direct cross-origin response. It does not independently prove whether `doPost` executed.
+- ADR-0003 records the HtmlService-first decision.
 
-## Current evidence
-- The owner deployed the Apps Script proof as Version 1.
-- HtmlService `google.script.run.rpcHealth()` passed; the returned object had `ok: true` and `transport: "google.script.run"`.
-- The GitHub Pages test harness loaded successfully.
-- Its external `text/plain` POST returned `TypeError: NetworkError when attempting to fetch resource` after approximately 704 ms.
-- The Apps Script Executions rows supplied by the owner showed `doGet` and `rpcHealth`, but no `doPost` row.
-- This does not yet identify whether the request was blocked before reaching Apps Script, failed on a redirect, or reached another stage not represented in the supplied rows. Do not label the root cause yet.
+## Repository-side changes
+- The canonical Apps Script entry serves the UI through `doGet`.
+- The public `rpcCall(request)` method accepts a versioned envelope and dispatches only `health.check` during Phase 0.
+- The old `rpcHealth()` method remains as a temporary compatibility wrapper.
+- The direct ContentService `doPost` endpoint has been removed from the canonical source.
+- GitHub Pages is designated for static docs, showcase pages, and isolated demos; it is not a direct GAS API client.
 
-## Owner action required
-Use the same GitHub Pages test page and the same deployed `/exec` endpoint:
+## Owner-side verification needed
+1. Copy the current `apps-script/Code.gs` and `apps-script/Index.html` into the already-created Apps Script project.
+2. Save and create a new Web App deployment version.
+3. Open the new `/exec` URL and run the health check.
+4. Verify a response with `ok: true` and `data.transport: "google.script.run"`.
 
-1. Open the test page.
-2. Open browser Developer Tools with `F12`.
-3. Select the **Network** tab. Clear the existing entries; enable **Preserve log** if available.
-4. Return to the page and click **Test text/plain POST** once.
-5. In Network, locate requests whose host is `script.google.com` or `script.googleusercontent.com`. Check both `POST` and any `OPTIONS` request.
-6. Record the request method, status (or blocked/failed label), request URL host/path only (do not share the deployment ID), redirect/Location destination host, and whether a response body is readable.
-7. Open the **Console** tab and copy the exact CORS/network error text.
-8. Re-open Apps Script → Executions and check whether a `doPost` row appeared at that test time.
+Do not paste the deployment URL into the repository or add customer/admin data to this proof.
 
-Share only the sanitized findings. Do not share the full `/exec` URL, cookies, tokens, or request credentials.
-
-## Decision gate
-- If the POST reaches `doPost` but the browser cannot read the redirected response, document the redirect/CORS behavior and choose the runtime architecture accordingly.
-- If no POST reaches Apps Script, use Network evidence to identify whether the request is blocked by the browser, DNS/network, account access, or another upstream stage.
-- Do not add JSONP, `no-cors`, or an unaudited proxy as a claimed fix. `no-cors` produces an opaque response that JavaScript cannot inspect.
-- Keep HtmlService + `google.script.run` as the proven internal transport. Treat the external GitHub Pages → GAS transport as unproven until an actual browser response is readable.
-
-## Acceptance criteria
-- A sanitized Network/Console trace is recorded.
-- The presence or absence of a `doPost` execution is checked after the test.
-- ADR-0002, ARCHITECTURE.md, STATUS.md, project-state.json, NEXT.md, and CHANGELOG.md are updated based on the evidence.
-- No previous-project repository is modified or imported.
+## Remaining Phase 0 gates
+- Complete the threat model, admin authorization approach, data classification, abuse controls, and retention/deletion policy.
+- Set measurable UI and RPC performance budgets using the intended devices and networks.
+- Document data consistency semantics and the operational backup/restore path.
+- Establish a repeatable Apps Script source sync/deployment workflow (evaluate `clasp` only after the manual proof is updated).
+- No previous project repository may be modified; all integrations remain deferred to Phase 9.
