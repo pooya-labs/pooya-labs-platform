@@ -14,7 +14,7 @@
   "lastCheckpointDate": "2026-11-05",
   "latestVerifiedCodeCommit": "f7cff92f953d2f857d9e062c9828e078eb756aac",
   "tests": {
-    "repositoryCi": "passed-run-42036880785",
+    "repositoryCi": "passed-run-42037266997",
     "repositoryCiTestCount": 14,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
@@ -23,9 +23,9 @@
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
     "githubPagesDeployment": "passed-run-42036636856",
-    "platformTypecheck": "passed-run-42036880785",
-    "pagesAndGasBuilds": "passed-run-42036880785",
-    "cursorFieldContract": "passed-in-14-test-suite-run-42036880785",
+    "platformTypecheck": "passed-run-42037266997",
+    "pagesAndGasBuilds": "passed-run-42037266997",
+    "cursorFieldContract": "passed-in-14-test-suite-run-42037266997",
     "visualBrowserReview": "pending-owner-review",
     "vitePagesWorkflow": "passed-run-42036636856",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
@@ -46,8 +46,8 @@
     "githubPagesHarnessPublished": true,
     "spatialOsPagesPreviewPublished": true,
     "production": false,
-    "latestGasBundleArtifactRun": "42036880785",
-    "latestGasBundleArtifactId": 13418513965,
+    "latestGasBundleArtifactRun": "42037266997",
+    "latestGasBundleArtifactId": 13418468853,
     "vitePagesBuildAndDeployPassed": true,
     "activePagesSource": "needs-one-time-switch-to-github-actions"
   },
@@ -65,7 +65,7 @@
     "Visual review of the cursor lens and responsive states remains pending.",
     "Performance baseline and operational rollback/backup rehearsals remain pending before production data."
   ],
-  "nextAction": "Owner: set repository Pages source to GitHub Actions and run Actions → Platform GitHub Pages → Run workflow. Then inspect the live preview. Download the pooya-labs-gas-htmlservice-bundle artifact from CI run 42036880785, replace Apps Script HTML file Index with the artifact index.html content, and deploy a new Web App version.",
+  "nextAction": "Owner: set repository Pages source to GitHub Actions and run Actions → Platform GitHub Pages → Run workflow. Then inspect the live preview. Download the pooya-labs-gas-htmlservice-bundle artifact from CI run 42037266997, replace Apps Script HTML file Index with the artifact index.html content, and deploy a new Web App version.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
