@@ -14,7 +14,7 @@
   "lastCheckpointDate": "2026-11-05",
   "latestVerifiedCodeCommit": "c6972dc719a0a311d51db79b10e6eaaba8eb81ba",
   "tests": {
-    "repositoryCi": "passed-run-42029509895",
+    "repositoryCi": "passed-run-42031242334",
     "repositoryCiTestCount": 9,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
@@ -22,7 +22,7 @@
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
-    "githubPagesDeployment": "passed-run-42029509859"
+    "githubPagesDeployment": "passed-run-42031242859"
   },
   "hosting": {
     "primaryApplicationRuntime": "google-apps-script-html-service",
@@ -50,7 +50,7 @@
     "Performance budgets need baseline measurements on intended devices and networks.",
     "Deployment rollback and backup/restore procedures need rehearsal before production data is accepted."
   ],
-  "nextAction": "Owner: review ADR-0004 and docs/SECURITY-MODEL.md; approve or amend the public/admin boundary. Then measure performance budgets and rehearse deployment rollback. No production data or privileged RPC actions are enabled.",
+  "nextAction": "Owner: review ADR-0004 and SECURITY-MODEL.md; approve or amend the public/admin boundary. Then perform performance baseline measurement and rollback rehearsal. No production data or privileged RPC actions are enabled.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -69,6 +69,8 @@
     "rollbackRehearsed": false,
     "backupRestoreDocumented": true,
     "backupRestoreRehearsed": false,
-    "runbook": "docs/DEPLOYMENT-RUNBOOK.md"
+    "runbook": "docs/DEPLOYMENT-RUNBOOK.md",
+    "browserDiagnosticWorkflow": "manual-only",
+    "browserDiagnosticUrlStoredInActionsSecret": true
   }
 }
