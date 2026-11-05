@@ -7,36 +7,39 @@
 **Release:** Pre-alpha / planning baseline
 
 ## Verified facts
-- The repository exists and is public.
-- Default branch is `main`.
-- The repository was empty at initialization.
-- The separate `pooya-labs/pooya-labs` repository is the owner's personal profile README and is not this product repository.
+- Repository is public and uses `main`.
+- The separate `pooya-labs/pooya-labs` repository is the personal profile README and remains untouched.
 - This repository is the canonical home for the new platform.
-- The owner requested that integration with existing projects be postponed until the final roadmap phase, so those projects can be completed independently first.
+- The owner requested previous-project integration only in Phase 9, after independent completion.
+- Read-only README/metadata inspection has been performed for all eight existing project repositories.
 
-## Completed in this initialization
-- [x] Established repository identity and scope.
-- [x] Added agent operating rules and repository boundaries.
-- [x] Added phased roadmap with previous-project integration explicitly last.
-- [x] Added recovery and handoff requirements.
-- [x] Documented provisional architecture and known GAS limitations.
-- [x] Defined Phase 0 next actions.
+## Completed
+- [x] Repository identity, scope, and agent rules established.
+- [x] Ten-phase roadmap added; previous-project integration is Phase 9.
+- [x] Recovery/handoff protocol and machine-readable project state added.
+- [x] Architecture, API envelope, and deployment plan documented.
+- [x] ADR-0001 records the decision to defer integrations.
+- [x] Read-only integration inventory recorded for all eight existing projects.
+- [x] Official GAS documentation reviewed and constraints recorded.
+- [x] ADR-0002 requires real-browser proof before relying on external Pages-to-GAS transport.
+- [x] Minimal GAS HtmlService RPC and ContentService POST health-check harness added.
+- [x] External fetch test harness and owner deployment runbook added.
 
 ## Not yet done / not yet verified
-- [ ] No application source code has been implemented.
-- [ ] No GAS deployment or browser transport spike has been run.
-- [ ] No external CORS behavior has been verified.
-- [ ] No CI or automated test suite exists yet.
-- [ ] No previous-project code has been imported.
-- [ ] No production deployment exists.
-- [ ] No booking, admin, telemetry, or plugin feature is operational.
+- [ ] Apps Script project has not been created or deployed in the owner's Google account.
+- [ ] HtmlService RPC has not been run in a browser.
+- [ ] External CORS/redirect behavior has not been tested from a real HTTPS origin.
+- [ ] GitHub Pages test harness is not yet published.
+- [ ] No app source, CI, automated test suite, production backend, Sheets database, booking, admin, or telemetry feature exists.
+- [ ] No previous-project code has been imported or any previous repository modified.
 
 ## Current risks
-1. External GitHub Pages to GAS authenticated transport may not work as assumed; must be proven in a real browser.
-2. GAS quotas and execution ceilings constrain workloads; avoid claims of Go/Rust-like backend performance.
+1. External GitHub Pages to GAS authenticated transport remains unproven.
+2. GAS quotas and execution ceilings constrain workloads.
 3. Google Sheets is not a relational ACID database.
-4. Apps Script triggers are scheduled best-effort within quotas, not guaranteed always-on workers.
-5. A fully offline browser cannot receive server confirmation or deliver messages until connectivity returns.
+4. CacheService is best-effort and cannot be a durable queue.
+5. Time-driven triggers are quota-bound scheduled executions, not always-on workers.
+6. A fully offline browser cannot receive server confirmation until connectivity returns.
 
-## Latest verified checkpoint
-Initial documentation baseline. The next agent must follow `docs/NEXT.md` and update this file after the next evidence-backed milestone.
+## Latest checkpoint
+Read-only ecosystem inventory and Phase 0 transport proof harness committed. The next task is owner-side GAS deployment and browser validation using `docs/PHASE-0-TRANSPORT-TEST.md`.
