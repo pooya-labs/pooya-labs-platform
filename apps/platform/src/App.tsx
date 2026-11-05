@@ -53,7 +53,7 @@ const appRegistry: AppDefinition[] = [
 const copy = {
   fa: {
     workspace: 'فضای کاری', personalWorkspace: 'فضای شخصی', goodMorning: 'صبح بخیر', goodAfternoon: 'وقت بخیر', goodEvening: 'عصر بخیر',
-    welcome: 'به فضای کاری خودت خوش آمدی.', welcomeSub: 'ایده‌ها، ابزارها و آزمایش‌هایت را در یک محیط یکپارچه مدیریت کن.',
+    welcome: 'از ایده تا خروجی، همه‌چیز زیر نظر تو.', welcomeSub: 'پروژه‌ها، ابزارها و خروجی‌هایت را از یک اتاق فرمان دنبال کن.',
     launch: 'شروع سریع', launchSub: 'مستقیم به سراغ کاری برو که می‌خواهی انجام بدهی.', openWorkspace: 'باز کردن فضای کاری',
     exploreApps: 'ابزارهای محیط', exploreSub: 'ابزارهای اصلی Pooya Labs', recent: 'فعالیت‌های اخیر', recentSub: 'نمونه‌ای از اتفاقات فضای کاری',
     noActivity: 'هنوز فعالیتی ثبت نشده است.', localPreview: 'پیش‌نمایش محلی', liveRpc: 'اتصال سرور فعال',
@@ -78,7 +78,7 @@ const copy = {
   },
   en: {
     workspace: 'Workspace', personalWorkspace: 'Personal workspace', goodMorning: 'Good morning', goodAfternoon: 'Good afternoon', goodEvening: 'Good evening',
-    welcome: 'Welcome back to your workspace.', welcomeSub: 'Bring your ideas, tools, and experiments into one calm, connected space.',
+    welcome: 'From first intent to verified work, stay in control.', welcomeSub: 'Keep projects, tools, and deliverables in one focused command center.',
     launch: 'Quick launch', launchSub: 'Jump straight into what you want to work on.', openWorkspace: 'Open workspace',
     exploreApps: 'Workspace apps', exploreSub: 'The essential Pooya Labs tools', recent: 'Recent activity', recentSub: 'A small snapshot of this workspace',
     noActivity: 'Nothing here yet.', localPreview: 'Local preview', liveRpc: 'Server connection active',
@@ -411,7 +411,7 @@ function App(): ReactNode {
               <div className="hero-orbit orbit-a" /><div className="hero-orbit orbit-b" /><div className="hero-glow" />
               <div className="hero-content">
                 <div className="hero-label"><span className="hero-label-dot" /> POOYA LABS / SPATIAL OS</div>
-                <h2>{language === 'fa' ? 'ایده‌هایت را به جریان بینداز.' : 'Make room for what’s next.'}</h2>
+                <h2>{language === 'fa' ? 'از ایده تا خروجی، همه‌چیز زیر نظر تو.' : 'From intent to verified work.'}</h2>
                 <p>{t.welcome}</p>
                 <div className="hero-actions">
                   <button className="primary-button" onClick={() => openApp('overview')}><Sparkles size={15} /> {t.openWorkspace} <ArrowUpRight size={15} /></button>
@@ -472,7 +472,7 @@ function App(): ReactNode {
           <div className="window-layer">
             {visibleWindows.map((item) => (
               <WindowFrame key={item.id} app={appRegistry.find((candidate) => candidate.id === item.id)!}
-                windowState={item} language={language} active={topWindow?.id === item.id}
+                windowState={item} language={language} theme={theme} active={topWindow?.id === item.id}
                 onPointerDown={startDragging} onFocus={() => focusApp(item.id)} onClose={() => closeApp(item.id)}
                 onMinimize={() => minimizeApp(item.id)} onMaximize={() => toggleMaximize(item.id)}
                 onThemeChange={setTheme} onLanguageChange={setLanguage}
@@ -550,6 +550,7 @@ interface WindowFrameProps {
   app: AppDefinition;
   windowState: AppWindow;
   language: Language;
+  theme: Theme;
   active: boolean;
   onPointerDown: (event: ReactPointerEvent<HTMLElement>, id: AppId) => void;
   onFocus: () => void;
@@ -629,7 +630,7 @@ function CursorField(): ReactNode {
 }
 
 function WindowFrame(props: WindowFrameProps): ReactNode {
-  const { app, windowState, language, active, onPointerDown, onFocus, onClose, onMinimize, onMaximize,
+  const { app, windowState, language, theme, active, onPointerDown, onFocus, onClose, onMinimize, onMaximize,
     onThemeChange, onLanguageChange, terminalInput, terminalLines, onTerminalInput, onTerminalSubmit } = props;
   const Icon = app.icon;
   const t = copy[language];
