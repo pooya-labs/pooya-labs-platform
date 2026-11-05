@@ -12,7 +12,7 @@
     "status": "ready"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCommit": "TO_BE_FILLED_AFTER_COMMIT",
+  "latestVerifiedCommit": "8352bda9ee6ca1581e5d597958553342cd306c95",
   "tests": {
     "automated": "not-created",
     "gasHtmlServiceTransport": "not-tested",
@@ -30,5 +30,5 @@
     "ownerRequestedDeferral": true
   },
   "blockers": [],
-  "nextAction": "Follow docs/NEXT.md task P0-01."
+  "nextAction": "Execute P0-01: inspect existing project repositories read-only and build the evidence-based integration inventory; then verify current GAS constraints and design the transport spike."
 }
