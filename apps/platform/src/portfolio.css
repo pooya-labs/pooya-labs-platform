@@ -250,3 +250,12 @@
   .portfolio-page *, .portfolio-page *::before, .portfolio-page *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
   .portfolio-pointer { display: none !important; }
 }
+
+.project-card-footer { align-items: flex-start; flex-direction: column; gap: 10px; }
+.project-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
+.project-card-footer .project-actions a {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 27px; padding: 5px 8px;
+  border: 1px solid var(--pf-line); border-radius: 7px; color: var(--pf-cyan); background: rgba(91, 218, 210, .035);
+  font-size: 8px; white-space: nowrap; transition: border-color .18s ease, background .18s ease;
+}
+.project-card-footer .project-actions a:hover { border-color: var(--pf-line-strong); background: rgba(91, 218, 210, .09); }
