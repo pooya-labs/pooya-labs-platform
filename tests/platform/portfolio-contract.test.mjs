@@ -10,6 +10,7 @@ const css = await readFile(new URL('../../apps/platform/src/portfolio.css', impo
 const coreDossiers = await readFile(new URL('../../apps/platform/src/content/case-study-dossiers-core.ts', import.meta.url), 'utf8');
 const productDossiers = await readFile(new URL('../../apps/platform/src/content/case-study-dossiers-products.ts', import.meta.url), 'utf8');
 const dossierTypes = await readFile(new URL('../../apps/platform/src/content/case-study-dossiers-types.ts', import.meta.url), 'utf8');
+const architectureData = await readFile(new URL('../../apps/platform/src/content/architecture-diagrams.ts', import.meta.url), 'utf8');
 const sitemap = await readFile(new URL('../../apps/platform/public/sitemap.xml', import.meta.url), 'utf8');
 
 test('the root experience is the personal portfolio and the workspace is secondary', () => {
@@ -142,6 +143,10 @@ test('all eight case studies include bilingual roles, architecture, implementati
   assert.match(portfolio, /dossier\.references\.map/);
   assert.match(css, /\.case-study-dossier-grid/);
   assert.match(css, /\.case-study-source-list/);
+  assert.match(portfolio, /architectureDiagrams\[project\.slug\]/);
+  assert.match(portfolio, /case-study-architecture-figure/);
+  assert.equal((architectureData.match(/^  (?:aetherflow|orbit|"pooya-os"|"nexus-canvas"|"lumina-glass"|"aura-pulse"|"global-cart"|"salon-booking"): \{$/gm) ?? []).length, 8);
+  assert.match(architectureData, /'salon-booking': \{/);
 });
 
 test('portfolio distinguishes in-progress release lines from stable demo releases', () => {
