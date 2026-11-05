@@ -146,7 +146,7 @@ test('all eight case studies include bilingual roles, architecture, implementati
   assert.match(portfolio, /architectureDiagrams\[project\.slug\]/);
   assert.match(portfolio, /case-study-architecture-figure/);
   for (const slug of ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'global-cart', 'salon-booking']) {
-    assert.ok(architectureData.includes(`  \"${slug}\": {`) || architectureData.includes(`  ${slug}: {`), 'Missing architecture graph for ' + slug);
+    assert.ok(architectureData.includes(`  \"${slug}\": {`) || architectureData.includes(`  '${slug}': {`) || architectureData.includes(`  ${slug}: {`), 'Missing architecture graph for ' + slug);
   }
 });
 
