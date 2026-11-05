@@ -206,8 +206,13 @@ function renderArchitectureDiagram(slug: string, locale: Locale): string {
   const height = 900;
   const nodeWidth = 300;
   const nodeHeight = 155;
-  const textAnchor = locale === 'fa' ? 'end' : 'start';
-  const labelX = (node: (typeof diagram.nodes)[number]) => locale === 'fa' ? node.x + nodeWidth - 24 : node.x + 24;
+  const isRtl = locale === 'fa';
+  const textAnchor = isRtl ? 'end' : 'start';
+  const fontFamily = isRtl ? 'Amiri,Tahoma,Arial,sans-serif' : 'Inter,Segoe UI,Tahoma,Arial,sans-serif';
+  const titleFontSize = isRtl ? 19 : 23;
+  const detailFontSize = isRtl ? 13 : 15;
+  const headingFontFamily = fontFamily;
+  const labelX = (node: (typeof diagram.nodes)[number]) => isRtl ? node.x + nodeWidth - 24 : node.x + 24;
   const byId = new Map(diagram.nodes.map((node) => [node.id, node]));
   const edges = diagram.edges.map((edge) => {
     const from = byId.get(edge.from);
@@ -245,9 +250,9 @@ function renderArchitectureDiagram(slug: string, locale: Locale): string {
     return `<g>
       <rect x="${item.x}" y="${item.y}" width="${nodeWidth}" height="${nodeHeight}" rx="19" fill="${kind === 'storage' ? 'url(#storage)' : kind === 'external' ? 'url(#external)' : kind === 'local' ? 'url(#local)' : 'url(#node)'}" stroke="${kind === 'storage' ? '#78d9b1' : kind === 'external' ? '#76d8e8' : '#6edbce'}" stroke-opacity=".45" stroke-width="1.5" />
       <circle cx="${item.x + 27}" cy="${item.y + 29}" r="5" fill="${kind === 'storage' ? '#78e1b5' : '#75e5e5'}" />
-      <text x="${labelX(item)}" y="${item.y + 37}" text-anchor="${textAnchor}" font-family="Inter,Segoe UI,Tahoma,Arial,sans-serif" font-size="13" letter-spacing="2" fill="#7897a4">${String(index + 1).padStart(2, '0')}</text>
-      <text x="${labelX(item)}" y="${item.y + 83}" text-anchor="${textAnchor}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="Inter,Segoe UI,Tahoma,Arial,sans-serif" font-size="23" font-weight="650" fill="#eaf8f8">${title}</text>
-      <text x="${labelX(item)}" y="${item.y + 119}" text-anchor="${textAnchor}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="Inter,Segoe UI,Tahoma,Arial,sans-serif" font-size="15" fill="#9bb6bf">${detail}</text>
+      <text x="${item.x + nodeWidth - 24}" y="${item.y + 37}" text-anchor="end" font-family="Inter,Segoe UI,Tahoma,Arial,sans-serif" font-size="13" letter-spacing="2" fill="#7897a4">${String(index + 1).padStart(2, '0')}</text>
+      <text x="${labelX(item)}" y="${item.y + 83}" text-anchor="${textAnchor}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="${fontFamily}" font-size="${titleFontSize}" font-weight="650" fill="#eaf8f8">${title}</text>
+      <text x="${labelX(item)}" y="${item.y + 119}" text-anchor="${textAnchor}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="${fontFamily}" font-size="${detailFontSize}" fill="#9bb6bf">${detail}</text>
     </g>`;
   }).join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" lang="${locale}" aria-label="${escapeXml(diagram.title[locale])}">
@@ -263,8 +268,8 @@ function renderArchitectureDiagram(slug: string, locale: Locale): string {
     </defs>
     <rect width="1600" height="900" rx="26" fill="url(#bg)"/><rect width="1600" height="900" rx="26" fill="url(#grid)"/>
     <circle cx="1350" cy="120" r="430" fill="url(#glow)"/>
-    <text x="${locale === 'fa' ? 1510 : 88}" y="91" text-anchor="${locale === 'fa' ? 'end' : 'start'}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="Inter,Segoe UI,Tahoma,Arial,sans-serif" font-size="30" font-weight="700" fill="#e8fbfa">${escapeXml(diagram.title[locale])}</text>
-    <text x="${locale === 'fa' ? 1510 : 90}" y="132" text-anchor="${locale === 'fa' ? 'end' : 'start'}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="Inter,Segoe UI,Tahoma,Arial,sans-serif" font-size="17" fill="#8faeb7">${escapeXml(diagram.caption[locale])}</text>
+    <text x="${locale === 'fa' ? 1510 : 88}" y="91" text-anchor="${locale === 'fa' ? 'end' : 'start'}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="${headingFontFamily}" font-size="${isRtl ? 26 : 30}" font-weight="700" fill="#e8fbfa">${escapeXml(diagram.title[locale])}</text>
+    <text x="${locale === 'fa' ? 1510 : 90}" y="132" text-anchor="${locale === 'fa' ? 'end' : 'start'}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="${headingFontFamily}" font-size="${isRtl ? 14 : 17}" fill="#8faeb7">${escapeXml(diagram.caption[locale])}</text>
     <path d="M88 164H1512" stroke="#9fc9d1" stroke-opacity=".15"/>
     ${edges}
     ${nodes}
@@ -282,7 +287,14 @@ function socialCard(project: PortfolioProject, locale: Locale): string {
   const index = escapeXml(project.number + ' / POOYA LABS');
   const isRtl = locale === 'fa';
   const label = isRtl ? 'مطالعه موردی پروژه' : 'ENGINEERING CASE STUDY';
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="${name} — ${escapeXml(t.portfolio)}">
+  const textFont = isRtl ? 'Amiri,Tahoma,Arial,sans-serif' : 'Inter,Arial,Tahoma,sans-serif';
+  const textX = isRtl ? 1110 : 92;
+  const textAnchor = isRtl ? 'end' : 'start';
+  const descriptionText = description.length > 100 ? description.slice(0, 98) + '…' : description;
+  const chipX = isRtl ? 680 : 90;
+  const chipTextX = isRtl ? 1090 : 110;
+  const chipAnchor = isRtl ? 'end' : 'start';
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" lang="${locale}" direction="${isRtl ? 'rtl' : 'ltr'}" aria-label="${name} — ${escapeXml(t.portfolio)}">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#070d15"/><stop offset=".58" stop-color="#10212d"/><stop offset="1" stop-color="#102e2c"/></linearGradient>
     <linearGradient id="title" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#efffff"/><stop offset=".58" stop-color="#74e5ea"/><stop offset="1" stop-color="#79e1b9"/></linearGradient>
@@ -297,13 +309,13 @@ function socialCard(project: PortfolioProject, locale: Locale): string {
   <rect x="78" y="70" width="72" height="72" rx="19" fill="#16313a" stroke="#75e5df" stroke-opacity=".58"/>
   <text x="114" y="122" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="45" font-weight="750" fill="#efffff">P<tspan fill="#64e0b1">.</tspan></text>
   <text x="174" y="103" font-family="Inter,Arial,sans-serif" font-size="18" letter-spacing="5" fill="#dceced">POOYA LABS</text>
-  <text x="174" y="128" font-family="Inter,Arial,sans-serif" font-size="12" letter-spacing="3" fill="#83a3ae">${label}</text>
+  <text x="1110" y="128" text-anchor="end" direction="${isRtl ? 'rtl' : 'ltr'}" font-family="${textFont}" font-size="${isRtl ? 20 : 12}" letter-spacing="${isRtl ? 0 : 3}" fill="#83a3ae">${label}</text>
   <text x="1115" y="102" text-anchor="end" font-family="ui-monospace,monospace" font-size="15" letter-spacing="2" fill="#8ba8b2">${index}</text>
   <text x="88" y="300" font-family="Inter,Arial,Tahoma,sans-serif" font-size="82" font-weight="760" letter-spacing="-3" fill="url(#title)">${name}</text>
-  <text x="92" y="358" font-family="Inter,Arial,Tahoma,sans-serif" font-size="25" fill="#85d9d8">${category}</text>
-  <text x="92" y="423" font-family="Inter,Arial,Tahoma,sans-serif" font-size="20" fill="#b5c8ce">${description.length > 90 ? description.slice(0, 88) + '…' : description}</text>
-  <rect x="90" y="478" width="430" height="38" rx="19" fill="#193b39" stroke="#64e0b1" stroke-opacity=".5"/>
-  <text x="110" y="503" font-family="Inter,Arial,Tahoma,sans-serif" font-size="17" fill="#96edc8">${status}</text>
+  <text x="${textX}" y="358" text-anchor="${textAnchor}" direction="${isRtl ? 'rtl' : 'ltr'}" font-family="${textFont}" font-size="${isRtl ? 29 : 25}" fill="#85d9d8">${category}</text>
+  <text x="${textX}" y="423" text-anchor="${textAnchor}" direction="${isRtl ? 'rtl' : 'ltr'}" font-family="${textFont}" font-size="${isRtl ? 22 : 20}" fill="#b5c8ce">${descriptionText}</text>
+  <rect x="${chipX}" y="478" width="430" height="38" rx="19" fill="#193b39" stroke="#64e0b1" stroke-opacity=".5"/>
+  <text x="${chipTextX}" y="503" text-anchor="${chipAnchor}" direction="${isRtl ? 'rtl' : 'ltr'}" font-family="${textFont}" font-size="${isRtl ? 22 : 17}" fill="#96edc8">${status}</text>
   <path d="M90 560H1110" stroke="#9cc5ce" stroke-opacity=".18"/>
   <text x="90" y="592" font-family="ui-monospace,monospace" font-size="13" letter-spacing="3" fill="#78929c">SOFTWARE / SYSTEMS / PRODUCT ENGINEERING</text>
 </svg>`;
