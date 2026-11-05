@@ -8,12 +8,17 @@ A personal, extensible engineering workspace for presenting and operating Pooya'
 
 Build a polished, bilingual (Persian/English), responsive, offline-capable Spatial Web OS with a manifest-driven app registry, interactive engineering mini-apps, and a modest serverless backend based on Google Apps Script and Google Sheets.
 
+## Hosting architecture
+
+- **Application:** Google Apps Script HtmlService, with `google.script.run` as the browser-to-server RPC transport.
+- **GitHub Pages:** public docs, showcase pages, design previews, and isolated static demos.
+- **Not supported:** direct cross-origin fetch from GitHub Pages to the GAS ContentService endpoint. A real Chromium test observed a missing `Access-Control-Allow-Origin` header.
+- **No Cloudflare dependency** and no mandatory paid backend service.
+
 ## Non-negotiable project constraints
 
-- No Cloudflare dependency.
-- No mandatory paid API, database, or hosting service.
 - Do not claim that Google Apps Script + Sheets provides relational ACID transactions or guaranteed real-time latency.
-- Validate browser-to-GAS transport and authentication experimentally before depending on GitHub Pages as a production host.
+- Validate authentication and authorization before adding protected operations.
 - Keep durable data out of CacheService. Use IndexedDB for client offline persistence; use durable server-side records for accepted submissions.
 - Never report an offline booking as confirmed.
 - Keep admin secrets server-side; enforce authorization in the backend.
@@ -22,7 +27,7 @@ Build a polished, bilingual (Persian/English), responsive, offline-capable Spati
 
 ## Current status
 
-The repository has been initialized with the architecture, roadmap, recovery protocol, and Phase 0 validation plan. No previous project has been modified or imported.
+The Phase 0 HtmlService RPC proof passed in the owner's browser. The external Pages-to-GAS fetch was blocked by CORS in a real Chromium test, so the app will be hosted by HtmlService and Pages will remain the public showcase/documentation surface. The revised `Code.gs` and `Index.html` are ready to sync into the deployed Apps Script project.
 
 Start here:
 1. Read [AGENTS.md](AGENTS.md).
@@ -33,15 +38,15 @@ Start here:
 ## Repository map
 
 - `docs/`: roadmap, architecture, contracts, deployment, recovery, and decision records.
-- `apps/`: user-facing applications (introduced after Phase 0).
+- `apps/`: user-facing applications (introduced after the shell architecture is settled).
 - `packages/`: reusable platform packages (introduced after Phase 0).
-- `apps-script/`: Google Apps Script backend (introduced after transport proof).
-- `tests/`: automated and integration tests.
+- `apps-script/`: Google Apps Script application entry and backend RPC.
+- `tests/`: automated and browser integration tests.
 
 ## Project identity
 
 - Product: Pooya Labs Platform
 - Repository: `pooya-labs/pooya-labs-platform`
 - Default branch: `main`
-- Current phase: Phase 0 — feasibility and architecture validation
+- Current phase: Phase 0 — remaining security, performance, and deployment proof
 - Previous-project integration: explicitly deferred to the final roadmap phase.
