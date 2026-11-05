@@ -24,10 +24,10 @@ test('portfolio contains the core personal introduction and project sections', (
 });
 
 test('portfolio project cards expose honest statuses and do not invent links', () => {
-  assert.match(portfolio, /status: \{ fa: 'در حال توسعه', en: 'In development' \}/);
-  assert.match(portfolio, /status: \{ fa: 'نمونه و آزمایش', en: 'Prototype' \}/);
-  assert.match(portfolio, /https:\/\/github\.com\/pooya16pg-spec\/aetherflow/);
-  assert.doesNotMatch(portfolio, /github\.com\/pooya16pg-spec\/(?:ORBIT|Pooya\.OS|NexusCanvas|LuminaGlass|AuraPulse|GlobalCart)/);
+  assert.match(projectData, /status: \{ fa: 'در حال توسعه', en: 'In development' \}/);
+  assert.match(projectData, /status: \{ fa: 'نمونه و آزمایش', en: 'Prototype' \}/);
+  assert.match(projectData, /https:\/\/github\.com\/pooya16pg-spec\/aetherflow/);
+  assert.doesNotMatch(projectData, /github\.com\/pooya16pg-spec\/(?:ORBIT|Pooya\.OS|NexusCanvas|LuminaGlass|AuraPulse|GlobalCart)/);
 });
 
 test('portfolio is bilingual, responsive, and honors reduced motion', () => {
