@@ -37,14 +37,14 @@ The first portfolio draft includes:
 - Personal introduction and project showcase as the root page.
 - About, focus areas, technology list, and contact sections.
 - Eight project cards with verified source-repository and GitHub Pages preview links, honest project statuses, and explicit scope boundaries.
-- Eight bilingual, shareable in-site case-study views covering challenge, approach, engineering highlights, and current limitations.
+- Eight bilingual, shareable in-site case-study views covering challenge, architecture, implementation details, engineering decisions, verification evidence, limitations, and source references.
 - Seven commit-pinned visual assets from the source project repositories, with Persian/English alt text, lazy loading, responsive rendering, and a fallback for projects without visual media. GlobalCart currently has the actual storefront screenshot; other assets are project artwork or brand marks.
 - Canonical and Open Graph metadata, dynamic browser titles/descriptions for case-study routes, Person JSON-LD, a branded SVG favicon, and an XML sitemap covering the homepage plus all eight case-study URLs.
 - An optional link to the existing GlobalCart bilingual case study.
 - A secondary link to the existing Spatial OS workspace.
 - Persian/English language switching and a responsive layout.
 
-All project content is still marked for Pooya's review. The public biography, featured order, role/contribution details, additional real UI screenshots/architecture evidence, and contact channel must be reviewed before release. Static crawler-readable case-study pages and per-project social preview images are still pending. No project is presented as production-ready without evidence.
+All project content is still marked for Pooya's review. The eight source-grounded dossiers and each project's missing pre-release information/evidence are tracked in [PROJECT-CONTENT-AUDIT.md](docs/PROJECT-CONTENT-AUDIT.md). The public biography, featured order, role/contribution details, additional real UI screenshots/architecture evidence, and contact channel must be reviewed before release. Static crawler-readable case-study pages and per-project social preview images are still pending. No project is presented as production-ready without evidence.
 
 ## Development
 
