@@ -14,6 +14,12 @@ export interface PortfolioProject {
   repositoryUrl: string;
   previewUrl: string;
   caseStudyUrl?: string;
+  caseStudy: {
+    challenge: { fa: string; en: string };
+    approach: { fa: string; en: string };
+    highlights: { fa: string[]; en: string[] };
+    boundaries: { fa: string; en: string };
+  };
 }
 
 const projectEntries: PortfolioProject[] = [
@@ -21,6 +27,12 @@ const projectEntries: PortfolioProject[] = [
     number: '01',
     slug: 'aetherflow',
     name: 'AetherFlow',
+    caseStudy: {
+      challenge: { fa: "اجرای گردش‌کار توزیع‌شده با شکست فرایندها، قطع ارتباط و تحویل تکراری پیام روبه‌رو است. مسئله اصلی فقط صف‌کردن کارها نیست؛ وضعیت باید قابل بازیابی و تغییرات قابل ممیزی باشند.", en: "Distributed workflows face process crashes, network partitions, and duplicate delivery. The hard problem is not merely queuing work: state must be recoverable and transitions auditable." },
+      approach: { fa: "هسته Rust و Tokio را پیرامون وضعیت پایدار، Workerهای بازیابی‌پذیر و semantics صریح اجرا شکل می‌دهد. PostgreSQL برای ذخیره‌سازی پایدار و NATS JetStream برای انتقال رویداد به‌کار رفته‌اند.", en: "The Rust and Tokio core is organized around durable state, recoverable workers, and explicit execution semantics. PostgreSQL provides durable storage and NATS JetStream provides event transport." },
+      highlights: { fa: ["تحویل حداقل یک‌باره همراه با primitiveهای اجرای idempotent","Lease، heartbeat و retry محدود برای بازیابی Workerها","کنترل صریح cancellation، timeout، concurrency و backpressure","API نسخه‌دار، OpenAPI، log ساخت‌یافته، metrics و tracing","تمرین‌های backup/restore و recovery برای شکست‌های عملیاتی"], en: ["At-least-once delivery paired with idempotent execution primitives","Worker recovery through leases, heartbeats, and bounded retries","Explicit cancellation, timeout, concurrency, and backpressure semantics","Versioned API, OpenAPI, structured logs, metrics, and tracing","Operational backup/restore and recovery drills"] },
+      boundaries: { fa: "M00 تا M07 تکمیل و M08 در حال توسعه است. پروژه همچنان experimental است؛ تست‌های benchmark و recovery به‌معنای SLO تولیدی یا آمادگی production نیستند و exactly-once عمومی ادعا نمی‌شود.", en: "M00–M07 are complete and M08 is in progress. The project remains experimental; benchmark and recovery tests are not production SLOs or proof of production readiness, and universal exactly-once execution is not claimed." },
+    },
     category: { fa: 'سیستم‌های توزیع‌شده و گردش‌کار', en: 'Distributed systems & workflows' },
     description: {
       fa: 'پلتفرم اجرای گردش‌کار توزیع‌شده با Rust؛ با تمرکز بر وضعیت پایدار، بازیابی Workerها، تحویل قابل اتکا و مشاهده‌پذیری. پروژه همچنان در حال توسعه است و هنوز محصول آماده تولید محسوب نمی‌شود.',
@@ -37,6 +49,12 @@ const projectEntries: PortfolioProject[] = [
     number: '02',
     slug: 'orbit',
     name: 'ORBIT',
+    caseStudy: {
+      challenge: { fa: "در سیستم‌های توزیع‌شده، وضعیت سرویس، رخدادها، هشدارها و سیگنال‌های metrics، logs و traces معمولاً در ابزارهای جداگانه پخش‌اند. ORBIT تلاش می‌کند این دید عملیاتی را در یک فضای کاری منسجم جمع کند.", en: "In distributed systems, service health, incidents, alerts, and metrics, logs, and traces are often scattered across tools. ORBIT brings these operational views into one cohesive workspace." },
+      approach: { fa: "داشبورد React به API و مدل داده پشتیبان متصل است و بخش‌هایی مانند incidents، alerts، deployments، SLOs، audit، metrics، logs و traces را ارائه می‌کند. دمو عمومی و stack مهندسی محلی به‌صورت آگاهانه از هم جدا هستند.", en: "A React dashboard connects to API and data models for incidents, alerts, deployments, SLOs, audit, metrics, logs, and traces. The public demo and local engineering stack are deliberately separate." },
+      highlights: { fa: ["چرخه عمر رخدادها همراه با timeline تغییرناپذیر","تعریف و ارزیابی محدود alert ruleها و SLOها","جست‌وجوی محدود و هم‌بسته در log و trace","داشبورد فارسی و انگلیسی با ملاحظات دسترس‌پذیری","نسخه پایدار ۱٫۰٫۰ برای محدوده دموی پورتفولیو"], en: ["Incident lifecycle with an immutable timeline","Bounded alert-rule evaluation and SLO workflows","Bounded log and trace search with correlation","Persian/English dashboard with accessibility considerations","Stable v1.0.0 release for the portfolio-demo scope"] },
+      boundaries: { fa: "دموی عمومی از داده‌های مصنوعی و ذخیره‌سازی خصوصی Google Sheets استفاده می‌کند؛ stack محلی برای مهندسی از PostgreSQL و ابزارهای telemetry بهره می‌برد. انتشار ۱٫۰٫۰ به‌معنای میزبانی کامل همه اجزا به‌صورت production نیست.", en: "The public demo uses synthetic data and private Google Sheets storage; the local engineering stack uses PostgreSQL and telemetry tooling. The v1.0.0 release does not mean every component is hosted as a production service." },
+    },
     category: { fa: 'مانیتورینگ و مشاهده‌پذیری', en: 'Observability & monitoring' },
     description: {
       fa: 'محیط مهندسی برای بررسی سلامت سرویس‌ها، رخدادها و جریان‌های عملیاتی؛ با نماهای Metrics، Logs و Traces. نسخه ۱٫۰٫۰ برای محدوده دموی پورتفولیو منتشر شده است؛ نه به‌عنوان سرویس تولیدی میزبانی‌شده.',
@@ -53,6 +71,12 @@ const projectEntries: PortfolioProject[] = [
     number: '03',
     slug: 'pooya-os',
     name: 'Pooya.OS',
+    caseStudy: {
+      challenge: { fa: "یک پورتفولیوی فنی معمولی ممکن است فقط فهرستی از لینک‌ها باشد. Pooya.OS تلاش می‌کند معرفی مهارت‌ها و پروژه‌ها را در قالب یک محیط دسکتاپ تعاملی و قابل کاوش ارائه کند.", en: "A conventional engineering portfolio can become little more than a list of links. Pooya.OS presents skills and projects through an explorable desktop-style interface." },
+      approach: { fa: "یک static export مبتنی بر Next.js، React و TypeScript با مدیریت پنجره‌ها، command sandbox محلی، بازرس Design Token و case studyهای پروژه‌ها ساخته شده است.", en: "A static export built with Next.js, React, and TypeScript combines window management, a local command sandbox, a design-token inspector, and project case studies." },
+      highlights: { fa: ["محیط دسکتاپ واکنش‌گرا با مدیریت پنجره","CLI محلی با فرمان‌های allowlist شده و بدون دسترسی shell","نمایش Design Token و مرزهای runtime","مطالعه موردی چهار پروژه با لینک سورس و دمو","Frame monitor مبتنی بر requestAnimationFrame در مرورگر"], en: ["Responsive desktop environment with window management","Local allowlisted CLI with no shell access","Design-token and runtime-boundary inspection","Four project case studies with source and demo links","Browser-side requestAnimationFrame frame monitor"] },
+      boundaries: { fa: "این خروجی یک static portfolio است؛ backend، دیتابیس، حساب کاربری، API route یا shell واقعی ندارد. وضعیت و فرمان‌های محلی نباید به‌عنوان قابلیت سمت سرور برداشت شوند.", en: "This is a static portfolio: it has no backend, database, account system, API route, or real shell. Local state and commands must not be mistaken for server-side capabilities." },
+    },
     category: { fa: 'پورتفولیو و محیط دسکتاپ تعاملی', en: 'Portfolio & interactive desktop' },
     description: {
       fa: 'پورتفولیویی با ظاهر یک محیط دسکتاپ؛ شامل مطالعه موردی پروژه‌ها، خط فرمان محلی نمایشی، بازرس Design Token و مدیر پنجره. فرمان‌ها داخل مرورگر اجرا می‌شوند و به سیستم‌عامل دسترسی ندارند.',
@@ -69,6 +93,12 @@ const projectEntries: PortfolioProject[] = [
     number: '04',
     slug: 'nexus-canvas',
     name: 'NexusCanvas',
+    caseStudy: {
+      challenge: { fa: "در طراحی معماری، ارتباط سرویس‌ها و وابستگی‌های پیچیده می‌توانند مشکلاتی مانند چرخه وابستگی، سرویس جداافتاده یا گلوگاه را پنهان کنند. هدف ابزار تبدیل این ساختار به مدلی بصری و قابل بررسی است.", en: "In system architecture, complex service relationships can hide dependency cycles, isolated services, or bottlenecks. The tool turns those structures into a visual, inspectable model." },
+      approach: { fa: "یک canvas سمت مرورگر برای ساخت node و edge، تحلیل ساختار گراف، تغییر نما بین canvas و rack، و export/import snapshot نسخه‌دار پیاده شده است.", en: "A browser-side canvas supports node and edge editing, graph-structure analysis, a canvas/rack view switch, and versioned snapshot import/export." },
+      highlights: { fa: ["ساخت gateway، service، AI worker، database و cache","تشخیص node جداافتاده، endpoint نامعتبر و چرخه وابستگی","محاسبه مسیر latency فقط برای گراف بدون چرخه","اعتبارسنجی snapshot JSON پیش از جایگزینی state","تولید starter برای Docker Compose از گراف معتبر"], en: ["Create gateways, services, AI workers, databases, and caches","Detect isolated nodes, invalid endpoints, and dependency cycles","Calculate longest-path latency only for acyclic graphs","Validate JSON snapshots before replacing current state","Generate Docker Compose starters from valid graphs"] },
+      boundaries: { fa: "برنامه client-side است و telemetry زیرساخت زنده، collaboration از راه دور، server، حساب کاربری یا room مشترک ندارد. throughput، CPU و latency مقادیر ورودی/شبیه‌سازی هستند، نه اندازه‌گیری container واقعی.", en: "The app is client-side: it has no live infrastructure telemetry, remote collaboration, server, accounts, or shared rooms. Throughput, CPU, and latency are modeled inputs/simulations, not measurements from real containers." },
+    },
     category: { fa: 'طراحی بصری معماری سیستم', en: 'Visual system architecture' },
     description: {
       fa: 'استودیوی ترسیم توپولوژی سرویس‌ها؛ برای ساخت گراف معماری، بررسی چرخه‌های وابستگی و نقاط ضعف ساختاری و خروجی گرفتن از Snapshot یا قالب اولیه Docker Compose. اعداد عملکردی آن شبیه‌سازی‌شده‌اند.',
@@ -85,6 +115,12 @@ const projectEntries: PortfolioProject[] = [
     number: '05',
     slug: 'lumina-glass',
     name: 'LuminaGlass',
+    caseStudy: {
+      challenge: { fa: "ساختن سطح‌های شیشه‌ای با حس عمق و کنترل‌های بصری، در کنار پردازش صوت، نیازمند آزمایش‌های سریع در خود مرورگر است. LuminaGlass این دو حوزه را در یک آزمایشگاه تعاملی کنار هم قرار می‌دهد.", en: "Creating layered glass surfaces with convincing depth and tuning audio processing both benefit from quick, direct browser experiments. LuminaGlass brings these explorations into one interactive lab." },
+      approach: { fa: "کنترل‌های SVG برای تنظیم جلوه‌های اپتیکی و Canvas برای خروجی PNG استفاده می‌شوند. بخش صوت با Web Audio API و زنجیره‌ای از فیلترهای Biquad اجرا می‌شود.", en: "SVG controls tune optical effects and Canvas renders PNG exports. The audio lab uses the Web Audio API with a chain of Biquad filters." },
+      highlights: { fa: ["تنظیم iridescence، fluidity و لایه‌های crystal","خروجی PNG از وضعیت فعلی استودیو","پنج فیلتر Biquad برای oscillator، فایل صوتی یا microphone","Presetها و task board محلی در مرورگر","آزادسازی منابع صوتی، trackهای میکروفون و URLهای موقت"], en: ["Tune iridescence, fluidity, and crystal-layer complexity","Export the current studio state as PNG","Five Biquad filters for oscillator, audio file, or microphone sources","Browser-local presets and task board","Release audio resources, microphone tracks, and temporary URLs"] },
+      boundaries: { fa: "Presetها و task board در localStorage همین مرورگر ذخیره می‌شوند. پردازش صوت محلی است و به سرویس ابری، AI یا backend متصل نیست.", en: "Presets and the task board are stored in the current browser's localStorage. Audio processing is local and does not use a cloud service, AI, or backend." },
+    },
     category: { fa: 'آزمایشگاه شیشه و صوت', en: 'Glass & audio lab' },
     description: {
       fa: 'آزمایشگاه مرورگری برای تنظیم سطوح Liquid Glass و جلوه‌های اپتیکی، خروجی PNG و پردازش صوت با Web Audio API؛ تنظیمات و Presetها به‌صورت محلی در مرورگر ذخیره می‌شوند.',
@@ -101,6 +137,12 @@ const projectEntries: PortfolioProject[] = [
     number: '06',
     slug: 'aura-pulse',
     name: 'AuraPulse',
+    caseStudy: {
+      challenge: { fa: "نمایش اطلاعات بازار باید تفاوت بین داده عمومی واقعی، داده نمونه و معامله شبیه‌سازی‌شده را روشن کند. این پروژه داشبورد بازار را با یک حساب paper-trading محلی ترکیب می‌کند.", en: "A market dashboard must clearly separate public market data, illustrative sample data, and simulated trades. This project pairs market views with a local paper-trading account." },
+      approach: { fa: "رابط مرورگری داده ticker عمومی را در صورت دسترسی دریافت می‌کند و هنگام قطع feed از داده illustrative برچسب‌خورده استفاده می‌کند. محاسبات سفارش‌ها و وضعیت حساب در مرورگر انجام می‌شود.", en: "The browser reads public ticker data when reachable and uses clearly labeled illustrative fallback data when the feed is unavailable. Orders and account calculations run locally." },
+      highlights: { fa: ["نمایش tickerهای BTC، ETH و SOL در صورت دسترسی به feed عمومی","نمایش اتصال و fallback شفاف به داده نمونه","شبیه‌سازی سفارش، میانگین ورود و P&L","تاریخچه سفارش و موجودی محلی در localStorage","امکان reset کردن حساب آزمایشی"], en: ["Display BTC, ETH, and SOL tickers when the public feed is reachable","Show connection state and explicit illustrative fallback data","Simulate orders, average entry, and P&L","Keep order history and demo balance in localStorage","Reset the paper-trading account"] },
+      boundaries: { fa: "هیچ سفارش واقعی به صرافی ارسال نمی‌شود و API key دریافت نمی‌شود. داده candle، order-book و شاخص‌های دیگر می‌توانند illustrative باشند؛ این پروژه ابزار سرمایه‌گذاری یا اجرای معامله نیست.", en: "No real exchange order is placed and no API key is used. Candle history, order-book depth, and other indicators may be illustrative; this is not an investment or live-trading tool." },
+    },
     category: { fa: 'داده بازار و شبیه‌ساز معاملاتی', en: 'Market data & paper trading' },
     description: {
       fa: 'داشبورد داده بازار با یک شبیه‌ساز Paper Trading داخل مرورگر. سفارش‌ها واقعی نیستند، API Key صرافی دریافت نمی‌شود و اطلاعات حساب آزمایشی روی همان مرورگر ذخیره می‌شوند.',
@@ -117,6 +159,12 @@ const projectEntries: PortfolioProject[] = [
     number: '07',
     slug: 'global-cart',
     name: 'GlobalCart',
+    caseStudy: {
+      challenge: { fa: "ساخت تجربه فروشگاهی قانع‌کننده فقط به کارت محصول محدود نیست؛ جست‌وجو، دسته‌بندی، صفحه جزئیات، گالری تصاویر و رفتار سبد خرید باید در کنار عملکرد و شفافیت منبع داده درست کار کنند.", en: "A convincing storefront is more than product cards: search, categories, detail pages, image galleries, and cart behavior must work alongside performance and transparent data sourcing." },
+      approach: { fa: "یک marketplace simulation با Next.js و React ساخته شده که از snapshot محلی کاتالوگ، تصاویر self-host شده و منطق قیمت‌گذاری دقیق استفاده می‌کند. رابط فارسی RTL و انگلیسی LTR دارد.", en: "A marketplace simulation built with Next.js and React uses a local catalog snapshot, self-hosted imagery, and decimal-safe pricing logic. It supports Persian RTL and English LTR." },
+      highlights: { fa: ["کاتالوگ محلی ۱۰۰۰ محصول و صفحات جزئیات static","گالری چندتصویری با thumbnail و کنترل قبلی/بعدی","جست‌وجو، فیلتر، مرتب‌سازی، مقایسه و favorites","بارگذاری مستقل پوسته فروشگاه از تصاویر و lazy loading","Case study دو‌زبانه همراه با معماری و ERD"], en: ["Local 1,000-item catalog with static product detail routes","Multi-image galleries with thumbnail and previous/next controls","Search, filters, sorting, comparison, and favorites","Storefront shell loads independently from images with lazy loading","Bilingual case study with architecture and ERD"] },
+      boundaries: { fa: "این پروژه شبیه‌ساز مارکت‌پلیس است، نه فروشگاه زنده. پرداخت، موجودی واقعی، رزرو کالا، ارسال، تسویه فروشنده و بازپرداخت پول انجام نمی‌شود؛ نسخه ۰٫۲٫۳ هنوز نیازمند QA دستی پیش از انتشار ۱٫۰ است.", en: "This is a marketplace simulation, not a live retailer. It does not process payments, real inventory reservations, shipping, seller payouts, or refunds. Version 0.2.3 still requires manual QA before a 1.0 release." },
+    },
     category: { fa: 'شبیه‌ساز مارکت‌پلیس', en: 'Marketplace simulation' },
     description: {
       fa: 'شبیه‌سازی فروشگاه چنددسته‌ای با کاتالوگ محلی، صفحات جزئیات محصول، گالری چندتصویری، جست‌وجو و سبد خرید آزمایشی. فروش، پرداخت، موجودی و ارسال واقعی انجام نمی‌شود.',
@@ -134,6 +182,12 @@ const projectEntries: PortfolioProject[] = [
     number: '08',
     slug: 'salon-booking',
     name: 'Salon Booking',
+    caseStudy: {
+      challenge: { fa: "رزرو نوبت به تقویم زمان‌محور، جلوگیری از تداخل، مسیر ساده مشتری و ابزار جداگانه مدیر نیاز دارد. تجربه فارسی باید تاریخ شمسی و timezone ایران را دقیق نگه دارد.", en: "Appointment booking needs time-aware scheduling, conflict prevention, a simple customer journey, and a separate manager workspace. The Persian experience must preserve Jalali dates and Iran's timezone." },
+      approach: { fa: "Frontend با React، TypeScript و Vite روی GitHub Pages ارائه می‌شود. Backend در مسیر مهاجرت به Google Apps Script و Google Sheets است؛ bridge ارتباطی و اعلان‌های مدیر بخشی از معماری هدف هستند.", en: "The React, TypeScript, and Vite frontend is hosted on GitHub Pages. The backend is migrating to Google Apps Script and Google Sheets; a relay bridge and manager notifications are part of the target architecture." },
+      highlights: { fa: ["کاتالوگ سرویس‌ها و slotهای وابسته به مدت زمان","نمایش تقویم شمسی با timezone Asia/Tehran","رزرو با idempotent retry و کد پیگیری","استعلام و لغو مشتری با token یک‌بارمصرف","فضای مدیر برای مدیریت رزرو، سرویس و زمان‌بندی"], en: ["Service catalog and duration-aware availability slots","Jalali calendar with Asia/Tehran timezone handling","Booking with idempotent retries and reference codes","Customer lookup and cancellation using a one-time token","Manager workspace for bookings, services, and scheduling"] },
+      boundaries: { fa: "نسخه ۰٫۷٫۰ در مسیر مهاجرت به Apps Script است و پذیرش نهایی استقرار هنوز لازم است. تا تأیید backend و تنظیمات، از مسیر رزرو با داده مشتری واقعی در دموی عمومی استفاده نکن.", en: "Version 0.7.0 is in the Apps Script migration path and deployment acceptance is still required. Until the backend and deployment settings are verified, do not use the public demo for real customer data." },
+    },
     category: { fa: 'سامانه رزرو نوبت', en: 'Appointment booking' },
     description: {
       fa: 'سامانه رزرو نوبت برای یک آرایشگاه؛ شامل مسیر مشتری و فضای مدیریت مالک، زمان‌بندی شمسی و مهاجرت Backend به Google Apps Script و Sheets. اطلاعات مشتریان واقعی نباید در دموی عمومی وارد شود.',
