@@ -83,10 +83,12 @@ test('project cards and shareable query routes expose in-site case studies', () 
   assert.match(css, /\.case-study-main/);
 });
 
-test('project artwork is sourced from pinned project commits with localized alt text', () => {
+test('project artwork and interface screenshots are sourced from pinned commits with localized alt text', () => {
   assert.equal((projectData.match(/visualAsset: \{/g) ?? []).length, 7);
-  assert.equal((projectData.match(/raw\.githubusercontent\.com\/pooya-labs\//g) ?? []).length, 7);
-  assert.equal((projectData.match(/alt: \{ fa: '[^']+', en: '[^']+' \}/g) ?? []).length, 7);
+  assert.equal((projectData.match(/raw\.githubusercontent\.com\/pooya-labs\//g) ?? []).length, 9);
+  assert.equal((projectData.match(/caseStudyMedia: \[/g) ?? []).length, 1);
+  assert.equal((projectData.match(/device: '(?:desktop|mobile)'/g) ?? []).length, 2);
+  assert.equal((projectData.match(/alt: \{ fa: '[^']+', en: '[^']+' \}/g) ?? []).length, 9);
   assert.match(projectData, /Project visual assets must be pinned to an immutable source commit/);
   assert.match(projectData, /Project visual asset URL/);
   assert.match(portfolio, /project-art-image/);
