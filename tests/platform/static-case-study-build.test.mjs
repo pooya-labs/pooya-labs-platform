@@ -30,10 +30,13 @@ test('Vite emits crawler-readable Persian and English case-study pages', { skip:
       const socialFile = locale === 'en' ? `og/${slug}-en.svg` : `og/${slug}.svg`;
       const social = await readFile(new URL(socialFile, outputRoot), 'utf8');
       assert.match(social, /width="1200" height="630"/);
+      assert.match(social, locale === 'fa' ? /font-family="Amiri,Tahoma,Arial,sans-serif"/ : /font-family="Inter,Arial,Tahoma,sans-serif"/, `${socialFile} must use a script-appropriate font stack`);
       assert.ok(social.includes(slug === 'aura-pulse' ? 'AuraPulse' : slug === 'global-cart' ? 'GlobalCart' : slug === 'salon-booking' ? 'Salon Booking' : slug === 'pooya-os' ? 'Pooya.OS' : slug === 'nexus-canvas' ? 'NexusCanvas' : slug === 'lumina-glass' ? 'LuminaGlass' : slug === 'aetherflow' ? 'AetherFlow' : 'ORBIT'));
       const architectureFile = locale === 'en' ? `architecture/${slug}-en.svg` : `architecture/${slug}.svg`;
       const architecture = await readFile(new URL(architectureFile, outputRoot), 'utf8');
       assert.match(architecture, /width="1600" height="900"/);
+      assert.match(architecture, locale === 'fa' ? /font-family="Amiri,Tahoma,Arial,sans-serif"/ : /font-family="Inter,Segoe UI,Tahoma,Arial,sans-serif"/, `${architectureFile} must use a script-appropriate font stack`);
+      assert.match(architecture, /text-anchor="end" font-family="Inter,Segoe UI,Tahoma,Arial,sans-serif" font-size="13"/);
       assert.match(architecture, /marker-end="url\(#arrow\)"/);
     }
   }
