@@ -30,8 +30,8 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [ ] Replace draft content with owner-approved biography, project summaries, and links.
 
 ## Phase 3 — Portfolio content architecture and case studies
-- [ ] Create validated typed profile and project content schemas with draft/published states.
-- [ ] Move project data out of page components into a content registry.
+- [x] Create a typed project content schema with explicit project status and owner-review state.
+- [x] Move project data out of the portfolio component into a validated content registry with unique slugs and verified-link rules.
 - [ ] Curate the featured project order with Pooya; highlight only the strongest and most presentable work.
 - [ ] Create individual case-study pages with problem, context, Pooya's role, architecture, implementation, technologies, key decisions, validation, outcomes, and current status.
 - [ ] Add verified repository, live-demo, release, and documentation links where available.
