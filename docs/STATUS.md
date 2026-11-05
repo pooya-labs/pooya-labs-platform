@@ -25,6 +25,9 @@
 - [x] Added eight bilingual internal case-study views with challenge, approach, engineering highlights, scope boundaries, and shareable query-string routes.
 - [x] Expanded all eight case studies with source-backed role/attribution, architecture, implementation details, engineering decisions, verification evidence, and direct source/CI references.
 - [x] Added a per-project content audit that explicitly separates source-confirmed facts from release-blocking owner inputs and missing evidence.
+- [x] Generated eight project-specific architecture diagrams in Persian and English from the documented system boundaries and data flows.
+- [x] Generated 16 static crawler-readable case-study pages (8 projects × 2 languages) with canonical URLs, hreflang, JSON-LD, rendered article content, and locale-specific source links.
+- [x] Generated 16 per-project social preview SVG cards and a homepage card; added OG image metadata, sitemap alternates, and robots.txt.
 - [x] Added demo, source, and case-study actions to project cards.
 - [x] Added seven verified source-repository visual assets with pinned commit URLs and bilingual alt text; card media is lazy-loaded, responsive, and falls back cleanly.
 - [x] Added the actual GlobalCart storefront screenshot; other current visuals are correctly identified as brand marks or project artwork, not product screenshots.
@@ -34,8 +37,8 @@
 - [x] Added ADR-0006 to record portfolio-first hosting and scope.
 
 ## CI and publishing status
-- Dossier-enabled code passed CI [42059342492](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42059342492): TypeScript, both Pages/Apps Script builds, artifact upload, and **29/29 contract tests**.
-- Pages deployment containing the dossier code [42058556955](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42058556955) succeeded. The later 9c2c035 commit only corrected a test assertion.
+- Latest static SEO/architecture implementation passed CI [42066575496](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42066575496): TypeScript, Pages/Apps Script builds, artifact upload, and **32/32 contract tests**, including built-output checks for every bilingual page, diagram, and social card.
+- Pages deployment containing the architecture and static-page generator [42066311960](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42066311960) succeeded. The later 42e61f7 commit only hardened tests.
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
 - Current repo status and unresolved pre-release evidence are tracked in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 - Confirm the repository Pages source remains GitHub Actions so a legacy branch/Jekyll deployment cannot supersede the Vite portfolio.
@@ -50,9 +53,10 @@
 - [ ] Review the complete portfolio design on desktop and mobile. The current implementation is a draft, not final.
 
 ## Not implemented
-- [ ] Actual interface screenshots and architecture diagrams for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; current assets do not all represent product UI.
+- [ ] Actual interface screenshots for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; the new architecture diagrams are clearly labelled as diagrams, not product screenshots.
 - [x] Source-backed role/architecture/implementation/decision/verification sections are populated for all eight projects; owner-confirmed personal contribution and any additional measured outcomes remain pending.
-- [ ] Static crawler-readable case-study pages and per-project social preview images; current case-study metadata is dynamically updated in the browser.
+- [x] Static crawler-readable bilingual case-study pages and per-project social preview SVGs are generated and included in the published build.
+- [ ] Validate real-world rendering of SVG social previews in external platforms/crawlers and add PNG/JPEG fallbacks only where required.
 - [ ] Private owner content-management console.
 - [ ] Customer accounts or customer dashboard; excluded from the portfolio by default.
 - [ ] Production contact form, CMS/backend, Apps Script sync, or data persistence.
@@ -67,4 +71,4 @@
 - Previous project repositories remain untouched; project integration stays in Phase 9.
 
 ## Latest checkpoint
-The root website now introduces Pooya and his projects. Eight bilingual case-study views are available as shareable query routes and now include source-grounded engineering dossiers. The per-project missing-information and evidence gate is documented in PROJECT-CONTENT-AUDIT.md. Seven source-repository visual assets are pinned to immutable commits and carry bilingual alt text; one is the GlobalCart storefront screenshot while the rest are clearly treated as brand/project artwork. Case-study titles/descriptions and canonical/Open Graph metadata update in the browser, and the sitemap covers the homepage plus all eight case-study URLs. CI run 42060077585 passed 29/29 tests and Pages run 42058556955 deployed the dossier-enabled code. Public copy, featured order, project contribution details, and richer project evidence still require Pooya's review. Static crawler-readable case-study pages and per-project social images, owner-confirmed details, project evidence, and the complete two-round feedback-driven redesign remain mandatory pre-release work.
+The root website now introduces Pooya and his projects. Eight bilingual case-study views are available as shareable query routes and now include source-grounded engineering dossiers. The per-project missing-information and evidence gate is documented in PROJECT-CONTENT-AUDIT.md. Seven source-repository visual assets are pinned to immutable commits and carry bilingual alt text; one is the GlobalCart storefront screenshot while the rest are clearly treated as brand/project artwork. Case-study titles/descriptions and canonical/Open Graph metadata update in the browser, and the sitemap covers the homepage plus all eight case-study URLs. CI run 42066575496 passed 32/32 tests, including static HTML/diagram/social-card output checks; Pages run 42066311960 deployed the architecture and static case-study implementation. Public copy, featured order, project contribution details, and richer project evidence still require Pooya's review. Owner-confirmed details, actual UI screenshots, manual project evidence, external social-preview validation, and the complete two-round feedback-driven redesign remain mandatory pre-release work.
