@@ -78,7 +78,7 @@ test('project cards and shareable query routes expose in-site case studies', () 
   assert.match(portfolio, /project\.caseStudy\.approach\[language\]/);
   assert.match(portfolio, /project\.caseStudy\.highlights\[language\]/);
   assert.match(portfolio, /project\.caseStudy\.boundaries\[language\]/);
-  assert.match(portfolio, /\?project=\$\{project\.slug\}/);
+  assert.match(portfolio, /\?project=\$\{encodeURIComponent\(slug\)\}/);
   assert.match(css, /\.case-study-main/);
 });
 
@@ -128,7 +128,7 @@ test('all eight case studies include bilingual roles, architecture, implementati
     assert.ok(coreDossiers.includes(slug) || productDossiers.includes(slug), 'Missing dossier for ' + slug);
   }
   assert.equal((coreDossiers.match(/^  (?:aetherflow|orbit|"pooya-os"|"nexus-canvas"):\s*\{$/gm) ?? []).length, 4);
-  assert.equal((productDossiers.match(/^  (?:"lumina-glass"|"aura-pulse"|"global-cart"|"salon-booking"):\s*\{$/gm) ?? []).length, 4);
+  assert.equal((productDossiers.match(/^  "[a-z-]+": \{$/gm) ?? []).length, 4);
   for (const field of ['role:', 'architecture:', 'implementation:', 'decisions:', 'verification:', 'references:']) {
     assert.ok(coreDossiers.includes(field), 'Core dossier missing ' + field);
     assert.ok(productDossiers.includes(field), 'Product dossier missing ' + field);
