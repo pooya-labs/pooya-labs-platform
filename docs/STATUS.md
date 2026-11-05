@@ -35,7 +35,10 @@
 ## Not yet done / not yet verified
 - [ ] External POST request arrival at `doPost` and browser redirect/CORS failure stage are not diagnosed.
 - [ ] External browser transport has not passed.
-- [ ] No app source, CI, automated test suite, production backend, Sheets database, booking, admin, or telemetry feature exists.
+- [x] Dependency-free Node.js transport-harness contract tests added.
+- [x] GitHub Actions CI workflow added for pushes and pull requests to `main`.
+- [ ] CI execution result is pending the first workflow run; tests are not yet marked as passing.
+- [ ] No app source, production backend, Sheets database, booking, admin, or telemetry feature exists.
 - [ ] No previous-project code has been imported or any previous repository modified.
 
 ## Current risks
@@ -47,4 +50,4 @@
 6. A fully offline browser cannot receive server confirmation until connectivity returns.
 
 ## Latest checkpoint
-The GAS proof is deployed. HtmlService RPC passed in the owner's browser. GitHub Pages is published, but its external POST test failed with a browser NetworkError; no `doPost` row was present in the supplied Apps Script Executions list. The next task is to inspect Firefox/Chromium DevTools Network and Console evidence before deciding whether the failure is network-level, redirect-related, or CORS-related.
+The GAS proof is deployed. HtmlService RPC passed in the owner's browser. GitHub Pages is published, but its external POST test failed with a browser NetworkError; no `doPost` row was present in the supplied Apps Script Executions list. The next task is to inspect Firefox/Chromium DevTools Network and Console evidence before deciding whether the failure is network-level, redirect-related, or CORS-related. Repository-side contract tests and CI have been added independently; they do not replace the live browser transport test.
