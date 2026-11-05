@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-05 — Security and data handling baseline
+- Added a Phase 0 threat model and data-classification policy.
+- Recorded why execute-as-owner deployments must not use `Session.getActiveUser().getEmail()` as a universal identity check.
+- Set a provisional direction to keep privileged admin functions out of the public Apps Script project; final deployment/access design remains open.
+
+
 ## 2026-11-05 — HtmlService-first architecture decision
 - Ran the external health-only POST from real Chromium against the published GitHub Pages origin.
 - Confirmed the browser console error: `No 'Access-Control-Allow-Origin' header is present on the requested resource.`
