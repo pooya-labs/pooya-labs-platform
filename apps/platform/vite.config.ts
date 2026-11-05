@@ -1,4 +1,4 @@
-import { defineConfig, type Plugin, type OutputAsset, type OutputBundle } from 'vite';
+import { defineConfig, type Plugin, type OutputBundle } from 'vite';
 import react from '@vitejs/plugin-react';
 import { viteSingleFile } from 'vite-plugin-singlefile';
 import { fileURLToPath } from 'node:url';
@@ -242,15 +242,7 @@ function staticCaseStudyPages(): Plugin {
       template = template.replace('src="/src/main.tsx"', `crossorigin src="${SITE_BASE}${entry.fileName}"`);
       template = template.replace('href="%BASE_URL%favicon.svg"', `href="${SITE_BASE}favicon.svg"`);
       template = template.replace('</head>', `${cssFiles.map((file) => `<link rel="stylesheet" crossorigin href="${SITE_BASE}${file}" />`).join('')}\n</head>`);
-      const baseSocial = `${SITE_ORIGIN}${SITE_BASE}og/pooya-labs.svg`;
-      const homeWithSocial = template.replace('</head>', `
-        <meta property="og:image" content="${baseSocial}" />
-        <meta property="og:image:type" content="image/svg+xml" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        </head>`);
-      (indexAsset as OutputAsset).source = homeWithSocial;
+      const homeWithSocial = template;
 
       for (const project of portfolioProjects) {
         for (const locale of ['fa', 'en'] as const) {
