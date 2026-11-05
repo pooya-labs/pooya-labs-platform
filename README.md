@@ -1,59 +1,58 @@
-# Pooya Labs Platform
+# Pooya Labs — Personal Portfolio
 
-A personal, extensible engineering workspace for presenting and operating Pooya's projects.
+Pooya Labs is Pooya's personal engineering portfolio and project showcase. Its main purpose is to introduce Pooya, explain how he approaches software engineering, and make his most meaningful projects easy to explore.
 
-> This repository is the canonical home of the **platform product**. The separate `pooya-labs/pooya-labs` repository remains the personal profile and must not be repurposed.
+This is a portfolio first—not a generic SaaS dashboard or customer-account product.
 
-## Product direction
+## The visitor journey
 
-Build a polished, bilingual (Persian/English), responsive, offline-capable Spatial Web OS with a manifest-driven app registry, interactive engineering mini-apps, and a modest serverless backend based on Google Apps Script and Google Sheets.
+1. Meet Pooya and understand his current engineering focus.
+2. Browse a curated set of selected projects.
+3. Open detailed case studies covering the problem, contribution, architecture, technical decisions, implementation, validation, and current state.
+4. Inspect real repositories, demos, and evidence where available.
+5. Find a clear way to connect.
 
-## Hosting architecture
+## Product surfaces
 
-- **Application:** Google Apps Script HtmlService, with `google.script.run` as the browser-to-server RPC transport.
-- **GitHub Pages:** public docs, showcase pages, design previews, and isolated static demos.
-- **Not supported:** direct cross-origin fetch from GitHub Pages to the GAS ContentService endpoint. A real Chromium test observed a missing `Access-Control-Allow-Origin` header.
-- **No Cloudflare dependency** and no mandatory paid backend service.
+- **Public portfolio (primary):** the default website, published as a static site.
+- **Private owner workspace (secondary):** the retained Spatial OS shell and possible owner-only content tools.
+- **Customer dashboard:** not part of the portfolio by default. A separate product can add one later only if there is a real customer workflow.
 
-## Platform preview
+The current public design is an early working draft. A full redesign based on Pooya's feedback is a mandatory pre-release roadmap gate.
 
-**Preview URL:** https://pooya-labs.github.io/pooya-labs-platform/ (the repository Pages source must be set to GitHub Actions for the Vite workspace preview to remain the published site).
+## Technology and hosting
 
-The React + TypeScript workspace source lives in [`apps/platform`](apps/platform). It has dual build targets: a static GitHub Pages preview and a single-file HtmlService bundle. The current first slice includes the responsive desktop/mobile shell, app windows, command palette, Persian/English toggle, light/dark theme, and an optional cursor refraction field. See [DESIGN-DIRECTION.md](docs/DESIGN-DIRECTION.md) for the visual rules and known demo-only features. The Pages preview is published; the same bundle still needs to be copied into the deployed Apps Script `Index` file to replace the current proof screen.
+- React + TypeScript + Vite.
+- GitHub Actions for type-checking, contract tests, and builds.
+- GitHub Pages as the primary public portfolio host.
+- Persian-first RTL with English LTR support.
+- Deep graphite surfaces, cyan/emerald accents, and a restrained Antigravity-inspired pointer refraction effect.
+- Apps Script remains a deferred experiment/optional backend adapter; the static portfolio does not depend on it.
 
-## Non-negotiable project constraints
+**Preview:** https://pooya-labs.github.io/pooya-labs-platform/
 
-- Do not claim that Google Apps Script + Sheets provides relational ACID transactions or guaranteed real-time latency.
-- Validate authentication and authorization before adding protected operations.
-- Keep durable data out of CacheService. Use IndexedDB for client offline persistence; use durable server-side records for accepted submissions.
-- Never report an offline booking as confirmed.
-- Keep admin secrets server-side; enforce authorization in the backend.
-- Reuse previous projects only after they are stable and the owner explicitly schedules integration.
-- All meaningful decisions, implementation milestones, test results, and handoff state must be committed here.
+## Current implementation
 
-## Current status
+The first portfolio draft includes:
+- Personal introduction and project showcase as the root page.
+- About, focus areas, technology list, and contact sections.
+- Eight draft project cards with explicit in-development / prototype labels.
+- A verified GitHub link for AetherFlow; other project links remain unpublished until verified.
+- A secondary link to the existing Spatial OS workspace.
+- Persian/English language switching and a responsive layout.
 
-The Phase 0 HtmlService RPC proof passed in the owner's browser. The external Pages-to-GAS fetch was blocked by CORS in a real Chromium test, so the app will be hosted by HtmlService and Pages will remain the public showcase/documentation surface. The revised `Code.gs` and `Index.html` are ready to sync into the deployed Apps Script project.
+Content such as the public biography, project ordering, summaries, evidence, photos, and contact channels still requires Pooya's review. No project is presented as production-ready without evidence.
 
-Start here:
-1. Read [AGENTS.md](AGENTS.md).
-2. Read [ROADMAP.md](docs/ROADMAP.md), [STATUS.md](docs/STATUS.md), [SECURITY-MODEL.md](docs/SECURITY-MODEL.md), and [DATA-CLASSIFICATION.md](docs/DATA-CLASSIFICATION.md).
-3. Review [PERFORMANCE-BUDGETS.md](docs/PERFORMANCE-BUDGETS.md) and [DEPLOYMENT-RUNBOOK.md](docs/DEPLOYMENT-RUNBOOK.md).
-4. Execute the exact next task in [NEXT.md](docs/NEXT.md).
-5. Follow [RECOVERY.md](docs/RECOVERY.md) after context loss or AI handoff.
+## Development
 
-## Repository map
+Start with README-linked docs: docs/ROADMAP.md, docs/STATUS.md, docs/NEXT.md, docs/PRODUCT-SURFACES.md, docs/DESIGN-DIRECTION.md, docs/ARCHITECTURE.md, and docs/RECOVERY.md.
 
-- `docs/`: roadmap, architecture, contracts, deployment, security/data classification, recovery, and decision records.
-- `apps/platform/`: React + TypeScript Spatial OS shell and dual-host Vite build.
-- `packages/`: reusable platform packages (introduced after Phase 0).
-- `apps-script/`: Google Apps Script application entry and backend RPC.
-- `tests/`: automated source-contract and browser integration tests.
+Commands: npm install · npm run typecheck · npm test · npm run build:pages
 
 ## Project identity
 
-- Product: Pooya Labs Platform
-- Repository: `pooya-labs/pooya-labs-platform`
-- Default branch: `main`
-- Current phase: Phase 0 — remaining security, performance, and deployment proof
-- Previous-project integration: explicitly deferred to the final roadmap phase.
+- Product: Pooya Labs personal portfolio
+- Repository: pooya-labs/pooya-labs-platform
+- Default branch: main
+- Current release: pre-alpha / portfolio draft
+- Previous-project code integration: deferred to Phase 9
