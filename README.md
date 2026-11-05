@@ -44,7 +44,7 @@ The first portfolio draft includes:
 - A secondary link to the existing Spatial OS workspace.
 - Persian/English language switching and a responsive layout.
 
-All project content is still marked for Pooya's review. The eight source-grounded dossiers and each project's missing pre-release information/evidence are tracked in [PROJECT-CONTENT-AUDIT.md](docs/PROJECT-CONTENT-AUDIT.md). The public biography, featured order, role/contribution details, remaining real UI screenshots, manual QA, and contact channel must be reviewed before release. Static crawler-readable case-study pages, architecture diagrams, and per-project social preview SVGs are generated at build time; external social-client rendering still needs validation. No project is presented as production-ready without evidence.
+All project content is still marked for Pooya's review. The eight source-grounded dossiers and each project's missing pre-release information/evidence are tracked in [PROJECT-CONTENT-AUDIT.md](docs/PROJECT-CONTENT-AUDIT.md). The public biography, featured order, role/contribution details, remaining real UI screenshots, manual QA, and contact channel must be reviewed before release. Static crawler-readable case-study pages and architecture diagrams are generated at build time. Seventeen 1200×627 PNG social cards (homepage plus eight projects in Persian and English) are the primary Open Graph images; matching SVG source files are retained. External social-client rendering and cache refresh still need validation. No project is presented as production-ready without evidence.
 
 ## Development
 
