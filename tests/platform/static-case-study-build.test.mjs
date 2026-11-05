@@ -42,6 +42,18 @@ test('Vite emits crawler-readable Persian and English case-study pages', { skip:
   }
 });
 
+test('GlobalCart static case studies include real pinned desktop and mobile storefront screenshots', { skip: !rootHtml }, async () => {
+  for (const route of ['projects/global-cart/index.html', 'en/projects/global-cart/index.html']) {
+    const html = await readFile(new URL(route, outputRoot), 'utf8');
+    assert.ok(html.includes('storefront-home-desktop.png'), 'GlobalCart hero must use the actual desktop screenshot');
+    assert.ok(html.includes('storefront-home-mobile.png'), 'GlobalCart case study must include the actual mobile screenshot');
+    assert.ok(html.includes('case-study-media-grid'), 'GlobalCart mobile screenshot must be visible in the media gallery');
+    assert.ok(html.includes('5ca43e40ff101e673ee7cf261850bff0a679047c'), 'Screenshot assets must be pinned to an immutable source commit');
+  }
+  const unrelated = await readFile(new URL('projects/aura-pulse/index.html', outputRoot), 'utf8');
+  assert.ok(!unrelated.includes('storefront-home-mobile.png'), 'GlobalCart screenshots must not appear on another project');
+});
+
 test('built sitemap and robots file advertise the new static routes', { skip: !rootHtml }, async () => {
   const sitemap = await readFile(new URL('sitemap.xml', outputRoot), 'utf8');
   const robots = await readFile(new URL('robots.txt', outputRoot), 'utf8');
