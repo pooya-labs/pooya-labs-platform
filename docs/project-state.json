@@ -7,20 +7,29 @@
   "phase": 0,
   "phaseName": "Feasibility, inventory, and architecture proof",
   "currentTask": {
-    "id": "P0-03",
-    "title": "Diagnose the failed external GAS POST using browser Network and Console evidence",
-    "status": "waiting-for-owner-network-diagnostics"
+    "id": "P0-04",
+    "title": "Consolidate the HtmlService-first runtime and verify the revised deployed proof",
+    "status": "repository-ready-owner-deployment-sync-pending"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCommit": "501612a822afe7b48a6c6566e5cd3bbaa3b9fd48",
+  "latestVerifiedCodeCommit": "4ffbcdf211d8048ecb0915f095718349ede55fcc",
   "tests": {
-    "automated": "node-built-in-transport-harness-contract-tests-added-ci-first-run-pending",
+    "repositoryCi": "passed-run-42026786562",
+    "transportHarnessContract": "passed-in-repository-ci",
     "gasHtmlServiceTransport": "passed-owner-reported",
-    "externalCorsTransport": "failed-networkerror-no-doPost-observed-diagnostics-pending"
+    "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42026786711",
+    "externalBrowserResponseReadable": false
+  },
+  "hosting": {
+    "primaryApplicationRuntime": "google-apps-script-html-service",
+    "rpcTransport": "google.script.run",
+    "githubPagesRole": "public-documentation-showcase-static-demos",
+    "directPagesToGasFetch": "not-supported"
   },
   "deployment": {
     "configured": false,
     "gasProofDeployed": true,
+    "revisedGasSourceSynced": false,
     "githubPagesHarnessPublished": true,
     "production": false
   },
@@ -32,7 +41,7 @@
     "ownerRequestedDeferral": true
   },
   "blockers": [
-    "External browser POST returned NetworkError; the provided Apps Script Executions rows contained no doPost entry. Root cause remains unconfirmed pending browser Network/Console evidence."
+    "Owner must copy the revised Code.gs and Index.html into the existing Apps Script project and deploy a new version to validate the canonical rpcCall(request) path."
   ],
-  "nextAction": "Owner: repeat the external POST once with DevTools Network and Console open; report sanitized method, status/blocked reason, redirect host, and exact console error. Do not share the full /exec URL or credentials."
+  "nextAction": "Owner: sync the revised Apps Script source and verify the google.script.run health action. Repository-side follow-up: complete threat model, admin authorization design, performance budgets, and deployment/rollback planning."
 }
