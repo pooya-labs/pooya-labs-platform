@@ -170,9 +170,9 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
       <main className="case-study-main portfolio-container">
         <a className="case-study-back" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}><ArrowUpLeft size={15} />{t.backProjects}</a>
         <section className="case-study-hero">
-          <div className={'case-study-visual' + (project.visualAsset ? ' has-visual' : '')}>
-            {project.visualAsset && <img className={'case-study-visual-image visual-' + project.visualAsset.kind}
-              src={project.visualAsset.url} alt={project.visualAsset.alt[language]} loading="eager" decoding="async"
+          <div className={'case-study-visual' + ((project.caseStudyHeroAsset ?? project.visualAsset) ? ' has-visual' : '')}>
+            {(project.caseStudyHeroAsset ?? project.visualAsset) && <img className={'case-study-visual-image visual-' + (project.caseStudyHeroAsset ?? project.visualAsset)!.kind}
+              src={(project.caseStudyHeroAsset ?? project.visualAsset)!.url} alt={(project.caseStudyHeroAsset ?? project.visualAsset)!.alt[language]} loading="eager" decoding="async"
               onError={(event) => { event.currentTarget.remove(); event.currentTarget.parentElement?.classList.remove('has-visual'); }} />}
             <div className="case-study-art-fallback" aria-hidden="true">
               <div className="art-orbit orbit-outer" /><div className="art-orbit orbit-inner" />
