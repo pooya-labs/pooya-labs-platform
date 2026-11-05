@@ -173,7 +173,7 @@ const projectEntries: PortfolioProject[] = [
   },
   {
     number: '07',
-        visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/globalcart/88a7efae6c67dfb7401cd7e4926576261f4adde5/docs/screenshots/storefront-home-desktop.png', kind: 'interface', alt: { fa: 'تصویر واقعی صفحه اصلی فروشگاه GlobalCart', en: 'Actual GlobalCart storefront homepage screenshot' } },
+        visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/globalcart/5ca43e40ff101e673ee7cf261850bff0a679047c/docs/screenshots/storefront-home-desktop.png', kind: 'interface', alt: { fa: 'تصویر واقعی صفحه اصلی فروشگاه GlobalCart', en: 'Actual GlobalCart storefront homepage screenshot' } },
     slug: 'global-cart',
     name: 'GlobalCart',
     caseStudyMedia: [
