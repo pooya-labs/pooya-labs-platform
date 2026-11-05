@@ -47,8 +47,8 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [ ] Add real UI screenshots for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; use only owner-approved, redacted interface screenshots for Salon Booking.
 - [x] Add dynamic browser titles/descriptions, base Open Graph metadata, canonical URL updates, Person JSON-LD, and a branded SVG favicon.
 - [x] Add an XML sitemap for the portfolio homepage and eight shareable project-detail URLs.
-- [x] Generate crawler-readable static Persian and English case-study pages for all eight projects, with canonical URLs, hreflang, JSON-LD, source links, and per-project/per-language social preview SVGs.
-- [ ] Validate the social preview SVGs in external crawler/share clients and confirm whether any platform requires a PNG/JPEG fallback.
+- [x] Generate crawler-readable static Persian and English case-study pages for all eight projects, with canonical URLs, hreflang, JSON-LD, source links, 17 raster PNG social preview cards (homepage plus eight projects × two languages), and matching SVG source cards.
+- [ ] Validate the 1200×627 PNG Open Graph previews in external crawler/share clients; confirm the platforms refresh their cached cards and add alternate formats only if an actual client requires them.
 
 ## Phase 4 — Secondary private workspace and owner tools
 - [ ] Decide which existing Spatial OS tools are useful enough to retain after the public portfolio is complete.
