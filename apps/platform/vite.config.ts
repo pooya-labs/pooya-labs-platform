@@ -7,6 +7,7 @@ import { portfolioProjects, type PortfolioProject } from './src/content/projects
 import { coreDossiers } from './src/content/case-study-dossiers-core';
 import { productDossiers } from './src/content/case-study-dossiers-products';
 import type { CaseStudyDossier } from './src/content/case-study-dossiers-types';
+import { architectureDiagrams } from './src/content/architecture-diagrams';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
 const SITE_ORIGIN = 'https://pooya-labs.github.io';
@@ -190,6 +191,81 @@ function staticPageHtml(template: string, project: PortfolioProject, locale: Loc
   return html;
 }
 
+
+function renderArchitectureDiagram(slug: string, locale: Locale): string {
+  const diagram = architectureDiagrams[slug];
+  if (!diagram) throw new Error('Missing architecture diagram for ' + slug);
+  const width = 1600;
+  const height = 900;
+  const nodeWidth = 300;
+  const nodeHeight = 155;
+  const textAnchor = locale === 'fa' ? 'end' : 'start';
+  const labelX = (node: (typeof diagram.nodes)[number]) => locale === 'fa' ? node.x + nodeWidth - 24 : node.x + 24;
+  const byId = new Map(diagram.nodes.map((node) => [node.id, node]));
+  const edges = diagram.edges.map((edge) => {
+    const from = byId.get(edge.from);
+    const to = byId.get(edge.to);
+    if (!from || !to) throw new Error('Invalid architecture edge in ' + slug);
+    const fromCenterX = from.x + nodeWidth / 2;
+    const fromCenterY = from.y + nodeHeight / 2;
+    const toCenterX = to.x + nodeWidth / 2;
+    const toCenterY = to.y + nodeHeight / 2;
+    const deltaX = toCenterX - fromCenterX;
+    const deltaY = toCenterY - fromCenterY;
+    let sx: number, sy: number, tx: number, ty: number;
+    if (Math.abs(deltaX) >= Math.abs(deltaY)) {
+      sx = deltaX >= 0 ? from.x + nodeWidth : from.x;
+      sy = fromCenterY;
+      tx = deltaX >= 0 ? to.x : to.x + nodeWidth;
+      ty = toCenterY;
+    } else {
+      sx = fromCenterX;
+      sy = deltaY >= 0 ? from.y + nodeHeight : from.y;
+      tx = toCenterX;
+      ty = deltaY >= 0 ? to.y : to.y + nodeHeight;
+    }
+    const control = Math.max(48, Math.min(145, Math.hypot(tx - sx, ty - sy) * 0.38));
+    const c1x = Math.abs(deltaX) >= Math.abs(deltaY) ? sx + Math.sign(deltaX) * control : sx;
+    const c1y = Math.abs(deltaX) >= Math.abs(deltaY) ? sy : sy + Math.sign(deltaY) * control;
+    const c2x = Math.abs(deltaX) >= Math.abs(deltaY) ? tx - Math.sign(deltaX) * control : tx;
+    const c2y = Math.abs(deltaX) >= Math.abs(deltaY) ? ty : ty - Math.sign(deltaY) * control;
+    return `<path d="M ${sx} ${sy} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${tx} ${ty}" fill="none" stroke="#69d9dc" stroke-opacity=".68" stroke-width="3" marker-end="url(#arrow)" />`;
+  }).join('');
+  const nodes = diagram.nodes.map((item, index) => {
+    const kind = item.kind ?? 'core';
+    const title = escapeXml(item.title[locale]);
+    const detail = escapeXml(item.detail[locale]);
+    return `<g>
+      <rect x="${item.x}" y="${item.y}" width="${nodeWidth}" height="${nodeHeight}" rx="19" fill="${kind === 'storage' ? 'url(#storage)' : kind === 'external' ? 'url(#external)' : kind === 'local' ? 'url(#local)' : 'url(#node)'}" stroke="${kind === 'storage' ? '#78d9b1' : kind === 'external' ? '#76d8e8' : '#6edbce'}" stroke-opacity=".45" stroke-width="1.5" />
+      <circle cx="${item.x + 27}" cy="${item.y + 29}" r="5" fill="${kind === 'storage' ? '#78e1b5' : '#75e5e5'}" />
+      <text x="${labelX(item)}" y="${item.y + 37}" text-anchor="${textAnchor}" font-family="Inter,Segoe UI,Tahoma,Arial,sans-serif" font-size="13" letter-spacing="2" fill="#7897a4">${String(index + 1).padStart(2, '0')}</text>
+      <text x="${labelX(item)}" y="${item.y + 83}" text-anchor="${textAnchor}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="Inter,Segoe UI,Tahoma,Arial,sans-serif" font-size="23" font-weight="650" fill="#eaf8f8">${title}</text>
+      <text x="${labelX(item)}" y="${item.y + 119}" text-anchor="${textAnchor}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="Inter,Segoe UI,Tahoma,Arial,sans-serif" font-size="15" fill="#9bb6bf">${detail}</text>
+    </g>`;
+  }).join('');
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" lang="${locale}" aria-label="${escapeXml(diagram.title[locale])}">
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#070d15"/><stop offset=".58" stop-color="#0d1d2a"/><stop offset="1" stop-color="#102b2a"/></linearGradient>
+      <linearGradient id="node" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173442"/><stop offset="1" stop-color="#10232f"/></linearGradient>
+      <linearGradient id="storage" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173b37"/><stop offset="1" stop-color="#122a2c"/></linearGradient>
+      <linearGradient id="external" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#19374a"/><stop offset="1" stop-color="#132538"/></linearGradient>
+      <linearGradient id="local" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#29384a"/><stop offset="1" stop-color="#172937"/></linearGradient>
+      <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" stroke="#b9d8e0" stroke-opacity=".055" stroke-width="1"/></pattern>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#79e5d1"/></marker>
+      <radialGradient id="glow"><stop stop-color="#32b6bc" stop-opacity=".17"/><stop offset="1" stop-color="#32b6bc" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="1600" height="900" rx="26" fill="url(#bg)"/><rect width="1600" height="900" rx="26" fill="url(#grid)"/>
+    <circle cx="1350" cy="120" r="430" fill="url(#glow)"/>
+    <text x="${locale === 'fa' ? 1510 : 88}" y="91" text-anchor="${locale === 'fa' ? 'end' : 'start'}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="Inter,Segoe UI,Tahoma,Arial,sans-serif" font-size="30" font-weight="700" fill="#e8fbfa">${escapeXml(diagram.title[locale])}</text>
+    <text x="${locale === 'fa' ? 1510 : 90}" y="132" text-anchor="${locale === 'fa' ? 'end' : 'start'}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="Inter,Segoe UI,Tahoma,Arial,sans-serif" font-size="17" fill="#8faeb7">${escapeXml(diagram.caption[locale])}</text>
+    <path d="M88 164H1512" stroke="#9fc9d1" stroke-opacity=".15"/>
+    ${edges}
+    ${nodes}
+    <text x="88" y="855" font-family="ui-monospace,monospace" font-size="13" letter-spacing="3" fill="#6c8792">POOYA LABS · DOCUMENTED SYSTEM VIEW</text>
+    <text x="1512" y="855" text-anchor="end" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2" fill="#6c8792">${slug.toUpperCase()}</text>
+  </svg>`;
+}
+
 function socialCard(project: PortfolioProject, locale: Locale): string {
   const t = pageCopy[locale];
   const name = escapeXml(project.name);
@@ -249,6 +325,7 @@ function staticCaseStudyPages(): Plugin {
           const route = locale === 'en' ? `en/projects/${project.slug}/index.html` : `projects/${project.slug}/index.html`;
           this.emitFile({ type: 'asset', fileName: route, source: staticPageHtml(homeWithSocial, project, locale) });
           this.emitFile({ type: 'asset', fileName: `og/${project.slug}${locale === 'en' ? '-en' : ''}.svg`, source: socialCard(project, locale) });
+          this.emitFile({ type: 'asset', fileName: `architecture/${project.slug}${locale === 'en' ? '-en' : ''}.svg`, source: renderArchitectureDiagram(project.slug, locale) });
         }
       }
       this.emitFile({
