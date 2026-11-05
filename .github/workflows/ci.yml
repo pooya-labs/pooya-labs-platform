@@ -27,5 +27,12 @@ jobs:
         run: npm run typecheck
       - name: Build GitHub Pages and Apps Script bundles
         run: npm run build
+      - name: Upload single-file Apps Script bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: pooya-labs-gas-htmlservice-bundle
+          path: dist/gas/index.html
+          if-no-files-found: error
+          retention-days: 14
       - name: Run repository contract tests
         run: npm test
