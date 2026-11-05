@@ -9,7 +9,7 @@ The platform is developed in gated phases. A phase is not complete until its acc
 - [x] Prove external browser-to-GAS transport from a real GitHub Pages origin; record the negative CORS result and browser evidence.
 - [x] Decide that HtmlService is the primary app runtime and GitHub Pages is static showcase/documentation hosting.
 - [x] Verify GAS quotas, execution limits, trigger behavior, and Sheets/Drive constraints against official documentation.
-- [ ] Review and approve the drafted threat model/data classification, then finalize admin authentication, abuse controls, and deployment access settings before protected features.
+- [x] Owner approved the public-app / owner-only-admin deployment boundary; finalize authentication, abuse controls, and actual deployment access settings before protected features.
 - [x] Define provisional measurable performance budgets and a repeatable measurement strategy (baseline measurements remain pending).
 - [x] Document deployment, source sync, rollback, backup, and restore procedures (rehearsal remains pending).
 - [ ] Approve remaining architecture decisions and phase exit review.
