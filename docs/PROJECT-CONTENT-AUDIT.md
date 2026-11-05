@@ -22,7 +22,8 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 
 **Required before portfolio release**
 - [ ] Confirm exact public attribution/role wording. The current README does not identify an individual author or provide a personal contribution breakdown.
-- [ ] Capture an approved current UI/API/worker screenshot and one architecture or execution-flow diagram.
+- [x] Add a bilingual architecture/execution-flow diagram based on the documented Rust, PostgreSQL, JetStream, Worker, and observability boundaries.
+- [ ] Capture an owner-approved current UI/API/worker screenshot; no actual product screenshot was found in the repository.
 - [ ] Recheck M08 against the current main SHA: in-flight worker completion during API outage, additional distinct recovery/failure-injection cases, and the fingerprint-aware benchmark comparator. Resolve or clearly describe any outstanding schema/CI failure.
 - [ ] Record the owner's license choice; README states license selection is still pending.
 - [ ] Confirm which benchmark/recovery results may be quoted publicly and retain exact run/source links.
@@ -37,8 +38,8 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 - Release CI, Security, and Pages evidence are linked from the dossier. Demo notifications are simulated; no real webhook/email is sent.
 
 **Required before portfolio release**
-- [ ] Capture real dashboard screenshots for Overview, Incidents, Metrics, Logs, and Traces; the existing repository visual found during audit is a brand icon, not product evidence.
-- [ ] Capture the local architecture / telemetry flow as a diagram.
+- [x] Add a bilingual architecture diagram that keeps the public Apps Script demo path separate from the local Go/OTel/Prometheus/Loki/Tempo engineering path.
+- [ ] Capture real dashboard screenshots for Overview, Incidents, Metrics, Logs, and Traces; the existing repository visual is a brand icon, not product evidence.
 - [ ] Have the owner run and record an Apps Script demo smoke: bootstrap, a mutation in a synthetic workspace, reload/refresh persistence, and an isolated second browser profile. The external verification environment could not independently validate the owner's Apps Script deployment.
 - [ ] Complete real-device TalkBack and VoiceOver sessions and the remaining human keyboard/chart-table review; automated axe/Playwright/NVDA runs do not constitute formal WCAG certification.
 - [ ] Keep synthetic data, non-hosted Go/PostgreSQL/OTel infrastructure, and simulated notifications clearly disclosed.
@@ -52,8 +53,8 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 - Latest recorded Pages deployment in the README history is linked from the dossier.
 
 **Required before portfolio release**
+- [x] Add a bilingual architecture diagram showing the static Pages export, Next/React workspace, Zustand state, and browser-local tools; the no-backend boundary is explicit.
 - [ ] Capture current desktop and mobile interface screenshots (including one open app/window).
-- [ ] Add a concise architecture diagram and explain the client-only state boundary.
 - [ ] Run current-source browser, keyboard, responsive, reduced-motion, and accessibility checks; the README did not provide a consolidated current QA report at audit time.
 - [ ] Confirm whether the project is still actively maintained or should be labelled as a completed experiment/demonstration.
 
@@ -66,8 +67,8 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 - Latest recorded Pages deployment is linked from the dossier.
 
 **Required before portfolio release**
+- [x] Add a bilingual architecture diagram for the browser graph editor, graph analysis, validated model, local simulation, and snapshot/Compose export.
 - [ ] Capture actual canvas, rack view, graph analysis, and snapshot import/export screenshots.
-- [ ] Add a diagram showing the graph model and validation/export flow.
 - [ ] Run current-source browser, keyboard, mobile, reduced-motion, and accessibility checks; no consolidated current QA report was found in the README.
 - [ ] Confirm whether generated Compose output has an example verified by a real local Docker Compose run; otherwise continue calling it a starter, not a deployable production topology.
 
@@ -80,8 +81,8 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 - Latest recorded Pages deployment is linked from the dossier.
 
 **Required before portfolio release**
+- [x] Add a bilingual architecture diagram showing the separate SVG/Canvas optical path, Web Audio filter chain, and browser-local preset/task storage.
 - [ ] Capture Optical Studio, PNG export, Audio Lab, and task-board screenshots.
-- [ ] Add a small signal-flow diagram for audio source → filters → output.
 - [ ] Run current-source tests for mic permission denial, stop/source switching, AudioContext/resource cleanup, and reduced-motion/accessibility behavior.
 - [ ] Do not claim cloud sync, AI audio processing, or server persistence.
 
@@ -95,8 +96,8 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 - Latest recorded Pages deployment is linked from the dossier.
 
 **Required before portfolio release**
+- [x] Add a bilingual architecture diagram separating Binance public ticker input, labelled illustrative fallback, browser dashboard, and local paper-trading storage; no exchange order path is shown.
 - [ ] Capture screenshots of connected ticker state, disconnected/fallback state, chart, and paper-trading flow.
-- [ ] Add a diagram separating public ticker input, illustrative fallback, and local simulation.
 - [ ] Re-run tests for feed availability/fallback labelling, local storage reset, arithmetic, and browser/accessibility behavior on current source.
 - [ ] Ensure the portfolio never presents illustrative indicators as live market data or the project as a real trading platform.
 
@@ -115,6 +116,7 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 - [ ] Complete M09.6: verify all 1,000 imported product galleries, all referenced local image files, deploy smoke, and desktop/mobile detail/gallery E2E on the exact current SHA.
 - [ ] Read and record the final Browser E2E result and publish the same successful code SHA to Pages.
 - [ ] Reconcile stale/conflicting source-document statements about which catalog path is active (local ABO snapshot versus Shopify runtime discovery) across README, PROJECT_CONTEXT, ARCHITECTURE, DATA_SOURCES, and REAL_CATALOG_MIGRATION.
+- [x] Add a bilingual architecture diagram for the local ABO snapshot, no-store Shopify discovery proxy, TGJU FX snapshot, storefront, and simulated cart.
 - [ ] Capture current desktop and mobile storefront/product-detail/gallery screenshots and verify they match the published HEAD.
 - [ ] Complete physical-device, manual screen-reader, human RTL/LTR, and normal-network checks.
 - [ ] Keep 0.2.3-dev and do not tag 1.0.0 until manual visual approval and all repository release gates pass.
@@ -133,6 +135,7 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 - [ ] Confirm deployment of Apps Script 1.4.0, SALON_RELAY_URL, additive TimeBlocks/schema setup if required, fresh bootstrap/login, and end-to-end booking/lookup/cancellation/overlap checks.
 - [ ] Verify actual salon timezone, business hours, services, prices, contact details, and booking/cancellation policy with the product owner. Do not publish placeholders as confirmed facts.
 - [ ] Verify Firebase project, FCM API, web config/VAPID, manager-device registration, and an actual background push on the manager's Android device before describing push as live.
+- [x] Add a bilingual architecture diagram for the Pages frontend, hidden Apps Script bridge, Apps Script API, private Sheets, and FCM manager-push path.
 - [ ] Capture only synthetic/demo screens or owner-approved redacted screenshots; never expose client names, phone numbers, booking references, or tokens.
 - [ ] Confirm whether the product owner permits public case-study details and the credit wording to be published.
 
@@ -144,14 +147,14 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 - [ ] Approve each project status and the precise public claims after checking current source and current workflow evidence.
 - [ ] Choose the contact channel to publish (do not invent an email or social profile).
 - [ ] Supply/approve any personal portrait or owner-provided assets. Do not substitute stock imagery.
-- [ ] Approve architecture diagrams, screenshots, captions, and alt text; confirm that no confidential/client data appears.
+- [ ] Approve the generated architecture diagrams, screenshots, captions, and alt text; confirm that no confidential/client data appears.
 - [ ] Give feedback on final visual direction, typography, color, animation, navigation, case-study density, and mobile reading flow in the two required redesign rounds.
 
 ## Required order before V1
 
 1. Finish source-backed technical content and verify statuses against each current source repository.
 2. Complete the per-project evidence and owner-review tasks above; record unresolved items as blockers rather than writing around them.
-3. Build crawler-readable static case-study pages and per-project social preview cards. Current ?project= views update metadata client-side; this is not guaranteed crawler-readable.
+3. [x] Build crawler-readable Persian/English static case-study pages with canonical/hreflang/JSON-LD and per-project/per-language SVG social cards. [ ] Validate external share-client compatibility for SVG and add PNG/JPEG fallback only where required.
 4. Complete the full visual redesign with Pooya's first and second feedback rounds.
 5. Complete exact-SHA CI/Pages, accessibility, responsive, browser, performance, link, metadata, and manual acceptance checks.
 6. Obtain explicit owner approval and only then publish V1.
