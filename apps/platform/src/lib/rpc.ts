@@ -17,7 +17,7 @@ export interface RpcResponse<TData = unknown> {
 interface GoogleScriptRun {
   withSuccessHandler<T>(callback: (value: T) => void): GoogleScriptRun;
   withFailureHandler(callback: (error: unknown) => void): GoogleScriptRun;
-  rpcCall<TData>(request: RpcRequest): void;
+  rpcCall(request: RpcRequest): void;
 }
 
 declare global {
@@ -63,6 +63,6 @@ export function rpcCall<TData = unknown>(
     runner
       .withSuccessHandler((response: RpcResponse<TData>) => resolve(response))
       .withFailureHandler(reject)
-      .rpcCall<TData>(request);
+      .rpcCall(request);
   });
 }
