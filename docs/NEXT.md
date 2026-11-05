@@ -1,42 +1,30 @@
-# Next Task — Phase 0
+# Next Task — Spatial OS shell
 
-**Task ID:** P0-05  
-**Title:** Review and approve the public/admin security boundary and Phase 0 release gates  
-**Status:** Repository-side proposal prepared; owner approval required before privileged features
+**Task ID:** P2-01  
+**Title:** Validate and publish the first Antigravity-inspired Spatial OS shell  
+**Status:** UI source committed; full CI build and Pages publication are the immediate verification gates
 
-## Confirmed progress
-- The owner copied the revised `Code.gs` and `Index.html` into the existing Apps Script project, deployed a new Web App version, and ran the revised page.
-- The returned response included `ok: true`, `data.transport: "google.script.run"`, `error: null`, and a new `requestId`. This closes the owner-side portion of P0-04.
-- Real Chromium reproduced the external Pages-to-GAS CORS restriction. HtmlService is the primary runtime; Pages is public/static only.
-- Repository CI passes the current 9 contract tests.
+## What is implemented
+- React + TypeScript + Vite workspace at `apps/platform`.
+- Responsive desktop/mobile Spatial OS first screen and app window shell.
+- Initial Overview, Files sample, local-only Terminal, and Settings mini-apps.
+- Command palette (Ctrl/Cmd + K), numeric app shortcuts, dark/light theme, Persian RTL / English LTR.
+- Cursor refraction field: eased glow plus glass lens, with touch/reduced-motion fallback.
+- Vite build targets for GitHub Pages static content and a single-file HtmlService bundle.
 
-## Proposed security boundary
+## Immediate validation
+1. Check the latest `Repository CI` run for package install, TypeScript, both build targets, and contract tests.
+2. Check the `Platform GitHub Pages` workflow. If the repository still uses branch/Jekyll Pages publishing, change **Settings → Pages → Build and deployment → Source** to **GitHub Actions** once.
+3. Open the published Pages preview on desktop and mobile; inspect cursor lens behavior, Persian RTL, English LTR, theme switching, and app windows.
+4. Build artifact `dist/gas/index.html` is the single-file HtmlService app. Once CI uploads it, sync its content into the Apps Script HTML file named `Index`; keep the existing `Code.gs` RPC router and publish a new Web App version. Do not copy the Vite source module entrypoint into Apps Script.
 
-See [ADR-0004](decisions/ADR-0004-public-admin-boundary.md). It is a proposal, not an owner-approved security decision.
+## Important boundaries
+- Cursor lens is decorative only and must not intercept pointer interactions.
+- Files are labeled sample content, not real Drive files.
+- Terminal commands are local allowlisted demo responses only, not shell execution.
+- No AI agents, real project persistence, Drive synchronization, or privileged actions are connected yet.
+- Public and owner-only admin apps remain separate; this milestone creates only the public shell.
+- Existing project repositories remain untouched; integrations are still Phase 9.
 
-
-- Public app: a deliberately limited HtmlService deployment. Never expose admin, secret-management, export, or privileged data operations in it.
-- Admin app: separate Apps Script project/deployment with access restricted to the deploying owner (`MYSELF`) unless a tested Workspace multi-admin model is later approved.
-- Do not use a hidden admin button, a client-side role flag, request IDs, temporary user keys, or `Session.getActiveUser().getEmail()` in an execute-as-owner public deployment as the authorization boundary.
-- Keep private/restricted data out of public GitHub Pages and public app responses.
-- No protected operation is enabled in the Phase 0 RPC.
-
-## Owner approval needed
-Review:
-- [SECURITY-MODEL.md](SECURITY-MODEL.md)
-- [DATA-CLASSIFICATION.md](DATA-CLASSIFICATION.md)
-- [PERFORMANCE-BUDGETS.md](PERFORMANCE-BUDGETS.md)
-- [DEPLOYMENT.md](DEPLOYMENT.md)
-- [DEPLOYMENT-RUNBOOK.md](DEPLOYMENT-RUNBOOK.md)
-
-Confirm the direction before any admin, private-data, or mutation endpoint is implemented.
-
-## Remaining Phase 0 verification
-1. Measure first-load and interaction performance on the target desktop and mobile devices against [PERFORMANCE-BUDGETS.md](PERFORMANCE-BUDGETS.md).
-2. Run the documented deployment rollback rehearsal while the app still contains only the health check.
-3. Approve the eventual storage ownership, access list, backup frequency, retention, and restore procedure before creating production Sheets.
-4. Recheck the current Apps Script quotas when estimating a real workload; Google may change limits without notice.
-5. Complete the Phase 0 review and only then begin the Phase 1 toolchain.
-
-## Non-negotiable scope
-Do not modify or import any previous project repository. All integration remains deferred to Phase 9.
+## Next after verification
+Add a validated manifest-driven app registry and runtime service interfaces, then replace the static sample activity with explicit empty/loading/error states. Keep the backend health check as the only live RPC until data/auth contracts are designed.
