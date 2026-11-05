@@ -14,7 +14,7 @@
 
 ## Verified validation
 - Repository CI [42036122022](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42036122022) passed TypeScript, Pages/GAS builds, single-file artifact upload, and 14/14 contract tests.
-- Platform Pages deployment [42035942848](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42035942848) succeeded at https://pooya-labs.github.io/pooya-labs-platform/.
+- Platform Pages deployment [42036636856](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42036636856) succeeded at https://pooya-labs.github.io/pooya-labs-platform/.
 
 ## Remaining manual validation
 1. Open the preview on desktop and move the mouse across the hero, cards, and empty canvas; check that the glass lens follows smoothly without swallowing clicks.
