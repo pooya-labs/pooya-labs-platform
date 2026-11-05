@@ -19,8 +19,9 @@
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-reported-on-original-proof",
-    "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42026786711",
-    "externalBrowserResponseReadable": false
+    "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
+    "externalBrowserResponseReadable": false,
+    "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302"
   },
   "hosting": {
     "primaryApplicationRuntime": "google-apps-script-html-service",
