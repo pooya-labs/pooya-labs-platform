@@ -82,6 +82,9 @@ function renderList(items: readonly string[]): string {
 function renderStaticCaseStudy(project: PortfolioProject, locale: Locale): string {
   const t = pageCopy[locale];
   const dossier = dossierFor(project);
+  const diagram = architectureDiagrams[project.slug];
+  if (!diagram) throw new Error('Missing architecture diagram for ' + project.slug);
+  const diagramPath = `${SITE_BASE}architecture/${project.slug}${locale === 'en' ? '-en' : ''}.svg`;
   const visual = project.visualAsset
     ? `<img class="case-study-visual-image visual-${project.visualAsset.kind}" src="${escapeHtml(project.visualAsset.url)}" alt="${escapeHtml(project.visualAsset.alt[locale])}" loading="eager" decoding="async">`
     : '';
@@ -119,6 +122,10 @@ function renderStaticCaseStudy(project: PortfolioProject, locale: Locale): strin
         <article class="case-study-panel"><div class="portfolio-eyebrow"><span class="eyebrow-index">03 /</span>${t.role}</div><p>${escapeHtml(dossier.role[locale])}</p></article>
         <article class="case-study-panel"><div class="portfolio-eyebrow"><span class="eyebrow-index">04 /</span>${t.architecture}</div><p>${escapeHtml(dossier.architecture[locale])}</p></article>
       </section>
+      <figure class="case-study-architecture-figure">
+        <img src="${diagramPath}" alt="${escapeHtml(diagram.title[locale])}" width="1600" height="900" loading="lazy" decoding="async">
+        <figcaption>${escapeHtml(diagram.caption[locale])}</figcaption>
+      </figure>
       <section class="case-study-detail-grid">
         <article class="case-study-highlights"><div class="portfolio-eyebrow"><span class="eyebrow-index">05 /</span>${t.implementation}</div><ul>${renderList(dossier.implementation[locale])}</ul></article>
         <article class="case-study-highlights"><div class="portfolio-eyebrow"><span class="eyebrow-index">06 /</span>${t.decisions}</div><ul>${renderList(dossier.decisions[locale])}</ul></article>
