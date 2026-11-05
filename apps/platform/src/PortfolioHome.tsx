@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpLeft, ArrowUpRight, ArrowUpRightFromSquare, Github, Layers3, Sparkles, TerminalSquare, Workflow } from 'lucide-react';
+import { ArrowDown, ArrowUpLeft, ArrowUpRight, ExternalLink, Github, Layers3, Sparkles, TerminalSquare, Workflow } from 'lucide-react';
 import { useEffect, useRef, type ReactNode } from 'react';
 
 type Language = 'fa' | 'en';
