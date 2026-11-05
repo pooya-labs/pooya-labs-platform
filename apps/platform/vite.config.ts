@@ -217,7 +217,7 @@ function socialCard(project: PortfolioProject, locale: Locale): string {
   <text x="88" y="300" font-family="Inter,Arial,Tahoma,sans-serif" font-size="82" font-weight="760" letter-spacing="-3" fill="url(#title)">${name}</text>
   <text x="92" y="358" font-family="Inter,Arial,Tahoma,sans-serif" font-size="25" fill="#85d9d8">${category}</text>
   <text x="92" y="423" font-family="Inter,Arial,Tahoma,sans-serif" font-size="20" fill="#b5c8ce">${description.length > 90 ? description.slice(0, 88) + '…' : description}</text>
-  <rect x="90" y="478" width="auto" height="38" rx="19" fill="#193b39" stroke="#64e0b1" stroke-opacity=".5"/>
+  <rect x="90" y="478" width="330" height="38" rx="19" fill="#193b39" stroke="#64e0b1" stroke-opacity=".5"/>
   <text x="110" y="503" font-family="Inter,Arial,Tahoma,sans-serif" font-size="17" fill="#96edc8">${status}</text>
   <path d="M90 560H1110" stroke="#9cc5ce" stroke-opacity=".18"/>
   <text x="90" y="592" font-family="ui-monospace,monospace" font-size="13" letter-spacing="3" fill="#78929c">SOFTWARE / SYSTEMS / PRODUCT ENGINEERING</text>
@@ -247,7 +247,6 @@ function staticCaseStudyPages(): Plugin {
       (indexAsset as OutputAsset).source = homeWithSocial;
 
       for (const project of portfolioProjects) {
-        const dossier = dossierFor(project);
         for (const locale of ['fa', 'en'] as const) {
           const route = locale === 'en' ? `en/projects/${project.slug}/index.html` : `projects/${project.slug}/index.html`;
           this.emitFile({ type: 'asset', fileName: route, source: staticPageHtml(homeWithSocial, project, locale) });
