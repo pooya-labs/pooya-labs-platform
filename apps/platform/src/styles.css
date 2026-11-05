@@ -69,7 +69,7 @@ button:disabled { cursor: not-allowed; opacity: .55; }
 }
 
 /* Antigravity-inspired pointer lens: a soft refractive field, not a replacement cursor. */
-.cursor-field { position: fixed; z-index: 2; inset: 0; overflow: hidden; pointer-events: none; contain: strict; }
+.cursor-field { position: fixed; z-index: 18; inset: 0; overflow: hidden; pointer-events: none; contain: strict; }
 .cursor-field-glow {
   position: absolute; top: 0; left: 0; width: 350px; height: 350px; border-radius: 50%;
   opacity: .5; filter: blur(34px); mix-blend-mode: screen; will-change: transform;
