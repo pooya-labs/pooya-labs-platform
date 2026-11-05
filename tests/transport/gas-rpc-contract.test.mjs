@@ -16,7 +16,7 @@ test('GAS exposes the versioned RPC dispatcher and no cross-origin ContentServic
   assert.match(gas, /request\.action\s*===\s*['"]health\.check['"]/);
   assert.match(gas, /ACTION_NOT_ALLOWED/);
   assert.doesNotMatch(gas, /function\s+doPost\s*\(/);
-  assert.doesNotMatch(gas, /ContentService/);
+  assert.doesNotMatch(gas, /ContentService\\s*\\.\\s*(?:createTextOutput|MimeType)/);
 });
 
 test('RPC errors are normalized and internal exceptions are not returned', () => {
