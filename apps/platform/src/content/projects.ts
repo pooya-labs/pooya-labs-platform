@@ -278,6 +278,19 @@ export function validatePortfolioProjects(entries: readonly PortfolioProject[]):
         throw new Error('Every project visual asset requires Persian and English alternative text.');
       }
     }
+    if (project.caseStudyMedia) {
+      if (!project.caseStudyMedia.length) throw new Error('Case-study media lists cannot be empty.');
+      for (const media of project.caseStudyMedia) {
+        assertHttpsUrl(media.url, ['raw.githubusercontent.com'], 'Case-study media URL');
+        const mediaPath = new URL(media.url).pathname;
+        if (!/^\/pooya-labs\/[a-z0-9-]+\/[a-f0-9]{40}\//.test(mediaPath)) {
+          throw new Error('Case-study media must be pinned to an immutable source commit.');
+        }
+        if (!media.alt.fa.trim() || !media.alt.en.trim() || !media.caption.fa.trim() || !media.caption.en.trim()) {
+          throw new Error('Every case-study media item requires localized captions and alternative text.');
+        }
+      }
+    }
     slugs.add(project.slug);
     names.add(project.name.toLowerCase());
   }
