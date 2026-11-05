@@ -1,6 +1,6 @@
 # ADR-0004: Separate the public app from privileged administration
 
-- **Status:** Proposed — owner approval required before privileged features
+- **Status:** Accepted — privileged-feature implementation remains gated until tested
 - **Date:** 2026-11-05
 
 ## Context
@@ -8,7 +8,7 @@ The primary application now runs inside Google Apps Script HtmlService. A web ap
 
 A visual admin button, client role value, request ID, temporary user key, or email string supplied by the browser is not an authorization boundary.
 
-## Proposal
+## Owner-approved decision
 1. Keep the public-facing application deployment low privilege and expose only intentionally public read/submit operations after server-side validation.
 2. Keep privileged administration in a separate Apps Script project/deployment restricted to the deploying owner (`MYSELF`) for the initial single-owner release.
 3. Do not place privileged admin actions in the public app and rely on hidden UI controls.
