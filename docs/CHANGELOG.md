@@ -5,7 +5,7 @@
 - Implemented the responsive desktop/mobile workspace shell, app windows, Dock, command palette, dark/light theme, and Persian/English direction switching.
 - Added the mouse-following glow + translucent cursor refraction lens, disabled for touch and reduced-motion settings.
 - Added design-direction notes and ADR-0005; the UI remains a local/sample-only foundation, not a live AI-agent platform.
-- Added build/type-check/contract-test CI, a dedicated Pages deployment workflow, and an Apps Script HTML bundle artifact.
+- Added build/type-check/contract-test CI, a dedicated Pages deployment workflow, and an Apps Script HTML bundle artifact. Final CI run [42036638066](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42036638066) passed 14/14 tests and both build targets; Pages deployment [42036636856](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42036636856) succeeded.
 - Owner approved public-app / owner-only-admin separation under ADR-0004.
 
 
