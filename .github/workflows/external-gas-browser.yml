@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     env:
-      GAS_WEB_APP_URL: https://script.google.com/macros/s/AKfycbzlF8iuBfC6pOOphucWcU-E5jgZkbgXyKmsomoHWbif1_--ttSCCIQcvK-6w7L_Y0efuA/exec
+      GAS_WEB_APP_URL: ${{ secrets.GAS_WEB_APP_URL }}
       TRANSPORT_HARNESS_URL: https://pooya-labs.github.io/pooya-labs-platform/tests/transport/external-fetch.html
     steps:
       - name: Check out repository
