@@ -160,6 +160,7 @@ function staticPageHtml(template: string, project: PortfolioProject, locale: Loc
   html = replaceTag(html, /<meta property="og:locale"[^>]*>/, `<meta property="og:locale" content="${locale === 'fa' ? 'fa_IR' : 'en_US'}" />`, 'Open Graph locale');
   html = replaceTag(html, /<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${canonical}" />`, 'canonical link');
   html = replaceTag(html, /<meta name="twitter:card"[^>]*>/, '<meta name="twitter:card" content="summary_large_image" />', 'Twitter card');
+  html = html.replace(/<meta property="og:image(?::[^"]+)?"[^>]*>\\s*/g, '');
   html = html.replace('</head>', `
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta property="og:image" content="${socialImage}" />
@@ -217,7 +218,7 @@ function socialCard(project: PortfolioProject, locale: Locale): string {
   <text x="88" y="300" font-family="Inter,Arial,Tahoma,sans-serif" font-size="82" font-weight="760" letter-spacing="-3" fill="url(#title)">${name}</text>
   <text x="92" y="358" font-family="Inter,Arial,Tahoma,sans-serif" font-size="25" fill="#85d9d8">${category}</text>
   <text x="92" y="423" font-family="Inter,Arial,Tahoma,sans-serif" font-size="20" fill="#b5c8ce">${description.length > 90 ? description.slice(0, 88) + '…' : description}</text>
-  <rect x="90" y="478" width="330" height="38" rx="19" fill="#193b39" stroke="#64e0b1" stroke-opacity=".5"/>
+  <rect x="90" y="478" width="430" height="38" rx="19" fill="#193b39" stroke="#64e0b1" stroke-opacity=".5"/>
   <text x="110" y="503" font-family="Inter,Arial,Tahoma,sans-serif" font-size="17" fill="#96edc8">${status}</text>
   <path d="M90 560H1110" stroke="#9cc5ce" stroke-opacity=".18"/>
   <text x="90" y="592" font-family="ui-monospace,monospace" font-size="13" letter-spacing="3" fill="#78929c">SOFTWARE / SYSTEMS / PRODUCT ENGINEERING</text>
