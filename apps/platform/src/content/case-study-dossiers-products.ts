@@ -19,7 +19,7 @@ export const productDossiers = {
       { label: { fa: "انتشار Pages", en: "Pages deployment" }, url: "https://github.com/pooya-labs/lumina-glass/actions/runs/41255800771" }
     ]
   },
-  aurapulse: {
+  "aura-pulse": {
     role: { fa: "README، پویا را نویسنده پروژه معرفی می‌کند.", en: "The README identifies Pooya as the author." },
     architecture: { fa: "داشبورد static بر پایه Next.js 16، React 19 و TypeScript؛ ticker عمومی در صورت دسترسی مرورگر از Binance می‌آید و chart/paper trading در مرورگر محاسبه می‌شود. حساب آزمایشی در localStorage ذخیره می‌شود.", en: "A static dashboard built with Next.js 16, React 19, and TypeScript; public tickers come from Binance when reachable, while charts and paper-trading run in-browser. The demo account is stored in localStorage." },
     implementation: {
