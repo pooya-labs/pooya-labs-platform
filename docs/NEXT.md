@@ -14,7 +14,7 @@
 - Every project record is still marked `needs-owner-review`; initial content is derived from the source repositories and is not treated as owner-approved final copy.
 
 ## Verified implementation checks
-- Repository CI [42048164129](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42048164129) passed TypeScript, both build targets, artifact upload, and 24/24 contract tests.
+- Repository CI [42048674359](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42048674359) passed TypeScript, both build targets, artifact upload, and 24/24 contract tests.
 - Pages deployment [42047985066](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42047985066) succeeded with the project case-study layouts.
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
 
