@@ -2,7 +2,7 @@
   "name": "pooya-labs-platform",
   "private": true,
   "version": "0.2.0",
-  "description": "Pooya Labs spatial workspace platform",
+  "description": "Pooya's personal portfolio and software project showcase",
   "workspaces": [
     "apps/platform"
   ],
