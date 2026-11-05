@@ -1,11 +1,6 @@
 name: External GAS Browser Transport Diagnostic
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'tests/transport/browser-smoke.mjs'
-      - '.github/workflows/external-gas-browser.yml'
   workflow_dispatch:
 
 permissions:
