@@ -6,7 +6,7 @@ This repository, not chat history, is the source of truth.
 1. Open the canonical repository: https://github.com/pooya-labs/pooya-labs-platform
 2. Read `AGENTS.md`.
 3. Read `docs/project-state.json`.
-4. Read `docs/STATUS.md`, `docs/NEXT.md`, and the relevant `docs/ROADMAP.md) phase.
+4. Read `docs/STATUS.md`, `docs/NEXT.md`, and the relevant phase in `docs/ROADMAP.md`.
 5. Inspect the latest commits and working tree before editing.
 6. Read the architecture and ADRs related to the next task.
 7. Continue only the task named in `docs/NEXT.md`. Do not redo completed work without evidence of regression.
