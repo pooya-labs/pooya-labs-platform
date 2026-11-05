@@ -19,6 +19,10 @@
 6. Open the deployment's `/exec` page and run the RPC health check.
 7. Record commit SHA, deployed version, timestamp, and test result in the project checkpoint. Do not record the deployment URL or its ID in the public repository.
 
+## Optional browser transport diagnostic
+
+The one-off CORS diagnosis is complete. To run it again later, add a repository Actions secret named `GAS_WEB_APP_URL` under **Settings → Secrets and variables → Actions**. The workflow reads the URL from that secret and does not store it in the repository source. This diagnostic tests only the intentionally unsupported external Pages-to-GAS path; it is not part of application runtime verification.
+
 ## Rollback rehearsal
 
 While only the health action exists:
