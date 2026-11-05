@@ -1,36 +1,40 @@
-# Next Task — Spatial OS shell
+# Next Task — Runtime service contracts and customer/admin domain
 
-**Task ID:** P2-01  
-**Title:** Validate and publish the first Antigravity-inspired Spatial OS shell  
-**Status:** UI source committed, CI green, and Pages preview deployed; Apps Script bundle sync and visual QA remain
+**Task ID:** P3-02  
+**Title:** Define runtime service interfaces and the customer request lifecycle  
+**Status:** Versioned owner-workspace manifest implemented; CI validation pending
 
-## What is implemented
-- React + TypeScript + Vite workspace at `apps/platform`.
-- Responsive desktop/mobile Spatial OS first screen and app window shell.
-- Initial Overview, Files sample, local-only Terminal, and Settings mini-apps.
-- Command palette (Ctrl/Cmd + K), numeric app shortcuts, dark/light theme, Persian RTL / English LTR.
-- Cursor refraction field: eased glow plus glass lens, with touch/reduced-motion fallback.
-- Vite build targets for GitHub Pages static content and a single-file HtmlService bundle.
+## What is now implemented
+- React + TypeScript + Vite shell with desktop/mobile layout, dock, floating windows, command palette, Persian/English, and dark/light themes.
+- Cursor refraction field with touch and reduced-motion fallbacks.
+- Version 1 built-in app manifest in `apps/platform/src/lib/app-manifest.ts`.
+- Manifest validation for supported version, unique IDs and shortcuts, complete Persian/English labels, and explicit owner-workspace audience.
+- Existing dock, rail, cards, and command palette now consume the manifest-backed registry.
+- Product surface boundaries documented in [PRODUCT-SURFACES.md](PRODUCT-SURFACES.md).
 
-## Verified validation
-- Repository CI [42036122022](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42036122022) passed TypeScript, Pages/GAS builds, single-file artifact upload, and 14/14 contract tests.
-- Platform Pages deployment [42036636856](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42036636856) succeeded at https://pooya-labs.github.io/pooya-labs-platform/.
+## Important product distinction
+The current Spatial OS shell is the **owner workspace foundation**, not a finished customer portal and not yet the operational admin console. The product will include both:
+1. A separate customer-facing portal for customers to discover services, submit requests/bookings, and track confirmed status.
+2. A separate owner-only administration console for reviewing requests, changing statuses, managing operations, and viewing audit history.
 
-## Remaining manual validation
-1. In the repository, open **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**. The integration cannot change this repository setting through the current GitHub connection.
-2. Open **Actions → Platform GitHub Pages → Run workflow**. This prevents the legacy branch/Jekyll publisher from replacing the Vite app and republishes the current static bundle.
-3. Open the preview on desktop and move the mouse across the hero, cards, and empty canvas; check that the glass lens follows smoothly without swallowing clicks.
-4. Check Persian RTL, English LTR, theme switching, app windows, and narrow mobile layout. Touch devices and reduced-motion mode should have no cursor lens.
-5. Download the `pooya-labs-gas-htmlservice-bundle` artifact from the latest CI run above. Its `index.html` is the single-file HtmlService app. Copy its content into the Apps Script HTML file named `Index`; keep the existing `Code.gs` RPC router, save, and publish a new Web App version. Do not copy the Vite source module entrypoint into Apps Script.
+These will not be a shared dashboard with hidden role buttons. The owner-approved separation in ADR-0004 remains mandatory.
 
-## Important boundaries
-- The owner approved ADR-0004: public app and owner-only admin app are separate deployments. No privileged admin code is added in this visual milestone.
-- Cursor lens is decorative only and must not intercept pointer interactions.
-- Files are labeled sample content, not real Drive files.
-- Terminal commands are local allowlisted demo responses only, not shell execution.
-- No AI agents, real project persistence, Drive synchronization, or privileged actions are connected yet.
-- Public and owner-only admin apps remain separate; this milestone creates only the public shell.
-- Existing project repositories remain untouched; integrations are still Phase 9.
+## Current boundaries
+- All current built-in apps are explicitly marked `owner-workspace`.
+- Files remain sample content; terminal is local demo only.
+- Only `health.check` is a live RPC action.
+- No customer identity, persistent customer records, booking mutations, privileged admin actions, or notifications are enabled.
+- Google Apps Script source sync and deployment are intentionally deferred until the platform implementation is substantially complete.
+- Existing project repositories remain untouched; integration is still Phase 9.
 
-## Next after verification
-Add a validated manifest-driven app registry and runtime service interfaces, then replace the static sample activity with explicit empty/loading/error states. Keep the backend health check as the only live RPC until data/auth contracts are designed.
+## Next implementation sequence
+1. Add typed runtime service interfaces and explicit mock/live adapters; mocks must never be presented as server-confirmed results.
+2. Define customer identity, request/booking lifecycle, ownership, status transitions, and idempotency contracts before building mutations.
+3. Build the customer-facing portal as a separate application surface against those contracts.
+4. Build the owner-only administration console as a separate deployment and enforce authorization server-side.
+5. Complete persistence, notifications, security, accessibility, recovery, and release gates.
+6. Sync the final HtmlService bundle and deploy Apps Script only near the end, after the application and backend contracts are ready.
+
+## Validation
+- Run the repository CI after this manifest milestone and record its actual result here.
+- Keep the Pages preview as the fast visual review surface; it is not the production customer runtime.
