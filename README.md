@@ -32,8 +32,9 @@ The Phase 0 HtmlService RPC proof passed in the owner's browser. The external Pa
 Start here:
 1. Read [AGENTS.md](AGENTS.md).
 2. Read [ROADMAP.md](docs/ROADMAP.md), [STATUS.md](docs/STATUS.md), [SECURITY-MODEL.md](docs/SECURITY-MODEL.md), and [DATA-CLASSIFICATION.md](docs/DATA-CLASSIFICATION.md).
-3. Execute the exact next task in [NEXT.md](docs/NEXT.md).
-4. Follow [RECOVERY.md](docs/RECOVERY.md) after context loss or AI handoff.
+3. Review [PERFORMANCE-BUDGETS.md](docs/PERFORMANCE-BUDGETS.md) and [DEPLOYMENT-RUNBOOK.md](docs/DEPLOYMENT-RUNBOOK.md).
+4. Execute the exact next task in [NEXT.md](docs/NEXT.md).
+5. Follow [RECOVERY.md](docs/RECOVERY.md) after context loss or AI handoff.
 
 ## Repository map
 
