@@ -8,7 +8,9 @@ const slugs = ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass'
 
 test('Vite emits crawler-readable Persian and English case-study pages', { skip: !rootHtml }, async () => {
   assert.match(rootHtml, /og:image/);
-  assert.match(rootHtml, /og\/pooya-labs\.svg/);
+  assert.match(rootHtml, /og\/pooya-labs\.png/);
+  assert.match(rootHtml, /og:image:type" content="image\/png/);
+  assert.match(rootHtml, /og:image:height" content="627/);
   for (const slug of slugs) {
     for (const locale of ['fa', 'en']) {
       const route = locale === 'en' ? `en/projects/${slug}/index.html` : `projects/${slug}/index.html`;
@@ -17,7 +19,9 @@ test('Vite emits crawler-readable Persian and English case-study pages', { skip:
       assert.ok(html.includes('<div id="root"><main'), `${route} must contain static article markup before JavaScript`);
       assert.ok(html.includes(`<link rel="canonical" href="${canonical}"`), `${route} must have a canonical URL`);
       assert.ok(html.includes(`og:image`), `${route} must declare a social preview image`);
-      assert.ok(html.includes(`/pooya-labs-platform/og/${slug}${locale === 'en' ? '-en' : ''}.svg`), `${route} must point to its own social card`);
+      assert.ok(html.includes(`/pooya-labs-platform/og/${slug}${locale === 'en' ? '-en' : ''}.png`), `${route} must point to its own PNG social card`);
+      assert.ok(html.includes('og:image:type" content="image/png'), `${route} must declare a PNG social preview`);
+      assert.ok(html.includes('og:image:height" content="627'), `${route} must use the 1.91:1 LinkedIn-compatible height`);
       assert.ok(html.includes('application/ld+json'), `${route} must contain structured metadata`);
       assert.ok(html.includes('summary_large_image'), `${route} must declare a large social card`);
       assert.ok(html.includes('rel="alternate" hreflang="fa"'), `${route} must link its Persian alternate`);
@@ -29,7 +33,12 @@ test('Vite emits crawler-readable Persian and English case-study pages', { skip:
 
       const socialFile = locale === 'en' ? `og/${slug}-en.svg` : `og/${slug}.svg`;
       const social = await readFile(new URL(socialFile, outputRoot), 'utf8');
-      assert.match(social, /width="1200" height="630"/);
+      const pngFile = locale === 'en' ? `og/${slug}-en.png` : `og/${slug}.png`;
+      const png = await readFile(new URL(pngFile, outputRoot));
+      assert.deepEqual(png.subarray(0, 8), Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), `${pngFile} must be a valid PNG`);
+      assert.equal(png.readUInt32BE(16), 1200, `${pngFile} must be 1200 px wide`);
+      assert.equal(png.readUInt32BE(20), 627, `${pngFile} must be 627 px high`);
+      assert.match(social, /width="1200" height="627"/);
       assert.match(social, locale === 'fa' ? /font-family="Amiri,Tahoma,Arial,sans-serif"/ : /font-family="Inter,Arial,Tahoma,sans-serif"/, `${socialFile} must use a script-appropriate font stack`);
       assert.ok(social.includes(slug === 'aura-pulse' ? 'AuraPulse' : slug === 'global-cart' ? 'GlobalCart' : slug === 'salon-booking' ? 'Salon Booking' : slug === 'pooya-os' ? 'Pooya.OS' : slug === 'nexus-canvas' ? 'NexusCanvas' : slug === 'lumina-glass' ? 'LuminaGlass' : slug === 'aetherflow' ? 'AetherFlow' : 'ORBIT'));
       const architectureFile = locale === 'en' ? `architecture/${slug}-en.svg` : `architecture/${slug}.svg`;
