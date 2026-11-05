@@ -151,9 +151,14 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
       <main className="case-study-main portfolio-container">
         <a className="case-study-back" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}><ArrowUpLeft size={15} />{t.backProjects}</a>
         <section className="case-study-hero">
-          <div className="case-study-visual" aria-hidden="true">
-            <div className="art-orbit orbit-outer" /><div className="art-orbit orbit-inner" />
-            <div className="art-monogram"><span>{project.name.slice(0,1)}</span><i /></div>
+          <div className={'case-study-visual' + (project.visualAsset ? ' has-visual' : '')}>
+            {project.visualAsset && <img className={'case-study-visual-image visual-' + project.visualAsset.kind}
+              src={project.visualAsset.url} alt={project.visualAsset.alt[language]} loading="eager" decoding="async"
+              onError={(event) => { event.currentTarget.remove(); event.currentTarget.parentElement?.classList.remove('has-visual'); }} />}
+            <div className="case-study-art-fallback" aria-hidden="true">
+              <div className="art-orbit orbit-outer" /><div className="art-orbit orbit-inner" />
+              <div className="art-monogram"><span>{project.name.slice(0,1)}</span><i /></div>
+            </div>
             <span className="case-study-index">{project.number} / POOYA LABS</span>
           </div>
           <div className="case-study-heading">
@@ -298,9 +303,14 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
             {projects.map((project) => (
               <article className="portfolio-project-card" key={project.name}>
                 <div className="project-card-top"><span className="project-number">{project.number} / POOYA LABS</span><span className="project-status"><i />{project.status[language]}</span></div>
-                <div className="project-art" aria-hidden="true">
-                  <div className={`project-art-orbit art-${project.number}`} />
-                  <div className="project-art-core"><span>{project.name.slice(0, 1)}</span></div>
+                <div className={'project-art' + (project.visualAsset ? ' has-visual visual-' + project.visualAsset.kind : '')}>
+                  {project.visualAsset && <img className="project-art-image" src={project.visualAsset.url}
+                    alt={project.visualAsset.alt[language]} loading="lazy" decoding="async"
+                    onError={(event) => { event.currentTarget.remove(); event.currentTarget.parentElement?.classList.remove('has-visual'); }} />}
+                  <div className="project-art-fallback" aria-hidden="true">
+                    <div className={`project-art-orbit art-${project.number}`} />
+                    <div className="project-art-core"><span>{project.name.slice(0, 1)}</span></div>
+                  </div>
                   <span className="project-art-code">{project.tags[0].toUpperCase()}</span>
                   <span className="project-art-index">{project.number}</span>
                 </div>
