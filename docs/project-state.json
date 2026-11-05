@@ -12,9 +12,9 @@
     "status": "waiting-for-owner-network-diagnostics"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCommit": "e55344960f3ace5b586bd5d4752b0ed38c2c187d",
+  "latestVerifiedCommit": "501612a822afe7b48a6c6566e5cd3bbaa3b9fd48",
   "tests": {
-    "automated": "not-created",
+    "automated": "node-built-in-transport-harness-contract-tests-added-ci-first-run-pending",
     "gasHtmlServiceTransport": "passed-owner-reported",
     "externalCorsTransport": "failed-networkerror-no-doPost-observed-diagnostics-pending"
   },
