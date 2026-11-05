@@ -9,28 +9,28 @@
   "currentTask": {
     "id": "P3-04",
     "title": "Owner content review and evidence-rich case studies",
-    "status": "seven-source-pinned-visual-assets-dynamic-metadata-ci-green-26-of-26-pages-deployed-owner-review-pending"
+    "status": "seven-source-pinned-visual-assets-dynamic-metadata-sitemap-ci-green-27-of-27-pages-deployed-owner-review-pending"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCodeCommit": "2cdc2d87de6d663f604cfc84568008e8aef7d316",
+  "latestVerifiedCodeCommit": "f9d6f6c18fa46fb9206268d34f2eef9529f6eed2",
   "tests": {
-    "repositoryCi": "passed-run-42052038712",
-    "repositoryCiTestCount": 26,
+    "repositoryCi": "passed-run-42053063421",
+    "repositoryCiTestCount": 27,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
-    "githubPagesDeployment": "passed-run-42052038732",
-    "platformTypecheck": "passed-run-42052038712",
-    "pagesAndGasBuilds": "passed-run-42052038712",
+    "githubPagesDeployment": "passed-run-42053052111",
+    "platformTypecheck": "passed-run-42053063421",
+    "pagesAndGasBuilds": "passed-run-42053063421",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "pending-owner-review",
-    "vitePagesWorkflow": "passed-run-42052038732",
+    "vitePagesWorkflow": "passed-run-42053052111",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "not-yet-verified-after-legacy-branch-build",
-    "portfolioContractTests": "passed-26-of-26-run-42052038712",
+    "portfolioContractTests": "passed-27-of-27-run-42053063421",
     "latestPreviousPagesDeployment": "passed-run-42043972152"
   },
   "hosting": {
@@ -54,7 +54,7 @@
     "activePagesSource": "GitHub Actions deployment succeeded; repository setting still should be confirmed",
     "appsScriptSync": "deferred-not-required-for-static-portfolio",
     "portfolioPagesPublished": true,
-    "portfolioPagesRun": "42052038732"
+    "portfolioPagesRun": "42053052111"
   },
   "previousProjects": {
     "inspected": true,
@@ -66,11 +66,11 @@
   "blockers": [
     "Pooya must review and approve the public biography, positioning, project order, project descriptions/statuses, and contribution/role for each project.",
     "Actual UI screenshots and architecture diagrams are still missing for AetherFlow and ORBIT; several other project assets are brand artwork rather than interface evidence.",
-    "Static crawler-readable case-study pages, per-project social preview images, and a sitemap remain pending; runtime metadata updates alone do not satisfy this.",
+    "Static crawler-readable case-study pages and per-project social preview images remain pending; current case-study metadata is updated at runtime.",
     "Complete accessibility, responsive, keyboard, browser, and performance review remains pending.",
     "A full-site redesign based on Pooya's feedback is a mandatory pre-release gate with two review rounds and explicit approval."
   ],
-  "nextAction": "Collect Pooya's approval of positioning, biography, top three featured projects, project roles/contributions, statuses, and contact channel; then add missing screenshots/architecture evidence and static case-study SEO pages before Phase 7's two-round full redesign.",
+  "nextAction": "Collect Pooya's approval of positioning, biography, top three featured projects, project roles/contributions, statuses, and contact channel; then add missing screenshots/architecture evidence and static case-study SEO pages/social images before Phase 7's two-round full redesign.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -109,7 +109,7 @@
     "designDocument": "docs/DESIGN-DIRECTION.md",
     "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
   },
-  "latestVerifiedCommit": "2cdc2d87de6d663f604cfc84568008e8aef7d316",
+  "latestVerifiedCommit": "f9d6f6c18fa46fb9206268d34f2eef9529f6eed2",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -123,7 +123,7 @@
       "ORBIT"
     ],
     "perProjectStaticSocialCards": false,
-    "sitemap": false
+    "sitemap": true
   },
   "metadata": {
     "baseOpenGraph": true,
@@ -133,6 +133,6 @@
     "svgFavicon": true,
     "staticCrawlerCaseStudyPages": false,
     "perProjectSocialImages": false,
-    "sitemap": false
+    "sitemap": true
   }
 }

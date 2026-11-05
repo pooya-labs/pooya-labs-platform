@@ -41,7 +41,8 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [x] Add seven source-repository visual assets pinned to immutable commits, bilingual alt text, lazy loading, responsive rendering, and graceful fallbacks.
 - [x] Add dynamic browser titles/descriptions, base Open Graph metadata, canonical URL updates, Person JSON-LD, and a branded SVG favicon.
 - [ ] Add more actual UI screenshots and architecture diagrams for the projects that currently only have brand artwork or no media.
-- [ ] Add static crawler-readable case-study pages, per-project social preview images, and sitemap.xml.
+- [x] Add an XML sitemap for the portfolio homepage and eight shareable project-detail URLs.
+- [ ] Add static crawler-readable case-study pages and per-project social preview images.
 
 ## Phase 4 — Secondary private workspace and owner tools
 - [ ] Decide which existing Spatial OS tools are useful enough to retain after the public portfolio is complete.

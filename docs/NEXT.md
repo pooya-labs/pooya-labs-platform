@@ -12,19 +12,19 @@
 - Every project has a shareable bilingual case-study view at `?project=<slug>` with challenge, approach, engineering highlights, scope/boundaries, status, tags, source, and demo links.
 - Seven assets are referenced from public source repositories using immutable commit SHAs; each has localized alt text and a declared kind (interface, brand, or illustration). The real GlobalCart storefront screenshot is not mislabeled as a generic illustration; AetherFlow retains an honest CSS art fallback until visual evidence exists.
 - Project images are lazy-loaded in the grid, responsive, and fall back to CSS artwork when remote loading fails.
-- Page title, description, canonical URL, and Open Graph title/description/url/locale update for the selected case study in the browser. The base page also includes Person JSON-LD and a branded SVG favicon.
+- Page title, description, canonical URL, and Open Graph title/description/url/locale update for the selected case study in the browser. The base page also includes Person JSON-LD, a branded SVG favicon, and an XML sitemap for the homepage and all eight project detail URLs.
 - All eight project records remain marked `needs-owner-review`; initial copy is grounded in source-repository documentation, not owner-approved final biography or contribution statements.
 
 ## Verified implementation checks
-- Repository CI [42052038712](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42052038712) passed TypeScript, both build targets, artifact upload, and 26/26 contract tests.
-- Pages deployment [42052038732](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42052038732) succeeded for the same main-branch commit.
+- Repository CI [42053063421](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42053063421) passed TypeScript, both build targets, artifact upload, and 27/27 contract tests.
+- Pages deployment [42053052111](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42053052111) succeeded with the sitemap included.
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
 
 ## Priority next
 1. Confirm Pooya's public positioning/biography, the first three featured projects, and actual contribution/role for all eight projects.
 2. Replace draft descriptions/statuses with owner-confirmed wording and collect missing UI screenshots, diagrams, and captions from AetherFlow, ORBIT, and any project that currently has only brand artwork.
 3. Expand the strongest case studies with architecture diagrams, implementation decisions, validation evidence, trade-offs, and outcomes; keep unsupported metrics out.
-4. Add crawler-readable static case-study URLs, project-specific social preview images, and a sitemap. The current SPA updates metadata at runtime, which is not a substitute for static metadata in every crawler.
+4. Add crawler-readable static case-study pages and project-specific social preview images. The sitemap is now in place; the current SPA updates case-study metadata at runtime, which is not a substitute for static metadata in every crawler.
 5. Complete responsive, keyboard, accessibility, RTL/LTR, reduced-motion, and performance QA.
 6. Only then begin Phase 7's complete visual redesign with Pooya's feedback; this remains a mandatory V1 release blocker.
 
