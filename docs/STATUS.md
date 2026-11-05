@@ -51,8 +51,8 @@
 - [x] Owner approved the public-app / owner-only-admin separation. Exact deployment access and execution settings remain to be verified before privileged features.
 - [ ] Performance targets are documented provisionally but not yet measured on target devices/networks.
 - [ ] Operational deployment rollback and data backup/restore procedures are documented but need an owner-side rehearsal before production data.
-- [x] Workspace CI passed TypeScript, Pages/GAS builds, artifact upload, and all 14 source-contract tests in run [42036122022](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42036122022).
-- [x] Vite GitHub Pages preview deployed successfully in run [42035942848](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42035942848).
+- [x] Workspace CI passed TypeScript, Pages/GAS builds, artifact upload, and all 14 source-contract tests in run [42036638066](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42036638066).
+- [x] Vite GitHub Pages preview deployed successfully in run [42036636856](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42036636856).
 - [ ] The new bundled `dist/gas/index.html` has not yet been synced into Apps Script; current deployment remains the Phase 0 proof page.
 - [ ] No production Sheets schema, booking, admin, telemetry, or customer-data feature exists.
 - [ ] No previous-project code has been imported or any previous repository modified.
