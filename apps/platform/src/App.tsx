@@ -150,7 +150,7 @@ function getDate(language: Language, date: Date): string {
 
 function App(): ReactNode {
   const [workspaceOpen, setWorkspaceOpen] = useState(false);
-  const [language, setLanguage] = useState<Language>(() => readPreference('language', 'fa'));
+  const [language, setLanguage] = useState<Language>(() => /\/en\/projects\//.test(window.location.pathname) ? 'en' : /\/projects\//.test(window.location.pathname) ? 'fa' : readPreference('language', 'fa'));
   const [theme, setTheme] = useState<Theme>(() => readPreference('theme', 'dark'));
   const [now, setNow] = useState(() => new Date());
   const [windows, setWindows] = useState<AppWindow[]>([]);
