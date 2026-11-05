@@ -31,13 +31,13 @@ The Phase 0 HtmlService RPC proof passed in the owner's browser. The external Pa
 
 Start here:
 1. Read [AGENTS.md](AGENTS.md).
-2. Read [ROADMAP.md](docs/ROADMAP.md) and [STATUS.md](docs/STATUS.md).
+2. Read [ROADMAP.md](docs/ROADMAP.md), [STATUS.md](docs/STATUS.md), [SECURITY-MODEL.md](docs/SECURITY-MODEL.md), and [DATA-CLASSIFICATION.md](docs/DATA-CLASSIFICATION.md).
 3. Execute the exact next task in [NEXT.md](docs/NEXT.md).
 4. Follow [RECOVERY.md](docs/RECOVERY.md) after context loss or AI handoff.
 
 ## Repository map
 
-- `docs/`: roadmap, architecture, contracts, deployment, recovery, and decision records.
+- `docs/`: roadmap, architecture, contracts, deployment, security/data classification, recovery, and decision records.
 - `apps/`: user-facing applications (introduced after the shell architecture is settled).
 - `packages/`: reusable platform packages (introduced after Phase 0).
 - `apps-script/`: Google Apps Script application entry and backend RPC.
