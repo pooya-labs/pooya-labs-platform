@@ -37,7 +37,7 @@ The first portfolio draft includes:
 - Personal introduction and project showcase as the root page.
 - About, focus areas, technology list, and contact sections.
 - Eight project cards with verified source-repository and GitHub Pages preview links, honest project statuses, and explicit scope boundaries.
-- Eight bilingual, shareable in-site case-study views covering challenge, architecture, implementation details, engineering decisions, verification evidence, limitations, and source references.
+- Eight bilingual, shareable case studies with source-grounded engineering dossiers, generated architecture diagrams, and crawler-readable Persian/English static routes.
 - Seven commit-pinned visual assets from the source project repositories, with Persian/English alt text, lazy loading, responsive rendering, and a fallback for projects without visual media. GlobalCart currently has the actual storefront screenshot; other assets are project artwork or brand marks.
 - Canonical and Open Graph metadata, dynamic browser titles/descriptions for case-study routes, Person JSON-LD, a branded SVG favicon, and an XML sitemap covering the homepage plus all eight case-study URLs.
 - An optional link to the existing GlobalCart bilingual case study.
