@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-05 — Static bilingual case studies and architecture diagrams
+- Added build-generated Persian and English static HTML case-study routes for all eight projects (16 pages), including canonical URLs, hreflang alternates, JSON-LD, pre-rendered article content, and direct source links.
+- Added 16 per-project/per-language Open Graph SVG cards plus a homepage card, and published robots.txt and a canonical sitemap with locale alternates.
+- Added eight project-specific architecture diagrams in Persian and English (16 SVGs), embedded in static and interactive case studies. Diagrams are explicitly distinguished from UI screenshots and production evidence.
+- Extended route handling so direct static-page visits and in-page navigation resolve the right project and locale; GAS mode retains the query-string route fallback.
+- Added build-output smoke tests for every HTML route, metadata, diagram, social card, sitemap, and robots.txt.
+- Repository CI [42066575496](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42066575496) passed TypeScript, Pages/GAS builds, artifact upload, and **32/32 contract tests**.
+- Pages deployment containing the static-page and architecture-diagram implementation [42066311960](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42066311960) succeeded.
+- Remaining before V1: actual UI screenshots, external social-crawler validation (SVG compatibility/fallback), owner-approved biography/roles/project order/contact, per-project manual QA, and the mandatory two-round full redesign.
+
 ## 2026-11-05 — Source-grounded engineering dossiers and release audit
 - Expanded all eight bilingual case studies with documented role/attribution, architecture, implementation details, engineering decisions, verification evidence, and direct source/CI references.
 - Kept attribution explicit where source READMEs do not identify an individual author; AetherFlow's individual contribution wording remains an owner-review item.
