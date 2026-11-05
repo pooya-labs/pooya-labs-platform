@@ -29,7 +29,7 @@
 
 ## CI and publishing status
 - CI status: green.
-- Repository CI [42048164129](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42048164129) passed TypeScript, both Pages/Apps Script build targets, artifact upload, and **24/24 contract tests**.
+- Repository CI [42048674359](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42048674359) passed TypeScript, both Pages/Apps Script build targets, artifact upload, and **24/24 contract tests**.
 - GitHub Pages deployment [42047985066](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42047985066) succeeded with the bilingual project case-study layouts.
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
 - Confirm the repository Pages source remains GitHub Actions so a legacy branch/Jekyll deployment cannot supersede the Vite portfolio.
