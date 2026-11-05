@@ -268,7 +268,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
             <div className="art-glass-card glass-card-back"><span>DESIGN</span><Sparkles size={18} /></div>
             <div className="art-glass-card glass-card-front"><span>ENGINEERING</span><Workflow size={20} /></div>
             <div className="art-monogram"><span>P</span><i /></div>
-            <div className="art-coordinate coordinate-one">35°43' N</div>
+            <div className="art-coordinate coordinate-one">PORTFOLIO / 2026</div>
             <div className="art-coordinate coordinate-two">CREATING / 2026</div>
             <div className="art-star star-one" /><div className="art-star star-two" /><div className="art-star star-three" />
           </div>
