@@ -7,33 +7,33 @@
   "phase": 3,
   "phaseName": "Portfolio content architecture and case studies",
   "currentTask": {
-    "id": "P3-06",
-    "title": "Close owner-confirmed project evidence and begin final redesign review",
-    "status": "eight-bilingual-dossiers-eight-bilingual-architecture-diagrams-16-static-case-study-pages-16-social-svg-cards-ci-green-32-of-32-screenshot-and-owner-gates-pending"
+    "id": "P3-07",
+    "title": "Close remaining project evidence and owner acceptance before Phase 7",
+    "status": "eight-bilingual-dossiers-eight-bilingual-diagrams-16-static-pages-16-social-svg-cards-globalcart-desktop-mobile-screenshots-ci-green-34-of-34-remaining-project-and-owner-gates-pending"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCodeCommit": "815472ff7823be62db86d98b9ff64595dd3cbbec",
+  "latestVerifiedCodeCommit": "4223973b494c4bc6cdb401c4a77963928f567038",
   "tests": {
-    "repositoryCi": "passed-run-42066575496",
-    "repositoryCiTestCount": 32,
+    "repositoryCi": "passed-run-42070270418",
+    "repositoryCiTestCount": 34,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
-    "githubPagesDeployment": "passed-run-42066311960",
-    "platformTypecheck": "passed-run-42066575496",
-    "pagesAndGasBuilds": "passed-run-42066575496",
+    "githubPagesDeployment": "passed-run-42069853533",
+    "platformTypecheck": "passed-run-42070270418",
+    "pagesAndGasBuilds": "passed-run-42070270418",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "pending-owner-review",
-    "vitePagesWorkflow": "passed-run-42066311960",
+    "vitePagesWorkflow": "passed-run-42069853533",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "not-yet-verified-after-legacy-branch-build",
-    "portfolioContractTests": "passed-32-of-32-run-42066575496",
+    "portfolioContractTests": "passed-34-of-34-run-42070270418",
     "latestPreviousPagesDeployment": "passed-run-42043972152",
     "docsCheckpoint": "passed-run-42060558950",
-    "staticCaseStudyOutput": "passed-in-run-42066575496-all-16-pages-16-social-cards-16-architecture-diagrams-sitemap-and-robots",
+    "staticCaseStudyOutput": "passed-in-run-42070270418-16-pages-16-cards-16-architecture-diagrams-and-globalcart-desktop-mobile-screenshots",
     "architectureDiagramContracts": "passed-in-run-42066575496-eight-bilingual-diagrams",
     "externalSocialPreviewValidation": "pending-external-share-client-check"
   },
@@ -58,7 +58,7 @@
     "activePagesSource": "GitHub Actions deployment succeeded; repository Pages source setting still requires owner-side confirmation",
     "appsScriptSync": "deferred-not-required-for-static-portfolio",
     "portfolioPagesPublished": true,
-    "portfolioPagesRun": "42066311960"
+    "portfolioPagesRun": "42069853533"
   },
   "previousProjects": {
     "inspected": true,
@@ -68,8 +68,8 @@
     "ownerRequestedDeferral": true
   },
   "blockers": [
-    "Pooya must approve public biography/positioning, featured project order, statuses, personal contribution/attribution wording, contact channel, and approved assets.",
-    "Actual UI screenshots are still missing for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; GlobalCart has storefront screenshots, while Salon Booking requires owner-approved redacted demo screens.",
+    "Pooya must approve the public biography/positioning, featured project order, statuses, personal contribution/attribution wording, contact channel, and final visual assets.",
+    "Actual UI screenshots remain missing for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; Salon Booking needs owner-approved redacted UI evidence. GlobalCart desktop/mobile storefront screenshots are now published.",
     "AetherFlow's individual author/contribution wording, M08 operational scenarios, benchmark evidence review, and license decision remain open.",
     "ORBIT Apps Script live demo bootstrap/mutation/refresh smoke and real TalkBack/VoiceOver/human accessibility review remain open.",
     "Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse need current-source consolidated browser/accessibility evidence and actual interface screenshots.",
@@ -78,7 +78,7 @@
     "External crawler/social-client rendering of generated SVG previews must be checked; add PNG/JPEG fallbacks only if required.",
     "Full-site redesign with two feedback rounds and explicit Pooya approval remains a mandatory V1 release blocker."
   ],
-  "nextAction": "Work through docs/PROJECT-CONTENT-AUDIT.md: gather real UI screenshots and owner-approved biography/role/contact decisions; close project-specific runtime/current-SHA/manual QA gates; validate SVG social cards in real share clients; then start the required two-round full redesign.",
+  "nextAction": "Use docs/PROJECT-CONTENT-AUDIT.md to gather remaining six projects' real UI screenshots and Salon Booking's owner-approved redacted UI; verify exact-SHA/manual QA and project runtime gates; validate generated SVG social cards in external share clients; then start the mandatory two-round full redesign.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -117,21 +117,34 @@
     "designDocument": "docs/DESIGN-DIRECTION.md",
     "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
   },
-  "latestVerifiedCommit": "42e61f7880c5ded545b37b0660433ad21bd30237",
+  "latestVerifiedCommit": "16405c444e4a205dec5282ca88410114f457a46a",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
     "bilingualAltText": true,
     "lazyLoaded": true,
     "gracefulCssFallback": true,
-    "actualInterfaceScreenshots": 1,
+    "actualInterfaceScreenshots": 2,
+    "actualInterfaceScreenshotProjects": [
+      "GlobalCart"
+    ],
+    "globalCartDesktopAndMobile": true,
+    "globalCartScreenshotCommit": "5ca43e40ff101e673ee7cf261850bff0a679047c",
+    "screenshotSourceLinkedInCaseStudy": true,
+    "screenshotsVisuallyReviewed": true,
+    "customerPersonalDataVisibleInGlobalCartShots": false,
     "brandOrIllustrationAssets": 6,
     "missingVisualEvidenceProjects": [
       "AetherFlow",
-      "ORBIT"
+      "ORBIT",
+      "Pooya.OS",
+      "NexusCanvas",
+      "LuminaGlass",
+      "AuraPulse",
+      "Salon Booking (owner-approved redacted UI required)"
     ],
-    "perProjectStaticSocialCards": false,
-    "sitemap": true
+    "perProjectStaticSocialCards": true,
+    "socialPreviewHomeCard": true
   },
   "metadata": {
     "baseOpenGraph": true,
@@ -139,11 +152,12 @@
     "dynamicCanonical": true,
     "personJsonLd": true,
     "svgFavicon": true,
-    "staticCrawlerCaseStudyPages": false,
-    "perProjectSocialImages": false,
-    "sitemap": true
+    "staticCrawlerCaseStudyPages": true,
+    "perProjectSocialImages": true,
+    "sitemap": true,
+    "robots": true
   },
-  "latestVerifiedTestCommit": "42e61f7880c5ded545b37b0660433ad21bd30237",
+  "latestVerifiedTestCommit": "16405c444e4a205dec5282ca88410114f457a46a",
   "caseStudyDossiers": {
     "bilingual": true,
     "projectCount": 8,
@@ -178,7 +192,7 @@
     "staticCaseStudyPages": "complete-16-routes",
     "socialPreviewCards": "generated-16-project-locale-cards-plus-homepage-svg",
     "externalSocialPreviewValidation": "pending",
-    "actualUiScreenshots": "pending-per-project",
+    "actualUiScreenshots": "globalcart-desktop-mobile-complete-other-projects-pending",
     "ownerContentApproval": "pending",
     "fullSiteRedesign": "mandatory-two-round-owner-review"
   }
