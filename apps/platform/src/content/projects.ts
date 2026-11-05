@@ -53,7 +53,7 @@ const projectEntries: PortfolioProject[] = [
   {
     number: '02',
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/orbit/a00e8bebcf7b01c40532af169d97b3d64ce5dea4/app/icon.svg', kind: 'brand', alt: { fa: 'نشان گرافیکی پروژه ORBIT', en: 'ORBIT project mark' } },
-    slug: 'orbit',slug: 'orbit',
+    slug: 'orbit',
     name: 'ORBIT',
     caseStudy: {
       challenge: { fa: "در سیستم‌های توزیع‌شده، وضعیت سرویس، رخدادها، هشدارها و سیگنال‌های metrics، logs و traces معمولاً در ابزارهای جداگانه پخش‌اند. ORBIT تلاش می‌کند این دید عملیاتی را در یک فضای کاری منسجم جمع کند.", en: "In distributed systems, service health, incidents, alerts, and metrics, logs, and traces are often scattered across tools. ORBIT brings these operational views into one cohesive workspace." },
@@ -76,7 +76,7 @@ const projectEntries: PortfolioProject[] = [
   {
     number: '03',
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/pooya-os/1d408c0881d480db8f1c1a7a9f94272a93d4e617/public/assets/spatial-bg.webp', kind: 'illustration', alt: { fa: 'تصویر محیط فضایی Pooya.OS', en: 'Pooya.OS spatial workspace artwork' } },
-    slug: 'pooya-os',slug: 'pooya-os',
+    slug: 'pooya-os',
     name: 'Pooya.OS',
     caseStudy: {
       challenge: { fa: "یک پورتفولیوی فنی معمولی ممکن است فقط فهرستی از لینک‌ها باشد. Pooya.OS تلاش می‌کند معرفی مهارت‌ها و پروژه‌ها را در قالب یک محیط دسکتاپ تعاملی و قابل کاوش ارائه کند.", en: "A conventional engineering portfolio can become little more than a list of links. Pooya.OS presents skills and projects through an explorable desktop-style interface." },
@@ -99,7 +99,7 @@ const projectEntries: PortfolioProject[] = [
   {
     number: '04',
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/nexus-canvas/df05f90b0463e5681324efec9083c9fe20c2cc7c/public/assets/nexus-core.webp', kind: 'illustration', alt: { fa: 'تصویر هسته بصری NexusCanvas', en: 'NexusCanvas core visual' } },
-    slug: 'nexus-canvas',slug: 'nexus-canvas',
+    slug: 'nexus-canvas',
     name: 'NexusCanvas',
     caseStudy: {
       challenge: { fa: "در طراحی معماری، ارتباط سرویس‌ها و وابستگی‌های پیچیده می‌توانند مشکلاتی مانند چرخه وابستگی، سرویس جداافتاده یا گلوگاه را پنهان کنند. هدف ابزار تبدیل این ساختار به مدلی بصری و قابل بررسی است.", en: "In system architecture, complex service relationships can hide dependency cycles, isolated services, or bottlenecks. The tool turns those structures into a visual, inspectable model." },
@@ -122,7 +122,7 @@ const projectEntries: PortfolioProject[] = [
   {
     number: '05',
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/lumina-glass/06fa93428a00442e5ec53d5486c3615048f66842/public/assets/lumina-orb.webp', kind: 'illustration', alt: { fa: 'گوی شیشه‌ای LuminaGlass', en: 'LuminaGlass glass orb artwork' } },
-    slug: 'lumina-glass',slug: 'lumina-glass',
+    slug: 'lumina-glass',
     name: 'LuminaGlass',
     caseStudy: {
       challenge: { fa: "ساختن سطح‌های شیشه‌ای با حس عمق و کنترل‌های بصری، در کنار پردازش صوت، نیازمند آزمایش‌های سریع در خود مرورگر است. LuminaGlass این دو حوزه را در یک آزمایشگاه تعاملی کنار هم قرار می‌دهد.", en: "Creating layered glass surfaces with convincing depth and tuning audio processing both benefit from quick, direct browser experiments. LuminaGlass brings these explorations into one interactive lab." },
@@ -145,7 +145,7 @@ const projectEntries: PortfolioProject[] = [
   {
     number: '06',
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/aurapulse/7f3611cae0d74e06b6b01af534a5f84a79e5901c/public/assets/quant-core.webp', kind: 'illustration', alt: { fa: 'تصویر هسته داده AuraPulse', en: 'AuraPulse quantitative core artwork' } },
-    slug: 'aura-pulse',slug: 'aura-pulse',
+    slug: 'aura-pulse',
     name: 'AuraPulse',
     caseStudy: {
       challenge: { fa: "نمایش اطلاعات بازار باید تفاوت بین داده عمومی واقعی، داده نمونه و معامله شبیه‌سازی‌شده را روشن کند. این پروژه داشبورد بازار را با یک حساب paper-trading محلی ترکیب می‌کند.", en: "A market dashboard must clearly separate public market data, illustrative sample data, and simulated trades. This project pairs market views with a local paper-trading account." },
@@ -168,7 +168,7 @@ const projectEntries: PortfolioProject[] = [
   {
     number: '07',
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/globalcart/88a7efae6c67dfb7401cd7e4926576261f4adde5/docs/screenshots/storefront-home-desktop.png', kind: 'interface', alt: { fa: 'تصویر واقعی صفحه اصلی فروشگاه GlobalCart', en: 'Actual GlobalCart storefront homepage screenshot' } },
-    slug: 'global-cart',slug: 'global-cart',
+    slug: 'global-cart',
     name: 'GlobalCart',
     caseStudy: {
       challenge: { fa: "ساخت تجربه فروشگاهی قانع‌کننده فقط به کارت محصول محدود نیست؛ جست‌وجو، دسته‌بندی، صفحه جزئیات، گالری تصاویر و رفتار سبد خرید باید در کنار عملکرد و شفافیت منبع داده درست کار کنند.", en: "A convincing storefront is more than product cards: search, categories, detail pages, image galleries, and cart behavior must work alongside performance and transparent data sourcing." },
@@ -192,7 +192,7 @@ const projectEntries: PortfolioProject[] = [
   {
     number: '08',
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/salon-booking/787160782f82929fa0d8395f8f5d067f2f028257/public/images/shayan-barber-logo.webp', kind: 'brand', alt: { fa: 'تصویر هدر برند نمونه Salon Booking', en: 'Salon Booking demo brand hero image' } },
-    slug: 'salon-booking',slug: 'salon-booking',
+    slug: 'salon-booking',
     name: 'Salon Booking',
     caseStudy: {
       challenge: { fa: "رزرو نوبت به تقویم زمان‌محور، جلوگیری از تداخل، مسیر ساده مشتری و ابزار جداگانه مدیر نیاز دارد. تجربه فارسی باید تاریخ شمسی و timezone ایران را دقیق نگه دارد.", en: "Appointment booking needs time-aware scheduling, conflict prevention, a simple customer journey, and a separate manager workspace. The Persian experience must preserve Jalali dates and Iran's timezone." },
