@@ -118,7 +118,8 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 - [ ] Read and record the final Browser E2E result and publish the same successful code SHA to Pages.
 - [ ] Reconcile stale/conflicting source-document statements about which catalog path is active (local ABO snapshot versus Shopify runtime discovery) across README, PROJECT_CONTEXT, ARCHITECTURE, DATA_SOURCES, and REAL_CATALOG_MIGRATION.
 - [x] Add a bilingual architecture diagram for the local ABO snapshot, no-store Shopify discovery proxy, TGJU FX snapshot, storefront, and simulated cart.
-- [x] Locate and embed the actual desktop and mobile storefront homepage screenshots from the source repository; both are shown with device-specific captions and pinned to commit `5ca43e40ff101e673ee7cf261850bff0a679047c`.
+- [x] Locate, visually inspect, and embed the actual desktop and mobile storefront homepage screenshots from the source repository; both show the storefront interface without customer personal data, use device-specific captions, and are pinned to commit `5ca43e40ff101e673ee7cf261850bff0a679047c`.
+- [x] Link the original screenshot evidence folder directly from the GlobalCart case-study source references.
 - [ ] Review the embedded screenshots against the latest published GlobalCart HEAD and capture missing product-detail/gallery states if they materially improve the case study.
 - [ ] Complete physical-device, manual screen-reader, human RTL/LTR, and normal-network checks.
 - [ ] Keep 0.2.3-dev and do not tag 1.0.0 until manual visual approval and all repository release gates pass.
