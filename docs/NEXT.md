@@ -1,29 +1,32 @@
 # Next Task — Phase 0
 
-**Task ID:** P0-01  
-**Title:** Build the feasibility and integration inventory  
-**Status:** Ready  
-**Do not skip:** This is the next atomic task.
+**Task ID:** P0-02  
+**Title:** Deploy and run the minimal GAS transport proof  
+**Status:** Waiting for owner-side Google Apps Script deployment
 
-## Objective
-Collect evidence about the existing repository ecosystem and current Google Apps Script platform constraints before selecting the final deployment architecture. Do not modify any existing project repository.
+## Repository files ready
+- `apps-script/Code.gs`: public health-only doGet/doPost and RPC handlers.
+- `apps-script/Index.html`: HtmlService page with google.script.run test.
+- `apps-script/appsscript.json`: minimal V8 manifest.
+- `tests/transport/external-fetch.html`: external fetch test harness.
+- `docs/GAS-FEASIBILITY.md`: official platform constraints and references.
+- `docs/PHASE-0-TRANSPORT-TEST.md`: exact deployment and test instructions.
 
-## Steps
-1. Read the root README, AGENTS.md, this file, STATUS.md, ROADMAP.md, ARCHITECTURE.md, and RECOVERY.md.
-2. Inspect public repository structure and documentation for AetherFlow, ORBIT, Pooya.OS, AuraPulse, NexusCanvas, LuminaGlass, Salon Booking, and GlobalCart.
-3. Record candidate reusable capabilities, maturity, dependencies, license/attribution considerations, and integration blockers in `docs/INTEGRATION-INVENTORY.md`.
-4. Check current official Google documentation for Apps Script quotas, HtmlService, google.script.run, ContentService redirects, CacheService, LockService, PropertiesService, Sheets, Drive, and triggers.
-5. Create a minimal Phase 0 transport spike plan. Then implement the smallest safe spike in this repository only, with no secrets committed.
-6. Verify the HtmlService path and external-origin path independently; capture browser evidence and exact limitations.
-7. Update architecture decision records, STATUS.md, NEXT.md, project-state.json, and CHANGELOG.md.
+## Owner action required
+Follow `docs/PHASE-0-TRANSPORT-TEST.md`:
+1. Create a standalone Apps Script project in the owner's Google account.
+2. Copy the two source files and manifest into Apps Script.
+3. Deploy the health-only web app under a safe test access policy.
+4. Verify the HtmlService RPC page.
+5. Publish/serve the external test harness on a real HTTPS origin, then test POST from that origin.
+6. Share only sanitized results: pass/fail, browser, origin, redirect/final URL behavior, preflight, and console/network error. Do not share credentials or tokens.
 
 ## Acceptance criteria
-- Integration inventory exists and explicitly says no project has been imported or modified.
-- Official documentation references are linked with access date.
-- Transport test distinguishes HtmlService RPC from external HTTP fetch.
-- No CORS bypass is assumed from `text/plain` alone.
-- No secrets, private user data, or live booking data are stored in the repository.
-- Next task is a single, actionable item.
+- HtmlService RPC result is recorded with browser evidence.
+- External fetch result is recorded from a real HTTPS browser origin.
+- Redirect chain, final response readability, preflight, and auth constraints are documented.
+- ADR-0002 and ARCHITECTURE.md are updated based on evidence.
+- STATUS.md, project-state.json, NEXT.md, and CHANGELOG.md are updated.
 
-## Handoff
-If browser deployment/testing is unavailable in the current environment, record the blocker and provide exact manual test steps for the owner; do not mark transport proof complete.
+## If deployment is not currently possible
+Do not claim the test passed. Keep external transport unproven and continue only with tasks that do not depend on it.
