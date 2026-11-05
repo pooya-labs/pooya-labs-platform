@@ -7,19 +7,21 @@
   "phase": 0,
   "phaseName": "Feasibility, inventory, and architecture proof",
   "currentTask": {
-    "id": "P0-02",
-    "title": "Deploy and run the minimal GAS transport proof",
-    "status": "waiting-for-owner-deployment"
+    "id": "P0-03",
+    "title": "Diagnose the failed external GAS POST using browser Network and Console evidence",
+    "status": "waiting-for-owner-network-diagnostics"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCommit": "593d956a1924c18493d822d782c73627377703fc",
+  "latestVerifiedCommit": "e55344960f3ace5b586bd5d4752b0ed38c2c187d",
   "tests": {
     "automated": "not-created",
-    "gasHtmlServiceTransport": "harness-committed-not-run",
-    "externalCorsTransport": "harness-committed-not-run"
+    "gasHtmlServiceTransport": "passed-owner-reported",
+    "externalCorsTransport": "failed-networkerror-no-doPost-observed-diagnostics-pending"
   },
   "deployment": {
     "configured": false,
+    "gasProofDeployed": true,
+    "githubPagesHarnessPublished": true,
     "production": false
   },
   "previousProjects": {
@@ -29,6 +31,8 @@
     "integrationPhase": 9,
     "ownerRequestedDeferral": true
   },
-  "blockers": [],
-  "nextAction": "Owner: follow docs/PHASE-0-TRANSPORT-TEST.md to deploy the health-only GAS proof and report sanitized browser test results."
+  "blockers": [
+    "External browser POST returned NetworkError; the provided Apps Script Executions rows contained no doPost entry. Root cause remains unconfirmed pending browser Network/Console evidence."
+  ],
+  "nextAction": "Owner: repeat the external POST once with DevTools Network and Console open; report sanitized method, status/blocked reason, redirect host, and exact console error. Do not share the full /exec URL or credentials."
 }
