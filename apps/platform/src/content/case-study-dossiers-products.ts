@@ -1,4 +1,4 @@
-import type { LocalizedText, CaseStudyDossier } from './case-study-dossiers-types';
+import type { CaseStudyDossier } from './case-study-dossiers-types';
 
 export const productDossiers = {
   "lumina-glass": {
