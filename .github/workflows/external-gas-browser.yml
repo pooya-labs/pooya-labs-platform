@@ -1,0 +1,31 @@
+name: External GAS Browser Transport
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-transport:
+    name: Real Chromium cross-origin POST
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      GAS_WEB_APP_URL: https://script.google.com/macros/s/AKfycbzlF8iuBfC6pOOphucWcU-E5jgZkbgXyKmsomoHWbif1_--ttSCCIQcvK-6w7L_Y0efuA/exec
+      TRANSPORT_HARNESS_URL: https://pooya-labs.github.io/pooya-labs-platform/tests/transport/external-fetch.html
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Playwright
+        run: npm install --no-save --no-package-lock playwright
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Test browser-to-GAS transport
+        run: node tests/transport/browser-smoke.mjs
