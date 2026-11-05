@@ -35,12 +35,16 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [x] Add verified repository and public preview links for the eight current projects.
 - [x] Add initial bilingual project case-study views with shareable query-string routes.
 - [x] Add project-specific challenge, approach, engineering highlights, and scope/boundary sections based on repository documentation.
+- [x] Expand all eight bilingual dossiers with source-backed role/attribution, architecture, implementation details, engineering decisions, verification evidence, and direct source/CI references.
+- [x] Add a per-project content audit that separates source-confirmed facts from the missing evidence and owner decisions needed before V1.
 - [ ] Curate the featured-project order with Pooya; highlight only the strongest and most presentable work.
-- [ ] Review and approve every public project description and status with Pooya.
-- [ ] Expand the case studies with owner-confirmed role/contribution, architecture, implementation decisions, validation evidence, and outcomes.
+- [ ] Review and approve every public project description and status with Pooya; retain source-backed technical facts as the baseline.
+- [ ] Confirm personal role/contribution wording for all eight projects; AetherFlow's current README does not identify an individual author or contribution split.
+- [ ] Complete the per-project screenshot, architecture-diagram, current-SHA verification, manual QA, and owner-acceptance tasks in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
+- [ ] Add any missing project outcomes or measured results only when the source repository provides reproducible evidence; never infer metrics.
 - [x] Add seven source-repository visual assets pinned to immutable commits, bilingual alt text, lazy loading, responsive rendering, and graceful fallbacks.
 - [x] Add dynamic browser titles/descriptions, base Open Graph metadata, canonical URL updates, Person JSON-LD, and a branded SVG favicon.
-- [ ] Add more actual UI screenshots and architecture diagrams for the projects that currently only have brand artwork or no media.
+- [ ] Add actual UI screenshots and architecture diagrams for projects that currently have only brand artwork or no media: AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; replace Salon Booking brand artwork with an owner-approved safe interface screenshot only if client data is fully redacted.
 - [x] Add an XML sitemap for the portfolio homepage and eight shareable project-detail URLs.
 - [ ] Add static crawler-readable case-study pages and per-project social preview images.
 
@@ -65,6 +69,9 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [ ] Keep experiments clearly labeled; do not let them overwhelm core portfolio content.
 
 ## Phase 7 — Full pre-release redesign with Pooya's feedback (release blocker)
+
+Before starting the visual redesign, close the factual/content gate in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md): the source-backed dossiers are populated, and every remaining owner input, screenshot/diagram, current-SHA test result, runtime acceptance, and manual QA item must either be completed or remain a visible release blocker.
+
 This phase is mandatory. The current portfolio layout is an initial working draft, not the final visual identity.
 
 - [ ] Run a complete review of the site with Pooya on desktop and mobile.
@@ -80,10 +87,11 @@ This phase is mandatory. The current portfolio layout is an initial working draf
 ## Phase 8 — Release hardening and V1 launch
 - [ ] Complete accessibility, keyboard, RTL/LTR, responsive, browser, and reduced-motion checks.
 - [ ] Measure loading performance on representative desktop and mobile conditions.
-- [ ] Verify every public statement, skill, project status, image, and external link.
+- [ ] Verify every public statement, skill, project status, image, and external link against [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md); close every mandatory per-project item.
 - [ ] Validate SEO metadata, social previews, custom-domain readiness if desired, and analytics/privacy decisions.
 - [ ] Complete CI, Pages publishing, rollback, and recovery rehearsal.
-- [ ] Publish a versioned V1 and document the release.
+- [ ] Confirm all owner approvals (biography, project order/roles, assets, contact channel, redesigned UI) and all mandatory audit checkboxes are complete.
+- [ ] Publish a versioned V1 and document the release. No V1 tag is permitted while any required audit/release checkbox remains open.
 
 ## Phase 9 — Previous-project integration (after the standalone portfolio)
 This phase must not block V1. Source projects remain independent unless Pooya explicitly approves an integration.
