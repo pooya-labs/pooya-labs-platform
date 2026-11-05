@@ -430,3 +430,50 @@
   .case-study-architecture-figure { margin-top: 12px; padding: 7px; border-radius: 12px; }
   .case-study-architecture-figure figcaption { padding: 8px 5px 2px; font-size: 9px; }
 }
+
+
+.case-study-media-section {
+  margin: 24px 0 4px;
+  padding: 20px;
+  border: 1px solid var(--pf-line);
+  border-radius: 17px;
+  background: linear-gradient(145deg, rgba(12, 24, 34, .72), rgba(8, 17, 25, .86));
+}
+.case-study-media-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(230px, .62fr);
+  align-items: start;
+  gap: 16px;
+  margin-top: 15px;
+}
+.case-study-media-card {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--pf-line);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, .16);
+}
+.case-study-media-card img {
+  display: block;
+  width: 100%;
+  max-height: 760px;
+  object-fit: contain;
+  object-position: top center;
+  background: rgba(0, 0, 0, .18);
+}
+.case-study-media-card.device-mobile img { max-height: 820px; }
+.case-study-media-card figcaption {
+  padding: 11px 13px;
+  color: var(--pf-muted);
+  border-top: 1px solid var(--pf-line);
+  font-size: 10px;
+  line-height: 1.8;
+}
+@media (max-width: 760px) {
+  .case-study-media-section { margin-top: 16px; padding: 13px; border-radius: 13px; }
+  .case-study-media-grid { grid-template-columns: 1fr; gap: 12px; }
+  .case-study-media-card.device-mobile { max-width: 430px; margin-inline: auto; }
+  .case-study-media-card img,
+  .case-study-media-card.device-mobile img { max-height: 760px; }
+}
