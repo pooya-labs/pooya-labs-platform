@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P3-08",
     "title": "Validate social previews and close owner evidence before Phase 7",
-    "status": "eight-dossiers-eight-bilingual-diagrams-16-static-pages-17-png-social-cards-plus-17-svg-sources-globalcart-ui-captures-ci-green-34-of-34-owner-and-external-validation-gates-pending"
+    "status": "eight-dossiers-eight-bilingual-diagrams-16-static-pages-17-png-social-cards-plus-17-svg-sources-globalcart-ui-captures-ci-green-34-of-34-external-and-owner-gates-pending"
   },
   "lastCheckpointDate": "2026-11-05",
   "latestVerifiedCodeCommit": "defc51a924d4ae0437534d59956a764f4d861f0d",
@@ -35,8 +35,8 @@
     "docsCheckpoint": "passed-run-42060558950",
     "staticCaseStudyOutput": "passed-in-run-42071877192-16-pages-16-diagrams-17-png-cards-17-svg-sources-robots-sitemap-and-globalcart-screenshots",
     "architectureDiagramContracts": "passed-in-run-42066575496-eight-bilingual-diagrams",
-    "externalSocialPreviewValidation": "pending-linkedin-post-inspector-and-other-share-client-check",
-    "socialCardPngFormat": "passed-in-run-42071877192-valid-png-signatures-1200x627"
+    "externalSocialPreviewValidation": "pending-external-share-client-cache-refresh",
+    "socialCardPngFormat": "passed-in-run-42071877192-valid-png-signatures-1200x627-all-17"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -79,7 +79,7 @@
     "External crawler/social-client rendering and cache refresh for the PNG Open Graph images must be confirmed.",
     "Full-site redesign with two feedback rounds and explicit Pooya approval remains a mandatory V1 release blocker."
   ],
-  "nextAction": "Validate the 1200x627 PNG previews through external share clients/inspectors; then obtain remaining project screenshots and owner-confirmed biography/roles/contact decisions, close current-SHA/manual QA and runtime acceptance gates, and begin the mandatory two-round full redesign.",
+  "nextAction": "Validate the 1200x627 PNG social previews through external share clients/inspectors; then gather remaining project screenshots and owner-confirmed biography/roles/contact decisions, close current-SHA/manual QA and runtime acceptance gates, and begin the mandatory two-round full redesign.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -161,7 +161,8 @@
     "sitemap": true,
     "robots": true,
     "socialPreviewFormat": "PNG primary, matching SVG sources retained",
-    "socialPreviewDimensions": "1200x627 (1.91:1)"
+    "socialPreviewDimensions": "1200x627",
+    "socialPreviewCardCount": 17
   },
   "latestVerifiedTestCommit": "a1025e7cbaa8741939b522eca312837910289e31",
   "caseStudyDossiers": {
@@ -202,5 +203,6 @@
     "actualUiScreenshots": "globalcart-desktop-mobile-complete-other-projects-pending",
     "ownerContentApproval": "pending",
     "fullSiteRedesign": "mandatory-two-round-owner-review"
-  }
+  },
+  "latestBranchHeadAtCheckpoint": "c08e38f5910c1656154e1fe92105dc2fb2db8ecc"
 }
