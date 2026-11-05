@@ -36,12 +36,13 @@ The current public design is an early working draft. A full redesign based on Po
 The first portfolio draft includes:
 - Personal introduction and project showcase as the root page.
 - About, focus areas, technology list, and contact sections.
-- Eight draft project cards with explicit in-development / prototype labels.
-- A verified GitHub link for AetherFlow; other project links remain unpublished until verified.
+- Eight project cards with verified source-repository and GitHub Pages preview links, honest project statuses, and explicit scope boundaries.
+- Eight bilingual, shareable in-site case-study views covering challenge, approach, engineering highlights, and current limitations.
+- An optional link to the existing GlobalCart bilingual case study.
 - A secondary link to the existing Spatial OS workspace.
 - Persian/English language switching and a responsive layout.
 
-Content such as the public biography, project ordering, summaries, evidence, photos, and contact channels still requires Pooya's review. No project is presented as production-ready without evidence.
+All project content is still marked for Pooya's review. The public biography, featured order, role/contribution details, screenshots, richer evidence, and contact channel must be reviewed before release. No project is presented as production-ready without evidence.
 
 ## Development
 
