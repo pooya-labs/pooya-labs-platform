@@ -2,7 +2,7 @@
 
 **Task ID:** P2-01  
 **Title:** Validate and publish the first Antigravity-inspired Spatial OS shell  
-**Status:** UI source committed; full CI build and Pages publication are the immediate verification gates
+**Status:** UI source committed, CI green, and Pages preview deployed; Apps Script bundle sync and visual QA remain
 
 ## What is implemented
 - React + TypeScript + Vite workspace at `apps/platform`.
@@ -12,11 +12,14 @@
 - Cursor refraction field: eased glow plus glass lens, with touch/reduced-motion fallback.
 - Vite build targets for GitHub Pages static content and a single-file HtmlService bundle.
 
-## Immediate validation
-1. Check the latest `Repository CI` run for package install, TypeScript, both build targets, and contract tests.
-2. Check the `Platform GitHub Pages` workflow. If the repository still uses branch/Jekyll Pages publishing, change **Settings → Pages → Build and deployment → Source** to **GitHub Actions** once.
-3. Open the published Pages preview on desktop and mobile; inspect cursor lens behavior, Persian RTL, English LTR, theme switching, and app windows.
-4. Build artifact `dist/gas/index.html` is the single-file HtmlService app. Once CI uploads it, sync its content into the Apps Script HTML file named `Index`; keep the existing `Code.gs` RPC router and publish a new Web App version. Do not copy the Vite source module entrypoint into Apps Script.
+## Verified validation
+- Repository CI [42036122022](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42036122022) passed TypeScript, Pages/GAS builds, single-file artifact upload, and 14/14 contract tests.
+- Platform Pages deployment [42035942848](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42035942848) succeeded at https://pooya-labs.github.io/pooya-labs-platform/.
+
+## Remaining manual validation
+1. Open the preview on desktop and move the mouse across the hero, cards, and empty canvas; check that the glass lens follows smoothly without swallowing clicks.
+2. Check Persian RTL, English LTR, theme switching, app windows, and narrow mobile layout. Touch devices and reduced-motion mode should have no cursor lens.
+3. Download the `pooya-labs-gas-htmlservice-bundle` artifact from the CI run above. Its `index.html` is the single-file HtmlService app. Copy its content into the Apps Script HTML file named `Index`; keep the existing `Code.gs` RPC router, save, and publish a new Web App version. Do not copy the Vite source module entrypoint into Apps Script.
 
 ## Important boundaries
 - The owner approved ADR-0004: public app and owner-only admin app are separate deployments. No privileged admin code is added in this visual milestone.
