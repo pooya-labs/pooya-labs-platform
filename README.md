@@ -38,13 +38,13 @@ The first portfolio draft includes:
 - About, focus areas, technology list, and contact sections.
 - Eight project cards with verified source-repository and GitHub Pages preview links, honest project statuses, and explicit scope boundaries.
 - Eight bilingual, shareable case studies with source-grounded engineering dossiers, generated architecture diagrams, and crawler-readable Persian/English static routes.
-- Seven commit-pinned project-card/hero visuals plus two real GlobalCart storefront screenshots (desktop and mobile), all with Persian/English alt text and immutable source commit URLs. The GlobalCart desktop capture is used as its case-study hero and the mobile capture appears in a dedicated, lazy-loaded interface-evidence section; other projects retain clearly labelled brand/project artwork where UI screenshots are not available.
+- Seven commit-pinned project-card/hero visuals plus two real GlobalCart storefront screenshots (desktop and mobile), all with Persian/English alt text and immutable source commit URLs. The GlobalCart desktop capture is used as its case-study hero and the mobile capture appears in a dedicated, lazy-loaded interface-evidence section; other projects retain clearly labelled brand/project artwork where UI screenshots are not yet available.
 - Canonical and Open Graph metadata, dynamic browser titles/descriptions for case-study routes, Person JSON-LD, a branded SVG favicon, and an XML sitemap covering the homepage plus all eight case-study URLs.
 - An optional link to the existing GlobalCart bilingual case study.
 - A secondary link to the existing Spatial OS workspace.
 - Persian/English language switching and a responsive layout.
 
-All project content is still marked for Pooya's review. The eight source-grounded dossiers and each project's missing pre-release information/evidence are tracked in [PROJECT-CONTENT-AUDIT.md](docs/PROJECT-CONTENT-AUDIT.md). The public biography, featured order, role/contribution details, additional real UI screenshots/architecture evidence, and contact channel must be reviewed before release. Static crawler-readable case-study pages and per-project social preview images are still pending. No project is presented as production-ready without evidence.
+All project content is still marked for Pooya's review. The eight source-grounded dossiers and each project's missing pre-release information/evidence are tracked in [PROJECT-CONTENT-AUDIT.md](docs/PROJECT-CONTENT-AUDIT.md). The public biography, featured order, role/contribution details, remaining real UI screenshots, manual QA, and contact channel must be reviewed before release. Static crawler-readable case-study pages, architecture diagrams, and per-project social preview SVGs are generated at build time; external social-client rendering still needs validation. No project is presented as production-ready without evidence.
 
 ## Development
 
