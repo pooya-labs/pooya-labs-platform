@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-05 — Owner-side GAS transport test results
+- Owner deployed the Apps Script proof as Version 1.
+- Owner confirmed the HtmlService `google.script.run` health check passed with `ok: true`.
+- Published GitHub Pages external-fetch harness was tested against the deployed `/exec` endpoint.
+- External POST returned `TypeError: NetworkError when attempting to fetch resource` (approximately 704 ms).
+- The Apps Script Executions rows provided showed `doGet` and `rpcHealth`, but no `doPost` execution. Root cause remains undiagnosed pending browser Network/Console inspection.
+- Updated NEXT.md to P0-03; no architecture workaround is accepted until the request path is understood.
+
 ## 2026-11-05 — Phase 0 inventory and transport proof harness
 - Inspected public README and repository metadata for eight existing projects in read-only mode.
 - Recorded maturity, technology direction, potential reuse areas, and integration gates in INTEGRATION-INVENTORY.md.
