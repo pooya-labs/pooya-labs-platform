@@ -342,6 +342,7 @@ function App(): ReactNode {
 
   return (
     <div className="platform-shell" data-theme={theme}>
+      <CursorField />
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
       <div className="ambient-grid" />
@@ -373,7 +374,7 @@ function App(): ReactNode {
       <div className="workspace-layout">
         <aside className="side-rail" aria-label={t.allApps}>
           <div className="rail-group">
-            <button className="rail-button active" onClick={() => setWindows([])} aria-label={t.workspace}><Home size={19} /></button>
+            <button className="rail-button active" onClick={() => { setWindows([]); setActiveWindow(null); }} aria-label={t.workspace}><Home size={19} /></button>
             <div className="rail-separator" />
             {appRegistry.map((item) => {
               const Icon = item.icon;
@@ -471,7 +472,7 @@ function App(): ReactNode {
           <div className="window-layer">
             {visibleWindows.map((item) => (
               <WindowFrame key={item.id} app={appRegistry.find((candidate) => candidate.id === item.id)!}
-                windowState={item} language={language} theme={theme} active={topWindow?.id === item.id}
+                windowState={item} language={language} active={topWindow?.id === item.id}
                 onPointerDown={startDragging} onFocus={() => focusApp(item.id)} onClose={() => closeApp(item.id)}
                 onMinimize={() => minimizeApp(item.id)} onMaximize={() => toggleMaximize(item.id)}
                 onThemeChange={setTheme} onLanguageChange={setLanguage}
@@ -549,7 +550,6 @@ interface WindowFrameProps {
   app: AppDefinition;
   windowState: AppWindow;
   language: Language;
-  theme: Theme;
   active: boolean;
   onPointerDown: (event: ReactPointerEvent<HTMLElement>, id: AppId) => void;
   onFocus: () => void;
@@ -564,8 +564,72 @@ interface WindowFrameProps {
   onTerminalSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }
 
+function CursorField(): ReactNode {
+  const glowRef = useRef<HTMLDivElement>(null);
+  const lensRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!finePointer || reducedMotion) return undefined;
+
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let glowX = targetX;
+    let glowY = targetY;
+    let lensX = targetX;
+    let lensY = targetY;
+    let frame = 0;
+
+    const render = () => {
+      glowX += (targetX - glowX) * 0.17;
+      glowY += (targetY - glowY) * 0.17;
+      lensX += (targetX - lensX) * 0.31;
+      lensY += (targetY - lensY) * 0.31;
+
+      if (glowRef.current) {
+        glowRef.current.style.transform = `translate3d(${glowX - 175}px, ${glowY - 175}px, 0)`;
+      }
+      if (lensRef.current) {
+        lensRef.current.style.transform = `translate3d(${lensX - 54}px, ${lensY - 54}px, 0)`;
+      }
+
+      const stillMoving =
+        Math.abs(targetX - glowX) + Math.abs(targetY - glowY) +
+        Math.abs(targetX - lensX) + Math.abs(targetY - lensY) > 0.5;
+
+      if (stillMoving) {
+        frame = window.requestAnimationFrame(render);
+      } else {
+        frame = 0;
+      }
+    };
+
+    const onPointerMove = (event: PointerEvent) => {
+      targetX = event.clientX;
+      targetY = event.clientY;
+      if (!frame) frame = window.requestAnimationFrame(render);
+    };
+
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+    return () => {
+      window.removeEventListener('pointermove', onPointerMove);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  return (
+    <div className="cursor-field" aria-hidden="true">
+      <div className="cursor-field-glow" ref={glowRef} />
+      <div className="cursor-field-lens" ref={lensRef}>
+        <span />
+      </div>
+    </div>
+  );
+}
+
 function WindowFrame(props: WindowFrameProps): ReactNode {
-  const { app, windowState, language, theme, active, onPointerDown, onFocus, onClose, onMinimize, onMaximize,
+  const { app, windowState, language, active, onPointerDown, onFocus, onClose, onMinimize, onMaximize,
     onThemeChange, onLanguageChange, terminalInput, terminalLines, onTerminalInput, onTerminalSubmit } = props;
   const Icon = app.icon;
   const t = copy[language];
