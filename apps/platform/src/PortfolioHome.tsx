@@ -1,6 +1,6 @@
 import { ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Layers3, Monitor, Sparkles, TerminalSquare, Workflow } from 'lucide-react';
-import { useEffect, useRef, type ReactNode } from 'react';
-import { portfolioProjects as projects } from './content/projects';
+import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
+import { portfolioProjects as projects, type PortfolioProject } from './content/projects';
 
 type Language = 'fa' | 'en';
 
@@ -48,6 +48,7 @@ const text = {
     status: 'وضعیت پروژه',
     caseStudy: 'مطالعه موردی به‌زودی',
     demo: 'دمو', source: 'سورس', caseStudyReady: 'مطالعه موردی',
+    details: 'جزئیات پروژه', challenge: 'مسئله', approach: 'راهکار و رویکرد', highlights: 'نکات فنی', boundaries: 'محدوده و محدودیت‌ها', backProjects: 'بازگشت به پروژه‌ها',
   },
   en: {
     navAbout: 'About',
@@ -86,6 +87,7 @@ const text = {
     status: 'Project status',
     caseStudy: 'Case study coming soon',
     demo: 'Live demo', source: 'Source', caseStudyReady: 'Case study',
+    details: 'Project details', challenge: 'The challenge', approach: 'Approach', highlights: 'Engineering highlights', boundaries: 'Scope & boundaries', backProjects: 'Back to projects',
   },
 } satisfies Record<Language, Record<string, string>>;
 
@@ -128,14 +130,115 @@ function PointerLens(): ReactNode {
   return <div className="portfolio-pointer" aria-hidden="true"><div ref={glowRef} className="portfolio-pointer-glow" /><div ref={lensRef} className="portfolio-pointer-lens" /></div>;
 }
 
+function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { project: PortfolioProject; language: Language; onLanguageChange: (language: Language) => void; onBack: () => void }): ReactNode {
+  const t = text[language];
+  const rtl = language === 'fa';
+  return (
+    <div className={`portfolio-page portfolio-case-study ${rtl ? 'is-rtl' : 'is-ltr'}`}>
+      <PointerLens />
+      <div className="portfolio-atmosphere atmosphere-a" />
+      <div className="portfolio-grid" />
+      <header className="portfolio-header">
+        <a className="portfolio-brand" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }} aria-label="Pooya Labs home">
+          <span className="portfolio-brand-mark">P<span>.</span></span>
+          <span><strong>POOYA</strong><small>PROJECT CASE STUDY</small></span>
+        </a>
+        <div className="portfolio-header-actions">
+          <button className="portfolio-language" onClick={() => onLanguageChange(rtl ? 'en' : 'fa')}>{t.language}</button>
+          <button className="portfolio-workspace" onClick={onBack}><span>{t.backProjects}</span><ArrowUpLeft size={15} /></button>
+        </div>
+      </header>
+      <main className="case-study-main portfolio-container">
+        <a className="case-study-back" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}><ArrowUpLeft size={15} />{t.backProjects}</a>
+        <section className="case-study-hero">
+          <div className="case-study-visual" aria-hidden="true">
+            <div className="art-orbit orbit-outer" /><div className="art-orbit orbit-inner" />
+            <div className="art-monogram"><span>{project.name.slice(0,1)}</span><i /></div>
+            <span className="case-study-index">{project.number} / POOYA LABS</span>
+          </div>
+          <div className="case-study-heading">
+            <div className="portfolio-eyebrow"><span className="eyebrow-index">PROJECT / {project.number}</span>{project.category[language]}</div>
+            <h1>{project.name}</h1>
+            <span className="case-study-status"><i />{project.status[language]}</span>
+            <p>{project.description[language]}</p>
+            <div className="project-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+            <div className="case-study-actions">
+              <a className="portfolio-primary" href={project.previewUrl} target="_blank" rel="noreferrer"><Monitor size={14} />{t.demo}<ExternalLink size={12} /></a>
+              <a className="portfolio-secondary" href={project.repositoryUrl} target="_blank" rel="noreferrer"><Code2 size={14} />{t.source}<ExternalLink size={12} /></a>
+              {project.caseStudyUrl && <a className="portfolio-secondary" href={project.caseStudyUrl} target="_blank" rel="noreferrer"><BookOpen size={14} />{t.caseStudyReady}<ExternalLink size={12} /></a>}
+            </div>
+          </div>
+        </section>
+        <section className="case-study-section-grid">
+          <article className="case-study-panel">
+            <div className="portfolio-eyebrow"><span className="eyebrow-index">01 /</span>{t.challenge}</div>
+            <p>{project.caseStudy.challenge[language]}</p>
+          </article>
+          <article className="case-study-panel">
+            <div className="portfolio-eyebrow"><span className="eyebrow-index">02 /</span>{t.approach}</div>
+            <p>{project.caseStudy.approach[language]}</p>
+          </article>
+        </section>
+        <section className="case-study-highlights">
+          <div className="portfolio-eyebrow"><span className="eyebrow-index">03 /</span>{t.highlights}</div>
+          <ul>{project.caseStudy.highlights[language].map((item, index) => <li key={index}><span>{String(index + 1).padStart(2, '0')}</span>{item}</li>)}</ul>
+        </section>
+        <section className="case-study-boundaries">
+          <div className="portfolio-eyebrow"><span className="eyebrow-index">04 /</span>{t.boundaries}</div>
+          <p>{project.caseStudy.boundaries[language]}</p>
+        </section>
+      </main>
+      <footer className="portfolio-footer portfolio-container">
+        <a className="portfolio-brand" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}><span className="portfolio-brand-mark">P<span>.</span></span><span><strong>POOYA LABS</strong><small>PERSONAL PORTFOLIO</small></span></a>
+        <span>{project.name} · {project.status[language]}</span>
+        <a href={project.repositoryUrl} target="_blank" rel="noreferrer"><Code2 size={16} /> {t.source}</a>
+        <small>© {new Date().getFullYear()} POOYA LABS</small>
+      </footer>
+    </div>
+  );
+}
+
 export default function PortfolioHome({ language, onLanguageChange, onOpenWorkspace }: PortfolioHomeProps): ReactNode {
   const t = text[language];
   const rtl = language === 'fa';
+  const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(() => {
+    const slug = new URLSearchParams(window.location.search).get('project');
+    return projects.find((project) => project.slug === slug) ?? null;
+  });
+
+  useEffect(() => {
+    const syncProjectRoute = () => {
+      const slug = new URLSearchParams(window.location.search).get('project');
+      setSelectedProject(projects.find((project) => project.slug === slug) ?? null);
+    };
+    window.addEventListener('popstate', syncProjectRoute);
+    return () => window.removeEventListener('popstate', syncProjectRoute);
+  }, []);
+
+  const openCaseStudy = (event: ReactMouseEvent<HTMLAnchorElement>, project: PortfolioProject) => {
+    event.preventDefault();
+    const url = new URL(window.location.href);
+    url.search = '';
+    url.searchParams.set('project', project.slug);
+    window.history.pushState({}, '', url);
+    setSelectedProject(project);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
+
+  const closeCaseStudy = () => {
+    const url = new URL(window.location.href);
+    url.search = '';
+    window.history.pushState({}, '', url);
+    setSelectedProject(null);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
 
   useEffect(() => {
     document.documentElement.lang = language;
     document.documentElement.dir = rtl ? 'rtl' : 'ltr';
   }, [language, rtl]);
+
+  if (selectedProject) return <ProjectCaseStudy project={selectedProject} language={language} onLanguageChange={onLanguageChange} onBack={closeCaseStudy} />;
 
   return (
     <div className={`portfolio-page ${rtl ? 'is-rtl' : 'is-ltr'}`}>
@@ -210,7 +313,8 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
                     <span>{t.status}: {project.status[language]}</span>
                     <div className="project-actions">
                       <a href={project.previewUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.demo}`}><Monitor size={13} />{t.demo}<ExternalLink size={11} /></a>
-                      {project.caseStudyUrl && <a href={project.caseStudyUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.caseStudyReady}`}><BookOpen size={13} />{t.caseStudyReady}<ExternalLink size={11} /></a>}
+                      <a href={`?project=${project.slug}`} onClick={(event) => openCaseStudy(event, project)} aria-label={`${project.name} ${t.details}`}><BookOpen size={13} />{t.details}<ArrowUpRight size={11} /></a>
+                      {project.caseStudyUrl && <a href={project.caseStudyUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.caseStudyReady}`}>{t.caseStudyReady}<ExternalLink size={11} /></a>}
                       <a href={project.repositoryUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.source}`}><Code2 size={13} />{t.source}<ExternalLink size={11} /></a>
                     </div>
                   </div>
