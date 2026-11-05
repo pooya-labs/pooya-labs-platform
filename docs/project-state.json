@@ -7,30 +7,30 @@
   "phase": 3,
   "phaseName": "Portfolio content architecture and case studies",
   "currentTask": {
-    "id": "P3-03",
-    "title": "Owner review and evidence-rich case-study content",
-    "status": "eight-bilingual-project-case-studies-implemented-ci-green-owner-review-pending"
+    "id": "P3-04",
+    "title": "Owner content review and evidence-rich case studies",
+    "status": "seven-source-pinned-visual-assets-dynamic-metadata-ci-green-26-of-26-pages-deployed-owner-review-pending"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCodeCommit": "3eda47a0930180294c5d39bab4729b8c863dc622",
+  "latestVerifiedCodeCommit": "2cdc2d87de6d663f604cfc84568008e8aef7d316",
   "tests": {
-    "repositoryCi": "passed-run-42048674359",
-    "repositoryCiTestCount": 24,
+    "repositoryCi": "passed-run-42052038712",
+    "repositoryCiTestCount": 26,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
-    "githubPagesDeployment": "passed-run-42047985066",
-    "platformTypecheck": "passed-run-42048674359",
-    "pagesAndGasBuilds": "passed-run-42048674359",
+    "githubPagesDeployment": "passed-run-42052038732",
+    "platformTypecheck": "passed-run-42052038712",
+    "pagesAndGasBuilds": "passed-run-42052038712",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "pending-owner-review",
-    "vitePagesWorkflow": "passed-run-42047985066",
+    "vitePagesWorkflow": "passed-run-42052038732",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "not-yet-verified-after-legacy-branch-build",
-    "portfolioContractTests": "passed-24-of-24-run-42048674359",
+    "portfolioContractTests": "passed-26-of-26-run-42052038712",
     "latestPreviousPagesDeployment": "passed-run-42043972152"
   },
   "hosting": {
@@ -54,7 +54,7 @@
     "activePagesSource": "GitHub Actions deployment succeeded; repository setting still should be confirmed",
     "appsScriptSync": "deferred-not-required-for-static-portfolio",
     "portfolioPagesPublished": true,
-    "portfolioPagesRun": "42047985066"
+    "portfolioPagesRun": "42052038732"
   },
   "previousProjects": {
     "inspected": true,
@@ -64,14 +64,13 @@
     "ownerRequestedDeferral": true
   },
   "blockers": [
-    "Pooya must review and approve the public biography, featured-project order, project descriptions, statuses, and verified links.",
-    "All eight case-study records are still marked needs-owner-review; Pooya must confirm role/contribution and any outcome or validation claims.",
-    "Real project screenshots, diagrams, captions, and alt text are still needed for richer evidence.",
-    "Page-level metadata/social previews and full accessibility/performance QA remain to be completed.",
-    "Confirm the repository Pages source remains GitHub Actions to prevent legacy branch/Jekyll deployment from superseding the Vite portfolio.",
+    "Pooya must review and approve the public biography, positioning, project order, project descriptions/statuses, and contribution/role for each project.",
+    "Actual UI screenshots and architecture diagrams are still missing for AetherFlow and ORBIT; several other project assets are brand artwork rather than interface evidence.",
+    "Static crawler-readable case-study pages, per-project social preview images, and a sitemap remain pending; runtime metadata updates alone do not satisfy this.",
+    "Complete accessibility, responsive, keyboard, browser, and performance review remains pending.",
     "A full-site redesign based on Pooya's feedback is a mandatory pre-release gate with two review rounds and explicit approval."
   ],
-  "nextAction": "Collect Pooya's edits to the public biography, featured project order, contribution/role descriptions, and contact destination. Add owner-approved project screenshots/diagrams and evidence; expand case studies with confirmed implementation details. Keep the complete redesign after two review rounds as a release blocker before V1.",
+  "nextAction": "Collect Pooya's approval of positioning, biography, top three featured projects, project roles/contributions, statuses, and contact channel; then add missing screenshots/architecture evidence and static case-study SEO pages before Phase 7's two-round full redesign.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -110,5 +109,30 @@
     "designDocument": "docs/DESIGN-DIRECTION.md",
     "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
   },
-  "latestVerifiedCommit": "0cc52a8c4897601bdf5cb176190b12f42feab17a"
+  "latestVerifiedCommit": "2cdc2d87de6d663f604cfc84568008e8aef7d316",
+  "projectMedia": {
+    "sourceAssetsCount": 7,
+    "assetsPinnedToImmutableCommits": true,
+    "bilingualAltText": true,
+    "lazyLoaded": true,
+    "gracefulCssFallback": true,
+    "actualInterfaceScreenshots": 1,
+    "brandOrIllustrationAssets": 6,
+    "missingVisualEvidenceProjects": [
+      "AetherFlow",
+      "ORBIT"
+    ],
+    "perProjectStaticSocialCards": false,
+    "sitemap": false
+  },
+  "metadata": {
+    "baseOpenGraph": true,
+    "dynamicCaseStudyTitleDescription": true,
+    "dynamicCanonical": true,
+    "personJsonLd": true,
+    "svgFavicon": true,
+    "staticCrawlerCaseStudyPages": false,
+    "perProjectSocialImages": false,
+    "sitemap": false
+  }
 }

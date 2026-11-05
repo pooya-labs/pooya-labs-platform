@@ -38,8 +38,10 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [ ] Curate the featured-project order with Pooya; highlight only the strongest and most presentable work.
 - [ ] Review and approve every public project description and status with Pooya.
 - [ ] Expand the case studies with owner-confirmed role/contribution, architecture, implementation decisions, validation evidence, and outcomes.
-- [ ] Add project screenshots, captions, alt text, responsive media handling, and lazy loading.
-- [ ] Add robust per-project page metadata, social preview assets, sitemap, and canonical share URLs.
+- [x] Add seven source-repository visual assets pinned to immutable commits, bilingual alt text, lazy loading, responsive rendering, and graceful fallbacks.
+- [x] Add dynamic browser titles/descriptions, base Open Graph metadata, canonical URL updates, Person JSON-LD, and a branded SVG favicon.
+- [ ] Add more actual UI screenshots and architecture diagrams for the projects that currently only have brand artwork or no media.
+- [ ] Add static crawler-readable case-study pages, per-project social preview images, and sitemap.xml.
 
 ## Phase 4 — Secondary private workspace and owner tools
 - [ ] Decide which existing Spatial OS tools are useful enough to retain after the public portfolio is complete.

@@ -24,6 +24,9 @@
 - [x] Added a typed portfolio content registry with explicit review state, localized copy, unique slugs, and verified HTTPS source/demo URLs.
 - [x] Added eight bilingual internal case-study views with challenge, approach, engineering highlights, scope boundaries, and shareable query-string routes.
 - [x] Added demo, source, and case-study actions to project cards.
+- [x] Added seven verified source-repository visual assets with pinned commit URLs and bilingual alt text; card media is lazy-loaded, responsive, and falls back cleanly.
+- [x] Added the actual GlobalCart storefront screenshot; other current visuals are correctly identified as brand marks or project artwork, not product screenshots.
+- [x] Added dynamic case-study page title/description and canonical/Open Graph metadata updates, Person JSON-LD, and a branded SVG favicon.
 - [x] Reframed README, architecture, product surfaces, design direction, next task, and roadmap around the portfolio-first purpose.
 - [x] Added ADR-0006 to record portfolio-first hosting and scope.
 
@@ -43,9 +46,9 @@
 - [ ] Review the complete portfolio design on desktop and mobile. The current implementation is a draft, not final.
 
 ## Not implemented
-- [ ] Real project screenshots, diagrams, captions, alt text, and richer evidence.
+- [ ] Actual interface screenshots and architecture diagrams for AetherFlow, ORBIT, and other projects that currently have no UI evidence or only brand artwork.
 - [ ] Fully detailed case studies with owner-confirmed role, architecture, decisions, validation, and outcomes.
-- [ ] Page-level SEO and social preview metadata for individual case studies.
+- [ ] Static crawler-readable case-study pages, per-project social preview images, and sitemap; current metadata is dynamically updated in the browser.
 - [ ] Private owner content-management console.
 - [ ] Customer accounts or customer dashboard; excluded from the portfolio by default.
 - [ ] Production contact form, CMS/backend, Apps Script sync, or data persistence.
@@ -60,4 +63,4 @@
 - Previous project repositories remain untouched; project integration stays in Phase 9.
 
 ## Latest checkpoint
-The root website now introduces Pooya and his projects. Eight bilingual project detail views are available as shareable query routes, based on the actual repository documentation. The latest repository CI passed 24/24 tests and the matching Pages build deployed successfully. The project descriptions and case-study content remain drafts until Pooya reviews them. The complete feedback-driven visual redesign remains a release blocker before V1.
+The root website now introduces Pooya and his projects. Eight bilingual case-study views are available as shareable query routes. Seven source-repository visual assets are pinned to immutable commits and carry bilingual alt text; one is the GlobalCart storefront screenshot while the rest are clearly treated as brand/project artwork. Case-study titles/descriptions and canonical/Open Graph metadata update in the browser. CI run 42052038712 passed 26/26 tests and Pages run 42052038732 deployed the same commit successfully. Public copy, featured order, project contribution details, and richer project evidence still require Pooya's review. Static crawler-oriented case-study metadata/sitemap and the complete feedback-driven redesign remain pre-release work.
