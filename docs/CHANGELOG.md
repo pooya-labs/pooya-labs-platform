@@ -1,3 +1,10 @@
+## 2026-11-05 — Repository-side transport test automation
+- Added a dependency-free Node.js test suite that checks the external transport harness contract, including endpoint validation, POST mode, text/plain content type, health-only action, and neutral error reporting.
+- Added `npm test` and `npm run test:transport` scripts.
+- Added GitHub Actions CI for pushes and pull requests to `main`.
+- CI execution is pending; no test-pass claim is made until the workflow completes.
+- Live Pages-to-GAS transport remains blocked on owner-side browser Network/Console evidence.
+
 # Changelog
 
 ## 2026-11-05 — Owner-side GAS transport test results
