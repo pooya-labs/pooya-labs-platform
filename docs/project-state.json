@@ -7,30 +7,30 @@
   "phase": 3,
   "phaseName": "Portfolio content architecture and case studies",
   "currentTask": {
-    "id": "P3-02",
-    "title": "Build project case-study pages",
-    "status": "typed-project-registry-implemented-23-tests-passed-case-study-pages-next"
+    "id": "P3-03",
+    "title": "Owner review and evidence-rich case-study content",
+    "status": "eight-bilingual-project-case-studies-implemented-ci-green-owner-review-pending"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCodeCommit": "6e6ce6053154d49ba0bf5af23f5dcb88182dbf52",
+  "latestVerifiedCodeCommit": "3eda47a0930180294c5d39bab4729b8c863dc622",
   "tests": {
-    "repositoryCi": "passed-run-42045396058",
-    "repositoryCiTestCount": 23,
+    "repositoryCi": "passed-run-42048164129",
+    "repositoryCiTestCount": 24,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
-    "githubPagesDeployment": "passed-run-42045184015",
-    "platformTypecheck": "passed-run-42045396058",
-    "pagesAndGasBuilds": "passed-run-42045396058",
+    "githubPagesDeployment": "passed-run-42047985066",
+    "platformTypecheck": "passed-run-42048164129",
+    "pagesAndGasBuilds": "passed-run-42048164129",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "pending-owner-review",
-    "vitePagesWorkflow": "passed-run-42045184015",
+    "vitePagesWorkflow": "passed-run-42047985066",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "not-yet-verified-after-legacy-branch-build",
-    "portfolioContractTests": "passed-23-of-23-run-42045396058",
+    "portfolioContractTests": "passed-24-of-24-run-42048164129",
     "latestPreviousPagesDeployment": "passed-run-42043972152"
   },
   "hosting": {
@@ -54,7 +54,7 @@
     "activePagesSource": "GitHub Actions deployment succeeded; repository setting still should be confirmed",
     "appsScriptSync": "deferred-not-required-for-static-portfolio",
     "portfolioPagesPublished": true,
-    "portfolioPagesRun": "42045184015"
+    "portfolioPagesRun": "42047985066"
   },
   "previousProjects": {
     "inspected": true,
@@ -65,11 +65,13 @@
   },
   "blockers": [
     "Pooya must review and approve the public biography, featured-project order, project descriptions, statuses, and verified links.",
-    "Individual case-study pages and owner-reviewed publication flow remain to be implemented.",
+    "All eight case-study records are still marked needs-owner-review; Pooya must confirm role/contribution and any outcome or validation claims.",
+    "Real project screenshots, diagrams, captions, and alt text are still needed for richer evidence.",
+    "Page-level metadata/social previews and full accessibility/performance QA remain to be completed.",
     "Confirm the repository Pages source remains GitHub Actions to prevent legacy branch/Jekyll deployment from superseding the Vite portfolio.",
-    "A full-site redesign based on Pooya's feedback is a mandatory pre-release gate."
+    "A full-site redesign based on Pooya's feedback is a mandatory pre-release gate with two review rounds and explicit approval."
   ],
-  "nextAction": "Build reusable project case-study pages from the typed registry. Curate the featured project order and collect Pooya-approved descriptions, screenshots, verified demos/repositories, and contact details. Keep the complete owner-reviewed redesign in Phase 7 as a blocker before V1.",
+  "nextAction": "Collect Pooya's edits to the public biography, featured project order, contribution/role descriptions, and contact destination. Add owner-approved project screenshots/diagrams and evidence; expand case studies with confirmed implementation details. Keep the complete redesign after two review rounds as a release blocker before V1.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -108,5 +110,5 @@
     "designDocument": "docs/DESIGN-DIRECTION.md",
     "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
   },
-  "latestVerifiedCommit": "6e6ce6053154d49ba0bf5af23f5dcb88182dbf52"
+  "latestVerifiedCommit": "681d0da08cb73616b5429818304b2f30ab75a02d"
 }
