@@ -31,7 +31,7 @@
 - [x] Owner copied the revised `Code.gs` and `Index.html`, published a new Web App version, and verified the `rpcCall` health response with a request ID.
 - [x] Provisional performance budgets and measurement method documented in `PERFORMANCE-BUDGETS.md`.
 - [x] Manual deployment, rollback, backup, and restore procedures documented in `DEPLOYMENT-RUNBOOK.md`.
-- [x] Proposed public/admin deployment separation recorded in ADR-0004; owner approval remains pending.
+- [x] Public/admin deployment separation recorded in ADR-0004 and approved by the owner; actual admin deployment implementation remains future work.
 - [x] Initial threat model and data-classification baseline drafted.
 - [x] Dependency-free Node.js contract tests and GitHub Actions CI added; latest verified run passes 9/9.
 - [x] GitHub Pages build and deployment verified.
@@ -48,7 +48,7 @@
 - [x] Added a dedicated GitHub Pages deployment workflow; repository Pages source may need a one-time switch to GitHub Actions.
 
 ## Not yet done / not yet verified
-- [ ] Owner approval of the proposed public/admin security boundary and final deployment access settings.
+- [x] Owner approved the public-app / owner-only-admin separation. Exact deployment access and execution settings remain to be verified before privileged features.
 - [ ] Performance targets are documented provisionally but not yet measured on target devices/networks.
 - [ ] Operational deployment rollback and data backup/restore procedures are documented but need an owner-side rehearsal before production data.
 - [ ] New workspace CI build has not yet been verified green.
@@ -67,4 +67,4 @@
 7. A fully offline browser cannot receive server confirmation until connectivity returns.
 
 ## Latest checkpoint
-The revised HtmlService runtime is now deployed and its new `rpcCall` endpoint has passed the owner's real-browser health check. The platform remains HtmlService-first; GitHub Pages is limited to public static content. Phase 0 transport proof is complete. The first Phase 2 UI slice is now in the repository; the immediate gate is full CI build validation and publishing the Vite Pages preview. The HtmlService build must then be synced as a single `Index.html` file to the existing GAS project. Performance budgets and operational runbooks are drafted as proposals and remain unmeasured/unrehearsed. Previous-project integration remains deferred to Phase 9.
+The revised HtmlService runtime is now deployed and its new `rpcCall` endpoint has passed the owner's real-browser health check. The platform remains HtmlService-first; GitHub Pages is limited to public static content. The public/admin separation is owner-approved. Phase 0 transport proof is complete. The first Phase 2 UI slice is now in the repository; the immediate gate is full CI build validation and publishing the Vite Pages preview. The HtmlService build must then be synced as a single `Index.html` file to the existing GAS project. Performance budgets and operational runbooks are drafted as proposals and remain unmeasured/unrehearsed. Previous-project integration remains deferred to Phase 9.
