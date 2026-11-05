@@ -1,5 +1,3 @@
-import type { CaseStudyDossier } from './case-study-dossiers-types';
-
 export const productDossiers = {
   "lumina-glass": {
     role: { fa: "README، پویا را نویسنده پروژه معرفی می‌کند.", en: "The README identifies Pooya as the author." },
