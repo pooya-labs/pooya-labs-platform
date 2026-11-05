@@ -26,10 +26,11 @@
 - [x] Added portfolio contract tests and corrected a manifest-test counting issue.
 
 ## CI and publishing status
-- The initial portfolio CI run passed type-check and both builds, but failed one contract test because its manifest fixture count included a validator predicate. The test was corrected.
-- Latest relevant CI run [42044256942](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42044256942) is queued at the time of this status update; its outcome is not yet verified.
-- Pages deployment [42043972152](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42043972152) succeeded for the preceding portfolio commit. A later Pages run for the next UI commit is still being validated.
-- The active GitHub Pages source must remain GitHub Actions rather than the legacy branch/Jekyll source so the Vite portfolio remains canonical.
+- <badge>CI green</badge>
+- Repository CI [42044256942](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42044256942) passed TypeScript, both Pages/Apps Script build targets, artifact upload, and **22/22 contract tests**.
+- GitHub Pages deployment [42044251451](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42044251451) succeeded for the portfolio UI commit.
+- Public preview: https://pooya-labs.github.io/pooya-labs-platform/
+- Confirm the repository Pages source remains GitHub Actions so a legacy branch/Jekyll deployment cannot supersede the Vite portfolio.
 
 ## Pending owner review
 - [ ] Review and approve the public biography and positioning.
@@ -55,4 +56,4 @@
 - Previous project repositories remain untouched; project integration stays in Phase 9.
 
 ## Latest checkpoint
-The public root now introduces Pooya and his projects instead of opening directly into the Spatial OS workspace. The first portfolio draft is in the repository; its content and design remain subject to Pooya's review. CI validated TypeScript and the Pages/GAS builds before a single contract-test assertion failed. That test was corrected, and the latest CI run is pending verification. Next, stabilize the current build and move project content into a typed registry so case-study pages can be built without hardcoding presentation content.
+The public root now introduces Pooya and his projects instead of opening directly into the Spatial OS workspace. The first bilingual portfolio draft is implemented and its TypeScript/build/contract checks pass. Its initial public copy and project summaries still require owner review; individual case studies and a validated content registry are the next implementation milestone. A complete redesign informed by Pooya's feedback remains a release blocker.
