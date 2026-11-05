@@ -12,11 +12,13 @@
     "status": "repository-ready-owner-deployment-sync-pending"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCodeCommit": "4ffbcdf211d8048ecb0915f095718349ede55fcc",
+  "latestVerifiedCodeCommit": "b3beed58aa88061bf4fcc93ac4e8038668c8441a",
   "tests": {
-    "repositoryCi": "passed-run-42026786562",
-    "transportHarnessContract": "passed-in-repository-ci",
-    "gasHtmlServiceTransport": "passed-owner-reported",
+    "repositoryCi": "passed-run-42028621321",
+    "repositoryCiTestCount": 9,
+    "transportHarnessContract": "passed",
+    "gasRpcSourceContract": "passed",
+    "gasHtmlServiceTransport": "passed-owner-reported-on-original-proof",
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42026786711",
     "externalBrowserResponseReadable": false
   },
