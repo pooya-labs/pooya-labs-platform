@@ -27,7 +27,7 @@
 Do not paste the deployment URL into the repository or add customer/admin data to this proof.
 
 ## Remaining Phase 0 gates
-- Complete the threat model, admin authorization approach, data classification, abuse controls, and retention/deletion policy.
+- Review and approve [SECURITY-MODEL.md](SECURITY-MODEL.md) and [DATA-CLASSIFICATION.md](DATA-CLASSIFICATION.md); finalize admin authorization, abuse controls, and retention/deletion policy.
 - Set measurable UI and RPC performance budgets using the intended devices and networks.
 - Document data consistency semantics and the operational backup/restore path.
 - Establish a repeatable Apps Script source sync/deployment workflow (evaluate `clasp` only after the manual proof is updated).
