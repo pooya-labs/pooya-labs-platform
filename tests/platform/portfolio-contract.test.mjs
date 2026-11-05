@@ -77,3 +77,17 @@ test('project cards and shareable query routes expose in-site case studies', () 
   assert.match(portfolio, /\?project=\$\{project\.slug\}/);
   assert.match(css, /\.case-study-main/);
 });
+
+test('project artwork is sourced from pinned project commits with localized alt text', () => {
+  assert.equal((projectData.match(/visualAsset: \{/g) ?? []).length, 7);
+  assert.equal((projectData.match(/raw\.githubusercontent\.com\/pooya-labs\//g) ?? []).length, 7);
+  assert.equal((projectData.match(/alt: \{ fa: '[^']+', en: '[^']+' \}/g) ?? []).length, 7);
+  assert.match(projectData, /Project visual assets must be pinned to an immutable source commit/);
+  assert.match(projectData, /Project visual asset URL/);
+  assert.match(portfolio, /project-art-image/);
+  assert.match(portfolio, /case-study-visual-image/);
+  assert.match(portfolio, /loading="lazy"/);
+  assert.match(portfolio, /onError=\{\(event\) => \{ event\.currentTarget\.remove\(\)/);
+  assert.match(css, /\.project-art\.visual-interface \.project-art-image/);
+  assert.match(css, /\.case-study-visual\.has-visual \.case-study-art-fallback/);
+});
