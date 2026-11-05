@@ -301,3 +301,77 @@
   .case-study-panel, .case-study-boundaries { padding: 19px; }
   .case-study-highlights { padding: 30px 0; }
 }
+
+
+/* Evidence-led project media: pinned source-repository assets, never stock imagery. */
+.project-art.has-visual {
+  isolation: isolate;
+  background: linear-gradient(135deg, rgba(8, 19, 30, .98), rgba(12, 34, 42, .94));
+}
+.project-art.has-visual::before {
+  inset: 0;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  transform: none;
+  background: linear-gradient(180deg, rgba(5, 13, 21, .04) 35%, rgba(5, 13, 21, .66));
+  z-index: 1;
+}
+.project-art.has-visual::after { display: none; }
+.project-art-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 16px;
+  transition: transform .5s cubic-bezier(.2,.75,.25,1);
+}
+.project-art.visual-interface .project-art-image {
+  object-fit: cover;
+  padding: 0;
+}
+.project-art.visual-illustration .project-art-image {
+  object-fit: contain;
+  padding: 8px 20px;
+}
+.project-art.visual-brand .project-art-image {
+  object-fit: contain;
+  padding: 24px;
+}
+.project-art.has-visual .project-art-fallback { display: none; }
+.portfolio-project-card:hover .project-art-image { transform: scale(1.035); }
+.project-art.has-visual .project-art-code,
+.project-art.has-visual .project-art-index { z-index: 2; color: rgba(229, 248, 248, .78); }
+.case-study-visual.has-visual {
+  isolation: isolate;
+  background: linear-gradient(135deg, rgba(8, 19, 30, .98), rgba(12, 34, 42, .94));
+}
+.case-study-visual-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 20px;
+}
+.case-study-visual-image.visual-interface { object-fit: contain; padding: 0; }
+.case-study-visual-image.visual-illustration { object-fit: contain; padding: 12px 24px; }
+.case-study-visual-image.visual-brand { object-fit: contain; padding: 38px; }
+.case-study-visual.has-visual .case-study-art-fallback { display: none; }
+.case-study-visual.has-visual::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(5, 13, 21, .02), rgba(5, 13, 21, .28));
+}
+.case-study-visual .case-study-index { z-index: 2; }
+@media (prefers-reduced-motion: reduce) {
+  .project-art-image { transition: none; }
+  .portfolio-project-card:hover .project-art-image { transform: none; }
+}
