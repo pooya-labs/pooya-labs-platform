@@ -1,58 +1,66 @@
-# Visual Direction — Antigravity-inspired workspace
+# Visual Direction — Pooya Labs personal portfolio
 
-**Status:** First implementation slice committed; browser review and polish remain open.
+**Status:** First public portfolio layout implemented as an early draft. It is not the final visual design. A full owner-reviewed redesign is a release-blocking roadmap milestone.
 
-## Reference and interpretation
-The visual direction takes cues from the public Google Antigravity product experience:
-- An agent-first command-center idea rather than a conventional marketing dashboard.
-- Clear hierarchy and calm, dark work surfaces.
-- Compact navigation, focused content, and identifiable workspace tools.
-- A restrained atmospheric field of particles and light that makes the workspace feel active without making it noisy.
+## Product first
 
-References:
-- [Google Antigravity](https://antigravity.google/)
-- [Antigravity product direction](https://www.antigravity.google/product)
-- [Antigravity 2.0](https://www.antigravity.google/product/antigravity-2)
+The root website is a personal engineering portfolio. Its hierarchy must communicate:
+1. Who Pooya is.
+2. What kinds of software he builds and what he is learning.
+3. Which projects best demonstrate his abilities.
+4. How a visitor can inspect the project evidence and get in touch.
 
-This is an original Pooya Labs design. It does not reuse Google's proprietary logos, screenshots, copy, or product assets.
+Do not let a workspace dashboard, metrics panel, product catalogue, or decorative animation compete with this story.
 
-## Design system
+## Visual language
 
-### Visual language
-- Deep graphite / blue-black base, quiet cyan accents, muted violet secondary light.
-- Layered translucent surfaces with subtle borders, restrained blur, and controlled contrast.
-- Large, direct hero statement and a recognizable spatial command-center composition.
-- Small uppercase technical labels and compact metadata; Persian remains the default interface language.
-- Light theme remains supported, but dark is the primary presentation.
+- Deep obsidian / blue-black surfaces with restrained cyan and emerald accents.
+- Liquid-glass layers, fine borders, atmospheric light, and confident typography.
+- Original Antigravity-inspired spatial depth, not a copy of Google's UI or assets.
+- Project cards should feel like individual engineered artifacts, not generic SaaS KPI tiles.
+- Large typography and meaningful whitespace; project descriptions and evidence remain readable.
+- Dark mode is the primary presentation. Light mode may be added after the first full design review.
+- Persian is the initial language with complete English LTR parity.
+- Responsive from large desktop to narrow mobile, with no critical interaction dependent on hover.
 
-### Cursor refraction field
-The workspace contains a custom pointer-following visual layer:
-- A broad, low-opacity glow follows the pointer with a slower interpolation.
-- A smaller translucent lens follows slightly faster and uses `backdrop-filter: blur()` plus saturation to refract/soften the UI behind it.
-- The native OS cursor remains visible and unchanged.
-- The field has `pointer-events: none`, so it cannot intercept clicks, selection, or drag gestures.
-- It is enabled only for fine pointers (mouse/trackpad); it is disabled for coarse/touch pointers and for `prefers-reduced-motion: reduce`.
-- Position updates use `requestAnimationFrame` only while the target is moving, avoiding a permanent animation loop.
+## Pointer refraction field
 
-### Interaction
-- The command palette opens with Ctrl/Cmd + K.
-- Ctrl/Cmd + 1–4 opens the four initial workspace apps.
-- Desktop windows support focus/z-order, minimize, maximize, restore, and drag.
-- Mobile uses a touch-first bottom app rail and full-screen app surfaces.
-- Locale and theme preferences are stored locally in the current browser only.
+A custom pointer-following light and translucent lens may add depth:
+- It is decorative and must not intercept clicks, text selection, or touch.
+- It is enabled only for fine pointers.
+- It is disabled for coarse/touch pointers and reduced-motion preferences.
+- The native pointer remains visible.
+- It must be removed or toned down if it harms reading, accessibility, or performance.
 
-## Current app surfaces
-- Overview — workspace summary, currently static/local demonstration content.
-- Files — a visual sample listing; not connected to Drive or a real file system.
-- Terminal — an allowlisted local demo command set only; it does not execute OS commands.
-- Settings — language and theme controls.
+## Content design
 
-No AI-agent execution, file synchronization, project persistence, or real terminal functionality is claimed in this first visual slice. Those require separate runtime and security milestones.
+- A visitor should understand the site within a few seconds.
+- The hero introduces the person, not a fictional product or generic platform.
+- Featured projects should have clear status labels and evidence links where verified.
+- Case studies should show the actual process: problem, role, constraints, architecture, tools, key decisions, validation, and outcome.
+- Avoid fabricated metrics, generic claims such as "expert in everything", placeholder testimonials, and unverified customer logos.
+- Do not publish private details. The public profile should use only information Pooya has reviewed and approved.
 
-## Review checklist
-- [ ] Verify the cursor lens visually across light/dark backgrounds and high-DPI displays.
-- [ ] Confirm no pointer lag or noticeable frame drops on target desktop hardware.
-- [ ] Confirm touch devices do not render or run the cursor field.
-- [ ] Confirm reduced-motion disables the effect.
-- [ ] Test Persian RTL and English LTR at desktop, tablet, and narrow mobile widths.
-- [ ] Validate keyboard focus, contrast, and modal behavior.
+## Current draft
+
+The current implementation contains:
+- Persian/English switch.
+- Introductory hero and GitHub links.
+- Initial about section and areas of focus.
+- An eight-project draft grid with status labels.
+- Initial technology list.
+- Contact section and a link to the secondary workspace.
+- Pointer refraction field with reduced-motion and mobile fallback.
+
+Project descriptions, skill emphasis, featured-project order, photos/avatar, contact channels, and public bio are content drafts and require Pooya's review before launch.
+
+## Mandatory pre-release redesign and owner feedback
+
+This is a release-blocking gate, not optional polish:
+1. Present a complete visual and content prototype to Pooya.
+2. Collect his feedback on identity, bio, layout, project priority, project descriptions, screenshots, visual references, motion, colors, and mobile behavior.
+3. Record each decision and rejected direction; update the prototype and roadmap.
+4. Run a second full review on desktop and mobile after revisions.
+5. Do not mark the redesign milestone complete or release V1 until Pooya explicitly approves the final direction.
+
+Review criteria: distinctive personal identity, strong project storytelling, credible evidence, readable Persian and English, accessibility, mobile quality, loading performance, and a consistent design system.
