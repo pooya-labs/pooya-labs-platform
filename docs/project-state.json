@@ -46,5 +46,12 @@
   "blockers": [
     "Owner must copy the revised Code.gs and Index.html into the existing Apps Script project and deploy a new version to validate the canonical rpcCall(request) path."
   ],
-  "nextAction": "Owner: sync the revised Apps Script source and verify the google.script.run health action. Repository-side follow-up: complete threat model, admin authorization design, performance budgets, and deployment/rollback planning."
+  "nextAction": "Owner: sync the revised Code.gs and Index.html into the Apps Script project and verify rpcCall health. Repository follow-up: finalize access settings, abuse controls, performance budgets, and deployment/rollback plans.",
+  "securityBaseline": {
+    "threatModelDrafted": true,
+    "dataClassificationDrafted": true,
+    "ownerApproved": false,
+    "adminAuthenticationFinalized": false,
+    "protectedFeaturesAllowed": false
+  }
 }
