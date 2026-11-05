@@ -11,6 +11,7 @@ import {
 } from 'react';
 import { isHtmlServiceHost, rpcCall, type RpcResponse } from './lib/rpc';
 import { APP_MANIFEST } from './lib/app-manifest';
+import PortfolioHome from './PortfolioHome';
 
 type Language = 'fa' | 'en';
 type Theme = 'dark' | 'light';
@@ -148,6 +149,7 @@ function getDate(language: Language, date: Date): string {
 }
 
 function App(): ReactNode {
+  const [workspaceOpen, setWorkspaceOpen] = useState(false);
   const [language, setLanguage] = useState<Language>(() => readPreference('language', 'fa'));
   const [theme, setTheme] = useState<Theme>(() => readPreference('theme', 'dark'));
   const [now, setNow] = useState(() => new Date());
@@ -346,6 +348,10 @@ function App(): ReactNode {
     setTerminalInput('');
   };
 
+  if (!workspaceOpen) {
+    return <PortfolioHome language={language} onLanguageChange={setLanguage} onOpenWorkspace={() => setWorkspaceOpen(true)} />;
+  }
+
   return (
     <div className="platform-shell" data-theme={theme}>
       <CursorField />
@@ -362,6 +368,7 @@ function App(): ReactNode {
           <Search size={16} /><span>{t.search}</span><kbd><Command size={11} /> K</kbd>
         </button>
         <div className="topbar-actions">
+          <button className="text-button portfolio-return" onClick={() => setWorkspaceOpen(false)}>{language === 'fa' ? 'بازگشت به وب‌سایت' : 'Back to portfolio'}</button>
           <div className={'connection-pill ' + (htmlServiceHost ? 'is-live' : '')}>
             <span className="status-dot" /><span>{htmlServiceHost ? t.liveRpc : t.localPreview}</span>
           </div>
