@@ -7,6 +7,18 @@ import type { CaseStudyDossier } from './content/case-study-dossiers-types';
 
 type Language = 'fa' | 'en';
 
+function getProjectSlugFromLocation(): string | null {
+  const querySlug = new URLSearchParams(window.location.search).get('project');
+  if (querySlug) return querySlug;
+  const match = window.location.pathname.match(/\/(?:en\/)?projects\/([^/]+)\/?$/);
+  return match?.[1] ?? null;
+}
+
+function getProjectRouteHref(slug: string, language: Language): string {
+  if (import.meta.env.BASE_URL === './') return `?project=${encodeURIComponent(slug)}`;
+  return `${import.meta.env.BASE_URL}${language === 'en' ? 'en/' : ''}projects/${encodeURIComponent(slug)}/`;
+}
+
 interface PortfolioHomeProps {
   language: Language;
   onLanguageChange: (language: Language) => void;
@@ -148,7 +160,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
           <span><strong>POOYA</strong><small>PROJECT CASE STUDY</small></span>
         </a>
         <div className="portfolio-header-actions">
-          <button className="portfolio-language" onClick={() => onLanguageChange(rtl ? 'en' : 'fa')}>{t.language}</button>
+          <button className="portfolio-language" onClick={() => { const nextLanguage = rtl ? 'en' : 'fa'; onLanguageChange(nextLanguage); if (import.meta.env.BASE_URL !== './') { window.history.replaceState({}, '', new URL(getProjectRouteHref(project.slug, nextLanguage), window.location.href)); } }}>{t.language}</button>
           <button className="portfolio-workspace" onClick={onBack}><span>{t.backProjects}</span><ArrowUpLeft size={15} /></button>
         </div>
       </header>
@@ -247,7 +259,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
   const t = text[language];
   const rtl = language === 'fa';
   const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(() => {
-    const slug = new URLSearchParams(window.location.search).get('project');
+    const slug = getProjectSlugFromLocation();
     return projects.find((project) => project.slug === slug) ?? null;
   });
 
@@ -269,18 +281,18 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
 
   useEffect(() => {
     const syncProjectRoute = () => {
-      const slug = new URLSearchParams(window.location.search).get('project');
+      const slug = getProjectSlugFromLocation();
       setSelectedProject(projects.find((project) => project.slug === slug) ?? null);
+      if (/\/en\/projects\//.test(window.location.pathname)) onLanguageChange('en');
+      else if (/\/projects\//.test(window.location.pathname)) onLanguageChange('fa');
     };
     window.addEventListener('popstate', syncProjectRoute);
     return () => window.removeEventListener('popstate', syncProjectRoute);
-  }, []);
+  }, [onLanguageChange]);
 
   const openCaseStudy = (event: ReactMouseEvent<HTMLAnchorElement>, project: PortfolioProject) => {
     event.preventDefault();
-    const url = new URL(window.location.href);
-    url.search = '';
-    url.searchParams.set('project', project.slug);
+    const url = new URL(getProjectRouteHref(project.slug, language), window.location.href);
     window.history.pushState({}, '', url);
     setSelectedProject(project);
     window.scrollTo({ top: 0, behavior: 'auto' });
@@ -289,6 +301,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
   const closeCaseStudy = () => {
     const url = new URL(window.location.href);
     url.search = '';
+    if (import.meta.env.BASE_URL !== './') url.pathname = import.meta.env.BASE_URL;
     window.history.pushState({}, '', url);
     setSelectedProject(null);
     window.scrollTo({ top: 0, behavior: 'auto' });
@@ -379,7 +392,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
                     <span>{t.status}: {project.status[language]}</span>
                     <div className="project-actions">
                       <a href={project.previewUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.demo}`}><Monitor size={13} />{t.demo}<ExternalLink size={11} /></a>
-                      <a href={`?project=${project.slug}`} onClick={(event) => openCaseStudy(event, project)} aria-label={`${project.name} ${t.details}`}><BookOpen size={13} />{t.details}<ArrowUpRight size={11} /></a>
+                      <a href={getProjectRouteHref(project.slug, language)} onClick={(event) => openCaseStudy(event, project)} aria-label={`${project.name} ${t.details}`}><BookOpen size={13} />{t.details}<ArrowUpRight size={11} /></a>
                       {project.caseStudyUrl && <a href={project.caseStudyUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.caseStudyReady}`}>{t.caseStudyReady}<ExternalLink size={11} /></a>}
                       <a href={project.repositoryUrl} target="_blank" rel="noreferrer" aria-label={`${project.name} ${t.source}`}><Code2 size={13} />{t.source}<ExternalLink size={11} /></a>
                     </div>
