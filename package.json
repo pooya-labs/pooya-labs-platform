@@ -5,6 +5,7 @@
   "description": "Pooya Labs Platform repository validation tools",
   "scripts": {
     "test": "node --test tests/**/*.test.mjs",
-    "test:transport": "node --test tests/transport/*.test.mjs"
+    "test:transport": "node --test tests/transport/*.test.mjs",
+    "test:transport:browser": "node tests/transport/browser-smoke.mjs"
   }
 }
