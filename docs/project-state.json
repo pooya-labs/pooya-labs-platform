@@ -14,7 +14,7 @@
   "lastCheckpointDate": "2026-11-05",
   "latestVerifiedCodeCommit": "defc51a924d4ae0437534d59956a764f4d861f0d",
   "tests": {
-    "repositoryCi": "passed-run-42071877192",
+    "repositoryCi": "passed-run-42072937855",
     "repositoryCiTestCount": 34,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
@@ -23,20 +23,20 @@
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
     "githubPagesDeployment": "passed-run-42071642813",
-    "platformTypecheck": "passed-run-42071877192",
-    "pagesAndGasBuilds": "passed-run-42071877192",
+    "platformTypecheck": "passed-run-42072937855",
+    "pagesAndGasBuilds": "passed-run-42072937855",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "pending-owner-review",
     "vitePagesWorkflow": "passed-run-42071642813",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "not-yet-verified-after-legacy-branch-build",
-    "portfolioContractTests": "passed-34-of-34-run-42071877192",
+    "portfolioContractTests": "passed-34-of-34-run-42072937855",
     "latestPreviousPagesDeployment": "passed-run-42043972152",
     "docsCheckpoint": "passed-run-42060558950",
-    "staticCaseStudyOutput": "passed-in-run-42071877192-16-pages-16-diagrams-17-png-cards-17-svg-sources-robots-sitemap-and-globalcart-screenshots",
+    "staticCaseStudyOutput": "passed-in-run-42072937855-16-pages-16-diagrams-17-png-cards-17-svg-sources-robots-sitemap-and-globalcart-screenshots",
     "architectureDiagramContracts": "passed-in-run-42066575496-eight-bilingual-diagrams",
     "externalSocialPreviewValidation": "pending-external-share-client-cache-refresh",
-    "socialCardPngFormat": "passed-in-run-42071877192-valid-png-signatures-1200x627-all-17"
+    "socialCardPngFormat": "passed-in-run-42072937855-valid-png-signatures-1200x627-all-17"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -118,7 +118,7 @@
     "designDocument": "docs/DESIGN-DIRECTION.md",
     "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
   },
-  "latestVerifiedCommit": "a1025e7cbaa8741939b522eca312837910289e31",
+  "latestVerifiedCommit": "d2c8552482ec2fc20c7a39dbaceece3dd2fe5ae1",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -161,10 +161,10 @@
     "sitemap": true,
     "robots": true,
     "socialPreviewFormat": "PNG primary, matching SVG sources retained",
-    "socialPreviewDimensions": "1200x627",
+    "socialPreviewDimensions": "1200x627 (LinkedIn share preview recommendation)",
     "socialPreviewCardCount": 17
   },
-  "latestVerifiedTestCommit": "a1025e7cbaa8741939b522eca312837910289e31",
+  "latestVerifiedTestCommit": "d2c8552482ec2fc20c7a39dbaceece3dd2fe5ae1",
   "caseStudyDossiers": {
     "bilingual": true,
     "projectCount": 8,
@@ -204,5 +204,5 @@
     "ownerContentApproval": "pending",
     "fullSiteRedesign": "mandatory-two-round-owner-review"
   },
-  "latestBranchHeadAtCheckpoint": "c08e38f5910c1656154e1fe92105dc2fb2db8ecc"
+  "latestBranchHeadAtCheckpoint": "d2c8552482ec2fc20c7a39dbaceece3dd2fe5ae1"
 }
