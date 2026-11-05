@@ -14,7 +14,7 @@
   "lastCheckpointDate": "2026-11-05",
   "latestVerifiedCodeCommit": "3eda47a0930180294c5d39bab4729b8c863dc622",
   "tests": {
-    "repositoryCi": "passed-run-42048164129",
+    "repositoryCi": "passed-run-42048674359",
     "repositoryCiTestCount": 24,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
@@ -23,14 +23,14 @@
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
     "githubPagesDeployment": "passed-run-42047985066",
-    "platformTypecheck": "passed-run-42048164129",
-    "pagesAndGasBuilds": "passed-run-42048164129",
+    "platformTypecheck": "passed-run-42048674359",
+    "pagesAndGasBuilds": "passed-run-42048674359",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "pending-owner-review",
     "vitePagesWorkflow": "passed-run-42047985066",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "not-yet-verified-after-legacy-branch-build",
-    "portfolioContractTests": "passed-24-of-24-run-42048164129",
+    "portfolioContractTests": "passed-24-of-24-run-42048674359",
     "latestPreviousPagesDeployment": "passed-run-42043972152"
   },
   "hosting": {
@@ -110,5 +110,5 @@
     "designDocument": "docs/DESIGN-DIRECTION.md",
     "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
   },
-  "latestVerifiedCommit": "681d0da08cb73616b5429818304b2f30ab75a02d"
+  "latestVerifiedCommit": "0cc52a8c4897601bdf5cb176190b12f42feab17a"
 }
