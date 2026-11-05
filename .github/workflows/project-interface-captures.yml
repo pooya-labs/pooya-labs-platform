@@ -11,7 +11,8 @@ on:
       - '.github/workflows/project-interface-captures.yml'
 
 permissions:
-  contents: read
+  contents: write
+  actions: write
 
 concurrency:
   group: project-interface-captures
@@ -47,3 +48,44 @@ jobs:
           path: apps/platform/artifacts/project-interface-captures/
           if-no-files-found: error
           retention-days: 14
+
+      - name: Publish only the visually approved ORBIT captures
+        id: publish-approved
+        shell: bash
+        run: |
+          set -euo pipefail
+          report="apps/platform/artifacts/project-interface-captures/capture-report.json"
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const report = JSON.parse(fs.readFileSync('apps/platform/artifacts/project-interface-captures/capture-report.json', 'utf8'));
+          const orbit = report.captures.filter((capture) => capture.slug === 'orbit' && capture.result === 'captured-pending-human-review');
+          const names = new Set(orbit.map((capture) => capture.screenshot));
+          if (!names.has('orbit-desktop.png') || !names.has('orbit-mobile.png')) {
+            throw new Error('Both approved ORBIT viewport captures must exist before publishing.');
+          }
+          NODE
+          mkdir -p apps/platform/public/interface-captures/orbit
+          cp apps/platform/artifacts/project-interface-captures/orbit-desktop.png apps/platform/public/interface-captures/orbit/orbit-desktop.png
+          cp apps/platform/artifacts/project-interface-captures/orbit-mobile.png apps/platform/public/interface-captures/orbit/orbit-mobile.png
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/platform/public/interface-captures/orbit/orbit-desktop.png apps/platform/public/interface-captures/orbit/orbit-mobile.png
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m "docs(portfolio): add reviewed ORBIT desktop and mobile captures"
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Rebuild and publish the portfolio with the approved captures
+        if: steps.publish-approved.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages-platform.yml --ref main
+
+      - name: Re-run repository CI on the screenshot commit
+        if: steps.publish-approved.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run ci.yml --ref main
