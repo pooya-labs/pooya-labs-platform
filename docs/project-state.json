@@ -7,21 +7,22 @@
   "phase": 0,
   "phaseName": "Feasibility, inventory, and architecture proof",
   "currentTask": {
-    "id": "P0-04",
-    "title": "Consolidate the HtmlService-first runtime and verify the revised deployed proof",
-    "status": "repository-ready-owner-deployment-sync-pending"
+    "id": "P0-05",
+    "title": "Review and approve the public/admin security boundary and Phase 0 release gates",
+    "status": "proposal-drafted-owner-review-pending"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCodeCommit": "b3beed58aa88061bf4fcc93ac4e8038668c8441a",
+  "latestVerifiedCodeCommit": "c6972dc719a0a311d51db79b10e6eaaba8eb81ba",
   "tests": {
-    "repositoryCi": "passed-run-42028621321",
+    "repositoryCi": "passed-run-42029509895",
     "repositoryCiTestCount": 9,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
-    "gasHtmlServiceTransport": "passed-owner-reported-on-original-proof",
+    "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
-    "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302"
+    "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
+    "githubPagesDeployment": "passed-run-42029509859"
   },
   "hosting": {
     "primaryApplicationRuntime": "google-apps-script-html-service",
@@ -32,9 +33,10 @@
   "deployment": {
     "configured": false,
     "gasProofDeployed": true,
-    "revisedGasSourceSynced": false,
+    "revisedGasSourceSynced": true,
     "githubPagesHarnessPublished": true,
-    "production": false
+    "production": false,
+    "revisedRpcHealthVerified": true
   },
   "previousProjects": {
     "inspected": true,
@@ -44,14 +46,29 @@
     "ownerRequestedDeferral": true
   },
   "blockers": [
-    "Owner must copy the revised Code.gs and Index.html into the existing Apps Script project and deploy a new version to validate the canonical rpcCall(request) path."
+    "Owner review/approval of the proposed separation between public app and owner-only admin deployment is required before privileged features.",
+    "Performance budgets need baseline measurements on intended devices and networks.",
+    "Deployment rollback and backup/restore procedures need rehearsal before production data is accepted."
   ],
-  "nextAction": "Owner: sync the revised Code.gs and Index.html into the Apps Script project and verify rpcCall health. Repository follow-up: finalize access settings, abuse controls, performance budgets, and deployment/rollback plans.",
+  "nextAction": "Owner: review ADR-0004 and docs/SECURITY-MODEL.md; approve or amend the public/admin boundary. Then measure performance budgets and rehearse deployment rollback. No production data or privileged RPC actions are enabled.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
+    "publicAdminBoundaryProposed": true,
     "ownerApproved": false,
     "adminAuthenticationFinalized": false,
     "protectedFeaturesAllowed": false
+  },
+  "performance": {
+    "budgetsDocumented": true,
+    "baselineMeasured": false,
+    "targetFile": "docs/PERFORMANCE-BUDGETS.md"
+  },
+  "operations": {
+    "deploymentRollbackDocumented": true,
+    "rollbackRehearsed": false,
+    "backupRestoreDocumented": true,
+    "backupRestoreRehearsed": false,
+    "runbook": "docs/DEPLOYMENT-RUNBOOK.md"
   }
 }
