@@ -4,39 +4,47 @@
   "repository": "pooya-labs/pooya-labs-platform",
   "defaultBranch": "main",
   "release": "pre-alpha",
-  "phase": 0,
-  "phaseName": "Feasibility, inventory, and architecture proof",
+  "phase": 2,
+  "phaseName": "Core Spatial OS shell",
   "currentTask": {
-    "id": "P0-05",
-    "title": "Review and approve the public/admin security boundary and Phase 0 release gates",
-    "status": "proposal-drafted-owner-review-pending"
+    "id": "P2-01",
+    "title": "Review the Antigravity-inspired Spatial OS preview and sync the single-file HtmlService bundle",
+    "status": "pages-preview-deployed-gas-bundle-sync-and-visual-review-pending"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCodeCommit": "c6972dc719a0a311d51db79b10e6eaaba8eb81ba",
+  "latestVerifiedCodeCommit": "f7cff92f953d2f857d9e062c9828e078eb756aac",
   "tests": {
-    "repositoryCi": "passed-run-42031242334",
-    "repositoryCiTestCount": 9,
+    "repositoryCi": "passed-run-42036122022",
+    "repositoryCiTestCount": 14,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
-    "githubPagesDeployment": "passed-run-42031242859"
+    "githubPagesDeployment": "passed-run-42035942848",
+    "platformTypecheck": "passed-run-42036122022",
+    "pagesAndGasBuilds": "passed-run-42036122022",
+    "cursorFieldContract": "passed-in-14-test-suite",
+    "visualBrowserReview": "pending-owner-desktop-mobile-check"
   },
   "hosting": {
     "primaryApplicationRuntime": "google-apps-script-html-service",
     "rpcTransport": "google.script.run",
-    "githubPagesRole": "public-documentation-showcase-static-demos",
+    "githubPagesRole": "public-documentation-showcase-and-live-spatial-os-preview",
     "directPagesToGasFetch": "not-supported"
   },
   "deployment": {
-    "configured": false,
     "gasProofDeployed": true,
     "revisedGasSourceSynced": true,
+    "revisedRpcHealthVerified": true,
+    "spatialOsGasBundleBuilt": true,
+    "spatialOsGasBundleSynced": false,
     "githubPagesHarnessPublished": true,
+    "spatialOsPagesPreviewPublished": true,
     "production": false,
-    "revisedRpcHealthVerified": true
+    "latestGasBundleArtifactRun": "42036122022",
+    "latestGasBundleArtifactId": 13417678951
   },
   "previousProjects": {
     "inspected": true,
@@ -46,23 +54,25 @@
     "ownerRequestedDeferral": true
   },
   "blockers": [
-    "Owner review/approval of the proposed separation between public app and owner-only admin deployment is required before privileged features.",
-    "Performance budgets need baseline measurements on intended devices and networks.",
-    "Deployment rollback and backup/restore procedures need rehearsal before production data is accepted."
+    "The Apps Script bundle artifact must be copied into the existing GAS HTML file named Index and deployed as a new version before the primary HtmlService app displays the new shell.",
+    "Visual review of cursor lens, desktop layout, RTL/LTR, and mobile behavior remains pending.",
+    "Performance baseline and operational rollback/backup rehearsals remain pending before production data."
   ],
-  "nextAction": "Owner: review ADR-0004 and SECURITY-MODEL.md; approve or amend the public/admin boundary. Then perform performance baseline measurement and rollback rehearsal. No production data or privileged RPC actions are enabled.",
+  "nextAction": "Owner: open https://pooya-labs.github.io/pooya-labs-platform/ and review the cursor refraction behavior on desktop/mobile. Download the pooya-labs-gas-htmlservice-bundle artifact from workflow run 42036122022, replace the Apps Script HTML file Index with its index.html content, and deploy a new Web App version. Then continue P2-02: manifest-driven app registry and typed runtime services.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
     "publicAdminBoundaryProposed": true,
-    "ownerApproved": false,
+    "ownerApproved": true,
     "adminAuthenticationFinalized": false,
-    "protectedFeaturesAllowed": false
+    "protectedFeaturesAllowed": false,
+    "acceptedDecision": "docs/decisions/ADR-0004-public-admin-boundary.md"
   },
   "performance": {
     "budgetsDocumented": true,
     "baselineMeasured": false,
-    "targetFile": "docs/PERFORMANCE-BUDGETS.md"
+    "targetFile": "docs/PERFORMANCE-BUDGETS.md",
+    "cursorEffectFrameLoop": "requestAnimationFrame-only-while-moving"
   },
   "operations": {
     "deploymentRollbackDocumented": true,
@@ -72,5 +82,16 @@
     "runbook": "docs/DEPLOYMENT-RUNBOOK.md",
     "browserDiagnosticWorkflow": "manual-only",
     "browserDiagnosticUrlStoredInActionsSecret": true
+  },
+  "visualDesign": {
+    "direction": "google-antigravity-inspired-original-command-center",
+    "cursorRefractionField": true,
+    "touchDisabled": true,
+    "reducedMotionDisabled": true,
+    "languageDefault": "fa-RTL",
+    "themeDefault": "dark",
+    "reviewPending": true,
+    "designDocument": "docs/DESIGN-DIRECTION.md",
+    "decision": "docs/decisions/ADR-0005-antigravity-inspired-design.md"
   }
 }
