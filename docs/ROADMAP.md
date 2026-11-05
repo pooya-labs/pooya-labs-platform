@@ -44,7 +44,6 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [ ] Add any missing project outcomes or measured results only when the source repository provides reproducible evidence; never infer metrics.
 - [x] Add seven source-repository visual assets pinned to immutable commits, bilingual alt text, lazy loading, responsive rendering, and graceful fallbacks.
 - [x] Add dynamic browser titles/descriptions, base Open Graph metadata, canonical URL updates, Person JSON-LD, and a branded SVG favicon.
-- [ ] Add actual UI screenshots and architecture diagrams for projects that currently have only brand artwork or no media: AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; replace Salon Booking brand artwork with an owner-approved safe interface screenshot only if client data is fully redacted.
 - [x] Add an XML sitemap for the portfolio homepage and eight shareable project-detail URLs.
 - [ ] Add static crawler-readable case-study pages and per-project social preview images.
 
