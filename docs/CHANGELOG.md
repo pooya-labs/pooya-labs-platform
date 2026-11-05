@@ -6,7 +6,7 @@
 - Recorded that the browser could not read an HTTP status or response body; handler execution is not inferred from this CORS failure.
 - Added ADR-0003: Apps Script HtmlService is the primary application runtime; GitHub Pages is static documentation/showcase hosting.
 - Replaced the canonical ContentService POST source with an allowlisted `google.script.run` RPC dispatcher; retained `rpcHealth()` temporarily for migration compatibility.
-- Added a redacted manual Playwright diagnostic workflow and browser artifact report.
+- Added a redacted Playwright diagnostic workflow and browser artifact report. Repeat run [42028842302](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42028842302) classified the result as `blocked_by_cors` and completed successfully as a diagnostic.
 
 ## 2026-11-05 — Repository-side transport test automation
 - Added dependency-free Node.js contract tests for the external transport harness.
