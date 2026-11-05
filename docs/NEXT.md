@@ -1,8 +1,8 @@
 # Next Task — Close owner-confirmed project evidence and begin final redesign review
 
-**Task ID:** P3-06  
-**Title:** Complete project evidence gaps and owner acceptance before Phase 7  
-**Status:** Eight bilingual engineering dossiers, eight bilingual architecture diagrams, 16 static case-study pages, and 16 social preview SVGs generated; CI green (32/32); screenshot and owner-review gates remain
+**Task ID:** P3-07  
+**Title:** Complete remaining project evidence and owner acceptance before Phase 7  
+**Status:** Eight bilingual dossiers, eight bilingual architecture diagrams, 16 static case-study pages, 16 social preview SVGs, and GlobalCart desktop/mobile UI screenshots implemented; CI green (34/34); remaining screenshot and owner-review gates remain
 
 ## Current implementation
 - Public bilingual portfolio is the default root experience; Spatial OS is secondary.
@@ -11,15 +11,16 @@
 - Sixteen static HTML case-study routes are emitted at build time: `/projects/<slug>/` and `/en/projects/<slug>/`. Each includes rendered article content, canonical URL, hreflang alternates, JSON-LD, social metadata, and source links.
 - Sixteen per-project/per-language Open Graph SVG cards plus a homepage card are generated. External social-crawler rendering still needs validation.
 - Sitemap and robots.txt advertise the canonical static routes.
+- GlobalCart now includes actual desktop and mobile storefront screenshots pinned to source commit `5ca43e40ff101e673ee7cf261850bff0a679047c`; desktop is the hero and mobile is a dedicated screenshot card.
 - The exact per-project gaps remain in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 
 ## Verified checks
-- Repository CI [42066575496](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42066575496) passed TypeScript, Pages/GAS builds, artifact upload, and 32/32 contract tests, including build-output smoke checks for every static page, diagram, and social card.
-- Pages deployment containing the static-page generator and architecture-diagram assets [42066311960](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42066311960) succeeded.
+- Repository CI [42070270418](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42070270418) passed TypeScript, Pages/GAS builds, artifact upload, and **34/34 contract tests**, including build-output checks for static pages, diagrams, social cards, and screenshot placement.
+- Pages deployment containing the screenshot section and static case-study generator [42069853533](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42069853533) succeeded.
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
 
 ## Next implementation sequence
-1. Gather actual UI screenshots for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; use only approved/redacted Salon Booking screens. The new architecture diagrams do not replace these.
+1. Gather actual UI screenshots for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; use only owner-approved, redacted Salon Booking screens. The new architecture diagrams do not replace these.
 2. Obtain Pooya's confirmation of biography/positioning, first three featured projects, attribution wording, project statuses, contact channel, and approved assets.
 3. Complete AetherFlow M08 and license decision; complete ORBIT's Apps Script smoke and human device accessibility review.
 4. Reconcile GlobalCart source documentation and complete M09.6 gallery/deploy E2E acceptance on an exact current SHA.
