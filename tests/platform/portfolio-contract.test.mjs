@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const app = await readFile(new URL('../../apps/platform/src/App.tsx', import.meta.url), 'utf8');
 const portfolio = await readFile(new URL('../../apps/platform/src/PortfolioHome.tsx', import.meta.url), 'utf8');
+const projectData = await readFile(new URL('../../apps/platform/src/content/projects.ts', import.meta.url), 'utf8');
 const metadata = await readFile(new URL('../../apps/platform/index.html', import.meta.url), 'utf8');
 const css = await readFile(new URL('../../apps/platform/src/portfolio.css', import.meta.url), 'utf8');
 
@@ -42,7 +43,7 @@ test('HTML metadata introduces a personal portfolio rather than a generic worksp
 });
 
 test('projects live in a typed registry with unique slugs and editorial review state', async () => {
-  const content = await readFile(new URL('../../apps/platform/src/content/projects.ts', import.meta.url), 'utf8');
+  const content = projectData;
   assert.match(portfolio, /portfolioProjects as projects/);
   assert.match(content, /export function validatePortfolioProjects/);
   assert.match(content, /ProjectReviewState = 'needs-owner-review' \| 'owner-reviewed'/);
