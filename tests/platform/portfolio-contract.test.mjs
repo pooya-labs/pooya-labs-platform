@@ -57,5 +57,7 @@ test('projects live in a typed registry with unique slugs and editorial review s
   assert.match(content, /slugs\.has\(project\.slug\)/);
   assert.match(content, /url\.protocol !== 'https:'/);
   assert.equal((content.match(/repositoryUrl: 'https:\/\//g) ?? []).length, 8);
-  assert.match(content, /host\.startsWith\('\.'\).*url\.hostname\.endsWith\(host\)/);
+  assert.ok(content.includes("host.startsWith('.')"));
+  assert.ok(content.includes('url.hostname.endsWith(host)'));
+  assert.ok(content.includes("assertHttpsUrl(project.previewUrl, ['.github.io']"));
 });
