@@ -1,48 +1,50 @@
-# Product surfaces: customer, owner workspace, and administration
+# Product surfaces and primary audience
 
-Pooya Labs is not a single shared dashboard with role-based buttons. It has separate product surfaces with separate trust boundaries.
+## Product positioning
 
-## 1. Customer-facing portal
+**Pooya Labs is first and foremost Pooya's personal portfolio and project showcase.** Its primary job is to introduce Pooya to people who do not know him yet, communicate his interests and engineering approach, and make his strongest projects easy to understand and explore.
 
-**Purpose:** the place an invited or public customer visits to use the services Pooya Labs exposes.
+The site is not primarily a SaaS dashboard, customer account system, booking product, or generic admin panel. Every feature must support the portfolio's main visitor journey:
 
-Planned capabilities, introduced only when their service contracts are ready:
-- Clear public landing and service catalogue.
-- Customer sign-in or a deliberately limited guest flow, depending on the final identity decision.
-- Customer-owned requests, submissions, bookings, and their confirmed status.
-- Profile and notification preferences where identity and retention rules permit.
-- Responsive mobile-first navigation and accessible Persian/English presentation.
+1. Understand who Pooya is and what he builds.
+2. Browse a curated selection of projects.
+3. Open a detailed case study to understand the problem, Pooya's role, technical decisions, implementation, and current state.
+4. Inspect a real demo or source repository where one is available.
+5. Find a clear way to make contact or follow future work.
 
-The customer portal must never expose owner tools, private workspace files, internal telemetry, or administrative actions. A customer-facing UI is a distinct application surface, not a hidden mode inside the owner dashboard.
+## Surface 1 — Public portfolio (the main product)
 
-## 2. Owner workspace
+**This is the root website and the default experience.**
 
-**Current implementation:** the Antigravity-inspired Spatial OS shell in `apps/platform`.
+Planned public sections:
+- Intro / hero: name, concise professional positioning, and a strong first impression.
+- About: a factual introduction, interests, approach, and current focus.
+- Selected work: curated project cards with honest status labels.
+- Case studies: project-specific context, responsibilities, architecture, technologies, screenshots, demos, source links, challenges, and outcomes.
+- Skills and tools: evidence-backed technologies and areas of focus, not inflated proficiency ratings.
+- Contact and social links.
+- Persian and English, responsive layouts, accessible navigation, and useful page metadata/social previews.
 
-Its overview, sample files, local demo terminal, and settings are currently a workspace foundation and design preview. They are not yet the operational customer portal and they are not yet the production administration console. The app manifest marks these built-ins as `owner-workspace`.
+The site should feel like a crafted portfolio, not an application dashboard. The visual language may draw on Antigravity / spatial glass references, but content hierarchy and project storytelling always win over visual effects.
 
-## 3. Owner-only administration console
+## Surface 2 — Private owner workspace / management
 
-**Purpose:** private operational control for the platform owner.
+The existing Spatial OS is retained as a secondary private workspace and experimentation surface. The future owner console may manage portfolio content, project entries, publication state, and operational settings.
 
-Planned capabilities:
-- Review and process customer requests and bookings.
-- Change request status with server-confirmed transitions.
-- View operational activity and audit history.
-- Manage service availability, announcements, and approved configuration.
-- Receive operational notifications and export permitted records.
+It must not dominate the public homepage. Any protected operation requires server-side authentication and authorization; hiding a button or trusting a browser role is not security.
 
-This console will be a separate deployment restricted to the owner. Authorization must be enforced on the server; hiding controls or trusting a browser-supplied role is never sufficient.
+Build the minimum management capability only after the portfolio content model is stable. Apps Script synchronization is deferred until late implementation and is not a prerequisite for the public portfolio.
 
-## Delivery order
+## Visitors and customers
 
-1. Finish the shared shell, app manifest, runtime service contracts, and explicit loading/empty/error states.
-2. Define identity, customer data ownership, request lifecycle, and persistence contracts.
-3. Build the customer portal against those contracts.
-4. Build the separate owner-only administration console against the same reviewed domain model, with its own authorization boundary.
-5. Complete security, accessibility, recovery, and deployment validation.
-6. Integrate earlier Pooya Labs projects only in the final integration phase, after each source project is independently stable.
+A person browsing the portfolio is a **visitor**, not automatically a customer account. A generic customer login/dashboard is not part of the core portfolio scope.
 
-## Current scope boundary
+If a future Pooya Labs product genuinely needs customer accounts, booking, orders, or request tracking, that experience must be a separate product surface with its own user journey and data boundary. Do not add it to the portfolio simply because it exists in a conventional SaaS dashboard.
 
-No customer account system, real customer data, booking mutation, privileged administration, or persistent workspace storage is implied by the current visual shell. Sample content remains visibly demonstrative until backed by a verified service.
+## Scope guardrails
+
+- Never invent project outcomes, user counts, revenue, adoption, or completion claims.
+- Mark work as prototype, in development, paused, or released accurately.
+- Prefer a few strong, detailed case studies over a long list of shallow project cards.
+- Every featured project should eventually include a clear explanation of the problem, Pooya's contribution, important technical decisions, and evidence (screenshots, demo, source, or tests).
+- Existing repositories remain independent. Referencing a project's public repository or publishing a case study does not authorize importing or modifying its source code.
