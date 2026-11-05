@@ -23,12 +23,18 @@ test('Vite emits crawler-readable Persian and English case-study pages', { skip:
       assert.ok(html.includes('rel="alternate" hreflang="fa"'), `${route} must link its Persian alternate`);
       assert.ok(html.includes('rel="alternate" hreflang="en"'), `${route} must link its English alternate`);
       assert.ok(html.includes('case-study-source-list'), `${route} must expose source references in static HTML`);
+      assert.ok(html.includes('case-study-architecture-figure'), `${route} must include its architecture diagram`);
+      assert.ok(html.includes(`/pooya-labs-platform/architecture/${slug}${locale === 'en' ? '-en' : ''}.svg`), `${route} must use the locale-specific architecture diagram`);
       assert.ok(html.includes('assets/index-'), `${route} must load the built portfolio application`);
 
       const socialFile = locale === 'en' ? `og/${slug}-en.svg` : `og/${slug}.svg`;
       const social = await readFile(new URL(socialFile, outputRoot), 'utf8');
       assert.match(social, /width="1200" height="630"/);
       assert.ok(social.includes(slug === 'aura-pulse' ? 'AuraPulse' : slug === 'global-cart' ? 'GlobalCart' : slug === 'salon-booking' ? 'Salon Booking' : slug === 'pooya-os' ? 'Pooya.OS' : slug === 'nexus-canvas' ? 'NexusCanvas' : slug === 'lumina-glass' ? 'LuminaGlass' : slug === 'aetherflow' ? 'AetherFlow' : 'ORBIT'));
+      const architectureFile = locale === 'en' ? `architecture/${slug}-en.svg` : `architecture/${slug}.svg`;
+      const architecture = await readFile(new URL(architectureFile, outputRoot), 'utf8');
+      assert.match(architecture, /width="1600" height="900"/);
+      assert.match(architecture, /marker-end="url\(#arrow\)"/);
     }
   }
 });
