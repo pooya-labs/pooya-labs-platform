@@ -7,32 +7,35 @@
   "phase": 3,
   "phaseName": "Portfolio content architecture and case studies",
   "currentTask": {
-    "id": "P3-05",
-    "title": "Close project-content audit and prepare redesign review",
-    "status": "eight-source-backed-bilingual-dossiers-complete-audit-documented-ci-green-29-of-29-owner-evidence-release-gates-pending"
+    "id": "P3-06",
+    "title": "Close owner-confirmed project evidence and begin final redesign review",
+    "status": "eight-bilingual-dossiers-eight-bilingual-architecture-diagrams-16-static-case-study-pages-16-social-svg-cards-ci-green-32-of-32-screenshot-and-owner-gates-pending"
   },
   "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCodeCommit": "18baea6e31a28ff95fc2964c89d9b8787e3ecf7f",
+  "latestVerifiedCodeCommit": "815472ff7823be62db86d98b9ff64595dd3cbbec",
   "tests": {
-    "repositoryCi": "passed-run-42060558950",
-    "repositoryCiTestCount": 29,
+    "repositoryCi": "passed-run-42066575496",
+    "repositoryCiTestCount": 32,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
-    "githubPagesDeployment": "passed-run-42058556955",
-    "platformTypecheck": "passed-run-42060558950",
-    "pagesAndGasBuilds": "passed-run-42060558950",
+    "githubPagesDeployment": "passed-run-42066311960",
+    "platformTypecheck": "passed-run-42066575496",
+    "pagesAndGasBuilds": "passed-run-42066575496",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "pending-owner-review",
-    "vitePagesWorkflow": "passed-run-42058556955",
+    "vitePagesWorkflow": "passed-run-42066311960",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "not-yet-verified-after-legacy-branch-build",
-    "portfolioContractTests": "passed-29-of-29-run-42060558950",
+    "portfolioContractTests": "passed-32-of-32-run-42066575496",
     "latestPreviousPagesDeployment": "passed-run-42043972152",
-    "docsCheckpoint": "passed-run-42060558950"
+    "docsCheckpoint": "passed-run-42060558950",
+    "staticCaseStudyOutput": "passed-in-run-42066575496-all-16-pages-16-social-cards-16-architecture-diagrams-sitemap-and-robots",
+    "architectureDiagramContracts": "passed-in-run-42066575496-eight-bilingual-diagrams",
+    "externalSocialPreviewValidation": "pending-external-share-client-check"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -52,10 +55,10 @@
     "latestGasBundleArtifactRun": "42037266997",
     "latestGasBundleArtifactId": 13418468853,
     "vitePagesBuildAndDeployPassed": true,
-    "activePagesSource": "GitHub Actions deployment succeeded; repository setting still should be confirmed",
+    "activePagesSource": "GitHub Actions deployment succeeded; repository Pages source setting still requires owner-side confirmation",
     "appsScriptSync": "deferred-not-required-for-static-portfolio",
     "portfolioPagesPublished": true,
-    "portfolioPagesRun": "42058556955"
+    "portfolioPagesRun": "42066311960"
   },
   "previousProjects": {
     "inspected": true,
@@ -65,17 +68,17 @@
     "ownerRequestedDeferral": true
   },
   "blockers": [
-    "Pooya must approve the public biography, positioning, featured project order, project statuses, personal contribution/attribution wording, contact channel, and approved visual assets.",
-    "Per-project screenshots and architecture diagrams are missing or incomplete; consult docs/PROJECT-CONTENT-AUDIT.md for each project.",
-    "AetherFlow's individual author/contribution wording and M08 operational/licensing gates remain open.",
-    "ORBIT Apps Script live demo smoke and real TalkBack/VoiceOver/human accessibility review remain open.",
-    "Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse need current-source consolidated browser/accessibility evidence and real UI screenshots/diagrams.",
-    "GlobalCart M09.6 full gallery/deploy E2E acceptance and stale source-document reconciliation remain open.",
-    "Salon Booking Apps Script 1.4.0, TimeBlocks, relay/bootstrap/booking acceptance, actual salon configuration, and FCM device push proof remain open.",
-    "Static crawler-readable case-study pages and per-project social preview images remain pending.",
-    "Full site redesign with two feedback rounds and explicit Pooya approval remains a mandatory V1 release blocker."
+    "Pooya must approve public biography/positioning, featured project order, statuses, personal contribution/attribution wording, contact channel, and approved assets.",
+    "Actual UI screenshots are still missing for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; GlobalCart has storefront screenshots, while Salon Booking requires owner-approved redacted demo screens.",
+    "AetherFlow's individual author/contribution wording, M08 operational scenarios, benchmark evidence review, and license decision remain open.",
+    "ORBIT Apps Script live demo bootstrap/mutation/refresh smoke and real TalkBack/VoiceOver/human accessibility review remain open.",
+    "Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse need current-source consolidated browser/accessibility evidence and actual interface screenshots.",
+    "GlobalCart M09.6 gallery completeness, latest exact-SHA browser/deploy E2E acceptance, and source-document reconciliation remain open.",
+    "Salon Booking Apps Script 1.4.0, TimeBlocks, relay/bootstrap/booking acceptance, actual salon configuration, and FCM device-push proof remain open.",
+    "External crawler/social-client rendering of generated SVG previews must be checked; add PNG/JPEG fallbacks only if required.",
+    "Full-site redesign with two feedback rounds and explicit Pooya approval remains a mandatory V1 release blocker."
   ],
-  "nextAction": "Use docs/PROJECT-CONTENT-AUDIT.md as the authoritative per-project checklist: gather owner attribution/bio/contact decisions, obtain missing screenshots and diagrams, verify current-SHA/manual evidence for every project, reconcile GlobalCart docs and complete Salon Booking runtime acceptance, then start the two-round full redesign.",
+  "nextAction": "Work through docs/PROJECT-CONTENT-AUDIT.md: gather real UI screenshots and owner-approved biography/role/contact decisions; close project-specific runtime/current-SHA/manual QA gates; validate SVG social cards in real share clients; then start the required two-round full redesign.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -114,7 +117,7 @@
     "designDocument": "docs/DESIGN-DIRECTION.md",
     "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
   },
-  "latestVerifiedCommit": "b8329f3ebf2db733bdf1fea0d095a83892dfe459",
+  "latestVerifiedCommit": "42e61f7880c5ded545b37b0660433ad21bd30237",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -140,7 +143,7 @@
     "perProjectSocialImages": false,
     "sitemap": true
   },
-  "latestVerifiedTestCommit": "b8329f3ebf2db733bdf1fea0d095a83892dfe459",
+  "latestVerifiedTestCommit": "42e61f7880c5ded545b37b0660433ad21bd30237",
   "caseStudyDossiers": {
     "bilingual": true,
     "projectCount": 8,
@@ -152,9 +155,31 @@
       "verification-evidence",
       "source-references"
     ],
+    "architectureDiagrams": 8,
+    "architectureDiagramLocales": [
+      "fa",
+      "en"
+    ],
+    "staticCaseStudyPages": 16,
+    "socialPreviewCards": 17,
+    "staticRoutes": [
+      "/projects/<slug>/",
+      "/en/projects/<slug>/"
+    ],
+    "sitemap": "apps/platform/public/sitemap.xml",
+    "robots": "apps/platform/public/robots.txt",
     "perProjectAudit": "docs/PROJECT-CONTENT-AUDIT.md",
     "sourceReposModified": [],
     "ownerReviewRequired": true
   },
-  "projectContentAudit": "docs/PROJECT-CONTENT-AUDIT.md"
+  "projectContentAudit": "docs/PROJECT-CONTENT-AUDIT.md",
+  "preRelease": {
+    "architectureDiagrams": "complete-eight-bilingual",
+    "staticCaseStudyPages": "complete-16-routes",
+    "socialPreviewCards": "generated-16-project-locale-cards-plus-homepage-svg",
+    "externalSocialPreviewValidation": "pending",
+    "actualUiScreenshots": "pending-per-project",
+    "ownerContentApproval": "pending",
+    "fullSiteRedesign": "mandatory-two-round-owner-review"
+  }
 }
