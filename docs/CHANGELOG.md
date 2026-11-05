@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-05 — Typed portfolio content registry
+- Moved the eight initial project records out of the page component into a typed content module.
+- Added stable URL-safe project slugs, honest project status keys, explicit owner-review state, localized copy checks, unique-name/slug checks, and validated HTTPS source links.
+- Only the known AetherFlow GitHub repository is linked; all other project paths remain unguessed.
+- Updated the next milestone to reusable project case-study pages.
+- Repository CI [42045396058](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42045396058) passed TypeScript, both build targets, artifact upload, and 23/23 tests.
+
 ## 2026-11-05 — Portfolio-first public website
 - Reframed the product around Pooya's personal profile and project showcase; the portfolio is now the default root experience.
 - Added bilingual intro, About, selected project cards, focus areas, technology list, contact section, and a secondary entry to the Spatial OS workspace.
