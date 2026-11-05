@@ -3,7 +3,7 @@
 **Last updated:** 2026-11-05  
 **Repository:** `pooya-labs/pooya-labs-platform`  
 **Branch:** `main`  
-**Current phase:** Phase 2 — Core Spatial OS shell (initial visual slice)  
+**Current phase:** Phase 3 — Manifest-driven platform (initial registry slice)  
 **Release:** Pre-alpha / planning baseline
 
 ## Verified facts
@@ -68,4 +68,6 @@
 7. A fully offline browser cannot receive server confirmation until connectivity returns.
 
 ## Latest checkpoint
-The revised HtmlService runtime is now deployed and its new `rpcCall` endpoint has passed the owner's real-browser health check. The platform remains HtmlService-first; GitHub Pages is limited to public static content. The public/admin separation is owner-approved. Phase 0 transport proof is complete. The first Phase 2 UI slice is now in the repository; the immediate gate is full CI build validation and publishing the Vite Pages preview. The HtmlService build must then be synced as a single `Index.html` file to the existing GAS project. Performance budgets and operational runbooks are drafted as proposals and remain unmeasured/unrehearsed. Previous-project integration remains deferred to Phase 9.
+The current UI is the owner Spatial OS workspace foundation. Versioned built-in app manifest v1 has now been added, with validation for supported schema version, unique app IDs and shortcuts, complete Persian/English metadata, and explicit `owner-workspace` audience. The existing rail, dock, cards, and command palette now read from the manifest-backed registry. Contract tests were added; the CI result for this latest commit is pending.
+
+The product will have two additional distinct surfaces: a customer-facing portal and a separate owner-only administration console. They are not implemented yet; the separation is specified in `PRODUCT-SURFACES.md` and ADR-0004. Google Apps Script bundle synchronization and deployment are intentionally deferred until the application and backend contracts are substantially complete. The current live RPC remains health-only. Previous-project integration remains deferred to Phase 9.
