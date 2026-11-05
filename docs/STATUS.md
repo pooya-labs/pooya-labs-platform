@@ -3,7 +3,7 @@
 **Last updated:** 2026-11-05  
 **Repository:** pooya-labs/pooya-labs-platform  
 **Branch:** main  
-**Current phase:** Phase 2 — Public portfolio foundation  
+**Current phase:** Phase 3 — Portfolio content architecture and case studies  
 **Release:** Pre-alpha / portfolio draft
 
 ## Product direction — owner clarified
@@ -23,12 +23,12 @@
 - [x] Added versioned built-in app manifest v1 and validation for unique IDs/shortcuts, localized metadata, and owner-workspace scope.
 - [x] Reframed README, architecture, product surfaces, design direction, next task, and roadmap around the portfolio-first purpose.
 - [x] Added ADR-0006 to record portfolio-first hosting and scope.
-- [x] Added portfolio contract tests and corrected a manifest-test counting issue.
+- [x] Added portfolio contract tests and a typed project content registry with unique slug, status, review-state, bilingual copy, and HTTPS source-link validation.
 
 ## CI and publishing status
 - CI status: green.
-- Repository CI [42044256942](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42044256942) passed TypeScript, both Pages/Apps Script build targets, artifact upload, and **22/22 contract tests**.
-- GitHub Pages deployment [42044251451](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42044251451) succeeded for the portfolio UI commit.
+- Repository CI [42045396058](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42045396058) passed TypeScript, both Pages/Apps Script build targets, artifact upload, and **23/23 contract tests**.
+- GitHub Pages deployment [42045184015](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42045184015) succeeded for the registry-backed portfolio UI.
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
 - Confirm the repository Pages source remains GitHub Actions so a legacy branch/Jekyll deployment cannot supersede the Vite portfolio.
 
@@ -40,7 +40,7 @@
 - [ ] Review the complete portfolio design on desktop and mobile. The current implementation is a draft, not final.
 
 ## Not implemented
-- [ ] Individual case-study pages and typed published/draft content registry.
+- [ ] Individual case-study pages and owner-reviewed publishing workflow.
 - [ ] Verified project-specific screenshots, demos, documentation, and links beyond those already confirmed.
 - [ ] Private owner content-management console.
 - [ ] Customer accounts or customer dashboard; excluded from the portfolio by default.
@@ -56,4 +56,4 @@
 - Previous project repositories remain untouched; project integration stays in Phase 9.
 
 ## Latest checkpoint
-The public root now introduces Pooya and his projects instead of opening directly into the Spatial OS workspace. The first bilingual portfolio draft is implemented and its TypeScript/build/contract checks pass. Its initial public copy and project summaries still require owner review; individual case studies and a validated content registry are the next implementation milestone. A complete redesign informed by Pooya's feedback remains a release blocker.
+The public root now introduces Pooya and his projects instead of opening directly into the Spatial OS workspace. The first bilingual portfolio draft and typed project registry are implemented; CI passes 23/23 tests and the registry-backed UI is deployed to Pages. The current eight project records remain marked as needing owner review. Individual case-study pages are the next milestone. A complete redesign informed by Pooya's feedback remains a release blocker.
