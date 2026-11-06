@@ -173,7 +173,7 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 
 1. Finish source-backed technical content and verify statuses against each current source repository.
 2. Complete the per-project evidence and owner-review tasks above; record unresolved items as blockers rather than writing around them.
-3. [x] Build crawler-readable Persian/English static case-study pages with canonical/hreflang/JSON-LD, 17 PNG social preview cards (homepage plus eight projects × two languages), and matching SVG sources. [ ] Validate the 1200×627 PNG cards in external share clients and confirm cache refresh.
+3. [x] Build crawler-readable Persian/English static case-study pages with canonical/hreflang/JSON-LD, 17 PNG social preview cards (homepage plus eight projects × two languages), and matching SVG sources. [x] Inspect the actual Pages artifact: 17 generated HTML routes resolve, canonical/OG/hreflang/JSON-LD metadata parses, sitemap targets exist, and all 17 PNG cards have valid signatures and 1200×627 dimensions. [ ] Validate actual rendering and cache refresh with external LinkedIn/Facebook crawlers; source/artifact validation alone is not platform acceptance.
 4. Complete the full visual redesign with Pooya's first and second feedback rounds.
 5. Complete exact-SHA CI/Pages, accessibility, responsive, browser, performance, link, metadata, and manual acceptance checks.
 6. Obtain explicit owner approval and only then publish V1.
