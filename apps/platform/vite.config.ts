@@ -11,6 +11,7 @@ import type { CaseStudyDossier } from './src/content/case-study-dossiers-types';
 import { architectureDiagrams } from './src/content/architecture-diagrams';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
+// Keep each host's build isolated: Cloudflare is root-based, GitHub Pages uses a project subpath, and GAS emits one HtmlService file.
 const DEFAULT_SITE_ORIGIN = 'https://pooya-labs.github.io';
 const DEFAULT_SITE_BASE = '/pooya-labs-platform/';
 let SITE_ORIGIN = DEFAULT_SITE_ORIGIN;
