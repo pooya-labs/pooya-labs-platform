@@ -23,7 +23,7 @@ test('Vite emits crawler-readable Persian and English case-study pages', { skip:
       const route = locale === 'en' ? `en/projects/${slug}/index.html` : `projects/${slug}/index.html`;
       const html = await readFile(new URL(route, outputRoot), 'utf8');
       const canonical = `https://pooya-labs.github.io/pooya-labs-platform/${route.replace('index.html', '')}`;
-      assert.ok(html.includes('<div id="root"><main'), `${route} must contain static article markup before JavaScript`);
+      assert.ok(html.includes('<div id="root"><a class="portfolio-skip-link" href="#main-content">') && html.includes('<main id="main-content" tabindex="-1" class="case-study-main'), `${route} must contain skip navigation and static article markup before JavaScript`);
       assert.ok(html.includes(`<link rel="canonical" href="${canonical}"`), `${route} must have a canonical URL`);
       assert.ok(html.includes(`og:image`), `${route} must declare a social preview image`);
       assert.ok(html.includes(`/pooya-labs-platform/og/${slug}${locale === 'en' ? '-en' : ''}.png`), `${route} must point to its own PNG social card`);
