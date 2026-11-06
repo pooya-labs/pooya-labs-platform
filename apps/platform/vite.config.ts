@@ -374,6 +374,40 @@ function staticCaseStudyPages(): Plugin {
       const homeSocialSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="627" viewBox="0 0 1200 627"><defs><linearGradient id="b" x2="1" y2="1"><stop stop-color="#070d15"/><stop offset="1" stop-color="#102e2c"/></linearGradient><linearGradient id="t"><stop stop-color="#efffff"/><stop offset="1" stop-color="#79e1b9"/></linearGradient></defs><rect width="1200" height="627" fill="url(#b)"/><circle cx="900" cy="130" r="350" fill="#43d4d3" opacity=".09"/><text x="90" y="160" font-family="Arial,sans-serif" font-size="28" letter-spacing="8" fill="#dceced">POOYA LABS</text><text x="90" y="330" font-family="Arial,sans-serif" font-size="100" font-weight="700" fill="url(#t)">Pooya</text><text x="96" y="405" font-family="Arial,sans-serif" font-size="34" fill="#9bb4be">Software engineering &amp; selected projects</text><path d="M90 500H1110" stroke="#8fe8d5" opacity=".35"/><text x="90" y="555" font-family="monospace" font-size="18" letter-spacing="5" fill="#80a0aa">PRODUCT / SYSTEMS / ENGINEERING</text></svg>`;
       this.emitFile({ type: 'asset', fileName: 'og/pooya-labs.svg', source: homeSocialSvg });
       this.emitFile({ type: 'asset', fileName: 'og/pooya-labs.png', source: renderSocialPng(homeSocialSvg) });
+
+      const sitemapLastmod = new Date().toISOString().slice(0, 10);
+      const sitemapEntries = [
+        {
+          loc: SITE_ORIGIN + SITE_BASE,
+          priority: '1.0',
+          alternates: [] as Array<{ locale: string; href: string }>
+        },
+        ...portfolioProjects.flatMap((project) => {
+          const faUrl = SITE_ORIGIN + SITE_BASE + `projects/${project.slug}/`;
+          const enUrl = SITE_ORIGIN + SITE_BASE + `en/projects/${project.slug}/`;
+          const alternates = [
+            { locale: 'fa', href: faUrl },
+            { locale: 'en', href: enUrl },
+            { locale: 'x-default', href: faUrl }
+          ];
+          return [
+            { loc: faUrl, priority: '0.8', alternates },
+            { loc: enUrl, priority: '0.7', alternates }
+          ];
+        })
+      ];
+      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${sitemapEntries.map((entry) => `  <url>
+    <loc>${escapeXml(entry.loc)}</loc>
+    <lastmod>${sitemapLastmod}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>${entry.priority}</priority>
+    ${entry.alternates.map((alternate) => `<xhtml:link rel="alternate" hreflang="${alternate.locale}" href="${escapeXml(alternate.href)}" />`).join('\\n    ')}
+  </url>`).join('\\n')}
+</urlset>
+`;
+      this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap });
     }
   };
 }
