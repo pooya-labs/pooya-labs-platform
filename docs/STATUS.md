@@ -1,6 +1,6 @@
 # Project Status
 
-**Last updated:** 2026-11-05  
+**Last updated:** 2026-11-06  
 **Repository:** pooya-labs/pooya-labs-platform  
 **Branch:** main  
 **Current phase:** Phase 3 — Portfolio content architecture and case studies  
@@ -35,9 +35,11 @@
 - [x] Added an XML sitemap listing the portfolio homepage and all eight shareable case-study URLs.
 - [x] Reframed README, architecture, product surfaces, design direction, next task, and roadmap around the portfolio-first purpose.
 - [x] Added ADR-0006 to record portfolio-first hosting and scope.
+- [x] Added validation for dedicated case-study hero images: HTTPS, immutable source-commit URLs, and Persian/English alt text.
+- [x] Changed the project screenshot workflow to read-only, artifact-only capture; it no longer publishes images automatically before human review.
 
 ## CI and publishing status
-- Latest PNG-social-card implementation passed CI [42072937855](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42072937855): TypeScript, Pages/Apps Script builds, artifact upload, and **34/34 contract tests**, including PNG signature and 1200×627 dimension checks.
+- The last confirmed green CI run is [42072937855](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42072937855): TypeScript, Pages/Apps Script builds, artifact upload, and **34/34 contract tests**, including PNG signature and 1200×627 dimension checks. This run predates the latest portfolio code changes; it is not evidence that the current main SHA passes.
 - Pages deployment containing the Resvg PNG generator and 1200×627 Open Graph images [42071642813](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42071642813) succeeded. The same deployment also contains the bilingual static pages, architecture diagrams, and GlobalCart screenshots.
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
 - Current repo status and unresolved pre-release evidence are tracked in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
@@ -72,4 +74,9 @@
 - Previous project repositories remain untouched; project integration stays in Phase 9.
 
 ## Latest checkpoint
-The root website now introduces Pooya and his projects. Eight bilingual case-study views are available as shareable query routes and now include source-grounded engineering dossiers. The per-project missing-information and evidence gate is documented in PROJECT-CONTENT-AUDIT.md. Seven source-repository visual assets are pinned to immutable commits and carry bilingual alt text; one is the GlobalCart storefront screenshot while the rest are clearly treated as brand/project artwork. Case-study titles/descriptions and canonical/Open Graph metadata update in the browser, and the sitemap covers the homepage plus all eight case-study URLs. CI run 42072937855 passed 34/34 tests, including static HTML, architecture-diagram, social-card PNG signature/dimension, and screenshot placement contracts; Pages run 42071642813 deployed the PNG social previews alongside the static case-study implementation. Public copy, featured order, project contribution details, and richer project evidence still require Pooya's review. Owner-confirmed details, missing UI screenshots for six projects plus owner-approved Salon Booking evidence, manual project QA, external social-preview validation, and the complete two-round feedback-driven redesign remain mandatory pre-release work.
+
+At the start of the 2026-11-06 verification pass, `main` was at `9273f19f05b37e556a71c3d90f06373c0e71b283`. The latest ORBIT content change pointed its case-study hero and mobile media at local PNG paths that were not present in the repository (both paths returned 404). Those references were removed in [`7365a7b`](https://github.com/pooya-labs/pooya-labs-platform/commit/7365a7bcdeef73afd25eb31048b7a6fc9cc6c3dc); the pinned ORBIT brand mark remains, and real UI screenshots remain an open evidence item.
+
+The dedicated case-study hero asset validator now enforces immutable raw-GitHub source URLs and localized alternative text. The project screenshot workflow now has read-only repository permissions and uploads capture candidates only; it does not commit or publish screenshots automatically. A person must inspect the artifact and explicitly decide which images are safe and suitable to publish.
+
+The latest confirmed green CI result remains run 42072937855 (34/34 tests), which predates the current main changes. The code and workflow updates were pushed to main, which is configured to trigger repository CI; edits under `apps/platform/**` also trigger the Pages build. The current SHA's remote workflow result has not yet been confirmed, so the repository is not marked verified or release-ready.
