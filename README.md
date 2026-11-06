@@ -38,7 +38,9 @@ The first portfolio draft includes:
 - About, focus areas, technology list, and contact sections.
 - Eight project cards with verified source-repository and GitHub Pages preview links, honest project statuses, and explicit scope boundaries.
 - Eight bilingual, shareable case studies with source-grounded engineering dossiers, generated architecture diagrams, and crawler-readable Persian/English static routes.
-- Seven commit-pinned project-card/hero visuals plus two real GlobalCart storefront screenshots (desktop and mobile), all with Persian/English alt text and immutable source commit URLs. The GlobalCart desktop capture is used as its case-study hero and the mobile capture appears in a dedicated, lazy-loaded interface-evidence section; other projects retain clearly labelled brand/project artwork where UI screenshots are not yet available.
+- Seven commit-pinned project-card/hero visuals plus two real GlobalCart storefront screenshots (desktop and mobile), all with Persian/English alt text and immutable source commit URLs.
+- Ten reviewed interface screenshots across five project case studies: ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse each have a desktop case-study hero and a lazy-loaded mobile evidence image. Each image is pinned to an immutable portfolio commit. AuraPulse evidence is explicitly simulated/illustrative and does not prove live Binance connectivity; AetherFlow's UI screenshot remains withheld until its public M07/M08 status mismatch is reconciled.
+- The screenshot capture workflow produces review-only artifacts. Dedicated approval manifests and checksum-gated GitHub Actions publishers verify the exact artifact, PNG signature, dimensions, byte size, and SHA-256 before selected images are committed. Salon Booking captures remain excluded until owner-approved privacy review.
 - Canonical and Open Graph metadata, dynamic browser titles/descriptions for case-study routes, Person JSON-LD, a branded SVG favicon, and an XML sitemap covering the homepage plus all eight case-study URLs.
 - An optional link to the existing GlobalCart bilingual case study.
 - A secondary link to the existing Spatial OS workspace.
