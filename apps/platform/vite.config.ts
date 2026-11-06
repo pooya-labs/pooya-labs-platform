@@ -375,6 +375,7 @@ function staticCaseStudyPages(): Plugin {
       this.emitFile({ type: 'asset', fileName: 'og/pooya-labs.svg', source: homeSocialSvg });
       this.emitFile({ type: 'asset', fileName: 'og/pooya-labs.png', source: renderSocialPng(homeSocialSvg) });
 
+      // The sitemap is emitted from the same static build as the pages, so lastmod cannot drift behind deployed content.
       const sitemapLastmod = new Date().toISOString().slice(0, 10);
       const sitemapEntries = [
         {
