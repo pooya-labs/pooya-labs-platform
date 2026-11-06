@@ -12,12 +12,13 @@
 ## Manual Apps Script source sync
 
 1. Review the intended commit on `main`.
-2. Copy `apps-script/Code.gs` into the matching Apps Script project file.
-3. Copy `apps-script/Index.html` into the HTML file named `Index`.
-4. Keep the V8 manifest configuration unless an approved change requires otherwise.
-5. Save, then create a new version of the existing Web App deployment.
-6. Open the deployment's `/exec` page and run the RPC health check.
-7. Record commit SHA, deployed version, timestamp, and test result in the project checkpoint. Do not record the deployment URL or its ID in the public repository.
+2. Run `npm run build:gas` and confirm the single-file output exists at `dist/gas/index.html`.
+3. Copy `apps-script/Code.gs` into the matching Apps Script project file.
+4. Copy `dist/gas/index.html` into the Apps Script HTML file named `Index`.
+5. Keep the V8 manifest configuration from `apps-script/appsscript.json` unless an approved change requires otherwise.
+6. Save, then create a new version of the existing Web App deployment.
+7. Open the deployment's `/exec` page and run the RPC health check.
+8. Record commit SHA, deployed version, timestamp, and test result in the project checkpoint. Do not record the deployment URL or its ID in the public repository.
 
 ## Optional browser transport diagnostic
 
