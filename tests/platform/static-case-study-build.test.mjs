@@ -119,6 +119,10 @@ test('built sitemap and robots file advertise the new static routes', { skip: !r
   const robots = await readFile(new URL('robots.txt', outputRoot), 'utf8');
   const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
   assert.equal(locations.length, 17);
+  const lastmodDates = [...sitemap.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map((match) => match[1]);
+  assert.equal(lastmodDates.length, 17, 'Every sitemap URL must include a lastmod date');
+  assert.equal(new Set(lastmodDates).size, 1, 'All routes generated in one build must share the same sitemap date');
+  assert.equal(lastmodDates[0], new Date().toISOString().slice(0, 10), 'Sitemap lastmod must reflect the current static build date');
   for (const slug of slugs) {
     assert.ok(locations.includes(`https://pooya-labs.github.io/pooya-labs-platform/projects/${slug}/`));
     assert.ok(locations.includes(`https://pooya-labs.github.io/pooya-labs-platform/en/projects/${slug}/`));
