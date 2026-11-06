@@ -22,6 +22,9 @@ test('preview capture covers only the six public project demos with two responsi
   assert.match(script, /captureScenario\('incidents', 'Incidents'\)/);
   assert.match(script, /target\.slug === 'orbit'/);
   assert.match(script, /Telemetry views require a connected API/);
+  assert.match(script, /page\.locator\('\.sidebar \.nav-item'\)/);
+  assert.match(script, /captured !== expectedCaptureCount/);
+  assert.match(workflow, /name: Upload unreviewed screenshot evidence\n        if: always\(\)/);
 });
 
 test('capture is artifact-only and never publishes or commits screenshot files', () => {

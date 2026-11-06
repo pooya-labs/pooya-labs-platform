@@ -112,7 +112,7 @@ try {
         };
 
         if (target.slug === 'orbit') {
-          const overviewButton = page.getByRole('button', { name: 'Overview', exact: true }).first();
+          const overviewButton = page.locator('.sidebar .nav-item').filter({ hasText: 'Overview' }).first();
           if (await overviewButton.getAttribute('aria-current') !== 'page') {
             const mobileMenu = page.locator('.mobile-menu');
             if (await mobileMenu.isVisible()) await mobileMenu.click();
@@ -163,7 +163,9 @@ try {
 }
 
 const captured = records.filter((record) => record.result === 'captured-pending-human-review').length;
-console.log(`Capture workflow produced ${captured} viewport/scenario screenshots.`);
-if (captured === 0) {
-  throw new Error('No project preview screenshots could be captured.');
+const expectedCaptureCount = targets.length * viewports.length + viewports.length;
+console.log(`Capture workflow produced ${captured} of ${expectedCaptureCount} expected viewport/scenario screenshots.`);
+if (captured !== expectedCaptureCount) {
+  const failed = records.filter((record) => record.result === 'capture-failed');
+  throw new Error(`Expected ${expectedCaptureCount} screenshots, captured ${captured}; ${failed.length} target(s) failed. Inspect capture-report.json for diagnostics.`);
 }
