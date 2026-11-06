@@ -12,7 +12,7 @@ function sectionNumbers(source, startMarker, endMarker) {
   assert.notEqual(start, -1, `Missing start marker: ${startMarker}`);
   assert.notEqual(end, -1, `Missing end marker: ${endMarker}`);
   const fragment = source.slice(start, end);
-  return [...fragment.matchAll(/(?:className|class)="eyebrow-index">(\\d{2}) \\//g)].map((match) => match[1]);
+  return [...fragment.matchAll(/(?:className|class)="eyebrow-index">(\d{2}) \//g)].map((match) => match[1]);
 }
 
 test('interactive and static case studies use the same continuous 01–10 section numbering', () => {
