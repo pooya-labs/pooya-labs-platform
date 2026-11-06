@@ -1,8 +1,8 @@
-# Next Task — Validate social previews and close owner evidence before Phase 7
+# Next Task — Review interface evidence, validate social previews, and close owner gates before Phase 7
 
 **Task ID:** P3-08  
 **Title:** Complete remaining project evidence, external share validation, and owner acceptance before Phase 7  
-**Status:** Eight bilingual dossiers, eight bilingual architecture diagrams, 16 static case-study pages, 17 PNG social cards plus 17 SVG sources, and GlobalCart desktop/mobile UI screenshots implemented; CI green (34/34); remaining screenshot and owner-review gates remain
+**Status:** Eight bilingual dossiers, eight bilingual architecture diagrams, 16 static case-study pages, 17 PNG social cards plus 17 SVG sources, and GlobalCart desktop/mobile UI screenshots implemented. ORBIT screenshot paths were removed because the PNGs were absent from main; capture workflow is artifact-only. Latest known green CI (34/34) predates current code.
 
 ## Current implementation
 - Public bilingual portfolio is the default root experience; Spatial OS is secondary.
@@ -12,10 +12,11 @@
 - Seventeen social preview PNGs (homepage + eight projects × two languages) are primary Open Graph images at 1200×627; seventeen matching SVG sources remain alongside them.
 - Sitemap and robots.txt advertise the canonical static routes.
 - GlobalCart includes visually inspected desktop and mobile storefront screenshots pinned to source commit `5ca43e40ff101e673ee7cf261850bff0a679047c`; desktop is the hero and mobile is a dedicated screenshot card.
+- ORBIT currently uses its pinned project mark only. Earlier local desktop/mobile screenshot references were removed because the PNG files were absent from `main`; no ORBIT UI screenshot is currently published.
 - The exact per-project gaps remain in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 
 ## Verified checks
-- Repository CI [42072937855](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42072937855) passed TypeScript, Pages/GAS builds, artifact upload, and **34/34 contract tests**, including static-page, diagram, social-card PNG signature/dimension, and screenshot-placement checks.
+- The last confirmed green repository CI run [42072937855](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42072937855) passed TypeScript, Pages/GAS builds, artifact upload, and **34/34 contract tests**. It predates the latest main changes and must not be treated as verification of the current SHA.
 - Pages deployment containing the Resvg raster-card generator and the bilingual static case-study build [42071642813](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42071642813) succeeded.
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
 
@@ -33,4 +34,5 @@
 - No generic customer login/dashboard is added to the portfolio.
 - Do not claim real payments, real trades, live infrastructure metrics, hosted production backends, real booking notifications, formal WCAG conformance, or production readiness unless evidence is added to the source record.
 - Do not modify previous project repositories.
+- Do not treat Playwright capture artifacts as human-reviewed or publishable evidence until a person visually inspects them.
 - No V1 tag/release while any mandatory item in PROJECT-CONTENT-AUDIT.md or Phase 7/8 remains open.
