@@ -24,7 +24,7 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [x] Make the personal portfolio the default root experience.
 - [x] Add the first bilingual intro / hero, about, selected-projects, tools, and contact sections.
 - [x] Add honest prototype / in-development / released labels based on project source records.
-- [x] Retain the Antigravity-inspired refraction lens as a restrained optional effect.
+- [x] Remove the experimental pointer-following lens at owner request; preserve the native pointer.
 - [x] Keep the Spatial OS shell as a secondary workspace, not the homepage.
 - [ ] Refine the responsive navigation, keyboard behavior, focus states, and mobile reading flow.
 - [ ] Replace draft personal copy with owner-approved biography, project summaries, and links.
