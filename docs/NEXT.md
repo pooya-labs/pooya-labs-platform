@@ -19,13 +19,13 @@
 - The exact per-project gaps remain in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 
 ## Verified checks
-- Repository CI [42207747731](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42207747731) passed on current main SHA `548e90da4be43e77049d8e560237f1359454a554`: TypeScript, Pages/GAS builds, artifact upload, and **39/39 contract tests**.
-- Pages build and deployment [42206604179](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42206604179) both succeeded for the latest application-source SHA `7365a7bcdeef73afd25eb31048b7a6fc9cc6c3dc`.
+- Repository CI [42213405593](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42213405593) passed on main SHA `e5fc59269bd210b3be37fa97d00b7f0354233860`: TypeScript, Pages/GAS builds, artifact upload, and **39/39 contract tests**.
+- Pages build and deployment [42212627465](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42212627465) both succeeded for application-source SHA `6f40bd0f919a23fbd03718d9b312fc62fbfa432f`, which contains the reviewed screenshot registry and corrected Pages preview URLs.
 - Pages deployment containing the Resvg raster-card generator and the bilingual static case-study build [42071642813](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42071642813) succeeded.
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
 
 ## Next implementation sequence
-1. Confirm Repository CI and GitHub Pages deployment on the current screenshot-registry SHA; fix any failures before treating the site as verified.
+1. [x] Confirm Repository CI, TypeScript, Pages/GAS builds, and 39/39 contract tests. [x] Confirm Pages build and deployment for the application-source SHA.
 2. Validate the 1200×627 PNG social previews in external share clients/inspectors and confirm cached-card refresh; add alternate formats only if a real client requires them.
 3. Resolve AetherFlow's M07/M08 public milestone label mismatch, then capture and review a current desktop/mobile interface screenshot.
 4. Extend ORBIT evidence beyond Overview (Incidents, Metrics, Logs, Traces); add focused NexusCanvas rack/graph/snapshot states and LuminaGlass export/Audio Lab/task-board states where they materially improve the case studies.
