@@ -2,7 +2,7 @@
 
 **Task ID:** P3-08  
 **Title:** Complete remaining project evidence, external share validation, and owner acceptance before Phase 7  
-**Status:** Eight bilingual dossiers, eight bilingual architecture diagrams, 16 static case-study pages, 17 PNG social cards plus 17 SVG sources, GlobalCart desktop/mobile storefront screenshots, and ten reviewed interface screenshots across ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse are implemented. Screenshot capture remains artifact-only until an approval manifest and checksum-gated publisher select images. CI/Pages verification for the current screenshot-registry update remains to be confirmed.
+**Status:** Eight bilingual dossiers, eight bilingual architecture diagrams, 16 static case-study pages, 17 PNG social cards plus 17 SVG sources, GlobalCart desktop/mobile storefront screenshots, and ten reviewed interface screenshots across ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse are implemented. Screenshot capture is artifact-only; dedicated checksum-gated workflows publish only reviewed assets. Current main CI passed 41/41 tests and the dynamic-sitemap Pages build/deployment succeeded.
 
 ## Current implementation
 - Public bilingual portfolio is the default root experience; Spatial OS is secondary.
@@ -19,15 +19,15 @@
 - The exact per-project gaps remain in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 
 ## Verified checks
-- Repository CI [42214072630](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42214072630) passed on main SHA `22d6f9714982a982f36fcf936719235d94340c02`: TypeScript, Pages/GAS builds, artifact upload, and **39/39 contract tests**.
-- Pages build and deployment [42212627465](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42212627465) both succeeded for application-source SHA `6f40bd0f919a23fbd03718d9b312fc62fbfa432f`, which contains the reviewed screenshot registry and corrected Pages preview URLs.
-- Pages deployment containing the Resvg raster-card generator and the bilingual static case-study build [42071642813](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42071642813) succeeded.
+- Repository CI [42218346116](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42218346116) passed on main SHA `12dbfd33adba84f7b67153a1700f3518182e18bc`: TypeScript, Pages/GAS builds, artifact upload, and **41/41 contract tests**.
+- Pages build and deployment [42217711525](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42217711525) both succeeded for application-source SHA `654da2cf1e9e975673a0d4e287fffa9125f1117c`, including dynamic sitemap generation and duplicate screenshot pruning.
+- The published Pages ZIP is 3,811,158 bytes, down 51.6% from the pre-pruning 7,870,673-byte artifact. The final artifact audit confirms all 17 current-date sitemap URLs, 16 bilingual case-study pages, and 17 valid 1200×627 PNG social cards.
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
 
 ## Next implementation sequence
-1. [x] Confirm Repository CI, TypeScript, Pages/GAS builds, and 39/39 contract tests. [x] Confirm Pages build and deployment for the application-source SHA.
-2a. Verify the guarded Pages screenshot-pruning step: ten immutable screenshot source files are currently duplicated in the public folder but are not referenced locally by HTML; the new build step should remove about 3.88 MiB from deployed output without changing the rendered pages.
-2. [x] Inspect the actual Pages artifact internally: all 17 HTML routes, canonical/Open Graph/JSON-LD/hreflang metadata, 17 sitemap targets, and all 17 PNG signature/dimension checks passed. [ ] Still validate actual rendering and cache refresh through LinkedIn Post Inspector and Facebook Sharing Debugger; add alternate formats only if a real client requires them.
+1. [x] Confirm current-main Repository CI, TypeScript, Pages/GAS builds, artifact upload, and 41/41 contract tests. [x] Confirm Pages build and deployment for the dynamic-sitemap application source.
+2. [x] Inspect the actual Pages artifact: all 17 HTML routes, canonical/Open Graph/JSON-LD/hreflang metadata, 17 current-date sitemap targets, and all 17 PNG signature/dimension checks passed. [ ] Still validate actual rendering and cache refresh through LinkedIn Post Inspector and Facebook Sharing Debugger; add alternate formats only if a real client requires them.
+3. [x] Prune ten unreferenced local screenshot copies from the Pages artifact while retaining the immutable source files; ZIP size reduced by 51.6% (7,870,673 → 3,811,158 bytes).
 3. Resolve AetherFlow's public UI/documentation mismatch before screenshot acceptance: README says M08 is in progress, while the landing page and dashboard still show M07; reconcile the previous `pooya16pg-spec.github.io` links and dashboard CORS origin with the current `pooya-labs.github.io` host, then capture/review a current desktop/mobile screenshot. Keep the independent AetherFlow repository untouched during portfolio work.
 4. Extend ORBIT evidence beyond Overview (Incidents, Metrics, Logs, Traces); add focused NexusCanvas rack/graph/snapshot states and LuminaGlass export/Audio Lab/task-board states where they materially improve the case studies.
 5. Capture AuraPulse connected-feed and fallback states in a browser/network context where the actual public ticker request is allowed; keep current images explicitly simulated until then.
