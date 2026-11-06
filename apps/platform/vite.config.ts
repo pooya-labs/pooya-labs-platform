@@ -352,7 +352,7 @@ function staticCaseStudyPages(): Plugin {
     name: 'pooya-labs-static-case-study-pages',
     apply: 'build',
     configResolved(config) {
-      outputDirectory = config.build.outDir;
+      outputDirectory = resolve(config.root, config.build.outDir);
     },
     generateBundle(_options, bundle: OutputBundle) {
       const entry = Object.values(bundle).find((item) => item.type === 'chunk' && item.isEntry);
