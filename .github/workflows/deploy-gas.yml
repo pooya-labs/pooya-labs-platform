@@ -65,11 +65,11 @@ jobs:
       - name: Type-check platform
         run: npm run typecheck
 
+      - name: Build GitHub Pages and Apps Script bundles
+        run: npm run build
+
       - name: Run repository contract tests
         run: npm test
-
-      - name: Build the single-file HtmlService UI
-        run: npm run build:gas
 
       - name: Prepare isolated Apps Script project directory
         shell: bash
