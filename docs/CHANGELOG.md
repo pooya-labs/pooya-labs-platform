@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-06 — Bilingual keyboard skip navigation
+- Added a skip-to-main-content link to the homepage and both interactive and crawler-readable static case-study pages in Persian and English.
+- Skip links appear when reached by keyboard focus, move focus to the main region, and avoid entrance transitions under reduced-motion preferences.
+- Added a regression contract for both locales and all page renderers; existing focus-visible outlines remain in place.
+- Repository CI [42230046270](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42230046270) passed TypeScript, all three build targets, artifact uploads, and **42/42 contract tests** on main head `cfbb71a2d7b8f4ad3a37afda949434065f701e41`.
+- GitHub Pages build and deploy [42229784778](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42229784778) succeeded for UI source `fe8908347855a134bd553bc90ac69d3b08b31314`.
+- Cloudflare and Apps Script deployment jobs remained skipped because their required repository Actions secrets were unavailable; no formal accessibility certification or manual screen-reader review is claimed.
 ## 2026-11-06 — Case-study section hierarchy consistency
 - Corrected the final two interactive case-study section labels to 09 and 10, matching the crawler-readable static pages.
 - Moved the supplemental interface-capture heading out of the numbered sequence in both renderers, avoiding a duplicate 05 label.

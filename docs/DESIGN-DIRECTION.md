@@ -25,7 +25,7 @@ Do not let a workspace dashboard, metrics panel, product catalogue, or decorativ
 
 ## Motion and pointer behavior
 
-- The experimental pointer-following light/lens has been removed by owner request.
+- The experimental pointer-following light/lens has been removed by owner request and must not return without new owner approval.
 - Keep the native system pointer visible; do not add a custom cursor-following layer back during implementation.
 - Motion should remain purposeful, restrained, and respectful of reduced-motion preferences.
 
@@ -47,7 +47,8 @@ The current implementation contains:
 - An eight-project draft grid with status labels.
 - Initial technology list.
 - Contact section and a link to the secondary workspace.
-- Pointer refraction field with reduced-motion and mobile fallback.
+- Bilingual keyboard skip links on the homepage and case-study pages, with visible-on-focus styling and reduced-motion handling.
+- Native pointer behavior; the experimental pointer-following lens remains removed.
 
 Project descriptions, skill emphasis, featured-project order, photos/avatar, contact channels, and public bio are content drafts and require Pooya's review before launch.
 

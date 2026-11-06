@@ -2,12 +2,13 @@
 
 **Task ID:** P3-08  
 **Title:** Complete remaining project evidence, external share validation, and owner acceptance before Phase 7  
-**Status:** Eight bilingual dossiers, eight bilingual architecture diagrams, 16 static case-study pages, 17 PNG social cards plus 17 SVG sources, GlobalCart desktop/mobile storefront screenshots, and ten reviewed interface screenshots across ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse are implemented. Screenshot capture is artifact-only; dedicated checksum-gated workflows publish only reviewed assets. Current main CI passed 41/41 contract tests, all three target builds, and both artifact uploads. The Cloudflare production deployment from the same verified source completed successfully; GitHub Pages build and deployment both succeeded.
+**Status:** Eight bilingual dossiers, eight bilingual architecture diagrams, 16 static case-study pages, 17 PNG social cards plus 17 SVG sources, GlobalCart desktop/mobile storefront screenshots, and twelve reviewed interface screenshots across GlobalCart, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse are implemented. Screenshot capture is artifact-only; dedicated checksum-gated workflows publish only reviewed assets. Current main CI passed 42/42 contract tests, all three target builds, and both artifact uploads. GitHub Pages build and deployment succeeded for the current UI source. Cloudflare's last verified production deployment remains on the earlier f9011ec5 source; the latest Cloudflare deploy job was skipped because CLOUDFLARE_API_TOKEN is unavailable.
 
 See [DEPLOYMENT-TARGETS.md](DEPLOYMENT-TARGETS.md) for independent host build/deploy paths and the remaining credential gates.
 
 ## Current implementation
 - Public bilingual portfolio is the default root experience; Spatial OS is secondary.
+- Bilingual skip navigation is implemented on the homepage and interactive/static case-study routes; its contract passes. Real keyboard-only, screen-reader, and device accessibility review remains open.
 - Eight project case studies include source-grounded role/attribution, challenge, architecture, implementation details, engineering decisions, verification evidence, boundaries, and direct source/CI references.
 - Eight architecture diagrams are generated in Persian and English from documented system flows. They are diagrams, not product screenshots or production evidence.
 - Sixteen static HTML case-study routes are emitted at build time: `/projects/<slug>/` and `/en/projects/<slug>/`. Each includes rendered article content, canonical URL, hreflang alternates, JSON-LD, social metadata, and source links.
@@ -21,8 +22,8 @@ See [DEPLOYMENT-TARGETS.md](DEPLOYMENT-TARGETS.md) for independent host build/de
 - The exact per-project gaps remain in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 
 ## Verified checks
-- Repository CI [42227942261](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42227942261) passed on main SHA 328de1fc838cb4a5b9af9c3515a7c261cb3e47ec: TypeScript, all three target builds, GAS/Cloudflare artifacts, and **41/41 contract tests**. The added case-study contract verifies matching, uninterrupted 01–10 numbering in the interactive and static output.
-- GitHub Pages build and deployment [42227942275](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42227942275) succeeded on SHA 328de1fc838cb4a5b9af9c3515a7c261cb3e47ec.
+- Repository CI [42230046270](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42230046270) passed on main SHA `cfbb71a2d7b8f4ad3a37afda949434065f701e41`: TypeScript, all three target builds, GAS/Cloudflare artifacts, and **42/42 contract tests**. New contracts verify uninterrupted 01–10 case-study numbering and bilingual skip links.
+- GitHub Pages build and deployment [42229784778](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42229784778) succeeded on application source SHA `fe8908347855a134bd553bc90ac69d3b08b31314`; this deployment includes keyboard skip navigation.
 - Cloudflare Pages deployment `0bba4323-359d-4fb6-8d5e-aa833e36b22c` succeeded from SHA `f9011ec5a3f9eb2faffdac222596b37444184191`, with all 83 files present; host: https://pooya-labs-platform.pages.dev. The inspected bundle confirms its homepage metadata, bilingual case-study metadata, sitemap, and robots point only to the Cloudflare origin.
 - Cloudflare and Apps Script GitHub Actions deployment workflows are present but remain secret-gated. Cloudflare native Git push deployment is disabled because the push probe did not trigger a deployment; the API workflow requires `CLOUDFLARE_API_TOKEN`. Apps Script deployment requires `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID`.
 - The published Pages ZIP is 3,811,158 bytes, down 51.6% from the pre-pruning 7,870,673-byte artifact. The final artifact audit confirms all 17 current-date sitemap URLs, 16 bilingual case-study pages, and 17 valid 1200×627 PNG social cards.

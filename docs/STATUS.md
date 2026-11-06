@@ -40,6 +40,7 @@
 - [x] Added demo, source, and case-study actions to project cards.
 - [x] Added seven verified source-repository visual assets with pinned commit URLs and bilingual alt text; card media is lazy-loaded, responsive, and falls back cleanly.
 - [x] Added actual GlobalCart desktop/mobile storefront screenshots and ten reviewed desktop/mobile UI captures across ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse. Remaining brand artwork is clearly distinguished from product-interface evidence; AetherFlow and Salon Booking UI captures remain gated by their documented evidence requirements.
+- [x] Added bilingual keyboard skip links to the home page and both interactive/static case-study renderers. They are hidden until keyboard focus, target the main content, and disable the entrance transition under reduced motion. This is a focused implementation improvement, not a substitute for full manual keyboard/screen-reader QA.
 - [x] Added dynamic case-study page title/description and canonical/Open Graph metadata updates, Person JSON-LD, and a branded SVG favicon.
 - [x] Added a build-generated XML sitemap listing the homepage and all eight bilingual case studies; all 17 URLs now receive the current build date in `lastmod`, keeping the sitemap synchronized with deployed content.
 - [x] Reframed README, architecture, product surfaces, design direction, next task, and roadmap around the portfolio-first purpose.
@@ -54,8 +55,8 @@
 - [x] Replaced five stale `pooya16pg-spec.github.io` preview URLs with the currently verified `pooya-labs.github.io` Pages hosts; AetherFlow's screenshot remains withheld until its M07/M08 public label mismatch is resolved.
 
 ## CI and publishing status
-- Repository CI [42227942261](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42227942261) passed on main SHA 328de1fc838cb4a5b9af9c3515a7c261cb3e47ec: TypeScript, all three target builds, both artifact uploads, and **41/41 contract tests**. A new regression contract enforces the same uninterrupted 01–10 case-study section numbering in the interactive and crawler-readable static renderers.
-- GitHub Pages build and deployment [42227942275](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42227942275) both succeeded on SHA 328de1fc838cb4a5b9af9c3515a7c261cb3e47ec.
+- Repository CI [42230046270](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42230046270) passed on main SHA `cfbb71a2d7b8f4ad3a37afda949434065f701e41`: TypeScript, all three target builds, both artifact uploads, and **42/42 contract tests**. New contracts cover consistent 01–10 case-study numbering and bilingual skip navigation.
+- GitHub Pages build and deployment [42229784778](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42229784778) both succeeded on application commit `fe8908347855a134bd553bc90ac69d3b08b31314`; this is the current published UI source with keyboard skip links.
 - The generated host-specific Cloudflare artifact contains the sitemap, 16 bilingual case-study routes, 17 valid 1200×627 PNG social cards, and a robots.txt sitemap pointer for the Cloudflare origin. The new cross-host test passed. The latest code commit is verified on GitHub Pages; Cloudflare's last verified production deployment remains on f9011ec5a3f9eb2faffdac222596b37444184191 because its automatic deployment job is still secret-gated. GitHub Pages retains its own project subpath and canonical origin.
 - The GitHub Pages artifact ZIP measured **3,811,158 bytes**, down from **7,870,673 bytes** before duplicate screenshot pruning (51.6% reduction).
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
