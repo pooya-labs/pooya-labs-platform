@@ -1,0 +1,23 @@
+{
+  "name": "pooya-labs-platform",
+  "private": true,
+  "version": "0.2.0",
+  "description": "Pooya's personal portfolio and software project showcase",
+  "workspaces": [
+    "apps/platform"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace @pooya-labs/platform",
+    "typecheck": "npm run typecheck --workspace @pooya-labs/platform",
+    "build": "npm run build:pages && npm run build:gas",
+    "build:pages": "vite build --config apps/platform/vite.config.ts --mode pages && node apps/platform/scripts/prune-pages-capture-copies.mjs",
+    "build:gas": "vite build --config apps/platform/vite.config.ts --mode gas",
+    "build:cloudflare": "vite build --config apps/platform/vite.config.ts --mode cloudflare",
+    "test": "node --test tests/**/*.test.mjs",
+    "test:transport": "node --test tests/transport/*.test.mjs",
+    "test:platform": "node --test tests/platform/*.test.mjs"
+  }
+}

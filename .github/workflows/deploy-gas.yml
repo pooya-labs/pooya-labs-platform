@@ -1,0 +1,101 @@
+name: Apps Script production deployment
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/platform/**'
+      - 'apps-script/**'
+      - 'package.json'
+      - '.github/workflows/deploy-gas.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: apps-script-production
+  cancel-in-progress: false
+
+jobs:
+  detect-credentials:
+    name: Check deployment configuration
+    runs-on: ubuntu-latest
+    outputs:
+      configured: ${{ steps.check.outputs.configured }}
+    env:
+      CLASPRC_JSON: ${{ secrets.CLASPRC_JSON }}
+      CLASP_JSON: ${{ secrets.CLASP_JSON }}
+      GAS_DEPLOYMENT_ID: ${{ secrets.GAS_DEPLOYMENT_ID }}
+    steps:
+      - name: Check required GitHub Actions secrets
+        id: check
+        shell: bash
+        run: |
+          if [[ -n "$CLASPRC_JSON" && -n "$CLASP_JSON" && -n "$GAS_DEPLOYMENT_ID" ]]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "Apps Script deployment credentials are configured."
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Apps Script deployment skipped. Configure CLASPRC_JSON, CLASP_JSON, and GAS_DEPLOYMENT_ID as repository Actions secrets to enable it."
+          fi
+
+  deploy:
+    name: Build, push, and update the stable Apps Script Web App
+    needs: detect-credentials
+    if: needs.detect-credentials.outputs.configured == 'true' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CLASPRC_JSON: ${{ secrets.CLASPRC_JSON }}
+      CLASP_JSON: ${{ secrets.CLASP_JSON }}
+      GAS_DEPLOYMENT_ID: ${{ secrets.GAS_DEPLOYMENT_ID }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install workspace dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Type-check platform
+        run: npm run typecheck
+
+      - name: Build GitHub Pages and Apps Script bundles
+        run: npm run build
+
+      - name: Build Cloudflare Pages bundle for cross-host validation
+        run: npm run build:cloudflare
+
+      - name: Run repository contract tests
+        run: npm test
+
+      - name: Prepare isolated Apps Script project directory
+        shell: bash
+        run: |
+          mkdir -p dist/gas-deploy
+          cp apps-script/Code.gs dist/gas-deploy/Code.gs
+          cp apps-script/appsscript.json dist/gas-deploy/appsscript.json
+          cp dist/gas/index.html dist/gas-deploy/Index.html
+
+      - name: Install clasp
+        run: npm install --global @google/clasp
+
+      - name: Restore private clasp credentials
+        shell: bash
+        run: |
+          printf '%s' "$CLASPRC_JSON" > "$HOME/.clasprc.json"
+          chmod 600 "$HOME/.clasprc.json"
+          printf '%s' "$CLASP_JSON" | jq '.rootDir = "dist/gas-deploy"' > .clasp.json
+          chmod 600 .clasp.json
+          jq -e '.scriptId | type == "string" and length > 0' .clasp.json >/dev/null
+
+      - name: Push source and update the existing Web App deployment
+        shell: bash
+        run: |
+          clasp push --force
+          clasp deploy --deploymentId "$GAS_DEPLOYMENT_ID" --description "Pooya Labs main ${GITHUB_SHA}"

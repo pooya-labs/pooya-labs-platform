@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "project": "orbit",
+  "sourceUrl": "https://pooya-labs.github.io/orbit/",
+  "artifact": {
+    "workflowRunId": 42209772441,
+    "name": "project-interface-captures",
+    "captureSha": "cea399d087274a9ba49667373938124c1e19807d"
+  },
+  "review": {
+    "date": "2026-11-06",
+    "outcome": "approved-for-portfolio-use",
+    "notes": [
+      "Both images were visually inspected at their native viewport dimensions.",
+      "The dashboard is explicitly labelled DEMO ENVIRONMENT and states that all displayed telemetry is illustrative sample data.",
+      "The capture runner obscures search and form inputs; no customer names, phone numbers, booking references, or private credentials were visible.",
+      "Desktop and mobile captures both report HTTP 200, no browser console errors, no failed requests, and no horizontal overflow."
+    ]
+  },
+  "files": [
+    {
+      "source": "orbit-desktop.png",
+      "destination": "apps/platform/public/interface-captures/orbit/orbit-desktop.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "bytes": 178164,
+      "sha256": "f9680c9a8c2ee40f69863ca08fdb2a7b5e21552ca60ea60a3f5703ebe55a9027"
+    },
+    {
+      "source": "orbit-mobile.png",
+      "destination": "apps/platform/public/interface-captures/orbit/orbit-mobile.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "bytes": 76138,
+      "sha256": "2af87384959f0e87dfbf40eab809f754f611edfb17ba3e8c7526c336b9794537"
+    }
+  ]
+}

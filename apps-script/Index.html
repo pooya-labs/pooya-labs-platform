@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pooya Labs Platform</title>
+  <style>
+    :root{color-scheme:dark;font:16px system-ui,sans-serif;background:#090d16;color:#e8f0ff}
+    body{max-width:820px;margin:40px auto;padding:0 20px}
+    main{border:1px solid #26364b;border-radius:18px;padding:24px;background:#111a29}
+    button{padding:12px 16px;border:0;border-radius:10px;background:#00d5e8;color:#001018;font-weight:700;cursor:pointer}
+    button:disabled{opacity:.6;cursor:wait}
+    pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#070b12;padding:14px;border-radius:10px;min-height:3rem}
+    .muted{color:#9aacc5;line-height:1.6}
+    .eyebrow{color:#00d5e8;font-size:.78rem;text-transform:uppercase;letter-spacing:.12em}
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Pooya Labs · Platform foundation</p>
+    <h1>HtmlService runtime proof</h1>
+    <p class="muted">This page is served by Google Apps Script. Browser-to-server calls use google.script.run. GitHub Pages is reserved for public documentation and static showcase content.</p>
+    <button id="run" type="button">Run RPC health check</button>
+    <pre id="result" aria-live="polite">Not tested yet.</pre>
+  </main>
+  <script>
+    const button = document.getElementById('run');
+    const result = document.getElementById('result');
+
+    function callServer(request) {
+      return new Promise((resolve, reject) => {
+        google.script.run
+          .withSuccessHandler(resolve)
+          .withFailureHandler(reject)
+          .rpcCall(request);
+      });
+    }
+
+    function createRequestId() {
+      if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+        return window.crypto.randomUUID();
+      }
+      return 'req-' + Date.now() + '-' + Math.random().toString(16).slice(2);
+    }
+
+    button.addEventListener('click', async () => {
+      button.disabled = true;
+      result.textContent = 'Running…';
+      try {
+        const response = await callServer({
+          apiVersion: 1,
+          requestId: createRequestId(),
+          action: 'health.check',
+          payload: {}
+        });
+        result.textContent = JSON.stringify(response, null, 2);
+      } catch (error) {
+        result.textContent = JSON.stringify({
+          ok: false,
+          error: error && error.message ? error.message : String(error)
+        }, null, 2);
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

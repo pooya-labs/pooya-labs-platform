@@ -1,0 +1,37 @@
+name: External GAS Browser Transport Diagnostic
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-transport:
+    name: Real Chromium cross-origin POST
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      GAS_WEB_APP_URL: ${{ secrets.GAS_WEB_APP_URL }}
+      TRANSPORT_HARNESS_URL: https://pooya-labs.github.io/pooya-labs-platform/tests/transport/external-fetch.html
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Playwright
+        run: npm install --no-save --no-package-lock playwright
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run browser transport diagnostic
+        run: node tests/transport/browser-smoke.mjs
+      - name: Upload browser diagnostic
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gas-browser-transport-diagnostic
+          path: artifacts/transport/browser-diagnostic.json
+          if-no-files-found: warn
+          retention-days: 14
