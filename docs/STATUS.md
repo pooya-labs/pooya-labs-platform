@@ -16,7 +16,7 @@
 
 ## Publishing status — 2026-11-06
 - [x] Added an isolated Cloudflare build target: `npm run build:cloudflare` → `dist/cloudflare`, with Cloudflare-specific canonical origin and root base.
-- [x] Created Cloudflare Pages project `pooya-labs-platform` on `pooya-labs-platform.pages.dev`; final checked deployment `c8205f55-cb96-485e-986f-dc794dd186d5` completed successfully from main commit `6ecd5a8c6b72fab931ab5fc919c8f9b5ceb1f20c`.
+- [x] Created Cloudflare Pages project `pooya-labs-platform` on `pooya-labs-platform.pages.dev`; latest checked deployment `7b544ac0-4d76-451f-aa97-bb1f34515509` completed successfully from main commit `6661532b7061cb3ccff8bbe58dabb25708bb4389`.
 - [x] Added a secret-gated GitHub Actions Cloudflare production trigger that deploys the exact pushed main commit and polls for Cloudflare's success status. The required `CLOUDFLARE_API_TOKEN` secret is not configured yet, so automatic GitHub-triggered publishing remains disabled until the token is added.
 - [x] Added a secret-gated `clasp` workflow for the isolated HtmlService payload. CI builds and uploads the GAS bundle; production deployment waits for `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` repository secrets.
 - [x] Kept each target independent: GitHub Pages (`dist/pages`), Cloudflare Pages (`dist/cloudflare`), and Apps Script (`dist/gas` / `dist/gas-deploy`).
