@@ -18,7 +18,8 @@ test('preview capture covers only the six public project demos with two responsi
   assert.match(script, /capture-report\.json/);
   assert.match(script, /excluded: \['salon-booking/);
   assert.doesNotMatch(script, /slug: 'salon-booking'/);
-  assert.match(script, /captureScenario\('overview', 'Overview'\)/);
+  assert.match(script, /const defaultView = target\.slug === 'nexus-canvas' && viewport\.name === 'mobile' \? 'Mobile Rack' : 'Overview'/);
+  assert.match(script, /captureScenario\('overview', defaultView\)/);
   assert.match(script, /captureScenario\('incidents', 'Incidents · API authentication required'\)/);
   assert.match(script, /captureScenario\('mobile-rack', 'Mobile Rack'\)/);
   assert.match(script, /captureScenario\('export-modal', 'Export Docker \/ JSON'\)/);
