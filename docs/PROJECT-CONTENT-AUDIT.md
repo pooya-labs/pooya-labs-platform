@@ -1,6 +1,6 @@
 # Project content audit — pre-release source of truth
 
-**Last reviewed:** 2026-11-05  
+**Last reviewed:** 2026-11-06  
 **Purpose:** Separate facts supported by the eight source repositories from information/evidence still required before Pooya Labs V1.  
 **Rule:** Do not fill gaps with assumptions. Keep verified descriptions in the portfolio and keep missing items as release checklist tasks.
 
@@ -37,9 +37,13 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 - Public architecture is a static Pages dashboard plus a separate Apps Script synthetic-data demo. The local engineering stack (Go API, PostgreSQL, OpenTelemetry Collector, Prometheus, Loki, Tempo) is not a hosted production service.
 - Release CI, Security, and Pages evidence are linked from the dossier. Demo notifications are simulated; no real webhook/email is sent.
 
+**Evidence checkpoint (2026-11-06)**
+- The ORBIT registry currently retains its immutable project brand mark. Earlier metadata referenced local desktop/mobile PNG paths, but those files were not present in the checked-in `main` tree (both paths returned 404); the unbacked references have been removed.
+- The capture workflow now uploads candidate screenshots as review-only artifacts with read-only repository permissions. It does not commit or publish them. No ORBIT UI screenshot is counted as complete until an artifact is visually reviewed and an approved image is committed.
+
 **Required before portfolio release**
 - [x] Add a bilingual architecture diagram that keeps the public Apps Script demo path separate from the local Go/OTel/Prometheus/Loki/Tempo engineering path.
-- [ ] Capture real dashboard screenshots for Overview, Incidents, Metrics, Logs, and Traces; the existing repository visual is a brand icon, not product evidence.
+- [ ] Capture and visually approve real dashboard screenshots for Overview, Incidents, Metrics, Logs, and Traces; commit only selected images after checking that demo data is synthetic and no private information is visible. The current repository visual is a brand icon, not product evidence.
 - [ ] Have the owner run and record an Apps Script demo smoke: bootstrap, a mutation in a synthetic workspace, reload/refresh persistence, and an isolated second browser profile. The external verification environment could not independently validate the owner's Apps Script deployment.
 - [ ] Complete real-device TalkBack and VoiceOver sessions and the remaining human keyboard/chart-table review; automated axe/Playwright/NVDA runs do not constitute formal WCAG certification.
 - [ ] Keep synthetic data, non-hosted Go/PostgreSQL/OTel infrastructure, and simulated notifications clearly disclosed.
@@ -157,7 +161,7 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 
 1. Finish source-backed technical content and verify statuses against each current source repository.
 2. Complete the per-project evidence and owner-review tasks above; record unresolved items as blockers rather than writing around them.
-3. [x] Build crawler-readable Persian/English static case-study pages with canonical/hreflang/JSON-LD and per-project/per-language SVG social cards. [ ] Validate external share-client compatibility for SVG and add PNG/JPEG fallback only where required.
+3. [x] Build crawler-readable Persian/English static case-study pages with canonical/hreflang/JSON-LD, 17 PNG social preview cards (homepage plus eight projects × two languages), and matching SVG sources. [ ] Validate the 1200×627 PNG cards in external share clients and confirm cache refresh.
 4. Complete the full visual redesign with Pooya's first and second feedback rounds.
 5. Complete exact-SHA CI/Pages, accessibility, responsive, browser, performance, link, metadata, and manual acceptance checks.
 6. Obtain explicit owner approval and only then publish V1.
