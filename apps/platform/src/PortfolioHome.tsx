@@ -219,11 +219,11 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
           </article>
         </section>
         <section className="case-study-highlights">
-          <div className="portfolio-eyebrow"><span className="eyebrow-index">03 /</span>{t.highlights}</div>
+          <div className="portfolio-eyebrow"><span className="eyebrow-index">09 /</span>{t.highlights}</div>
           <ul>{project.caseStudy.highlights[language].map((item, index) => <li key={index}><span>{String(index + 1).padStart(2, '0')}</span>{item}</li>)}</ul>
         </section>
         <section className="case-study-boundaries">
-          <div className="portfolio-eyebrow"><span className="eyebrow-index">04 /</span>{t.boundaries}</div>
+          <div className="portfolio-eyebrow"><span className="eyebrow-index">10 /</span>{t.boundaries}</div>
           <p>{project.caseStudy.boundaries[language]}</p>
         </section>
       </main>
