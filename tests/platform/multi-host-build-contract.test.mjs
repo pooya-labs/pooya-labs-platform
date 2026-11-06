@@ -21,7 +21,7 @@ test('GitHub Pages and Cloudflare builds keep canonical origins, metadata, route
   assert.ok(cloudflareHome.includes(`property="og:url" content="${cloudflareOrigin}"`));
   assert.ok(cloudflareHome.includes(`property="og:image" content="${cloudflareOrigin}og/pooya-labs.png"`));
   assert.ok(cloudflareHome.includes(`"url": "${cloudflareOrigin}"`), 'Cloudflare Person JSON-LD must use the Cloudflare canonical origin');
-  assert.doesNotMatch(cloudflareHome, /pooya-labs\\.github\\.io\\/pooya-labs-platform/);
+  assert.equal(cloudflareHome.includes('pooya-labs.github.io/pooya-labs-platform'), false);
 
   for (const route of ['projects/orbit/index.html', 'en/projects/orbit/index.html']) {
     const html = await readFile(new URL(route, cloudflareRoot), 'utf8');
@@ -30,20 +30,20 @@ test('GitHub Pages and Cloudflare builds keep canonical origins, metadata, route
     assert.ok(html.includes(`${cloudflareOrigin}og/orbit${route.startsWith('en/') ? '-en' : ''}.png`));
     assert.ok(html.includes('/assets/index-'), 'Cloudflare static page assets must be root-relative');
     assert.ok(html.includes('/architecture/orbit'), 'Cloudflare architecture diagrams must be root-relative');
-    assert.doesNotMatch(html, /pooya-labs\\.github\\.io\\/pooya-labs-platform/);
+    assert.equal(html.includes('pooya-labs.github.io/pooya-labs-platform'), false);
   }
 
   const cloudflareSitemap = await readFile(new URL('sitemap.xml', cloudflareRoot), 'utf8');
   const cloudflareRobots = await readFile(new URL('robots.txt', cloudflareRoot), 'utf8');
-  const locations = [...cloudflareSitemap.matchAll(/<loc>([^<]+)<\\/loc>/g)].map((match) => match[1]);
+  const locations = cloudflareSitemap.split('<loc>').slice(1).map((part) => part.split('</loc>')[0]);
   assert.equal(locations.length, 17);
   assert.ok(locations.includes(cloudflareOrigin));
   assert.ok(locations.includes(`${cloudflareOrigin}projects/orbit/`));
   assert.ok(locations.includes(`${cloudflareOrigin}en/projects/orbit/`));
-  assert.match(cloudflareRobots, /Sitemap: https:\\/\\/pooya-labs-platform\\.pages\\.dev\\/sitemap\\.xml/);
-  assert.doesNotMatch(cloudflareRobots, /pooya-labs\\.github\\.io/);
+  assert.ok(cloudflareRobots.includes(`Sitemap: ${cloudflareOrigin}sitemap.xml`));
+  assert.equal(cloudflareRobots.includes('pooya-labs.github.io'), false);
 
   const pagesRobots = await readFile(new URL('robots.txt', pagesRoot), 'utf8');
-  assert.match(pagesRobots, /Sitemap: https:\\/\\/pooya-labs\\.github\\.io\\/pooya-labs-platform\\/sitemap\\.xml/);
-  assert.doesNotMatch(pagesRobots, /pooya-labs-platform\\.pages\\.dev/);
+  assert.ok(pagesRobots.includes(`Sitemap: ${pagesOrigin}sitemap.xml`));
+  assert.equal(pagesRobots.includes('pooya-labs-platform.pages.dev'), false);
 });
