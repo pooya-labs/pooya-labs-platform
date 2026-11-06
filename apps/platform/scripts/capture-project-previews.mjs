@@ -1,5 +1,6 @@
 import { chromium } from 'playwright';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
 
 const targets = [
@@ -88,6 +89,14 @@ try {
           `,
         }).catch(() => undefined);
 
+        const viewportDiagnostics = await page.evaluate(() => ({
+          viewportWidth: window.innerWidth,
+          viewportHeight: window.innerHeight,
+          documentWidth: document.documentElement.scrollWidth,
+          documentHeight: document.documentElement.scrollHeight,
+          hasHorizontalOverflow: document.documentElement.scrollWidth > window.innerWidth + 1,
+        }));
+
         const screenshotPath = path.join(outputDir, `${target.slug}-${viewport.name}.png`);
         await page.screenshot({
           path: screenshotPath,
@@ -97,6 +106,7 @@ try {
           caret: 'hide',
           timeout: 20000,
         });
+        const screenshotBytes = await readFile(screenshotPath);
 
         records.push({
           slug: target.slug,
@@ -105,7 +115,10 @@ try {
           title: pageTitle,
           httpStatus: responseStatus,
           viewport,
+          viewportDiagnostics,
           screenshot: path.basename(screenshotPath),
+          screenshotBytes: screenshotBytes.byteLength,
+          screenshotSha256: createHash('sha256').update(screenshotBytes).digest('hex'),
           visibleTextLength: bodyTextLength,
           errors: [...errors],
           failedRequests: [...failedRequests],
@@ -133,7 +146,7 @@ try {
     path.join(outputDir, 'capture-report.json'),
     JSON.stringify({
       generatedAt: new Date().toISOString(),
-      note: 'Screenshots are unreviewed evidence candidates. They are not automatically published or committed.',
+      note: 'Screenshots are unreviewed evidence candidates. They are not automatically published or committed. Each record includes viewport overflow diagnostics, byte size, and SHA-256 for artifact integrity.',
       excluded: ['salon-booking (requires owner-approved, privacy-reviewed capture)'],
       captures: records,
     }, null, 2) + '\n',
