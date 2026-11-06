@@ -1,5 +1,5 @@
 import { ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Layers3, Monitor, Sparkles, TerminalSquare, Workflow } from 'lucide-react';
-import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
+import { useEffect, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
 import { portfolioProjects as projects, type PortfolioProject } from './content/projects';
 import { coreDossiers } from './content/case-study-dossiers-core';
 import { productDossiers } from './content/case-study-dossiers-products';
@@ -107,45 +107,6 @@ const text = {
   },
 } satisfies Record<Language, Record<string, string>>;
 
-function PointerLens(): ReactNode {
-  const glowRef = useRef<HTMLDivElement>(null);
-  const lensRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!window.matchMedia('(pointer: fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let targetX = window.innerWidth / 2;
-    let targetY = window.innerHeight / 2;
-    let glowX = targetX;
-    let glowY = targetY;
-    let lensX = targetX;
-    let lensY = targetY;
-    let frame = 0;
-
-    const render = () => {
-      glowX += (targetX - glowX) * 0.16;
-      glowY += (targetY - glowY) * 0.16;
-      lensX += (targetX - lensX) * 0.3;
-      lensY += (targetY - lensY) * 0.3;
-      if (glowRef.current) glowRef.current.style.transform = `translate3d(${glowX - 170}px, ${glowY - 170}px, 0)`;
-      if (lensRef.current) lensRef.current.style.transform = `translate3d(${lensX - 52}px, ${lensY - 52}px, 0)`;
-      const moving = Math.abs(targetX - glowX) + Math.abs(targetY - glowY) + Math.abs(targetX - lensX) + Math.abs(targetY - lensY) > 0.5;
-      frame = moving ? window.requestAnimationFrame(render) : 0;
-    };
-    const move = (event: PointerEvent) => {
-      targetX = event.clientX;
-      targetY = event.clientY;
-      if (!frame) frame = window.requestAnimationFrame(render);
-    };
-    window.addEventListener('pointermove', move, { passive: true });
-    return () => {
-      window.removeEventListener('pointermove', move);
-      if (frame) window.cancelAnimationFrame(frame);
-    };
-  }, []);
-
-  return <div className="portfolio-pointer" aria-hidden="true"><div ref={glowRef} className="portfolio-pointer-glow" /><div ref={lensRef} className="portfolio-pointer-lens" /></div>;
-}
-
 function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { project: PortfolioProject; language: Language; onLanguageChange: (language: Language) => void; onBack: () => void }): ReactNode {
   const t = text[language];
   const rtl = language === 'fa';
@@ -154,7 +115,6 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
   const architectureImage = import.meta.env.BASE_URL === './' ? null : `${import.meta.env.BASE_URL}architecture/${project.slug}${language === 'en' ? '-en' : ''}.svg`;
   return (
     <div className={`portfolio-page portfolio-case-study ${rtl ? 'is-rtl' : 'is-ltr'}`}>
-      <PointerLens />
       <div className="portfolio-atmosphere atmosphere-a" />
       <div className="portfolio-grid" />
       <header className="portfolio-header">
