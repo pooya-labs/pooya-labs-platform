@@ -24,10 +24,10 @@ The current public design is an early working draft. A full redesign based on Po
 
 - React + TypeScript + Vite.
 - GitHub Actions for type-checking, contract tests, and builds.
-- GitHub Pages as the primary public portfolio host.
+- GitHub Pages is the primary portfolio host; Cloudflare Pages has a separate production build and deployment path.
 - Persian-first RTL with English LTR support.
-- Deep graphite surfaces, cyan/emerald accents, and a restrained Antigravity-inspired pointer refraction effect.
-- Apps Script remains a deferred experiment/optional backend adapter; the static portfolio does not depend on it.
+- Deep graphite surfaces, cyan/emerald accents, and restrained spatial layering; the custom pointer-following lens was removed at owner request.
+- Apps Script has an independent HtmlService build and a secret-gated production deployment workflow. Its current RPC surface remains a Phase 0 health-check proof; the static portfolio does not depend on it.
 
 **Preview:** https://pooya-labs.github.io/pooya-labs-platform/
 
