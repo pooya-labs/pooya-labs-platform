@@ -77,6 +77,19 @@ test('reviewed project interface screenshots are embedded in both static case-st
   assert.doesNotMatch(aetherFlow, /interface-captures\\/aetherflow\\/aetherflow-(?:desktop|mobile)\\.png/);
 });
 
+test('Pages build omits unused local screenshot duplicates while preserving immutable remote evidence', { skip: !rootHtml }, async () => {
+  const orbit = await readFile(new URL('projects/orbit/index.html', outputRoot), 'utf8');
+  assert.match(
+    orbit,
+    /https:\/\/raw\.githubusercontent\.com\/pooya-labs\/pooya-labs-platform\/[a-f0-9]{40}\/apps\/platform\/public\/interface-captures\/orbit\/orbit-desktop\.png/,
+    'The reviewed desktop image must remain available through its immutable source URL',
+  );
+  await assert.rejects(
+    readFile(new URL('interface-captures/orbit/orbit-desktop.png', outputRoot)),
+    'The Pages bundle must not duplicate the already remotely hosted screenshot binary',
+  );
+});
+
 test('GlobalCart static case studies include real pinned desktop and mobile storefront screenshots', { skip: !rootHtml }, async () => {
   for (const route of ['projects/global-cart/index.html', 'en/projects/global-cart/index.html']) {
     const html = await readFile(new URL(route, outputRoot), 'utf8');
