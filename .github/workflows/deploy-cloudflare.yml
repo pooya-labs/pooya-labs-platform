@@ -1,0 +1,96 @@
+name: Cloudflare Pages production deployment
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/platform/**'
+      - 'package.json'
+      - '.github/workflows/deploy-cloudflare.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-pages-production
+  cancel-in-progress: false
+
+jobs:
+  detect-credentials:
+    name: Check Cloudflare deployment credential
+    runs-on: ubuntu-latest
+    outputs:
+      configured: ${{ steps.check.outputs.configured }}
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - name: Check required GitHub Actions secret
+        id: check
+        shell: bash
+        run: |
+          if [[ -n "$CLOUDFLARE_API_TOKEN" ]]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "Cloudflare Pages deploy credential is configured."
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Cloudflare deployment skipped. Add CLOUDFLARE_API_TOKEN with Account > Cloudflare Pages > Edit permission."
+          fi
+
+  deploy:
+    name: Trigger and verify Cloudflare Pages production deployment
+    needs: detect-credentials
+    if: needs.detect-credentials.outputs.configured == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: '593f6245708f02254aa8ed0f1417f739'
+      CLOUDFLARE_PROJECT_NAME: pooya-labs-platform
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Trigger Cloudflare Pages deployment for this exact commit
+        id: trigger
+        shell: bash
+        run: |
+          set -euo pipefail
+          commit_message="$(git log -1 --pretty=%s)"
+          response="$(curl --fail-with-body --silent --show-error --retry 3 \
+            --request POST \
+            --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            --form "branch=main" \
+            --form "commit_hash=$GITHUB_SHA" \
+            --form "commit_message=$commit_message" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$CLOUDFLARE_PROJECT_NAME/deployments")"
+          echo "$response" | jq -e '.success == true and (.result.id | type == "string")' >/dev/null
+          deployment_id="$(echo "$response" | jq -r '.result.id')"
+          deployment_url="$(echo "$response" | jq -r '.result.url')"
+          echo "deployment_id=$deployment_id" >> "$GITHUB_OUTPUT"
+          echo "deployment_url=$deployment_url" >> "$GITHUB_OUTPUT"
+          echo "Cloudflare accepted deployment $deployment_id for $GITHUB_SHA."
+
+      - name: Wait for Cloudflare production deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+          api="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/$CLOUDFLARE_PROJECT_NAME/deployments/${{ steps.trigger.outputs.deployment_id }}"
+          for attempt in $(seq 1 60); do
+            response="$(curl --fail-with-body --silent --show-error --retry 2 \
+              --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$api")"
+            stage="$(echo "$response" | jq -r '.result.latest_stage.name // "unknown"')"
+            status="$(echo "$response" | jq -r '.result.latest_stage.status // "unknown"')"
+            echo "Cloudflare deployment stage: $stage ($status)"
+            if [[ "$status" == "success" ]]; then
+              echo "Cloudflare production deployment completed: ${{ steps.trigger.outputs.deployment_url }}"
+              exit 0
+            fi
+            if [[ "$status" == "failure" || "$status" == "error" ]]; then
+              echo "$response" | jq -r '.errors[]?.message // empty'
+              exit 1
+            fi
+            sleep 10
+          done
+          echo "Cloudflare deployment did not reach success before the workflow timeout."
+          exit 1
