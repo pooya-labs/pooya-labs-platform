@@ -31,7 +31,7 @@
   outline: 2px solid var(--pf-cyan); outline-offset: 4px;
 }
 .portfolio-skip-link {
-  position: absolute; z-index: 1000; inset-block-start: 12px; inset-inline-start: 16px;
+  position: fixed; z-index: 1000; inset-block-start: 12px; inset-inline-start: 16px;
   transform: translateY(calc(-100% - 20px)); padding: 11px 16px; border: 1px solid rgba(120, 247, 222, .55);
   border-radius: 10px; color: #061b20 !important; background: linear-gradient(110deg, #76e8ec, #7de4b7);
   box-shadow: 0 8px 26px rgba(59, 212, 192, .18); font-size: 12px; font-weight: 700;

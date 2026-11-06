@@ -17,6 +17,7 @@ test('Persian and English pages expose visible-on-focus skip navigation', () => 
   assert.ok(viteConfig.includes("skipToContent: 'Skip to main content'"));
   assert.ok(viteConfig.includes('<a class="portfolio-skip-link" href="#main-content">${t.skipToContent}</a>'));
   assert.ok(viteConfig.includes('<main id="main-content" tabindex="-1" class="case-study-main'));
+  assert.ok(css.includes('.portfolio-skip-link {\n  position: fixed;'));
   assert.ok(css.includes('.portfolio-skip-link:focus, .portfolio-skip-link:focus-visible'));
   assert.ok(css.includes('transform: translateY(0)'));
   assert.ok(css.includes('prefers-reduced-motion: reduce) { .portfolio-skip-link { transition: none'));
