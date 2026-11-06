@@ -79,6 +79,12 @@ try {
 
       for (const viewport of viewports) {
         await page.setViewportSize({ width: viewport.width, height: viewport.height });
+        if (viewport.name === 'mobile' && ['nexus-canvas', 'lumina-glass'].includes(target.slug)) {
+          const resetResponse = await page.goto(target.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+          if (!resetResponse || resetResponse.status() >= 400) throw new Error('Could not reset ' + target.slug + ' before mobile feature capture.');
+          await page.locator('body').waitFor({ state: 'visible', timeout: 10000 });
+          await page.waitForTimeout(1600);
+        }
         await page.waitForTimeout(500);
         await page.addStyleTag({
           content: [
@@ -122,14 +128,36 @@ try {
         }
         await captureScenario('overview', 'Overview');
 
-        // Demo mode has seeded incidents. Telemetry views require a connected API and otherwise show a connect prompt.
-        // Capture the populated Incidents view only, so placeholder Metrics/Logs/Traces are never presented as telemetry.
+        // Demo mode has seeded incidents, but its incident-management panel intentionally withholds
+        // real incident actions until an authenticated API is connected. Metrics/Logs/Traces are also
+        // connection prompts, so none of these states are labelled as live telemetry.
         if (target.slug === 'orbit') {
           const mobileMenu = page.locator('.mobile-menu');
           if (await mobileMenu.isVisible()) await mobileMenu.click();
           await page.getByRole('button', { name: 'Incidents', exact: true }).first().click();
           await page.waitForTimeout(650);
-          await captureScenario('incidents', 'Incidents');
+          await captureScenario('incidents', 'Incidents · API authentication required');
+        }
+
+        // NexusCanvas: capture the interactive mobile-rack view and the export/import modal.
+        // No JSON file is imported and no download is triggered by the capture.
+        if (target.slug === 'nexus-canvas') {
+          await page.getByRole('button', { name: /Mobile Rack|نمای رک موبایل/ }).first().click();
+          await page.waitForTimeout(600);
+          await captureScenario('mobile-rack', 'Mobile Rack');
+          await page.getByRole('button', { name: /Export Docker \/ JSON|خروجی Docker \/ JSON/ }).first().click();
+          await page.waitForTimeout(500);
+          await captureScenario('export-modal', 'Export Docker / JSON');
+        }
+
+        // LuminaGlass: capture the Audio EQ and local task-board tabs without starting audio or editing tasks.
+        if (target.slug === 'lumina-glass') {
+          await page.getByRole('button', { name: /Real WebAudio EQ|استودیو صدا/ }).first().click();
+          await page.waitForTimeout(600);
+          await captureScenario('audio-lab', 'Real WebAudio EQ · playback stopped');
+          await page.getByRole('button', { name: /Sprint Workflow|برد مدیریت تسک/ }).first().click();
+          await page.waitForTimeout(500);
+          await captureScenario('task-board', 'Sprint Workflow · local-only');
         }
       }
     } catch (error) {
@@ -153,7 +181,7 @@ try {
     path.join(outputDir, 'capture-report.json'),
     JSON.stringify({
       generatedAt: new Date().toISOString(),
-      note: 'Screenshots are unreviewed evidence candidates. They are not automatically published or committed. ORBIT includes an additional explicitly demo-labelled Incidents view; Metrics/Logs/Traces are not captured from placeholder connect prompts. Each record includes viewport overflow diagnostics, byte size, and SHA-256 for artifact integrity.',
+      note: 'Screenshots are unreviewed evidence candidates. They are not automatically published or committed. ORBIT includes an Incidents auth-boundary view; NexusCanvas includes Mobile Rack and export/import modal states; LuminaGlass includes Audio EQ and local task-board states. No audio is started, no file is imported, and no task is modified. Metrics/Logs/Traces are not captured from placeholder connect prompts. Each record includes viewport overflow diagnostics, byte size, and SHA-256 for artifact integrity.',
       excluded: ['salon-booking (requires owner-approved, privacy-reviewed capture)'],
       captures: records,
     }, null, 2) + '\n',
@@ -163,7 +191,8 @@ try {
 }
 
 const captured = records.filter((record) => record.result === 'captured-pending-human-review').length;
-const expectedCaptureCount = targets.length * viewports.length + viewports.length;
+const featureScenarioTargets = targets.filter((target) => ['orbit', 'nexus-canvas', 'lumina-glass'].includes(target.slug)).length;
+const expectedCaptureCount = targets.length * viewports.length + featureScenarioTargets * 2 * viewports.length;
 console.log(`Capture workflow produced ${captured} of ${expectedCaptureCount} expected viewport/scenario screenshots.`);
 if (captured !== expectedCaptureCount) {
   const failed = records.filter((record) => record.result === 'capture-failed');

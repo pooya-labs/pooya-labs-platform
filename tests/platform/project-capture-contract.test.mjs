@@ -20,6 +20,13 @@ test('preview capture covers only the six public project demos with two responsi
   assert.doesNotMatch(script, /slug: 'salon-booking'/);
   assert.match(script, /captureScenario\('overview', 'Overview'\)/);
   assert.match(script, /captureScenario\('incidents', 'Incidents'\)/);
+  assert.match(script, /captureScenario\('mobile-rack', 'Mobile Rack'\)/);
+  assert.match(script, /captureScenario\('export-modal', 'Export Docker \/ JSON'\)/);
+  assert.match(script, /captureScenario\('audio-lab', 'Real WebAudio EQ/);
+  assert.match(script, /captureScenario\('task-board', 'Sprint Workflow/);
+  assert.match(script, /No JSON file is imported and no download is triggered/);
+  assert.match(script, /without starting audio or editing tasks/);
+
   assert.match(script, /target\.slug === 'orbit'/);
   assert.match(script, /Telemetry views require a connected API/);
   assert.match(script, /page\.locator\('\.sidebar \.nav-item'\)/);
