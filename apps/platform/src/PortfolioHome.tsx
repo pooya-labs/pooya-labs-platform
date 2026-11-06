@@ -298,7 +298,6 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
 
   return (
     <div className={`portfolio-page ${rtl ? 'is-rtl' : 'is-ltr'}`}>
-      <PointerLens />
       <div className="portfolio-atmosphere atmosphere-a" />
       <div className="portfolio-atmosphere atmosphere-b" />
       <div className="portfolio-grid" />
