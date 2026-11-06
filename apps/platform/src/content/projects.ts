@@ -66,19 +66,6 @@ const projectEntries: PortfolioProject[] = [
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/orbit/a00e8bebcf7b01c40532af169d97b3d64ce5dea4/app/icon.svg', kind: 'brand', alt: { fa: 'نشان گرافیکی پروژه ORBIT', en: 'ORBIT project mark' } },
     slug: 'orbit',
     name: 'ORBIT',
-    caseStudyHeroAsset: {
-      url: '/pooya-labs-platform/interface-captures/orbit/orbit-desktop.png',
-      kind: 'interface',
-      alt: { fa: 'تصویر واقعی داشبورد ORBIT در نمای دسکتاپ؛ محیط نمونه با داده‌های نمایشی', en: 'Actual ORBIT desktop dashboard screenshot; sample environment with illustrative demo data' },
-    },
-    caseStudyMedia: [
-      {
-        url: '/pooya-labs-platform/interface-captures/orbit/orbit-mobile.png',
-        caption: { fa: 'نمای واقعی داشبورد ORBIT روی موبایل', en: 'Actual ORBIT dashboard on mobile' },
-        alt: { fa: 'رابط کاربری واکنش‌گرای ORBIT در اندازه موبایل', en: 'Responsive ORBIT user interface at mobile size' },
-        device: 'mobile',
-      },
-    ],
     caseStudy: {
       challenge: { fa: "در سیستم‌های توزیع‌شده، وضعیت سرویس، رخدادها، هشدارها و سیگنال‌های metrics، logs و traces معمولاً در ابزارهای جداگانه پخش‌اند. ORBIT تلاش می‌کند این دید عملیاتی را در یک فضای کاری منسجم جمع کند.", en: "In distributed systems, service health, incidents, alerts, and metrics, logs, and traces are often scattered across tools. ORBIT brings these operational views into one cohesive workspace." },
       approach: { fa: "داشبورد React به API و مدل داده پشتیبان متصل است و بخش‌هایی مانند incidents، alerts، deployments، SLOs، audit، metrics، logs و traces را ارائه می‌کند. دمو عمومی و stack مهندسی محلی به‌صورت آگاهانه از هم جدا هستند.", en: "A React dashboard connects to API and data models for incidents, alerts, deployments, SLOs, audit, metrics, logs, and traces. The public demo and local engineering stack are deliberately separate." },
@@ -294,6 +281,16 @@ export function validatePortfolioProjects(entries: readonly PortfolioProject[]):
       }
       if (!project.visualAsset.alt.fa.trim() || !project.visualAsset.alt.en.trim()) {
         throw new Error('Every project visual asset requires Persian and English alternative text.');
+      }
+    }
+    if (project.caseStudyHeroAsset) {
+      assertHttpsUrl(project.caseStudyHeroAsset.url, ['raw.githubusercontent.com'], 'Case-study hero asset URL');
+      const heroPath = new URL(project.caseStudyHeroAsset.url).pathname;
+      if (!/^\\/pooya-labs\\/[a-z0-9-]+\\/[a-f0-9]{40}\\//.test(heroPath)) {
+        throw new Error('Case-study hero assets must be pinned to an immutable source commit.');
+      }
+      if (!project.caseStudyHeroAsset.alt.fa.trim() || !project.caseStudyHeroAsset.alt.en.trim()) {
+        throw new Error('Every case-study hero asset requires Persian and English alternative text.');
       }
     }
     if (project.caseStudyMedia) {
