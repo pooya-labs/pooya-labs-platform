@@ -2,7 +2,7 @@
 
 **Task ID:** P3-08  
 **Title:** Complete remaining project evidence, external share validation, and owner acceptance before Phase 7  
-**Status:** Eight bilingual dossiers, eight bilingual architecture diagrams, 16 static case-study pages, 17 PNG social cards plus 17 SVG sources, GlobalCart desktop/mobile storefront screenshots, and ten reviewed interface screenshots across ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse are implemented. Screenshot capture is artifact-only; dedicated checksum-gated workflows publish only reviewed assets. Current main CI passed 40/40 contract tests, all three target builds, and both artifact uploads. The Cloudflare production deployment from the same verified source completed successfully; GitHub Pages build passed, while its latest deploy job was still running at the last check.
+**Status:** Eight bilingual dossiers, eight bilingual architecture diagrams, 16 static case-study pages, 17 PNG social cards plus 17 SVG sources, GlobalCart desktop/mobile storefront screenshots, and ten reviewed interface screenshots across ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse are implemented. Screenshot capture is artifact-only; dedicated checksum-gated workflows publish only reviewed assets. Current main CI passed 40/40 contract tests, all three target builds, and both artifact uploads. The Cloudflare production deployment from the same verified source completed successfully; GitHub Pages build and deployment both succeeded.
 
 See [DEPLOYMENT-TARGETS.md](DEPLOYMENT-TARGETS.md) for independent host build/deploy paths and the remaining credential gates.
 
@@ -22,7 +22,7 @@ See [DEPLOYMENT-TARGETS.md](DEPLOYMENT-TARGETS.md) for independent host build/de
 
 ## Verified checks
 - Repository CI [42225133097](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42225133097) passed on main SHA `f9011ec5a3f9eb2faffdac222596b37444184191`: TypeScript, all three target builds, GAS/Cloudflare artifacts, and **40/40 contract tests**.
-- GitHub Pages build [42225133071](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42225133071) succeeded on SHA `f9011ec5a3f9eb2faffdac222596b37444184191`; final deployment job was still active at last check.
+- GitHub Pages build and deployment [42225133071](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42225133071) succeeded on SHA `f9011ec5a3f9eb2faffdac222596b37444184191`.
 - Cloudflare Pages deployment `0bba4323-359d-4fb6-8d5e-aa833e36b22c` succeeded from SHA `f9011ec5a3f9eb2faffdac222596b37444184191`, with all 83 files present; host: https://pooya-labs-platform.pages.dev. The inspected bundle confirms its homepage metadata, bilingual case-study metadata, sitemap, and robots point only to the Cloudflare origin.
 - Cloudflare and Apps Script GitHub Actions deployment workflows are present but remain secret-gated. Cloudflare native Git push deployment is disabled because the push probe did not trigger a deployment; the API workflow requires `CLOUDFLARE_API_TOKEN`. Apps Script deployment requires `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID`.
 - The published Pages ZIP is 3,811,158 bytes, down 51.6% from the pre-pruning 7,870,673-byte artifact. The final artifact audit confirms all 17 current-date sitemap URLs, 16 bilingual case-study pages, and 17 valid 1200×627 PNG social cards.

@@ -29,7 +29,7 @@ The current public design is an early working draft. A full redesign based on Po
 - Deep graphite surfaces, cyan/emerald accents, and restrained spatial layering; the custom pointer-following lens was removed at owner request.
 - Apps Script has an independent HtmlService build and a secret-gated production deployment workflow. Its current RPC surface remains a Phase 0 health-check proof; the static portfolio does not depend on it.
 
-**Preview:** https://pooya-labs.github.io/pooya-labs-platform/
+**Previews:** [GitHub Pages](https://pooya-labs.github.io/pooya-labs-platform/) · [Cloudflare Pages](https://pooya-labs-platform.pages.dev/)
 
 ## Current implementation
 

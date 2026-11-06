@@ -21,7 +21,7 @@
 - [x] Added a secret-gated `clasp` workflow for the isolated HtmlService payload. CI builds and uploads the GAS bundle; production deployment waits for `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` repository secrets.
 - [x] Kept each target independent: GitHub Pages (`dist/pages`), Cloudflare Pages (`dist/cloudflare`), and Apps Script (`dist/gas` / `dist/gas-deploy`). Added a build contract to verify host-specific canonical/meta URLs, sitemap, robots, and route asset paths.
 - [ ] Add the Cloudflare Pages API token and Apps Script clasp secrets to repository Actions settings, then run the production workflows. Do not put credentials in repository files or chat.
-- [ ] Confirm the final pages.dev and Apps Script /exec routes in a real browser from the owner's device. Cloudflare API confirms publication; external HTTP browser verification was unavailable in this session.
+- [ ] Confirm the final pages.dev and Apps Script /exec routes in a real browser from the owner's device. Cloudflare API confirms publication and artifact integrity; direct external browser fetching was unavailable in this session. Apps Script's automatic deployment is still secret-gated.
 
 ## Newly implemented
 - [x] Added bilingual Persian/English public portfolio as the default root experience.
@@ -55,7 +55,7 @@
 
 ## CI and publishing status
 - Repository CI [42225133097](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42225133097) passed on main SHA `f9011ec5a3f9eb2faffdac222596b37444184191`: TypeScript, GitHub Pages/Apps Script build, Cloudflare build, both artifact uploads, and **40/40 contract tests**. The new multi-host contract verifies canonical URLs, JSON-LD, sitemap, robots, and route asset paths are isolated per host.
-- GitHub Pages build [42225133071](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42225133071) completed successfully on SHA `f9011ec5a3f9eb2faffdac222596b37444184191`; its deployment job was still active at the latest check, so the final Pages deploy for this SHA remains unconfirmed.
+- GitHub Pages build and deployment [42225133071](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42225133071) both succeeded on SHA `f9011ec5a3f9eb2faffdac222596b37444184191`.
 - The generated host-specific Cloudflare artifact contains the sitemap, 16 bilingual case-study routes, 17 valid 1200×627 PNG social cards, and a robots.txt sitemap pointer for the Cloudflare origin. The new cross-host test passed. GitHub Pages retains its own project subpath and canonical origin.
 - The GitHub Pages artifact ZIP measured **3,811,158 bytes**, down from **7,870,673 bytes** before duplicate screenshot pruning (51.6% reduction).
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
