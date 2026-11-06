@@ -17,9 +17,9 @@
 ## Publishing status — 2026-11-06
 - [x] Added an isolated Cloudflare build target: `npm run build:cloudflare` → `dist/cloudflare`, with Cloudflare-specific canonical origin and root base.
 - [x] Created Cloudflare Pages project `pooya-labs-platform` on `pooya-labs-platform.pages.dev`; latest checked deployment `7b544ac0-4d76-451f-aa97-bb1f34515509` completed successfully from main commit `6661532b7061cb3ccff8bbe58dabb25708bb4389`.
-- [x] Added a secret-gated GitHub Actions Cloudflare production trigger that deploys the exact pushed main commit and polls for Cloudflare's success status. The required `CLOUDFLARE_API_TOKEN` secret is not configured yet, so automatic GitHub-triggered publishing remains disabled until the token is added.
+- [x] Added a secret-gated GitHub Actions Cloudflare production trigger that runs type-check/build/contract tests, deploys the exact pushed main commit through the Pages API, and polls for success. Native Pages Git push deployment is paused because the repository push probe did not trigger a deployment. The required `CLOUDFLARE_API_TOKEN` secret is not configured yet.
 - [x] Added a secret-gated `clasp` workflow for the isolated HtmlService payload. CI builds and uploads the GAS bundle; production deployment waits for `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` repository secrets.
-- [x] Kept each target independent: GitHub Pages (`dist/pages`), Cloudflare Pages (`dist/cloudflare`), and Apps Script (`dist/gas` / `dist/gas-deploy`).
+- [x] Kept each target independent: GitHub Pages (`dist/pages`), Cloudflare Pages (`dist/cloudflare`), and Apps Script (`dist/gas` / `dist/gas-deploy`). Added a build contract to verify host-specific canonical/meta URLs, sitemap, robots, and route asset paths.
 - [ ] Add the Cloudflare Pages API token and Apps Script clasp secrets to repository Actions settings, then run the production workflows. Do not put credentials in repository files or chat.
 - [ ] Confirm the final pages.dev and Apps Script /exec routes in a real browser from the owner's device. Cloudflare API confirms publication; external HTTP browser verification was unavailable in this session.
 
