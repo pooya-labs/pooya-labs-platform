@@ -43,7 +43,7 @@ jobs:
   deploy:
     name: Build, push, and update the stable Apps Script Web App
     needs: detect-credentials
-    if: needs.detect-credentials.outputs.configured == 'true'
+    if: needs.detect-credentials.outputs.configured == 'true' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
