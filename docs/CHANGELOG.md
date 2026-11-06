@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-06 — Portfolio accessibility remediation and strict axe QA
+- The first axe scan on commit `2933bad` identified 51 repeated serious findings: 34 brand-name mismatches and 17 undersized navigation targets. Both were fixed centrally in [38203322](https://github.com/pooya-labs/pooya-labs-platform/commit/38203322f11184adb06064a530c5f8b4bc5c05a2).
+- QA run [42236238032](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42236238032) passed 17/17 routes and 34/34 desktop/mobile checks with zero axe violations. The first report exposed 36 incomplete rule checks; two `aria-prohibited-attr` cases on the hero artwork were fixed with `role="img"` and localized accessible naming in [dc991c4](https://github.com/pooya-labs/pooya-labs-platform/commit/dc991c4a90aad92ec4006332fffccf04fdd09951).
+- Strict browser QA now fails critical/serious axe violations and retains incomplete-rule details. Current-SHA run [42238363900](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42238363900) passed **17/17 routes, 34/34 viewport checks, zero axe violations, and zero failures**. Its 34 incomplete records are all color-contrast checks that need human visual review because glass/gradient/overlapped backgrounds prevent reliable automatic calculation. No formal WCAG certification is claimed.
+- Repository CI [42238363801](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42238363801) passed all three builds and **46/46 contract tests** on current SHA `dc991c4a90aad92ec4006332fffccf04fdd09951`.
+- GitHub Pages build succeeded on current SHA; deployment [42238363799](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42238363799) was still running at this checkpoint.
+- Cloudflare and Apps Script actual deploy jobs were skipped because their required Actions secrets are unavailable.
+
 ## 2026-11-06 — Portfolio Chromium browser QA
 - Added a dedicated Playwright/Chromium workflow for the GitHub Pages build, independent of the external-project screenshot capture workflow.
 - The test opens the homepage and all 16 Persian/English case-study routes directly, at desktop 1440×1000 and mobile 390×844.

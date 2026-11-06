@@ -23,15 +23,17 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 **Required before portfolio release**
 - [ ] Confirm exact public attribution/role wording. The current README does not identify an individual author or provide a personal contribution breakdown.
 - [x] Add a bilingual architecture/execution-flow diagram based on the documented Rust, PostgreSQL, JetStream, Worker, and observability boundaries.
-- [ ] Capture an owner-approved current UI/API/worker screenshot; no actual product screenshot was found in the repository.
-- [ ] Resolve the public landing-page milestone label mismatch before using a current screenshot: the live page still displays M07 while the source audit records M08 in progress. The portfolio currently withholds AetherFlow UI screenshots until the public source evidence is reconciled.
+- [ ] Capture and approve current AetherFlow UI evidence. The portfolio's artifact-only capture workflow [42234110094](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42234110094) reached the current `pooya-labs.github.io` landing route and produced an unreviewed candidate, but the visible milestone still reads M07.
+- [ ] Resolve the public landing-page milestone mismatch before screenshot acceptance: README says M08 is in progress while the landing page and dashboard still display M07. The portfolio continues to withhold AetherFlow UI imagery.
 
-**Verified source detail (2026-11-06)**
-- The current AetherFlow README says M00–M07 are complete and M08 is in progress.
-- The public landing page still labels its execution preview `Control plane / M07`, and `dashboard/index.html` still labels the page `Observability / M07`.
-- The dashboard's CORS setup notice still asks operators to allow `https://pooya16pg-spec.github.io`; the portfolio's current Pages preview is `https://pooya-labs.github.io/aetherflow/`. The public-host change therefore must be reconciled with the actual API CORS allowlist before describing hosted dashboard/API connectivity as verified.
-- The AetherFlow README still advertises its previous `pooya16pg-spec.github.io` live URLs. The portfolio points to the currently captured `pooya-labs.github.io` host, but the AetherFlow source repository remains the authority for the dashboard host and CORS policy.
-- These are upstream AetherFlow documentation/UI consistency items. The portfolio work does not modify the independent AetherFlow repository. Keep its UI screenshot withheld until the project owner aligns its visible milestone labels, public host links, and CORS origin guidance with the current README and deployment.
+**Verified source detail (2026-11-06; read-only recheck)**
+- Inspected upstream `pooya-labs/aetherflow` main at `f673dbde000a6a673ec113e338fbb89ab3b1aede`. README says M00–M07 are complete and M08 is in progress.
+- The same source revision's `index.html` still displays `Control plane / M07`, and `dashboard/index.html` still displays `Observability / M07`.
+- The portfolio capture workflow [42234110094](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42234110094) reached `https://pooya-labs.github.io/aetherflow/` with HTTP 200 and no failed page request. This proves landing-page reachability only, not API connectivity.
+- The AetherFlow README and navigation still contain previous `pooya16pg-spec.github.io` URLs. The dashboard's CORS setup notice still names `https://pooya16pg-spec.github.io`, while the current candidate capture originates from `https://pooya-labs.github.io`. Dashboard API base URL is operator-entered, and its client requires remote API URLs to use HTTPS.
+- No live API preflight or successful hosted dashboard/API exchange was verified. Do not describe the dashboard as connected on the new origin until the deployed API CORS allowlist is tested from the real browser origin.
+- Exact-SHA upstream checks on `f673dbd` passed for Pages [42231989973](https://github.com/pooya-labs/aetherflow/actions/runs/42231989973), Rust CI [42231991248](https://github.com/pooya-labs/aetherflow/actions/runs/42231991248), PostgreSQL schema [42231991305](https://github.com/pooya-labs/aetherflow/actions/runs/42231991305), and supply-chain/security [42231991310](https://github.com/pooya-labs/aetherflow/actions/runs/42231991310). These job results do not establish browser/API CORS behavior.
+- This was a read-only inspection; the independent AetherFlow repository was not modified. Keep its UI screenshot withheld until the owner aligns milestone labels, public links, and CORS guidance, verifies the live API preflight, and approves the new screenshot.
 - [ ] Recheck M08 against the current main SHA: in-flight worker completion during API outage, additional distinct recovery/failure-injection cases, and the fingerprint-aware benchmark comparator. Resolve or clearly describe any outstanding schema/CI failure.
 - [ ] Record the owner's license choice; README states license selection is still pending.
 - [ ] Confirm which benchmark/recovery results may be quoted publicly and retain exact run/source links.
