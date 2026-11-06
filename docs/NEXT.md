@@ -27,7 +27,7 @@
 ## Next implementation sequence
 1. [x] Confirm Repository CI, TypeScript, Pages/GAS builds, and 39/39 contract tests. [x] Confirm Pages build and deployment for the application-source SHA.
 2. Validate the 1200×627 PNG social previews in external share clients/inspectors and confirm cached-card refresh; add alternate formats only if a real client requires them.
-3. Resolve AetherFlow's M07/M08 public milestone label mismatch, then capture and review a current desktop/mobile interface screenshot.
+3. Resolve AetherFlow's public UI/documentation mismatch before screenshot acceptance: README says M08 is in progress, while the landing page and dashboard still show M07; reconcile the previous `pooya16pg-spec.github.io` links and dashboard CORS origin with the current `pooya-labs.github.io` host, then capture/review a current desktop/mobile screenshot. Keep the independent AetherFlow repository untouched during portfolio work.
 4. Extend ORBIT evidence beyond Overview (Incidents, Metrics, Logs, Traces); add focused NexusCanvas rack/graph/snapshot states and LuminaGlass export/Audio Lab/task-board states where they materially improve the case studies.
 5. Capture AuraPulse connected-feed and fallback states in a browser/network context where the actual public ticker request is allowed; keep current images explicitly simulated until then.
 6. Obtain Pooya's confirmation of biography/positioning, first three featured projects, attribution wording, project statuses, contact channel, and approved assets.
