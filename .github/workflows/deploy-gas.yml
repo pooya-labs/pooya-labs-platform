@@ -68,6 +68,9 @@ jobs:
       - name: Build GitHub Pages and Apps Script bundles
         run: npm run build
 
+      - name: Build Cloudflare Pages bundle for cross-host validation
+        run: npm run build:cloudflare
+
       - name: Run repository contract tests
         run: npm test
 
