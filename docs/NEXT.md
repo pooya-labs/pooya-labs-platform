@@ -2,7 +2,7 @@
 
 **Task ID:** P3-08  
 **Title:** Complete remaining project evidence, external share validation, and owner acceptance before Phase 7  
-**Status:** Eight bilingual dossiers, eight bilingual architecture diagrams, 16 static case-study pages, 17 PNG social cards plus 17 SVG sources, and GlobalCart desktop/mobile UI screenshots implemented. ORBIT screenshot paths were removed because the PNGs were absent from main; capture workflow is artifact-only. Latest known green CI (34/34) predates current code.
+**Status:** Eight bilingual dossiers, eight bilingual architecture diagrams, 16 static case-study pages, 17 PNG social cards plus 17 SVG sources, and GlobalCart desktop/mobile UI screenshots implemented. ORBIT screenshot paths were removed because the PNGs were absent from main; capture workflow is artifact-only. Current main CI passed 39/39 tests; latest application-source Pages build and deployment succeeded.
 
 ## Current implementation
 - Public bilingual portfolio is the default root experience; Spatial OS is secondary.
@@ -17,7 +17,8 @@
 - The exact per-project gaps remain in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 
 ## Verified checks
-- The last confirmed green repository CI run [42072937855](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42072937855) passed TypeScript, Pages/GAS builds, artifact upload, and **34/34 contract tests**. It predates the latest main changes and must not be treated as verification of the current SHA.
+- Repository CI [42207747731](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42207747731) passed on current main SHA `548e90da4be43e77049d8e560237f1359454a554`: TypeScript, Pages/GAS builds, artifact upload, and **39/39 contract tests**.
+- Pages build and deployment [42206604179](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42206604179) both succeeded for the latest application-source SHA `7365a7bcdeef73afd25eb31048b7a6fc9cc6c3dc`.
 - Pages deployment containing the Resvg raster-card generator and the bilingual static case-study build [42071642813](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42071642813) succeeded.
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
 
