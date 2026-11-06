@@ -121,7 +121,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
       <div className="portfolio-atmosphere atmosphere-a" />
       <div className="portfolio-grid" />
       <header className="portfolio-header">
-        <a className="portfolio-brand" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }} aria-label="Pooya Labs home">
+        <a className="portfolio-brand" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}>
           <span className="portfolio-brand-mark">P<span>.</span></span>
           <span><strong>POOYA</strong><small>PROJECT CASE STUDY</small></span>
         </a>
@@ -307,7 +307,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
       <div className="portfolio-grid" />
 
       <header className="portfolio-header">
-        <a className="portfolio-brand" href="#top" aria-label="Pooya Labs home">
+        <a className="portfolio-brand" href="#top">
           <span className="portfolio-brand-mark">P<span>.</span></span>
           <span><strong>POOYA</strong><small>INDEPENDENT BUILDER</small></span>
         </a>

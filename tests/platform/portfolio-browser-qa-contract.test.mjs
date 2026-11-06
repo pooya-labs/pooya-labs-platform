@@ -5,6 +5,8 @@ import { readFile } from 'node:fs/promises';
 const script = await readFile(new URL('../../apps/platform/scripts/portfolio-browser-qa.mjs', import.meta.url), 'utf8');
 const workflow = await readFile(new URL('../../.github/workflows/portfolio-browser-qa.yml', import.meta.url), 'utf8');
 const packageJson = JSON.parse(await readFile(new URL('../../apps/platform/package.json', import.meta.url), 'utf8'));
+const portfolioSource = await readFile(new URL('../../apps/platform/src/PortfolioHome.tsx', import.meta.url), 'utf8');
+const portfolioCss = await readFile(new URL('../../apps/platform/src/portfolio.css', import.meta.url), 'utf8');
 
 test('browser QA covers the homepage and every bilingual static case-study route', () => {
   const match = script.match(/const projectSlugs = \[([\s\S]*?)\];/);
@@ -52,5 +54,8 @@ test('browser QA includes a pinned axe-core Playwright scan for WCAG 2.2 AA and 
   assert.match(script, /axeResults\.violations/);
   assert.match(script, /axeResults\.incomplete/);
   assert.match(script, /finding\.impact === 'critical'/);
+  assert.doesNotMatch(portfolioSource, /aria-label=\"Pooya Labs home\"/);
+  assert.match(portfolioCss, /\.portfolio-header \.portfolio-brand[\s\S]*?min-height: 40px/);
+  assert.match(portfolioCss, /\.portfolio-nav a[\s\S]*?min-height: 32px/);
   assert.match(script, /impactCounts/);
 });

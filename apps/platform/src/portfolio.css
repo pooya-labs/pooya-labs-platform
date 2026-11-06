@@ -30,6 +30,21 @@
 .portfolio-page button:focus-visible, .portfolio-page a:focus-visible {
   outline: 2px solid var(--pf-cyan); outline-offset: 4px;
 }
+.portfolio-header .portfolio-brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding-block: 4px;
+}
+.portfolio-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  min-height: 32px;
+  padding: 6px 4px;
+  border-radius: 7px;
+}
 .portfolio-skip-link {
   position: fixed; z-index: 1000; inset-block-start: 12px; inset-inline-start: 16px;
   transform: translateY(calc(-100% - 20px)); padding: 11px 16px; border: 1px solid rgba(120, 247, 222, .55);
