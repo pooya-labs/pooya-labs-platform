@@ -2,7 +2,8 @@ import { defineConfig, type Plugin, type OutputBundle } from 'vite';
 import react from '@vitejs/plugin-react';
 import { viteSingleFile } from 'vite-plugin-singlefile';
 import { fileURLToPath } from 'node:url';
-import { readFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { Resvg } from '@resvg/resvg-js';
 import { portfolioProjects, type PortfolioProject } from './src/content/projects';
 import { coreDossiers } from './src/content/case-study-dossiers-core';
@@ -346,9 +347,13 @@ function renderSocialPng(svg: string): Uint8Array {
 }
 
 function staticCaseStudyPages(): Plugin {
+  let outputDirectory = root;
   return {
     name: 'pooya-labs-static-case-study-pages',
     apply: 'build',
+    configResolved(config) {
+      outputDirectory = config.build.outDir;
+    },
     generateBundle(_options, bundle: OutputBundle) {
       const entry = Object.values(bundle).find((item) => item.type === 'chunk' && item.isEntry);
       if (!entry || entry.type !== 'chunk') {
@@ -358,6 +363,7 @@ function staticCaseStudyPages(): Plugin {
         .filter((item) => item.type === 'asset' && item.fileName.endsWith('.css'))
         .map((item) => item.fileName);
       let template = readFileSync(new URL('./index.html', import.meta.url), 'utf8');
+      template = template.replaceAll(DEFAULT_SITE_ORIGIN + DEFAULT_SITE_BASE, SITE_ORIGIN + SITE_BASE);
       template = template.replace('src="/src/main.tsx"', `crossorigin src="${SITE_BASE}${entry.fileName}"`);
       template = template.replace('href="%BASE_URL%favicon.svg"', `href="${SITE_BASE}favicon.svg"`);
       template = template.replace('</head>', `${cssFiles.map((file) => `<link rel="stylesheet" crossorigin href="${SITE_BASE}${file}" />`).join('')}\n</head>`);
@@ -412,6 +418,10 @@ ${sitemapEntries.map((entry) => `  <url>
 </urlset>
 `;
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap });
+    },
+    closeBundle() {
+      const robots = `User-agent: *\nAllow: /\nSitemap: ${SITE_ORIGIN + SITE_BASE}sitemap.xml\n`;
+      writeFileSync(resolve(outputDirectory, 'robots.txt'), robots, 'utf8');
     }
   };
 }
