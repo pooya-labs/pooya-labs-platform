@@ -9,28 +9,28 @@
   "currentTask": {
     "id": "P3-08",
     "title": "Validate social previews and close owner evidence before Phase 7",
-    "status": "eight-bilingual-dossiers-eight-bilingual-diagrams-16-static-pages-17-png-social-cards-12-reviewed-ui-screenshots-six-projects-bilingual-fixed-skip-navigation-implemented-ci-42-of-42-passed-github-pages-deployed-owner-external-and-manual-accessibility-gates-pending"
+    "status": "17-browser-routes-34-responsive-checks-45-contract-tests-passed-github-pages-current-main-deployed-cloudflare-gas-credentials-manual-owner-validation-and-two-round-redesign-pending"
   },
   "lastCheckpointDate": "2026-11-06",
-  "latestVerifiedCodeCommit": "fc4d865b8fa4a19a3899f4b72847d39594c201ad",
+  "latestVerifiedCodeCommit": "515ef71d9105af0faf9fb3208d702520fd37be7f",
   "tests": {
-    "repositoryCi": "passed-run-42231110043",
-    "repositoryCiTestCount": 42,
+    "repositoryCi": "passed-run-42234110197",
+    "repositoryCiTestCount": 45,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
-    "githubPagesDeployment": "passed-run-42231109831",
-    "platformTypecheck": "passed-run-42231110043",
-    "pagesAndGasBuilds": "passed-run-42231110043-pages-gas-cloudflare",
+    "githubPagesDeployment": "passed-run-42234110256",
+    "platformTypecheck": "passed-run-42234110197",
+    "pagesAndGasBuilds": "passed-run-42234110197-pages-gas-cloudflare",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "pending-owner-review",
-    "vitePagesWorkflow": "passed-run-42231109831",
+    "vitePagesWorkflow": "passed-run-42234110256",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "GitHub Actions build and deploy succeeded on 2026-11-06 for source fc4d865b8fa4a19a3899f4b72847d39594c201ad; repository Pages source setting still requires owner-side confirmation",
-    "portfolioContractTests": "passed-42-of-42-run-42231110043",
+    "portfolioContractTests": "passed-45-of-45-run-42234110197",
     "latestPreviousPagesDeployment": "passed-run-42043972152",
     "docsCheckpoint": "passed-run-42060558950",
     "staticCaseStudyOutput": "passed-in-run-42072937855-16-pages-16-diagrams-17-png-cards-17-svg-sources-robots-sitemap-and-globalcart-screenshots",
@@ -39,7 +39,9 @@
     "socialCardPngFormat": "passed-in-run-42072937855-valid-png-signatures-1200x627-all-17",
     "staticCaseStudySectionOrder": "passed-run-42227942261-and-42230046270",
     "lastVerifiedTestCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
-    "skipNavigationContract": "passed-run-42231110043-bilingual-fixed-position-reduced-motion"
+    "skipNavigationContract": "passed-run-42231110043-bilingual-fixed-position-reduced-motion",
+    "portfolioBrowserQa": "passed-run-42234110102-17-of-17-routes-34-of-34-viewport-checks-zero-failures",
+    "portfolioBrowserQaArtifact": "13510613719"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -62,12 +64,12 @@
     "activePagesSource": "GitHub Actions deployment succeeded; repository Pages source setting still requires owner-side confirmation",
     "appsScriptSync": "deferred-not-required-for-static-portfolio",
     "portfolioPagesPublished": true,
-    "portfolioPagesRun": "42231109831",
-    "latestPortfolioCodeCommit": "fc4d865b8fa4a19a3899f4b72847d39594c201ad",
+    "portfolioPagesRun": "42234110256",
+    "latestPortfolioCodeCommit": "515ef71d9105af0faf9fb3208d702520fd37be7f",
     "cloudflareProductionDeployment": "0bba4323-359d-4fb6-8d5e-aa833e36b22c",
     "cloudflareProductionCommit": "f9011ec5a3f9eb2faffdac222596b37444184191",
-    "cloudflareWorkflow": "deploy-job-skipped-missing-CLOUDFLARE_API_TOKEN-run-42231109875",
-    "appsScriptWorkflow": "deploy-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID-run-42231110048"
+    "cloudflareWorkflow": "deploy-job-skipped-missing-CLOUDFLARE_API_TOKEN-run-42234110086",
+    "appsScriptWorkflow": "deploy-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID-run-42234110353"
   },
   "previousProjects": {
     "inspected": true,
@@ -110,7 +112,7 @@
     "backupRestoreDocumented": true,
     "backupRestoreRehearsed": false,
     "runbook": "docs/DEPLOYMENT-RUNBOOK.md",
-    "browserDiagnosticWorkflow": "manual-only",
+    "browserDiagnosticWorkflow": "portfolio-browser-qa-workflow-added-run-42234110102",
     "browserDiagnosticUrlStoredInActionsSecret": true,
     "appsScriptSync": "deferred-not-required-for-static-portfolio"
   },
@@ -127,7 +129,7 @@
     "designDocument": "docs/DESIGN-DIRECTION.md",
     "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
   },
-  "latestVerifiedCommit": "fc4d865b8fa4a19a3899f4b72847d39594c201ad",
+  "latestVerifiedCommit": "515ef71d9105af0faf9fb3208d702520fd37be7f",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -179,7 +181,7 @@
     "socialPreviewDimensions": "1200x627 (LinkedIn share preview recommendation)",
     "socialPreviewCardCount": 17
   },
-  "latestVerifiedTestCommit": "fc4d865b8fa4a19a3899f4b72847d39594c201ad",
+  "latestVerifiedTestCommit": "515ef71d9105af0faf9fb3208d702520fd37be7f",
   "caseStudyDossiers": {
     "bilingual": true,
     "projectCount": 8,
@@ -220,11 +222,12 @@
     "fullSiteRedesign": "mandatory-two-round-owner-review",
     "keyboardSkipNavigation": "implemented-bilingual-home-and-case-study-routes-contract-passed-manual-review-pending"
   },
-  "latestBranchHeadAtCheckpoint": "fc4d865b8fa4a19a3899f4b72847d39594c201ad",
+  "latestBranchHeadAtCheckpoint": "515ef71d9105af0faf9fb3208d702520fd37be7f",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
     "automatedContract": "passed-run-42231110043",
-    "manualKeyboardAndScreenReaderReview": "pending"
+    "manualKeyboardAndScreenReaderReview": "pending",
+    "browserQa": "passed-17-routes-34-viewports-zero-failures-run-42234110102"
   }
 }

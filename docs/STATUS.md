@@ -40,6 +40,7 @@
 - [x] Added demo, source, and case-study actions to project cards.
 - [x] Added seven verified source-repository visual assets with pinned commit URLs and bilingual alt text; card media is lazy-loaded, responsive, and falls back cleanly.
 - [x] Added actual GlobalCart desktop/mobile storefront screenshots and ten reviewed desktop/mobile UI captures across ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse. Remaining brand artwork is clearly distinguished from product-interface evidence; AetherFlow and Salon Booking UI captures remain gated by their documented evidence requirements.
+- [x] Added a separate Chromium browser-QA workflow. The current build passed **17/17 Persian/English routes** and **34/34 desktop/mobile viewport checks** (1440×1000 and 390×844), with zero horizontal overflow, missing image-alt attributes, uncaught page errors, or failed keyboard skip-navigation checks. The full report is preserved as Actions artifact [13510613719](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42234110102/artifacts/13510613719).
 - [x] Added bilingual keyboard skip links to the home page and both interactive/static case-study renderers. They are hidden until keyboard focus, use fixed positioning so they remain visible after restored scrolling, target the main content, and disable the entrance transition under reduced motion. This is a focused implementation improvement, not a substitute for full manual keyboard/screen-reader QA.
 - [x] Added dynamic case-study page title/description and canonical/Open Graph metadata updates, Person JSON-LD, and a branded SVG favicon.
 - [x] Added a build-generated XML sitemap listing the homepage and all eight bilingual case studies; all 17 URLs now receive the current build date in `lastmod`, keeping the sitemap synchronized with deployed content.
@@ -55,8 +56,8 @@
 - [x] Replaced five stale `pooya16pg-spec.github.io` preview URLs with the currently verified `pooya-labs.github.io` Pages hosts; AetherFlow's screenshot remains withheld until its M07/M08 public label mismatch is resolved.
 
 ## CI and publishing status
-- Repository CI [42231110043](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42231110043) passed on main SHA `fc4d865b8fa4a19a3899f4b72847d39594c201ad`: TypeScript, all three target builds, both artifact uploads, and **42/42 contract tests**. Contracts cover continuous 01–10 case-study numbering and bilingual keyboard skip navigation, including fixed positioning.
-- GitHub Pages build and deployment [42231109831](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42231109831) both succeeded on main SHA `fc4d865b8fa4a19a3899f4b72847d39594c201ad`; the published UI includes fixed-position keyboard skip links.
+- Repository CI [42234110197](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42234110197) passed on main SHA `515ef71d9105af0faf9fb3208d702520fd37be7f`: TypeScript, all three target builds, both artifact uploads, and **45/45 contract tests**. This includes a new contract for the 17-route Chromium browser QA workflow.
+- GitHub Pages build and deployment [42234110256](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42234110256) both succeeded on main SHA `515ef71d9105af0faf9fb3208d702520fd37be7f`.
 - The generated host-specific Cloudflare artifact contains the sitemap, 16 bilingual case-study routes, 17 valid 1200×627 PNG social cards, and a robots.txt sitemap pointer for the Cloudflare origin. The new cross-host test passed. The latest code commit is verified on GitHub Pages; Cloudflare's last verified production deployment remains on f9011ec5a3f9eb2faffdac222596b37444184191 because its automatic deployment job is still secret-gated. GitHub Pages retains its own project subpath and canonical origin.
 - The GitHub Pages artifact ZIP measured **3,811,158 bytes**, down from **7,870,673 bytes** before duplicate screenshot pruning (51.6% reduction).
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
@@ -70,7 +71,7 @@
 - [ ] Confirm project statuses, links, screenshots, and public evidence.
 - [ ] Confirm your role/contribution for each project before final case-study copy is approved.
 - [ ] Decide which contact channel should be published.
-- [ ] Review the complete portfolio design on desktop and mobile. The current implementation is a draft, not final.
+- [ ] Review the complete portfolio design on desktop and mobile. The current implementation is a draft, not final. Automated browser checks are green; manual visual, keyboard, and screen-reader review remains open.
 
 ## Not implemented
 - [x] Added actual GlobalCart desktop and mobile storefront screenshots to its case study; both are visually inspected, contain no customer data, and are pinned to source commit `5ca43e40ff101e673ee7cf261850bff0a679047c`.

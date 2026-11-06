@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-06 — Portfolio Chromium browser QA
+- Added a dedicated Playwright/Chromium workflow for the GitHub Pages build, independent of the external-project screenshot capture workflow.
+- The test opens the homepage and all 16 Persian/English case-study routes directly, at desktop 1440×1000 and mobile 390×844.
+- Validates HTTP status, title, locale/direction, canonical route, one H1 and main landmark, image alt attributes, horizontal overflow, and keyboard skip-link focus/activation.
+- Browser QA [42234110102](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42234110102) passed **17/17 routes, 34/34 viewport checks, and zero failures**. The JSON report is retained as [artifact 13510613719](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42234110102/artifacts/13510613719).
+- Repository CI [42234110197](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42234110197) passed TypeScript, all three target builds, artifacts, and **45/45 contract tests** on `515ef71d9105af0faf9fb3208d702520fd37be7f`.
+- GitHub Pages build and deploy [42234110256](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42234110256) succeeded on the same SHA. Manual screen-reader/accessibility and visual review remain open; the automated run is not a WCAG certification.
+- Cloudflare and Apps Script deploy jobs were skipped because the required repository Actions secrets are still unavailable.
 ## 2026-11-06 — Bilingual keyboard skip navigation
 - Added a skip-to-main-content link to the homepage and both interactive and crawler-readable static case-study pages in Persian and English.
 - Skip links appear when reached by keyboard focus, move focus to the main region, and avoid entrance transitions under reduced-motion preferences.
