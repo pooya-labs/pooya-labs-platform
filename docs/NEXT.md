@@ -2,7 +2,7 @@
 
 **Task ID:** P3-08  
 **Title:** Complete remaining project evidence, external share validation, and owner acceptance before Phase 7  
-**Status:** Eight bilingual dossiers, eight bilingual architecture diagrams, 16 static case-study pages, 17 PNG social cards plus 17 SVG sources, and GlobalCart desktop/mobile UI screenshots implemented. ORBIT screenshot paths were removed because the PNGs were absent from main; capture workflow is artifact-only. Current main CI passed 39/39 tests; latest application-source Pages build and deployment succeeded.
+**Status:** Eight bilingual dossiers, eight bilingual architecture diagrams, 16 static case-study pages, 17 PNG social cards plus 17 SVG sources, GlobalCart desktop/mobile storefront screenshots, and ten reviewed interface screenshots across ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse are implemented. Screenshot capture remains artifact-only until an approval manifest and checksum-gated publisher select images. CI/Pages verification for the current screenshot-registry update remains to be confirmed.
 
 ## Current implementation
 - Public bilingual portfolio is the default root experience; Spatial OS is secondary.
@@ -12,8 +12,10 @@
 - Seventeen social preview PNGs (homepage + eight projects × two languages) are primary Open Graph images at 1200×627; seventeen matching SVG sources remain alongside them.
 - Sitemap and robots.txt advertise the canonical static routes.
 - GlobalCart includes visually inspected desktop and mobile storefront screenshots pinned to source commit `5ca43e40ff101e673ee7cf261850bff0a679047c`; desktop is the hero and mobile is a dedicated screenshot card.
-- ORBIT currently uses its pinned project mark only. Earlier local desktop/mobile screenshot references were removed because the PNG files were absent from `main`; no ORBIT UI screenshot is currently published.
-- Three new contract tests now check that local image paths resolve to committed public assets, dedicated hero assets use immutable bilingual metadata, and screenshot capture cannot auto-publish.
+- ORBIT now has visually reviewed desktop and mobile Overview captures pinned to portfolio commit `77bc3ce0c41533661b8970d2527f4cd94b8a4341`; additional Incidents/Metrics/Logs/Traces states remain pending.
+- Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse each have reviewed desktop/mobile captures pinned to portfolio commit `b0c538b2523daf96700b731a959d690dd3457f7e`. AuraPulse images must remain labelled simulated/illustrative; the capture run's optional Binance ticker request failed CORS from the automation origin.
+- AetherFlow's preview URL now uses the current Pages host, but its screenshot remains withheld until the live page's M07 badge is reconciled with the source audit's M08 status.
+- Three evidence-integrity contract tests check local asset existence, immutable bilingual hero metadata, and that screenshot capture cannot auto-publish.
 - The exact per-project gaps remain in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 
 ## Verified checks
@@ -23,14 +25,17 @@
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
 
 ## Next implementation sequence
-1. Validate the PNG social previews using external share clients/inspectors and confirm cached-card refresh; only add other formats if a real client requires them.
-2. Gather actual UI screenshots for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; use only owner-approved, redacted Salon Booking screens. Architecture diagrams do not replace screenshots.
-3. Obtain Pooya's confirmation of biography/positioning, first three featured projects, attribution wording, project statuses, contact channel, and approved assets.
-4. Complete AetherFlow M08 and license decision; complete ORBIT's Apps Script smoke and human device accessibility review.
-5. Reconcile GlobalCart source documentation and complete M09.6 gallery/deploy E2E acceptance on an exact current SHA.
-6. Verify Salon Booking Apps Script 1.4.0, TimeBlocks, relay/bootstrap/booking, actual salon configuration, and FCM push acceptance.
-7. Complete current-source accessibility, responsive, keyboard, RTL/LTR, reduced-motion, browser, and performance QA.
-8. After the factual/evidence gate, begin Phase 7: full redesign with two owner feedback rounds; V1 remains blocked until explicit approval.
+1. Confirm Repository CI and GitHub Pages deployment on the current screenshot-registry SHA; fix any failures before treating the site as verified.
+2. Validate the 1200×627 PNG social previews in external share clients/inspectors and confirm cached-card refresh; add alternate formats only if a real client requires them.
+3. Resolve AetherFlow's M07/M08 public milestone label mismatch, then capture and review a current desktop/mobile interface screenshot.
+4. Extend ORBIT evidence beyond Overview (Incidents, Metrics, Logs, Traces); add focused NexusCanvas rack/graph/snapshot states and LuminaGlass export/Audio Lab/task-board states where they materially improve the case studies.
+5. Capture AuraPulse connected-feed and fallback states in a browser/network context where the actual public ticker request is allowed; keep current images explicitly simulated until then.
+6. Obtain Pooya's confirmation of biography/positioning, first three featured projects, attribution wording, project statuses, contact channel, and approved assets.
+7. Complete AetherFlow M08 and license decision; complete ORBIT's Apps Script smoke and human device accessibility review.
+8. Reconcile GlobalCart source documentation and complete M09.6 gallery/deploy E2E acceptance on an exact current SHA.
+9. Verify Salon Booking Apps Script 1.4.0, TimeBlocks, relay/bootstrap/booking, actual salon configuration, and FCM push acceptance; use only owner-approved synthetic/redacted imagery.
+10. Complete current-source accessibility, responsive, keyboard, RTL/LTR, reduced-motion, browser, and performance QA.
+11. After the factual/evidence gate, begin Phase 7: full redesign with two owner feedback rounds; V1 remains blocked until explicit approval.
 
 ## Release boundaries
 - No generic customer login/dashboard is added to the portfolio.
