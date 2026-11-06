@@ -21,6 +21,8 @@ jobs:
   capture:
     name: Capture public project previews
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
     timeout-minutes: 15
     steps:
       - name: Check out repository
@@ -33,9 +35,6 @@ jobs:
 
       - name: Install workspace dependencies
         run: npm install --no-audit --no-fund
-
-      - name: Install Playwright Chromium
-        run: npx playwright install --with-deps chromium
 
       - name: Capture desktop and mobile previews
         run: npm run capture:projects --workspace @pooya-labs/platform
