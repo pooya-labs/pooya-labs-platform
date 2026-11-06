@@ -19,7 +19,7 @@
 - The exact per-project gaps remain in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 
 ## Verified checks
-- Repository CI [42213405593](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42213405593) passed on main SHA `e5fc59269bd210b3be37fa97d00b7f0354233860`: TypeScript, Pages/GAS builds, artifact upload, and **39/39 contract tests**.
+- Repository CI [42214072630](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42214072630) passed on main SHA `22d6f9714982a982f36fcf936719235d94340c02`: TypeScript, Pages/GAS builds, artifact upload, and **39/39 contract tests**.
 - Pages build and deployment [42212627465](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42212627465) both succeeded for application-source SHA `6f40bd0f919a23fbd03718d9b312fc62fbfa432f`, which contains the reviewed screenshot registry and corrected Pages preview URLs.
 - Pages deployment containing the Resvg raster-card generator and the bilingual static case-study build [42071642813](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42071642813) succeeded.
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
