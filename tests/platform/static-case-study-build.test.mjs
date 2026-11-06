@@ -86,6 +86,7 @@ test('Pages build omits unused local screenshot duplicates while preserving immu
   );
   await assert.rejects(
     readFile(new URL('interface-captures/orbit/orbit-desktop.png', outputRoot)),
+    { code: 'ENOENT' },
     'The Pages bundle must not duplicate the already remotely hosted screenshot binary',
   );
 });
