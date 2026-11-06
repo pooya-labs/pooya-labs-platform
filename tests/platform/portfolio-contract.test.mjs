@@ -11,7 +11,7 @@ const coreDossiers = await readFile(new URL('../../apps/platform/src/content/cas
 const productDossiers = await readFile(new URL('../../apps/platform/src/content/case-study-dossiers-products.ts', import.meta.url), 'utf8');
 const dossierTypes = await readFile(new URL('../../apps/platform/src/content/case-study-dossiers-types.ts', import.meta.url), 'utf8');
 const architectureData = await readFile(new URL('../../apps/platform/src/content/architecture-diagrams.ts', import.meta.url), 'utf8');
-const sitemap = await readFile(new URL('../../apps/platform/public/sitemap.xml', import.meta.url), 'utf8');
+const sitemap = await readFile(new URL('../../dist/pages/sitemap.xml', import.meta.url), 'utf8');
 
 test('the root experience is the personal portfolio and the workspace is secondary', () => {
   assert.match(app, /return <PortfolioHome language=/);
