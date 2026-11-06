@@ -103,7 +103,7 @@ function renderStaticCaseStudy(project: PortfolioProject, locale: Locale): strin
   const media = (project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop');
   const mediaSection = media.length
     ? `<section class="case-study-media-section">
-        <div class="portfolio-eyebrow"><span class="eyebrow-index">05 /</span>${t.interfaceCaptures}</div>
+        <div class="portfolio-eyebrow"><span class="eyebrow-index">UI /</span>${t.interfaceCaptures}</div>
         <div class="case-study-media-grid">${media.map((item) => `<figure class="case-study-media-card device-${item.device}">
           <img src="${escapeHtml(item.url)}" alt="${escapeHtml(item.alt[locale])}" loading="lazy" decoding="async">
           <figcaption>${escapeHtml(item.caption[locale])}</figcaption>

@@ -155,7 +155,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
         </section>
         {(project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop').length > 0 && (
           <section className="case-study-media-section">
-            <div className="portfolio-eyebrow"><span className="eyebrow-index">05 /</span>{t.interfaceCaptures}</div>
+            <div className="portfolio-eyebrow"><span className="eyebrow-index">UI /</span>{t.interfaceCaptures}</div>
             <div className="case-study-media-grid">
               {(project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop').map((item) => (
                 <figure className={`case-study-media-card device-${item.device}`} key={item.url}>
