@@ -362,6 +362,14 @@ function staticCaseStudyPages(): Plugin {
       const cssFiles = Object.values(bundle)
         .filter((item) => item.type === 'asset' && item.fileName.endsWith('.css'))
         .map((item) => item.fileName);
+      const rootHtmlAsset = bundle['index.html'];
+      if (rootHtmlAsset?.type === 'asset') {
+        const rootHtml = typeof rootHtmlAsset.source === 'string'
+          ? rootHtmlAsset.source
+          : Buffer.from(rootHtmlAsset.source).toString('utf8');
+        rootHtmlAsset.source = rootHtml.replaceAll(DEFAULT_SITE_ORIGIN + DEFAULT_SITE_BASE, SITE_ORIGIN + SITE_BASE);
+      }
+
       let template = readFileSync(new URL('./index.html', import.meta.url), 'utf8');
       template = template.replaceAll(DEFAULT_SITE_ORIGIN + DEFAULT_SITE_BASE, SITE_ORIGIN + SITE_BASE);
       template = template.replace('src="/src/main.tsx"', `crossorigin src="${SITE_BASE}${entry.fileName}"`);
