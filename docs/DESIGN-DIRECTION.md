@@ -23,14 +23,11 @@ Do not let a workspace dashboard, metrics panel, product catalogue, or decorativ
 - Persian is the initial language with complete English LTR parity.
 - Responsive from large desktop to narrow mobile, with no critical interaction dependent on hover.
 
-## Pointer refraction field
+## Motion and pointer behavior
 
-A custom pointer-following light and translucent lens may add depth:
-- It is decorative and must not intercept clicks, text selection, or touch.
-- It is enabled only for fine pointers.
-- It is disabled for coarse/touch pointers and reduced-motion preferences.
-- The native pointer remains visible.
-- It must be removed or toned down if it harms reading, accessibility, or performance.
+- The experimental pointer-following light/lens has been removed by owner request.
+- Keep the native system pointer visible; do not add a custom cursor-following layer back during implementation.
+- Motion should remain purposeful, restrained, and respectful of reduced-motion preferences.
 
 ## Content design
 
