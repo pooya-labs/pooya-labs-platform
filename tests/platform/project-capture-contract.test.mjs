@@ -18,6 +18,10 @@ test('preview capture covers only the six public project demos with two responsi
   assert.match(script, /capture-report\.json/);
   assert.match(script, /excluded: \['salon-booking/);
   assert.doesNotMatch(script, /slug: 'salon-booking'/);
+  assert.match(script, /captureScenario\('overview', 'Overview'\)/);
+  assert.match(script, /captureScenario\('incidents', 'Incidents'\)/);
+  assert.match(script, /target\.slug === 'orbit'/);
+  assert.match(script, /Telemetry views require a connected API/);
 });
 
 test('capture is artifact-only and never publishes or commits screenshot files', () => {

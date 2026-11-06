@@ -81,49 +81,56 @@ try {
         await page.setViewportSize({ width: viewport.width, height: viewport.height });
         await page.waitForTimeout(500);
         await page.addStyleTag({
-          content: `
-            *, *::before, *::after { caret-color: transparent !important; }
-            input, textarea, select { filter: blur(5px) !important; }
-            [data-testid*="user"], [data-testid*="account"], [data-private="true"] { filter: blur(8px) !important; }
-            html { scroll-behavior: auto !important; }
-          `,
+          content: [
+            '*, *::before, *::after { caret-color: transparent !important; }',
+            'input, textarea, select { filter: blur(5px) !important; }',
+            '[data-testid*="user"], [data-testid*="account"], [data-private="true"] { filter: blur(8px) !important; }',
+            'html { scroll-behavior: auto !important; }',
+          ].join('\n'),
         }).catch(() => undefined);
 
-        const viewportDiagnostics = await page.evaluate(() => ({
-          viewportWidth: window.innerWidth,
-          viewportHeight: window.innerHeight,
-          documentWidth: document.documentElement.scrollWidth,
-          documentHeight: document.documentElement.scrollHeight,
-          hasHorizontalOverflow: document.documentElement.scrollWidth > window.innerWidth + 1,
-        }));
+        const captureScenario = async (scenario, activeView) => {
+          const viewportDiagnostics = await page.evaluate(() => ({
+            viewportWidth: window.innerWidth,
+            viewportHeight: window.innerHeight,
+            documentWidth: document.documentElement.scrollWidth,
+            documentHeight: document.documentElement.scrollHeight,
+            hasHorizontalOverflow: document.documentElement.scrollWidth > window.innerWidth + 1,
+          }));
+          const suffix = scenario === 'overview' ? '' : '-' + scenario;
+          const screenshotPath = path.join(outputDir, target.slug + suffix + '-' + viewport.name + '.png');
+          await page.screenshot({ path: screenshotPath, type: 'png', fullPage: false, animations: 'disabled', caret: 'hide', timeout: 20000 });
+          const screenshotBytes = await readFile(screenshotPath);
+          records.push({
+            slug: target.slug, scenario, activeView, requestedUrl: target.url, finalUrl, title: pageTitle,
+            httpStatus: responseStatus, viewport, viewportDiagnostics, screenshot: path.basename(screenshotPath),
+            screenshotBytes: screenshotBytes.byteLength,
+            screenshotSha256: createHash('sha256').update(screenshotBytes).digest('hex'),
+            visibleTextLength: bodyTextLength, errors: [...errors], failedRequests: [...failedRequests],
+            result: 'captured-pending-human-review',
+          });
+        };
 
-        const screenshotPath = path.join(outputDir, `${target.slug}-${viewport.name}.png`);
-        await page.screenshot({
-          path: screenshotPath,
-          type: 'png',
-          fullPage: false,
-          animations: 'disabled',
-          caret: 'hide',
-          timeout: 20000,
-        });
-        const screenshotBytes = await readFile(screenshotPath);
+        if (target.slug === 'orbit') {
+          const overviewButton = page.getByRole('button', { name: 'Overview', exact: true }).first();
+          if (await overviewButton.getAttribute('aria-current') !== 'page') {
+            const mobileMenu = page.locator('.mobile-menu');
+            if (await mobileMenu.isVisible()) await mobileMenu.click();
+            await overviewButton.click();
+            await page.waitForTimeout(350);
+          }
+        }
+        await captureScenario('overview', 'Overview');
 
-        records.push({
-          slug: target.slug,
-          requestedUrl: target.url,
-          finalUrl,
-          title: pageTitle,
-          httpStatus: responseStatus,
-          viewport,
-          viewportDiagnostics,
-          screenshot: path.basename(screenshotPath),
-          screenshotBytes: screenshotBytes.byteLength,
-          screenshotSha256: createHash('sha256').update(screenshotBytes).digest('hex'),
-          visibleTextLength: bodyTextLength,
-          errors: [...errors],
-          failedRequests: [...failedRequests],
-          result: 'captured-pending-human-review',
-        });
+        // Demo mode has seeded incidents. Telemetry views require a connected API and otherwise show a connect prompt.
+        // Capture the populated Incidents view only, so placeholder Metrics/Logs/Traces are never presented as telemetry.
+        if (target.slug === 'orbit') {
+          const mobileMenu = page.locator('.mobile-menu');
+          if (await mobileMenu.isVisible()) await mobileMenu.click();
+          await page.getByRole('button', { name: 'Incidents', exact: true }).first().click();
+          await page.waitForTimeout(650);
+          await captureScenario('incidents', 'Incidents');
+        }
       }
     } catch (error) {
       records.push({
@@ -146,7 +153,7 @@ try {
     path.join(outputDir, 'capture-report.json'),
     JSON.stringify({
       generatedAt: new Date().toISOString(),
-      note: 'Screenshots are unreviewed evidence candidates. They are not automatically published or committed. Each record includes viewport overflow diagnostics, byte size, and SHA-256 for artifact integrity.',
+      note: 'Screenshots are unreviewed evidence candidates. They are not automatically published or committed. ORBIT includes an additional explicitly demo-labelled Incidents view; Metrics/Logs/Traces are not captured from placeholder connect prompts. Each record includes viewport overflow diagnostics, byte size, and SHA-256 for artifact integrity.',
       excluded: ['salon-booking (requires owner-approved, privacy-reviewed capture)'],
       captures: records,
     }, null, 2) + '\n',
@@ -156,7 +163,7 @@ try {
 }
 
 const captured = records.filter((record) => record.result === 'captured-pending-human-review').length;
-console.log(`Capture workflow produced ${captured} of ${targets.length * viewports.length} viewport screenshots.`);
+console.log(`Capture workflow produced ${captured} viewport/scenario screenshots.`);
 if (captured === 0) {
   throw new Error('No project preview screenshots could be captured.');
 }
