@@ -37,6 +37,7 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [x] Add project-specific challenge, approach, engineering highlights, and scope/boundary sections based on repository documentation.
 - [x] Expand all eight bilingual dossiers with source-backed role/attribution, architecture, implementation details, engineering decisions, verification evidence, and direct source/CI references.
 - [x] Add a per-project content audit that separates source-confirmed facts from the missing evidence and owner decisions needed before V1.
+- [x] Add a separate public novels library driven by a validated JSON catalog, with cover images, an in-site Markdown/TXT reader, and a documented GitHub upload workflow. Keep the catalog empty until Pooya supplies final titles and copy.
 - [ ] Curate the featured-project order with Pooya; highlight only the strongest and most presentable work.
 - [ ] Review and approve every public project description and status with Pooya; retain source-backed technical facts as the baseline.
 - [ ] Confirm personal role/contribution wording for all eight projects; AetherFlow's current README does not identify an individual author or contribution split.

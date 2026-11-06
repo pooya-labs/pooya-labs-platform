@@ -35,9 +35,10 @@ The current public design is an early working draft. A full redesign based on Po
 
 The first portfolio draft includes:
 - Personal introduction and project showcase as the root page.
-- About, focus areas, technology list, and contact sections.
+- About, focus areas, technology list, contact section, and a data-driven novels library with cover art and an in-site Markdown/TXT reader.
 - Eight project cards with verified source-repository and GitHub Pages preview links, honest project statuses, and explicit scope boundaries.
 - Eight bilingual, shareable case studies with source-grounded engineering dossiers, generated architecture diagrams, and crawler-readable Persian/English static routes.
+- A public novels library powered by apps/platform/public/novels/catalog.json; covers live in apps/platform/public/novels/covers/ and manuscripts in apps/platform/public/novels/manuscripts/. See [NOVELS-GUIDE.md](docs/NOVELS-GUIDE.md) for GitHub upload steps.
 - Seven commit-pinned project-card/hero visuals plus two real GlobalCart storefront screenshots (desktop and mobile), all with Persian/English alt text and immutable source commit URLs.
 - Ten reviewed interface screenshots across five project case studies: ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse each have a desktop case-study hero and a lazy-loaded mobile evidence image. Each image is pinned to an immutable portfolio commit. AuraPulse evidence is explicitly simulated/illustrative and does not prove live Binance connectivity; AetherFlow's UI screenshot remains withheld until its public M07/M08 status mismatch is reconciled.
 - The screenshot capture workflow produces review-only artifacts. Dedicated approval manifests and checksum-gated GitHub Actions publishers verify the exact artifact, PNG signature, dimensions, byte size, and SHA-256 before selected images are committed. Salon Booking captures remain excluded until owner-approved privacy review.
@@ -50,7 +51,7 @@ All project content is still marked for Pooya's review. The eight source-grounde
 
 ## Development
 
-Start with README-linked docs: docs/ROADMAP.md, docs/STATUS.md, docs/NEXT.md, docs/DEPLOYMENT-TARGETS.md, docs/PROJECT-CONTENT-AUDIT.md, docs/PRODUCT-SURFACES.md, docs/DESIGN-DIRECTION.md, docs/ARCHITECTURE.md, and docs/RECOVERY.md.
+Start with README-linked docs: docs/ROADMAP.md, docs/STATUS.md, docs/NEXT.md, docs/DEPLOYMENT-TARGETS.md, docs/PROJECT-CONTENT-AUDIT.md, docs/NOVELS-GUIDE.md, docs/PRODUCT-SURFACES.md, docs/DESIGN-DIRECTION.md, docs/ARCHITECTURE.md, and docs/RECOVERY.md.
 
 Commands: npm install · npm run typecheck · npm test · npm run build:pages · npm run build:cloudflare · npm run build:gas
 

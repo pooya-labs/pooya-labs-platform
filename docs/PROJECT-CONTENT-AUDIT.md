@@ -46,13 +46,13 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 - [ ] Resolve the public landing-page milestone mismatch before screenshot acceptance: README says M08 is in progress while the landing page and dashboard still display M07. The portfolio continues to withhold AetherFlow UI imagery.
 
 **Verified source detail (2026-11-06; read-only recheck)**
-- Inspected upstream `pooya-labs/aetherflow` main at `f673dbde000a6a673ec113e338fbb89ab3b1aede`. README says M00–M07 are complete and M08 is in progress.
+- Inspected upstream `pooya-labs/aetherflow` main at `c7cb553f0751514df0d916e69c29807636e66c67`. README says M00–M07 are complete and M08 is in progress.
 - The same source revision's `index.html` still displays `Control plane / M07`, and `dashboard/index.html` still displays `Observability / M07`.
 - The portfolio capture workflow [42234110094](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42234110094) reached `https://pooya-labs.github.io/aetherflow/` with HTTP 200 and no failed page request. This proves landing-page reachability only, not API connectivity.
-- The AetherFlow README and navigation still contain previous `pooya16pg-spec.github.io` URLs. The dashboard's CORS setup notice still names `https://pooya16pg-spec.github.io`, while the current candidate capture originates from `https://pooya-labs.github.io`. Dashboard API base URL is operator-entered, and its client requires remote API URLs to use HTTPS.
+- The AetherFlow README's exact CORS guidance and dashboard/index.html notice now use `https://pooya-labs.github.io`. Some landing-page source/repository/navigation links still point to the old `pooya16pg-spec` account. Dashboard API base URL is operator-entered, and its client requires remote API URLs to use HTTPS.
 - No live API preflight or successful hosted dashboard/API exchange was verified. Do not describe the dashboard as connected on the new origin until the deployed API CORS allowlist is tested from the real browser origin.
-- Exact-SHA upstream checks on `f673dbd` passed for Pages [42231989973](https://github.com/pooya-labs/aetherflow/actions/runs/42231989973), Rust CI [42231991248](https://github.com/pooya-labs/aetherflow/actions/runs/42231991248), PostgreSQL schema [42231991305](https://github.com/pooya-labs/aetherflow/actions/runs/42231991305), and supply-chain/security [42231991310](https://github.com/pooya-labs/aetherflow/actions/runs/42231991310). These job results do not establish browser/API CORS behavior.
-- This was a read-only inspection; the independent AetherFlow repository was not modified. Keep its UI screenshot withheld until the owner aligns milestone labels, public links, and CORS guidance, verifies the live API preflight, and approves the new screenshot.
+- Pages deployment [42239430319](https://github.com/pooya-labs/aetherflow/actions/runs/42239430319) passed on exact source `c7cb553`. Rust CI [42239384393](https://github.com/pooya-labs/aetherflow/actions/runs/42239384393), PostgreSQL schema [42239384017](https://github.com/pooya-labs/aetherflow/actions/runs/42239384017), and supply-chain/security [42239384049](https://github.com/pooya-labs/aetherflow/actions/runs/42239384049) passed on parent source `fc6e44b`; the child commit only applies rustfmt to a CORS test. These results do not establish live browser/API CORS behavior.
+- This was a read-only inspection; the independent AetherFlow repository was not modified. Keep its UI screenshot withheld until the owner reconciles the M07 page badge with M08 README status, removes duplicate Dashboard navigation, aligns remaining public/source links, verifies live API preflight from the real browser origin, and approves the new screenshot.
 - [ ] Recheck M08 against the current main SHA: in-flight worker completion during API outage, additional distinct recovery/failure-injection cases, and the fingerprint-aware benchmark comparator. Resolve or clearly describe any outstanding schema/CI failure.
 - [ ] Record the owner's license choice; README states license selection is still pending.
 - [ ] Confirm which benchmark/recovery results may be quoted publicly and retain exact run/source links.
@@ -164,20 +164,17 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 ### 08 — Salon Booking
 
 **Recorded from source**
-- README identifies Pooya as engineer/creator and the salon owner as product owner.
-- Current frontend release line is 0.7.0; Apps Script backend target is 1.4.0 with rolling 30-day owner sessions.
-- Active architecture is Pages frontend → hidden Apps Script iframe bridge → Apps Script API → private Google Sheets. Firebase Cloud Messaging is the manager push path; optional email is off by default. Legacy Cloudflare Worker/D1 is retained only for recovery and is not active.
-- Implemented journeys include Jalali availability, idempotent booking, reference and one-time customer token, customer lookup/cancellation, owner sign-in/session, booking status management, services, multi-interval hours, exceptions, time blocks, audit, and rate limits.
-- Real customer data must not be entered into the public demo until owner-side deployment/configuration and acceptance are verified.
+- Product version **1.0.0** was released on 2026-11-05 and marked owner-accepted in the repository release record; official tag: [v1.0.0](https://github.com/pooya-labs/salon-booking/releases/tag/v1.0.0).
+- The frontend is React / TypeScript / Vite on GitHub Pages. The active backend path is the hidden iframe bridge → Google Apps Script → private Google Sheets; Firebase Cloud Messaging is the manager push path. Cloudflare Workers/D1 are legacy recovery material, not the active runtime.
+- The Apps Script source version is **1.5.3** (APP_VERSION_ in relay/Code.gs); this is distinct from product version 1.0.0.
+- Release CI [42086718663](https://github.com/pooya-labs/salon-booking/actions/runs/42086718663) and Pages deployment [42086718821](https://github.com/pooya-labs/salon-booking/actions/runs/42086718821) passed on exact release commit 56ff5cde573eccb3febd7efe2de270f9ded2b7e5. The Pages workflow also recorded a read-only live relay smoke.
+- The release record states that the product owner accepted the operational setup, schedule configuration, and manager notification checks on 2026-11-05.
+- The public case study must still avoid customer personal information; no unredacted bookings, phone numbers, names, references, or tokens may appear in screenshots.
 
 **Required before portfolio release**
-- [ ] Verify the latest CI and Pages runs for the current main commit; they were queued when the source was inspected.
-- [ ] Confirm deployment of Apps Script 1.4.0, SALON_RELAY_URL, additive TimeBlocks/schema setup if required, fresh bootstrap/login, and end-to-end booking/lookup/cancellation/overlap checks.
-- [ ] Verify actual salon timezone, business hours, services, prices, contact details, and booking/cancellation policy with the product owner. Do not publish placeholders as confirmed facts.
-- [ ] Verify Firebase project, FCM API, web config/VAPID, manager-device registration, and an actual background push on the manager's Android device before describing push as live.
-- [x] Add a bilingual architecture diagram for the Pages frontend, hidden Apps Script bridge, Apps Script API, private Sheets, and FCM manager-push path.
-- [ ] Capture only synthetic/demo screens or owner-approved redacted screenshots; never expose client names, phone numbers, booking references, or tokens.
-- [ ] Confirm whether the product owner permits public case-study details and the credit wording to be published.
+- [ ] Confirm the salon product owner’s permission to publish the case-study details and attribution in this portfolio.
+- [ ] Capture only synthetic/demo screens or owner-approved redacted screenshots; never expose customer names, phone numbers, booking references, or tokens.
+- [ ] Pooya to approve the exact public project description, attribution, and whether the official v1.0.0 release should be featured.
 
 ## Global portfolio information still needed from Pooya
 

@@ -1,8 +1,8 @@
-# Next Task — Review interface evidence, validate social previews, and close owner gates before Phase 7
+# Next Task — Complete project evidence, social validation, and owner review before Phase 7
 
 **Task ID:** P3-08  
 **Title:** Complete remaining project evidence, external share validation, and owner acceptance before Phase 7  
-**Status:** Eight bilingual dossiers, eight bilingual architecture diagrams, 16 static case-study pages, and 17 PNG social cards plus 17 SVG sources are implemented. Repository CI passed **46/46 tests** and all three build targets on code SHA `dc991c4a90aad92ec4006332fffccf04fdd09951`. Current Chromium/axe QA passed 17/17 routes and 34/34 desktop/mobile checks with zero violations; 34 color-contrast checks remain for human visual review. GitHub Pages deployment succeeded on the same code SHA (run `42238363799`); the documentation-only main checkpoint is `aa62b230eaaee350df0c6c8017d1eccf9fb91e10`. Twelve fresh desktop/mobile screenshot candidates have been visually inspected but remain artifact-only and owner-unapproved. Cloudflare and Apps Script actual deployment jobs were skipped because required repository secrets are unavailable.
+**Status:** The novels library UI, catalog, cover slots, in-site Markdown/TXT reader, and GitHub upload guide are implemented. Repository CI passed **52/52 tests** on test checkpoint `53c13993ca2aa2dbbb007454729a084fcdce43b4`. Browser QA passed **17/17 routes and 34/34 viewport checks** on UI SHA `468c1f60ab11223693f3678213d48848100ae63e`; axe reported zero violations and 34 color-contrast checks still require human review. The Pages build passed and the artifact includes the novels catalog and assets; the deploy job was still running at the latest checkpoint. Salon Booking's portfolio source is now aligned with its owner-accepted v1.0.0 release; AetherFlow remains withheld pending upstream UI cleanup. The novel catalog is intentionally empty until Pooya supplies final titles, descriptions, covers, and manuscripts.
 
 See [DEPLOYMENT-TARGETS.md](DEPLOYMENT-TARGETS.md) for independent host build/deploy paths and the remaining credential gates.
 
@@ -12,6 +12,7 @@ See [DEPLOYMENT-TARGETS.md](DEPLOYMENT-TARGETS.md) for independent host build/de
 - Bilingual skip navigation is implemented on the homepage and interactive/static case-study routes; its contract passes. Real keyboard-only, screen-reader, and device accessibility review remains open.
 - Eight project case studies include source-grounded role/attribution, challenge, architecture, implementation details, engineering decisions, verification evidence, boundaries, and direct source/CI references.
 - Eight architecture diagrams are generated in Persian and English from documented system flows. They are diagrams, not product screenshots or production evidence.
+- A new bilingual novels section loads published entries from apps/platform/public/novels/catalog.json. Covers and manuscripts live in separate public folders; each novel opens in an in-site reader. The catalog is empty until Pooya supplies the final content.
 - Sixteen static HTML case-study routes are emitted at build time: `/projects/<slug>/` and `/en/projects/<slug>/`. Each includes rendered article content, canonical URL, hreflang alternates, JSON-LD, social metadata, and source links.
 - Seventeen social preview PNGs (homepage + eight projects × two languages) are primary Open Graph images at 1200×627; seventeen matching SVG sources remain alongside them.
 - Sitemap and robots.txt advertise the canonical static routes.
@@ -21,6 +22,7 @@ See [DEPLOYMENT-TARGETS.md](DEPLOYMENT-TARGETS.md) for independent host build/de
 - AetherFlow's preview URL now uses the current Pages host, but its screenshot remains withheld until the live page's M07 badge is reconciled with the source audit's M08 status.
 - The latest recapture artifact [42235240283](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42235240283) contains 12 new desktop/mobile candidates across AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse. All 12 were visually inspected individually but remain artifact-only and owner-unapproved: AetherFlow is still M07/duplicate Dashboard, AuraPulse had a Binance CORS failure, LuminaGlass is at Blur 32px, ORBIT/NexusCanvas show explicitly illustrative data, and Pooya.OS includes a profile portrait awaiting approval. Salon Booking was excluded pending owner-approved redacted capture.
 - Three evidence-integrity contract tests check local asset existence, immutable bilingual hero metadata, and that screenshot capture cannot auto-publish.
+- Salon Booking is source-verified as owner-accepted product v1.0.0 (Apps Script source version 1.5.3); permission to publish its public case-study details and privacy-redacted screenshots still needs confirmation.
 - The exact per-project gaps remain in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 
 ## Verified checks

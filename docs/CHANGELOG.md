@@ -1,3 +1,13 @@
+## 2026-11-06 — Novels library, Salon Booking v1.0.0 alignment, and final checks
+- Added the bilingual novels section with an empty public catalog, responsive cover cards, and an in-site Markdown/TXT reader. The exact GitHub upload instructions are in docs/NOVELS-GUIDE.md; titles and story content remain empty until Pooya supplies them.
+- Added six novels-library contract tests covering catalog schema, path validation, publication gating, safe Markdown rendering, homepage wiring, upload guide paths, and Pages catalog packaging.
+- Corrected Salon Booking's portfolio status to the owner-accepted product release v1.0.0. The Apps Script source version is 1.5.3; CI and Pages evidence are linked from runs 42086718663 and 42086718821.
+- Repository CI [42247729151](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247729151) passed **52/52 tests** on test checkpoint 53c13993ca2aa2dbbb007454729a084fcdce43b4.
+- Browser QA [42247171025](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247171025) passed 17/17 routes and 34/34 viewports on UI SHA 468c1f60ab11223693f3678213d48848100ae63e with zero axe violations; 34 color-contrast checks still need human visual review.
+- Pages build for UI SHA 468c1f6 succeeded; artifact [13518846598](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247171442/artifacts/13518846598) contains the novels catalog and updated app bundle. Deployment was still in progress at this checkpoint.
+- AetherFlow's README and dashboard CORS guidance now use https://pooya-labs.github.io; the landing/dashboard M07 vs README M08 mismatch, duplicate Dashboard navigation, and old owner links still block screenshot approval.
+
+
 # Changelog
 
 ## 2026-11-06 — GitHub Pages release verification and visual screenshot candidate audit

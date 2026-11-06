@@ -12,10 +12,10 @@
     "status": "46-contract-tests-passed-17-routes-34-viewports-zero-axe-violations-pages-deployed-dc991c4-artifact-audited-17-html-17-og-png-17-sitemap-targets-12-candidate-screenshots-visually-reviewed-but-unapproved"
   },
   "lastCheckpointDate": "2026-11-06",
-  "latestVerifiedCodeCommit": "dc991c4a90aad92ec4006332fffccf04fdd09951",
+  "latestVerifiedCodeCommit": "468c1f60ab11223693f3678213d48848100ae63e",
   "tests": {
-    "repositoryCi": "passed-run-42238363801",
-    "repositoryCiTestCount": 46,
+    "repositoryCi": "passed-run-42247729151",
+    "repositoryCiTestCount": 52,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
@@ -23,14 +23,14 @@
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
     "githubPagesDeployment": "passed-run-42238363799-on-code-sha-dc991c4a90aad92ec4006332fffccf04fdd09951",
-    "platformTypecheck": "passed-run-42238363801",
+    "platformTypecheck": "passed-run-42247729151",
     "pagesAndGasBuilds": "passed-run-42238363801-pages-gas-cloudflare",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "pending-owner-visual-contrast-and-manual-accessibility-review",
-    "vitePagesWorkflow": "build-and-deploy-passed-run-42238363799",
+    "vitePagesWorkflow": "build-passed-deploy-pending-run-42247171442",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "GitHub Actions build and deploy succeeded on 2026-11-06 for source fc4d865b8fa4a19a3899f4b72847d39594c201ad; repository Pages source setting still requires owner-side confirmation",
-    "portfolioContractTests": "passed-46-of-46-run-42238363801",
+    "portfolioContractTests": "passed-52-of-52-run-42247729151",
     "latestPreviousPagesDeployment": "passed-run-42043972152",
     "docsCheckpoint": "passed-run-42060558950",
     "staticCaseStudyOutput": "passed-in-run-42072937855-16-pages-16-diagrams-17-png-cards-17-svg-sources-robots-sitemap-and-globalcart-screenshots",
@@ -40,7 +40,7 @@
     "staticCaseStudySectionOrder": "passed-run-42227942261-and-42230046270",
     "lastVerifiedTestCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
     "skipNavigationContract": "passed-run-42231110043-bilingual-fixed-position-reduced-motion",
-    "portfolioBrowserQa": "passed-run-42238363900-17-of-17-routes-34-of-34-viewports-zero-axe-impact-violations-34-color-contrast-incomplete-reviews",
+    "portfolioBrowserQa": "passed-run-42247171025-17-routes-34-viewports-zero-axe-violations",
     "portfolioBrowserQaArtifact": "13511783286",
     "portfolioBrowserQaStrictGate": "critical-and-serious-axe-findings-fail-job; incomplete-rule-details-retained; passed-run-42238363900",
     "pagesArtifactAudit": "passed-run-42238363799-artifact-13511808294-17-html-17-png-1200x627-17-sitemap-urls-all-canonical-og-description-jsonld-and-case-study-hreflang",
@@ -57,7 +57,8 @@
       "jsonLdMetadata": "17-of-17",
       "caseStudyHreflangMetadata": "16-of-16"
     },
-    "pagesPublicUrl": "https://pooya-labs.github.io/pooya-labs-platform/"
+    "pagesPublicUrl": "https://pooya-labs.github.io/pooya-labs-platform/",
+    "novelLibrary": "implemented-and-covered-by-six-new-contract-tests"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -80,18 +81,18 @@
     "activePagesSource": "GitHub Actions deployment succeeded; repository Pages source setting still requires owner-side confirmation",
     "appsScriptSync": "deferred-not-required-for-static-portfolio",
     "portfolioPagesPublished": true,
-    "portfolioPagesRun": "42238363799",
-    "latestPortfolioCodeCommit": "dc991c4a90aad92ec4006332fffccf04fdd09951",
+    "portfolioPagesRun": "42247171442",
+    "latestPortfolioCodeCommit": "468c1f60ab11223693f3678213d48848100ae63e",
     "cloudflareProductionDeployment": "0bba4323-359d-4fb6-8d5e-aa833e36b22c",
     "cloudflareProductionCommit": "f9011ec5a3f9eb2faffdac222596b37444184191",
     "cloudflareWorkflow": "actual-deploy-job-skipped-missing-CLOUDFLARE_API_TOKEN-run-42238363845",
     "appsScriptWorkflow": "actual-deploy-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID-run-42238363818",
-    "latestPagesAttemptRun": "42238363799",
-    "latestPagesAttemptCodeCommit": "dc991c4a90aad92ec4006332fffccf04fdd09951",
-    "latestPagesAttemptStatus": "passed-build-and-deploy",
-    "pagesArtifactId": "13511808294",
-    "pagesArtifactSizeBytes": 3808349,
-    "latestDocumentationCommit": "aa62b230eaaee350df0c6c8017d1eccf9fb91e10"
+    "latestPagesAttemptRun": "42247171442",
+    "latestPagesAttemptCodeCommit": "468c1f60ab11223693f3678213d48848100ae63e",
+    "latestPagesAttemptStatus": "build-passed-deploy-in-progress-at-checkpoint",
+    "pagesArtifactId": "13518846598",
+    "pagesArtifactSizeBytes": 3817565,
+    "latestDocumentationCommit": "53c13993ca2aa2dbbb007454729a084fcdce43b4"
   },
   "previousProjects": {
     "inspected": true,
@@ -102,19 +103,19 @@
   },
   "blockers": [
     "Pooya must approve public biography/positioning, first three featured projects, project statuses, personal contribution/attribution wording, contact channel, and final visual assets. Twelve fresh screenshot candidates were visually inspected but remain artifact-only and owner-unapproved.",
-    "AetherFlow rechecked read-only at main SHA f673dbde000a6a673ec113e338fbb89ab3b1aede: README says M08 in progress while landing/dashboard show M07; the desktop capture also shows duplicate Dashboard navigation labels. Old pooya16pg-spec links and dashboard CORS guidance remain. New pooya-labs.github.io landing route returned HTTP 200 in capture run 42234110094, but live API CORS is unverified. Both new screenshots remain withheld; upstream repository was not modified.",
+    "AetherFlow rechecked read-only at main SHA c7cb553f0751514df0d916e69c29807636e66c67: README and dashboard CORS guidance now use https://pooya-labs.github.io, but the landing/dashboard still display M07 while README says M08 is in progress; duplicate Dashboard navigation and stale repository links also remain. Keep AetherFlow images withheld; live API CORS is unverified.",
     "ORBIT still needs Incidents/Metrics/Logs/Traces captures, owner-run Apps Script demo bootstrap/mutation/refresh acceptance, and human TalkBack/VoiceOver/keyboard/chart-table review.",
     "NexusCanvas rack/graph/snapshot evidence, LuminaGlass export/Audio Lab/task-board evidence, and AuraPulse connected/fallback feed plus focused paper-trading evidence remain pending.",
     "Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse still need consolidated current-source browser, keyboard, responsive, reduced-motion, and accessibility QA; no automated check is formal WCAG certification.",
     "GlobalCart M09.6 gallery completeness, current-SHA browser/deploy E2E acceptance, and source-document reconciliation remain open.",
-    "Salon Booking still requires Apps Script 1.4.0, TimeBlocks, relay/bootstrap/booking acceptance, actual salon configuration, FCM device-push proof, and owner-approved redacted UI evidence.",
+    "Salon Booking v1.0.0 is source-verified: official release tag, owner-accepted release record, Apps Script source version 1.5.3, CI run 42086718663, and Pages plus read-only relay smoke run 42086718821 passed on exact release SHA 56ff5cde573eccb3febd7efe2de270f9ded2b7e5. Remaining portfolio gates are product-owner permission for public case-study details/credit and owner-approved privacy-redacted screenshots.",
     "External LinkedIn/Facebook crawler rendering and cache-refresh validation for the PNG Open Graph images remains open.",
     "Repeatable Cloudflare and Apps Script deployment workflows remain gated on repository Actions secrets; the last verified Cloudflare production deployment is from commit f9011ec5a3f9eb2faffdac222596b37444184191.",
     "Full-site redesign with two feedback rounds and explicit Pooya approval remains a mandatory V1 release blocker.",
     "Automated axe scan on current SHA dc991c4 reported zero critical/serious/moderate/minor violations across 17 routes and 34 viewports; 34 color-contrast checks are incomplete because of layered/gradient backgrounds and require human visual review. Manual keyboard/screen-reader review also remains open.",
     "AuraPulse latest screenshot artifact 42235240283 shows explicit SIMULATED/illustrative OHLC labels, but its public Binance ticker request failed CORS; connected-feed and fallback states remain unverified."
   ],
-  "nextAction": "Run feature-focused artifact-only captures for ORBIT Incidents/Metrics/Logs/Traces, NexusCanvas rack/graph/snapshot flows, and LuminaGlass export/Audio Lab/task board; investigate AuraPulse's Binance CORS failure or preserve simulated-only disclosure; keep AetherFlow withheld pending upstream M07/M08 and host/CORS alignment; then complete authenticated LinkedIn/Facebook share-debugger validation and owner content/asset approvals before the mandatory Phase 7 redesign.",
+  "nextAction": "Verify final deployment conclusion for Pages run 42247171442 on UI SHA 468c1f6. Then continue feature-focused artifact-only captures for ORBIT Incidents/Metrics/Logs/Traces, NexusCanvas rack/graph/snapshot flows, and LuminaGlass export/Audio Lab/task board; preserve AuraPulse simulated-only disclosure; keep AetherFlow imagery withheld until milestone/navigation/link cleanup and live API preflight; collect Salon Booking case-study permission; obtain Pooya's final portfolio copy, novel titles/manuscripts/covers, and required redesign feedback.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -153,7 +154,7 @@
     "designDocument": "docs/DESIGN-DIRECTION.md",
     "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
   },
-  "latestVerifiedCommit": "aa62b230eaaee350df0c6c8017d1eccf9fb91e10",
+  "latestVerifiedCommit": "53c13993ca2aa2dbbb007454729a084fcdce43b4",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -228,7 +229,7 @@
     "socialPreviewDimensions": "1200x627 (LinkedIn share preview recommendation)",
     "socialPreviewCardCount": 17
   },
-  "latestVerifiedTestCommit": "dc991c4a90aad92ec4006332fffccf04fdd09951",
+  "latestVerifiedTestCommit": "53c13993ca2aa2dbbb007454729a084fcdce43b4",
   "caseStudyDossiers": {
     "bilingual": true,
     "projectCount": 8,
@@ -267,16 +268,17 @@
     "actualUiScreenshots": "12-reviewed-desktop-mobile-screenshots-across-GlobalCart-ORBIT-PooyaOS-NexusCanvas-LuminaGlass-AuraPulse; AetherFlow-and-Salon-Booking-pending",
     "ownerContentApproval": "pending",
     "fullSiteRedesign": "mandatory-two-round-owner-review",
-    "keyboardSkipNavigation": "implemented-bilingual-home-and-case-study-routes-contract-passed-manual-review-pending"
+    "keyboardSkipNavigation": "implemented-bilingual-home-and-case-study-routes-contract-passed-manual-review-pending",
+    "novelLibrary": "implemented-with-empty-catalog; final titles, descriptions, manuscripts and covers pending Pooya"
   },
-  "latestBranchHeadAtCheckpoint": "515ef71d9105af0faf9fb3208d702520fd37be7f",
+  "latestBranchHeadAtCheckpoint": "53c13993ca2aa2dbbb007454729a084fcdce43b4",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
     "automatedContract": "passed-run-42231110043",
     "manualKeyboardAndScreenReaderReview": "pending",
-    "browserQa": "passed-17-routes-34-viewports-zero-axe-violations-run-42238363900",
-    "axeLastCompletedRun": "42238363900",
+    "browserQa": "passed-17-routes-34-viewports-zero-axe-violations-run-42247171025; 34-color-contrast-incomplete-reviews-remain",
+    "axeLastCompletedRun": "42247171025",
     "axeLastCompletedCounts": {
       "critical": 0,
       "serious": 0,
@@ -292,24 +294,42 @@
     "aetherflow": {
       "repository": "pooya-labs/aetherflow",
       "branch": "main",
-      "inspectedHead": "f673dbde000a6a673ec113e338fbb89ab3b1aede",
+      "inspectedHead": "c7cb553f0751514df0d916e69c29807636e66c67",
       "inspectionMode": "read-only",
       "readmeMilestone": "M00-M07 complete; M08 in progress",
       "landingAndDashboardMilestone": "M07",
       "newPortfolioHostReachability": "HTTP 200 from portfolio capture workflow 42234110094",
       "legacyHostReferences": true,
-      "dashboardCorsOriginInstruction": "https://pooya16pg-spec.github.io",
+      "dashboardCorsOriginInstruction": "https://pooya-labs.github.io",
       "apiBaseUrl": "operator-entered; remote URLs require HTTPS",
       "successfulExactShaRuns": {
-        "pages": "42231989973",
-        "rustCi": "42231991248",
-        "postgresSchema": "42231991305",
-        "security": "42231991310"
+        "pages": "42239430319",
+        "rustCi": "42239384393",
+        "postgresSchema": "42239384017",
+        "security": "42239384049"
       },
       "liveApiCorsVerified": false,
-      "uiScreenshotCandidate": "captured-but-unreviewed-run-42234110094",
+      "uiScreenshotCandidate": "blocked-by-M07-page-badge-vs-M08-readme-and-duplicate-Dashboard-navigation",
       "portfolioUiScreenshotAccepted": false,
       "upstreamRepositoryModified": false
     }
+  },
+  "novelLibrary": {
+    "implemented": true,
+    "homepageSection": true,
+    "bilingual": true,
+    "catalogPath": "apps/platform/public/novels/catalog.json",
+    "coverDirectory": "apps/platform/public/novels/covers/",
+    "manuscriptDirectory": "apps/platform/public/novels/manuscripts/",
+    "supportedManuscriptFormats": [
+      "md",
+      "txt"
+    ],
+    "reader": "in-site-safe-markdown-reader",
+    "publishedFlagRequired": true,
+    "initialNovelCount": 0,
+    "ownerCopyPending": true,
+    "uploadGuide": "docs/NOVELS-GUIDE.md",
+    "privacyNote": "public-repository-files-remain-public-even-when-published-false"
   }
 }

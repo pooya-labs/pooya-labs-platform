@@ -31,6 +31,7 @@
 - [x] Retained the Spatial OS shell as a secondary workspace, with a return link to the public portfolio.
 - [x] Added versioned built-in app manifest v1 and validation for unique IDs/shortcuts, localized metadata, and owner-workspace scope.
 - [x] Added a typed portfolio content registry with explicit review state, localized copy, unique slugs, and verified HTTPS source/demo URLs.
+- [x] Added a bilingual novels library with an empty public catalog, responsive book-cover cards, an in-site Markdown/TXT reader, and a documented GitHub upload workflow in [NOVELS-GUIDE.md](NOVELS-GUIDE.md). No story copy or titles have been invented.
 - [x] Added eight bilingual internal case-study views with challenge, approach, engineering highlights, scope boundaries, and shareable query-string routes.
 - [x] Expanded all eight case studies with source-backed role/attribution, architecture, implementation details, engineering decisions, verification evidence, and direct source/CI references.
 - [x] Added a per-project content audit that explicitly separates source-confirmed facts from release-blocking owner inputs and missing evidence.
@@ -55,7 +56,17 @@
 - [x] Pruned ten unused local screenshot copies from the Pages output while retaining immutable source files in the repository. The real GitHub Pages ZIP artifact dropped from 7,870,673 bytes to 3,811,158 bytes (**51.6% smaller**); a guarded build check and regression test prevent removal if a local reference is introduced.
 - [x] Replaced five stale `pooya16pg-spec.github.io` preview URLs with the currently verified `pooya-labs.github.io` Pages hosts; AetherFlow's screenshot remains withheld until its M07/M08 public label mismatch is resolved.
 
+## Novel library
+- The homepage includes a Persian/English novels section backed by apps/platform/public/novels/catalog.json.
+- Cover art belongs in apps/platform/public/novels/covers/; manuscripts belong in apps/platform/public/novels/manuscripts/.
+- Only published=true entries appear as cards. Because this repository is public, published=false hides a card but does not make its files private.
+- Read [NOVELS-GUIDE.md](NOVELS-GUIDE.md) for the exact GitHub upload steps and JSON catalog example.
+
 ## CI and publishing status
+- Repository CI [42247729151](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247729151) passed on test checkpoint SHA 53c13993ca2aa2dbbb007454729a084fcdce43b4: TypeScript, all three target builds, artifact upload, and **52/52 contract tests**.
+- Portfolio Browser QA [42247171025](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247171025) passed on UI SHA 468c1f60ab11223693f3678213d48848100ae63e: **17/17 routes, 34/34 desktop/mobile viewports, zero axe violations, zero workflow failures**. The 34 incomplete records remain color-contrast checks requiring manual visual review; this is not WCAG certification.
+- GitHub Pages run [42247171442](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247171442) built UI SHA 468c1f6 successfully. Its deployment job was still in progress at this checkpoint. Artifact [13518846598](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247171442/artifacts/13518846598) contains the novels catalog, cover/manuscript directories, and the updated application bundle.
+- Cloudflare and Apps Script deployment gates for SHA 468c1f6 passed their credential checks but skipped production deployment because the respective tokens/secrets are unavailable (runs 42247171477 and 42247171633).
 - Repository CI [42238363801](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42238363801) passed on code SHA `dc991c4a90aad92ec4006332fffccf04fdd09951`: TypeScript, all three target builds, artifact uploads, and **46/46 contract tests**.
 - Accessibility remediation: commit [38203322](https://github.com/pooya-labs/pooya-labs-platform/commit/38203322f11184adb06064a530c5f8b4bc5c05a2) removed the redundant custom brand name and enlarged header/navigation hit areas. Browser run [42236238032](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42236238032) passed all 17 routes and 34 desktop/mobile viewport checks with zero axe violations.
 - Strict axe QA is enforced: critical and serious findings fail the browser workflow, and incomplete rule details are retained in the report. On UI SHA `dc991c4a90aad92ec4006332fffccf04fdd09951`, browser run [42238363900](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42238363900) passed **17/17 routes, 34/34 viewport checks, and zero critical/serious/moderate/minor violations**. Its 34 incomplete checks are all `color-contrast` reviews that axe cannot automatically resolve against layered gradients/glass surfaces; human visual contrast review remains open. The hero artwork has explicit `role="img"` and localized accessible naming.
