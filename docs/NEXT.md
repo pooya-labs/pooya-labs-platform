@@ -13,6 +13,7 @@
 - Sitemap and robots.txt advertise the canonical static routes.
 - GlobalCart includes visually inspected desktop and mobile storefront screenshots pinned to source commit `5ca43e40ff101e673ee7cf261850bff0a679047c`; desktop is the hero and mobile is a dedicated screenshot card.
 - ORBIT currently uses its pinned project mark only. Earlier local desktop/mobile screenshot references were removed because the PNG files were absent from `main`; no ORBIT UI screenshot is currently published.
+- Three new contract tests now check that local image paths resolve to committed public assets, dedicated hero assets use immutable bilingual metadata, and screenshot capture cannot auto-publish.
 - The exact per-project gaps remain in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 
 ## Verified checks
