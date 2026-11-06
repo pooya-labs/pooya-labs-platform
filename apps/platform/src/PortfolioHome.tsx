@@ -5,6 +5,7 @@ import { coreDossiers } from './content/case-study-dossiers-core';
 import { productDossiers } from './content/case-study-dossiers-products';
 import { architectureDiagrams } from './content/architecture-diagrams';
 import type { CaseStudyDossier } from './content/case-study-dossiers-types';
+import { NovelLibrarySection, NovelReader, loadNovelCatalog, localizedNovelText, type NovelRecord } from './NovelLibrary';
 
 type Language = 'fa' | 'en';
 
@@ -13,6 +14,10 @@ function getProjectSlugFromLocation(): string | null {
   if (querySlug) return querySlug;
   const match = window.location.pathname.match(/\/(?:en\/)?projects\/([^/]+)\/?$/);
   return match?.[1] ?? null;
+}
+
+function getNovelSlugFromLocation(): string | null {
+  return new URLSearchParams(window.location.search).get('novel');
 }
 
 function getProjectRouteHref(slug: string, language: Language): string {
@@ -31,6 +36,7 @@ const text = {
     skipToContent: 'رفتن به محتوای اصلی',
     navAbout: 'درباره من',
     navWork: 'پروژه‌ها',
+    navNovels: 'رمان‌ها',
     navStack: 'فناوری‌ها',
     navContact: 'ارتباط',
     eyebrow: 'مهندسی کامپیوتر · ساخت نرم‌افزار',
@@ -71,6 +77,7 @@ const text = {
     skipToContent: 'Skip to main content',
     navAbout: 'About',
     navWork: 'Projects',
+    navNovels: 'Novels',
     navStack: 'Stack',
     navContact: 'Contact',
     eyebrow: 'Computer engineering · Software builder',
@@ -247,12 +254,29 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
     const slug = getProjectSlugFromLocation();
     return projects.find((project) => project.slug === slug) ?? null;
   });
+  const [selectedNovelSlug, setSelectedNovelSlug] = useState<string | null>(() => getNovelSlugFromLocation());
+  const [novelCatalog, setNovelCatalog] = useState<NovelRecord[]>([]);
+  const [novelCatalogLoading, setNovelCatalogLoading] = useState(true);
+  const [novelCatalogError, setNovelCatalogError] = useState<string | null>(null);
+  const selectedNovel = novelCatalog.find((novel) => novel.slug === selectedNovelSlug && novel.published) ?? null;
+
+  useEffect(() => {
+    let active = true;
+    loadNovelCatalog()
+      .then((entries) => { if (active) setNovelCatalog(entries); })
+      .catch((error: unknown) => { if (active) setNovelCatalogError(error instanceof Error ? error.message : String(error)); })
+      .finally(() => { if (active) setNovelCatalogLoading(false); });
+    return () => { active = false; };
+  }, []);
 
   useEffect(() => {
     const pageTitle = selectedProject
       ? (rtl ? `${selectedProject.name} | مطالعه پروژه در Pooya Labs` : `${selectedProject.name} | Project Study — Pooya Labs`)
-      : (rtl ? 'پویا | مهندسی نرم‌افزار و پروژه‌ها — Pooya Labs' : 'Pooya | Software Engineering & Projects — Pooya Labs');
-    const pageDescription = selectedProject ? selectedProject.description[language] : text[language].intro;
+      : selectedNovel
+        ? `${localizedNovelText(selectedNovel.title, language)} | ${rtl ? 'رمان در Pooya Labs' : 'A novel on Pooya Labs'}`
+        : (rtl ? 'پویا | مهندسی نرم‌افزار و پروژه‌ها — Pooya Labs' : 'Pooya | Software Engineering & Projects — Pooya Labs');
+    const pageDescription = selectedProject ? selectedProject.description[language]
+      : selectedNovel ? localizedNovelText(selectedNovel.synopsis, language) : text[language].intro;
     const canonicalUrl = new URL(window.location.href);
     canonicalUrl.hash = '';
     document.title = pageTitle;
@@ -262,12 +286,13 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
     document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl.toString());
     document.querySelector('meta[property="og:locale"]')?.setAttribute('content', language === 'fa' ? 'fa_IR' : 'en_US');
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonicalUrl.toString());
-  }, [selectedProject, language, rtl]);
+  }, [selectedProject, selectedNovel, language, rtl]);
 
   useEffect(() => {
     const syncProjectRoute = () => {
       const slug = getProjectSlugFromLocation();
       setSelectedProject(projects.find((project) => project.slug === slug) ?? null);
+      setSelectedNovelSlug(getNovelSlugFromLocation());
       if (/\/en\/projects\//.test(window.location.pathname)) onLanguageChange('en');
       else if (/\/projects\//.test(window.location.pathname)) onLanguageChange('fa');
     };
@@ -280,6 +305,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
     const url = new URL(getProjectRouteHref(project.slug, language), window.location.href);
     window.history.pushState({}, '', url);
     setSelectedProject(project);
+    setSelectedNovelSlug(null);
     window.scrollTo({ top: 0, behavior: 'auto' });
   };
 
@@ -288,6 +314,31 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
     url.search = '';
     if (import.meta.env.BASE_URL !== './') url.pathname = import.meta.env.BASE_URL;
     window.history.pushState({}, '', url);
+    setSelectedProject(null);
+    setSelectedNovelSlug(null);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
+
+  const openNovel = (event: ReactMouseEvent<HTMLAnchorElement>, novel: NovelRecord) => {
+    event.preventDefault();
+    const url = new URL(window.location.href);
+    url.search = '';
+    url.hash = '';
+    url.searchParams.set('novel', novel.slug);
+    window.history.pushState({}, '', url);
+    setSelectedProject(null);
+    setSelectedNovelSlug(novel.slug);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
+
+  const closeNovel = () => {
+    const url = new URL(window.location.href);
+    url.searchParams.delete('novel');
+    url.searchParams.delete('project');
+    url.hash = '';
+    if (import.meta.env.BASE_URL !== './') url.pathname = import.meta.env.BASE_URL;
+    window.history.pushState({}, '', url);
+    setSelectedNovelSlug(null);
     setSelectedProject(null);
     window.scrollTo({ top: 0, behavior: 'auto' });
   };
@@ -298,6 +349,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
   }, [language, rtl]);
 
   if (selectedProject) return <ProjectCaseStudy project={selectedProject} language={language} onLanguageChange={onLanguageChange} onBack={closeCaseStudy} />;
+  if (selectedNovelSlug) return <NovelReader novel={selectedNovel} language={language} loading={novelCatalogLoading} error={novelCatalogError} onBack={closeNovel} />;
 
   return (
     <div className={`portfolio-page ${rtl ? 'is-rtl' : 'is-ltr'}`}>
@@ -314,6 +366,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
         <nav className="portfolio-nav" aria-label={rtl ? 'ناوبری اصلی' : 'Main navigation'}>
           <a href="#about">{t.navAbout}</a>
           <a href="#projects">{t.navWork}</a>
+          <a href="#novels">{t.navNovels}</a>
           <a href="#stack">{t.navStack}</a>
           <a href="#contact">{t.navContact}</a>
         </nav>
@@ -388,10 +441,12 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
           </div>
         </section>
 
+        <NovelLibrarySection language={language} novels={novelCatalog.filter((novel) => novel.published)} loading={novelCatalogLoading} error={novelCatalogError} onOpen={openNovel} />
+
         <section className="portfolio-about portfolio-container" id="about">
           <div className="about-stamp"><div className="stamp-orbit" /><div className="stamp-core">P<span>.</span></div><span>ABOUT / POOYA</span></div>
           <div className="about-content">
-            <div className="portfolio-eyebrow"><span className="eyebrow-index">02 /</span>{t.aboutEyebrow}</div>
+            <div className="portfolio-eyebrow"><span className="eyebrow-index">03 /</span>{t.aboutEyebrow}</div>
             <h2>{t.aboutTitle}</h2>
             <p>{t.aboutBody}</p>
             <div className="focus-heading"><Layers3 size={16} />{t.focus}</div>
@@ -403,7 +458,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
 
         <section className="portfolio-stack portfolio-container" id="stack">
           <div className="portfolio-section-heading compact-heading">
-            <div><div className="portfolio-eyebrow"><span className="eyebrow-index">03 /</span>{t.stackEyebrow}</div><h2>{t.stackTitle}</h2><p>{t.stackSub}</p></div>
+            <div><div className="portfolio-eyebrow"><span className="eyebrow-index">04 /</span>{t.stackEyebrow}</div><h2>{t.stackTitle}</h2><p>{t.stackSub}</p></div>
             <TerminalSquare size={32} strokeWidth={1.2} />
           </div>
           <div className="stack-list">
@@ -415,7 +470,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
 
         <section className="portfolio-contact portfolio-container" id="contact">
           <div className="contact-orbit" />
-          <div className="portfolio-eyebrow"><span className="eyebrow-index">04 /</span>{t.contactEyebrow}</div>
+          <div className="portfolio-eyebrow"><span className="eyebrow-index">05 /</span>{t.contactEyebrow}</div>
           <h2>{t.contactTitle}</h2>
           <p>{t.contactBody}</p>
           <a className="portfolio-primary" href="https://github.com/pooya-labs" target="_blank" rel="noreferrer">{t.contactAction}<ArrowUpRight size={16} /></a>
