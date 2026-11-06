@@ -59,13 +59,26 @@ const projectEntries: PortfolioProject[] = [
     reviewState: 'needs-owner-review',
     tags: ['Rust', 'PostgreSQL', 'NATS JetStream', 'OpenTelemetry'],
     repositoryUrl: 'https://github.com/pooya-labs/aetherflow',
-    previewUrl: 'https://pooya16pg-spec.github.io/aetherflow/',
+    previewUrl: 'https://pooya-labs.github.io/aetherflow/',
   },
   {
     number: '02',
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/orbit/a00e8bebcf7b01c40532af169d97b3d64ce5dea4/app/icon.svg', kind: 'brand', alt: { fa: 'نشان گرافیکی پروژه ORBIT', en: 'ORBIT project mark' } },
     slug: 'orbit',
     name: 'ORBIT',
+    caseStudyHeroAsset: {
+      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/77bc3ce0c41533661b8970d2527f4cd94b8a4341/apps/platform/public/interface-captures/orbit/orbit-desktop.png',
+      kind: 'interface',
+      alt: { fa: 'نمای واقعی داشبورد ORBIT در محیط نمونه با داده‌های نمایشی', en: 'Actual ORBIT dashboard in a sample environment with illustrative demo data' },
+    },
+    caseStudyMedia: [
+      {
+        url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/77bc3ce0c41533661b8970d2527f4cd94b8a4341/apps/platform/public/interface-captures/orbit/orbit-mobile.png',
+        caption: { fa: 'نمای موبایل داشبورد ORBIT', en: 'ORBIT dashboard on mobile' },
+        alt: { fa: 'نمای موبایل داشبورد ORBIT', en: 'ORBIT dashboard on mobile' },
+        device: 'mobile',
+      },
+    ],
     caseStudy: {
       challenge: { fa: "در سیستم‌های توزیع‌شده، وضعیت سرویس، رخدادها، هشدارها و سیگنال‌های metrics، logs و traces معمولاً در ابزارهای جداگانه پخش‌اند. ORBIT تلاش می‌کند این دید عملیاتی را در یک فضای کاری منسجم جمع کند.", en: "In distributed systems, service health, incidents, alerts, and metrics, logs, and traces are often scattered across tools. ORBIT brings these operational views into one cohesive workspace." },
       approach: { fa: "داشبورد React به API و مدل داده پشتیبان متصل است و بخش‌هایی مانند incidents، alerts، deployments، SLOs، audit، metrics، logs و traces را ارائه می‌کند. دمو عمومی و stack مهندسی محلی به‌صورت آگاهانه از هم جدا هستند.", en: "A React dashboard connects to API and data models for incidents, alerts, deployments, SLOs, audit, metrics, logs, and traces. The public demo and local engineering stack are deliberately separate." },
@@ -89,6 +102,19 @@ const projectEntries: PortfolioProject[] = [
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/pooya-os/1d408c0881d480db8f1c1a7a9f94272a93d4e617/public/assets/spatial-bg.webp', kind: 'illustration', alt: { fa: 'تصویر محیط فضایی Pooya.OS', en: 'Pooya.OS spatial workspace artwork' } },
     slug: 'pooya-os',
     name: 'Pooya.OS',
+    caseStudyHeroAsset: {
+      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/b0c538b2523daf96700b731a959d690dd3457f7e/apps/platform/public/interface-captures/pooya-os/pooya-os-desktop.png',
+      kind: 'interface',
+      alt: { fa: 'تصویر واقعی محیط دسکتاپ Pooya.OS با پنجره معرفی پروفایل مهندسی', en: 'Actual Pooya.OS desktop workspace with the engineering profile window open' },
+    },
+    caseStudyMedia: [
+      {
+        url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/b0c538b2523daf96700b731a959d690dd3457f7e/apps/platform/public/interface-captures/pooya-os/pooya-os-mobile.png',
+        caption: { fa: 'نمای موبایل محیط دسکتاپ Pooya.OS', en: 'Pooya.OS desktop-style workspace on mobile' },
+        alt: { fa: 'نمای موبایل محیط دسکتاپ Pooya.OS', en: 'Pooya.OS desktop-style workspace on mobile' },
+        device: 'mobile',
+      },
+    ],
     caseStudy: {
       challenge: { fa: "یک پورتفولیوی فنی معمولی ممکن است فقط فهرستی از لینک‌ها باشد. Pooya.OS تلاش می‌کند معرفی مهارت‌ها و پروژه‌ها را در قالب یک محیط دسکتاپ تعاملی و قابل کاوش ارائه کند.", en: "A conventional engineering portfolio can become little more than a list of links. Pooya.OS presents skills and projects through an explorable desktop-style interface." },
       approach: { fa: "یک static export مبتنی بر Next.js، React و TypeScript با مدیریت پنجره‌ها، command sandbox محلی، بازرس Design Token و case studyهای پروژه‌ها ساخته شده است.", en: "A static export built with Next.js, React, and TypeScript combines window management, a local command sandbox, a design-token inspector, and project case studies." },
@@ -105,13 +131,26 @@ const projectEntries: PortfolioProject[] = [
     reviewState: 'needs-owner-review',
     tags: ['Next.js', 'React', 'TypeScript', 'Framer Motion'],
     repositoryUrl: 'https://github.com/pooya-labs/pooya-os',
-    previewUrl: 'https://pooya16pg-spec.github.io/pooya-os/',
+    previewUrl: 'https://pooya-labs.github.io/pooya-os/',
   },
   {
     number: '04',
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/nexus-canvas/df05f90b0463e5681324efec9083c9fe20c2cc7c/public/assets/nexus-core.webp', kind: 'illustration', alt: { fa: 'تصویر هسته بصری NexusCanvas', en: 'NexusCanvas core visual' } },
     slug: 'nexus-canvas',
     name: 'NexusCanvas',
+    caseStudyHeroAsset: {
+      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/b0c538b2523daf96700b731a959d690dd3457f7e/apps/platform/public/interface-captures/nexus-canvas/nexus-canvas-desktop.png',
+      kind: 'interface',
+      alt: { fa: 'تصویر واقعی NexusCanvas در حال نمایش توپولوژی سرویس و پنل تحلیل گراف', en: 'Actual NexusCanvas interface showing a service topology and graph-analysis panel' },
+    },
+    caseStudyMedia: [
+      {
+        url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/b0c538b2523daf96700b731a959d690dd3457f7e/apps/platform/public/interface-captures/nexus-canvas/nexus-canvas-mobile.png',
+        caption: { fa: 'نمای موبایل استودیوی معماری NexusCanvas', en: 'NexusCanvas architecture studio on mobile' },
+        alt: { fa: 'نمای موبایل استودیوی معماری NexusCanvas', en: 'NexusCanvas architecture studio on mobile' },
+        device: 'mobile',
+      },
+    ],
     caseStudy: {
       challenge: { fa: "در طراحی معماری، ارتباط سرویس‌ها و وابستگی‌های پیچیده می‌توانند مشکلاتی مانند چرخه وابستگی، سرویس جداافتاده یا گلوگاه را پنهان کنند. هدف ابزار تبدیل این ساختار به مدلی بصری و قابل بررسی است.", en: "In system architecture, complex service relationships can hide dependency cycles, isolated services, or bottlenecks. The tool turns those structures into a visual, inspectable model." },
       approach: { fa: "یک canvas سمت مرورگر برای ساخت node و edge، تحلیل ساختار گراف، تغییر نما بین canvas و rack، و export/import snapshot نسخه‌دار پیاده شده است.", en: "A browser-side canvas supports node and edge editing, graph-structure analysis, a canvas/rack view switch, and versioned snapshot import/export." },
@@ -128,13 +167,26 @@ const projectEntries: PortfolioProject[] = [
     reviewState: 'needs-owner-review',
     tags: ['Next.js', 'TypeScript', 'SVG', 'Docker Compose'],
     repositoryUrl: 'https://github.com/pooya-labs/nexus-canvas',
-    previewUrl: 'https://pooya16pg-spec.github.io/nexus-canvas/',
+    previewUrl: 'https://pooya-labs.github.io/nexus-canvas/',
   },
   {
     number: '05',
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/lumina-glass/06fa93428a00442e5ec53d5486c3615048f66842/public/assets/lumina-orb.webp', kind: 'illustration', alt: { fa: 'گوی شیشه‌ای LuminaGlass', en: 'LuminaGlass glass orb artwork' } },
     slug: 'lumina-glass',
     name: 'LuminaGlass',
+    caseStudyHeroAsset: {
+      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/b0c538b2523daf96700b731a959d690dd3457f7e/apps/platform/public/interface-captures/lumina-glass/lumina-glass-desktop.png',
+      kind: 'interface',
+      alt: { fa: 'تصویر واقعی استودیوی Liquid Glass با کنترل‌های اپتیکی و خروجی PNG', en: 'Actual Liquid Glass studio with optical controls and PNG export' },
+    },
+    caseStudyMedia: [
+      {
+        url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/b0c538b2523daf96700b731a959d690dd3457f7e/apps/platform/public/interface-captures/lumina-glass/lumina-glass-mobile.png',
+        caption: { fa: 'نمای موبایل استودیوی LuminaGlass', en: 'LuminaGlass studio on mobile' },
+        alt: { fa: 'نمای موبایل استودیوی LuminaGlass', en: 'LuminaGlass studio on mobile' },
+        device: 'mobile',
+      },
+    ],
     caseStudy: {
       challenge: { fa: "ساختن سطح‌های شیشه‌ای با حس عمق و کنترل‌های بصری، در کنار پردازش صوت، نیازمند آزمایش‌های سریع در خود مرورگر است. LuminaGlass این دو حوزه را در یک آزمایشگاه تعاملی کنار هم قرار می‌دهد.", en: "Creating layered glass surfaces with convincing depth and tuning audio processing both benefit from quick, direct browser experiments. LuminaGlass brings these explorations into one interactive lab." },
       approach: { fa: "کنترل‌های SVG برای تنظیم جلوه‌های اپتیکی و Canvas برای خروجی PNG استفاده می‌شوند. بخش صوت با Web Audio API و زنجیره‌ای از فیلترهای Biquad اجرا می‌شود.", en: "SVG controls tune optical effects and Canvas renders PNG exports. The audio lab uses the Web Audio API with a chain of Biquad filters." },
@@ -151,13 +203,26 @@ const projectEntries: PortfolioProject[] = [
     reviewState: 'needs-owner-review',
     tags: ['SVG', 'Canvas', 'Web Audio API', 'TypeScript'],
     repositoryUrl: 'https://github.com/pooya-labs/lumina-glass',
-    previewUrl: 'https://pooya16pg-spec.github.io/lumina-glass/',
+    previewUrl: 'https://pooya-labs.github.io/lumina-glass/',
   },
   {
     number: '06',
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/aurapulse/7f3611cae0d74e06b6b01af534a5f84a79e5901c/public/assets/quant-core.webp', kind: 'illustration', alt: { fa: 'تصویر هسته داده AuraPulse', en: 'AuraPulse quantitative core artwork' } },
     slug: 'aura-pulse',
     name: 'AuraPulse',
+    caseStudyHeroAsset: {
+      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/b0c538b2523daf96700b731a959d690dd3457f7e/apps/platform/public/interface-captures/aura-pulse/aura-pulse-desktop.png',
+      kind: 'interface',
+      alt: { fa: 'تصویر واقعی محیط شبیه‌سازی AuraPulse با پنل Paper Trading و نمودار نمونه', en: 'Actual AuraPulse simulated workspace with a paper-trading panel and illustrative chart' },
+    },
+    caseStudyMedia: [
+      {
+        url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/b0c538b2523daf96700b731a959d690dd3457f7e/apps/platform/public/interface-captures/aura-pulse/aura-pulse-mobile.png',
+        caption: { fa: 'نمای موبایل داشبورد شبیه‌سازی AuraPulse', en: 'AuraPulse simulated dashboard on mobile' },
+        alt: { fa: 'نمای موبایل داشبورد شبیه‌سازی AuraPulse', en: 'AuraPulse simulated dashboard on mobile' },
+        device: 'mobile',
+      },
+    ],
     caseStudy: {
       challenge: { fa: "نمایش اطلاعات بازار باید تفاوت بین داده عمومی واقعی، داده نمونه و معامله شبیه‌سازی‌شده را روشن کند. این پروژه داشبورد بازار را با یک حساب paper-trading محلی ترکیب می‌کند.", en: "A market dashboard must clearly separate public market data, illustrative sample data, and simulated trades. This project pairs market views with a local paper-trading account." },
       approach: { fa: "رابط مرورگری داده ticker عمومی را در صورت دسترسی دریافت می‌کند و هنگام قطع feed از داده illustrative برچسب‌خورده استفاده می‌کند. محاسبات سفارش‌ها و وضعیت حساب در مرورگر انجام می‌شود.", en: "The browser reads public ticker data when reachable and uses clearly labeled illustrative fallback data when the feed is unavailable. Orders and account calculations run locally." },
@@ -174,7 +239,7 @@ const projectEntries: PortfolioProject[] = [
     reviewState: 'needs-owner-review',
     tags: ['Next.js', 'TypeScript', 'SVG Charts', 'Market Data'],
     repositoryUrl: 'https://github.com/pooya-labs/aurapulse',
-    previewUrl: 'https://pooya16pg-spec.github.io/aurapulse/',
+    previewUrl: 'https://pooya-labs.github.io/aurapulse/',
   },
   {
     number: '07',
