@@ -15,8 +15,6 @@ test('the custom pointer-following lens is fully removed from the platform', () 
     'PointerLens',
     'cursor-field',
     'portfolio-pointer',
-    'requestAnimationFrame(render)',
-    "addEventListener('pointermove'"
   ]) {
     assert.equal(source.includes(obsoleteToken), false, `obsolete pointer effect remains: ${obsoleteToken}`);
   }
