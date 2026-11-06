@@ -12,12 +12,12 @@
 - The Spatial OS shell is secondary and remains accessible as a separate workspace experience.
 - An owner-only content/management console may be considered after the project content model is stable.
 - Full site redesign using Pooya's feedback is a mandatory pre-release Phase 7 gate.
-- Apps Script is deferred and is not required to publish the static portfolio on GitHub Pages.
+- Apps Script, GitHub Pages, and Cloudflare Pages are independent publishing/runtime targets; none is allowed to become a hard dependency of the others.
 
 ## Newly implemented
 - [x] Added bilingual Persian/English public portfolio as the default root experience.
 - [x] Added hero, About, selected project cards, focus areas, technology list, contact section, and secondary workspace entry.
-- [x] Added responsive dark obsidian design with cyan/emerald accents and an Antigravity-inspired decorative pointer lens.
+- [x] Added responsive dark obsidian design with cyan/emerald accents; removed the custom pointer-following lens at owner request.
 - [x] Added honest project status labels and links verified against the individual source READMEs.
 - [x] Retained the Spatial OS shell as a secondary workspace, with a return link to the public portfolio.
 - [x] Added versioned built-in app manifest v1 and validation for unique IDs/shortcuts, localized metadata, and owner-workspace scope.
