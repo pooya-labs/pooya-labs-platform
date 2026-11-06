@@ -7,7 +7,7 @@ The repository is the shared source of truth, but each host has its own build ou
 | Target | Purpose | Build output | Release mechanism | Current state |
 |---|---|---|---|---|
 | GitHub Pages | Public static portfolio | `dist/pages` | `.github/workflows/pages-platform.yml` | Existing host; build/deploy workflow |
-| Cloudflare Pages | Independent public-host mirror | `dist/cloudflare` | Cloudflare Pages Git integration, production branch `main` | Project created; first production deploy succeeded |
+| Cloudflare Pages | Independent public-host mirror | `dist/cloudflare` | `.github/workflows/deploy-cloudflare.yml` → Pages API, production branch `main` | Project created; first production deploy succeeded |
 | Google Apps Script | HtmlService application/runtime | `dist/gas/index.html` plus `Code.gs` and manifest | `.github/workflows/deploy-gas.yml` using `clasp` | Build/artifact verified; automatic deployment is gated on private repository secrets |
 
 ## GitHub Pages
@@ -28,7 +28,9 @@ The repository is the shared source of truth, but each host has its own build ou
 - Site base: `/`
 - Hosting mode: static Pages assets; this deployment does not reuse or modify the unrelated `globalcart-catalog`, `orbit-runtime`, or `salon-booking` Workers.
 
-The first production deployment completed successfully on 2026-11-06 from commit `6bd645896c5a51cccf1f764c210896d652191d4e`. Cloudflare's deployment log reported all 83 files uploaded and published. The project is configured with a GitHub source and production deployments enabled for `main`; subsequent push-triggered deployment behavior must remain part of release verification.
+The first production deployment completed successfully on 2026-11-06 from commit `6bd645896c5a51cccf1f764c210896d652191d4e`. Cloudflare's deployment log reported all 83 files uploaded and published. The GitHub repository remains connected as the build source, but Cloudflare's native push trigger is disabled to avoid duplicate deployments. `.github/workflows/deploy-cloudflare.yml` sends the exact pushed commit to the Pages deployment API and waits for its production stage to report success.
+
+The workflow is intentionally gated until the repository Actions secret `CLOUDFLARE_API_TOKEN` is configured. Create a Cloudflare API token with **Account → Cloudflare Pages → Edit**, then add it under **GitHub repository → Settings → Secrets and variables → Actions**. Never commit the token or paste it into chat. The first deployment above was triggered through the Cloudflare account connector; the workflow becomes the repeatable push-based path once the secret exists.
 
 ## Google Apps Script
 
