@@ -40,7 +40,7 @@ jobs:
   deploy:
     name: Trigger and verify Cloudflare Pages production deployment
     needs: detect-credentials
-    if: needs.detect-credentials.outputs.configured == 'true'
+    if: needs.detect-credentials.outputs.configured == 'true' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
