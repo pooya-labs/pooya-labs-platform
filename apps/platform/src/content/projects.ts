@@ -286,7 +286,7 @@ export function validatePortfolioProjects(entries: readonly PortfolioProject[]):
     if (project.caseStudyHeroAsset) {
       assertHttpsUrl(project.caseStudyHeroAsset.url, ['raw.githubusercontent.com'], 'Case-study hero asset URL');
       const heroPath = new URL(project.caseStudyHeroAsset.url).pathname;
-      if (!/^\\/pooya-labs\\/[a-z0-9-]+\\/[a-f0-9]{40}\\//.test(heroPath)) {
+      if (!/^\/pooya-labs\/[a-z0-9-]+\/[a-f0-9]{40}\//.test(heroPath)) {
         throw new Error('Case-study hero assets must be pinned to an immutable source commit.');
       }
       if (!project.caseStudyHeroAsset.alt.fa.trim() || !project.caseStudyHeroAsset.alt.en.trim()) {
