@@ -4,7 +4,7 @@
 - Corrected Salon Booking's portfolio status to the owner-accepted product release v1.0.0. The Apps Script source version is 1.5.3; CI and Pages evidence are linked from runs 42086718663 and 42086718821.
 - Repository CI [42247729151](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247729151) passed **52/52 tests** on test checkpoint 53c13993ca2aa2dbbb007454729a084fcdce43b4.
 - Browser QA [42247171025](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247171025) passed 17/17 routes and 34/34 viewports on UI SHA 468c1f60ab11223693f3678213d48848100ae63e with zero axe violations; 34 color-contrast checks still need human visual review.
-- Pages build for UI SHA 468c1f6 succeeded; artifact [13518846598](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247171442/artifacts/13518846598) contains the novels catalog and updated app bundle. Deployment was still in progress at this checkpoint.
+- Pages Build and Deploy both succeeded for UI SHA 468c1f6 in run [42247171442](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247171442); artifact [13518846598](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247171442/artifacts/13518846598) contains the novels catalog and updated app bundle.
 - AetherFlow's README and dashboard CORS guidance now use https://pooya-labs.github.io; the landing/dashboard M07 vs README M08 mismatch, duplicate Dashboard navigation, and old owner links still block screenshot approval.
 
 

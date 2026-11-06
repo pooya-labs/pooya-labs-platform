@@ -47,6 +47,9 @@ test('GitHub upload guide documents the public paths and privacy boundary', asyn
   assert.ok(guide.includes('apps/platform/public/novels/covers/'));
   assert.ok(guide.includes('apps/platform/public/novels/manuscripts/'));
   assert.ok(guide.includes('published: false'));
+  assert.ok(guide.includes('```text'));
+  assert.ok(guide.includes('```json'));
+  assert.ok(!guide.includes('\\`'));
   assert.ok(guide.includes('فایل خام همچنان'));
 });
 
