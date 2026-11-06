@@ -25,6 +25,13 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 - [x] Add a bilingual architecture/execution-flow diagram based on the documented Rust, PostgreSQL, JetStream, Worker, and observability boundaries.
 - [ ] Capture an owner-approved current UI/API/worker screenshot; no actual product screenshot was found in the repository.
 - [ ] Resolve the public landing-page milestone label mismatch before using a current screenshot: the live page still displays M07 while the source audit records M08 in progress. The portfolio currently withholds AetherFlow UI screenshots until the public source evidence is reconciled.
+
+**Verified source detail (2026-11-06)**
+- The current AetherFlow README says M00–M07 are complete and M08 is in progress.
+- The public landing page still labels its execution preview `Control plane / M07`, and `dashboard/index.html` still labels the page `Observability / M07`.
+- The dashboard's CORS setup notice still asks operators to allow `https://pooya16pg-spec.github.io`; the portfolio's current Pages preview is `https://pooya-labs.github.io/aetherflow/`. The public-host change therefore must be reconciled with the actual API CORS allowlist before describing hosted dashboard/API connectivity as verified.
+- The AetherFlow README still advertises its previous `pooya16pg-spec.github.io` live URLs. The portfolio points to the currently captured `pooya-labs.github.io` host, but the AetherFlow source repository remains the authority for the dashboard host and CORS policy.
+- These are upstream AetherFlow documentation/UI consistency items. The portfolio work does not modify the independent AetherFlow repository. Keep its UI screenshot withheld until the project owner aligns its visible milestone labels, public host links, and CORS origin guidance with the current README and deployment.
 - [ ] Recheck M08 against the current main SHA: in-flight worker completion during API outage, additional distinct recovery/failure-injection cases, and the fingerprint-aware benchmark comparator. Resolve or clearly describe any outstanding schema/CI failure.
 - [ ] Record the owner's license choice; README states license selection is still pending.
 - [ ] Confirm which benchmark/recovery results may be quoted publicly and retain exact run/source links.
