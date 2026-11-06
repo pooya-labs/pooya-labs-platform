@@ -14,6 +14,15 @@
 - Full site redesign using Pooya's feedback is a mandatory pre-release Phase 7 gate.
 - Apps Script, GitHub Pages, and Cloudflare Pages are independent publishing/runtime targets; none is allowed to become a hard dependency of the others.
 
+## Publishing status — 2026-11-06
+- [x] Added an isolated Cloudflare build target: `npm run build:cloudflare` → `dist/cloudflare`, with Cloudflare-specific canonical origin and root base.
+- [x] Created Cloudflare Pages project `pooya-labs-platform` on `pooya-labs-platform.pages.dev`; final checked deployment `c8205f55-cb96-485e-986f-dc794dd186d5` completed successfully from main commit `6ecd5a8c6b72fab931ab5fc919c8f9b5ceb1f20c`.
+- [x] Added a secret-gated GitHub Actions Cloudflare production trigger that deploys the exact pushed main commit and polls for Cloudflare's success status. The required `CLOUDFLARE_API_TOKEN` secret is not configured yet, so automatic GitHub-triggered publishing remains disabled until the token is added.
+- [x] Added a secret-gated `clasp` workflow for the isolated HtmlService payload. CI builds and uploads the GAS bundle; production deployment waits for `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` repository secrets.
+- [x] Kept each target independent: GitHub Pages (`dist/pages`), Cloudflare Pages (`dist/cloudflare`), and Apps Script (`dist/gas` / `dist/gas-deploy`).
+- [ ] Add the Cloudflare Pages API token and Apps Script clasp secrets to repository Actions settings, then run the production workflows. Do not put credentials in repository files or chat.
+- [ ] Confirm the final pages.dev and Apps Script /exec routes in a real browser from the owner's device. Cloudflare API confirms publication; external HTTP browser verification was unavailable in this session.
+
 ## Newly implemented
 - [x] Added bilingual Persian/English public portfolio as the default root experience.
 - [x] Added hero, About, selected project cards, focus areas, technology list, contact section, and secondary workspace entry.
