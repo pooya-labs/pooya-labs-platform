@@ -24,6 +24,7 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 - [ ] Confirm exact public attribution/role wording. The current README does not identify an individual author or provide a personal contribution breakdown.
 - [x] Add a bilingual architecture/execution-flow diagram based on the documented Rust, PostgreSQL, JetStream, Worker, and observability boundaries.
 - [ ] Capture an owner-approved current UI/API/worker screenshot; no actual product screenshot was found in the repository.
+- [ ] Resolve the public landing-page milestone label mismatch before using a current screenshot: the live page still displays M07 while the source audit records M08 in progress. The portfolio currently withholds AetherFlow UI screenshots until the public source evidence is reconciled.
 - [ ] Recheck M08 against the current main SHA: in-flight worker completion during API outage, additional distinct recovery/failure-injection cases, and the fingerprint-aware benchmark comparator. Resolve or clearly describe any outstanding schema/CI failure.
 - [ ] Record the owner's license choice; README states license selection is still pending.
 - [ ] Confirm which benchmark/recovery results may be quoted publicly and retain exact run/source links.
@@ -38,12 +39,13 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 - Release CI, Security, and Pages evidence are linked from the dossier. Demo notifications are simulated; no real webhook/email is sent.
 
 **Evidence checkpoint (2026-11-06)**
-- The ORBIT registry currently retains its immutable project brand mark. Earlier metadata referenced local desktop/mobile PNG paths, but those files were not present in the checked-in `main` tree (both paths returned 404); the unbacked references have been removed.
-- The capture workflow now uploads candidate screenshots as review-only artifacts with read-only repository permissions. It does not commit or publish them. No ORBIT UI screenshot is counted as complete until an artifact is visually reviewed and an approved image is committed.
+- The ORBIT case study now uses a visually reviewed desktop hero and mobile screenshot, committed at `77bc3ce0c41533661b8970d2527f4cd94b8a4341` and referenced through immutable raw-GitHub URLs. Both images show the public synthetic-data demo and were checked for private data, browser errors, failed requests, and horizontal overflow.
+- The capture workflow remains artifact-only. A separate approval-manifest publisher verifies exact artifact identity, PNG signatures, byte sizes, and SHA-256 checksums before it commits explicitly selected screenshots.
 
 **Required before portfolio release**
 - [x] Add a bilingual architecture diagram that keeps the public Apps Script demo path separate from the local Go/OTel/Prometheus/Loki/Tempo engineering path.
-- [ ] Capture and visually approve real dashboard screenshots for Overview, Incidents, Metrics, Logs, and Traces; commit only selected images after checking that demo data is synthetic and no private information is visible. The current repository visual is a brand icon, not product evidence.
+- [x] Capture and visually approve the Overview dashboard in desktop and mobile sizes; both screenshots are in the case study and pinned to immutable portfolio commits. The current images show synthetic demo data and no private records.
+- [ ] Capture additional real dashboard states for Incidents, Metrics, Logs, and Traces; these are not covered by the current Overview screenshots.
 - [ ] Have the owner run and record an Apps Script demo smoke: bootstrap, a mutation in a synthetic workspace, reload/refresh persistence, and an isolated second browser profile. The external verification environment could not independently validate the owner's Apps Script deployment.
 - [ ] Complete real-device TalkBack and VoiceOver sessions and the remaining human keyboard/chart-table review; automated axe/Playwright/NVDA runs do not constitute formal WCAG certification.
 - [ ] Keep synthetic data, non-hosted Go/PostgreSQL/OTel infrastructure, and simulated notifications clearly disclosed.
@@ -58,7 +60,7 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 
 **Required before portfolio release**
 - [x] Add a bilingual architecture diagram showing the static Pages export, Next/React workspace, Zustand state, and browser-local tools; the no-backend boundary is explicit.
-- [ ] Capture current desktop and mobile interface screenshots (including one open app/window).
+- [x] Capture and visually review current desktop and mobile interface screenshots, including the engineering-profile window; both are committed and included in the case study.
 - [ ] Run current-source browser, keyboard, responsive, reduced-motion, and accessibility checks; the README did not provide a consolidated current QA report at audit time.
 - [ ] Confirm whether the project is still actively maintained or should be labelled as a completed experiment/demonstration.
 
@@ -72,7 +74,8 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 
 **Required before portfolio release**
 - [x] Add a bilingual architecture diagram for the browser graph editor, graph analysis, validated model, local simulation, and snapshot/Compose export.
-- [ ] Capture actual canvas, rack view, graph analysis, and snapshot import/export screenshots.
+- [x] Capture and visually review representative desktop and mobile screenshots of the live canvas/topology workspace.
+- [ ] Add focused evidence for rack view, graph analysis, and snapshot import/export; these states are not represented by the current two screenshots.
 - [ ] Run current-source browser, keyboard, mobile, reduced-motion, and accessibility checks; no consolidated current QA report was found in the README.
 - [ ] Confirm whether generated Compose output has an example verified by a real local Docker Compose run; otherwise continue calling it a starter, not a deployable production topology.
 
@@ -86,7 +89,8 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 
 **Required before portfolio release**
 - [x] Add a bilingual architecture diagram showing the separate SVG/Canvas optical path, Web Audio filter chain, and browser-local preset/task storage.
-- [ ] Capture Optical Studio, PNG export, Audio Lab, and task-board screenshots.
+- [x] Capture and visually review desktop and mobile screenshots of the Optical Studio.
+- [ ] Add focused evidence for PNG export, Audio Lab, and the task board; the current images do not demonstrate all four features.
 - [ ] Run current-source tests for mic permission denial, stop/source switching, AudioContext/resource cleanup, and reduced-motion/accessibility behavior.
 - [ ] Do not claim cloud sync, AI audio processing, or server persistence.
 
@@ -101,7 +105,8 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 
 **Required before portfolio release**
 - [x] Add a bilingual architecture diagram separating Binance public ticker input, labelled illustrative fallback, browser dashboard, and local paper-trading storage; no exchange order path is shown.
-- [ ] Capture screenshots of connected ticker state, disconnected/fallback state, chart, and paper-trading flow.
+- [x] Capture and visually review desktop and mobile screenshots of the clearly labelled simulated workspace; the images identify the chart as illustrative and the account as simulated.
+- [ ] Capture separate connected-ticker and disconnected/fallback states plus a focused paper-trading flow. The current automation-origin browser run logged a CORS failure for the optional Binance ticker request, so these screenshots must not be presented as proof of live market connectivity.
 - [ ] Re-run tests for feed availability/fallback labelling, local storage reset, arithmetic, and browser/accessibility behavior on current source.
 - [ ] Ensure the portfolio never presents illustrative indicators as live market data or the project as a real trading platform.
 
