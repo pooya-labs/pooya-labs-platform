@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-06 — Case-study section hierarchy consistency
+- Corrected the final two interactive case-study section labels to 09 and 10, matching the crawler-readable static pages.
+- Moved the supplemental interface-capture heading out of the numbered sequence in both renderers, avoiding a duplicate 05 label.
+- Added a regression contract that checks both renderers expose the same uninterrupted 01–10 section sequence.
+- Repository CI [42227942261](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42227942261) passed TypeScript, all three target builds, artifact uploads, and **41/41 contract tests** on 328de1fc838cb4a5b9af9c3515a7c261cb3e47ec.
+- GitHub Pages build and deployment [42227942275](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42227942275) succeeded on the same commit.
+- Cloudflare and Apps Script deploy jobs were still skipped because their required GitHub Actions secrets were unavailable; the prior Cloudflare production deployment remains the f9011ec5a3f9eb2faffdac222596b37444184191 build.
 ## 2026-11-05 — Raster social previews for reliable link sharing
 - Added pinned build dependency `@resvg/resvg-js@2.6.2` to render social-card SVGs into real PNG files during the Pages build; editable SVG sources remain available beside each PNG.
 - Switched homepage and all 16 localized project case-study Open Graph images to PNG.

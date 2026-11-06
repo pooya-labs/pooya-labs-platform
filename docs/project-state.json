@@ -9,34 +9,36 @@
   "currentTask": {
     "id": "P3-08",
     "title": "Validate social previews and close owner evidence before Phase 7",
-    "status": "eight-dossiers-eight-bilingual-diagrams-16-static-pages-17-png-social-cards-plus-17-svg-sources-globalcart-ui-captures-ci-green-34-of-34-external-and-owner-gates-pending"
+    "status": "eight-bilingual-dossiers-eight-bilingual-diagrams-16-static-pages-17-png-social-cards-12-reviewed-ui-screenshots-across-six-projects-ci-41-of-41-passed-github-pages-deployed-owner-and-external-validation-gates-pending"
   },
-  "lastCheckpointDate": "2026-11-05",
-  "latestVerifiedCodeCommit": "defc51a924d4ae0437534d59956a764f4d861f0d",
+  "lastCheckpointDate": "2026-11-06",
+  "latestVerifiedCodeCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
   "tests": {
-    "repositoryCi": "passed-run-42072937855",
-    "repositoryCiTestCount": 34,
+    "repositoryCi": "passed-run-42227942261",
+    "repositoryCiTestCount": 41,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
-    "githubPagesDeployment": "passed-run-42071642813",
-    "platformTypecheck": "passed-run-42072937855",
-    "pagesAndGasBuilds": "passed-run-42072937855",
+    "githubPagesDeployment": "passed-run-42227942275",
+    "platformTypecheck": "passed-run-42227942261",
+    "pagesAndGasBuilds": "passed-run-42227942261-pages-gas-cloudflare",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "pending-owner-review",
-    "vitePagesWorkflow": "passed-run-42071642813",
+    "vitePagesWorkflow": "passed-run-42227942275",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
-    "activePagesSource": "not-yet-verified-after-legacy-branch-build",
-    "portfolioContractTests": "passed-34-of-34-run-42072937855",
+    "activePagesSource": "GitHub Actions build and deploy succeeded on 2026-11-06; repository Pages source setting still requires owner-side confirmation",
+    "portfolioContractTests": "passed-41-of-41-run-42227942261",
     "latestPreviousPagesDeployment": "passed-run-42043972152",
     "docsCheckpoint": "passed-run-42060558950",
     "staticCaseStudyOutput": "passed-in-run-42072937855-16-pages-16-diagrams-17-png-cards-17-svg-sources-robots-sitemap-and-globalcart-screenshots",
     "architectureDiagramContracts": "passed-in-run-42066575496-eight-bilingual-diagrams",
     "externalSocialPreviewValidation": "pending-external-share-client-cache-refresh",
-    "socialCardPngFormat": "passed-in-run-42072937855-valid-png-signatures-1200x627-all-17"
+    "socialCardPngFormat": "passed-in-run-42072937855-valid-png-signatures-1200x627-all-17",
+    "staticCaseStudySectionOrder": "passed-run-42227942261-interactive-and-static-01-through-10",
+    "lastVerifiedTestCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -59,7 +61,12 @@
     "activePagesSource": "GitHub Actions deployment succeeded; repository Pages source setting still requires owner-side confirmation",
     "appsScriptSync": "deferred-not-required-for-static-portfolio",
     "portfolioPagesPublished": true,
-    "portfolioPagesRun": "42071642813"
+    "portfolioPagesRun": "42227942275",
+    "latestPortfolioCodeCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
+    "cloudflareProductionDeployment": "0bba4323-359d-4fb6-8d5e-aa833e36b22c",
+    "cloudflareProductionCommit": "f9011ec5a3f9eb2faffdac222596b37444184191",
+    "cloudflareWorkflow": "deploy-job-skipped-missing-CLOUDFLARE_API_TOKEN-run-42227942246",
+    "appsScriptWorkflow": "deploy-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID-run-42227942163"
   },
   "previousProjects": {
     "inspected": true,
@@ -69,17 +76,18 @@
     "ownerRequestedDeferral": true
   },
   "blockers": [
-    "Pooya must approve the public biography/positioning, featured project order, statuses, personal contribution/attribution wording, contact channel, and final visual assets.",
-    "Actual UI screenshots remain missing for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; Salon Booking requires owner-approved redacted UI evidence. GlobalCart desktop/mobile storefront screenshots are now published.",
-    "AetherFlow's individual author/contribution wording, M08 operational scenarios, benchmark evidence review, and license decision remain open.",
-    "ORBIT Apps Script live demo bootstrap/mutation/refresh smoke and real TalkBack/VoiceOver/human accessibility review remain open.",
-    "Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse need current-source consolidated browser/accessibility evidence and actual interface screenshots.",
-    "GlobalCart M09.6 gallery completeness, latest exact-SHA browser/deploy E2E acceptance, and source-document reconciliation remain open.",
-    "Salon Booking Apps Script 1.4.0, TimeBlocks, relay/bootstrap/booking acceptance, actual salon configuration, and FCM device-push proof remain open.",
-    "External crawler/social-client rendering and cache refresh for the PNG Open Graph images must be confirmed.",
+    "Pooya must approve the public biography/positioning, first three featured projects, project statuses, personal contribution/attribution wording, contact channel, and final visual assets.",
+    "AetherFlow still needs its M07/M08 UI/README/CORS-origin discrepancy resolved upstream before a current screenshot can be accepted; individual contribution wording, M08 operational scenarios, benchmark review, and license decision also remain open.",
+    "ORBIT still needs Incidents/Metrics/Logs/Traces captures, owner-run Apps Script demo bootstrap/mutation/refresh acceptance, and human TalkBack/VoiceOver/keyboard/chart-table review.",
+    "NexusCanvas rack/graph/snapshot evidence, LuminaGlass export/Audio Lab/task-board evidence, and AuraPulse connected/fallback feed plus focused paper-trading evidence remain pending.",
+    "Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse still need consolidated current-source browser, keyboard, responsive, reduced-motion, and accessibility QA; no automated check is formal WCAG certification.",
+    "GlobalCart M09.6 gallery completeness, current-SHA browser/deploy E2E acceptance, and source-document reconciliation remain open.",
+    "Salon Booking still requires Apps Script 1.4.0, TimeBlocks, relay/bootstrap/booking acceptance, actual salon configuration, FCM device-push proof, and owner-approved redacted UI evidence.",
+    "External LinkedIn/Facebook crawler rendering and cache-refresh validation for the PNG Open Graph images remains open.",
+    "Repeatable Cloudflare and Apps Script deployment workflows remain gated on repository Actions secrets; the last verified Cloudflare production deployment is from commit f9011ec5a3f9eb2faffdac222596b37444184191.",
     "Full-site redesign with two feedback rounds and explicit Pooya approval remains a mandatory V1 release blocker."
   ],
-  "nextAction": "Validate the 1200x627 PNG social previews through external share clients/inspectors; then gather remaining project screenshots and owner-confirmed biography/roles/contact decisions, close current-SHA/manual QA and runtime acceptance gates, and begin the mandatory two-round full redesign.",
+  "nextAction": "Validate the 1200x627 PNG social previews through LinkedIn Post Inspector and Facebook Sharing Debugger; resolve AetherFlow's upstream UI/host/CORS/licensing/attribution gates; obtain owner-approved Salon Booking evidence; collect the remaining feature-focused screenshots and manual QA; then begin the mandatory two-round full redesign.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -107,7 +115,7 @@
   },
   "visualDesign": {
     "direction": "portfolio-first-dark-obsidian-cyan-emerald-antigravity-inspired",
-    "cursorRefractionField": true,
+    "cursorRefractionField": false,
     "touchDisabled": true,
     "reducedMotionDisabled": true,
     "languageDefault": "fa-RTL",
@@ -118,16 +126,21 @@
     "designDocument": "docs/DESIGN-DIRECTION.md",
     "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
   },
-  "latestVerifiedCommit": "d2c8552482ec2fc20c7a39dbaceece3dd2fe5ae1",
+  "latestVerifiedCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
     "bilingualAltText": true,
     "lazyLoaded": true,
     "gracefulCssFallback": true,
-    "actualInterfaceScreenshots": 2,
+    "actualInterfaceScreenshots": 12,
     "actualInterfaceScreenshotProjects": [
-      "GlobalCart"
+      "GlobalCart",
+      "ORBIT",
+      "Pooya.OS",
+      "NexusCanvas",
+      "LuminaGlass",
+      "AuraPulse"
     ],
     "globalCartDesktopAndMobile": true,
     "globalCartScreenshotCommit": "5ca43e40ff101e673ee7cf261850bff0a679047c",
@@ -137,18 +150,19 @@
     "brandOrIllustrationAssets": 6,
     "missingVisualEvidenceProjects": [
       "AetherFlow",
-      "ORBIT",
-      "Pooya.OS",
-      "NexusCanvas",
-      "LuminaGlass",
-      "AuraPulse",
       "Salon Booking (owner-approved redacted UI required)"
     ],
     "perProjectStaticSocialCards": true,
     "socialPreviewHomeCard": true,
     "socialPreviewPngCount": 17,
     "socialPreviewSvgSourceCount": 17,
-    "socialPreviewDimensions": "1200x627"
+    "socialPreviewDimensions": "1200x627",
+    "featureFocusedEvidencePending": [
+      "ORBIT: Incidents, Metrics, Logs, Traces",
+      "NexusCanvas: rack view, graph analysis, snapshot import/export",
+      "LuminaGlass: PNG export, Audio Lab, task board",
+      "AuraPulse: connected/fallback ticker states and focused paper-trading flow"
+    ]
   },
   "metadata": {
     "baseOpenGraph": true,
@@ -164,7 +178,7 @@
     "socialPreviewDimensions": "1200x627 (LinkedIn share preview recommendation)",
     "socialPreviewCardCount": 17
   },
-  "latestVerifiedTestCommit": "d2c8552482ec2fc20c7a39dbaceece3dd2fe5ae1",
+  "latestVerifiedTestCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
   "caseStudyDossiers": {
     "bilingual": true,
     "projectCount": 8,
@@ -200,9 +214,9 @@
     "staticCaseStudyPages": "complete-16-routes",
     "socialPreviewCards": "17 PNG primary images plus 17 SVG source cards",
     "externalSocialPreviewValidation": "pending",
-    "actualUiScreenshots": "globalcart-desktop-mobile-complete-other-projects-pending",
+    "actualUiScreenshots": "12-reviewed-desktop-mobile-screenshots-across-GlobalCart-ORBIT-PooyaOS-NexusCanvas-LuminaGlass-AuraPulse; AetherFlow-and-Salon-Booking-pending",
     "ownerContentApproval": "pending",
     "fullSiteRedesign": "mandatory-two-round-owner-review"
   },
-  "latestBranchHeadAtCheckpoint": "d2c8552482ec2fc20c7a39dbaceece3dd2fe5ae1"
+  "latestBranchHeadAtCheckpoint": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec"
 }
