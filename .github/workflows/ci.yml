@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   validate:
-    name: Typecheck, build, and contract tests
+    name: Typecheck, three-target build, and contract tests
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -32,11 +32,20 @@ jobs:
         run: npm run typecheck
       - name: Build GitHub Pages and Apps Script bundles
         run: npm run build
+      - name: Build independent Cloudflare Pages bundle
+        run: npm run build:cloudflare
       - name: Upload single-file Apps Script bundle
         uses: actions/upload-artifact@v4
         with:
           name: pooya-labs-gas-htmlservice-bundle
           path: dist/gas/index.html
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload Cloudflare Pages bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: pooya-labs-cloudflare-pages-bundle
+          path: dist/cloudflare
           if-no-files-found: error
           retention-days: 14
       - name: Run repository contract tests
