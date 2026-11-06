@@ -40,3 +40,17 @@ test('browser QA is a separate Chromium workflow and uploads a report without pu
   assert.doesNotMatch(workflow, /deploy-pages|git push|create pull request/i);
   assert.equal(packageJson.devDependencies.playwright, '1.64.1');
 });
+
+test('browser QA includes a pinned axe-core Playwright scan for WCAG 2.2 AA and best practices', () => {
+  assert.equal(packageJson.devDependencies['@axe-core/playwright'], '4.14.0');
+  assert.match(script, /import \{ AxeBuilder \} from '@axe-core\/playwright'/);
+  assert.match(script, /wcag2a/);
+  assert.match(script, /wcag2aa/);
+  assert.match(script, /wcag21aa/);
+  assert.match(script, /wcag22aa/);
+  assert.match(script, /best-practice/);
+  assert.match(script, /axeResults\.violations/);
+  assert.match(script, /axeResults\.incomplete/);
+  assert.match(script, /finding\.impact === 'critical'/);
+  assert.match(script, /impactCounts/);
+});

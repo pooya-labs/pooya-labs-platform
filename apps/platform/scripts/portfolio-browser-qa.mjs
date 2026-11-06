@@ -1,3 +1,4 @@
+import { AxeBuilder } from '@axe-core/playwright';
 import { chromium } from 'playwright';
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -36,6 +37,12 @@ const report = {
   viewportCount: viewports.length,
   checks: [],
   failures: [],
+  accessibility: {
+    tags: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'],
+    impactCounts: { critical: 0, serious: 0, moderate: 0, minor: 0, unknown: 0 },
+    incompleteRuleChecks: 0,
+    findings: [],
+  },
   note: 'Automated Chromium smoke and responsive checks. This is not a manual screen-reader audit or WCAG certification.',
 };
 
@@ -124,7 +131,37 @@ try {
             document.documentElement.scrollWidth > window.innerWidth + 1 ||
             document.body.scrollWidth > window.innerWidth + 1,
         }));
-        routeRecord.viewportChecks.push({ ...viewport, ...metrics });
+        const axeResults = await new AxeBuilder({ page }).withTags(report.accessibility.tags).analyze();
+        const axeFindings = axeResults.violations.map((violation) => ({
+          id: violation.id,
+          impact: violation.impact ?? 'unknown',
+          description: violation.description,
+          help: violation.help,
+          helpUrl: violation.helpUrl,
+          nodes: violation.nodes.slice(0, 12).map((node) => ({
+            target: node.target,
+            failureSummary: node.failureSummary?.slice(0, 1200) ?? null,
+          })),
+        }));
+        routeRecord.viewportChecks.push({
+          ...viewport,
+          ...metrics,
+          axeViolationCount: axeFindings.length,
+          axeIncompleteRuleCount: axeResults.incomplete.length,
+        });
+        report.accessibility.incompleteRuleChecks += axeResults.incomplete.length;
+        for (const finding of axeFindings) {
+          report.accessibility.impactCounts[finding.impact] =
+            (report.accessibility.impactCounts[finding.impact] ?? 0) + 1;
+          report.accessibility.findings.push({
+            route: route.label,
+            viewport: viewport.name,
+            ...finding,
+          });
+          if (finding.impact === 'critical') {
+            addFailure(route, viewport.name, 'Critical axe accessibility violation: ' + finding.id);
+          }
+        }
         if (metrics.horizontalOverflow) {
           addFailure(route, viewport.name, 'Horizontal overflow detected at this viewport.');
         }
@@ -178,6 +215,8 @@ const passedRoutes = report.checks.filter((item) =>
 ).length;
 console.log('Portfolio browser QA: ' + passedRoutes + '/' + routes.length + ' routes passed.');
 console.log('Viewport checks: ' + report.checks.reduce((sum, item) => sum + item.viewportChecks.length, 0) + '/' + (routes.length * viewports.length) + '.');
+console.log('Axe violations by impact: ' + JSON.stringify(report.accessibility.impactCounts) + '.');
+console.log('Axe incomplete rule checks: ' + report.accessibility.incompleteRuleChecks + '.');
 console.log('Failures: ' + report.failures.length + '.');
 console.log('Report: ' + path.join(artifactDir, 'qa-report.json'));
 
