@@ -89,7 +89,7 @@ try {
         await page.addStyleTag({
           content: [
             '*, *::before, *::after { caret-color: transparent !important; }',
-            'input, textarea, select { filter: blur(5px) !important; }',
+            'input:not([type=range]):not([type=checkbox]):not([type=radio]):not([type=file]):not(:placeholder-shown), textarea:not(:placeholder-shown) { filter: blur(5px) !important; }',
             '[data-testid*="user"], [data-testid*="account"], [data-private="true"] { filter: blur(8px) !important; }',
             'html { scroll-behavior: auto !important; }',
           ].join('\n'),
@@ -126,7 +126,8 @@ try {
             await page.waitForTimeout(350);
           }
         }
-        await captureScenario('overview', 'Overview');
+        const defaultView = target.slug === 'nexus-canvas' && viewport.name === 'mobile' ? 'Mobile Rack' : 'Overview';
+        await captureScenario('overview', defaultView);
 
         // Demo mode has seeded incidents, but its incident-management panel intentionally withholds
         // real incident actions until an authenticated API is connected. Metrics/Logs/Traces are also
@@ -142,9 +143,12 @@ try {
         // NexusCanvas: capture the interactive mobile-rack view and the export/import modal.
         // No JSON file is imported and no download is triggered by the capture.
         if (target.slug === 'nexus-canvas') {
-          await page.getByRole('button', { name: /Mobile Rack|نمای رک موبایل/ }).first().click();
-          await page.waitForTimeout(600);
-          await captureScenario('mobile-rack', 'Mobile Rack');
+          // On mobile the application selects Mobile Rack by default; capture it as the base mobile view.
+          if (viewport.name !== 'mobile') {
+            await page.getByRole('button', { name: /Mobile Rack|نمای رک موبایل/ }).first().click();
+            await page.waitForTimeout(600);
+            await captureScenario('mobile-rack', 'Mobile Rack');
+          }
           await page.getByRole('button', { name: /Export Docker \/ JSON|خروجی Docker \/ JSON/ }).first().click();
           await page.waitForTimeout(500);
           await captureScenario('export-modal', 'Export Docker / JSON');
@@ -191,8 +195,11 @@ try {
 }
 
 const captured = records.filter((record) => record.result === 'captured-pending-human-review').length;
-const extraScenariosPerViewport = 1 + 2 + 2; // ORBIT Incidents + NexusCanvas Rack/Export + LuminaGlass Audio/Workflow
-const expectedCaptureCount = targets.length * viewports.length + extraScenariosPerViewport * viewports.length;
+const expectedCaptureCount = targets.length * viewports.length
+  + viewports.length // ORBIT Incidents, desktop and mobile
+  + 1 // NexusCanvas Mobile Rack, desktop only; mobile uses it as the base view
+  + viewports.length // NexusCanvas Export / Import modal, desktop and mobile
+  + viewports.length * 2; // LuminaGlass Audio Lab and Task Board, desktop and mobile
 console.log(`Capture workflow produced ${captured} of ${expectedCaptureCount} expected viewport/scenario screenshots.`);
 if (captured !== expectedCaptureCount) {
   const failed = records.filter((record) => record.result === 'capture-failed');
