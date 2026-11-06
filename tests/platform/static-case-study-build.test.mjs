@@ -74,7 +74,8 @@ test('reviewed project interface screenshots are embedded in both static case-st
     }
   }
   const aetherFlow = await readFile(new URL('projects/aetherflow/index.html', outputRoot), 'utf8');
-  assert.doesNotMatch(aetherFlow, /interface-captures\\/aetherflow\\/aetherflow-(?:desktop|mobile)\\.png/);
+  assert.ok(!aetherFlow.includes('interface-captures/aetherflow/aetherflow-desktop.png'));
+  assert.ok(!aetherFlow.includes('interface-captures/aetherflow/aetherflow-mobile.png'));
 });
 
 test('Pages build omits unused local screenshot duplicates while preserving immutable remote evidence', { skip: !rootHtml }, async () => {
