@@ -53,7 +53,9 @@ test('browser QA includes a pinned axe-core Playwright scan for WCAG 2.2 AA and 
   assert.match(script, /best-practice/);
   assert.match(script, /axeResults\.violations/);
   assert.match(script, /axeResults\.incomplete/);
-  assert.match(script, /finding\.impact === 'critical'/);
+  assert.match(script, /finding\.impact === 'critical' \|\| finding\.impact === 'serious'/);
+  assert.match(script, /incompleteRules: \[\]/);
+  assert.match(script, /axeResults\.incomplete/);
   assert.doesNotMatch(portfolioSource, /aria-label=\"Pooya Labs home\"/);
   assert.match(portfolioCss, /\.portfolio-header \.portfolio-brand[\s\S]*?min-height: 40px/);
   assert.match(portfolioCss, /\.portfolio-nav a[\s\S]*?min-height: 32px/);

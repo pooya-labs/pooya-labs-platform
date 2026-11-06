@@ -41,6 +41,7 @@ const report = {
     tags: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'],
     impactCounts: { critical: 0, serious: 0, moderate: 0, minor: 0, unknown: 0 },
     incompleteRuleChecks: 0,
+    incompleteRules: [],
     findings: [],
   },
   note: 'Automated Chromium smoke and responsive checks. This is not a manual screen-reader audit or WCAG certification.',
@@ -150,6 +151,21 @@ try {
           axeIncompleteRuleCount: axeResults.incomplete.length,
         });
         report.accessibility.incompleteRuleChecks += axeResults.incomplete.length;
+        for (const rule of axeResults.incomplete) {
+          report.accessibility.incompleteRules.push({
+            route: route.label,
+            viewport: viewport.name,
+            id: rule.id,
+            impact: rule.impact ?? 'unknown',
+            description: rule.description,
+            help: rule.help,
+            helpUrl: rule.helpUrl,
+            nodes: rule.nodes.slice(0, 8).map((node) => ({
+              target: node.target,
+              failureSummary: node.failureSummary?.slice(0, 1200) ?? null,
+            })),
+          });
+        }
         for (const finding of axeFindings) {
           report.accessibility.impactCounts[finding.impact] =
             (report.accessibility.impactCounts[finding.impact] ?? 0) + 1;
@@ -158,8 +174,8 @@ try {
             viewport: viewport.name,
             ...finding,
           });
-          if (finding.impact === 'critical') {
-            addFailure(route, viewport.name, 'Critical axe accessibility violation: ' + finding.id);
+          if (finding.impact === 'critical' || finding.impact === 'serious') {
+            addFailure(route, viewport.name, 'High-impact axe accessibility violation (' + finding.impact + '): ' + finding.id);
           }
         }
         if (metrics.horizontalOverflow) {
@@ -216,7 +232,7 @@ const passedRoutes = report.checks.filter((item) =>
 console.log('Portfolio browser QA: ' + passedRoutes + '/' + routes.length + ' routes passed.');
 console.log('Viewport checks: ' + report.checks.reduce((sum, item) => sum + item.viewportChecks.length, 0) + '/' + (routes.length * viewports.length) + '.');
 console.log('Axe violations by impact: ' + JSON.stringify(report.accessibility.impactCounts) + '.');
-console.log('Axe incomplete rule checks: ' + report.accessibility.incompleteRuleChecks + '.');
+console.log('Axe incomplete rule checks: ' + report.accessibility.incompleteRuleChecks + ' (' + report.accessibility.incompleteRules.length + ' records).');
 console.log('Failures: ' + report.failures.length + '.');
 console.log('Report: ' + path.join(artifactDir, 'qa-report.json'));
 
