@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite --config vite.config.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "capture:projects": "node scripts/capture-project-previews.mjs"
+    "capture:projects": "node scripts/capture-project-previews.mjs",
+    "preview": "vite preview --config vite.config.ts --mode pages",
+    "qa:portfolio:browser": "node scripts/portfolio-browser-qa.mjs"
   },
   "dependencies": {
     "lucide-react": "1.68.0",

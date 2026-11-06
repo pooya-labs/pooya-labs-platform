@@ -1,0 +1,61 @@
+name: Portfolio Browser QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/platform/**'
+      - 'package.json'
+      - '.github/workflows/portfolio-browser-qa.yml'
+      - 'tests/platform/portfolio-browser-qa-contract.test.mjs'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-browser-qa
+  cancel-in-progress: true
+
+jobs:
+  browser-qa:
+    name: Chromium responsive and keyboard smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install workspace dependencies
+        run: npm install --no-audit --no-fund
+      - name: Build GitHub Pages output
+        run: npm run build:pages
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Start local Pages preview
+        run: |
+          npm run preview --workspace @pooya-labs/platform -- --host 127.0.0.1 --port 4173 --strictPort > /tmp/pooya-labs-preview.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4173/pooya-labs-platform/ > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/pooya-labs-preview.log
+          exit 1
+      - name: Run responsive, route, metadata, and keyboard checks
+        env:
+          PORTFOLIO_BASE_URL: http://127.0.0.1:4173/pooya-labs-platform/
+          PORTFOLIO_QA_ARTIFACT_DIR: artifacts/portfolio-browser-qa
+        run: npm run qa:portfolio:browser --workspace @pooya-labs/platform
+      - name: Upload browser QA report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-browser-qa-report
+          path: apps/platform/artifacts/portfolio-browser-qa/
+          if-no-files-found: warn
+          retention-days: 14
