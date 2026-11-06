@@ -16,7 +16,7 @@
 
 ## Publishing status — 2026-11-06
 - [x] Added an isolated Cloudflare build target: `npm run build:cloudflare` → `dist/cloudflare`, with Cloudflare-specific canonical origin and root base.
-- [x] Created Cloudflare Pages project `pooya-labs-platform` on `pooya-labs-platform.pages.dev`; latest checked deployment `7b544ac0-4d76-451f-aa97-bb1f34515509` completed successfully from main commit `6661532b7061cb3ccff8bbe58dabb25708bb4389`.
+- [x] Created Cloudflare Pages project `pooya-labs-platform` on `pooya-labs-platform.pages.dev`; latest checked deployment `0bba4323-359d-4fb6-8d5e-aa833e36b22c` completed successfully from main commit `f9011ec5a3f9eb2faffdac222596b37444184191`. All 83 expected assets, including homepage, bilingual ORBIT routes, sitemap, and robots, are present.
 - [x] Added a secret-gated GitHub Actions Cloudflare production trigger that runs type-check/build/contract tests, deploys the exact pushed main commit through the Pages API, and polls for success. Native Pages Git push deployment is paused because the repository push probe did not trigger a deployment. The required `CLOUDFLARE_API_TOKEN` secret is not configured yet.
 - [x] Added a secret-gated `clasp` workflow for the isolated HtmlService payload. CI builds and uploads the GAS bundle; production deployment waits for `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` repository secrets.
 - [x] Kept each target independent: GitHub Pages (`dist/pages`), Cloudflare Pages (`dist/cloudflare`), and Apps Script (`dist/gas` / `dist/gas-deploy`). Added a build contract to verify host-specific canonical/meta URLs, sitemap, robots, and route asset paths.
@@ -54,9 +54,9 @@
 - [x] Replaced five stale `pooya16pg-spec.github.io` preview URLs with the currently verified `pooya-labs.github.io` Pages hosts; AetherFlow's screenshot remains withheld until its M07/M08 public label mismatch is resolved.
 
 ## CI and publishing status
-- Repository CI [42218346116](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42218346116) passed on main SHA `12dbfd33adba84f7b67153a1700f3518182e18bc`: TypeScript, Pages build, Apps Script bundle, artifact upload, and **41/41 contract tests**. Job logs report zero failures.
-- GitHub Pages build and deployment [42217711525](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42217711525) both succeeded on application-source SHA `654da2cf1e9e975673a0d4e287fffa9125f1117c`. This is the current deployed app source; subsequent commits changed only tests and CI workflow behavior.
-- The deployed artifact contains the generated `sitemap.xml` with all 17 URLs marked `2026-11-06`, 16 bilingual case-study routes, and 17 valid 1200×627 PNG social cards. The ten unused local screenshot binaries are absent from the Pages bundle; immutable raw-GitHub screenshot URLs still resolve from the repository.
+- Repository CI [42225133097](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42225133097) passed on main SHA `f9011ec5a3f9eb2faffdac222596b37444184191`: TypeScript, GitHub Pages/Apps Script build, Cloudflare build, both artifact uploads, and **40/40 contract tests**. The new multi-host contract verifies canonical URLs, JSON-LD, sitemap, robots, and route asset paths are isolated per host.
+- GitHub Pages build [42225133071](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42225133071) completed successfully on SHA `f9011ec5a3f9eb2faffdac222596b37444184191`; its deployment job was still active at the latest check, so the final Pages deploy for this SHA remains unconfirmed.
+- The generated host-specific Cloudflare artifact contains the sitemap, 16 bilingual case-study routes, 17 valid 1200×627 PNG social cards, and a robots.txt sitemap pointer for the Cloudflare origin. The new cross-host test passed. GitHub Pages retains its own project subpath and canonical origin.
 - The GitHub Pages artifact ZIP measured **3,811,158 bytes**, down from **7,870,673 bytes** before duplicate screenshot pruning (51.6% reduction).
 - Public preview: https://pooya-labs.github.io/pooya-labs-platform/
 - Current repo status and unresolved pre-release evidence are tracked in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
