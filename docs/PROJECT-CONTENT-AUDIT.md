@@ -8,6 +8,25 @@
 
 The portfolio now has eight bilingual project dossiers. Each includes the documented role/attribution (or explicitly says when the source does not identify an individual), architecture, implementation details, engineering decisions, verification evidence, and links to source documentation and relevant CI runs. Case-study pages render these in Persian and English. Source repositories remain independent; no project code was copied into this portfolio.
 
+## Artifact-only interface recapture review — 2026-11-06
+
+**Capture evidence:** workflow [42235240283](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42235240283), artifact [13510233762](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42235240283/artifacts/13510233762), with `capture-report.json` and twelve PNG candidates:
+- AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; each at 1440×1000 and 390×844.
+- All twelve page requests returned HTTP 200 and all twelve viewport diagnostics reported no horizontal overflow.
+- The capture runner reported no page/console/network errors for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, or LuminaGlass. AuraPulse reported a failed request to Binance's `/api/v3/ticker/24hr` endpoint because the browser origin `https://pooya-labs.github.io` did not receive an `Access-Control-Allow-Origin` response.
+- All twelve individual screenshots were visually inspected at full size on 2026-11-06. This is a visual review of candidate evidence, not owner approval or permission to publish. The files remain in the workflow artifact only; none was committed to the public portfolio.
+
+**Per-project visual findings**
+- **AetherFlow:** Desktop and mobile layouts are composed cleanly, but both show `CONTROL PLANE / M07` while the source README records M08 in progress. The desktop header also visibly contains two `Dashboard` navigation labels. Keep both screenshots withheld until the upstream owner reconciles milestone labels/navigation, public host links, and dashboard/API CORS instructions.
+- **ORBIT:** Desktop and mobile screenshots clearly show `DEMO ENVIRONMENT` and explicitly say the metrics, services, and incidents are illustrative; the side rail also says demo telemetry/sample rather than live usage. These are useful Overview candidates, not evidence of a real connected infrastructure. Incidents/Metrics/Logs/Traces focused states remain missing.
+- **Pooya.OS:** Both screenshots show the profile portrait and the X-Ray/engineering-profile window. The owner must approve the visible portrait and verify that the displayed frame-time/FPS indicators are demo/interface telemetry before these candidates replace any existing approved media.
+- **NexusCanvas:** Both screenshots expose the graph editor and node inspector; the desktop identifies modelled latency/throughput, and the side panel explicitly says telemetry is illustrative, not live. They are candidates for the main canvas only; rack view, focused graph analysis, and snapshot import/export still need dedicated evidence.
+- **LuminaGlass:** Both screenshots show the optical-glass editor, preset list, and PNG export area, with Blur set to 32px. The preset-title/input area is heavily blurred in this state. Keep as a candidate; add a clearer low/no-blur or successful-export capture, plus Audio Lab and task-board states, before treating the case study as complete.
+- **AuraPulse:** Desktop and mobile screenshots visibly carry a `SIMULATED` badge and the chart is labeled illustrative OHLC. This supports an explicitly simulated UI showcase only. The same capture run's Binance ticker request failed CORS, so do not describe the screenshot as live market data or a verified connected-feed capture.
+- **Salon Booking:** Deliberately excluded from this run because a usable capture requires owner-approved, privacy-reviewed synthetic/redacted content.
+
+**Publication rule:** keep these twelve new files separate from previously approved/pinned screenshots. Promote a candidate only through the existing checksum-gated approval-manifest workflow after owner approval and any project-specific factual/privacy checks.
+
 ## Per-project audit
 
 ### 01 — AetherFlow

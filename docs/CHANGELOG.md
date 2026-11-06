@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-06 — GitHub Pages release verification and visual screenshot candidate audit
+- GitHub Pages run [42238363799](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42238363799) completed successfully on code SHA `dc991c4a90aad92ec4006332fffccf04fdd09951`; both the build and deploy jobs passed.
+- Downloaded and audited deployed artifact [13511808294](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42238363799/artifacts/13511808294): 17 HTML pages, 17 valid PNG Open Graph cards at 1200×627, 17 sitemap URLs, and robots.txt sitemap pointer. All HTML pages have canonical/OG image/description/JSON-LD; all 16 case-study pages have language alternates.
+- Individually inspected the twelve artifact-only screenshot candidates from [42235240283](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42235240283). All twelve returned HTTP 200 and have no horizontal overflow, but remain unpublished and owner-unapproved. The visual audit records AetherFlow's stale M07/duplicate Dashboard, AuraPulse's Binance CORS failure and simulated labels, the visible Pooya.OS portrait needing approval, NexusCanvas's illustrative modelled metrics, LuminaGlass's 32px blur state, and ORBIT's explicit demo/illustrative data disclosure.
+- Salon Booking remained excluded from automated capture because it requires owner-approved, privacy-reviewed redacted content.
+- Updated STATUS, NEXT, project content audit, and machine-readable project state. The current code UI remains at `dc991c4`; documentation checkpoint is `aa62b23`.
+
 ## 2026-11-06 — Portfolio accessibility remediation and strict axe QA
 - The first axe scan on commit `2933bad` identified 51 repeated serious findings: 34 brand-name mismatches and 17 undersized navigation targets. Both were fixed centrally in [38203322](https://github.com/pooya-labs/pooya-labs-platform/commit/38203322f11184adb06064a530c5f8b4bc5c05a2).
 - QA run [42236238032](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42236238032) passed 17/17 routes and 34/34 desktop/mobile checks with zero axe violations. The first report exposed 36 incomplete rule checks; two `aria-prohibited-attr` cases on the hero artwork were fixed with `role="img"` and localized accessible naming in [dc991c4](https://github.com/pooya-labs/pooya-labs-platform/commit/dc991c4a90aad92ec4006332fffccf04fdd09951).

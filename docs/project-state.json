@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P3-08",
     "title": "Validate social previews and close owner evidence before Phase 7",
-    "status": "46-contract-tests-passed-17-browser-routes-34-viewports-zero-axe-violations-34-color-contrast-incomplete-reviews-pages-deploy-pending-external-owner-gates-and-two-round-redesign-open"
+    "status": "46-contract-tests-passed-17-routes-34-viewports-zero-axe-violations-pages-deployed-dc991c4-artifact-audited-17-html-17-og-png-17-sitemap-targets-12-candidate-screenshots-visually-reviewed-but-unapproved"
   },
   "lastCheckpointDate": "2026-11-06",
   "latestVerifiedCodeCommit": "dc991c4a90aad92ec4006332fffccf04fdd09951",
@@ -22,12 +22,12 @@
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
-    "githubPagesDeployment": "build-passed-deploy-in-progress-run-42238363799; last-confirmed-success-run-42236669522",
+    "githubPagesDeployment": "passed-run-42238363799-on-code-sha-dc991c4a90aad92ec4006332fffccf04fdd09951",
     "platformTypecheck": "passed-run-42238363801",
     "pagesAndGasBuilds": "passed-run-42238363801-pages-gas-cloudflare",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "pending-owner-visual-contrast-and-manual-accessibility-review",
-    "vitePagesWorkflow": "build-passed-deploy-in-progress-run-42238363799",
+    "vitePagesWorkflow": "build-and-deploy-passed-run-42238363799",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "GitHub Actions build and deploy succeeded on 2026-11-06 for source fc4d865b8fa4a19a3899f4b72847d39594c201ad; repository Pages source setting still requires owner-side confirmation",
     "portfolioContractTests": "passed-46-of-46-run-42238363801",
@@ -35,14 +35,29 @@
     "docsCheckpoint": "passed-run-42060558950",
     "staticCaseStudyOutput": "passed-in-run-42072937855-16-pages-16-diagrams-17-png-cards-17-svg-sources-robots-sitemap-and-globalcart-screenshots",
     "architectureDiagramContracts": "passed-in-run-42066575496-eight-bilingual-diagrams",
-    "externalSocialPreviewValidation": "pending-external-share-client-cache-refresh",
+    "externalSocialPreviewValidation": "pending-authenticated-linkedin-facebook-crawler-and-cache-refresh",
     "socialCardPngFormat": "passed-in-run-42072937855-valid-png-signatures-1200x627-all-17",
     "staticCaseStudySectionOrder": "passed-run-42227942261-and-42230046270",
     "lastVerifiedTestCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
     "skipNavigationContract": "passed-run-42231110043-bilingual-fixed-position-reduced-motion",
     "portfolioBrowserQa": "passed-run-42238363900-17-of-17-routes-34-of-34-viewports-zero-axe-impact-violations-34-color-contrast-incomplete-reviews",
     "portfolioBrowserQaArtifact": "13511783286",
-    "portfolioBrowserQaStrictGate": "critical-and-serious-axe-findings-fail-job; incomplete-rule-details-retained; passed-run-42238363900"
+    "portfolioBrowserQaStrictGate": "critical-and-serious-axe-findings-fail-job; incomplete-rule-details-retained; passed-run-42238363900",
+    "pagesArtifactAudit": "passed-run-42238363799-artifact-13511808294-17-html-17-png-1200x627-17-sitemap-urls-all-canonical-og-description-jsonld-and-case-study-hreflang",
+    "pagesArtifactAuditDetails": {
+      "artifactId": "13511808294",
+      "htmlPages": 17,
+      "openGraphPngs": 17,
+      "openGraphPngDimensions": "1200x627",
+      "sitemapUrls": 17,
+      "robotsTxtSitemapPointer": true,
+      "canonicalMetadata": "17-of-17",
+      "openGraphImageMetadata": "17-of-17",
+      "descriptionMetadata": "17-of-17",
+      "jsonLdMetadata": "17-of-17",
+      "caseStudyHreflangMetadata": "16-of-16"
+    },
+    "pagesPublicUrl": "https://pooya-labs.github.io/pooya-labs-platform/"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -65,15 +80,18 @@
     "activePagesSource": "GitHub Actions deployment succeeded; repository Pages source setting still requires owner-side confirmation",
     "appsScriptSync": "deferred-not-required-for-static-portfolio",
     "portfolioPagesPublished": true,
-    "portfolioPagesRun": "42236669522",
-    "latestPortfolioCodeCommit": "65d0e841b95f947d671f88d07c32362984cf36f1",
+    "portfolioPagesRun": "42238363799",
+    "latestPortfolioCodeCommit": "dc991c4a90aad92ec4006332fffccf04fdd09951",
     "cloudflareProductionDeployment": "0bba4323-359d-4fb6-8d5e-aa833e36b22c",
     "cloudflareProductionCommit": "f9011ec5a3f9eb2faffdac222596b37444184191",
     "cloudflareWorkflow": "actual-deploy-job-skipped-missing-CLOUDFLARE_API_TOKEN-run-42238363845",
     "appsScriptWorkflow": "actual-deploy-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID-run-42238363818",
     "latestPagesAttemptRun": "42238363799",
     "latestPagesAttemptCodeCommit": "dc991c4a90aad92ec4006332fffccf04fdd09951",
-    "latestPagesAttemptStatus": "deploy-in-progress-at-checkpoint"
+    "latestPagesAttemptStatus": "passed-build-and-deploy",
+    "pagesArtifactId": "13511808294",
+    "pagesArtifactSizeBytes": 3808349,
+    "latestDocumentationCommit": "aa62b230eaaee350df0c6c8017d1eccf9fb91e10"
   },
   "previousProjects": {
     "inspected": true,
@@ -83,8 +101,8 @@
     "ownerRequestedDeferral": true
   },
   "blockers": [
-    "Pooya must approve the public biography/positioning, first three featured projects, project statuses, personal contribution/attribution wording, contact channel, and final visual assets.",
-    "AetherFlow rechecked read-only at main SHA f673dbde000a6a673ec113e338fbb89ab3b1aede: README says M08 in progress while landing/dashboard show M07; old pooya16pg-spec links and dashboard CORS guidance remain. New pooya-labs.github.io landing route returned HTTP 200 in capture run 42234110094, but live API CORS is unverified. The candidate screenshot is unreviewed and withheld; upstream repository was not modified.",
+    "Pooya must approve public biography/positioning, first three featured projects, project statuses, personal contribution/attribution wording, contact channel, and final visual assets. Twelve fresh screenshot candidates were visually inspected but remain artifact-only and owner-unapproved.",
+    "AetherFlow rechecked read-only at main SHA f673dbde000a6a673ec113e338fbb89ab3b1aede: README says M08 in progress while landing/dashboard show M07; the desktop capture also shows duplicate Dashboard navigation labels. Old pooya16pg-spec links and dashboard CORS guidance remain. New pooya-labs.github.io landing route returned HTTP 200 in capture run 42234110094, but live API CORS is unverified. Both new screenshots remain withheld; upstream repository was not modified.",
     "ORBIT still needs Incidents/Metrics/Logs/Traces captures, owner-run Apps Script demo bootstrap/mutation/refresh acceptance, and human TalkBack/VoiceOver/keyboard/chart-table review.",
     "NexusCanvas rack/graph/snapshot evidence, LuminaGlass export/Audio Lab/task-board evidence, and AuraPulse connected/fallback feed plus focused paper-trading evidence remain pending.",
     "Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse still need consolidated current-source browser, keyboard, responsive, reduced-motion, and accessibility QA; no automated check is formal WCAG certification.",
@@ -93,9 +111,10 @@
     "External LinkedIn/Facebook crawler rendering and cache-refresh validation for the PNG Open Graph images remains open.",
     "Repeatable Cloudflare and Apps Script deployment workflows remain gated on repository Actions secrets; the last verified Cloudflare production deployment is from commit f9011ec5a3f9eb2faffdac222596b37444184191.",
     "Full-site redesign with two feedback rounds and explicit Pooya approval remains a mandatory V1 release blocker.",
-    "Automated axe scan on current SHA dc991c4 reported zero critical/serious/moderate/minor violations across 17 routes and 34 viewports; 34 color-contrast checks are incomplete because of layered/gradient backgrounds and require human visual review. Manual keyboard/screen-reader review also remains open."
+    "Automated axe scan on current SHA dc991c4 reported zero critical/serious/moderate/minor violations across 17 routes and 34 viewports; 34 color-contrast checks are incomplete because of layered/gradient backgrounds and require human visual review. Manual keyboard/screen-reader review also remains open.",
+    "AuraPulse latest screenshot artifact 42235240283 shows explicit SIMULATED/illustrative OHLC labels, but its public Binance ticker request failed CORS; connected-feed and fallback states remain unverified."
   ],
-  "nextAction": "Confirm the GitHub Pages deployment for current SHA dc991c4, complete human visual contrast/keyboard/screen-reader review, validate LinkedIn/Facebook share-card rendering/cache refresh using authenticated owner tools, and close per-project evidence/owner approvals before the mandatory Phase 7 two-round redesign.",
+  "nextAction": "Run feature-focused artifact-only captures for ORBIT Incidents/Metrics/Logs/Traces, NexusCanvas rack/graph/snapshot flows, and LuminaGlass export/Audio Lab/task board; investigate AuraPulse's Binance CORS failure or preserve simulated-only disclosure; keep AetherFlow withheld pending upstream M07/M08 and host/CORS alignment; then complete authenticated LinkedIn/Facebook share-debugger validation and owner content/asset approvals before the mandatory Phase 7 redesign.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -134,7 +153,7 @@
     "designDocument": "docs/DESIGN-DIRECTION.md",
     "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
   },
-  "latestVerifiedCommit": "dc991c4a90aad92ec4006332fffccf04fdd09951",
+  "latestVerifiedCommit": "aa62b230eaaee350df0c6c8017d1eccf9fb91e10",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -170,7 +189,30 @@
       "NexusCanvas: rack view, graph analysis, snapshot import/export",
       "LuminaGlass: PNG export, Audio Lab, task board",
       "AuraPulse: connected/fallback ticker states and focused paper-trading flow"
-    ]
+    ],
+    "latestRecaptureRun": "42235240283",
+    "latestRecaptureArtifact": "13510233762",
+    "latestRecaptureCandidateCount": 12,
+    "latestRecaptureCandidateStatus": "all-12-individually-visually-inspected-by-assistant; artifact-only; unpublished; owner-approval-pending",
+    "latestRecaptureProjects": [
+      "AetherFlow",
+      "ORBIT",
+      "Pooya.OS",
+      "NexusCanvas",
+      "LuminaGlass",
+      "AuraPulse"
+    ],
+    "latestRecaptureNoHorizontalOverflow": "12-of-12",
+    "latestRecaptureHttpStatus": "12-of-12-http-200",
+    "latestRecaptureErrors": {
+      "aetherflow": "no-page-errors-or-failed-requests; screenshot remains blocked by M07 label and duplicate Dashboard nav",
+      "orbit": "no-page-errors-or-failed-requests; sample/demo and illustrative data labels visible",
+      "pooyaOS": "no-page-errors-or-failed-requests; profile portrait and X-Ray figures require owner approval",
+      "nexusCanvas": "no-page-errors-or-failed-requests; modelled metrics and illustrative telemetry labels visible; feature views still missing",
+      "luminaGlass": "no-page-errors-or-failed-requests; capture is at 32px blur; clearer export plus Audio Lab/task board evidence still needed",
+      "auraPulse": "Binance ticker request failed CORS; visible SIMULATED and illustrative OHLC labels retained"
+    },
+    "salonBookingLatestRecapture": "excluded-pending-owner-approved-privacy-reviewed-redacted-capture"
   },
   "metadata": {
     "baseOpenGraph": true,
