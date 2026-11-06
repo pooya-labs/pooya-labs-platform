@@ -168,7 +168,10 @@ test('all eight case studies include bilingual roles, architecture, implementati
 
 test('portfolio distinguishes in-progress release lines from stable demo releases', () => {
   assert.match(projectData, /In development · v0\.2\.3-dev \/ M09\.6/);
-  assert.match(projectData, /Apps Script 1\.4\.0 target/);
+  assert.match(projectData, /Released · v1\.0\.0/);
+  assert.match(productDossiers, /APP_VERSION_ = 1\.5\.3/);
+  assert.match(productDossiers, /42086718663/);
+  assert.match(productDossiers, /42086718821/);
   assert.match(productDossiers, /do not process real sales|No real payment/i);
   assert.match(productDossiers, /not assumed to have passed/i);
 });

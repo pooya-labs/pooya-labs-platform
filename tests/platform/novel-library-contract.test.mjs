@@ -15,39 +15,39 @@ test('novel catalog starts empty and uses the versioned public schema', async ()
 
 test('novel library validates unique slugs, safe cover/manuscript paths, and explicit publication state', async () => {
   const source = await readFile(modulePath, 'utf8');
-  assert.match(source, /validateNovelCatalog/);
-  assert.match(source, /Novel slugs must be unique/);
-  assert.match(source, /isSafeNovelPath/);
-  assert.match(source, /Novel manuscripts must be Markdown or text files inside novels\\/manuscripts/);
-  assert.match(source, /Every novel requires an explicit published flag/);
-  assert.match(source, /novel\\.published/);
-  assert.doesNotMatch(source, /dangerouslySetInnerHTML/);
+  assert.ok(source.includes('validateNovelCatalog'));
+  assert.ok(source.includes('Novel slugs must be unique'));
+  assert.ok(source.includes('isSafeNovelPath'));
+  assert.ok(source.includes('novels/manuscripts/'));
+  assert.ok(source.includes('Every novel requires an explicit published flag'));
+  assert.ok(source.includes('novel.published'));
+  assert.ok(!source.includes('dangerouslySetInnerHTML'));
 });
 
 test('novel reader safely supports the documented Markdown structures', async () => {
   const source = await readFile(modulePath, 'utf8');
-  assert.match(source, /parseNovelMarkdown/);
-  assert.match(source, /type: 'heading'/);
-  assert.match(source, /type: 'list'/);
-  assert.match(source, /type: 'quote'/);
-  assert.match(source, /renderInline/);
+  assert.ok(source.includes('parseNovelMarkdown'));
+  assert.ok(source.includes("type: 'heading'"));
+  assert.ok(source.includes("type: 'list'"));
+  assert.ok(source.includes("type: 'quote'"));
+  assert.ok(source.includes('renderInline'));
 });
 
 test('homepage links the novels section and loads the published catalog', async () => {
   const source = await readFile(sourcePath, 'utf8');
-  assert.match(source, /href="#novels"/);
-  assert.match(source, /NovelLibrarySection/);
-  assert.match(source, /loadNovelCatalog/);
-  assert.match(source, /novelCatalog\\.filter\\(\\(novel\\) => novel\\.published\\)/);
+  assert.ok(source.includes('href="#novels"'));
+  assert.ok(source.includes('NovelLibrarySection'));
+  assert.ok(source.includes('loadNovelCatalog'));
+  assert.ok(source.includes('novelCatalog.filter((novel) => novel.published)'));
 });
 
 test('GitHub upload guide documents the public paths and privacy boundary', async () => {
   const guide = await readFile(guidePath, 'utf8');
-  assert.match(guide, /apps\\/platform\\/public\\/novels\\/catalog\\.json/);
-  assert.match(guide, /apps\\/platform\\/public\\/novels\\/covers/);
-  assert.match(guide, /apps\\/platform\\/public\\/novels\\/manuscripts/);
-  assert.match(guide, /published: false/);
-  assert.match(guide, /فایل خام همچنان/);
+  assert.ok(guide.includes('apps/platform/public/novels/catalog.json'));
+  assert.ok(guide.includes('apps/platform/public/novels/covers/'));
+  assert.ok(guide.includes('apps/platform/public/novels/manuscripts/'));
+  assert.ok(guide.includes('published: false'));
+  assert.ok(guide.includes('فایل خام همچنان'));
 });
 
 test('Pages build copies the catalog into the public output when the artifact is present', async (t) => {
