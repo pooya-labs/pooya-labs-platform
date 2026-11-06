@@ -30,6 +30,17 @@
 .portfolio-page button:focus-visible, .portfolio-page a:focus-visible {
   outline: 2px solid var(--pf-cyan); outline-offset: 4px;
 }
+.portfolio-skip-link {
+  position: absolute; z-index: 1000; inset-block-start: 12px; inset-inline-start: 16px;
+  transform: translateY(calc(-100% - 20px)); padding: 11px 16px; border: 1px solid rgba(120, 247, 222, .55);
+  border-radius: 10px; color: #061b20 !important; background: linear-gradient(110deg, #76e8ec, #7de4b7);
+  box-shadow: 0 8px 26px rgba(59, 212, 192, .18); font-size: 12px; font-weight: 700;
+  transition: transform .16s ease;
+}
+.portfolio-skip-link:focus, .portfolio-skip-link:focus-visible {
+  transform: translateY(0); outline: 2px solid var(--pf-cyan, #66e6ee); outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) { .portfolio-skip-link { transition: none; } }
 .portfolio-container { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
 .portfolio-atmosphere { position: absolute; z-index: -2; pointer-events: none; border-radius: 50%; filter: blur(90px); }
 .atmosphere-a { width: 430px; height: 430px; top: 5%; inset-inline-end: 5%; background: rgba(12, 148, 166, .14); }

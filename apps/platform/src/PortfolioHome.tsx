@@ -28,6 +28,7 @@ interface PortfolioHomeProps {
 
 const text = {
   fa: {
+    skipToContent: 'رفتن به محتوای اصلی',
     navAbout: 'درباره من',
     navWork: 'پروژه‌ها',
     navStack: 'فناوری‌ها',
@@ -67,6 +68,7 @@ const text = {
     details: 'جزئیات پروژه', challenge: 'مسئله', approach: 'راهکار و رویکرد', highlights: 'قابلیت‌ها و پیاده‌سازی', boundaries: 'محدوده و محدودیت‌ها', role: 'نقش در پروژه', architecture: 'معماری فنی', implementation: 'جزئیات پیاده‌سازی', decisions: 'تصمیم‌های مهندسی', validation: 'تست و شواهد اعتبارسنجی', sources: 'مستندات و منابع', interfaceCaptures: 'تصاویر واقعی رابط کاربری', backProjects: 'بازگشت به پروژه‌ها',
   },
   en: {
+    skipToContent: 'Skip to main content',
     navAbout: 'About',
     navWork: 'Projects',
     navStack: 'Stack',
@@ -115,6 +117,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
   const architectureImage = import.meta.env.BASE_URL === './' ? null : `${import.meta.env.BASE_URL}architecture/${project.slug}${language === 'en' ? '-en' : ''}.svg`;
   return (
     <div className={`portfolio-page portfolio-case-study ${rtl ? 'is-rtl' : 'is-ltr'}`}>
+      <a className="portfolio-skip-link" href="#main-content">{t.skipToContent}</a>
       <div className="portfolio-atmosphere atmosphere-a" />
       <div className="portfolio-grid" />
       <header className="portfolio-header">
@@ -127,7 +130,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
           <button className="portfolio-workspace" onClick={onBack}><span>{t.backProjects}</span><ArrowUpLeft size={15} /></button>
         </div>
       </header>
-      <main className="case-study-main portfolio-container">
+      <main id="main-content" tabIndex={-1} className="case-study-main portfolio-container">
         <a className="case-study-back" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}><ArrowUpLeft size={15} />{t.backProjects}</a>
         <section className="case-study-hero">
           <div className={'case-study-visual' + ((project.caseStudyHeroAsset ?? project.visualAsset) ? ' has-visual' : '')}>
@@ -298,6 +301,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
 
   return (
     <div className={`portfolio-page ${rtl ? 'is-rtl' : 'is-ltr'}`}>
+      <a className="portfolio-skip-link" href="#top">{t.skipToContent}</a>
       <div className="portfolio-atmosphere atmosphere-a" />
       <div className="portfolio-atmosphere atmosphere-b" />
       <div className="portfolio-grid" />
@@ -319,7 +323,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
         </div>
       </header>
 
-      <main id="top">
+      <main id="top" tabIndex={-1}>
         <section className="portfolio-hero portfolio-container">
           <div className="portfolio-hero-copy">
             <div className="portfolio-eyebrow"><span className="eyebrow-pulse" />{t.eyebrow}</div>

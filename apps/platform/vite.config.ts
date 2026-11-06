@@ -21,6 +21,7 @@ const SITE_NAME = 'Pooya Labs';
 
 const pageCopy = {
   fa: {
+    skipToContent: 'رفتن به محتوای اصلی',
     back: 'بازگشت به پروژه‌ها',
     demo: 'مشاهده دمو',
     source: 'مشاهده سورس',
@@ -39,6 +40,7 @@ const pageCopy = {
     siteDescription: 'پروژه‌ها، تصمیم‌های فنی و آزمایش‌های نرم‌افزاری Pooya Labs.'
   },
   en: {
+    skipToContent: 'Skip to main content',
     back: 'Back to projects',
     demo: 'Open demo',
     source: 'View source',
@@ -111,7 +113,8 @@ function renderStaticCaseStudy(project: PortfolioProject, locale: Locale): strin
       </section>`
     : '';
 
-  return `<main class="case-study-main portfolio-container">
+  return `<a class="portfolio-skip-link" href="#main-content">${t.skipToContent}</a>
+  <main id="main-content" tabindex="-1" class="case-study-main portfolio-container">
     <a class="case-study-back" href="${SITE_BASE}#projects">← ${t.back}</a>
     <article>
       <header class="case-study-hero">
