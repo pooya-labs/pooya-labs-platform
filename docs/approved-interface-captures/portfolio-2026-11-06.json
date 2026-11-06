@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "scope": "portfolio-case-study-interface-captures",
+  "artifact": {
+    "workflowRunId": 42210424072,
+    "name": "project-interface-captures",
+    "captureSha": "18cff5175b1b7d9d41069d14c3236ad81e88f41c"
+  },
+  "review": {
+    "date": "2026-11-06",
+    "outcome": "approved-for-portfolio-use",
+    "notes": [
+      "The selected Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse desktop/mobile captures were visually reviewed at their native sizes.",
+      "All four project Pages URLs returned HTTP 200; all eight captures reported no horizontal overflow.",
+      "Pooya.OS, NexusCanvas, and LuminaGlass captures reported no browser console errors or failed requests.",
+      "AuraPulse explicitly labels its workspace as SIMULATED and its chart as ILLUSTRATIVE OHLC; the capture runner recorded a CORS failure on the optional Binance public ticker request, so these images must be presented as simulated/demo interface evidence rather than live market connectivity.",
+      "Input fields are obscured by the capture runner; the selected images show public demo/project interfaces and no customer records, credentials, or private account data.",
+      "AetherFlow was intentionally excluded because its public landing-page milestone badge still says M07 while the source audit now records M08 in progress; that discrepancy should be resolved at source before using the screenshot as current portfolio evidence."
+    ]
+  },
+  "files": [
+    {
+      "project": "pooya-os",
+      "device": "desktop",
+      "source": "pooya-os-desktop.png",
+      "destination": "apps/platform/public/interface-captures/pooya-os/pooya-os-desktop.png",
+      "bytes": 935106,
+      "sha256": "473829d400b309845e0d0650c5722ab5c0bf91e15d74e563dbedb613e75310ab",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "project": "pooya-os",
+      "device": "mobile",
+      "source": "pooya-os-mobile.png",
+      "destination": "apps/platform/public/interface-captures/pooya-os/pooya-os-mobile.png",
+      "bytes": 187253,
+      "sha256": "1bfb10389460f30bc16255b92326ed088d799d2fef3572bc2ab64abb2b077753",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "project": "nexus-canvas",
+      "device": "desktop",
+      "source": "nexus-canvas-desktop.png",
+      "destination": "apps/platform/public/interface-captures/nexus-canvas/nexus-canvas-desktop.png",
+      "bytes": 554169,
+      "sha256": "0826e5be51d5c10710a66155f347aa09864f57ca57e62bd4c7a03f7b0a1dd742",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "project": "nexus-canvas",
+      "device": "mobile",
+      "source": "nexus-canvas-mobile.png",
+      "destination": "apps/platform/public/interface-captures/nexus-canvas/nexus-canvas-mobile.png",
+      "bytes": 160091,
+      "sha256": "4f2c0bd270ed0f6b9b9f403eec007be0051536256cc9e7e58a2b3f6a03630dfa",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "project": "lumina-glass",
+      "device": "desktop",
+      "source": "lumina-glass-desktop.png",
+      "destination": "apps/platform/public/interface-captures/lumina-glass/lumina-glass-desktop.png",
+      "bytes": 1026020,
+      "sha256": "fe0ee194986953c1bc7a2d351adc64fac8349b6a6ea2d0edc4401e31de0ecc11",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "project": "lumina-glass",
+      "device": "mobile",
+      "source": "lumina-glass-mobile.png",
+      "destination": "apps/platform/public/interface-captures/lumina-glass/lumina-glass-mobile.png",
+      "bytes": 308674,
+      "sha256": "8182ee773f73227303321e7a938d2839221534806bc93e905c3748a1fbf9b41a",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "project": "aurapulse",
+      "device": "desktop",
+      "source": "aurapulse-desktop.png",
+      "destination": "apps/platform/public/interface-captures/aurapulse/aurapulse-desktop.png",
+      "bytes": 495782,
+      "sha256": "d2eb7daa761c18177b68744154e43524feaff4d817eef6e76a733ae53f5b2760",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "project": "aurapulse",
+      "device": "mobile",
+      "source": "aurapulse-mobile.png",
+      "destination": "apps/platform/public/interface-captures/aurapulse/aurapulse-mobile.png",
+      "bytes": 147869,
+      "sha256": "a893583d181f4c5ddd2eb0904920b9e69dea08ab8f2cee101bb6b52f827527db",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ]
+}
