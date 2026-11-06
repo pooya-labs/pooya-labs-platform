@@ -32,7 +32,7 @@ test('portfolio project cards expose verified demos and source repositories', ()
   assert.match(projectData, /status: \{ fa: 'در حال توسعه · M08', en: 'In development · M08' \}/);
   assert.match(projectData, /status: \{ fa: 'نسخه پایدار ۱٫۰٫۰', en: 'Stable v1.0.0' \}/);
   assert.match(projectData, /repositoryUrl: 'https:\/\/github\.com\/pooya-labs\/aetherflow'/);
-  assert.match(projectData, /previewUrl: 'https:\/\/pooya16pg-spec\.github\.io\/aetherflow\//);
+  assert.match(projectData, /previewUrl: 'https:\/\/pooya-labs\.github\.io\/aetherflow\//);
   assert.match(projectData, /caseStudyUrl: 'https:\/\/pooya-labs\.github\.io\/globalcart\/case-study\//);
   assert.equal((projectData.match(/repositoryUrl: 'https:\/\/github\.com\/pooya-labs\//g) ?? []).length, 8);
   assert.equal((projectData.match(/previewUrl: 'https:\/\/[^']+\.github\.io\//g) ?? []).length, 8);
@@ -85,11 +85,18 @@ test('project cards and shareable query routes expose in-site case studies', () 
 
 test('project artwork and interface screenshots are sourced from pinned commits with localized alt text', () => {
   assert.equal((projectData.match(/visualAsset: \{/g) ?? []).length, 7);
-  assert.equal((projectData.match(/raw\.githubusercontent\.com\/pooya-labs\//g) ?? []).length, 9);
-  assert.equal((projectData.match(/caseStudyMedia: \[/g) ?? []).length, 1);
-  assert.equal((projectData.match(/^\s+device: '(?:desktop|mobile)',?$/gm) ?? []).length, 2);
-  assert.equal((projectData.match(/alt: \{ fa: '[^']+', en: '[^']+' \}/g) ?? []).length, 9);
+  assert.equal((projectData.match(/caseStudyHeroAsset: \{/g) ?? []).length, 5);
+  assert.equal((projectData.match(/caseStudyMedia: \[/g) ?? []).length, 6);
+  assert.equal((projectData.match(/^\s+device: '(?:desktop|mobile|detail)',?$/gm) ?? []).length, 7);
+  assert.ok((projectData.match(/raw\.githubusercontent\.com\/pooya-labs\//g) ?? []).length >= 19);
+  assert.ok((projectData.match(/alt: \{ fa: '[^']+', en: '[^']+' \}/g) ?? []).length >= 19);
+  for (const slug of ['orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse']) {
+    const projectBlock = projectData.slice(projectData.indexOf(`slug: '${slug}'`));
+    assert.match(projectBlock, /caseStudyHeroAsset: \{[\s\S]*?raw\.githubusercontent\.com\/pooya-labs\/pooya-labs-platform\/[a-f0-9]{40}\//);
+    assert.match(projectBlock, /caseStudyMedia: \[[\s\S]*?raw\.githubusercontent\.com\/pooya-labs\/pooya-labs-platform\/[a-f0-9]{40}\//);
+  }
   assert.match(projectData, /Project visual assets must be pinned to an immutable source commit/);
+  assert.match(projectData, /Case-study hero assets must be pinned to an immutable source commit/);
   assert.match(projectData, /Project visual asset URL/);
   assert.match(portfolio, /project-art-image/);
   assert.match(portfolio, /case-study-visual-image/);
