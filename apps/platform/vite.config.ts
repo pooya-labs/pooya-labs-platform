@@ -11,8 +11,10 @@ import type { CaseStudyDossier } from './src/content/case-study-dossiers-types';
 import { architectureDiagrams } from './src/content/architecture-diagrams';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
-const SITE_ORIGIN = 'https://pooya-labs.github.io';
-const SITE_BASE = '/pooya-labs-platform/';
+const DEFAULT_SITE_ORIGIN = 'https://pooya-labs.github.io';
+const DEFAULT_SITE_BASE = '/pooya-labs-platform/';
+let SITE_ORIGIN = DEFAULT_SITE_ORIGIN;
+let SITE_BASE = DEFAULT_SITE_BASE;
 const SITE_NAME = 'Pooya Labs';
 
 const pageCopy = {
@@ -415,6 +417,9 @@ ${sitemapEntries.map((entry) => `  <url>
 
 export default defineConfig(({ mode }) => {
   const gasBuild = mode === 'gas';
+  const cloudflareBuild = mode === 'cloudflare';
+  SITE_ORIGIN = cloudflareBuild ? 'https://pooya-labs-platform.pages.dev' : DEFAULT_SITE_ORIGIN;
+  SITE_BASE = cloudflareBuild ? '/' : DEFAULT_SITE_BASE;
 
   return {
     root,
@@ -424,7 +429,7 @@ export default defineConfig(({ mode }) => {
       ...(gasBuild ? [viteSingleFile({ removeViteModuleLoader: true })] : [staticCaseStudyPages()]),
     ],
     build: {
-      outDir: gasBuild ? '../../dist/gas' : '../../dist/pages',
+      outDir: gasBuild ? '../../dist/gas' : cloudflareBuild ? '../../dist/cloudflare' : '../../dist/pages',
       emptyOutDir: true,
       sourcemap: !gasBuild,
       cssCodeSplit: !gasBuild,
