@@ -191,8 +191,8 @@ try {
 }
 
 const captured = records.filter((record) => record.result === 'captured-pending-human-review').length;
-const featureScenarioTargets = targets.filter((target) => ['orbit', 'nexus-canvas', 'lumina-glass'].includes(target.slug)).length;
-const expectedCaptureCount = targets.length * viewports.length + featureScenarioTargets * 2 * viewports.length;
+const extraScenariosPerViewport = 1 + 2 + 2; // ORBIT Incidents + NexusCanvas Rack/Export + LuminaGlass Audio/Workflow
+const expectedCaptureCount = targets.length * viewports.length + extraScenariosPerViewport * viewports.length;
 console.log(`Capture workflow produced ${captured} of ${expectedCaptureCount} expected viewport/scenario screenshots.`);
 if (captured !== expectedCaptureCount) {
   const failed = records.filter((record) => record.result === 'capture-failed');

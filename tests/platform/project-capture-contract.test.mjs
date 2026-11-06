@@ -28,7 +28,9 @@ test('preview capture covers only the six public project demos with two responsi
   assert.match(script, /without starting audio or editing tasks/);
 
   assert.match(script, /target\.slug === 'orbit'/);
-  assert.match(script, /Telemetry views require a connected API/);
+  assert.match(script, /real incident actions until an authenticated API is connected/);
+  assert.match(script, /extraScenariosPerViewport = 1 \+ 2 \+ 2/);
+  assert.match(script, /expectedCaptureCount = targets\.length \* viewports\.length \+ extraScenariosPerViewport \* viewports\.length/);
   assert.match(script, /page\.locator\('\.sidebar \.nav-item'\)/);
   assert.match(script, /captured !== expectedCaptureCount/);
   assert.match(workflow, /name: Upload unreviewed screenshot evidence\n        if: always\(\)/);
