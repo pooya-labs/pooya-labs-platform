@@ -336,7 +336,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
             <div className="portfolio-social-proof"><span className="proof-line" /><span>POOYA LABS</span><span className="proof-dot">·</span><span>BUILDING IN PUBLIC</span></div>
           </div>
 
-          <div className="portfolio-hero-art" aria-label="Abstract P monogram artwork">
+          <div className="portfolio-hero-art" role="img" aria-label={rtl ? 'نشان انتزاعی حرف P' : 'Abstract P monogram artwork'}>
             <div className="art-orbit orbit-outer" /><div className="art-orbit orbit-inner" />
             <div className="art-glass-card glass-card-back"><span>DESIGN</span><Sparkles size={18} /></div>
             <div className="art-glass-card glass-card-front"><span>ENGINEERING</span><Workflow size={20} /></div>

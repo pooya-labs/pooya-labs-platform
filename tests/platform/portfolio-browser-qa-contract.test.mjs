@@ -57,6 +57,7 @@ test('browser QA includes a pinned axe-core Playwright scan for WCAG 2.2 AA and 
   assert.match(script, /incompleteRules: \[\]/);
   assert.match(script, /axeResults\.incomplete/);
   assert.doesNotMatch(portfolioSource, /aria-label=\"Pooya Labs home\"/);
+  assert.match(portfolioSource, /portfolio-hero-art\" role=\"img\" aria-label=/);
   assert.match(portfolioCss, /\.portfolio-header \.portfolio-brand[\s\S]*?min-height: 40px/);
   assert.match(portfolioCss, /\.portfolio-nav a[\s\S]*?min-height: 32px/);
   assert.match(script, /impactCounts/);
