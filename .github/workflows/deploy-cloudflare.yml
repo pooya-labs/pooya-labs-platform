@@ -61,6 +61,9 @@ jobs:
       - name: Type-check platform
         run: npm run typecheck
 
+      - name: Build GitHub Pages and Apps Script bundles
+        run: npm run build
+
       - name: Build Cloudflare bundle
         run: npm run build:cloudflare
 
