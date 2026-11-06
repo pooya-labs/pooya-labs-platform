@@ -4,12 +4,12 @@ import { createHash } from 'node:crypto';
 import path from 'node:path';
 
 const targets = [
-  { slug: 'aetherflow', url: 'https://pooya16pg-spec.github.io/aetherflow/' },
+  { slug: 'aetherflow', url: 'https://pooya-labs.github.io/aetherflow/' },
   { slug: 'orbit', url: 'https://pooya-labs.github.io/orbit/' },
-  { slug: 'pooya-os', url: 'https://pooya16pg-spec.github.io/pooya-os/' },
-  { slug: 'nexus-canvas', url: 'https://pooya16pg-spec.github.io/nexus-canvas/' },
-  { slug: 'lumina-glass', url: 'https://pooya16pg-spec.github.io/lumina-glass/' },
-  { slug: 'aurapulse', url: 'https://pooya16pg-spec.github.io/aurapulse/' },
+  { slug: 'pooya-os', url: 'https://pooya-labs.github.io/pooya-os/' },
+  { slug: 'nexus-canvas', url: 'https://pooya-labs.github.io/nexus-canvas/' },
+  { slug: 'lumina-glass', url: 'https://pooya-labs.github.io/lumina-glass/' },
+  { slug: 'aurapulse', url: 'https://pooya-labs.github.io/aurapulse/' },
 ];
 
 const viewports = [
