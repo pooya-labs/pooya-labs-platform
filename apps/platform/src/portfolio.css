@@ -40,51 +40,6 @@
   background-size: 58px 58px;
   mask-image: linear-gradient(to bottom, black, transparent 92%);
 }
-.portfolio-pointer { position: fixed; z-index: 30; inset: 0; overflow: hidden; pointer-events: none; contain: strict; }
-.portfolio-pointer-glow {
-  position: absolute; top: 0; left: 0; width: 340px; height: 340px; border-radius: 50%;
-  opacity: .52; filter: blur(38px); mix-blend-mode: screen; will-change: transform;
-  background: radial-gradient(circle, rgba(88, 228, 236, .2), rgba(74, 168, 183, .1) 35%, rgba(63, 191, 139, .055) 53%, transparent 72%);
-}
-.portfolio-pointer-lens {
-  position: absolute; top: 0; left: 0; width: 104px; height: 104px; border-radius: 50%;
-  opacity: .72; border: 1px solid rgba(174, 238, 241, .31);
-  background: radial-gradient(circle at 32% 27%, rgba(233, 255, 255, .17), rgba(94, 215, 221, .045) 58%, rgba(88, 224, 177, .07));
-  box-shadow: 0 0 0 1px rgba(107, 233, 222, .04), 0 0 34px rgba(71, 209, 210, .13), inset 0 0 26px rgba(188, 255, 245, .08);
-  backdrop-filter: blur(14px) saturate(165%); -webkit-backdrop-filter: blur(14px) saturate(165%);
-}
-.portfolio-pointer-lens::before {
-  content: ""; position: absolute; inset: 12px; border: 1px solid rgba(223, 255, 249, .13); border-radius: 50%;
-  background: radial-gradient(circle at 34% 27%, rgba(255,255,255,.12), transparent 62%);
-}
-.portfolio-header {
-  position: sticky; z-index: 20; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 24px;
-  width: min(1320px, calc(100% - 44px)); height: 82px; margin: 0 auto; padding: 0 22px;
-  border: 1px solid transparent; border-radius: 0 0 19px 19px;
-  background: linear-gradient(180deg, rgba(8, 14, 21, .91), rgba(8, 14, 21, .68));
-  backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
-}
-.portfolio-brand { display: inline-flex; align-items: center; gap: 11px; flex: 0 0 auto; }
-.portfolio-brand-mark {
-  display: grid; place-items: center; width: 39px; height: 39px; border: 1px solid rgba(105, 225, 225, .33); border-radius: 12px;
-  color: #dffeff; background: linear-gradient(145deg, rgba(80, 222, 219, .14), rgba(67, 133, 151, .07));
-  box-shadow: inset 0 1px rgba(255,255,255,.08), 0 0 25px rgba(49, 196, 191, .08);
-  font-size: 20px; font-weight: 750; letter-spacing: -.08em;
-}
-.portfolio-brand-mark span { color: var(--pf-emerald); }
-.portfolio-brand > span:last-child { display: flex; flex-direction: column; gap: 3px; }
-.portfolio-brand strong { font-size: 12px; letter-spacing: .12em; }
-.portfolio-brand small { color: var(--pf-dim); font-size: 8px; letter-spacing: .19em; }
-.portfolio-nav { display: flex; align-items: center; gap: 31px; margin-inline: auto; }
-.portfolio-nav a { color: var(--pf-muted); font-size: 11px; transition: color .18s ease; }
-.portfolio-nav a:hover { color: var(--pf-cyan); }
-.portfolio-header-actions { display: flex; align-items: center; gap: 10px; }
-.portfolio-language, .portfolio-workspace {
-  height: 36px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 13px;
-  border: 1px solid var(--pf-line); border-radius: 10px; background: rgba(255,255,255,.025); cursor: pointer; font-size: 10px;
-}
-.portfolio-language { color: var(--pf-muted); }
-.portfolio-workspace { border-color: rgba(95, 226, 210, .27); color: var(--pf-cyan); background: rgba(73, 209, 196, .07); }
 .portfolio-hero { position: relative; min-height: 650px; display: grid; grid-template-columns: 1.12fr .88fr; align-items: center; gap: 30px; padding-top: 55px; padding-bottom: 95px; }
 .portfolio-hero-copy { position: relative; z-index: 2; padding-block: 45px; }
 .portfolio-eyebrow { display: flex; align-items: center; gap: 9px; color: var(--pf-cyan); font: 10px ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .12em; }
@@ -244,11 +199,9 @@
   .portfolio-footer { justify-content: flex-start; gap: 15px 24px; padding-top: 18px; }
   .portfolio-footer > span { flex-basis: 100%; order: 2; }
   .portfolio-footer > small { order: 3; margin-inline-start: auto; }
-  .portfolio-pointer { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .portfolio-page *, .portfolio-page *::before, .portfolio-page *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
-  .portfolio-pointer { display: none !important; }
 }
 
 .project-card-footer { align-items: flex-start; flex-direction: column; gap: 10px; }
