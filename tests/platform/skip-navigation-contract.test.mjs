@@ -9,9 +9,9 @@ const css = await readFile(new URL('../../apps/platform/src/portfolio.css', impo
 test('Persian and English pages expose visible-on-focus skip navigation', () => {
   assert.ok(portfolio.includes("skipToContent: 'رفتن به محتوای اصلی'"));
   assert.ok(portfolio.includes("skipToContent: 'Skip to main content'"));
-  assert.ok(portfolio.includes('className="portfolio-skip-link" href="#top">{t.skipToContent}')));
+  assert.ok(portfolio.includes('className="portfolio-skip-link" href="#top">{t.skipToContent}'));
   assert.ok(portfolio.includes('<main id="top" tabIndex={-1}>'));
-  assert.ok(portfolio.includes('className="portfolio-skip-link" href="#main-content">{t.skipToContent}')));
+  assert.ok(portfolio.includes('className="portfolio-skip-link" href="#main-content">{t.skipToContent}'));
   assert.ok(portfolio.includes('<main id="main-content" tabIndex={-1} className="case-study-main'));
   assert.ok(viteConfig.includes("skipToContent: 'رفتن به محتوای اصلی'"));
   assert.ok(viteConfig.includes("skipToContent: 'Skip to main content'"));
