@@ -403,8 +403,8 @@ ${sitemapEntries.map((entry) => `  <url>
     <lastmod>${sitemapLastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>${entry.priority}</priority>
-    ${entry.alternates.map((alternate) => `<xhtml:link rel="alternate" hreflang="${alternate.locale}" href="${escapeXml(alternate.href)}" />`).join('\\n    ')}
-  </url>`).join('\\n')}
+    ${entry.alternates.map((alternate) => `<xhtml:link rel="alternate" hreflang="${alternate.locale}" href="${escapeXml(alternate.href)}" />`).join('\n    ')}
+  </url>`).join('\n')}
 </urlset>
 `;
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap });
