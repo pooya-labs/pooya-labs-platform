@@ -203,7 +203,7 @@ test('homepage motion design is screenshot-led, progressive, and reduced-motion 
   assert.match(css, /@keyframes hero-preview-float/);
   assert.match(css, /@keyframes project-ticker-flow/);
   assert.match(css, /prefers-reduced-motion: reduce/);
-  assert.match(css, /motion-ready \\[data-reveal\\] \\.is-visible/);
+  assert.match(css, /\.portfolio-page\.motion-ready \[data-reveal\]\.is-visible/);
 });
 
 test('project evidence capture records private desktop/mobile screenshots and motion reels', async () => {

@@ -242,6 +242,7 @@
 /* Shareable, self-contained project case-study pages */
 .case-study-main { padding-top: 26px; padding-bottom: 85px; }
 .case-study-back { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 26px; color: var(--pf-muted) !important; font-size: 10px; }
+.case-study-back { min-height: 36px; padding: 9px 12px; border-radius: 999px; background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.11); }
 .case-study-back:hover { color: var(--pf-cyan) !important; }
 .case-study-hero { display: grid; grid-template-columns: .78fr 1.22fr; align-items: center; gap: 42px; min-height: 430px; padding: 32px 0 48px; border-bottom: 1px solid var(--pf-line); }
 .case-study-visual { position: relative; min-height: 330px; display: grid; place-items: center; overflow: hidden; border: 1px solid var(--pf-line); border-radius: 22px; background: radial-gradient(ellipse at 50% 52%, rgba(55, 163, 165, .15), transparent 60%), rgba(15, 28, 39, .45); }
