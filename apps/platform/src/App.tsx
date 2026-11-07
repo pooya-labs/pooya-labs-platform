@@ -150,7 +150,7 @@ function getDate(language: Language, date: Date): string {
 
 function App(): ReactNode {
   const [workspaceOpen, setWorkspaceOpen] = useState(false);
-  const [language, setLanguage] = useState<Language>(() => /\/en\/projects\//.test(window.location.pathname) ? 'en' : /\/projects\//.test(window.location.pathname) ? 'fa' : readPreference('language', 'fa'));
+  const [language, setLanguage] = useState<Language>(() => /\/en\/projects\//.test(window.location.pathname) ? 'en' : /\/projects\//.test(window.location.pathname) ? 'fa' : readPreference('language-v2', 'en'));
   const [theme, setTheme] = useState<Theme>(() => readPreference('theme', 'dark'));
   const [now, setNow] = useState(() => new Date());
   const [windows, setWindows] = useState<AppWindow[]>([]);
@@ -170,7 +170,7 @@ function App(): ReactNode {
   const htmlServiceHost = isHtmlServiceHost();
 
   useEffect(() => {
-    writePreference('language', language);
+    writePreference('language-v2', language);
     document.documentElement.lang = language;
     document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
   }, [language, isRtl]);
@@ -349,7 +349,7 @@ function App(): ReactNode {
   };
 
   if (!workspaceOpen) {
-    return <PortfolioHome language={language} onLanguageChange={setLanguage} onOpenWorkspace={() => setWorkspaceOpen(true)} />;
+    return <PortfolioHome language={language} onLanguageChange={setLanguage} theme={theme} onThemeChange={setTheme} onOpenWorkspace={() => setWorkspaceOpen(true)} />;
   }
 
   return (
