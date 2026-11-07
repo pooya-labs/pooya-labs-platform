@@ -12,7 +12,7 @@
     "status": "52-of-52-contract-tests-passed-on-5a379; TypeScript-and-three-target-builds-passed; Pages-deploy-and-17-route-34-viewport-browser-QA-passed; GlobalCart-current-M09.8-E2E-has-6-axe-accessible-name-failures-documented; ORBIT-Cloudflare-edge-state-documented; owner-and-manual-release-gates-open"
   },
   "lastCheckpointDate": "2026-11-07",
-  "latestVerifiedCodeCommit": "5a379757809888a1a8c98335f6006746372779e1",
+  "latestVerifiedCodeCommit": "d74c12952be73233f551034d08b5fd212d260d0e",
   "tests": {
     "repositoryCi": "passed-run-42393819743-on-5a379757809888a1a8c98335f6006746372779e1",
     "repositoryCiTestCount": 52,
@@ -108,18 +108,19 @@
   "blockers": [
     "Pooya must approve public biography/positioning, first three featured projects, project statuses, personal contribution/attribution wording, contact channel, and final visual assets. Twelve fresh screenshot candidates were visually inspected but remain artifact-only and owner-unapproved.",
     "AetherFlow rechecked read-only at main SHA c7cb553f0751514df0d916e69c29807636e66c67: README and dashboard CORS guidance now use https://pooya-labs.github.io, but the landing/dashboard still display M07 while README says M08 is in progress; duplicate Dashboard navigation and stale repository links also remain. Keep AetherFlow images withheld; live API CORS is unverified.",
-    "ORBIT still needs Incidents/Metrics/Logs/Traces captures, owner-run Apps Script demo bootstrap/mutation/refresh acceptance, and human TalkBack/VoiceOver/keyboard/chart-table review.",
-    "NexusCanvas rack/graph/snapshot evidence, LuminaGlass export/Audio Lab/task-board evidence, and AuraPulse connected/fallback feed plus focused paper-trading evidence remain pending.",
-    "Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse still need consolidated current-source browser, keyboard, responsive, reduced-motion, and accessibility QA; no automated check is formal WCAG certification.",
+    "ORBIT Overview, Incidents and connection-required Metrics/Logs/Traces captures now exist privately in artifact 13584314344; human review and owner-run Apps Script bootstrap/mutation/refresh acceptance plus TalkBack/VoiceOver/keyboard/chart-table review remain open. No live telemetry is claimed.",
+    "NexusCanvas overview, Mobile Rack and export-modal screenshots now exist privately in artifact 13584314344; owner review and further focused graph-analysis/snapshot proof remain pending.",
+    "Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse still need consolidated current-source browser, keyboard, responsive, reduced-motion, and accessibility QA; automated browser checks on the portfolio are not formal WCAG certification. All newly captured images/reels remain owner-review-only.",
     "GlobalCart v0.2.3-dev/M09.8 remains open: current main 9afa4f5 (app SHA 6192f8) has passing Pages/security/Lighthouse/visual/Shopify checks, but current Browser E2E 42393544303 is 137 passed / 3 failed / 9 skipped because hero product links still have empty accessible names; verify galleries/PDPs and complete owner/manual review.",
     "Salon Booking v1.0.0 remains owner-accepted on its release record; current main 4c4840c adds documentation-only changes recording Apps Script acceptance and legacy Worker/D1 archival status. Current-main CI 42394326231 fails the owner-dashboard date-range test on Linux and Windows (expected 2026-11-06, actual 2026-11-08), while Pages workflow 42394326440 passed. Portfolio details still require salon-owner publication permission and privacy-redacted screenshots.",
     "External LinkedIn/Facebook crawler rendering and cache-refresh validation for the PNG Open Graph images remains open.",
     "Repeatable Cloudflare and Apps Script deployment workflows remain gated on repository Actions secrets; the last verified Cloudflare production deployment is from commit f9011ec5a3f9eb2faffdac222596b37444184191.",
-    "Full-site redesign with two feedback rounds and explicit Pooya approval remains a mandatory V1 release blocker.",
+    "Framer-referenced motion-led first prototype is implemented and deployed. Two owner feedback rounds, manual accessibility/visual review, and explicit final approval remain mandatory before V1.",
     "Automated axe scan on current SHA dc991c4 reported zero critical/serious/moderate/minor violations across 17 routes and 34 viewports; 34 color-contrast checks are incomplete because of layered/gradient backgrounds and require human visual review. Manual keyboard/screen-reader review also remains open.",
-    "AuraPulse latest screenshot artifact 42235240283 shows explicit SIMULATED/illustrative OHLC labels, but its public Binance ticker request failed CORS; connected-feed and fallback states remain unverified."
+    "AuraPulse latest screenshot artifact 42235240283 shows explicit SIMULATED/illustrative OHLC labels, but its public Binance ticker request failed CORS; connected-feed and fallback states remain unverified.",
+    "New project capture artifact 13584314344 contains 29 screenshot candidates and seven motion reels. Keep all unpublished until owner approval; AetherFlow discrepancy, AuraPulse CORS/Simulation, ORBIT connection-required states, LuminaGlass blur, and Salon privacy exclusion must be respected."
   ],
-  "nextAction": "Continue exact-source reconciliation and feature-focused artifact-only captures for ORBIT Incidents/Metrics/Logs/Traces, NexusCanvas rack/graph/snapshot flows, and LuminaGlass export/Audio Lab/task board; keep AetherFlow imagery withheld until its M07/M08 label, duplicate Dashboard navigation, and stale links are corrected upstream; track GlobalCart's empty hero-link accessible names until full E2E passes; reconcile Salon Booking's date-range test clock/fixture; preserve AuraPulse's simulated-data disclosure; and collect owner-approved Salon Booking permission/redacted screenshots plus final biography, featured order, novel content, and Phase 7 redesign feedback.",
+  "nextAction": "Obtain Pooya's first desktop/mobile design feedback on the deployed Framer-referenced motion prototype; adjust hierarchy, hero screenshot composition, section spacing, animation intensity, typography and mobile flow; then run the second owner review. Separately review and approve eligible project screenshot/motion candidates before any publication, keeping AetherFlow blocked on M07/M08 and duplicate navigation, AuraPulse simulated due CORS, ORBIT Metrics/Logs/Traces connection-required, LuminaGlass 32px blur caveat, and Salon Booking excluded for privacy. Continue P3 owner-content, accessibility and source-evidence gates before Phase 8 V1.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -146,7 +147,7 @@
     "appsScriptSync": "deferred-not-required-for-static-portfolio"
   },
   "visualDesign": {
-    "direction": "portfolio-first-dark-obsidian-cyan-emerald-antigravity-inspired",
+    "direction": "portfolio-first-dark-motion-led-framer-referenced-obsidian-cyan-emerald-original",
     "cursorRefractionField": false,
     "touchDisabled": true,
     "reducedMotionDisabled": true,
@@ -156,9 +157,28 @@
     "finalRedesignRequired": true,
     "ownerFeedbackRounds": 2,
     "designDocument": "docs/DESIGN-DIRECTION.md",
-    "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md"
+    "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md",
+    "reference": "Framer homepage interaction language; no pixel-copy or proprietary assets",
+    "firstPrototypeCommit": "a24cbfcb1bc8ccbad348e119922d084cb3062ece",
+    "capturePipelineCommit": "d74c12952be73233f551034d08b5fd212d260d0e",
+    "latestContractCommit": "061176326e13ba0ba4239416acd6e1f4db5f7580",
+    "prototypeFeatures": [
+      "oversized editorial hero",
+      "sticky translucent navigation",
+      "layered project screenshot previews",
+      "project ticker marquee",
+      "IntersectionObserver scroll reveals",
+      "floating screenshot windows",
+      "animated gradient accents",
+      "project-card hover depth",
+      "responsive desktop/mobile layout"
+    ],
+    "reducedMotionHonored": true,
+    "pointerLensRemainsRemoved": true,
+    "firstOwnerFeedbackRound": "pending",
+    "secondOwnerFeedbackRound": "pending"
   },
-  "latestVerifiedCommit": "69a4b422524236361bc27e08d9d0a7321838bda6",
+  "latestVerifiedCommit": "061176326e13ba0ba4239416acd6e1f4db5f7580",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -195,17 +215,18 @@
       "LuminaGlass: PNG export, Audio Lab, task board",
       "AuraPulse: connected/fallback ticker states and focused paper-trading flow"
     ],
-    "latestRecaptureRun": "42235240283",
-    "latestRecaptureArtifact": "13510233762",
-    "latestRecaptureCandidateCount": 12,
-    "latestRecaptureCandidateStatus": "all-12-individually-visually-inspected-by-assistant; artifact-only; unpublished; owner-approval-pending",
+    "latestRecaptureRun": "42399972697",
+    "latestRecaptureArtifact": "13584314344",
+    "latestRecaptureCandidateCount": 29,
+    "latestRecaptureCandidateStatus": "29 screenshots and 7 WebM reels; all individually visually inspected as a contact sheet and artifact-only; unpublished; owner-approval-pending",
     "latestRecaptureProjects": [
       "AetherFlow",
       "ORBIT",
       "Pooya.OS",
       "NexusCanvas",
       "LuminaGlass",
-      "AuraPulse"
+      "AuraPulse",
+      "GlobalCart"
     ],
     "latestRecaptureNoHorizontalOverflow": "12-of-12",
     "latestRecaptureHttpStatus": "12-of-12-http-200",
@@ -217,7 +238,34 @@
       "luminaGlass": "no-page-errors-or-failed-requests; capture is at 32px blur; clearer export plus Audio Lab/task board evidence still needed",
       "auraPulse": "Binance ticker request failed CORS; visible SIMULATED and illustrative OHLC labels retained"
     },
-    "salonBookingLatestRecapture": "excluded-pending-owner-approved-privacy-reviewed-redacted-capture"
+    "salonBookingLatestRecapture": "excluded-pending-owner-approved-privacy-reviewed-redacted-capture",
+    "latestMotionCaptureRun": "42399972697",
+    "latestMotionCaptureArtifact": "13584314344",
+    "latestMotionCaptureStatus": "success-29-png-candidates-seven-webm-reels; all-pending-human-review; artifact-only; not-published",
+    "latestMotionCaptureProjects": [
+      "AetherFlow",
+      "ORBIT",
+      "Pooya.OS",
+      "NexusCanvas",
+      "LuminaGlass",
+      "AuraPulse",
+      "GlobalCart"
+    ],
+    "latestMotionCapturePngCount": 29,
+    "latestMotionCaptureWebmCount": 7,
+    "latestMotionCaptureWebmProfile": "1440x1000;25fps;approximately-8.6-to-14.5-seconds",
+    "latestMotionCaptureTotalFiles": 37,
+    "latestMotionCaptureCaptureReport": "capture-report.json; SHA-256 recorded per screenshot and motion reel",
+    "latestMotionCaptureFindings": {
+      "aetherflow": "captured but withheld: visible M07 milestone and duplicate Dashboard nav; upstream correction required",
+      "orbit": "overview and Incidents captured; Metrics/Logs/Traces screens show connection-required state, not live telemetry",
+      "pooyaOs": "captured; profile portrait remains subject to owner approval before public use",
+      "nexusCanvas": "overview, Mobile Rack and export modal captured; illustrative metrics must remain labelled",
+      "luminaGlass": "overview, Audio Lab and local task board captured; overview remains at 32px blur; no audio played or tasks modified",
+      "auraPulse": "captured with SIMULATED/illustrative data; Binance requests fail CORS in both desktop/mobile browser contexts",
+      "globalCart": "current desktop/mobile storefront captured",
+      "salonBooking": "excluded until salon-owner approved synthetic or privacy-redacted environment"
+    }
   },
   "metadata": {
     "baseOpenGraph": true,
@@ -233,7 +281,7 @@
     "socialPreviewDimensions": "1200x627 (LinkedIn share preview recommendation)",
     "socialPreviewCardCount": 17
   },
-  "latestVerifiedTestCommit": "5a379757809888a1a8c98335f6006746372779e1",
+  "latestVerifiedTestCommit": "061176326e13ba0ba4239416acd6e1f4db5f7580",
   "caseStudyDossiers": {
     "bilingual": true,
     "projectCount": 8,
@@ -269,15 +317,15 @@
     "staticCaseStudyPages": "complete-16-routes",
     "socialPreviewCards": "17 PNG primary images plus 17 SVG source cards",
     "externalSocialPreviewValidation": "pending",
-    "actualUiScreenshots": "12-reviewed-desktop-mobile-screenshots-across-GlobalCart-ORBIT-PooyaOS-NexusCanvas-LuminaGlass-AuraPulse; AetherFlow-and-Salon-Booking-pending",
+    "actualUiScreenshots": "12 previously reviewed screenshots plus 29 new artifact-only candidates and 7 private WebM reels; all new media unpublished and owner-approval-pending",
     "ownerContentApproval": "pending",
-    "fullSiteRedesign": "mandatory-two-round-owner-review",
+    "fullSiteRedesign": "first-motion-prototype-implemented; owner-feedback-round-1-pending; round-2-and-explicit-approval-required",
     "keyboardSkipNavigation": "implemented-bilingual-home-and-case-study-routes-contract-passed-manual-review-pending",
     "novelLibrary": "implemented-with-empty-catalog; final titles, descriptions, manuscripts and covers pending Pooya",
     "orbit": "v1.0.0 stable portfolio-demo; Cloudflare edge architecture merged but Worker route disabled, origin and gateway secret unset; CF01-CF05 live acceptance pending",
     "globalCart": "v0.2.3-dev M09.8; Pages deploy and six Lighthouse lab budgets passed; current-SHA full Browser E2E and manual review pending"
   },
-  "latestBranchHeadAtCheckpoint": "7c971558f502c6c3c0d5695ffd2a8108245d2298",
+  "latestBranchHeadAtCheckpoint": "061176326e13ba0ba4239416acd6e1f4db5f7580",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -514,7 +562,7 @@
     "correctionCommit": "087fee17a8bfff503075dbae14609d530a7e63a4",
     "currentHeadCiVerified": true,
     "ownerContentApproval": "pending",
-    "nextTask": "P3-08A owner content decisions; P3-08B project evidence, GlobalCart accessible-name E2E recovery, Salon Booking date-range test reconciliation and owner-approved media; P3-08C manual accessibility/social validation; then Phase 7 redesign and Phase 8 V1",
+    "nextTask": "P3/Phase 7 owner first-feedback round on motion prototype; review private screenshot/reel artifact; then second design review, accessibility/social QA, and Phase 8 V1 hardening",
     "documentationCommits": [
       "5a7d8336d7764feca731fb79191702d7bece5872",
       "acf00f2417def90010e6ca4d9a91132750c224dd",
@@ -550,6 +598,13 @@
       "globalcartE2E": "42393544303 failed: 137 passed / 3 failed / 9 skipped; empty hero-product accessible names",
       "salonBookingCi": "42394326231 failed in Linux and Windows owner-dashboard date-range QA; Pages workflow 42394326440 passed",
       "orbitOpenPRs": "137, 138, 140 draft, 142 draft; none merged into main"
-    }
+    },
+    "latestMainHead": "061176326e13ba0ba4239416acd6e1f4db5f7580",
+    "latestRepositoryCi": "42400056094-success;54-of-54-contract-tests;typescript-and-three-target-builds",
+    "latestBrowserQa": "42399972654-success;17-of-17-routes;34-of-34-viewports;zero-axe-violations;34-incomplete-checks",
+    "latestPagesDeployment": "42399972687-success",
+    "latestMotionCaptureRun": "42399972697-success;29-png-candidates;7-webm-reels;artifact-13584314344;unpublished",
+    "ownerDesignFeedbackRound1": "pending",
+    "ownerDesignFeedbackRound2": "pending"
   }
 }

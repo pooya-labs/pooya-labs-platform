@@ -46,6 +46,16 @@ This table records branch heads only; it does not substitute for feature-level a
 - The 1,000-product snapshot/galleries remain part of the M09.6 evidence. M09.8 still needs a real accessible-name fix and green exact-current-SHA Browser E2E, full gallery/PDP interaction acceptance, source-document handoff reconciliation, owner review of the 12 selected products and Persian editorial copy, and human physical-device/screen-reader/RTL-LTR review. Continue labeling generated catalog prices as GlobalCart estimates, not seller quotes. Do not tag 1.0.0.
 - Current GlobalCart has no open pull requests at the time of this recheck. Its independent source repository was not modified during this platform audit.
 
+## Artifact-only project screenshots and motion reels — 2026-11-07
+
+**Run:** [Project Interface Captures 42399972697](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972697) · **artifact:** [13584314344](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972697/artifacts/13584314344)
+
+- Result: **29 PNG screenshots and seven WebM motion reels**, 37 files total. The images include 1440×1000 desktop and 390×844 mobile views; WebM captures are 1440×1000 at 25 fps and approximately 8.6–14.5 seconds each. The capture report records SHA-256 and marks all candidate media `captured-pending-human-review`.
+- Project coverage: AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, GlobalCart. The workflow also captures ORBIT Incidents and Metrics/Logs/Traces connection-required states, NexusCanvas Mobile Rack/export modal, and LuminaGlass Audio Lab/local task board. It never starts audio or imports files.
+- Visual review: the project pages and mobile crops render and no capture failures were reported. Keep every image and reel artifact-only until the owner reviews and approves it. None of these new captures has been committed to `apps/platform/public/interface-captures`.
+- AetherFlow screenshots still visibly contain the M07/README M08 mismatch and duplicate Dashboard navigation; keep them withheld pending upstream correction. AuraPulse's requests to Binance returned CORS/network failures in desktop and mobile recordings; screenshots must stay clearly SIMULATED and must not be described as live market data. ORBIT Metrics/Logs/Traces show a connection-required state, not live telemetry. LuminaGlass overview remains at 32px blur; the Audio Lab and task-board screens are legible.
+- Salon Booking was not captured. Customer names, phone numbers, booking references, tokens, and private booking data remain excluded until the salon owner approves a synthetic or fully redacted test environment and publication.
+
 ## Artifact-only interface recapture review — 2026-11-06
 
 **Capture evidence:** workflow [42235240283](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42235240283), artifact [13510233762](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42235240283/artifacts/13510233762), with `capture-report.json` and twelve PNG candidates:

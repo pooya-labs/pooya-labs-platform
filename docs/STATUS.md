@@ -31,6 +31,17 @@
 - [ ] Add the Cloudflare Pages API token and Apps Script clasp secrets to repository Actions settings, then run the production workflows. Do not put credentials in repository files or chat.
 - [ ] Confirm the final pages.dev and Apps Script /exec routes in a real browser from the owner's device. Cloudflare API confirms publication and artifact integrity; direct external browser fetching was unavailable in this session. Apps Script's automatic deployment is still secret-gated.
 
+## Motion-led redesign — first prototype, 2026-11-07
+
+- Added the first Framer-referenced Pooya Labs motion design pass: oversized editorial hero type, sticky glass navigation, real project screenshots layered in a 3D preview stage, project marquee, reveal-on-scroll sections, floating preview windows, gradient motion, hover depth, and mobile layouts. This is an original design implementation, not a pixel-for-pixel copy of Framer or reuse of Framer-owned assets.
+- The hero draws from five current project interface images (GlobalCart, ORBIT, NexusCanvas, LuminaGlass, AuraPulse). Project cards prefer interface screenshots over brand marks when a capture exists. Reduced-motion handling remains enabled; the removed pointer-following lens remains removed.
+- Latest code/contract tests passed: Repository CI [42400056094](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42400056094) — 54/54 tests, TypeScript, Pages/GAS/Cloudflare builds.
+- Browser QA [42399972654](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972654) passed 17/17 routes and 34/34 viewports with zero axe violations. 34 incomplete axe checks and manual keyboard/screen-reader review remain.
+- Pages build/deploy [42399972687](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972687) passed. Cloudflare/GAS production deployment still depends on their separately configured secrets.
+- Private screenshot/motion evidence: Project Interface Captures [42399972697](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972697), artifact [13584314344](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972697/artifacts/13584314344), contains 29 PNG captures and seven 8.6–14.5 second WebM reels across AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and GlobalCart. All remain unreviewed candidates, not public website assets.
+- Salon Booking is deliberately excluded pending salon-owner approval for a synthetic/redacted capture. No independent project source repo was modified.
+- Owner feedback round 1 and round 2 remain mandatory before marking Phase 7 complete. The site remains pre-alpha; do not tag V1.
+
 ## Newly implemented
 - [x] Added bilingual Persian/English public portfolio as the default root experience.
 - [x] Added hero, About, selected project cards, focus areas, technology list, contact section, and secondary workspace entry.

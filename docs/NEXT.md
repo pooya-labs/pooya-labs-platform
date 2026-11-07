@@ -3,16 +3,16 @@
 **Task ID:** P3-08  
 **Priority:** Finish factual/content acceptance before Phase 7 redesign.  
 **Checkpoint date:** 2026-11-07  
-**Latest verified application/test checkpoint:** `5a379757809888a1a8c98335f6006746372779e1` on `main`.
+**Latest verified repository CI checkpoint:** `061176326e13ba0ba4239416acd6e1f4db5f7580` on `main`; deployed application source remains the Pages-tested UI from the same motion-prototype series.
 
 ## Current verified baseline
 
 - The public bilingual portfolio is the root experience; the Spatial OS workspace remains secondary.
 - Eight bilingual project dossiers, eight bilingual architecture diagrams, 16 crawler-readable case-study routes, 17 PNG Open Graph cards (with 17 SVG sources), sitemap, robots.txt, and the novels library are implemented.
 - The novels catalog at `apps/platform/public/novels/catalog.json` is intentionally empty. Add only owner-supplied titles, descriptions, cover assets, and Markdown/TXT manuscripts using [NOVELS-GUIDE.md](NOVELS-GUIDE.md).
-- Latest Repository CI on the current checkpoint passed **52/52 contract tests**, TypeScript, and all three target builds: [42393819743](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42393819743) on `5a379757809888a1a8c98335f6006746372779e1`. The GlobalCart source dossier now records the current verified accessibility failure instead of a stale cancelled-run-only note.
-- Latest portfolio Browser QA: 17/17 routes and 34/34 desktop/mobile viewports passed on updated UI SHA `5a379757809888a1a8c98335f6006746372779e1`, run [42393819729](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42393819729). Zero axe violations were reported; 34 incomplete contrast checks still require manual review, as do keyboard-only and screen-reader sessions.
-- GitHub Pages build and deploy passed on current application source SHA `5a379757809888a1a8c98335f6006746372779e1`, run [42393819716](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42393819716). This is the latest verified deployed code and content checkpoint.
+- Latest Repository CI passed **54/54 contract tests**, TypeScript, and all three independent build targets on `061176326e13ba0ba4239416acd6e1f4db5f7580`: [42400056094](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42400056094).
+- Latest portfolio Browser QA passed **17/17 routes**, **34/34 viewports**, and **zero axe violations** on the first motion prototype: [42399972654](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972654). Thirty-four incomplete axe checks still require human review; manual keyboard-only and screen-reader sessions remain open.
+- GitHub Pages build and deploy passed for the motion-prototype source in run [42399972687](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972687). The root public experience is the updated portfolio.
 - Cloudflare and Apps Script build targets passed in CI, but the latest actual deploy jobs were skipped because `CLOUDFLARE_API_TOKEN`, `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` are not configured. See [DEPLOYMENT-TARGETS.md](DEPLOYMENT-TARGETS.md).
 
 ## New source findings — 2026-11-07
@@ -22,6 +22,14 @@
 - **GlobalCart:** current main is `9afa4f5d726df51ae4f9b95b30982fb5ecd3482a`, still v0.2.3-dev / M09.8; application code is `6192f8eccdbf8092c31e06a0f37a53485c3e3589`, followed only by a persisted `data/catalog.json` snapshot. Pages [42393544307](https://github.com/pooya-labs/globalcart/actions/runs/42393544307) and Security [42393544310](https://github.com/pooya-labs/globalcart/actions/runs/42393544310) passed, but Browser E2E [42393544303](https://github.com/pooya-labs/globalcart/actions/runs/42393544303) failed with **137 passed / 3 failed / 9 skipped**. The attempted hero-link accessibility fix still yields empty accessible names: two serious axe `link-name` findings and one Playwright accessible-name assertion fail in Chromium mobile. Lighthouse [42393731570](https://github.com/pooya-labs/globalcart/actions/runs/42393731570), visual QA [42393731697](https://github.com/pooya-labs/globalcart/actions/runs/42393731697), and Shopify smoke [42393731548](https://github.com/pooya-labs/globalcart/actions/runs/42393731548) passed. Do not mark M09.8 green or tag 1.0.0.
 - **Portfolio code update:** ORBIT dossier/diagram and GlobalCart M09.8 status/dossier were updated in `cc157e4c9dd3e52a5181fb1a7e5e33821045f41b`. Platform Pages deployment [42391868126](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42391868126) and browser QA [42391868133](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42391868133) passed on that code SHA. A stale contract-test assertion was corrected in `087fee17a8bfff503075dbae14609d530a7e63a4`; Repository CI [42392401131](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42392401131) then passed **52/52**.
 - **Independent publishing:** the current Pages build and deploy jobs both passed. Cloudflare Pages and Apps Script production deploy jobs were skipped because required secrets are missing; their successful workflow wrapper/check jobs do not prove those targets were deployed.
+
+## Phase 7 — first motion prototype implemented (owner review pending)
+
+- Implemented an original Framer-referenced, motion-led Pooya Labs direction: large editorial type, a sticky translucent header, five layered project screenshot previews in the hero, project ticker, scroll reveals, floating preview windows, gradient motion, and project-card hover depth.
+- The project showcase now prefers actual interface screenshots over logo-only art where current screenshot assets exist.
+- Captured a private artifact of **29 screenshot candidates and seven WebM motion reels** from the seven public project sites. Run [42399972697](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972697), artifact [13584314344](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972697/artifacts/13584314344). No capture was auto-published. Salon Booking remains excluded pending owner-approved privacy-safe synthetic/redacted imagery.
+- Current visual media caveats: AetherFlow still exposes M07/duplicate Dashboard; AuraPulse's live ticker request failed CORS and remains simulated; ORBIT's metrics/logs/traces capture states require API connection and are not live telemetry; LuminaGlass overview is still blurred at 32px although Audio Lab and task-board captures succeeded.
+- **Next:** Pooya's first desktop/mobile feedback round. Record feedback on identity, hero, screenshot stage, motion speed, layout, section order, colors/typography, project-card treatment, and mobile flow; then implement revisions and return for the second round. Keep all screenshot candidates private until approval.
 
 ## Ordered work queue
 
@@ -49,7 +57,7 @@
 - [ ] Validate the 1200×627 PNG Open Graph cards in LinkedIn Post Inspector and Facebook Sharing Debugger; confirm cache refresh. Internal artifact checks do not replace external crawler validation.
 - [ ] Reconfirm active GitHub Pages source is GitHub Actions and perform a real-browser smoke test of the deployed public site.
 
-### Phase 7 — Full redesign with owner feedback (mandatory before V1)
+### Phase 7 — Full redesign with owner feedback (mandatory before V1; first prototype now implemented)
 - [ ] After the factual/content gate is closed, review the complete site with Pooya on desktop and mobile.
 - [ ] Record design feedback: identity, hierarchy, navigation, typography, color, motion, project order, case-study format, and imagery.
 - [ ] Agree on one visual direction and redesign the whole public portfolio, not isolated sections.
