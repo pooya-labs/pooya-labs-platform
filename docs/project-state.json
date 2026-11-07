@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P3-08",
     "title": "Close Phase 3 evidence, owner-review, accessibility, and social-validation gates before Phase 7",
-    "status": "52-of-52-contract-tests-passed; typecheck-and-three-target-builds-passed; docs-checkpoint-CI-passed; current-app-pages-and-browser-QA-passed; upstream-ORBIT-and-GlobalCart-state-refreshed; owner-and-manual-release-gates-open"
+    "status": "52-of-52-platform-contract-tests-passed; platform-source-builds-and-pages-browser-QA-passed; latest-GlobalCart-current-app-E2E-rechecked-with-6-axe-accessible-name-failures; ORBIT-Cloudflare-state-documented; owner-and-manual-release-gates-open"
   },
   "lastCheckpointDate": "2026-11-07",
   "latestVerifiedCodeCommit": "cc157e4c9dd3e52a5181fb1a7e5e33821045f41b",
@@ -351,27 +351,47 @@
     "globalcart": {
       "repository": "pooya-labs/globalcart",
       "branch": "main",
-      "inspectedHead": "8a89f0d612cdf69d619b64049304eaa789b4785c",
+      "inspectedHead": "119afcd4924fbdda0287558d00926ab051255e59",
       "release": "0.2.3-dev",
       "stage": "M09.8",
-      "latestPagesDeployment": "42387896585-success",
-      "lighthouse": "42367298478-success-six-route-mode-lab-budgets",
-      "lighthouseHomeMobile": {
-        "performance": 93,
-        "lcpSeconds": 2.4,
-        "tbtMs": 250
+      "currentAppSourceSha": "61ce7f5da832000b6bcb6fa56b1a4f2fc0c69a0f",
+      "headDeltaFromAppSource": "one persistence commit touching data/catalog.json only; no app code changed",
+      "pagesDeployment": "42392071302-success",
+      "security": "42392071307-success",
+      "browserE2E": {
+        "run": "42392071315",
+        "conclusion": "failure",
+        "passed": 134,
+        "failed": 6,
+        "skipped": 9,
+        "failures": [
+          "serious axe label-content-name-mismatch on visible text vs accessible name of .hero-product-tile links in homepage WCAG tests across Chromium/Firefox/WebKit",
+          "same hero tile violation persists during open command-palette accessibility tests across Chromium/Firefox/WebKit"
+        ],
+        "fullSuiteGreen": false
       },
-      "postDeployVisualQa": "42367298484-success-two-passed-two-skipped-on-prior-7fdb27-sha",
-      "shopifyCatalogSmoke": "42367298509-success-on-prior-7fdb27-sha",
-      "latestKnownBrowserE2E": "42247489435-cancelled",
-      "currentHeadFullBrowserE2EVerified": false,
+      "lighthouse": {
+        "run": "42392214241",
+        "conclusion": "success",
+        "reports": 6,
+        "homeMobile": {
+          "performance": 92,
+          "lcpSeconds": 2.5,
+          "tbtMs": 260
+        },
+        "accessibilityBestPracticesSeoAll100": true,
+        "labOnly": true
+      },
+      "postDeployVisualQa": "42392214297-success-two-passed-two-skipped",
+      "shopifyCatalogSmoke": "42392214325-success",
       "pending": [
-        "full Browser E2E plus axe on current main",
-        "verify 1,000 complete galleries and PDP interaction on exact current SHA",
-        "current-SHA post-deploy image checks",
-        "owner review of curated products and Persian editorial copy",
+        "fix hero-product-tile accessible names without weakening axe assertions",
+        "rerun full Browser E2E and axe across browsers",
+        "verify all 1,000 galleries and PDP interactions on exact current application tree",
+        "owner review of selected products and Persian editorial copy",
         "physical-device, screen-reader and full human RTL/LTR acceptance"
       ],
+      "projectContextHandoffStaleAt": "8a89f0d612cdf69d619b64049304eaa789b4785c",
       "upstreamRepositoryModified": false
     }
   },

@@ -1,3 +1,11 @@
+## 2026-11-07 — GlobalCart M09.8 accessibility regression recheck
+
+- Rechecked upstream `pooya-labs/globalcart` main at `119afcd4924fbdda0287558d00926ab051255e59`. Compared with application-code SHA `61ce7f5da832000b6bcb6fa56b1a4f2fc0c69a0f`, the only later commit changes `data/catalog.json`, so the latest Browser E2E run still represents the current application tree.
+- Pages deploy/public smoke [42392071302](https://github.com/pooya-labs/globalcart/actions/runs/42392071302) and Security [42392071307](https://github.com/pooya-labs/globalcart/actions/runs/42392071307) passed.
+- Full Browser E2E [42392071315](https://github.com/pooya-labs/globalcart/actions/runs/42392071315) completed with **134 passed / 6 failed / 9 skipped**. All six failures are serious axe `label-content-name-mismatch` findings: visible text in hero-product tiles is not included in link accessible names. The defect reproduces across Chromium, Firefox and WebKit, in homepage and command-palette-open-state tests.
+- Lighthouse [42392214241](https://github.com/pooya-labs/globalcart/actions/runs/42392214241) passed six route/mode budgets (home mobile Performance 92, LCP 2.5 s, TBT 260 ms; Accessibility, Best Practices and SEO all 100). Post-deploy image QA [42392214297](https://github.com/pooya-labs/globalcart/actions/runs/42392214297) passed two desktop/mobile checks and skipped two unavailable cases; Shopify smoke [42392214325](https://github.com/pooya-labs/globalcart/actions/runs/42392214325) passed.
+- Updated the portfolio's GlobalCart dossier, source audit, handoff, and status to identify the concrete accessibility failure instead of carrying forward the older cancelled-run-only record. No GlobalCart source files were modified; M09.8 and 1.0.0 remain open.
+
 ## 2026-11-07 — ORBIT dual-runtime and GlobalCart M09.8 source refresh
 
 - Rechecked ORBIT main at `268017365cd22f7db9dd8895fb59fbccc76c9b8f`. PR #136 added the Cloudflare Worker edge-gateway path; exact-main CI [42223939950](https://github.com/pooya-labs/orbit/actions/runs/42223939950), Security [42223939967](https://github.com/pooya-labs/orbit/actions/runs/42223939967), and Pages [42223939898](https://github.com/pooya-labs/orbit/actions/runs/42223939898) passed. The Worker is not live-connected: workers.dev route is disabled, origin and `ORBIT_GATEWAY_SECRET` are unset, so API routes remain fail-closed.
