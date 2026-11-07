@@ -3,16 +3,17 @@
 **Task ID:** P3-08  
 **Priority:** Finish factual/content acceptance before Phase 7 redesign.  
 **Checkpoint date:** 2026-11-07  
-**Latest verified repository CI checkpoint:** `061176326e13ba0ba4239416acd6e1f4db5f7580` on `main`; deployed application source remains the Pages-tested UI from the same motion-prototype series.
+**Latest verified repository CI checkpoint:** `74b19508e77cf20efe414009bb71ca69f91eb700` on `main`; the latest commit is documentation-only. The current application styling is from `e66f4b42562fb6a164117e2b8a3f9905634a1b9e`, and the capture-runner/test source tree was last updated by `d74c12952be73233f551034d08b5fd212d260d0e` and `061176326e13ba0ba4239416acd6e1f4db5f7580`.
 
 ## Current verified baseline
 
 - The public bilingual portfolio is the root experience; the Spatial OS workspace remains secondary.
 - Eight bilingual project dossiers, eight bilingual architecture diagrams, 16 crawler-readable case-study routes, 17 PNG Open Graph cards (with 17 SVG sources), sitemap, robots.txt, and the novels library are implemented.
 - The novels catalog at `apps/platform/public/novels/catalog.json` is intentionally empty. Add only owner-supplied titles, descriptions, cover assets, and Markdown/TXT manuscripts using [NOVELS-GUIDE.md](NOVELS-GUIDE.md).
-- Latest Repository CI passed **54/54 contract tests**, TypeScript, and all three independent build targets on `061176326e13ba0ba4239416acd6e1f4db5f7580`: [42400056094](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42400056094).
+- Latest Repository CI passed **54/54 contract tests** (0 failed, 0 skipped), TypeScript, all three independent build targets, and bundle assembly on the exact current main HEAD `74b19508e77cf20efe414009bb71ca69f91eb700`: [42400540542](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42400540542).
 - Latest portfolio Browser QA passed **17/17 routes**, **34/34 viewports**, and **zero axe violations** on the first motion prototype: [42399972654](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972654). Thirty-four incomplete axe checks still require human review; manual keyboard-only and screen-reader sessions remain open.
 - GitHub Pages build and deploy passed for the motion-prototype source in run [42399972687](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972687). The root public experience is the updated portfolio.
+- Cloudflare Pages [42399972690](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972690) and Apps Script [42399972770](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972770) passed their configuration checks, but their actual production deploy jobs were skipped because required Actions secrets are missing. Do not describe either target as updated by this run.
 - Cloudflare and Apps Script build targets passed in CI, but the latest actual deploy jobs were skipped because `CLOUDFLARE_API_TOKEN`, `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` are not configured. See [DEPLOYMENT-TARGETS.md](DEPLOYMENT-TARGETS.md).
 
 ## New source findings — 2026-11-07
