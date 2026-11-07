@@ -8,10 +8,10 @@
   "phaseName": "Portfolio content architecture and case studies",
   "currentTask": {
     "id": "P3-08",
-    "title": "Validate social previews and close owner evidence before Phase 7",
-    "status": "46-contract-tests-passed-17-routes-34-viewports-zero-axe-violations-pages-deployed-dc991c4-artifact-audited-17-html-17-og-png-17-sitemap-targets-12-candidate-screenshots-visually-reviewed-but-unapproved"
+    "title": "Close Phase 3 evidence, owner-review, accessibility, and social-validation gates before Phase 7",
+    "status": "52-contract-tests-passed-on-prior-checkpoint; 17-routes-34-viewports-zero-axe-violations-on-verified-ui-sha; current-main-head-not-yet-retested; owner-content-and-manual-review-blockers-open"
   },
-  "lastCheckpointDate": "2026-11-06",
+  "lastCheckpointDate": "2026-11-07",
   "latestVerifiedCodeCommit": "468c1f60ab11223693f3678213d48848100ae63e",
   "tests": {
     "repositoryCi": "passed-run-42247729151",
@@ -272,7 +272,7 @@
     "keyboardSkipNavigation": "implemented-bilingual-home-and-case-study-routes-contract-passed-manual-review-pending",
     "novelLibrary": "implemented-with-empty-catalog; final titles, descriptions, manuscripts and covers pending Pooya"
   },
-  "latestBranchHeadAtCheckpoint": "69a4b422524236361bc27e08d9d0a7321838bda6",
+  "latestBranchHeadAtCheckpoint": "0f6e8b596b41701954f9e981f38aa7315eb593dd",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -333,5 +333,26 @@
     "uploadGuide": "docs/NOVELS-GUIDE.md",
     "privacyNote": "public-repository-files-remain-public-even-when-published-false",
     "publishedSection": "live-in-github-pages-run-42247171442"
+  },
+  "reconciliation": {
+    "date": "2026-11-07",
+    "inspectedMainHead": "0f6e8b596b41701954f9e981f38aa7315eb593dd",
+    "comparedAgainstVerifiedUiCommit": "468c1f60ab11223693f3678213d48848100ae63e",
+    "commitsAhead": 12,
+    "changedPathGroups": [
+      "capture-workflow-and-script",
+      "README",
+      "docs",
+      "contract-tests"
+    ],
+    "runtimeSourceChanged": false,
+    "deploymentStillAlignedWithLastVerifiedUiBuild": true,
+    "latestRecordedRepositoryCi": "42247729151; 52 contract tests on 53c13993ca2aa2dbbb007454729a084fcdce43b4",
+    "latestRecordedDocsCheckpointCi": "42248414717",
+    "latestRecordedBrowserQa": "42247171025; 17 routes; 34 viewports; zero axe violations; 34 color-contrast checks require manual review",
+    "latestRecordedPagesDeployment": "42247171442; both build and deploy passed on 468c1f60ab11223693f3678213d48848100ae63e",
+    "currentHeadCiVerified": false,
+    "ownerContentApproval": "pending",
+    "nextTask": "P3-08A owner content decisions, then P3-08B project evidence reconciliation"
   }
 }
