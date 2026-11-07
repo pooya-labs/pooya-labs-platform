@@ -16,6 +16,7 @@ test('browser QA covers the homepage and every bilingual static case-study route
   assert.match(script, /path: 'projects\/' \+ slug \+ '\//);
   assert.match(script, /path: 'en\/projects\/' \+ slug \+ '\//);
   assert.match(script, /routeCount: routes\.length/);
+  assert.match(script, /label: 'home-en', path: '', locale: 'en', direction: 'ltr'/);
 });
 
 test('browser QA checks desktop/mobile overflow, page semantics, and keyboard skip navigation', () => {
@@ -30,6 +31,11 @@ test('browser QA checks desktop/mobile overflow, page semantics, and keyboard sk
   assert.match(script, /portfolio-skip-link/);
   assert.match(script, /page\.keyboard\.press\('Enter'\)/);
   assert.match(script, /prefers-reduced-motion|reducedMotion: 'reduce'/);
+  assert.match(script, /\.portfolio-hero-title/);
+  assert.match(script, /scrollWidth > titleMetrics\.width/);
+  assert.match(script, /document\.documentElement\.lang === 'fa'/);
+  assert.match(script, /document\.documentElement\.lang === 'en'/);
+  assert.match(script, /getAttribute\('data-theme'\)/);
 });
 
 test('browser QA is a separate Chromium workflow and uploads a report without publishing screenshots', () => {
