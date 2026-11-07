@@ -10,6 +10,7 @@ const targets = [
   { slug: 'nexus-canvas', url: 'https://pooya-labs.github.io/nexus-canvas/' },
   { slug: 'lumina-glass', url: 'https://pooya-labs.github.io/lumina-glass/' },
   { slug: 'aurapulse', url: 'https://pooya-labs.github.io/aurapulse/' },
+  { slug: 'global-cart', url: 'https://pooya-labs.github.io/globalcart/' },
 ];
 
 const viewports = [
@@ -18,20 +19,24 @@ const viewports = [
 ];
 
 const outputDir = path.resolve('artifacts/project-interface-captures');
+const motionDir = path.join(outputDir, 'motion');
 const records = [];
 const browser = await chromium.launch({ headless: true });
 
 try {
   await mkdir(outputDir, { recursive: true });
+  await mkdir(motionDir, { recursive: true });
 
   for (const target of targets) {
     const context = await browser.newContext({
       viewport: { width: 1440, height: 1000 },
       deviceScaleFactor: 1,
-      reducedMotion: 'reduce',
+      reducedMotion: 'no-preference',
       locale: 'en-US',
+      recordVideo: { dir: motionDir, size: { width: 1440, height: 1000 } },
     });
     const page = await context.newPage();
+    const motionVideo = page.video();
     const errors = [];
     const failedRequests = [];
     let responseStatus = null;
@@ -138,6 +143,18 @@ try {
           await page.getByRole('button', { name: 'Incidents', exact: true }).first().click();
           await page.waitForTimeout(650);
           await captureScenario('incidents', 'Incidents · API authentication required');
+
+          // These demo tabs currently present API-connection prompts. Capture them as honest
+          // connection-required states; never label placeholder content as live telemetry.
+          for (const view of ['Metrics', 'Logs', 'Traces']) {
+            if (await mobileMenu.isVisible()) await mobileMenu.click();
+            const navItem = page.locator('.sidebar .nav-item').filter({ hasText: view }).first();
+            if (await navItem.count()) {
+              await navItem.click();
+              await page.waitForTimeout(450);
+              await captureScenario(view.toLowerCase() + '-connection', view + ' · connection required');
+            }
+          }
         }
 
         // NexusCanvas: capture the interactive mobile-rack view and the export/import modal.
@@ -164,6 +181,18 @@ try {
           await captureScenario('task-board', 'Sprint Workflow · local-only');
         }
       }
+
+      // A short, real-browser motion reel records the live public UI as it scrolls through
+      // its content. It is retained as a private, unreviewed workflow artifact, not published.
+      await page.setViewportSize({ width: 1440, height: 1000 });
+      await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'auto' }));
+      await page.waitForTimeout(550);
+      for (const ratio of [0.62, 1.28, 1.92]) {
+        await page.evaluate((fraction) => window.scrollTo({ top: Math.round(window.innerHeight * fraction), behavior: 'smooth' }), ratio);
+        await page.waitForTimeout(850);
+      }
+      await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      await page.waitForTimeout(900);
     } catch (error) {
       records.push({
         slug: target.slug,
@@ -178,6 +207,26 @@ try {
       });
     } finally {
       await context.close();
+      if (motionVideo) {
+        const motionPath = path.join(motionDir, target.slug + '-motion.webm');
+        try {
+          await motionVideo.saveAs(motionPath);
+          const motionBytes = await readFile(motionPath);
+          const firstCapture = records.find((record) => record.slug === target.slug);
+          if (firstCapture) firstCapture.motionVideo = {
+            file: path.relative(outputDir, motionPath),
+            bytes: motionBytes.byteLength,
+            sha256: createHash('sha256').update(motionBytes).digest('hex'),
+            result: 'captured-pending-human-review',
+          };
+        } catch (error) {
+          const firstCapture = records.find((record) => record.slug === target.slug);
+          if (firstCapture) firstCapture.motionVideo = {
+            result: 'capture-failed',
+            error: error instanceof Error ? error.message : String(error),
+          };
+        }
+      }
     }
   }
 
@@ -185,8 +234,8 @@ try {
     path.join(outputDir, 'capture-report.json'),
     JSON.stringify({
       generatedAt: new Date().toISOString(),
-      note: 'Screenshots are unreviewed evidence candidates. They are not automatically published or committed. ORBIT includes an Incidents auth-boundary view; NexusCanvas includes Mobile Rack and export/import modal states; LuminaGlass includes Audio EQ and local task-board states. No audio is started, no file is imported, and no task is modified. Metrics/Logs/Traces are not captured from placeholder connect prompts. Each record includes viewport overflow diagnostics, byte size, and SHA-256 for artifact integrity.',
-      excluded: ['salon-booking (requires owner-approved, privacy-reviewed capture)'],
+      note: 'Screenshots and WebM motion reels are unreviewed evidence candidates. They remain private workflow artifacts and are not automatically published or committed. ORBIT includes Overview, Incidents and Metrics/Logs/Traces connection-required states; none is represented as live telemetry. NexusCanvas includes Mobile Rack and export/import modal states. LuminaGlass includes Audio EQ and local task-board states. No audio is started, no file is imported, and no task is modified. Each screenshot and motion reel includes byte-size and SHA-256 integrity metadata. Salon Booking remains excluded until owner-approved privacy-reviewed synthetic/redacted capture is supplied.',
+      excluded: ['salon-booking (requires salon product-owner approval and privacy-reviewed synthetic/redacted capture)'],
       captures: records,
     }, null, 2) + '\n',
   );
@@ -195,13 +244,14 @@ try {
 }
 
 const captured = records.filter((record) => record.result === 'captured-pending-human-review').length;
-const expectedCaptureCount = targets.length * viewports.length
+const requiredCaptureCount = targets.length * viewports.length
   + viewports.length // ORBIT Incidents, desktop and mobile
   + 1 // NexusCanvas Mobile Rack, desktop only; mobile uses it as the base view
   + viewports.length // NexusCanvas Export / Import modal, desktop and mobile
   + viewports.length * 2; // LuminaGlass Audio Lab and Task Board, desktop and mobile
-console.log(`Capture workflow produced ${captured} of ${expectedCaptureCount} expected viewport/scenario screenshots.`);
-if (captured !== expectedCaptureCount) {
+const motionVideos = new Set(records.filter((record) => record.motionVideo?.result === 'captured-pending-human-review').map((record) => record.slug)).size;
+console.log(`Capture workflow produced ${captured} screenshots (minimum ${requiredCaptureCount}) and ${motionVideos}/${targets.length} motion reels.`);
+if (captured < requiredCaptureCount || motionVideos !== targets.length) {
   const failed = records.filter((record) => record.result === 'capture-failed');
-  throw new Error(`Expected ${expectedCaptureCount} screenshots, captured ${captured}; ${failed.length} target(s) failed. Inspect capture-report.json for diagnostics.`);
+  throw new Error(`Expected at least ${requiredCaptureCount} screenshots and ${targets.length} motion reels; captured ${captured} screenshots and ${motionVideos} motion reels. ${failed.length} target(s) failed. Inspect capture-report.json for diagnostics.`);
 }

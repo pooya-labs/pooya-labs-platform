@@ -62,3 +62,18 @@ This is a release-blocking gate, not optional polish:
 5. Do not mark the redesign milestone complete or release V1 until Pooya explicitly approves the final direction.
 
 Review criteria: distinctive personal identity, strong project storytelling, credible evidence, readable Persian and English, accessibility, mobile quality, loading performance, and a consistent design system.
+
+
+## 2026-11-07 — Motion-led direction, using Framer as a reference
+
+Pooya selected [Framer](https://www.framer.com/) as the visual/motion reference for the Phase 7 redesign. Use its general interaction language as inspiration: confident oversized type, restrained dark canvas, sticky translucent navigation, large website previews, layered image compositions, editorial section transitions, marquees, and polished hover/scroll motion. This is a design reference, not permission to reuse Framer's logo, copy, proprietary site assets, templates, or exact page composition. The result must remain an original Pooya Labs portfolio.
+
+### First implementation pass
+- The homepage hero now uses actual pinned project interface imagery (GlobalCart, ORBIT, NexusCanvas, LuminaGlass, and AuraPulse) in a layered 3D screenshot stage; screenshot-backed project cards are preferred over logo-only art wherever current reviewed assets exist.
+- A project-name marquee, floating preview windows, reveal-on-scroll sections, subtle hover depth, animated gradients, and an animated about/contact treatment establish the first motion system.
+- Reduced-motion preferences remain respected; the native pointer stays visible and the previously removed pointer-following lens remains out of scope.
+- The project capture workflow now includes GlobalCart and creates private desktop/mobile screenshot candidates plus one WebM motion reel for each of seven public projects. ORBIT's Metrics/Logs/Traces states are captured only as connection-required views where available, never as live telemetry.
+- Salon Booking stays excluded from automated visual capture until the product owner approves a synthetic or privacy-redacted state. Customer names, phone numbers, booking references, tokens, and private booking content must not enter public portfolio assets.
+
+### Review still required
+This is the first design pass, not final Phase 7 approval. Review the generated capture artifact and the new site on desktop/mobile, then record the first feedback round. A second review remains required after those revisions. Do not publish unreviewed captures or mark the redesign gate complete before explicit owner approval.

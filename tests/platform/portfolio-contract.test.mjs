@@ -192,3 +192,26 @@ test('portfolio routes static bilingual case studies and updates the URL without
   assert.match(portfolio, /onLanguageChange\('en'\)/);
   assert.match(portfolio, /onLanguageChange\('fa'\)/);
 });
+
+
+test('homepage motion design is screenshot-led, progressive, and reduced-motion aware', () => {
+  assert.match(portfolio, /heroPreviewProjects/);
+  assert.match(portfolio, /hero-preview-image/);
+  assert.match(portfolio, /project-ticker-track/);
+  assert.match(portfolio, /data-reveal/);
+  assert.match(portfolio, /IntersectionObserver/);
+  assert.match(css, /@keyframes hero-preview-float/);
+  assert.match(css, /@keyframes project-ticker-flow/);
+  assert.match(css, /prefers-reduced-motion: reduce/);
+  assert.match(css, /motion-ready \\[data-reveal\\] \\.is-visible/);
+});
+
+test('project evidence capture records private desktop/mobile screenshots and motion reels', async () => {
+  const capture = await readFile(new URL('../../apps/platform/scripts/capture-project-previews.mjs', import.meta.url), 'utf8');
+  assert.match(capture, /slug: 'global-cart'/);
+  assert.match(capture, /recordVideo/);
+  assert.match(capture, /motionVideo\.saveAs/);
+  assert.match(capture, /captured-pending-human-review/);
+  assert.match(capture, /salon-booking/);
+  assert.match(capture, /connection required/);
+});
