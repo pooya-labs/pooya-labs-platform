@@ -353,6 +353,14 @@
     "latestRecordedPagesDeployment": "42247171442; both build and deploy passed on 468c1f60ab11223693f3678213d48848100ae63e",
     "currentHeadCiVerified": false,
     "ownerContentApproval": "pending",
-    "nextTask": "P3-08A owner content decisions, then P3-08B project evidence reconciliation"
+    "nextTask": "P3-08A owner content decisions, then P3-08B project evidence reconciliation",
+    "documentationCommits": [
+      "4798804cac0e9d90aa5adda41dcd1e355fa4c61e",
+      "aa3725e894611a1bde91181cac19f4e8942ea94a",
+      "bfde5a02253b261b46948478af6caffc4988eaa3",
+      "84aff74e054f16172743f4f6931245dc038d2a01"
+    ],
+    "documentationCheckpointCi": "not-yet-observed-after-2026-11-07-reconciliation",
+    "currentBranchContainsDocumentationOnlyReconciliation": true
   }
 }
