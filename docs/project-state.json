@@ -277,7 +277,7 @@
     "orbit": "v1.0.0 stable portfolio-demo; Cloudflare edge architecture merged but Worker route disabled, origin and gateway secret unset; CF01-CF05 live acceptance pending",
     "globalCart": "v0.2.3-dev M09.8; Pages deploy and six Lighthouse lab budgets passed; current-SHA full Browser E2E and manual review pending"
   },
-  "latestBranchHeadAtCheckpoint": "8cefb3d59d22e31566c720781dd3bbf7b9ad306f",
+  "latestBranchHeadAtCheckpoint": "993d29b713c7af13ccd77ea7587161c767cf379a",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -475,15 +475,17 @@
       "0f5e56f40c749218cba887035ec19f71b635568c",
       "9481d123a3724842927a621004742f0472512b12",
       "9f4b98e4e4b34cf2dca4187f9954399b79c94245",
-      "8cefb3d59d22e31566c720781dd3bbf7b9ad306f"
+      "8cefb3d59d22e31566c720781dd3bbf7b9ad306f",
+      "993d29b713c7af13ccd77ea7587161c767cf379a"
     ],
-    "documentationCheckpointCi": "passed-run-42392785457-on-8cefb3d59d22e31566c720781dd3bbf7b9ad306f",
+    "documentationCheckpointCi": "passed-run-42394443146-on-993d29b713c7af13ccd77ea7587161c767cf379a",
     "latestMainCodeCheckpoint": "5a379757809888a1a8c98335f6006746372779e1",
-    "latestDocCheckpoint": "8cefb3d59d22e31566c720781dd3bbf7b9ad306f",
+    "latestDocCheckpoint": "993d29b713c7af13ccd77ea7587161c767cf379a",
     "latestAppCodeCheckpoint": "5a379757809888a1a8c98335f6006746372779e1",
     "currentHeadBrowserQaVerified": true,
     "currentHeadPagesDeploymentVerified": true,
     "cloudflareProductionDeploy": "skipped-missing-secret",
-    "appsScriptProductionDeploy": "skipped-missing-secrets"
+    "appsScriptProductionDeploy": "skipped-missing-secrets",
+    "latestDocumentationCi": "42394443146; documentation checkpoint passed on 993d29b713c7af13ccd77ea7587161c767cf379a"
   }
 }
