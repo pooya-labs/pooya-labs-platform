@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P3-08",
     "title": "Close Phase 3 evidence, owner-review, accessibility, and social-validation gates before Phase 7",
-    "status": "52-of-52-contract-tests-passed-on-087fee17; TypeScript-and-three-target-builds-passed; Pages-and-browser-QA-passed-on-cc157e4; source-audit-and-handoff-docs-refreshed; owner-content-and-manual-release-gates-open"
+    "status": "52-of-52-contract-tests-passed; typecheck-and-three-target-builds-passed; docs-checkpoint-CI-passed; current-app-pages-and-browser-QA-passed; upstream-ORBIT-and-GlobalCart-state-refreshed; owner-and-manual-release-gates-open"
   },
   "lastCheckpointDate": "2026-11-07",
   "latestVerifiedCodeCommit": "cc157e4c9dd3e52a5181fb1a7e5e33821045f41b",
@@ -277,7 +277,7 @@
     "orbit": "v1.0.0 stable portfolio-demo; Cloudflare edge architecture merged but Worker route disabled, origin and gateway secret unset; CF01-CF05 live acceptance pending",
     "globalCart": "v0.2.3-dev M09.8; Pages deploy and six Lighthouse lab budgets passed; current-SHA full Browser E2E and manual review pending"
   },
-  "latestBranchHeadAtCheckpoint": "9f4b98e4e4b34cf2dca4187f9954399b79c94245",
+  "latestBranchHeadAtCheckpoint": "8cefb3d59d22e31566c720781dd3bbf7b9ad306f",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -426,10 +426,11 @@
       "635bdef16c178d7c58142df0de8e2b2ca17d5596",
       "0f5e56f40c749218cba887035ec19f71b635568c",
       "9481d123a3724842927a621004742f0472512b12",
-      "9f4b98e4e4b34cf2dca4187f9954399b79c94245"
+      "9f4b98e4e4b34cf2dca4187f9954399b79c94245",
+      "8cefb3d59d22e31566c720781dd3bbf7b9ad306f"
     ],
-    "documentationCheckpointCi": "pending-after-final-documentation-commit",
+    "documentationCheckpointCi": "passed-run-42392785457-on-8cefb3d59d22e31566c720781dd3bbf7b9ad306f",
     "latestMainCodeCheckpoint": "087fee17a8bfff503075dbae14609d530a7e63a4",
-    "latestDocCheckpoint": "9f4b98e4e4b34cf2dca4187f9954399b79c94245"
+    "latestDocCheckpoint": "8cefb3d59d22e31566c720781dd3bbf7b9ad306f"
   }
 }
