@@ -12,6 +12,21 @@ The portfolio now has eight bilingual project dossiers. Each includes the docume
 
 This checkpoint supersedes older stage labels and runtime descriptions below where they conflict.
 
+### Read-only upstream `main` ref inventory — 2026-11-07 (UTC)
+
+| Project | Current `main` SHA | Latest commit date (UTC) |
+|---|---|---|
+| AetherFlow | `c7cb553f0751514df0d916e69c29807636e66c67` | 2026-11-06 15:03 |
+| ORBIT | `268017365cd22f7db9dd8895fb59fbccc76c9b8f` | 2026-11-06 13:14 |
+| Pooya.OS | `1d408c0881d480db8f1c1a7a9f94272a93d4e617` | 2026-11-01 00:13 |
+| NexusCanvas | `df05f90b0463e5681324efec9083c9fe20c2cc7c` | 2026-11-01 00:13 |
+| LuminaGlass | `06fa93428a00442e5ec53d5486c3615048f66842` | 2026-11-01 00:13 |
+| AuraPulse | `7f3611cae0d74e06b6b01af534a5f84a79e5901c` | 2026-11-01 00:13 |
+| GlobalCart | `119afcd4924fbdda0287558d00926ab051255e59` | 2026-11-07 16:36 |
+| Salon Booking | `56ff5cde573eccb3febd7efe2de270f9ded2b7e5` | 2026-11-05 18:41 |
+
+This table records branch heads only; it does not substitute for feature-level acceptance or owner approval. GlobalCart was re-inspected because its main branch advanced after the previous platform checkpoint. No independent source repository was modified.
+
 ### ORBIT — main `268017365cd22f7db9dd8895fb59fbccc76c9b8f`
 
 - PR [#136](https://github.com/pooya-labs/orbit/pull/136) merged the Cloudflare edge-gateway path into the canonical ORBIT stack. It adds a thin Worker proxy; it does not duplicate Go business logic, OIDC, roles, workspace policy, PostgreSQL, or telemetry storage.

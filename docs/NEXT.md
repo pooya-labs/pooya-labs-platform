@@ -3,17 +3,17 @@
 **Task ID:** P3-08  
 **Priority:** Finish factual/content acceptance before Phase 7 redesign.  
 **Checkpoint date:** 2026-11-07  
-**Latest verified application/test checkpoint:** `087fee17a8bfff503075dbae14609d530a7e63a4` on `main`; documentation-only CI [42392877696](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42392877696) also passed on checkpoint `3c497922d0c9a7b15a6b86d86baa89c4409bec67`.
+**Latest verified application/test checkpoint:** `5a379757809888a1a8c98335f6006746372779e1` on `main`.
 
 ## Current verified baseline
 
 - The public bilingual portfolio is the root experience; the Spatial OS workspace remains secondary.
 - Eight bilingual project dossiers, eight bilingual architecture diagrams, 16 crawler-readable case-study routes, 17 PNG Open Graph cards (with 17 SVG sources), sitemap, robots.txt, and the novels library are implemented.
 - The novels catalog at `apps/platform/public/novels/catalog.json` is intentionally empty. Add only owner-supplied titles, descriptions, cover assets, and Markdown/TXT manuscripts using [NOVELS-GUIDE.md](NOVELS-GUIDE.md).
-- Latest Repository CI on the refreshed source/test checkpoint passed **52/52 contract tests**, TypeScript, and all three target builds: [42392401131](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42392401131) on `087fee17a8bfff503075dbae14609d530a7e63a4`. A stale GlobalCart wording assertion was corrected; it was not removed or weakened.
-- Latest portfolio Browser QA: 17/17 routes and 34/34 desktop/mobile viewports passed on updated UI SHA `cc157e4c9dd3e52a5181fb1a7e5e33821045f41b`, run [42391868133](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42391868133). Zero axe violations were reported; 34 color-contrast checks still require manual review, as do keyboard-only and screen-reader sessions.
-- GitHub Pages build and deploy passed on the updated application source SHA `cc157e4c9dd3e52a5181fb1a7e5e33821045f41b`, run [42391868126](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42391868126). Compared with the older verified UI SHA `468c1f6`, main is 24 commits ahead and now includes real bilingual dossier/architecture/project-status changes as well as capture tooling, docs, and tests.
-- Cloudflare production workflow requires `CLOUDFLARE_API_TOKEN`; Apps Script deployment requires `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID`. Their builds can pass while actual deployment is skipped. See [DEPLOYMENT-TARGETS.md](DEPLOYMENT-TARGETS.md).
+- Latest Repository CI on the current checkpoint passed **52/52 contract tests**, TypeScript, and all three target builds: [42393819743](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42393819743) on `5a379757809888a1a8c98335f6006746372779e1`. The GlobalCart source dossier now records the current verified accessibility failure instead of a stale cancelled-run-only note.
+- Latest portfolio Browser QA: 17/17 routes and 34/34 desktop/mobile viewports passed on updated UI SHA `5a379757809888a1a8c98335f6006746372779e1`, run [42393819729](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42393819729). Zero axe violations were reported; 34 incomplete contrast checks still require manual review, as do keyboard-only and screen-reader sessions.
+- GitHub Pages build and deploy passed on current application source SHA `5a379757809888a1a8c98335f6006746372779e1`, run [42393819716](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42393819716). This is the latest verified deployed code and content checkpoint.
+- Cloudflare and Apps Script build targets passed in CI, but the latest actual deploy jobs were skipped because `CLOUDFLARE_API_TOKEN`, `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` are not configured. See [DEPLOYMENT-TARGETS.md](DEPLOYMENT-TARGETS.md).
 
 ## New source findings — 2026-11-07
 
