@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Layers3, Monitor, TerminalSquare } from 'lucide-react';
+import { Activity, ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Layers3, Monitor, Moon, Sun, TerminalSquare } from 'lucide-react';
 import { useEffect, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
 import { portfolioProjects as projects, type PortfolioProject } from './content/projects';
 import { coreDossiers } from './content/case-study-dossiers-core';
@@ -8,6 +8,7 @@ import type { CaseStudyDossier } from './content/case-study-dossiers-types';
 import { NovelLibrarySection, NovelReader, loadNovelCatalog, localizedNovelText, type NovelRecord } from './NovelLibrary';
 
 type Language = 'fa' | 'en';
+type Theme = 'dark' | 'light';
 
 function getProjectSlugFromLocation(): string | null {
   const querySlug = new URLSearchParams(window.location.search).get('project');
@@ -29,6 +30,8 @@ interface PortfolioHomeProps {
   language: Language;
   onLanguageChange: (language: Language) => void;
   onOpenWorkspace: () => void;
+  theme: Theme;
+  onThemeChange: (theme: Theme) => void;
 }
 
 const text = {
@@ -68,6 +71,16 @@ const text = {
     footer: 'طراحی و توسعه با کنجکاوی و وسواس مهندسی.',
     workspace: 'ورود به فضای کاری',
     language: 'English',
+    themeToggle: 'حالت روشن',
+    capabilityEyebrow: 'مهارت‌ها / رویکرد', capabilityTitle: 'مهندسی با تمرکز بر تجربه و جزئیات.', capabilitySub: 'از رابط‌های دقیق تا سیستم‌های قابل اتکا؛ هر لایه با هدف روشن ساخته می‌شود.',
+    capability1Title: 'تجربه‌های محصولی سنجیده', capability1Body: 'رابط‌هایی سریع، واضح و واکنش‌گرا که جزئیات بصری را با دسترس‌پذیری و رفتار قابل پیش‌بینی همراه می‌کنند.',
+    capability2Title: 'سیستم‌های متصل و قابل مشاهده', capability2Body: 'معماری، جریان داده و سیگنال‌های عملیاتی را به ساختارهایی تبدیل می‌کنم که بتوان آن‌ها را فهمید و آزمایش کرد.',
+    capability3Title: 'ابزارهای خلاق و تعاملی', capability3Body: 'از canvasهای بصری تا تجربه‌های مرورگری؛ ایده‌ها را به ابزارهایی تبدیل می‌کنم که می‌شود با آن‌ها کار کرد.',
+    processEyebrow: 'روش کار', processTitle: 'از مسئله تا جزئیات قابل اعتماد.', processSub: 'یک مسیر روشن برای ساختن، سنجیدن و بهترکردن.',
+    process1Title: 'کشف مسئله', process1Body: 'هدف، محدودیت‌ها و تجربه‌ای را که باید بهتر شود مشخص می‌کنم.',
+    process2Title: 'طراحی ساختار', process2Body: 'مدل داده، معماری و زبان بصری را پیش از پیچیده‌شدن پیاده‌سازی روشن می‌کنم.',
+    process3Title: 'ساخت و اصلاح', process3Body: 'قابلیت‌ها را مرحله‌ای می‌سازم و با بازخورد و تست، لبه‌های ناپیدا را پیدا می‌کنم.',
+    process4Title: 'اعتبارسنجی', process4Body: 'رفتار، دسترس‌پذیری و مرزهای واقعی هر خروجی را بررسی و مستند می‌کنم.',
     status: 'وضعیت پروژه',
     caseStudy: 'مطالعه موردی به‌زودی',
     demo: 'دمو', source: 'سورس', caseStudyReady: 'مطالعه موردی',
@@ -109,6 +122,16 @@ const text = {
     footer: 'Designed and built with curiosity and engineering care.',
     workspace: 'Open workspace',
     language: 'فارسی',
+    themeToggle: 'Switch to light mode',
+    capabilityEyebrow: 'CAPABILITIES / APPROACH', capabilityTitle: 'Thoughtful engineering, from interface to infrastructure.', capabilitySub: 'Distinct layers, one clear intent: make complex things feel considered and usable.',
+    capability1Title: 'Product experiences with intent', capability1Body: 'Fast, readable, responsive interfaces where visual detail works alongside accessibility and predictable behavior.',
+    capability2Title: 'Connected, observable systems', capability2Body: 'Turning architecture, data flow, and operational signals into structures people can understand, inspect, and test.',
+    capability3Title: 'Creative tools and interactions', capability3Body: 'From visual canvases to browser-native experiments, ideas become useful tools you can actually work with.',
+    processEyebrow: 'THE PROCESS', processTitle: 'A clear path from problem to confidence.', processSub: 'A practical loop for shaping, building, and validating meaningful work.',
+    process1Title: 'Understand the problem', process1Body: 'Define the goal, constraints, and the experience that needs to improve.',
+    process2Title: 'Shape the system', process2Body: 'Make the data model, architecture, and visual language clear before complexity grows.',
+    process3Title: 'Build and refine', process3Body: 'Ship in deliberate steps, then use feedback and tests to uncover the hidden edges.',
+    process4Title: 'Validate the details', process4Body: 'Check behavior, accessibility, and real scope, then document what the result does and does not do.',
     status: 'Project status',
     caseStudy: 'Case study coming soon',
     demo: 'Live demo', source: 'Source', caseStudyReady: 'Case study',
@@ -116,14 +139,14 @@ const text = {
   },
 } satisfies Record<Language, Record<string, string>>;
 
-function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { project: PortfolioProject; language: Language; onLanguageChange: (language: Language) => void; onBack: () => void }): ReactNode {
+function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeChange, onBack }: { project: PortfolioProject; language: Language; onLanguageChange: (language: Language) => void; theme: Theme; onThemeChange: (theme: Theme) => void; onBack: () => void }): ReactNode {
   const t = text[language];
   const rtl = language === 'fa';
   const dossier = ((coreDossiers as unknown as Record<string, CaseStudyDossier>)[project.slug] ?? (productDossiers as unknown as Record<string, CaseStudyDossier>)[project.slug])!;
   const architectureDiagram = architectureDiagrams[project.slug];
   const architectureImage = import.meta.env.BASE_URL === './' ? null : `${import.meta.env.BASE_URL}architecture/${project.slug}${language === 'en' ? '-en' : ''}.svg`;
   return (
-    <div className={`portfolio-page portfolio-case-study ${rtl ? 'is-rtl' : 'is-ltr'}`}>
+    <div className={`portfolio-page portfolio-case-study ${rtl ? 'is-rtl' : 'is-ltr'}`} data-theme={theme}>
       <a className="portfolio-skip-link" href="#main-content">{t.skipToContent}</a>
       <div className="portfolio-atmosphere atmosphere-a" />
       <div className="portfolio-grid" />
@@ -133,6 +156,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
           <span><strong>POOYA</strong><small>PROJECT CASE STUDY</small></span>
         </a>
         <div className="portfolio-header-actions">
+          <button className="portfolio-theme" type="button" onClick={() => onThemeChange(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? (rtl ? 'فعال‌کردن حالت روشن' : 'Switch to light mode') : (rtl ? 'فعال‌کردن حالت تیره' : 'Switch to dark mode')} title={theme === 'dark' ? (rtl ? 'حالت روشن' : 'Light mode') : (rtl ? 'حالت تیره' : 'Dark mode')}>{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}<span>{theme === 'dark' ? (rtl ? 'روشن' : 'Light') : (rtl ? 'تیره' : 'Dark')}</span></button>
           <button className="portfolio-language" onClick={() => { const nextLanguage = rtl ? 'en' : 'fa'; onLanguageChange(nextLanguage); if (import.meta.env.BASE_URL !== './') { window.history.replaceState({}, '', new URL(getProjectRouteHref(project.slug, nextLanguage), window.location.href)); } }}>{t.language}</button>
           <button className="portfolio-workspace" onClick={onBack}><span>{t.backProjects}</span><ArrowUpLeft size={15} /></button>
         </div>
@@ -247,7 +271,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
   );
 }
 
-export default function PortfolioHome({ language, onLanguageChange, onOpenWorkspace }: PortfolioHomeProps): ReactNode {
+export default function PortfolioHome({ language, onLanguageChange, theme, onThemeChange, onOpenWorkspace }: PortfolioHomeProps): ReactNode {
   const t = text[language];
   const rtl = language === 'fa';
   const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(() => {
@@ -371,11 +395,11 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
     document.documentElement.dir = rtl ? 'rtl' : 'ltr';
   }, [language, rtl]);
 
-  if (selectedProject) return <ProjectCaseStudy project={selectedProject} language={language} onLanguageChange={onLanguageChange} onBack={closeCaseStudy} />;
-  if (selectedNovelSlug) return <NovelReader novel={selectedNovel} language={language} loading={novelCatalogLoading} error={novelCatalogError} onBack={closeNovel} />;
+  if (selectedProject) return <ProjectCaseStudy project={selectedProject} language={language} onLanguageChange={onLanguageChange} theme={theme} onThemeChange={onThemeChange} onBack={closeCaseStudy} />;
+  if (selectedNovelSlug) return <NovelReader novel={selectedNovel} language={language} theme={theme} onThemeChange={onThemeChange} loading={novelCatalogLoading} error={novelCatalogError} onBack={closeNovel} />;
 
   return (
-    <div className={`portfolio-page ${rtl ? 'is-rtl' : 'is-ltr'}`}>
+    <div className={`portfolio-page ${rtl ? 'is-rtl' : 'is-ltr'}`} data-theme={theme}>
       <a className="portfolio-skip-link" href="#top">{t.skipToContent}</a>
       <div className="portfolio-atmosphere atmosphere-a" />
       <div className="portfolio-atmosphere atmosphere-b" />
@@ -394,6 +418,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
           <a href="#contact">{t.navContact}</a>
         </nav>
         <div className="portfolio-header-actions">
+          <button className="portfolio-theme" type="button" onClick={() => onThemeChange(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? t.themeToggle : (rtl ? 'حالت تیره' : 'Switch to dark mode')} title={theme === 'dark' ? t.themeToggle : (rtl ? 'حالت تیره' : 'Dark mode')}>{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}<span>{theme === 'dark' ? (rtl ? 'روشن' : 'Light') : (rtl ? 'تیره' : 'Dark')}</span></button>
           <button className="portfolio-language" onClick={() => onLanguageChange(rtl ? 'en' : 'fa')}>{t.language}</button>
           <button className="portfolio-workspace" onClick={onOpenWorkspace}><span>{t.workspace}</span><ArrowUpLeft size={15} /></button>
         </div>
@@ -403,7 +428,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
         <section className="portfolio-hero portfolio-container">
           <div className="portfolio-hero-copy" data-reveal="hero-copy">
             <div className="portfolio-eyebrow"><span className="eyebrow-pulse" />{t.eyebrow}</div>
-            <h1>{t.headlineA}<br /><span className="hero-gradient">{t.headlineB}</span><br />{t.headlineC}</h1>
+            <h1 className="portfolio-hero-title"><span className="hero-title-line">{t.headlineA}</span><span className="hero-title-line hero-gradient">{t.headlineB}</span><span className="hero-title-line">{t.headlineC}</span></h1>
             <p className="portfolio-intro">{t.intro}</p>
             <div className="portfolio-hero-actions">
               <a className="portfolio-primary" href="#projects">{t.explore}<ArrowDown size={16} /></a>
@@ -449,6 +474,27 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
           </div>
         </div>
 
+        <section className="portfolio-capabilities portfolio-container" aria-labelledby="capabilities-title" data-reveal="capabilities">
+          <div className="portfolio-section-heading"><div><div className="portfolio-eyebrow"><span className="eyebrow-index">01 /</span>{t.capabilityEyebrow}</div><h2 id="capabilities-title">{t.capabilityTitle}</h2><p>{t.capabilitySub}</p></div><span className="portfolio-section-meta">DESIGN / SYSTEMS / TOOLS</span></div>
+          <div className="capability-grid">
+            <article className="capability-card" data-reveal="capability-card">
+              <div className="capability-card-top"><span>01 — INTERFACE</span><Layers3 size={17} /></div>
+              <div className="capability-visual capability-interface" aria-hidden="true"><div className="capability-window"><div className="capability-window-bar"><i /><i /><i /><span>workspace / overview</span></div><div className="capability-window-body"><div className="capability-sidebar"><b /><i /><i /><i /><i /></div><div className="capability-panels"><div className="capability-panel-wide"><span /><b /><i /></div><div className="capability-panel-row"><i /><i /><i /></div><div className="capability-chart"><b /><b /><b /><b /><b /><b /><b /><b /></div></div></div></div><span className="capability-float-tag">DETAIL / 001</span></div>
+              <div className="capability-card-copy"><span className="capability-index">EXPERIENCE DESIGN</span><h3>{t.capability1Title}</h3><p>{t.capability1Body}</p></div>
+            </article>
+            <article className="capability-card" data-reveal="capability-card">
+              <div className="capability-card-top"><span>02 — SYSTEMS</span><Activity size={17} /></div>
+              <div className="capability-visual capability-topology" aria-hidden="true"><svg viewBox="0 0 420 220" role="presentation"><path className="topology-path" d="M55 110 L142 55 L235 86 L344 38 M55 110 L145 174 L235 86 L348 174 M142 55 L145 174 M235 86 L344 38 M235 86 L348 174" /><path className="topology-path topology-path-secondary" d="M55 110 L235 86 L348 174" /><circle cx="55" cy="110" r="10" /><circle cx="142" cy="55" r="8" /><circle cx="145" cy="174" r="8" /><circle cx="235" cy="86" r="13" /><circle cx="344" cy="38" r="8" /><circle cx="348" cy="174" r="8" /></svg><span className="topology-label topology-label-a">EVENT / STREAM</span><span className="topology-label topology-label-b">TRACE / 03</span><span className="topology-core">CORE</span></div>
+              <div className="capability-card-copy"><span className="capability-index">SYSTEMS THINKING</span><h3>{t.capability2Title}</h3><p>{t.capability2Body}</p></div>
+            </article>
+            <article className="capability-card" data-reveal="capability-card">
+              <div className="capability-card-top"><span>03 — CREATIVE TOOLS</span><TerminalSquare size={17} /></div>
+              <div className="capability-visual capability-terminal" aria-hidden="true"><div className="capability-terminal-top"><span>pooya-labs / studio</span><i>● LIVE PREVIEW</i></div><div className="capability-code-lines"><span><b>01</b><code><i>const</i> idea = <em>'make it useful'</em>;</code></span><span><b>02</b><code><i>const</i> system = <em>design(idea)</em>;</code></span><span><b>03</b><code><i>await</i> validate(system);</code></span><span><b>04</b><code className="capability-cursor">ship(system)</code></span></div></div>
+              <div className="capability-card-copy"><span className="capability-index">INTERACTIVE EXPERIMENTS</span><h3>{t.capability3Title}</h3><p>{t.capability3Body}</p></div>
+            </article>
+          </div>
+        </section>
+
         <section className="portfolio-projects portfolio-container" id="projects" data-reveal="projects">
           <div className="portfolio-section-heading" data-reveal="projects-heading">
             <div><div className="portfolio-eyebrow"><span className="eyebrow-index">01 /</span>{t.selected}</div><h2>{t.selected}</h2><p>{t.selectedSub}</p></div>
@@ -486,6 +532,16 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
                 </div>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="portfolio-process portfolio-container" aria-labelledby="process-title" data-reveal="process">
+          <div className="portfolio-section-heading"><div><div className="portfolio-eyebrow"><span className="eyebrow-index">03 /</span>{t.processEyebrow}</div><h2 id="process-title">{t.processTitle}</h2><p>{t.processSub}</p></div><span className="portfolio-section-meta">A CONTINUOUS LOOP</span></div>
+          <div className="process-timeline">
+            <article className="process-step" data-reveal="process-step"><span className="process-number">01</span><span className="process-marker"><i /></span><div><h3>{t.process1Title}</h3><p>{t.process1Body}</p></div></article>
+            <article className="process-step" data-reveal="process-step"><span className="process-number">02</span><span className="process-marker"><i /></span><div><h3>{t.process2Title}</h3><p>{t.process2Body}</p></div></article>
+            <article className="process-step" data-reveal="process-step"><span className="process-number">03</span><span className="process-marker"><i /></span><div><h3>{t.process3Title}</h3><p>{t.process3Body}</p></div></article>
+            <article className="process-step" data-reveal="process-step"><span className="process-number">04</span><span className="process-marker"><i /></span><div><h3>{t.process4Title}</h3><p>{t.process4Body}</p></div></article>
           </div>
         </section>
 
