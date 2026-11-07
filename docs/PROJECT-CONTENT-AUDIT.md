@@ -1,12 +1,36 @@
 # Project content audit — pre-release source of truth
 
-**Last reviewed:** 2026-11-06  
+**Last reviewed:** 2026-11-07  
 **Purpose:** Separate facts supported by the eight source repositories from information/evidence still required before Pooya Labs V1.  
 **Rule:** Do not fill gaps with assumptions. Keep verified descriptions in the portfolio and keep missing items as release checklist tasks.
 
 ## What is already populated
 
 The portfolio now has eight bilingual project dossiers. Each includes the documented role/attribution (or explicitly says when the source does not identify an individual), architecture, implementation details, engineering decisions, verification evidence, and links to source documentation and relevant CI runs. Case-study pages render these in Persian and English. Source repositories remain independent; no project code was copied into this portfolio.
+
+## Upstream source recheck — 2026-11-07
+
+This checkpoint supersedes older stage labels and runtime descriptions below where they conflict.
+
+### ORBIT — main `268017365cd22f7db9dd8895fb59fbccc76c9b8f`
+
+- PR [#136](https://github.com/pooya-labs/orbit/pull/136) merged the Cloudflare edge-gateway path into the canonical ORBIT stack. It adds a thin Worker proxy; it does not duplicate Go business logic, OIDC, roles, workspace policy, PostgreSQL, or telemetry storage.
+- Exact-main CI [42223939950](https://github.com/pooya-labs/orbit/actions/runs/42223939950), Security [42223939967](https://github.com/pooya-labs/orbit/actions/runs/42223939967), and Pages deployment [42223939898](https://github.com/pooya-labs/orbit/actions/runs/42223939898) passed on the merge SHA.
+- Runtime acceptance is **not complete**: Worker version 0.2.3 is deployed, but the `workers.dev` route is disabled; Worker secrets and resource bindings are empty; the private Go/Caddy origin and `ORBIT_GATEWAY_SECRET` are not configured. The Worker therefore remains fail-closed for API routes. Do not describe the Cloudflare runtime as connected or live.
+- The intended boundaries are now reflected in the portfolio dossier and architecture diagram: Apps Script continues as an independent synthetic-data demo; Cloudflare Worker is the edge entry to the canonical Go API once configured; PostgreSQL remains authoritative; OTLP/HTTP and OTLP/gRPC remain separate authenticated paths to the private Collector and Prometheus/Loki/Tempo.
+- Required post-v1 edge acceptance remains CF01–CF05: origin trust and secret, direct-origin denial, Worker forwarding, Pages/PKCE API parity, role and workspace isolation, telemetry/operations checks, dual-runtime profile isolation, and a separately evidenced edge release. Do not modify the immutable ORBIT v1.0.0 tag.
+- The current Cloudflare runtime design and operator checklist are documented at [docs/cloudflare-runtime.md](https://github.com/pooya-labs/orbit/blob/main/docs/cloudflare-runtime.md). A follow-up runbook-fix PR was still open/in progress when this checkpoint was taken; only merged main SHA 2680173 is treated as the source of truth.
+
+### GlobalCart — main `8a89f0d612cdf69d619b64049304eaa789b4785c`
+
+- The latest README and Roadmap report **v0.2.3-dev / M09.8**, not M09.6. M09.8 editorial work is implemented but the full release gate remains open.
+- Pages workflow [42387896585](https://github.com/pooya-labs/globalcart/actions/runs/42387896585) completed successfully: catalog snapshot, imagery and lockfile persistence, TypeScript, unit tests, production build, Pages deployment, and published-site smoke checks passed.
+- Public Lighthouse lab run [42367298478](https://github.com/pooya-labs/globalcart/actions/runs/42367298478) passed six route/mode regression budgets. Home-mobile was Performance 93, LCP 2.4 s and TBT 250 ms; all other audited route/mode scores were 100. These are GitHub-hosted emulated lab readings, not field Core Web Vitals.
+- Post-deploy visual QA [42367298484](https://github.com/pooya-labs/globalcart/actions/runs/42367298484) passed two image checks and skipped two unavailable cases; Shopify Catalog Smoke [42367298509](https://github.com/pooya-labs/globalcart/actions/runs/42367298509) passed. Both runs were tied to the earlier `7fdb27c` SHA, not the latest main commit.
+- The latest known Browser E2E attempt [42247489435](https://github.com/pooya-labs/globalcart/actions/runs/42247489435) was cancelled. A complete corrected Playwright/axe run on current main has not been verified.
+- M09.7/M09.8 still require full Browser E2E, verification of all 1,000 product galleries and product-detail interactions on exact current SHA, current-SHA live image/deploy checks, and owner review of the selected products and Persian editorial copy. Continue to keep all product estimates explicitly labelled as GlobalCart estimates, not seller quotes. Do not tag 1.0.0.
+
+**Portfolio changes made from this recheck:** ORBIT's bilingual dossier and architecture diagram now show all three execution paths and explicitly mark the Cloudflare Worker as configured-in-source but not live-connected. GlobalCart's portfolio status is now M09.8 and its verification links point to current successful runs plus the remaining cancelled E2E attempt. No upstream project repository was modified.
 
 ## Artifact-only interface recapture review — 2026-11-06
 
