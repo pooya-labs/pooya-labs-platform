@@ -9,12 +9,12 @@
   "currentTask": {
     "id": "P3-08",
     "title": "Close Phase 3 evidence, owner-review, accessibility, and social-validation gates before Phase 7",
-    "status": "52-contract-tests-passed-on-prior-checkpoint; 17-routes-34-viewports-zero-axe-violations-on-verified-ui-sha; current-main-head-not-yet-retested; owner-content-and-manual-review-blockers-open"
+    "status": "52-of-52-contract-tests-passed; typecheck-and-three-target-builds-passed-on-087fee17; portfolio-pages-and-browser-qa-passed-on-cc157e4; ORBIT-and-GlobalCart-source-dossiers-refreshed; owner-approval-and-manual-release-gates-open"
   },
   "lastCheckpointDate": "2026-11-07",
-  "latestVerifiedCodeCommit": "468c1f60ab11223693f3678213d48848100ae63e",
+  "latestVerifiedCodeCommit": "cc157e4c9dd3e52a5181fb1a7e5e33821045f41b",
   "tests": {
-    "repositoryCi": "passed-run-42247729151",
+    "repositoryCi": "passed-run-42392401131-on-087fee17a8bfff503075dbae14609d530a7e63a4",
     "repositoryCiTestCount": 52,
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
@@ -23,14 +23,14 @@
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
     "githubPagesDeployment": "passed-run-42238363799-on-code-sha-dc991c4a90aad92ec4006332fffccf04fdd09951",
-    "platformTypecheck": "passed-run-42247729151",
-    "pagesAndGasBuilds": "passed-run-42238363801-pages-gas-cloudflare",
+    "platformTypecheck": "passed-run-42392401131",
+    "pagesAndGasBuilds": "passed-three-target-builds-in-run-42392401131",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "pending-owner-visual-contrast-and-manual-accessibility-review",
-    "vitePagesWorkflow": "passed-build-and-deploy-run-42247171442-on-468c1f60ab11223693f3678213d48848100ae63e",
+    "vitePagesWorkflow": "passed-build-and-deploy-run-42391868126-on-cc157e4c9dd3e52a5181fb1a7e5e33821045f41b",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "GitHub Actions build and deploy succeeded on 2026-11-06 for source fc4d865b8fa4a19a3899f4b72847d39594c201ad; repository Pages source setting still requires owner-side confirmation",
-    "portfolioContractTests": "passed-52-of-52-run-42247729151",
+    "portfolioContractTests": "passed-52-of-52-run-42392401131",
     "latestPreviousPagesDeployment": "passed-run-42043972152",
     "docsCheckpoint": "passed-run-42060558950",
     "staticCaseStudyOutput": "passed-in-run-42072937855-16-pages-16-diagrams-17-png-cards-17-svg-sources-robots-sitemap-and-globalcart-screenshots",
@@ -40,7 +40,7 @@
     "staticCaseStudySectionOrder": "passed-run-42227942261-and-42230046270",
     "lastVerifiedTestCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
     "skipNavigationContract": "passed-run-42231110043-bilingual-fixed-position-reduced-motion",
-    "portfolioBrowserQa": "passed-run-42247171025-17-routes-34-viewports-zero-axe-violations",
+    "portfolioBrowserQa": "passed-run-42391868133-17-routes-34-viewports-on-cc157e4c9dd3e52a5181fb1a7e5e33821045f41b",
     "portfolioBrowserQaArtifact": "13511783286",
     "portfolioBrowserQaStrictGate": "critical-and-serious-axe-findings-fail-job; incomplete-rule-details-retained; passed-run-42238363900",
     "pagesArtifactAudit": "passed-run-42238363799-artifact-13511808294-17-html-17-png-1200x627-17-sitemap-urls-all-canonical-og-description-jsonld-and-case-study-hreflang",
@@ -82,18 +82,21 @@
     "activePagesSource": "GitHub Actions deployment succeeded; repository Pages source setting still requires owner-side confirmation",
     "appsScriptSync": "deferred-not-required-for-static-portfolio",
     "portfolioPagesPublished": true,
-    "portfolioPagesRun": "42247171442",
-    "latestPortfolioCodeCommit": "468c1f60ab11223693f3678213d48848100ae63e",
+    "portfolioPagesRun": "42391868126",
+    "latestPortfolioCodeCommit": "cc157e4c9dd3e52a5181fb1a7e5e33821045f41b",
     "cloudflareProductionDeployment": "0bba4323-359d-4fb6-8d5e-aa833e36b22c",
     "cloudflareProductionCommit": "f9011ec5a3f9eb2faffdac222596b37444184191",
     "cloudflareWorkflow": "actual-deploy-job-skipped-missing-CLOUDFLARE_API_TOKEN-run-42238363845",
     "appsScriptWorkflow": "actual-deploy-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID-run-42238363818",
-    "latestPagesAttemptRun": "42247171442",
-    "latestPagesAttemptCodeCommit": "468c1f60ab11223693f3678213d48848100ae63e",
+    "latestPagesAttemptRun": "42391868126",
+    "latestPagesAttemptCodeCommit": "cc157e4c9dd3e52a5181fb1a7e5e33821045f41b",
     "latestPagesAttemptStatus": "passed-build-and-deploy",
     "pagesArtifactId": "13518846598",
     "pagesArtifactSizeBytes": 3817565,
-    "latestDocumentationCommit": "69a4b422524236361bc27e08d9d0a7321838bda6"
+    "latestDocumentationCommit": "69a4b422524236361bc27e08d9d0a7321838bda6",
+    "portfolioBrowserQaRun": "42391868133",
+    "cloudflareLatestAttemptRun": "42391868238; configuration check passed; actual production deploy job skipped because CLOUDFLARE_API_TOKEN is missing",
+    "appsScriptLatestAttemptRun": "42391868107; configuration check passed; actual production deploy job skipped because CLASPRC_JSON, CLASP_JSON, and GAS_DEPLOYMENT_ID are missing"
   },
   "previousProjects": {
     "inspected": true,
@@ -230,7 +233,7 @@
     "socialPreviewDimensions": "1200x627 (LinkedIn share preview recommendation)",
     "socialPreviewCardCount": 17
   },
-  "latestVerifiedTestCommit": "53c13993ca2aa2dbbb007454729a084fcdce43b4",
+  "latestVerifiedTestCommit": "087fee17a8bfff503075dbae14609d530a7e63a4",
   "caseStudyDossiers": {
     "bilingual": true,
     "projectCount": 8,
@@ -270,9 +273,11 @@
     "ownerContentApproval": "pending",
     "fullSiteRedesign": "mandatory-two-round-owner-review",
     "keyboardSkipNavigation": "implemented-bilingual-home-and-case-study-routes-contract-passed-manual-review-pending",
-    "novelLibrary": "implemented-with-empty-catalog; final titles, descriptions, manuscripts and covers pending Pooya"
+    "novelLibrary": "implemented-with-empty-catalog; final titles, descriptions, manuscripts and covers pending Pooya",
+    "orbit": "v1.0.0 stable portfolio-demo; Cloudflare edge architecture merged but Worker route disabled, origin and gateway secret unset; CF01-CF05 live acceptance pending",
+    "globalCart": "v0.2.3-dev M09.8; Pages deploy and six Lighthouse lab budgets passed; current-SHA full Browser E2E and manual review pending"
   },
-  "latestBranchHeadAtCheckpoint": "0f6e8b596b41701954f9e981f38aa7315eb593dd",
+  "latestBranchHeadAtCheckpoint": "087fee17a8bfff503075dbae14609d530a7e63a4",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -313,6 +318,61 @@
       "uiScreenshotCandidate": "blocked-by-M07-page-badge-vs-M08-readme-and-duplicate-Dashboard-navigation",
       "portfolioUiScreenshotAccepted": false,
       "upstreamRepositoryModified": false
+    },
+    "orbit": {
+      "repository": "pooya-labs/orbit",
+      "branch": "main",
+      "inspectedHead": "268017365cd22f7db9dd8895fb59fbccc76c9b8f",
+      "pr136Merged": true,
+      "stableRelease": "v1.0.0",
+      "ci": "passed-run-42223939950",
+      "security": "passed-run-42223939967",
+      "pages": "passed-run-42223939898",
+      "cloudflareWorker": {
+        "name": "orbit-runtime",
+        "version": "0.2.3",
+        "workersDevRouteEnabled": false,
+        "originConfigured": false,
+        "gatewaySecretConfigured": false,
+        "resourceBindings": [],
+        "apiRoutesFailClosed": true,
+        "liveOriginAcceptance": false
+      },
+      "runtimeArchitecture": "Apps Script synthetic demo remains independent; Cloudflare Worker is a narrow edge gateway to canonical Go API; PostgreSQL remains source of truth; authenticated OTLP paths remain separate",
+      "pendingAcceptance": [
+        "CF01 origin trust and gateway secret",
+        "CF02 API parity, PKCE, role and workspace checks",
+        "CF03 telemetry and operations",
+        "CF04 dual-runtime identity/session isolation",
+        "CF05 separate evidenced Cloudflare edge release"
+      ],
+      "upstreamRepositoryModified": false
+    },
+    "globalcart": {
+      "repository": "pooya-labs/globalcart",
+      "branch": "main",
+      "inspectedHead": "8a89f0d612cdf69d619b64049304eaa789b4785c",
+      "release": "0.2.3-dev",
+      "stage": "M09.8",
+      "latestPagesDeployment": "42387896585-success",
+      "lighthouse": "42367298478-success-six-route-mode-lab-budgets",
+      "lighthouseHomeMobile": {
+        "performance": 93,
+        "lcpSeconds": 2.4,
+        "tbtMs": 250
+      },
+      "postDeployVisualQa": "42367298484-success-two-passed-two-skipped-on-prior-7fdb27-sha",
+      "shopifyCatalogSmoke": "42367298509-success-on-prior-7fdb27-sha",
+      "latestKnownBrowserE2E": "42247489435-cancelled",
+      "currentHeadFullBrowserE2EVerified": false,
+      "pending": [
+        "full Browser E2E plus axe on current main",
+        "verify 1,000 complete galleries and PDP interaction on exact current SHA",
+        "current-SHA post-deploy image checks",
+        "owner review of curated products and Persian editorial copy",
+        "physical-device, screen-reader and full human RTL/LTR acceptance"
+      ],
+      "upstreamRepositoryModified": false
     }
   },
   "novelLibrary": {
@@ -336,31 +396,28 @@
   },
   "reconciliation": {
     "date": "2026-11-07",
-    "inspectedMainHead": "0f6e8b596b41701954f9e981f38aa7315eb593dd",
+    "inspectedMainCodeAndTestCheckpoint": "087fee17a8bfff503075dbae14609d530a7e63a4",
+    "deployedApplicationCodeCheckpoint": "cc157e4c9dd3e52a5181fb1a7e5e33821045f41b",
     "comparedAgainstVerifiedUiCommit": "468c1f60ab11223693f3678213d48848100ae63e",
-    "commitsAhead": 12,
+    "commitsAhead": 24,
     "changedPathGroups": [
       "capture-workflow-and-script",
+      "portfolio-case-study-content",
+      "architecture-diagram",
+      "project-registry",
       "README",
       "docs",
       "contract-tests"
     ],
-    "runtimeSourceChanged": false,
-    "deploymentStillAlignedWithLastVerifiedUiBuild": true,
-    "latestRecordedRepositoryCi": "42247729151; 52 contract tests on 53c13993ca2aa2dbbb007454729a084fcdce43b4",
-    "latestRecordedDocsCheckpointCi": "42248414717",
-    "latestRecordedBrowserQa": "42247171025; 17 routes; 34 viewports; zero axe violations; 34 color-contrast checks require manual review",
-    "latestRecordedPagesDeployment": "42247171442; both build and deploy passed on 468c1f60ab11223693f3678213d48848100ae63e",
-    "currentHeadCiVerified": false,
+    "runtimeSourceChanged": true,
+    "deploymentStillAlignedWithLatestApplicationCode": true,
+    "latestRecordedRepositoryCi": "42392401131; 52/52 tests; TypeScript and all three target builds passed on 087fee17",
+    "latestRecordedBrowserQa": "42391868133; 17 routes and 34 viewports passed on cc157e4",
+    "latestRecordedPagesDeployment": "42391868126; build and deploy passed on cc157e4",
+    "firstContractRunIssue": "42391868132 exposed one stale contract assertion; corrected without weakening checks",
+    "correctionCommit": "087fee17a8bfff503075dbae14609d530a7e63a4",
+    "currentHeadCiVerified": true,
     "ownerContentApproval": "pending",
-    "nextTask": "P3-08A owner content decisions, then P3-08B project evidence reconciliation",
-    "documentationCommits": [
-      "4798804cac0e9d90aa5adda41dcd1e355fa4c61e",
-      "aa3725e894611a1bde91181cac19f4e8942ea94a",
-      "bfde5a02253b261b46948478af6caffc4988eaa3",
-      "84aff74e054f16172743f4f6931245dc038d2a01"
-    ],
-    "documentationCheckpointCi": "not-yet-observed-after-2026-11-07-reconciliation",
-    "currentBranchContainsDocumentationOnlyReconciliation": true
+    "nextTask": "P3-08A owner content decisions; P3-08B feature evidence and project runtime acceptance; P3-08C manual accessibility/social validation"
   }
 }
