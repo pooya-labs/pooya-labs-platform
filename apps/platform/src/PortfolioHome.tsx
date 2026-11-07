@@ -139,7 +139,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
       </header>
       <main id="main-content" tabIndex={-1} className="case-study-main portfolio-container">
         <a className="case-study-back" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}><ArrowUpLeft size={15} />{t.backProjects}</a>
-        <section className="case-study-hero">
+        <section className="case-study-hero" data-reveal="case-study-hero">
           <div className={'case-study-visual' + ((project.caseStudyHeroAsset ?? project.visualAsset) ? ' has-visual' : '')}>
             {(project.caseStudyHeroAsset ?? project.visualAsset) && <img className={'case-study-visual-image visual-' + (project.caseStudyHeroAsset ?? project.visualAsset)!.kind}
               src={(project.caseStudyHeroAsset ?? project.visualAsset)!.url} alt={(project.caseStudyHeroAsset ?? project.visualAsset)!.alt[language]} loading="eager" decoding="async"
@@ -164,7 +164,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
           </div>
         </section>
         {(project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop').length > 0 && (
-          <section className="case-study-media-section">
+          <section className="case-study-media-section" data-reveal="case-study-media">
             <div className="portfolio-eyebrow"><span className="eyebrow-index">UI /</span>{t.interfaceCaptures}</div>
             <div className="case-study-media-grid">
               {(project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop').map((item) => (
@@ -176,7 +176,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
             </div>
           </section>
         )}
-        <section className="case-study-section-grid">
+        <section className="case-study-section-grid" data-reveal="case-study-section">
           <article className="case-study-panel">
             <div className="portfolio-eyebrow"><span className="eyebrow-index">01 /</span>{t.challenge}</div>
             <p>{project.caseStudy.challenge[language]}</p>
@@ -186,7 +186,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
             <p>{project.caseStudy.approach[language]}</p>
           </article>
         </section>
-        <section className="case-study-dossier-grid">
+        <section className="case-study-dossier-grid" data-reveal="case-study-dossier">
           <article className="case-study-panel">
             <div className="portfolio-eyebrow"><span className="eyebrow-index">03 /</span>{t.role}</div>
             <p>{dossier.role[language]}</p>
@@ -202,7 +202,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
             <figcaption>{architectureDiagram.caption[language]}</figcaption>
           </figure>
         )}
-        <section className="case-study-detail-grid">
+        <section className="case-study-detail-grid" data-reveal="case-study-detail">
           <article className="case-study-highlights">
             <div className="portfolio-eyebrow"><span className="eyebrow-index">05 /</span>{t.implementation}</div>
             <ul>{dossier.implementation[language].map((item, index) => <li key={index}><span>{String(index + 1).padStart(2, '0')}</span>{item}</li>)}</ul>
@@ -212,7 +212,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
             <ul>{dossier.decisions[language].map((item, index) => <li key={index}><span>{String(index + 1).padStart(2, '0')}</span>{item}</li>)}</ul>
           </article>
         </section>
-        <section className="case-study-detail-grid">
+        <section className="case-study-detail-grid" data-reveal="case-study-detail">
           <article className="case-study-highlights">
             <div className="portfolio-eyebrow"><span className="eyebrow-index">07 /</span>{t.validation}</div>
             <ul>{dossier.verification[language].map((item, index) => <li key={index}><span>{String(index + 1).padStart(2, '0')}</span>{item}</li>)}</ul>
@@ -228,11 +228,11 @@ function ProjectCaseStudy({ project, language, onLanguageChange, onBack }: { pro
             </div>
           </article>
         </section>
-        <section className="case-study-highlights">
+        <section className="case-study-highlights" data-reveal="case-study-highlights">
           <div className="portfolio-eyebrow"><span className="eyebrow-index">09 /</span>{t.highlights}</div>
           <ul>{project.caseStudy.highlights[language].map((item, index) => <li key={index}><span>{String(index + 1).padStart(2, '0')}</span>{item}</li>)}</ul>
         </section>
-        <section className="case-study-boundaries">
+        <section className="case-study-boundaries" data-reveal="case-study-boundaries">
           <div className="portfolio-eyebrow"><span className="eyebrow-index">10 /</span>{t.boundaries}</div>
           <p>{project.caseStudy.boundaries[language]}</p>
         </section>
@@ -259,6 +259,29 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
   const [novelCatalogLoading, setNovelCatalogLoading] = useState(true);
   const [novelCatalogError, setNovelCatalogError] = useState<string | null>(null);
   const selectedNovel = novelCatalog.find((novel) => novel.slug === selectedNovelSlug && novel.published) ?? null;
+  const heroPreviewProjects = ['global-cart', 'orbit', 'nexus-canvas', 'lumina-glass', 'aura-pulse']
+    .map((slug) => projects.find((project) => project.slug === slug))
+    .filter((project): project is PortfolioProject => Boolean(project && (project.caseStudyHeroAsset || project.visualAsset)));
+
+  useEffect(() => {
+    const root = document.querySelector<HTMLElement>('.portfolio-page');
+    if (!root || !('IntersectionObserver' in window)) return;
+    const targets = Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'));
+    if (!targets.length) return;
+    root.classList.add('motion-ready');
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
+    targets.forEach((target) => observer.observe(target));
+    return () => {
+      observer.disconnect();
+      root.classList.remove('motion-ready');
+    };
+  }, [selectedProject?.slug, selectedNovelSlug]);
 
   useEffect(() => {
     let active = true;
@@ -378,7 +401,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
 
       <main id="top" tabIndex={-1}>
         <section className="portfolio-hero portfolio-container">
-          <div className="portfolio-hero-copy">
+          <div className="portfolio-hero-copy" data-reveal="hero-copy">
             <div className="portfolio-eyebrow"><span className="eyebrow-pulse" />{t.eyebrow}</div>
             <h1>{t.headlineA}<br /><span className="hero-gradient">{t.headlineB}</span><br />{t.headlineC}</h1>
             <p className="portfolio-intro">{t.intro}</p>
@@ -389,30 +412,55 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
             <div className="portfolio-social-proof"><span className="proof-line" /><span>POOYA LABS</span><span className="proof-dot">·</span><span>BUILDING IN PUBLIC</span></div>
           </div>
 
-          <div className="portfolio-hero-art" role="img" aria-label={rtl ? 'نشان انتزاعی حرف P' : 'Abstract P monogram artwork'}>
-            <div className="art-orbit orbit-outer" /><div className="art-orbit orbit-inner" />
-            <div className="art-glass-card glass-card-back"><span>DESIGN</span><Sparkles size={18} /></div>
-            <div className="art-glass-card glass-card-front"><span>ENGINEERING</span><Workflow size={20} /></div>
-            <div className="art-monogram"><span>P</span><i /></div>
-            <div className="art-coordinate coordinate-one">PORTFOLIO / 2026</div>
-            <div className="art-coordinate coordinate-two">CREATING / 2026</div>
-            <div className="art-star star-one" /><div className="art-star star-two" /><div className="art-star star-three" />
+          <div className="portfolio-hero-art" data-reveal="hero-showcase" aria-hidden="true">
+            <div className="hero-preview-backdrop" />
+            <div className="hero-preview-orbit hero-preview-orbit-one" />
+            <div className="hero-preview-orbit hero-preview-orbit-two" />
+            {heroPreviewProjects.map((project, index) => {
+              const artwork = project.caseStudyHeroAsset ?? project.visualAsset;
+              if (!artwork) return null;
+              return (
+                <article className={`hero-preview hero-preview-${index + 1}`} key={project.slug}>
+                  <div className="hero-preview-toolbar">
+                    <span className="hero-preview-window-dots"><i /><i /><i /></span>
+                    <strong>{project.name}</strong>
+                    <small>{project.tags[0]}</small>
+                  </div>
+                  <div className="hero-preview-image">
+                    <img src={artwork.url} alt="" loading={index < 2 ? 'eager' : 'lazy'} decoding="async" />
+                  </div>
+                  <div className="hero-preview-caption"><b>{project.name}</b><span>{project.category[language]}</span></div>
+                </article>
+              );
+            })}
+            <span className="hero-preview-coordinate coordinate-one">POOYA LABS / SELECTED WORK</span>
+            <span className="hero-preview-coordinate coordinate-two">INTERACTIVE SYSTEMS / 2026</span>
           </div>
           <a className="portfolio-scroll-cue" href="#projects"><span>{t.scroll}</span><ArrowDown size={14} /></a>
         </section>
 
-        <section className="portfolio-projects portfolio-container" id="projects">
-          <div className="portfolio-section-heading">
+        <div className="portfolio-project-ticker" aria-hidden="true">
+          <div className="project-ticker-track">
+            {[...projects, ...projects].map((project, index) => (
+              <span className="project-ticker-item" key={project.slug + '-' + index}>
+                <b>{project.name}</b><i />
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <section className="portfolio-projects portfolio-container" id="projects" data-reveal="projects">
+          <div className="portfolio-section-heading" data-reveal="projects-heading">
             <div><div className="portfolio-eyebrow"><span className="eyebrow-index">01 /</span>{t.selected}</div><h2>{t.selected}</h2><p>{t.selectedSub}</p></div>
             <span className="portfolio-section-meta">{t.allProjects}</span>
           </div>
           <div className="portfolio-project-grid">
             {projects.map((project) => (
-              <article className="portfolio-project-card" key={project.name}>
+              <article className="portfolio-project-card" key={project.name} data-reveal="project-card">
                 <div className="project-card-top"><span className="project-number">{project.number} / POOYA LABS</span><span className="project-status"><i />{project.status[language]}</span></div>
-                <div className={'project-art' + (project.visualAsset ? ' has-visual visual-' + project.visualAsset.kind : '')}>
-                  {project.visualAsset && <img className="project-art-image" src={project.visualAsset.url}
-                    alt={project.visualAsset.alt[language]} loading="lazy" decoding="async"
+                <div className={'project-art' + ((project.caseStudyHeroAsset ?? project.visualAsset) ? ' has-visual visual-' + (project.caseStudyHeroAsset ?? project.visualAsset)!.kind : '')}>
+                  {(project.caseStudyHeroAsset ?? project.visualAsset) && <img className="project-art-image" src={(project.caseStudyHeroAsset ?? project.visualAsset)!.url}
+                    alt={(project.caseStudyHeroAsset ?? project.visualAsset)!.alt[language]} loading="lazy" decoding="async"
                     onError={(event) => { event.currentTarget.remove(); event.currentTarget.parentElement?.classList.remove('has-visual'); }} />}
                   <div className="project-art-fallback" aria-hidden="true">
                     <div className={`project-art-orbit art-${project.number}`} />
@@ -443,7 +491,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
 
         <NovelLibrarySection language={language} novels={novelCatalog.filter((novel) => novel.published)} loading={novelCatalogLoading} error={novelCatalogError} onOpen={openNovel} />
 
-        <section className="portfolio-about portfolio-container" id="about">
+        <section className="portfolio-about portfolio-container" id="about" data-reveal="about">
           <div className="about-stamp"><div className="stamp-orbit" /><div className="stamp-core">P<span>.</span></div><span>ABOUT / POOYA</span></div>
           <div className="about-content">
             <div className="portfolio-eyebrow"><span className="eyebrow-index">03 /</span>{t.aboutEyebrow}</div>
@@ -456,7 +504,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
           </div>
         </section>
 
-        <section className="portfolio-stack portfolio-container" id="stack">
+        <section className="portfolio-stack portfolio-container" id="stack" data-reveal="stack">
           <div className="portfolio-section-heading compact-heading">
             <div><div className="portfolio-eyebrow"><span className="eyebrow-index">04 /</span>{t.stackEyebrow}</div><h2>{t.stackTitle}</h2><p>{t.stackSub}</p></div>
             <TerminalSquare size={32} strokeWidth={1.2} />
@@ -468,7 +516,7 @@ export default function PortfolioHome({ language, onLanguageChange, onOpenWorksp
           </div>
         </section>
 
-        <section className="portfolio-contact portfolio-container" id="contact">
+        <section className="portfolio-contact portfolio-container" id="contact" data-reveal="contact">
           <div className="contact-orbit" />
           <div className="portfolio-eyebrow"><span className="eyebrow-index">05 /</span>{t.contactEyebrow}</div>
           <h2>{t.contactTitle}</h2>
