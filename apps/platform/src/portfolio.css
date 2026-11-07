@@ -525,6 +525,9 @@
   transform: translateY(-1px);
 }
 .portfolio-language, .portfolio-workspace {
+  min-height: 36px;
+  padding-block: 7px;
+  line-height: 20px;
   border: 1px solid rgba(255,255,255,.13);
   border-radius: 999px;
   background: rgba(255,255,255,.045);
