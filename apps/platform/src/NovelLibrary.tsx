@@ -1,4 +1,4 @@
-import { ArrowUpLeft, BookOpen, BookText, ChevronDown, LoaderCircle } from 'lucide-react';
+import { ArrowUpLeft, BookOpen, BookText, ChevronDown, LoaderCircle, Moon, Sun } from 'lucide-react';
 import { useEffect, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
 import './novels.css';
 
@@ -152,8 +152,8 @@ function NovelManuscript({ source }: { source: string }): ReactNode {
   })}</div>;
 }
 
-interface NovelReaderProps { novel: NovelRecord | null; language: Language; loading: boolean; error: string | null; onBack: () => void; }
-export function NovelReader({ novel, language, loading, error, onBack }: NovelReaderProps): ReactNode {
+interface NovelReaderProps { novel: NovelRecord | null; language: Language; theme: 'dark' | 'light'; onThemeChange: (theme: 'dark' | 'light') => void; loading: boolean; error: string | null; onBack: () => void; }
+export function NovelReader({ novel, language, theme, onThemeChange, loading, error, onBack }: NovelReaderProps): ReactNode {
   const rtl = language === 'fa';
   const [manuscript, setManuscript] = useState<string | null>(null);
   const [manuscriptLoading, setManuscriptLoading] = useState(false);
@@ -180,11 +180,11 @@ export function NovelReader({ novel, language, loading, error, onBack }: NovelRe
     return () => { document.title = previousTitle; };
   }, [novel, title, rtl]);
   return (
-    <div className={'portfolio-page novel-reader ' + (rtl ? 'is-rtl' : 'is-ltr')}>
+    <div className={'portfolio-page novel-reader ' + (rtl ? 'is-rtl' : 'is-ltr')} data-theme={theme}>
       <a className="portfolio-skip-link" href="#novel-reader-main">{rtl ? 'رفتن به متن رمان' : 'Skip to manuscript'}</a>
       <header className="portfolio-header novel-reader-header">
         <a className="portfolio-brand" href="#" onClick={(event) => { event.preventDefault(); onBack(); }}><span className="portfolio-brand-mark">P<span>.</span></span><span><strong>POOYA</strong><small>STORY LIBRARY</small></span></a>
-        <button className="portfolio-workspace novel-back-button" onClick={onBack}><span>{copy.back}</span><ArrowUpLeft size={15} /></button>
+        <div className="portfolio-header-actions"><button className="portfolio-theme" type="button" onClick={() => onThemeChange(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? (rtl ? 'فعال‌کردن حالت روشن' : 'Switch to light mode') : (rtl ? 'فعال‌کردن حالت تیره' : 'Switch to dark mode')} title={theme === 'dark' ? (rtl ? 'حالت روشن' : 'Light mode') : (rtl ? 'حالت تیره' : 'Dark mode')}>{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}<span>{theme === 'dark' ? (rtl ? 'روشن' : 'Light') : (rtl ? 'تیره' : 'Dark')}</span></button><button className="portfolio-workspace novel-back-button" onClick={onBack}><span>{copy.back}</span><ArrowUpLeft size={15} /></button></div>
       </header>
       <main id="novel-reader-main" tabIndex={-1} className="novel-reader-main portfolio-container">
         {loading ? <div className="novel-empty-state" role="status"><LoaderCircle className="novel-spinner" size={22} />{rtl ? 'در حال بارگذاری کتابخانه…' : 'Loading the library…'}</div>
