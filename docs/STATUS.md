@@ -110,14 +110,25 @@
 - Public/admin separation remains a security requirement for any future protected tool.
 - Previous project repositories remain untouched; project integration stays in Phase 9.
 
-## Latest checkpoint
+## Latest checkpoint — 2026-11-07
 
-The public portfolio embeds ten reviewed desktop/mobile interface screenshots across ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse. The images are committed under `apps/platform/public/interface-captures/`, referenced through immutable raw-GitHub URLs, and include bilingual alt text. ORBIT's two captures are pinned to portfolio commit `77bc3ce0c41533661b8970d2527f4cd94b8a4341`; the other eight captures are pinned to `b0c538b2523daf96700b731a959d690dd3457f7e`.
+- Canonical branch head inspected: [`0f6e8b596b41701954f9e981f38aa7315eb593dd`](https://github.com/pooya-labs/pooya-labs-platform/commit/0f6e8b596b41701954f9e981f38aa7315eb593dd) on `main`.
+- A GitHub compare against the last verified portfolio UI/deployment source `468c1f60ab11223693f3678213d48848100ae63e` reports 12 commits ahead and no divergence. The changed paths are capture workflow/script, README, documentation, and contract tests; no `apps/platform/src` or public runtime implementation files changed. Therefore the deployed public application content remains aligned with the last deployed UI source, while the repository head is newer.
+- Latest recorded repository CI evidence remains 52/52 contract tests on test checkpoint `53c13993ca2aa2dbbb007454729a084fcdce43b4` (run [42247729151](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247729151)); documentation checkpoint [42248414717](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42248414717) also passed. These are not claims that the newer head `0f6e8b5` has a fresh CI run.
+- Latest recorded browser QA remains 17/17 routes and 34/34 desktop/mobile viewport checks, zero axe violations, on UI SHA `468c1f60ab11223693f3678213d48848100ae63e` (run [42247171025](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247171025)). Thirty-four color-contrast checks still require human review; keyboard-only and screen-reader review remain open.
+- Latest recorded GitHub Pages build and deploy both passed on UI SHA `468c1f60ab11223693f3678213d48848100ae63e` (run [42247171442](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247171442)). The later commits do not change the app runtime bundle.
+- Cloudflare and Apps Script production automation remain credential-gated. Do not claim those repeatable workflows are currently deploying automatically.
+- Product remains pre-alpha. Phase 3 is active; Phase 7 redesign and Phase 8 release hardening are mandatory before V1.
+- Novel library is implemented and deployed, but its public catalog is intentionally empty until Pooya supplies approved titles, descriptions, covers, and manuscripts.
+- Previous project repositories remain independent and untouched by this portfolio work; integration stays deferred to Phase 9.
 
-The five preview URLs that previously used the legacy `pooya16pg-spec.github.io` host now point to the verified `pooya-labs.github.io` host. AetherFlow's preview URL was corrected, but its UI screenshot remains withheld until the independent project's M07/M08 visible label, README host links, and dashboard CORS origin are reconciled. AuraPulse captures remain explicitly labelled simulated/illustrative; the automation-origin Binance ticker request failed CORS and does not establish live market connectivity.
+## Current release blockers (ordered)
 
-The Playwright capture workflow is artifact-only. Dedicated approval-manifest publishers verify artifact identity, PNG signatures, viewport dimensions, file sizes, and SHA-256 before committing reviewed images. The production Pages build now generates the sitemap from the same project registry as the pages, stamps all 17 sitemap URLs with the build date, and prunes unused local screenshot copies only after verifying that no built HTML/JS/CSS file references them.
+1. **Owner content approval:** biography/positioning, first three featured projects, project order, personal contribution wording, statuses, contact channel, and visual assets.
+2. **Project evidence:** AetherFlow M07/M08 + duplicate Dashboard mismatch; feature-specific ORBIT/NexusCanvas/LuminaGlass/AuraPulse captures; Salon Booking privacy-approved redacted screenshots and publication permission.
+3. **Manual accessibility and visual review:** color contrast, keyboard-only navigation, screen reader, and representative real devices.
+4. **External share validation:** LinkedIn/Facebook crawler rendering and cache refresh for the 17 PNG social cards.
+5. **Current-source project verification:** GlobalCart M09.6/gallery and deployment E2E, ORBIT runtime acceptance, and remaining project-specific checks in PROJECT-CONTENT-AUDIT.md.
+6. **Release design:** full-site redesign with two owner feedback rounds (Phase 7), followed by Phase 8 hardening and explicit V1 approval.
 
-The optimized Pages artifact was audited after build: all 17 sitemap routes exist; all 16 case-study pages have canonical, Open Graph, JSON-LD, and bilingual alternate metadata; all 17 share-card PNGs have valid signatures and 1200×627 dimensions; and no duplicate `interface-captures` directory remains in the deployed artifact. The ZIP artifact is 3,811,158 bytes, down 51.6% from 7,870,673 bytes.
-
-Repository CI [42218346116](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42218346116) passed 41/41 tests on main SHA `12dbfd33adba84f7b67153a1700f3518182e18bc`. Pages build and deploy [42217711525](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42217711525) succeeded for application-source SHA `654da2cf1e9e975673a0d4e287fffa9125f1117c`. External LinkedIn/Facebook rendering and cache-refresh checks, project-specific evidence gaps, owner approvals, the full feedback-driven redesign, and Phase 8 release hardening remain open. No V1 release is authorized yet.
+No V1 release is authorized while these mandatory gates remain open.
