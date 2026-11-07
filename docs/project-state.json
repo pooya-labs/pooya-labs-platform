@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P3-08",
     "title": "Close Phase 3 evidence, owner-review, accessibility, and social-validation gates before Phase 7",
-    "status": "52-of-52-contract-tests-passed; typecheck-and-three-target-builds-passed-on-087fee17; portfolio-pages-and-browser-qa-passed-on-cc157e4; ORBIT-and-GlobalCart-source-dossiers-refreshed; owner-approval-and-manual-release-gates-open"
+    "status": "52-of-52-contract-tests-passed-on-087fee17; TypeScript-and-three-target-builds-passed; Pages-and-browser-QA-passed-on-cc157e4; source-audit-and-handoff-docs-refreshed; owner-content-and-manual-release-gates-open"
   },
   "lastCheckpointDate": "2026-11-07",
   "latestVerifiedCodeCommit": "cc157e4c9dd3e52a5181fb1a7e5e33821045f41b",
@@ -277,7 +277,7 @@
     "orbit": "v1.0.0 stable portfolio-demo; Cloudflare edge architecture merged but Worker route disabled, origin and gateway secret unset; CF01-CF05 live acceptance pending",
     "globalCart": "v0.2.3-dev M09.8; Pages deploy and six Lighthouse lab budgets passed; current-SHA full Browser E2E and manual review pending"
   },
-  "latestBranchHeadAtCheckpoint": "087fee17a8bfff503075dbae14609d530a7e63a4",
+  "latestBranchHeadAtCheckpoint": "9f4b98e4e4b34cf2dca4187f9954399b79c94245",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -418,6 +418,18 @@
     "correctionCommit": "087fee17a8bfff503075dbae14609d530a7e63a4",
     "currentHeadCiVerified": true,
     "ownerContentApproval": "pending",
-    "nextTask": "P3-08A owner content decisions; P3-08B feature evidence and project runtime acceptance; P3-08C manual accessibility/social validation"
+    "nextTask": "P3-08A owner content decisions; P3-08B feature evidence and project runtime acceptance; P3-08C manual accessibility/social validation",
+    "documentationCommits": [
+      "5a7d8336d7764feca731fb79191702d7bece5872",
+      "acf00f2417def90010e6ca4d9a91132750c224dd",
+      "348d688ea90d9a897c8b0b71f61fb753b81291a4",
+      "635bdef16c178d7c58142df0de8e2b2ca17d5596",
+      "0f5e56f40c749218cba887035ec19f71b635568c",
+      "9481d123a3724842927a621004742f0472512b12",
+      "9f4b98e4e4b34cf2dca4187f9954399b79c94245"
+    ],
+    "documentationCheckpointCi": "pending-after-final-documentation-commit",
+    "latestMainCodeCheckpoint": "087fee17a8bfff503075dbae14609d530a7e63a4",
+    "latestDocCheckpoint": "9f4b98e4e4b34cf2dca4187f9954399b79c94245"
   }
 }
