@@ -59,7 +59,7 @@
     },
     "pagesPublicUrl": "https://pooya-labs.github.io/pooya-labs-platform/",
     "novelLibrary": "implemented-and-covered-by-six-new-contract-tests",
-    "documentationCheckpoint": "passed-run-42248414717",
+    "documentationCheckpoint": "last-passed-run-42400540542-on-74b19508; documentation-sync-commits-follow-this-checkpoint-and-are-being-validated-by-current-main-CI",
     "githubActionsRuntimeWarning": "Node.js 20 deprecation warning emitted for checkout/setup-node/upload-artifact actions; upgrade to maintained Node 24-compatible releases."
   },
   "hosting": {
@@ -94,7 +94,7 @@
     "latestPagesAttemptStatus": "passed-build-and-deploy",
     "pagesArtifactId": "13518846598",
     "pagesArtifactSizeBytes": 3817565,
-    "latestDocumentationCommit": "69a4b422524236361bc27e08d9d0a7321838bda6",
+    "latestDocumentationCommit": "c0d660b7bef3768b55ad1cb730a734882f0b3bc3",
     "portfolioBrowserQaRun": "42391868133",
     "cloudflareLatestAttemptRun": "42399972690; configuration-check-passed; actual-production-deploy-job-skipped-missing-CLOUDFLARE_API_TOKEN",
     "appsScriptLatestAttemptRun": "42399972770; configuration-check-passed; actual-production-deploy-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID"
