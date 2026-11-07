@@ -173,7 +173,7 @@ test('portfolio distinguishes in-progress release lines from stable demo release
   assert.match(productDossiers, /42086718663/);
   assert.match(productDossiers, /42086718821/);
   assert.match(productDossiers, /do not process real sales|No real payment/i);
-  assert.match(productDossiers, /v1\.0\.0 is blocked by owner approval and manual QA/);
+  assert.match(productDossiers, /The 1\.0\.0 release remains blocked/);
   assert.match(productDossiers, /M09\.8/);
   assert.match(coreDossiers, /Cloudflare Worker/);
   assert.match(coreDossiers, /ORBIT_GATEWAY_SECRET/);
