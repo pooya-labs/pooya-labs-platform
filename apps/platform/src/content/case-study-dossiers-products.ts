@@ -67,7 +67,7 @@ export const productDossiers = {
         "GitHub Pages deployment run 42393544307 and Security run 42393544310 passed on application SHA 6192f8. Browser E2E run 42393544303 finished with 137 passed / 3 failed / 9 skipped.",
         "All three E2E failures occurred in Chromium mobile: two serious axe link-name violations on .hero-product-tile links, plus a storefront assertion that received an empty accessible name for a product link. Hero links remain unnamed for assistive technology; do not weaken the assertion.",
         "Lighthouse lab run 42393731570, post-deploy visual QA run 42393731697, and Shopify Catalog Smoke run 42393731548 passed on current main. Publish portfolio screenshots run 42394145400 was skipped.",
-        "M09.8 and the 1.0.0 release remain open until hero links have real accessible names and full Browser E2E passes on current SHA. Verification of all 1,000 gallery/PDP interactions and owner manual review also remain open.",
+        "The 1.0.0 release remains blocked until hero links have real accessible names and full Browser E2E passes on current SHA. M09.8 also needs verification of all 1,000 gallery/PDP interactions and owner manual review.",
         "GlobalCart is a marketplace simulation, not a live retailer; no real payments, inventory reservation, fulfillment, or sales occur. Estimated catalog prices must remain clearly labeled as estimates."
       ]
     },
