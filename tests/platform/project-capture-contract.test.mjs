@@ -20,8 +20,8 @@ test('preview capture covers seven public project demos with two responsive view
   assert.doesNotMatch(script, /slug: 'salon-booking'/);
   assert.match(script, /const defaultView = target\.slug === 'nexus-canvas' && viewport\.name === 'mobile' \? 'Mobile Rack' : 'Overview'/);
   assert.match(script, /captureScenario\('overview', defaultView\)/);
-  assert.match(script, /captureScenario\\('incidents', 'Incidents · API authentication required'\\)/);
-  assert.match(script, /captureScenario\\(view\\.toLowerCase\\(\\) \\+ '-connection'/);
+  assert.ok(script.includes("captureScenario('incidents', 'Incidents · API authentication required')"));
+  assert.ok(script.includes("captureScenario(view.toLowerCase() + '-connection'"));
   assert.match(script, /Metrics/);
   assert.match(script, /Logs/);
   assert.match(script, /Traces/);
@@ -36,9 +36,9 @@ test('preview capture covers seven public project demos with two responsive view
   assert.match(script, /real incident actions until an authenticated API is connected/);
   assert.match(script, /NexusCanvas Mobile Rack, desktop only/);
   assert.match(script, /viewport\.name !== 'mobile'/);
-  assert.match(script, /requiredCaptureCount = targets\\.length \\* viewports\\.length/);
+  assert.ok(script.includes('requiredCaptureCount = targets.length * viewports.length'));
   assert.match(script, /recordVideo/);
-  assert.match(script, /motionVideo\\.saveAs/);
+  assert.ok(script.includes('motionVideo.saveAs'));
   assert.match(script, /page\.locator\('\.sidebar \.nav-item'\)/);
   assert.match(script, /captured < requiredCaptureCount/);
   assert.match(workflow, /name: Upload unreviewed screenshot evidence\n        if: always\(\)/);
