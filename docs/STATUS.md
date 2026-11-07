@@ -14,6 +14,14 @@
 - Full site redesign using Pooya's feedback is a mandatory pre-release Phase 7 gate.
 - Apps Script, GitHub Pages, and Cloudflare Pages are independent publishing/runtime targets; none is allowed to become a hard dependency of the others.
 
+## Upstream evidence refresh — 2026-11-07 (17:15 UTC)
+
+- GlobalCart main advanced to 9afa4f5; the current application tree is 6192f8e. Pages and security pass, but Browser E2E remains red at 137/3/9 because hero product links still compute to empty accessible names. Lighthouse, visual QA, and Shopify smoke pass.
+- Salon Booking main advanced to 4c4840c through documentation-only updates. Its deployment guide now records Apps Script owner acceptance and keeps the legacy Cloudflare Worker/D1 as archive-only recovery material. Current Pages workflow passed, while current CI fails the owner-dashboard date-range assertion on both Linux and Windows (expected 2026-11-06; actual 2026-11-08); other checks in that run passed.
+- ORBIT main remains 2680173; PRs #137, #138, #140 (draft), and #142 (draft) are open proposals, not merged runtime changes.
+- No independent project repository was modified during this refresh. Exact evidence and release implications are tracked in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
+
+
 ## Publishing status — 2026-11-06
 - [x] Added an isolated Cloudflare build target: `npm run build:cloudflare` → `dist/cloudflare`, with Cloudflare-specific canonical origin and root base.
 - [x] Created Cloudflare Pages project `pooya-labs-platform` on `pooya-labs-platform.pages.dev`; latest checked deployment `0bba4323-359d-4fb6-8d5e-aa833e36b22c` completed successfully from main commit `f9011ec5a3f9eb2faffdac222596b37444184191`. All 83 expected assets, including homepage, bilingual ORBIT routes, sitemap, and robots, are present.

@@ -111,15 +111,15 @@
     "ORBIT still needs Incidents/Metrics/Logs/Traces captures, owner-run Apps Script demo bootstrap/mutation/refresh acceptance, and human TalkBack/VoiceOver/keyboard/chart-table review.",
     "NexusCanvas rack/graph/snapshot evidence, LuminaGlass export/Audio Lab/task-board evidence, and AuraPulse connected/fallback feed plus focused paper-trading evidence remain pending.",
     "Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse still need consolidated current-source browser, keyboard, responsive, reduced-motion, and accessibility QA; no automated check is formal WCAG certification.",
-    "GlobalCart M09.6 gallery completeness, current-SHA browser/deploy E2E acceptance, and source-document reconciliation remain open.",
-    "Salon Booking v1.0.0 is source-verified: official release tag, owner-accepted release record, Apps Script source version 1.5.3, CI run 42086718663, and Pages plus read-only relay smoke run 42086718821 passed on exact release SHA 56ff5cde573eccb3febd7efe2de270f9ded2b7e5. Remaining portfolio gates are product-owner permission for public case-study details/credit and owner-approved privacy-redacted screenshots.",
+    "GlobalCart v0.2.3-dev/M09.8 remains open: current main 9afa4f5 (app SHA 6192f8) has passing Pages/security/Lighthouse/visual/Shopify checks, but current Browser E2E 42393544303 is 137 passed / 3 failed / 9 skipped because hero product links still have empty accessible names; verify galleries/PDPs and complete owner/manual review.",
+    "Salon Booking v1.0.0 remains owner-accepted on its release record; current main 4c4840c adds documentation-only changes recording Apps Script acceptance and legacy Worker/D1 archival status. Current-main CI 42394326231 fails the owner-dashboard date-range test on Linux and Windows (expected 2026-11-06, actual 2026-11-08), while Pages workflow 42394326440 passed. Portfolio details still require salon-owner publication permission and privacy-redacted screenshots.",
     "External LinkedIn/Facebook crawler rendering and cache-refresh validation for the PNG Open Graph images remains open.",
     "Repeatable Cloudflare and Apps Script deployment workflows remain gated on repository Actions secrets; the last verified Cloudflare production deployment is from commit f9011ec5a3f9eb2faffdac222596b37444184191.",
     "Full-site redesign with two feedback rounds and explicit Pooya approval remains a mandatory V1 release blocker.",
     "Automated axe scan on current SHA dc991c4 reported zero critical/serious/moderate/minor violations across 17 routes and 34 viewports; 34 color-contrast checks are incomplete because of layered/gradient backgrounds and require human visual review. Manual keyboard/screen-reader review also remains open.",
     "AuraPulse latest screenshot artifact 42235240283 shows explicit SIMULATED/illustrative OHLC labels, but its public Binance ticker request failed CORS; connected-feed and fallback states remain unverified."
   ],
-  "nextAction": "With the novels section live, continue feature-focused artifact-only captures for ORBIT Incidents/Metrics/Logs/Traces, NexusCanvas rack/graph/snapshot flows, and LuminaGlass export/Audio Lab/task board; keep AetherFlow imagery withheld until the M07/M08 label, duplicate navigation, and stale source links are corrected upstream; preserve AuraPulse's simulated-data disclosure; and collect owner-approved Salon Booking permission/redacted screenshots plus final biography, featured order, novel content, and Phase 7 redesign feedback.",
+  "nextAction": "Continue exact-source reconciliation and feature-focused artifact-only captures for ORBIT Incidents/Metrics/Logs/Traces, NexusCanvas rack/graph/snapshot flows, and LuminaGlass export/Audio Lab/task board; keep AetherFlow imagery withheld until its M07/M08 label, duplicate Dashboard navigation, and stale links are corrected upstream; track GlobalCart's empty hero-link accessible names until full E2E passes; reconcile Salon Booking's date-range test clock/fixture; preserve AuraPulse's simulated-data disclosure; and collect owner-approved Salon Booking permission/redacted screenshots plus final biography, featured order, novel content, and Phase 7 redesign feedback.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -277,7 +277,7 @@
     "orbit": "v1.0.0 stable portfolio-demo; Cloudflare edge architecture merged but Worker route disabled, origin and gateway secret unset; CF01-CF05 live acceptance pending",
     "globalCart": "v0.2.3-dev M09.8; Pages deploy and six Lighthouse lab budgets passed; current-SHA full Browser E2E and manual review pending"
   },
-  "latestBranchHeadAtCheckpoint": "993d29b713c7af13ccd77ea7587161c767cf379a",
+  "latestBranchHeadAtCheckpoint": "7c971558f502c6c3c0d5695ffd2a8108245d2298",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -333,53 +333,77 @@
         "CF04 dual-runtime identity/session isolation",
         "CF05 separate evidenced Cloudflare edge release"
       ],
-      "upstreamRepositoryModified": false
+      "upstreamRepositoryModified": false,
+      "openPullRequests": [
+        {
+          "number": 137,
+          "title": "docs: sync post-v1 Cloudflare runtime and project handoff",
+          "draft": false,
+          "merged": false
+        },
+        {
+          "number": 138,
+          "title": "security: update deferred Keycloak origin to 26.8.2",
+          "draft": false,
+          "merged": false
+        },
+        {
+          "number": 140,
+          "title": "Build isolated Cloudflare-native D1 runtime foundation",
+          "draft": true,
+          "merged": false
+        },
+        {
+          "number": 142,
+          "title": "security: patch x/net across Go and telemetry images",
+          "draft": true,
+          "merged": false
+        }
+      ],
+      "pullRequestCheckpointAt": "2026-11-07T17:14:39Z"
     },
     "globalcart": {
       "repository": "pooya-labs/globalcart",
       "branch": "main",
-      "inspectedHead": "119afcd4924fbdda0287558d00926ab051255e59",
+      "inspectedHead": "9afa4f5d726df51ae4f9b95b30982fb5ecd3482a",
       "release": "0.2.3-dev",
       "stage": "M09.8",
-      "currentAppSourceSha": "61ce7f5da832000b6bcb6fa56b1a4f2fc0c69a0f",
-      "headDeltaFromAppSource": "one persistence commit touching data/catalog.json only; no app code changed",
-      "pagesDeployment": "42392071302-success",
-      "security": "42392071307-success",
+      "currentAppSourceSha": "6192f8eccdbf8092c31e06a0f37a53485c3e3589",
+      "headDeltaFromAppSource": "two commits after 61ce7f5: accessibility markup/E2E changes in app SHA 6192f8 and a final data/catalog.json snapshot persistence commit at main HEAD; no app code changed after 6192f8",
+      "pagesDeployment": "42393544307-success-on-6192f8",
+      "security": "42393544310-success-on-6192f8",
       "browserE2E": {
-        "run": "42392071315",
+        "run": "42393544303",
         "conclusion": "failure",
-        "passed": 134,
-        "failed": 6,
+        "passed": 137,
+        "failed": 3,
         "skipped": 9,
         "failures": [
-          "serious axe label-content-name-mismatch on visible text vs accessible name of .hero-product-tile links in homepage WCAG tests across Chromium/Firefox/WebKit",
-          "same hero tile violation persists during open command-palette accessibility tests across Chromium/Firefox/WebKit"
+          "serious axe link-name violations: .hero-product-tile links have empty computed accessible names in homepage WCAG and command-palette-open scans on Chromium mobile",
+          "storefront merchandising Playwright assertion expected the Persian product name but received an empty accessible name"
         ],
+        "attemptedFix": "6192f8 removed explicit aria-label and relied on visible link content; browser accessibility tree still returns an empty name",
         "fullSuiteGreen": false
       },
       "lighthouse": {
-        "run": "42392214241",
+        "run": "42393731570",
         "conclusion": "success",
-        "reports": 6,
-        "homeMobile": {
-          "performance": 92,
-          "lcpSeconds": 2.5,
-          "tbtMs": 260
-        },
-        "accessibilityBestPracticesSeoAll100": true,
-        "labOnly": true
+        "reports": 6
       },
-      "postDeployVisualQa": "42392214297-success-two-passed-two-skipped",
-      "shopifyCatalogSmoke": "42392214325-success",
+      "postDeployVisualQa": "42393731697-success",
+      "shopifyCatalogSmoke": "42393731548-success",
       "pending": [
-        "fix hero-product-tile accessible names without weakening axe assertions",
-        "rerun full Browser E2E and axe across browsers",
+        "fix hero-product-tile accessible names without weakening axe or Playwright assertions",
+        "rerun full Browser E2E and axe across browsers on current app tree",
         "verify all 1,000 galleries and PDP interactions on exact current application tree",
+        "refresh stale PROJECT_CONTEXT.md checkpoint during a specifically authorized GlobalCart task",
         "owner review of selected products and Persian editorial copy",
         "physical-device, screen-reader and full human RTL/LTR acceptance"
       ],
       "projectContextHandoffStaleAt": "8a89f0d612cdf69d619b64049304eaa789b4785c",
-      "upstreamRepositoryModified": false
+      "upstreamRepositoryModified": false,
+      "latestCommitAt": "2026-11-07T16:54:10Z",
+      "portfolioScreenshotPublish": "42394145400-skipped"
     },
     "pooyaOs": {
       "repository": "pooya-labs/pooya-os",
@@ -416,11 +440,35 @@
     "salonBooking": {
       "repository": "pooya-labs/salon-booking",
       "branch": "main",
-      "inspectedHead": "56ff5cde573eccb3febd7efe2de270f9ded2b7e5",
-      "latestCommitAt": "2026-11-05T18:41:49Z",
+      "inspectedHead": "4c4840c639da099379e8f65b387b1589685c6afd",
+      "latestCommitAt": "2026-11-07T17:02:46Z",
       "release": "v1.0.0",
       "inspectionMode": "read-only",
-      "upstreamRepositoryModified": false
+      "upstreamRepositoryModified": false,
+      "releaseCommit": "56ff5cde573eccb3febd7efe2de270f9ded2b7e5",
+      "latestMainDelta": "four documentation-only commits changed README.md, ROADMAP.md, docs/DEPLOYMENT.md, and docs/PROJECT-STATE.md; no application source files changed",
+      "appsScriptOwnerAcceptance": "recorded-in-upstream-docs; current DEPLOYMENT.md states deployment passed owner acceptance",
+      "legacyCloudflare": "Worker/D1 retained only as archival recovery material; do not route production traffic back; deletion requires explicit owner approval",
+      "latestCi": {
+        "run": "42394326231",
+        "conclusion": "failure",
+        "failures": [
+          "Linux owner-dashboard date-range browser QA: expected 2026-11-06 but got 2026-11-08 for 11:00 / 15-minute slot",
+          "Windows owner-dashboard date-range browser QA: expected 2026-11-06 but got 2026-11-08 for 11:00 / 15-minute slot"
+        ],
+        "passedGroups": [
+          "lint",
+          "unit tests",
+          "SQLite migration/conflict tests",
+          "typecheck/build",
+          "responsive RTL keyboard browser QA",
+          "automated axe scans of owner dashboard/services/schedule/calendar/manager time-block UI"
+        ]
+      },
+      "latestPagesWorkflow": {
+        "run": "42394326440",
+        "conclusion": "success"
+      }
     }
   },
   "novelLibrary": {
@@ -466,7 +514,7 @@
     "correctionCommit": "087fee17a8bfff503075dbae14609d530a7e63a4",
     "currentHeadCiVerified": true,
     "ownerContentApproval": "pending",
-    "nextTask": "P3-08A owner content decisions; P3-08B feature evidence and GlobalCart accessible-name E2E recovery; P3-08C manual accessibility/social validation; then Phase 7 redesign and Phase 8 V1",
+    "nextTask": "P3-08A owner content decisions; P3-08B project evidence, GlobalCart accessible-name E2E recovery, Salon Booking date-range test reconciliation and owner-approved media; P3-08C manual accessibility/social validation; then Phase 7 redesign and Phase 8 V1",
     "documentationCommits": [
       "5a7d8336d7764feca731fb79191702d7bece5872",
       "acf00f2417def90010e6ca4d9a91132750c224dd",
@@ -486,6 +534,22 @@
     "currentHeadPagesDeploymentVerified": true,
     "cloudflareProductionDeploy": "skipped-missing-secret",
     "appsScriptProductionDeploy": "skipped-missing-secrets",
-    "latestDocumentationCi": "42394443146; documentation checkpoint passed on 993d29b713c7af13ccd77ea7587161c767cf379a"
+    "latestDocumentationCi": "42394443146; documentation checkpoint passed on 993d29b713c7af13ccd77ea7587161c767cf379a",
+    "externalSourceRecheckAt": "2026-11-07T17:15:00Z",
+    "externalSourceHeads": {
+      "aetherflow": "c7cb553f0751514df0d916e69c29807636e66c67",
+      "orbit": "268017365cd22f7db9dd8895fb59fbccc76c9b8f",
+      "pooyaOs": "1d408c0881d480db8f1c1a7a9f94272a93d4e617",
+      "nexusCanvas": "df05f90b0463e5681324efec9083c9fe20c2cc7c",
+      "luminaGlass": "06fa93428a00442e5ec53d5486c3615048f66842",
+      "auraPulse": "7f3611cae0d74e06b6b01af534a5f84a79e5901c",
+      "globalcart": "9afa4f5d726df51ae4f9b95b30982fb5ecd3482a",
+      "salonBooking": "4c4840c639da099379e8f65b387b1589685c6afd"
+    },
+    "latestExternalEvidence": {
+      "globalcartE2E": "42393544303 failed: 137 passed / 3 failed / 9 skipped; empty hero-product accessible names",
+      "salonBookingCi": "42394326231 failed in Linux and Windows owner-dashboard date-range QA; Pages workflow 42394326440 passed",
+      "orbitOpenPRs": "137, 138, 140 draft, 142 draft; none merged into main"
+    }
   }
 }
