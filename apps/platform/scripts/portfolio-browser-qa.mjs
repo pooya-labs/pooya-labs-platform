@@ -224,6 +224,7 @@ try {
       await page.locator('.portfolio-language').click();
       await page.waitForFunction(() => document.documentElement.lang === 'en' && document.documentElement.dir === 'ltr');
     }
+    await page.locator('.portfolio-theme').waitFor({ state: 'visible', timeout: 10000 });
     const themeButton = page.locator('.portfolio-theme');
     if (await themeButton.count()) {
       await themeButton.click();
