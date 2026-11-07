@@ -15,7 +15,7 @@ const projectSlugs = [
 ];
 
 const routes = [
-  { label: 'home-fa', path: '', locale: 'fa', direction: 'rtl', mainId: 'top' },
+  { label: 'home-en', path: '', locale: 'en', direction: 'ltr', mainId: 'top' },
   ...projectSlugs.flatMap((slug) => [
     { label: slug + '-fa', path: 'projects/' + slug + '/', locale: 'fa', direction: 'rtl', mainId: 'main-content' },
     { label: slug + '-en', path: 'en/projects/' + slug + '/', locale: 'en', direction: 'ltr', mainId: 'main-content' },
@@ -209,6 +209,30 @@ try {
       addFailure(route, null, error instanceof Error ? error.message : String(error));
     }
 
+    if (route.label === 'home-en') {
+      const heroTitle = page.locator('.portfolio-hero-title');
+      const titleMetrics = await heroTitle.evaluate((node) => {
+        const rect = node.getBoundingClientRect();
+        return { width: rect.width, scrollWidth: node.scrollWidth, height: rect.height, text: node.textContent?.trim() ?? '' };
+      });
+      if (!titleMetrics.text || titleMetrics.scrollWidth > titleMetrics.width + 2 || titleMetrics.height < 30) {
+        addFailure(route, 'desktop/mobile', 'Hero heading is empty, clipped, or has invalid layout metrics.');
+      }
+      await page.locator('.portfolio-language').click();
+      await page.waitForFunction(() => document.documentElement.lang === 'fa' && document.documentElement.dir === 'rtl');
+      if (!await page.locator('.portfolio-hero-title').isVisible()) addFailure(route, null, 'Persian language switch did not keep the hero visible.');
+      await page.locator('.portfolio-language').click();
+      await page.waitForFunction(() => document.documentElement.lang === 'en' && document.documentElement.dir === 'ltr');
+    }
+    const themeButton = page.locator('.portfolio-theme');
+    if (await themeButton.count()) {
+      await themeButton.click();
+      if (await page.locator('.portfolio-page').getAttribute('data-theme') !== 'light') addFailure(route, null, 'Light theme toggle did not activate on this route.');
+      await themeButton.click();
+      if (await page.locator('.portfolio-page').getAttribute('data-theme') !== 'dark') addFailure(route, null, 'Dark theme toggle did not restore the dark theme on this route.');
+    } else {
+      addFailure(route, null, 'Theme toggle is missing from this public page.');
+    }
     routeRecord.pageErrors = pageErrors.slice(previousErrorCount);
     if (routeRecord.pageErrors.length > 0) {
       addFailure(route, null, 'Uncaught browser error: ' + routeRecord.pageErrors.join(' | '));
