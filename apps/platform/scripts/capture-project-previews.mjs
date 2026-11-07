@@ -1,5 +1,5 @@
 import { chromium } from 'playwright';
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, unlink, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 
@@ -210,7 +210,9 @@ try {
       if (motionVideo) {
         const motionPath = path.join(motionDir, target.slug + '-motion.webm');
         try {
+          const temporaryMotionPath = await motionVideo.path();
           await motionVideo.saveAs(motionPath);
+          if (temporaryMotionPath !== motionPath) await unlink(temporaryMotionPath).catch(() => undefined);
           const motionBytes = await readFile(motionPath);
           const firstCapture = records.find((record) => record.slug === target.slug);
           if (firstCapture) firstCapture.motionVideo = {
@@ -245,7 +247,7 @@ try {
 
 const captured = records.filter((record) => record.result === 'captured-pending-human-review').length;
 const requiredCaptureCount = targets.length * viewports.length
-  + viewports.length // ORBIT Incidents, desktop and mobile
+  + viewports.length * 4 // ORBIT Incidents, Metrics, Logs, and Traces connection states
   + 1 // NexusCanvas Mobile Rack, desktop only; mobile uses it as the base view
   + viewports.length // NexusCanvas Export / Import modal, desktop and mobile
   + viewports.length * 2; // LuminaGlass Audio Lab and Task Board, desktop and mobile
