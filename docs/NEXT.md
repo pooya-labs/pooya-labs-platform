@@ -3,7 +3,7 @@
 **Task ID:** P3-08  
 **Priority:** Finish factual/content acceptance before Phase 7 redesign.  
 **Checkpoint date:** 2026-11-07  
-**Repository head at reconciliation:** `0f6e8b596b41701954f9e981f38aa7315eb593dd` on `main`.
+**Repository head at reconciliation:** `473bc57d4a9a7d750299fc4b9a5c9f21c7dd3c00` on `main`.
 
 ## Current verified baseline
 
@@ -14,6 +14,13 @@
 - Latest recorded browser QA: 17/17 routes, 34/34 desktop/mobile viewports, zero axe violations on UI SHA `468c1f60ab11223693f3678213d48848100ae63e`, run [42247171025](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247171025). Thirty-four color-contrast checks remain manual-review items; keyboard-only and screen-reader testing are also pending.
 - Latest recorded GitHub Pages build and deploy passed on UI SHA `468c1f60ab11223693f3678213d48848100ae63e`, run [42247171442](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42247171442). A compare from that UI SHA to current head shows 12 commits ahead, but changes are confined to capture workflow/script, README, docs, and contract tests; no app runtime source changed.
 - Cloudflare production workflow requires `CLOUDFLARE_API_TOKEN`; Apps Script deployment requires `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID`. Their builds can pass while actual deployment is skipped. See [DEPLOYMENT-TARGETS.md](DEPLOYMENT-TARGETS.md).
+
+## New source findings — 2026-11-07
+
+- **ORBIT:** main `268017365cd22f7db9dd8895fb59fbccc76c9b8f` includes PR #136, the Cloudflare edge-gateway path. CI [42223939950](https://github.com/pooya-labs/orbit/actions/runs/42223939950), Security [42223939967](https://github.com/pooya-labs/orbit/actions/runs/42223939967), and Pages [42223939898](https://github.com/pooya-labs/orbit/actions/runs/42223939898) passed on that exact main SHA. However, the Worker is not yet live-connected: workers.dev route disabled; origin and gateway secret unset; API remains fail-closed. Keep this as post-v1 CF01–CF05 acceptance, not a release claim.
+- **GlobalCart:** main `8a89f0d612cdf69d619b64049304eaa789b4785c` reports v0.2.3-dev / M09.8. Pages deployment [42387896585](https://github.com/pooya-labs/globalcart/actions/runs/42387896585) succeeded. Lighthouse regression budgets [42367298478](https://github.com/pooya-labs/globalcart/actions/runs/42367298478) passed six route/mode lab reports (home mobile TBT 250 ms, LCP 2.4 s). Post-deploy image QA [42367298484](https://github.com/pooya-labs/globalcart/actions/runs/42367298484) and Shopify smoke [42367298509](https://github.com/pooya-labs/globalcart/actions/runs/42367298509) passed on an earlier 7fdb27 SHA, not current HEAD. Latest known Browser E2E [42247489435](https://github.com/pooya-labs/globalcart/actions/runs/42247489435) was cancelled; corrected full E2E is still required.
+- **Portfolio code update:** ORBIT dossier/diagram and GlobalCart M09.8 status/dossier were updated in `cc157e4c9dd3e52a5181fb1a7e5e33821045f41b`. Platform Pages deployment [42391868126](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42391868126) and browser QA [42391868133](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42391868133) passed on that code SHA. A stale contract-test assertion was corrected in `473bc57d4a9a7d750299fc4b9a5c9f21c7dd3c00`; its Repository CI run [42392118607](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42392118607) was queued/in progress at this checkpoint. Do not call the new contract suite green until that run finishes successfully.
+- **Independent publishing:** the current Pages build and deploy jobs both passed. Cloudflare Pages and Apps Script production deploy jobs were skipped because required secrets are missing; their successful workflow wrapper/check jobs do not prove those targets were deployed.
 
 ## Ordered work queue
 
