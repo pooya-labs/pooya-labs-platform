@@ -6,6 +6,17 @@
 **Current phase:** Phase 3 — Portfolio content architecture and case studies  
 **Release:** Pre-alpha / portfolio draft
 
+## Repository checkpoint — 2026-11-07 18:17 UTC
+
+- Current `main` HEAD at this audit: `74b19508e77cf20efe414009bb71ca69f91eb700`. The latest commit is documentation-only; the latest application styling change is `e66f4b42562fb6a164117e2b8a3f9905634a1b9e`, and the capture-runner update is `d74c12952be73233f551034d08b5fd212d260d0e`.
+- Repository CI [42400540542](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42400540542) passed on the exact current `main` HEAD: TypeScript, Pages/GAS/Cloudflare builds, bundle assembly, and **54/54 contract tests** (0 failures, 0 skipped).
+- Portfolio Browser QA [42399972654](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972654) passed on the current application/capture source tree: 17/17 routes, 34/34 desktop/mobile viewports, and zero axe violations. Thirty-four contrast checks remain incomplete and need human visual review.
+- GitHub Pages [42399972687](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972687) passed both build and deploy on that same application/capture source tree. Public preview: https://pooya-labs.github.io/pooya-labs-platform/.
+- Project capture [42399972697](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972697), artifact [13584314344](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972697/artifacts/13584314344), contains 29 PNG candidates and seven WebM reels. The technical contact-sheet scan completed; these assets remain artifact-only, unpublished, and pending Pooya's publication approval.
+- Cloudflare Pages [42399972690](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972690) and Apps Script [42399972770](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972770) completed their configuration checks, but each actual production-deploy job was **skipped** because repository Actions secrets are unavailable. A green wrapper workflow is not evidence of a new production deployment.
+- The repository currently has only the `main` branch and no open pull requests or issues. No independent project repository was modified.
+- CI emits a Node.js 20 deprecation warning for the current GitHub Actions checkout/setup-node/upload-artifact actions; track the move to Node 24-compatible action releases as maintenance work.
+
 ## Product direction — owner clarified
 - The main purpose is to introduce Pooya and showcase his software projects to visitors.
 - The root website is the public personal portfolio, not a SaaS dashboard or generic customer portal.
@@ -35,10 +46,10 @@
 
 - Added the first Framer-referenced Pooya Labs motion design pass: oversized editorial hero type, sticky glass navigation, real project screenshots layered in a 3D preview stage, project marquee, reveal-on-scroll sections, floating preview windows, gradient motion, hover depth, and mobile layouts. This is an original design implementation, not a pixel-for-pixel copy of Framer or reuse of Framer-owned assets.
 - The hero draws from five current project interface images (GlobalCart, ORBIT, NexusCanvas, LuminaGlass, AuraPulse). Project cards prefer interface screenshots over brand marks when a capture exists. Reduced-motion handling remains enabled; the removed pointer-following lens remains removed.
-- Latest code/contract tests passed: Repository CI [42400056094](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42400056094) — 54/54 tests, TypeScript, Pages/GAS/Cloudflare builds.
+- Latest code/contract tests passed: Repository CI [42400540542](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42400540542) — 54/54 tests on the exact current documentation HEAD, with TypeScript and Pages/GAS/Cloudflare builds.
 - Browser QA [42399972654](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972654) passed 17/17 routes and 34/34 viewports with zero axe violations. 34 incomplete axe checks and manual keyboard/screen-reader review remain.
 - Pages build/deploy [42399972687](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972687) passed. Cloudflare/GAS production deployment still depends on their separately configured secrets.
-- Private screenshot/motion evidence: Project Interface Captures [42399972697](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972697), artifact [13584314344](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972697/artifacts/13584314344), contains 29 PNG captures and seven 8.6–14.5 second WebM reels across AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and GlobalCart. All remain unreviewed candidates, not public website assets.
+- Private screenshot/motion evidence: Project Interface Captures [42399972697](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972697), artifact [13584314344](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42399972697/artifacts/13584314344), contains 29 PNG captures and seven 8.6–14.5 second WebM reels across AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and GlobalCart. All remain private, artifact-only candidates and are not public website assets; the technical contact-sheet scan is complete, while Pooya's publication approval is still pending.
 - Salon Booking is deliberately excluded pending salon-owner approval for a synthetic/redacted capture. No independent project source repo was modified.
 - Owner feedback round 1 and round 2 remain mandatory before marking Phase 7 complete. The site remains pre-alpha; do not tag V1.
 
