@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const app = await readFile(new URL('../../apps/platform/src/App.tsx', import.meta.url), 'utf8');
 const portfolio = await readFile(new URL('../../apps/platform/src/PortfolioHome.tsx', import.meta.url), 'utf8');
+const novelReader = await readFile(new URL('../../apps/platform/src/NovelLibrary.tsx', import.meta.url), 'utf8');
 const projectData = await readFile(new URL('../../apps/platform/src/content/projects.ts', import.meta.url), 'utf8');
 const metadata = await readFile(new URL('../../apps/platform/index.html', import.meta.url), 'utf8');
 const css = await readFile(new URL('../../apps/platform/src/portfolio.css', import.meta.url), 'utf8');
@@ -18,6 +19,9 @@ test('the root experience is the personal portfolio and the workspace is seconda
   assert.match(app, /onOpenWorkspace=\{\(\) => setWorkspaceOpen\(true\)\}/);
   assert.match(portfolio, /onOpenWorkspace/);
   assert.match(portfolio, /POOYA LABS/);
+  assert.match(app, /readPreference\('language-v2', 'en'\)/);
+  assert.match(app, /writePreference\('language-v2', language\)/);
+  assert.match(portfolio, /theme=\{theme\} onThemeChange=\{onThemeChange\}/);
 });
 
 test('portfolio contains the core personal introduction and project sections', () => {
@@ -43,9 +47,25 @@ test('portfolio is bilingual, responsive, and honors reduced motion', () => {
   assert.match(css, /@media \(max-width: 680px\)/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(css, /pointer-events: none/);
+  assert.match(portfolio, /data-theme=\{theme\}/);
+  assert.match(portfolio, /className="portfolio-theme"/);
+  assert.match(novelReader, /data-theme=\{theme\}/);
+  assert.match(novelReader, /className="portfolio-theme"/);
 });
 
-test('HTML metadata introduces a personal portfolio rather than a generic workspace', () => {
+test('the light theme provides readable surfaces and accessible theme controls', () => {
+  assert.match(css, /\.portfolio-page\[data-theme="light"\]/);
+  assert.match(css, /--pf-bg: #f6f8fc/);
+  assert.match(css, /\.portfolio-page\[data-theme="light"\] \.case-study-panel/);
+  assert.match(css, /\.portfolio-page\[data-theme="light"\] \.novel-text-section/);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
+  assert.match(portfolio, /aria-label=\{theme === 'dark' \? t\.themeToggle/);
+  assert.match(novelReader, /onThemeChange\(theme === 'dark' \? 'light' : 'dark'\)/);
+});
+
+test('HTML metadata introduces an English-first personal portfolio', () => {
+  assert.match(metadata, /<html lang="en" dir="ltr">/);
+  assert.match(metadata, /og:locale" content="en_US"/);
   assert.match(metadata, /Personal Portfolio & Projects/);
   assert.match(metadata, /computer engineering student and software builder/);
 });
@@ -204,6 +224,12 @@ test('homepage motion design is screenshot-led, progressive, and reduced-motion 
   assert.match(css, /@keyframes project-ticker-flow/);
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.match(css, /\.portfolio-page\.motion-ready \[data-reveal\]\.is-visible/);
+  assert.match(portfolio, /portfolio-hero-title/);
+  assert.match(portfolio, /capability-grid/);
+  assert.match(portfolio, /process-timeline/);
+  assert.match(css, /@keyframes capability-bars/);
+  assert.match(css, /@keyframes process-travel/);
+  assert.match(css, /\.portfolio-hero-copy \.portfolio-hero-title[\s\S]*?animation: none !important/);
 });
 
 test('project evidence capture records private desktop/mobile screenshots and motion reels', async () => {
