@@ -1,3 +1,13 @@
+## 2026-11-07 — Platform handoff and release-gate reconciliation
+
+- Reconciled the platform handoff against the live `main` branch and the latest available repository state.
+- Compared current code checkpoint `0f6e8b596b41701954f9e981f38aa7315eb593dd` with the last verified deployed UI source `468c1f60ab11223693f3678213d48848100ae63e`: 12 commits ahead, with changes limited to capture automation, README/docs, and contract tests; no app runtime source changed.
+- Rewrote `docs/NEXT.md` into ordered P3-08A/B/C owner-content, project-evidence, accessibility, and social-validation work queues, followed by mandatory Phase 7 redesign and Phase 8 V1 hardening.
+- Refreshed `docs/STATUS.md` with explicit distinctions between current main head, last verified UI source, last CI checkpoint, browser QA, and Pages deployment. No fresh CI run is claimed for the newer code head.
+- Refreshed `docs/project-state.json` with the reconciliation checkpoint and current release blockers.
+- Preserved the portfolio-first product boundary, the intentionally empty novels catalog, independent hosting targets, and Phase 9 deferral for previous-project code integration.
+- Validation limitation: this documentation-only reconciliation was committed through GitHub; a new Actions run for the resulting documentation commits has not yet been observed.
+
 ## 2026-11-06 — Novels library, Salon Booking v1.0.0 alignment, and final checks
 - Added the bilingual novels section with an empty public catalog, responsive cover cards, and an in-site Markdown/TXT reader. The exact GitHub upload instructions are in docs/NOVELS-GUIDE.md; titles and story content remain empty until Pooya supplies them.
 - Added six novels-library contract tests covering catalog schema, path validation, publication gating, safe Markdown rendering, homepage wiring, upload guide paths, and Pages catalog packaging.
