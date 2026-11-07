@@ -26,8 +26,9 @@ test('the native pointer remains visible', () => {
   assert.equal(styles.includes('cursor:none'), false);
 });
 
-test('platform page has responsive viewport metadata and Persian-first document direction', () => {
+test('platform page has responsive viewport metadata and English-first document direction', () => {
   assert.match(html, /name="viewport"/);
-  assert.match(html, /lang="fa" dir="rtl"/);
+  assert.match(html, /lang="en" dir="ltr"/);
+  assert.match(html, /property="og:locale" content="en_US"/);
   assert.match(html, /id="root"/);
 });
