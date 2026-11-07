@@ -271,7 +271,7 @@ const projectEntries: PortfolioProject[] = [
       fa: 'شبیه‌سازی فروشگاه چنددسته‌ای با کاتالوگ محلی، صفحات جزئیات محصول، گالری چندتصویری، جست‌وجو و سبد خرید آزمایشی. فروش، پرداخت، موجودی و ارسال واقعی انجام نمی‌شود.',
       en: 'A commerce-grade marketplace simulation with a local catalog, product detail pages, multi-image galleries, search, and a demo cart. It does not process real sales, payments, inventory reservations, or shipments.',
     },
-    status: { fa: 'در حال توسعه · ۰٫۲٫۳-dev / M09.6', en: 'In development · v0.2.3-dev / M09.6' },
+    status: { fa: 'در حال توسعه · ۰٫۲٫۳-dev / M09.8', en: 'In development · v0.2.3-dev / M09.8' },
     statusKey: 'in-development',
     reviewState: 'needs-owner-review',
     tags: ['Next.js', 'React', 'TypeScript', 'Playwright'],

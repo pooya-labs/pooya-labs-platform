@@ -167,13 +167,20 @@ test('all eight case studies include bilingual roles, architecture, implementati
 });
 
 test('portfolio distinguishes in-progress release lines from stable demo releases', () => {
-  assert.match(projectData, /In development · v0\.2\.3-dev \/ M09\.6/);
+  assert.match(projectData, /In development · v0\.2\.3-dev \/ M09\.8/);
   assert.match(projectData, /Released · v1\.0\.0/);
   assert.match(productDossiers, /APP_VERSION_ = 1\.5\.3/);
   assert.match(productDossiers, /42086718663/);
   assert.match(productDossiers, /42086718821/);
   assert.match(productDossiers, /do not process real sales|No real payment/i);
   assert.match(productDossiers, /v1\.0\.0 is blocked by owner approval and manual QA/);
+  assert.match(productDossiers, /M09\.8/);
+  assert.match(coreDossiers, /Cloudflare Worker/);
+  assert.match(coreDossiers, /ORBIT_GATEWAY_SECRET/);
+  assert.match(coreDossiers, /workers\.dev route is disabled/);
+  assert.match(architectureData, /node\('apps-script'/);
+  assert.match(architectureData, /node\('worker'/);
+  assert.match(architectureData, /Three independent ORBIT paths/);
 });
 
 test('portfolio routes static bilingual case studies and updates the URL without a reload', () => {

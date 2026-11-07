@@ -49,21 +49,26 @@ export const architectureDiagrams: Record<string, ArchitectureDiagram> = {
     ]
   },
   orbit: {
-    title: { fa: 'دو مسیر جدا در ORBIT', en: 'Two separate ORBIT paths' },
-    caption: { fa: 'دموی عمومی داده مصنوعی دارد؛ stack مهندسی telemetry مسیر محلی و مستقل است', en: 'The public demo uses synthetic data; the telemetry engineering stack is a separate local path' },
+    title: { fa: 'سه مسیر مستقل در ORBIT', en: 'Three independent ORBIT paths' },
+    caption: { fa: 'دموی Apps Script فقط داده مصنوعی دارد؛ مسیر Cloudflare به Go طراحی و پیاده‌سازی شده اما تا آماده‌شدن Origin و Secret غیرفعال است؛ telemetry در stack مهندسی جداگانه می‌ماند', en: 'The Apps Script demo uses synthetic data only; the Cloudflare-to-Go path is implemented but remains disabled until its origin and secret are ready; telemetry stays on a separate engineering stack' },
     nodes: [
-      node('public', 70, 210, 'داشبورد عمومی', 'Public dashboard', 'Next.js / GitHub Pages', 'Next.js / GitHub Pages', 'external'),
-      node('bridge', 650, 210, 'Apps Script bridge', 'Apps Script bridge', 'iframe و google.script.run', 'iframe and google.script.run'),
-      node('sheet', 1230, 210, 'Google Sheets خصوصی', 'Private Google Sheets', 'فقط رکوردهای مصنوعی دمو', 'Synthetic demo records only', 'storage'),
-      node('workload', 70, 545, 'سرویس نمونه instrumented', 'Instrumented sample service', 'تولید Metrics / Logs / Traces', 'Emits metrics, logs, and traces', 'external'),
-      node('collector', 455, 545, 'OTel Collector', 'OTel Collector', 'دریافت و مسیریابی OTLP', 'OTLP ingestion and routing'),
-      node('stores', 840, 545, 'Prometheus / Loki / Tempo', 'Prometheus / Loki / Tempo', 'ذخیره‌سازهای telemetry محلی', 'Local telemetry backends', 'storage'),
-      node('api', 1230, 545, 'Go API', 'Go API', 'queryهای محدود و workspace-scoped', 'Bounded workspace-scoped queries')
+      node('dashboard', 70, 185, 'داشبورد مشترک', 'Shared dashboard', 'Next.js / GitHub Pages', 'Next.js / GitHub Pages', 'external'),
+      node('apps-script', 650, 185, 'Apps Script Web App', 'Apps Script Web App', 'دموی مستقل و داده مصنوعی', 'Independent demo and synthetic data'),
+      node('sheets', 1230, 185, 'Google Sheets خصوصی', 'Private Google Sheets', 'رکوردهای مصنوعی دمو', 'Synthetic demo records only', 'storage'),
+      node('worker', 455, 445, 'Cloudflare Worker', 'Cloudflare Worker', 'درگاه Edge؛ هنوز غیرفعال', 'Edge gateway; not enabled yet', 'external'),
+      node('api', 840, 445, 'Go API', 'Go API', 'OIDC، نقش‌ها و مجوز workspace', 'OIDC, roles, and workspace policy'),
+      node('postgres', 1230, 445, 'PostgreSQL', 'PostgreSQL', 'مرجع canonical داده و عملیات', 'Canonical data and operations store', 'storage'),
+      node('workload', 70, 700, 'Workloadهای نمونه', 'Sample workloads', 'تولید سیگنال در stack مهندسی', 'Emit signals in the engineering stack', 'external'),
+      node('otlp', 455, 700, 'OTLP gateways', 'OTLP gateways', 'HTTP و gRPC احرازشده', 'Authenticated HTTP and gRPC'),
+      node('collector', 840, 700, 'OTel Collector', 'OTel Collector', 'دریافت و مسیریابی خصوصی', 'Private ingestion and routing'),
+      node('stores', 1230, 700, 'Prometheus / Loki / Tempo', 'Prometheus / Loki / Tempo', 'Metrics، Logs و Traces', 'Metrics, logs, and traces', 'storage')
     ],
     edges: [
-      { from: 'public', to: 'bridge' }, { from: 'bridge', to: 'sheet' },
-      { from: 'workload', to: 'collector' }, { from: 'collector', to: 'stores' },
-      { from: 'stores', to: 'api' }
+      { from: 'dashboard', to: 'apps-script' }, { from: 'apps-script', to: 'sheets' },
+      { from: 'dashboard', to: 'worker' }, { from: 'worker', to: 'api' },
+      { from: 'api', to: 'postgres' },
+      { from: 'workload', to: 'otlp' }, { from: 'otlp', to: 'collector' },
+      { from: 'collector', to: 'stores' }, { from: 'stores', to: 'api' }
     ]
   },
   'pooya-os': {
