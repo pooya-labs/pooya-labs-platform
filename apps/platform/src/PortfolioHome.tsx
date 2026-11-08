@@ -360,7 +360,7 @@ export function ProjectCaseStudy({ project, language, onLanguageChange, theme, o
   const dossier = ((coreDossiers as unknown as Record<string, CaseStudyDossier>)[project.slug] ?? (productDossiers as unknown as Record<string, CaseStudyDossier>)[project.slug])!;
   const architectureDiagram = architectureDiagrams[project.slug];
   const architectureImage = baseUrl === './' ? null : `${baseUrl}architecture/${project.slug}${language === 'en' ? '-en' : ''}.svg`;
-  const heroVisual = project.caseStudyHeroAsset ?? project.visualAsset;
+  const desktopCapture = project.caseStudyMedia?.find((item) => item.device === 'desktop') ?? project.caseStudyHeroAsset;
   const mobileCaptures = (project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop');
   return (
     <div className={`portfolio-page portfolio-case-study ${rtl ? 'is-rtl' : 'is-ltr'}`} data-theme={theme}>
@@ -381,10 +381,8 @@ export function ProjectCaseStudy({ project, language, onLanguageChange, theme, o
       <main id="main-content" tabIndex={-1} className="case-study-main portfolio-container">
         <a className="case-study-back" href={baseUrl} onClick={(event) => { event.preventDefault(); onBack(); }}><ArrowUpLeft size={15} />{t.backProjects}</a>
         <section className="case-study-hero" data-reveal="case-study-hero">
-          <div className={`case-study-visual${heroVisual ? ' has-visual' : ''}`}>
-            {heroVisual
-              ? <img className={`case-study-visual-image visual-${heroVisual.kind}`} src={heroVisual.url} alt={heroVisual.alt[language]} loading="eager" decoding="async" />
-              : <ProjectMotionScene slug={project.slug} />}
+          <div className="case-study-visual">
+            <ProjectMotionScene slug={project.slug} />
             <span className="case-study-index">{project.number} / POOYA LABS</span>
           </div>
           <div className="case-study-heading">
@@ -400,13 +398,14 @@ export function ProjectCaseStudy({ project, language, onLanguageChange, theme, o
             </div>
           </div>
         </section>
-        {mobileCaptures.length > 0 && (
+        {(desktopCapture || mobileCaptures.length > 0) && (
           <section className="case-study-media-section" data-reveal="case-study-media">
             <div className="case-study-media-heading">
               <div className="portfolio-eyebrow"><span className="eyebrow-index">UI /</span>{t.interfaceCaptures}</div>
               <span className="case-study-media-note">{language === 'fa' ? 'نمای کامل محیط / دسکتاپ و موبایل' : 'FULL-PAGE PRODUCT / RESPONSIVE VIEWS'}</span>
             </div>
             <div className="case-study-media-grid">
+              {desktopCapture && <figure className="case-study-media-card device-desktop"><div className="case-study-media-frame" role="region" tabIndex={0} aria-label={language === 'fa' ? `${project.name} — نمای واقعی محیط دسکتاپ` : `${project.name} — actual desktop interface`}><img src={desktopCapture.url} alt={desktopCapture.alt[language]} loading="lazy" decoding="async" /></div><figcaption>{language === 'fa' ? 'نمای واقعی محیط دسکتاپ' : 'Actual desktop interface'}</figcaption></figure>}
               {mobileCaptures.map((item) => <figure className={`case-study-media-card device-${item.device}`} key={item.url}><div className="case-study-media-frame" data-gallery-scroll="true" role="region" tabIndex={0} aria-label={language === 'fa' ? `${project.name} — ${item.caption.fa}` : `${project.name} — ${item.caption.en}`}><img src={item.url} alt={item.alt[language]} loading="lazy" decoding="async" /></div><figcaption>{item.caption[language]}{item.device === 'mobile' && <span className="case-study-scroll-note">{language === 'fa' ? 'داخل تصویر اسکرول کن؛ بعد از رسیدن به انتها، صفحه ادامه پیدا می‌کند.' : 'Scroll inside the image; the page continues once the image reaches its end.'}</span>}</figcaption></figure>)}
             </div>
           </section>
