@@ -51,9 +51,9 @@ All project content is still marked for Pooya's review. The eight source-grounde
 
 ## Development
 
-Start with README-linked docs: docs/ROADMAP.md, docs/STATUS.md, docs/NEXT.md, docs/DEPLOYMENT-TARGETS.md, docs/PROJECT-CONTENT-AUDIT.md, docs/NOVELS-GUIDE.md, docs/PRODUCT-SURFACES.md, docs/DESIGN-DIRECTION.md, docs/ARCHITECTURE.md, and docs/RECOVERY.md.
+Start with the [contribution guide](CONTRIBUTING.md), [release checklist](docs/RELEASE.md), and the project handoff docs: docs/ROADMAP.md, docs/STATUS.md, docs/NEXT.md, docs/DEPLOYMENT-TARGETS.md, docs/PROJECT-CONTENT-AUDIT.md, docs/NOVELS-GUIDE.md, docs/PRODUCT-SURFACES.md, docs/DESIGN-DIRECTION.md, docs/ARCHITECTURE.md, and docs/RECOVERY.md.
 
-Commands: npm install · npm run typecheck · npm test · npm run build:pages · npm run build:cloudflare · npm run build:gas
+Commands: npm install · npm run lint · npm run format:check · npm run typecheck · npm test · npm run build · npm run build:cloudflare · npm run build:gas
 
 ## Project identity
 
