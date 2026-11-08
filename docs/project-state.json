@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P7-12",
     "title": "Complete readiness engineering and owner-input preparation before the penultimate redesign",
-    "status": "Phase 7 remains active. The latest read-only source/release/PR inventory for all eight independent projects is recorded. GlobalCart's stable portfolio/demo v1.0.0 and owner-confirmed manual QA are reflected in the owner packet. AetherFlow's live Apps Script write/reload/read acceptance is confirmed, while its pending-state source correction still needs manual redeploy. ORBIT PR #138 remains open with the strict production-image gate failing. Continue Phase 7; Phase 8 redesign and Phase 9 integration remain gated."
+    "status": "The 2026-11-09 read-only source/release/PR audit and bilingual owner-packet refresh are merged to main in 23f16896624ef391e284d3579a7f7278f5c8cbaf. PR Browser QA and merged-main Repository CI passed. Phase 7 remains active: platform-specific manual accessibility/device, crawler, source-confirmation, deployment automation, rollback, and owner approval gates are open. Phase 8 redesign and Phase 9 project integration remain gated."
   },
   "lastCheckpointDate": "2026-11-09",
   "latestVerifiedCodeCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
@@ -405,7 +405,7 @@
     "projectIntegrationPhase": 9,
     "penultimateRedesignOwnerApproval": "pending"
   },
-  "latestVerifiedCommit": "a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67",
+  "latestVerifiedCommit": "23f16896624ef391e284d3579a7f7278f5c8cbaf",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -572,7 +572,7 @@
     ],
     "projectIntegration": "deferred-to-phase-9-after-phase-8-redesign-approval; all-eight-project portfolio integration pending"
   },
-  "latestBranchHeadAtCheckpoint": "8ae608342aaff2baf89f43153fd55676e0cf0239",
+  "latestBranchHeadAtCheckpoint": "23f16896624ef391e284d3579a7f7278f5c8cbaf",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -988,10 +988,10 @@
   "latestTask": "P7-12",
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-09",
-  "latestDocumentationCommit": "aca573500192f8581896bde10e68ef82c0ca2256",
-  "latestDocumentationCheckpoint": "prepared-on-docs/phase7-upstream-refresh-2026-11-09;final-read-only-source-recheck;pending-PR-review",
-  "latestRepositoryCiRun": "42520197557",
-  "latestBrowserQaRun": "42519985093",
+  "latestDocumentationCommit": "23f16896624ef391e284d3579a7f7278f5c8cbaf",
+  "latestDocumentationCheckpoint": "merged-PR-18;main:23f16896624ef391e284d3579a7f7278f5c8cbaf;Repository-CI:42522790018;Browser-QA:42522600586",
+  "latestRepositoryCiRun": "42522790018",
+  "latestBrowserQaRun": "42522600586",
   "latestPerformanceBaseline": {
     "run": "42514976406",
     "attempt": 1,
@@ -1113,12 +1113,15 @@
     "contractTestRun": 42519333195,
     "browserQaRun": 42519333196,
     "sourceStatusRefreshedOn": "2026-11-09",
-    "globalCartStatus": "Stable portfolio/demo release · v1.0.0"
+    "globalCartStatus": "Stable portfolio/demo release · v1.0.0",
+    "latestRefreshMergedAtMainCommit": "23f16896624ef391e284d3579a7f7278f5c8cbaf",
+    "latestRefreshPullRequest": 18,
+    "latestRefreshRepositoryCiRun": 42522600509,
+    "latestRefreshBrowserQaRun": 42522600586
   },
   "upstreamSourceRecheck": {
     "date": "2026-11-09",
     "mode": "read-only",
-    "platformMainBaseSha": "8ae608342aaff2baf89f43153fd55676e0cf0239",
     "upstreamMainHeads": {
       "AetherFlow": {
         "sha": "dc1edea3946e89e8ca0dd1430552487401080eaa",
@@ -1160,6 +1163,10 @@
     "globalcartFieldCwv": "unmeasured-optional",
     "globalcartPr23": "closed-without-merge",
     "orbitPr138": "open-unmerged; production-image-security-scan-failing",
-    "allUpstreamRepositoriesModified": false
+    "allUpstreamRepositoriesModified": false,
+    "platformMainCommit": "23f16896624ef391e284d3579a7f7278f5c8cbaf",
+    "mergedPullRequest": 18,
+    "postMergeRepositoryCiRun": "42522790018",
+    "browserQaRun": "42522600586"
   }
 }
