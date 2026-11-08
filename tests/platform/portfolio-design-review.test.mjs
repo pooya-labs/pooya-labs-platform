@@ -7,8 +7,9 @@ const main = await readFile(new URL('../../apps/platform/src/main.tsx', import.m
 const css = await readFile(new URL('../../apps/platform/src/portfolio.css', import.meta.url), 'utf8');
 const vite = await readFile(new URL('../../apps/platform/vite.config.ts', import.meta.url), 'utf8');
 const metadata = await readFile(new URL('../../apps/platform/index.html', import.meta.url), 'utf8');
-const mark = await readFile(new URL('../../apps/platform/public/brand/pooya-mark.svg', import.meta.url), 'utf8');
-const favicon = await readFile(new URL('../../apps/platform/public/favicon.svg', import.meta.url), 'utf8');
+const monogram = await readFile(new URL('../../apps/platform/public/brand/pooya-monogram.webp', import.meta.url));
+const wordmark = await readFile(new URL('../../apps/platform/public/brand/pooya-wordmark.webp', import.meta.url));
+const favicon = await readFile(new URL('../../apps/platform/index.html', import.meta.url), 'utf8');
 
 test('architecture diagram labels are wrapped and centered within fixed node geometry', () => {
   assert.match(vite, /function wrapDiagramLabel/);
@@ -53,16 +54,17 @@ test('owner contact links are visible, labelled, and included in the footer and 
 });
 
 test('the signal-orbit emerald monogram is used throughout the site identity', () => {
-  assert.match(mark, /viewBox="0 0 128 128"/);
-  assert.match(mark, /linearGradient id="mark-main"/);
-  assert.match(mark, /linearGradient id="mark-fold"/);
+  assert.ok(monogram.length > 3000);
+  assert.ok(wordmark.length > 8000);
+  assert.match(home, /brand\/pooya-monogram\.webp/);
+  assert.match(home, /brand\/pooya-wordmark\.webp/);
+  assert.match(home, /className="pooya-wordmark"/);
   assert.match(home, /className="stamp-core"><img/);
   assert.match(home, /portfolio-github-mark/);
   assert.match(home, /portfolio-contact-github/);
   assert.match(home, /github\.com\/pooya-labs/);
-  assert.match(favicon, /viewBox="0 0 96 96"/);
-  assert.match(favicon, /#35C99A/);
-  assert.doesNotMatch(mark, /gold|metallic|#d8b36a|#fff3c9/i);
+  assert.match(favicon, /type="image\/webp" href="%BASE_URL%brand\/pooya-monogram\.webp"/);
+  assert.doesNotMatch(home, /brand\/pooya-mark\.svg|brand\/pooya-mark-emerald\.webp/);
 });
 
 
@@ -97,37 +99,35 @@ test('two additional animated sections are bilingual, responsive, and reduced-mo
   assert.match(css, /@media \(prefers-reduced-motion:reduce\)[\s\S]*?system-wire-flow[\s\S]*?animation:none!important/);
 });
 
-test('the redesigned signal-orbit monogram and matching favicon replace the previous mark', () => {
-  assert.match(mark, /viewBox="0 0 128 128"/);
-  assert.match(mark, /linearGradient id="mark-main"/);
-  assert.match(mark, /linearGradient id="mark-fold"/);
-  assert.match(mark, /linearGradient id="mark-orbit"/);
-  assert.match(favicon, /viewBox="0 0 96 96"/);
-  assert.match(favicon, /#35C99A/);
-  assert.doesNotMatch(mark, /#fff3c9|#e9bf76|#d8b36a/i);
+test('the owner-designed monogram and wordmark replace the generated identity', () => {
+  assert.ok(monogram.byteLength > 3000);
+  assert.ok(wordmark.byteLength > 8000);
+  assert.match(home, /brand\/pooya-monogram\.webp/);
+  assert.match(home, /brand\/pooya-wordmark\.webp/);
+  assert.match(favicon, /brand\/pooya-monogram\.webp/);
+  assert.doesNotMatch(home, /brand\/pooya-mark\.svg|brand\/pooya-mark-emerald\.webp/);
 });
 
 
 test('the English hero keeps thoughtful as an isolated, unbroken LTR word', () => {
   assert.ok(home.includes("headlineB: 'into',") && home.includes("headlineWord: 'thoughtful'"));
+  assert.ok(home.includes('hero-title-word-line'));
   assert.ok(home.includes('<bdi dir="ltr" className="hero-title-word">{t.headlineWord}</bdi>'));
-  assert.ok(css.includes('.portfolio-hero-title .hero-title-word'));
-  assert.ok(css.includes('white-space:nowrap'));
-  assert.ok(css.includes('padding-inline-end:.18em'));
-  assert.ok(css.includes('margin-inline-end:0'));
+  assert.ok(css.includes('.portfolio-hero-copy .hero-title-word-line'));
+  assert.ok(css.includes('white-space:nowrap!important'));
+  assert.ok(css.includes('-webkit-text-fill-color:#79e5c5!important'));
+  assert.ok(!css.includes('padding-inline-end:.18em'));
   const browserQa = readFile(new URL('../../apps/platform/scripts/portfolio-browser-qa.mjs', import.meta.url), 'utf8');
   return browserQa.then((source) => assert.ok(source.includes('thoughtful headline word is missing, split, or clipped')));
 });
 
-test('the header mark has no square badge and uses a reduced-motion-safe reveal', () => {
-  assert.doesNotMatch(mark, /<rect/);
+test('the supplied monogram is borderless and its reveal respects reduced motion', () => {
   const latestMarkRule = css.slice(css.lastIndexOf('.portfolio-brand-mark {'));
   assert.ok(latestMarkRule.includes('border:0!important'));
   assert.ok(latestMarkRule.includes('background:transparent!important'));
-  assert.ok(css.includes('@keyframes pooya-mark-arrive'));
+  assert.ok(css.includes('@keyframes pooya-user-mark-enter'));
   assert.ok(css.includes('@media (prefers-reduced-motion:reduce)'));
-  assert.ok(css.includes('.portfolio-brand-mark img { opacity:1!important;'));
-  assert.ok(favicon.includes('#35C99A'));
+  assert.ok(home.includes('pooya-wordmark.webp'));
 });
 
 test('Instagram contact uses a dedicated brand glyph instead of a camera icon', async () => {
@@ -150,5 +150,8 @@ test('each product case study receives its own decorative motion language', () =
     assert.ok(home.includes('motion-calendar'));
     assert.ok(home.includes('motion-bars'));
     assert.ok(css.includes('.case-study-motion-art::before'));
+    assert.ok(css.includes('@keyframes scene-packet-travel'));
+    assert.ok(css.includes('opacity:.9!important'));
+    assert.ok(css.includes('.motion-track::after'));
   });
 });

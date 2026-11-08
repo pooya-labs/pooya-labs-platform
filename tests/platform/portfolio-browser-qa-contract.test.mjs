@@ -30,7 +30,8 @@ test('browser QA checks desktop/mobile overflow, page semantics, and keyboard sk
   assert.match(script, /page\.keyboard\.press\('Tab'\)/);
   assert.match(script, /portfolio-skip-link/);
   assert.match(script, /page\.keyboard\.press\('Enter'\)/);
-  assert.match(script, /prefers-reduced-motion|reducedMotion: 'reduce'/);
+  assert.match(script, /reducedMotion: 'no-preference'/);
+  assert.match(script, /page\.emulateMedia\(\{ reducedMotion: 'reduce' \}\)/);
   assert.match(script, /\.portfolio-hero-title/);
   assert.match(script, /scrollWidth > titleMetrics\.width/);
   assert.match(script, /document\.documentElement\.lang === 'fa'/);
@@ -123,4 +124,20 @@ test('QA stores visual screenshots as workflow artifacts, not public site assets
   assert.ok(script.includes('routeRecord.visualEvidence'));
   assert.ok(workflow.includes('path: apps/platform/artifacts/portfolio-browser-qa/'));
   assert.ok(script.includes('never published to the website'));
+});
+
+
+test('case-study Browser QA verifies visible active motion and its reduced-motion fallback', () => {
+  assert.match(script, /reducedMotion: 'no-preference'/);
+  assert.match(script, /art\.getAnimations\(\{ subtree: true \}\)/);
+  assert.match(script, /activeAnimationCount < 3/);
+  assert.match(script, /await page\.emulateMedia\(\{ reducedMotion: 'reduce' \}\)/);
+  assert.match(script, /reducedMotionAnimationName/);
+  assert.match(script, /animations: 'allow'/);
+});
+
+test('the English headline avoids a gradient-clipped inline wrapper for thoughtful', () => {
+  assert.match(portfolioSource, /hero-title-word-line/);
+  assert.match(portfolioCss, /-webkit-text-fill-color:#79e5c5!important/);
+  assert.match(portfolioCss, /white-space:nowrap!important/);
 });

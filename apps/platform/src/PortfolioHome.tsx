@@ -230,7 +230,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
       <div className="portfolio-grid" />
       <header className="portfolio-header">
         <a className="portfolio-brand" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}>
-          <span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /></span>
+          <span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-monogram.webp`} alt="" aria-hidden="true" /></span>
           <span><strong>POOYA LABS</strong><small>PROJECT CASE STUDY</small></span>
         </a>
         <div className="portfolio-header-actions">
@@ -354,7 +354,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
       </main>
       <footer className="portfolio-footer">
         <div className="portfolio-footer-inner portfolio-container">
-          <a className="portfolio-brand" href="#top"><span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /></span><span><strong>POOYA LABS</strong><small>INDEPENDENT SOFTWARE BUILDER</small></span></a>
+          <a className="portfolio-brand" href="#top"><span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-monogram.webp`} alt="" aria-hidden="true" /></span><span><strong>POOYA LABS</strong><small>INDEPENDENT SOFTWARE BUILDER</small></span></a>
           <p>{t.footer}</p>
           <div className="portfolio-footer-socials">
             <a href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Code2 size={17} /> GitHub</a>
@@ -506,7 +506,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
 
       <header className="portfolio-header">
         <a className="portfolio-brand" href="#top">
-          <span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /></span>
+          <span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-monogram.webp`} alt="" aria-hidden="true" /></span>
           <span><strong>POOYA LABS</strong><small>INDEPENDENT BUILDER</small></span>
         </a>
         <nav className="portfolio-nav" aria-label={rtl ? 'ناوبری اصلی' : 'Main navigation'}>
@@ -527,11 +527,11 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         <section className="portfolio-hero portfolio-container">
           <div className="portfolio-hero-copy" data-reveal="hero-copy">
             <div className="portfolio-eyebrow"><span className="eyebrow-pulse" />{t.eyebrow}</div>
-            <h1 className="portfolio-hero-title" dir="auto"><span dir="auto" className="hero-title-line">{t.headlineA}</span><span dir="auto" className="hero-title-line hero-gradient">{t.headlineWord ? <><bdi dir="ltr" className="hero-title-prefix">{t.headlineB}</bdi>{' '}<bdi dir="ltr" className="hero-title-word">{t.headlineWord}</bdi></> : t.headlineB}</span><span dir="auto" className="hero-title-line">{t.headlineC}</span></h1>
+            <h1 className="portfolio-hero-title" dir="auto"><span dir="auto" className="hero-title-line">{t.headlineA}</span><span dir={t.headlineWord ? 'ltr' : 'auto'} className={t.headlineWord ? 'hero-title-line hero-title-word-line' : 'hero-title-line hero-gradient'}>{t.headlineWord ? <><bdi dir="ltr" className="hero-title-prefix">{t.headlineB}</bdi><bdi dir="ltr" className="hero-title-word">{t.headlineWord}</bdi></> : t.headlineB}</span><span dir="auto" className="hero-title-line">{t.headlineC}</span></h1>
             <p className="portfolio-intro" dir="auto">{t.intro}</p>
             <div className="portfolio-hero-actions">
               <a className="portfolio-primary" href="#projects">{t.explore}<ArrowDown size={16} /></a>
-              <a className="portfolio-secondary portfolio-github-link" href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><img className="portfolio-github-mark" src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" />{t.github}<ExternalLink size={13} /></a>
+              <a className="portfolio-secondary portfolio-github-link" href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><img className="portfolio-github-mark" src={`${import.meta.env.BASE_URL}brand/pooya-monogram.webp`} alt="" aria-hidden="true" />{t.github}<ExternalLink size={13} /></a>
             </div>
             <div className="portfolio-social-proof"><span className="proof-line" /><span>POOYA LABS</span><span className="proof-dot">·</span><span>BUILDING IN PUBLIC</span></div>
           </div>
@@ -768,11 +768,12 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         <NovelLibrarySection language={language} novels={novelCatalog.filter((novel) => novel.published)} loading={novelCatalogLoading} error={novelCatalogError} onOpen={openNovel} />
 
         <section className="portfolio-about portfolio-container" id="about" data-reveal="about">
-          <div className="about-stamp"><div className="stamp-orbit" /><div className="stamp-core"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark-emerald.webp`} alt="Pooya Labs" /></div><span>ABOUT / POOYA</span></div>
+          <div className="about-stamp"><div className="stamp-orbit" /><div className="stamp-core"><img src={`${import.meta.env.BASE_URL}brand/pooya-monogram.webp`} alt="Pooya Labs" /></div><span>ABOUT / POOYA</span></div>
           <div className="about-content">
             <div className="portfolio-eyebrow"><span className="eyebrow-index">03 /</span>{t.aboutEyebrow}</div>
             <h2>{t.aboutTitle}</h2>
             <p>{t.aboutBody}</p>
+            <img className="pooya-wordmark" src={`${import.meta.env.BASE_URL}brand/pooya-wordmark.webp`} alt="POOYA — LABS" loading="lazy" decoding="async" />
             <div className="focus-heading"><Layers3 size={16} />{t.focus}</div>
             <ul className="focus-list">
               <li>{t.focus1}</li><li>{t.focus2}</li><li>{t.focus3}</li><li>{t.focus4}</li>
@@ -806,7 +807,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
       </main>
 
       <footer className="portfolio-footer portfolio-container">
-        <a className="portfolio-brand" href="#top"><span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /></span><span><strong>POOYA LABS</strong><small>PERSONAL PORTFOLIO</small></span></a>
+        <a className="portfolio-brand" href="#top"><span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-monogram.webp`} alt="" aria-hidden="true" /></span><span><strong>POOYA LABS</strong><small>PERSONAL PORTFOLIO</small></span></a>
         <span>{t.footer}</span>
         <a href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><Code2 size={17} /> GitHub</a>
         <small>© {new Date().getFullYear()} POOYA LABS</small>

@@ -2558,3 +2558,169 @@
   }
   .portfolio-brand-mark img { opacity:1!important;translate:0 0!important; }
 }
+
+
+/* Owner-supplied Pooya identity: the approved portrait monogram and horizontal wordmark. */
+.portfolio-brand-mark {
+  width:34px!important;height:50px!important;flex:0 0 34px!important;
+  overflow:visible!important;border:0!important;border-radius:0!important;
+  background:transparent!important;box-shadow:none!important;
+}
+.portfolio-brand-mark img {
+  display:block;width:100%!important;height:100%!important;object-fit:contain;
+  border:0!important;border-radius:0!important;
+  filter:drop-shadow(0 5px 12px rgba(84,230,192,.24));
+  animation:pooya-user-mark-enter 1s cubic-bezier(.2,.8,.2,1) both;
+}
+.portfolio-brand:hover .portfolio-brand-mark img { filter:drop-shadow(0 7px 16px rgba(84,230,192,.42)); }
+.portfolio-footer .portfolio-brand-mark { width:29px!important;height:44px!important;flex-basis:29px!important; }
+.portfolio-case-study .portfolio-brand-mark { width:30px!important;height:44px!important;flex-basis:30px!important; }
+.stamp-core {
+  width:92px!important;height:138px!important;border:0!important;border-radius:0!important;
+  background:transparent!important;box-shadow:none!important;padding:0!important;overflow:visible!important;
+}
+.stamp-core img {
+  display:block;width:100%!important;height:100%!important;border:0!important;
+  border-radius:0!important;object-fit:contain;filter:drop-shadow(0 10px 22px rgba(71,224,187,.28));
+}
+.pooya-wordmark {
+  display:block;width:min(100%,340px);height:auto;object-fit:contain;margin:24px 0 30px;
+  filter:drop-shadow(0 8px 22px rgba(0,0,0,.18));
+  animation:pooya-wordmark-reveal 1.1s .16s cubic-bezier(.2,.8,.2,1) both;
+}
+.portfolio-page[data-theme="light"] .pooya-wordmark { filter:drop-shadow(0 6px 18px rgba(20,60,45,.12)); }
+.portfolio-github-mark { width:17px!important;height:25px!important;object-fit:contain; }
+@keyframes pooya-user-mark-enter {
+  from { opacity:0;translate:0 8px;scale:.88;filter:blur(5px); }
+  to { opacity:1;translate:0 0;scale:1;filter:blur(0) drop-shadow(0 5px 12px rgba(84,230,192,.24)); }
+}
+@keyframes pooya-wordmark-reveal {
+  from { opacity:0;translate:0 12px;clip-path:inset(0 100% 0 0); }
+  to { opacity:1;translate:0 0;clip-path:inset(0 0 0 0); }
+}
+
+/* Keep the entire English phrase in one plain-colour LTR row. No gradient text clipping. */
+.portfolio-hero-copy .hero-title-word-line {
+  display:flex!important;flex-direction:row!important;align-items:baseline;justify-content:center;
+  gap:.24em;width:max-content;max-width:100%;direction:ltr!important;unicode-bidi:isolate;
+  white-space:nowrap!important;overflow:visible!important;overflow-wrap:normal!important;
+  font-size:clamp(35px,6.1vw,88px);line-height:1.18;letter-spacing:-.035em!important;
+  color:#79e5c5!important;-webkit-text-fill-color:#79e5c5!important;
+  background:none!important;background-image:none!important;
+  text-shadow:0 0 32px rgba(91,229,189,.16);padding-inline:.13em;
+}
+.portfolio-hero-copy .hero-title-word-line .hero-title-prefix,
+.portfolio-hero-copy .hero-title-word-line .hero-title-word {
+  display:inline-block;flex:0 0 auto;direction:ltr;unicode-bidi:isolate;
+  white-space:nowrap!important;overflow:visible!important;letter-spacing:inherit;
+  color:inherit!important;-webkit-text-fill-color:currentColor!important;
+}
+.portfolio-hero-copy .hero-title-word-line .hero-title-word { padding:0 .06em 0 0; }
+@media (max-width:680px) {
+  .portfolio-hero-copy .hero-title-word-line {
+    width:max-content;max-width:100%;font-size:clamp(34px,9.15vw,43px);
+    letter-spacing:-.025em!important;gap:.2em;
+  }
+  .portfolio-brand-mark { width:29px!important;height:43px!important;flex-basis:29px!important; }
+  .portfolio-footer .portfolio-brand-mark { width:25px!important;height:37px!important;flex-basis:25px!important; }
+  .stamp-core { width:72px!important;height:108px!important; }
+  .pooya-wordmark { width:min(100%,270px);margin:19px 0 24px; }
+}
+
+/* Product-specific hero motion is deliberately high-visibility foreground artwork. */
+.case-study-visual { isolation:isolate; }
+.case-study-motion-art {
+  z-index:3!important;opacity:.9!important;mix-blend-mode:screen!important;filter:saturate(1.24) contrast(1.08);
+}
+.case-study-motion-art::before {
+  opacity:.95!important;
+  background:radial-gradient(ellipse at 52% 50%,color-mix(in srgb,var(--motion-accent) 35%,transparent),transparent 61%)!important;
+  animation-duration:4.8s!important;
+}
+.case-study-motion-art .motion-orbit {
+  border-width:2px!important;border-color:color-mix(in srgb,var(--motion-accent) 78%,transparent)!important;
+  box-shadow:0 0 28px color-mix(in srgb,var(--motion-accent) 19%,transparent);animation-duration:11s!important;
+}
+.case-study-motion-art .motion-orbit-b { border-width:1.6px!important;border-style:dashed;animation-duration:15s!important; }
+.case-study-motion-art .motion-track {
+  height:2px!important;opacity:.95!important;
+  background:linear-gradient(90deg,transparent 0%,color-mix(in srgb,var(--motion-accent) 95%,transparent) 35%,color-mix(in srgb,var(--motion-alt) 90%,transparent) 70%,transparent 100%)!important;
+  background-size:200% 100%!important;animation-duration:3.4s!important;
+}
+.case-study-motion-art .motion-track::after {
+  content:"";position:absolute;top:-5px;left:-5px;width:12px;height:12px;border-radius:50%;
+  background:#eafff7;border:2px solid var(--motion-accent);
+  box-shadow:0 0 12px var(--motion-accent),0 0 26px color-mix(in srgb,var(--motion-accent) 65%,transparent);
+  animation:scene-packet-travel 3.8s cubic-bezier(.45,0,.55,1) infinite alternate;
+}
+.case-study-motion-art .motion-track-b::after { animation-delay:-1.9s;animation-duration:4.6s; }
+.case-study-motion-art .motion-core {
+  width:94px;height:94px;border-width:2px!important;
+  box-shadow:0 0 42px color-mix(in srgb,var(--motion-accent) 29%,transparent),inset 0 1px rgba(255,255,255,.28);
+  animation-duration:2.6s!important;
+}
+.case-study-motion-art .motion-node {
+  width:15px;height:15px;border-width:2.5px!important;
+  box-shadow:0 0 19px color-mix(in srgb,var(--motion-accent) 88%,transparent);animation-duration:1.8s!important;
+}
+.case-study-motion-art .motion-panel {
+  border-width:1.5px!important;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--motion-accent) 26%,rgba(12,25,32,.94)),rgba(13,24,34,.85))!important;
+  box-shadow:0 22px 46px rgba(0,0,0,.32),0 0 24px color-mix(in srgb,var(--motion-accent) 20%,transparent),inset 0 1px rgba(255,255,255,.24)!important;
+  animation-duration:3.8s!important;
+}
+.case-study-motion-art .motion-bars i { box-shadow:0 0 18px color-mix(in srgb,var(--motion-accent) 55%,transparent)!important;animation-duration:1.65s!important; }
+.case-study-motion-art .motion-calendar {
+  border-width:1.8px!important;background:rgba(7,22,28,.8)!important;
+  box-shadow:0 24px 54px rgba(0,0,0,.35),0 0 35px color-mix(in srgb,var(--motion-accent) 23%,transparent),inset 0 1px rgba(255,255,255,.2)!important;
+  animation:scene-calendar-float 4.2s ease-in-out infinite alternate!important;
+}
+.case-study-motion-art .motion-calendar i { animation:scene-calendar-cell 3s ease-in-out infinite; }
+.case-study-motion-art .motion-calendar i:nth-child(2) { animation-delay:.2s; }
+.case-study-motion-art .motion-calendar i:nth-child(3) { animation-delay:.4s; }
+.case-study-motion-art .motion-calendar i:nth-child(6) { animation-delay:.6s; }
+.case-study-motion-art .motion-calendar i:nth-child(7) { animation-delay:.8s; }
+.case-study-motion-art .motion-calendar i:nth-child(10) { animation-delay:1s;opacity:.75!important; }
+.scene-aetherflow .motion-core { width:78px;height:62px;border-radius:15px; }
+.scene-aetherflow .motion-node { border-radius:4px; }
+.scene-orbit .motion-core { width:102px;height:102px;border-radius:50%; }
+.scene-pooya-os .motion-panel { display:block!important; }
+.scene-pooya-os .motion-panel-a { left:13%;top:18%; }
+.scene-pooya-os .motion-panel-b { right:12%;bottom:16%; }
+.scene-nexus-canvas .motion-core { width:27px;height:27px;border-radius:50%; }
+.scene-lumina-glass .motion-core {
+  width:132px;height:132px;border-radius:50%;
+  box-shadow:inset -12px -16px 32px rgba(156,124,244,.2),0 0 65px rgba(109,193,244,.35)!important;
+}
+.scene-aura-pulse .motion-bars { display:flex!important;height:142px!important; }
+.scene-aura-pulse .motion-bars i { width:15px!important; }
+.scene-global-cart .motion-panel { display:block!important; }
+.scene-global-cart .motion-panel-a { left:12%;top:19%; }
+.scene-global-cart .motion-panel-b { right:11%;bottom:15%; }
+.scene-salon-booking .motion-calendar { display:grid!important;width:228px;height:158px; }
+@keyframes scene-packet-travel { from { left:-5px;transform:scale(.84); } to { left:calc(100% - 7px);transform:scale(1.18); } }
+@keyframes scene-calendar-float { from { translate:0 7px;rotate:-3deg; } to { translate:0 -8px;rotate:2deg; } }
+@keyframes scene-calendar-cell {
+  0%,100% { filter:brightness(.75);box-shadow:none; }
+  45%,60% { filter:brightness(1.6);box-shadow:0 0 15px color-mix(in srgb,var(--motion-accent) 80%,transparent); }
+}
+@media (max-width:760px) {
+  .case-study-motion-art { opacity:.82!important; }
+  .case-study-motion-art .motion-orbit { width:185px;height:185px; }
+  .case-study-motion-art .motion-orbit-b { width:225px;height:118px; }
+  .case-study-motion-art .motion-panel { width:105px;height:68px;padding:13px 10px; }
+  .case-study-motion-art .motion-calendar { width:188px;height:130px; }
+  .case-study-motion-art .motion-bars { width:185px;height:105px;gap:8px; }
+  .case-study-motion-art .motion-bars i { width:10px; }
+  .scene-salon-booking .motion-calendar { width:188px;height:130px; }
+  .scene-lumina-glass .motion-core { width:100px;height:100px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .portfolio-brand-mark img,.pooya-wordmark,.case-study-motion-art::before,
+  .case-study-motion-art .motion-orbit,.case-study-motion-art .motion-track,
+  .case-study-motion-art .motion-track::after,.case-study-motion-art .motion-core,
+  .case-study-motion-art .motion-node,.case-study-motion-art .motion-panel,
+  .case-study-motion-art .motion-bars i,.case-study-motion-art .motion-calendar,
+  .case-study-motion-art .motion-calendar i { animation:none!important;transition:none!important; }
+  .portfolio-brand-mark img,.pooya-wordmark { opacity:1!important;translate:0 0!important;clip-path:none!important; }
+}

@@ -57,7 +57,7 @@ try {
   const context = await browser.newContext({
     viewport: { width: 1440, height: 1000 },
     deviceScaleFactor: 1,
-    reducedMotion: 'reduce',
+    reducedMotion: 'no-preference',
   });
   const page = await context.newPage();
   const pageErrors = [];
@@ -119,7 +119,7 @@ try {
           heroTitleRunsIsolated: Array.from(document.querySelectorAll('.portfolio-hero-title .hero-title-line')).every((node) => node.getAttribute('dir') === 'auto'),
           thoughtfulWord: (() => {
             const word = document.querySelector('.portfolio-hero-title .hero-title-word');
-            const line = word?.closest('.hero-gradient');
+            const line = word?.closest('.hero-title-word-line');
             const title = word?.closest('.portfolio-hero-title');
             if (!(word instanceof HTMLElement) || !(line instanceof HTMLElement) || !(title instanceof HTMLElement)) return null;
             const range = document.createRange();
@@ -181,6 +181,10 @@ try {
             };
           })(),
           caseStudyMotionScene: document.querySelector('.case-study-motion-art')?.className ?? null,
+          caseStudyMotionOpacity: (() => {
+            const art = document.querySelector('.case-study-motion-art');
+            return art ? Number.parseFloat(getComputedStyle(art).opacity) : null;
+          })(),
           heroCapabilityTitleIsolated: document.querySelector('.portfolio-capabilities h2')?.getAttribute('dir') === 'auto',
         };
       });
@@ -216,13 +220,27 @@ try {
         const shouldCaptureVisual = route.label === 'home-en' || (route.label !== 'home-fa' && route.label !== 'home-en' && viewport.name === 'desktop');
         if (shouldCaptureVisual) {
           const fileName = route.label + '-' + viewport.name + '.png';
-          await page.screenshot({ path: path.join(artifactDir, fileName), fullPage: false, animations: 'disabled' });
+          await page.screenshot({ path: path.join(artifactDir, fileName), fullPage: false, animations: 'allow' });
           routeRecord.visualEvidence ??= [];
           routeRecord.visualEvidence.push(fileName);
         }
+        const motionState = await page.evaluate(() => {
+          const art = document.querySelector('.case-study-motion-art');
+          if (!art) return { activeAnimationCount: 0, animationNames: [], opacity: null };
+          const active = art.getAnimations({ subtree: true }).filter((animation) => animation.playState === 'running' || animation.playState === 'pending');
+          return {
+            activeAnimationCount: active.length,
+            animationNames: [...new Set(active.map((animation) => animation.animationName).filter(Boolean))],
+            opacity: Number.parseFloat(getComputedStyle(art).opacity),
+          };
+        });
+        if (route.label !== 'home-en' && route.label !== 'home-fa') {
+          if (motionState.activeAnimationCount < 3) addFailure(route, viewport.name, 'The case-study hero does not expose at least three running visual animations.');
+          if ((motionState.opacity ?? 0) < .7) addFailure(route, viewport.name, 'The project motion layer is too faint to be a visible foreground visual.');
+        }
         const metrics = await page.evaluate(() => {
           const word = document.querySelector('.portfolio-hero-title .hero-title-word');
-          const line = word?.closest('.hero-gradient');
+          const line = word?.closest('.hero-title-word-line');
           const title = word?.closest('.portfolio-hero-title');
           if (!word || !line || !title) return { headlineWordContained: true };
           const range = document.createRange();
@@ -310,6 +328,7 @@ try {
         routeRecord.viewportChecks.push({
           ...viewport,
           ...metrics,
+          motionState,
           scrollMetrics,
           axeViolationCount: axeFindings.length,
           axeIncompleteRuleCount: axeResults.incomplete.length,
@@ -354,6 +373,14 @@ try {
             addFailure(route, viewport.name, 'The case-study hero is missing its project-specific motion scene.');
           }
         }
+      }
+
+      if (route.label === 'aetherflow-en') {
+        await page.emulateMedia({ reducedMotion: 'reduce' });
+        const reducedMotionState = await page.locator('.case-study-motion-art .motion-track').first().evaluate((node) => getComputedStyle(node).animationName);
+        routeRecord.reducedMotionAnimationName = reducedMotionState;
+        if (reducedMotionState !== 'none') addFailure(route, null, 'The case-study motion does not respect prefers-reduced-motion.');
+        await page.emulateMedia({ reducedMotion: 'no-preference' });
       }
 
       // The skip link is the first interactive element in the page DOM.
