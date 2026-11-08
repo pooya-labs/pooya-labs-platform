@@ -1779,3 +1779,42 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-preview-1,.hero-preview-2,.hero-preview-3,.hero-preview-4,.hero-preview-5 { animation:none !important; }
 }
+
+
+/* The Stripe-inspired proof scene follows the active site theme instead of forcing a pale card. */
+.portfolio-page[data-theme="dark"] .portfolio-proof {
+  color:#f2f4fb;
+  border-color:rgba(160,157,224,.2);
+  background:linear-gradient(180deg,#11131e 0%,#15162a 54%,#101421 100%);
+  box-shadow:0 25px 90px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.07);
+}
+.portfolio-page[data-theme="dark"] .portfolio-proof::before {
+  background:radial-gradient(ellipse at 50% 75%,rgba(128,91,232,.22),transparent 48%),radial-gradient(ellipse at 18% 0%,rgba(55,149,221,.12),transparent 45%);
+}
+.portfolio-page[data-theme="dark"] .portfolio-proof .portfolio-eyebrow { color:#c0a9ff; }
+.portfolio-page[data-theme="dark"] .portfolio-proof .eyebrow-pulse { background:#b79aff;box-shadow:0 0 16px rgba(183,154,255,.7); }
+.portfolio-page[data-theme="dark"] .portfolio-proof-copy h2 { color:#f6f4ff; }
+.portfolio-page[data-theme="dark"] .portfolio-proof-copy p { color:#aeb5c9; }
+.portfolio-page[data-theme="dark"] .portfolio-proof-stats { border-top-color:rgba(215,211,255,.16); }
+.portfolio-page[data-theme="dark"] .portfolio-proof-stats article { border-inline-start-color:rgba(215,211,255,.13); }
+.portfolio-page[data-theme="dark"] .portfolio-proof-stats strong { color:#f2efff; }
+.portfolio-page[data-theme="dark"] .portfolio-proof-stats strong span { color:#c1a7ff; }
+.portfolio-page[data-theme="dark"] .portfolio-proof-stats small { color:#a9b0c5; }
+.portfolio-page[data-theme="dark"] .proof-burst-rays {
+  background:repeating-conic-gradient(from -4deg at 50% 100%,rgba(104,95,217,0) 0deg 1deg,rgba(160,139,255,.62) 1.12deg 1.22deg,rgba(104,95,217,0) 1.32deg 3deg);
+}
+.portfolio-page[data-theme="dark"] .proof-burst-particles {
+  background-image:radial-gradient(circle,rgba(180,165,255,.9) 1px,transparent 1.8px);
+  opacity:.52;
+}
+.portfolio-page[data-theme="light"] .portfolio-proof {
+  color:#091d33;
+  background:linear-gradient(180deg,rgba(250,251,255,.98),rgba(237,241,249,.99));
+}
+.portfolio-page[data-theme="light"] .portfolio-proof-copy h2 { color:#091d33; }
+.portfolio-page[data-theme="light"] .portfolio-proof-copy p { color:#53657a; }
+@media (max-width: 680px) {
+  .portfolio-proof-stats article { padding-inline:10px; }
+  .portfolio-proof-stats strong { font-size:clamp(25px,8vw,36px); }
+  .portfolio-proof-stats small { font-size:10px; }
+}
