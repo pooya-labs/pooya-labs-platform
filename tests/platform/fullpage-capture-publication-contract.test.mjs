@@ -32,6 +32,8 @@ test('only visually and privacy reviewed public full-page captures are approved'
 
 test('publication workflow downloads the exact artifact and verifies each PNG before committing', () => {
   assert.match(workflow, /portfolio-2026-11-08\.json/);
+  assert.match(workflow, /Verify source capture run identity/);
+  assert.match(workflow, /gh run view/);
   assert.match(workflow, /gh run download/);
   assert.match(workflow, /SHA-256 mismatch/);
   assert.match(workflow, /PNG dimensions mismatch/);
