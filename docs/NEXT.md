@@ -14,7 +14,7 @@
 
 ## Read-only source recheck — 2026-11-08
 
-Latest source commits inspected: AetherFlow `b7ee1de`, ORBIT `161913b`, Pooya.OS `b3e4ee8`, NexusCanvas `ebcda40`, LuminaGlass `9c479da`, AuraPulse `99f9048`, GlobalCart `2101f02`, and Salon Booking `fcd7b0f`. The observed changes are recorded in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md). These are not yet final Phase 9 source/feature acceptance.
+Latest read-only `main` heads inspected on 2026-11-08 19:30 UTC: AetherFlow `2ce6c7450186`, ORBIT `970d9723ee44`, Pooya.OS `f4b93d7f95a1`, NexusCanvas `9f2756b18466`, LuminaGlass `f8e6c958d33d`, AuraPulse `b4a83648025d`, GlobalCart `fed6f59f62c9`, and Salon Booking `ca745a46c863`. The full SHA/date inventory and inspected deltas are recorded in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md). Seven commits changed bilingual README ownership artwork only; GlobalCart added two storefront screenshots. These checks do not constitute final Phase 9 source/feature acceptance.
 
 ## Post-remediation verification checkpoint — 2026-11-08
 
@@ -24,6 +24,16 @@ Latest source commits inspected: AetherFlow `b7ee1de`, ORBIT `161913b`, Pooya.OS
 - Performance artifact [13630148273](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42513404040/artifacts/13630148273) reports 20 samples per host and p50/p75/maximum CLS **0.0000** on local build, GitHub Pages, and Cloudflare Pages. See [PERFORMANCE-BUDGET.md](PERFORMANCE-BUDGET.md).
 - GitHub Pages deployment [42513404002](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42513404002) succeeded. Cloudflare production deployment [`592357af`](https://592357af.pooya-labs-platform.pages.dev/) succeeded through the authorized Pages API for the same application commit.
 - Cloudflare's GitHub Actions automation still requires the private `CLOUDFLARE_API_TOKEN` secret. Apps Script publishing remains skipped until `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` are configured; do not represent the Apps Script Web App as updated by this checkpoint.
+
+## Latest verified app/host checkpoint — centered monogram asset (2026-11-08)
+
+- Application asset commit [`41ea1004`](https://github.com/pooya-labs/pooya-labs-platform/commit/41ea1004433196aa81e4e50b17a1620f110ecea8) adds the centered rounded black-tile Pooya Labs monogram asset. GitHub Pages build and deployment [42514976384](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976384) succeeded on that exact commit.
+- Browser QA [42514976406](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976406) completed successfully: 18/18 routes, zero failures, zero confirmed Axe violations, and 36 incomplete color-contrast checks retained for human review. Artifact: [13631024148](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976406/artifacts/13631024148).
+- The same run measured 20 cold-context samples per host. p75 CLS was 0.0000 on local build, GitHub Pages, and Cloudflare Pages. p75 LCP was 316 ms local, 400 ms GitHub Pages, and 400 ms Cloudflare Pages. Full navigation/resource figures are recorded in [PERFORMANCE-BUDGET.md](PERFORMANCE-BUDGET.md).
+- Repository CI [42515288490](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42515288490) passed on current documentation head `a37de4cf`.
+- Cloudflare production deployment [`107de2a2`](https://107de2a2.pooya-labs-platform.pages.dev/) (ID `107de2a2-d69c-4b9d-ae2c-38da68c7bad4`) was verified through the Cloudflare API on current `main` commit `a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67`; its queue, initialization, clone, build, and deploy stages all succeeded. This commit includes the `41ea1004` monogram-tile asset, so both public hosts now contain the current platform asset revision. The GitHub Actions Cloudflare publish workflow remains separately credential-gated by the private `CLOUDFLARE_API_TOKEN` secret; automatic push-triggered publishing is not yet proven.
+- Apps Script workflow [42514976476](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976476) passed its configuration-check job but skipped the actual publish job because `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` are not configured. This does not block the static portfolio.
+
 
 ## Phase 7 work order
 

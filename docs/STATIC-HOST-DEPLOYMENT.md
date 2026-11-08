@@ -4,12 +4,15 @@
 
 ## Source and current deployment baseline
 
-- Repository: pooya-labs/pooya-labs-platform; production source branch: main.
-- GitHub Pages output: dist/pages; host: https://pooya-labs.github.io/pooya-labs-platform/.
-- Cloudflare Pages output: dist/cloudflare; host: https://pooya-labs-platform.pages.dev/.
-- Latest verified application output is still source commit c7a86a2e2f54d157b7e0b806c9c022afd41fd208. Later main commits in the Phase 7 roadmap/docs work do not change application output.
-- Cloudflare production deployment a1a69456-fc5a-4ac3-917b-f5cb0cb909a5 was successfully published from that application commit through the authorized Pages API.
-- Cloudflare GitHub Actions publishing remains credential-gated. The deploy job skips until the private CLOUDFLARE_API_TOKEN secret exists. Do not treat a skipped job as a deployment.
+- Repository: `pooya-labs/pooya-labs-platform`; production source branch: `main`.
+- GitHub Pages output: `dist/pages`; canonical host: https://pooya-labs.github.io/pooya-labs-platform/.
+- Cloudflare Pages output: `dist/cloudflare`; canonical host: https://pooya-labs-platform.pages.dev/.
+- Latest application asset revision published to GitHub Pages: [`41ea1004433196aa81e4e50b17a1620f110ecea8`](https://github.com/pooya-labs/pooya-labs-platform/commit/41ea1004433196aa81e4e50b17a1620f110ecea8). Platform GitHub Pages workflow [42514976384](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976384) completed build and deployment successfully on that revision.
+- Browser QA [42514976406](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976406) passed 18/18 routes with zero failures and zero confirmed Axe violations; 36 incomplete color-contrast checks remain for human review. The run measured 20 cold-context samples per host with p75 CLS 0.0000 on local, GitHub Pages, and Cloudflare Pages.
+- Latest Repository CI [42515288490](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42515288490) passed on main docs head `a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67`.
+- Cloudflare production deployment [`107de2a2`](https://107de2a2.pooya-labs-platform.pages.dev/) (ID `107de2a2-d69c-4b9d-ae2c-38da68c7bad4`) was created on 2026-11-08 from main commit `a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67`. Cloudflare confirmed successful `queued`, `initialize`, `clone_repo`, `build`, and `deploy` stages. Because this commit includes application asset revision `41ea1004`, the latest GitHub Pages and Cloudflare Pages outputs contain the same application assets.
+- The GitHub Actions Cloudflare deployment workflow remains credential-gated: the private `CLOUDFLARE_API_TOKEN` secret is still absent. The latest production deployment was nevertheless verified through the authorized Cloudflare API; do not describe automatic push-triggered GitHub Actions publishing as enabled.
+- Apps Script workflow [42514976476](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976476) passed its credential-check job but skipped the actual publish job because `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` are absent. The static portfolio does not depend on Apps Script deployment.
 
 ## Pre-deployment checks
 

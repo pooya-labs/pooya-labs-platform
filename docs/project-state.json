@@ -12,16 +12,16 @@
     "status": "The roadmap has been reordered at Pooya's request: Phase 7 readiness first; Phase 8 is the penultimate full-site redesign and two-round owner approval; Phase 9 is the final pre-release integration of all eight independent projects; Phase 10 is V1 release. Phases 4-6 were explicitly scoped for V1: no public account/CMS, direct contact links instead of a form backend, and no heavy embedded demos before Phase 9. Latest upstream source commits for all eight projects were inspected read-only and recorded. Continue Phase 7 technical closeout; do not begin final visual redesign or project integration early."
   },
   "lastCheckpointDate": "2026-11-08",
-  "latestVerifiedCodeCommit": "045bc84526ef823a37599c6790d144d68465d35c",
+  "latestVerifiedCodeCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
   "tests": {
-    "repositoryCi": "passed-run-42513404028;main-application-commit-045bc84526ef823a37599c6790d144d68465d35c;dependency-audit-0-vulnerabilities;lint-format-TypeScript-three-build-targets-contract-suite-success",
+    "repositoryCi": "passed-run-42515288490;current-main-docs-head-a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67;dependency-audit-lint-format-TypeScript-three-build-targets-contract-tests-success",
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
-    "githubPagesDeployment": "passed-run-42513404002;main-045bc84526ef823a37599c6790d144d68465d35c",
+    "githubPagesDeployment": "passed-run-42514976384;main-asset-commit-41ea1004433196aa81e4e50b17a1620f110ecea8;build-and-deploy-success",
     "platformTypecheck": "passed-run-42502717615-on-main-c7a86a2e2f54d157b7e0b806c9c022afd41fd208",
     "pagesAndGasBuilds": "passed-run-42502717615;GitHub-Pages-Apps-Script-and-Cloudflare-build-targets",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
@@ -39,9 +39,9 @@
     "staticCaseStudySectionOrder": "passed-run-42227942261-and-42230046270",
     "lastVerifiedTestCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
     "skipNavigationContract": "passed-run-42231110043-bilingual-fixed-position-reduced-motion",
-    "portfolioBrowserQa": "passed-run-42513404040-attempt-2;18-of-18-routes;36-of-36-viewports;zero-failures;zero-horizontal-overflow;zero-confirmed-axe-violations;36-incomplete-color-contrast-checks-require-human-review",
-    "portfolioBrowserQaArtifact": "13630148273",
-    "portfolioBrowserQaStrictGate": "passed-run-42513404040-attempt-2;all-smoke-checks-green;axe-no-confirmed-violations;36-incomplete-contrast-review-items-retained;performance-report-only",
+    "portfolioBrowserQa": "passed-run-42514976406;application-asset-revision-41ea1004433196aa81e4e50b17a1620f110ecea8;18-of-18-routes;zero-failures;zero-confirmed-axe-violations;36-incomplete-color-contrast-checks-require-human-review;20-cold-context-samples-per-host;CLS-p75-0-all-hosts;LCP-p75-local-316ms-GitHubPages-400ms-CloudflarePages-400ms;cloudflare-production-107de2a2-deployed-before-probe-from-main-a37de4cf",
+    "portfolioBrowserQaArtifact": "13631024148",
+    "portfolioBrowserQaStrictGate": "passed-run-42514976406;18-of-18-routes;zero-failures;zero-confirmed-axe-violations;36-incomplete-checks-remain-human-review;performance-report-only",
     "pagesArtifactAudit": "passed-run-42238363799-artifact-13511808294-17-html-17-png-1200x627-17-sitemap-urls-all-canonical-og-description-jsonld-and-case-study-hreflang",
     "pagesArtifactAuditDetails": {
       "artifactId": "13511808294",
@@ -60,14 +60,14 @@
     "novelLibrary": "implemented-and-covered-by-six-new-contract-tests",
     "documentationCheckpoint": "passed-run-42496528868-on-b429828f0ed8f967317934fffed32daffa7b6a5f;state-roadmap-next-status-and-ADR-synchronized",
     "githubActionsRuntimeWarning": "none-observed-in-latest-successful-run-42502717615",
-    "latestVerifiedTestCommit": "a08de7ec138c8790134a177b20a80ca7af137699",
+    "latestVerifiedTestCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
     "latestDocumentationCheckpoint": "passed-quality-and-release-conventions-PR-12-merge-1746c11ee87fba4a37ea8fff0f548cb832fe4b22;CI-42504771438;Browser-QA-42504771467",
-    "latestDetailedAxeReport": "run-42491842131-on-a08de7ec;zero-axe-violations;36-incomplete-rule-checks;19-private-visual-evidence-PNGs;About-wordmark-390x142-loaded-and-visually-reviewed",
-    "latestRepositoryCiRun": "42504771438",
-    "latestBrowserQaRun": "42504771467",
-    "latestPagesDeploymentRun": "42502717618",
-    "latestCloudflareAttempt": "run-42491842068;CLOUDFLARE_API_TOKEN-not-configured;credential-check-passed;production-deploy-job-skipped",
-    "latestAppsScriptAttempt": "run-42491842057;CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID-not-configured;configuration-check-passed;production-publish-job-skipped",
+    "latestDetailedAxeReport": "run-42514976406;zero-confirmed-axe-violations;36-incomplete-axe-checks;artifact-13631024148",
+    "latestRepositoryCiRun": "42515288490",
+    "latestBrowserQaRun": "42514976406",
+    "latestPagesDeploymentRun": "42514976384",
+    "latestCloudflareAttempt": "success-deployment-107de2a2-d69c-4b9d-ae2c-38da68c7bad4;main-a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67;all-five-stages-success;includes-41ea1004-asset",
+    "latestAppsScriptAttempt": "run-42514976476;configuration-check-passed;actual-publish-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
     "pendingProductMotionAndGalleryQa": "passed-run-42496014812",
     "pendingAndroidTouchHandoff": "chromium-mobile-touch-emulation-passed-16-of-16-localized-project-routes;physical-android-device-review-still-required",
     "projectCardMotionQa": "passed-8-of-8-cards-active-at-desktop-and-mobile-in-fa-and-en;run-42498428681;artifact-13624393118",
@@ -76,15 +76,16 @@
     "projectGridAndroidVisibility": "fixed-on-main-2305f5a68f1148c8293f6e3b55746c01eb52d8f2;projects-section-heading-and-first-card-opacity-1-in-fa-en-desktop-mobile;Browser-QA-run-42498428681;physical-Android-verification-still-recommended",
     "androidHomepageProjectsQA": "passed-18-of-18-routes;36-of-36-viewports;zero-failures;home-fa-and-home-en-projects-section-heading-first-card-opacity-1;no-reveal-gates-on-section-heading-or-cards",
     "repositoryCiOnCurrentMain": "passed-run-42498895229-on-main-a0bac438d377571d0a2c2a6a7c46bee8bd7cf746;documentation-only-checkpoint",
-    "cloudflarePagesProductionDeploy": "success-deployment-a1a69456-fc5a-4ac3-917b-f5cb0cb909a5;commit-c7a86a2e2f54d157b7e0b806c9c022afd41fd208;build-success;deploy-success;direct-authorized-Pages-API",
-    "cloudflareGitAutoDeploySettings": "source-config-main-and-path-filters-enabled;push-trigger-not-observed;GitHub-Actions-deploy-job-skips-without-CLOUDFLARE_API_TOKEN",
+    "cloudflarePagesProductionDeploy": "success-deployment-107de2a2-d69c-4b9d-ae2c-38da68c7bad4;main-a37de4cf;all-stages-success;authorized-Cloudflare-API",
+    "cloudflareGitAutoDeploySettings": "source-main-path-filters-apps/platform-and-package-json;direct-Cloudflare-API-deploy-107de2a2-success;GitHub-Actions-auto-publish-still-requires-private-CLOUDFLARE_API_TOKEN;push-trigger-not-verified",
     "githubActionsRuntimeMigration": "all-10-workflow-files-updated;checkout-v7.0.1-node24;setup-node-v7.1.0-node24;upload-artifact-v7.0.2-node24;upload-pages-artifact-v5.0.0;deploy-pages-v5.0.1-node24;CI-93-of-93;no-Node20-deprecation-warning",
     "accessibilitySemanticFix": "portfolio-proof-stats-role-group;aria-prohibited-attr-incomplete-removed-in-run-42502717608",
     "repositoryQualityConventions": "merged-pr-12-1746c11;zero-dependency-lint-and-format-checks-in-CI;CONTRIBUTING-and-RELEASE-guides;no-application-output-changed",
-    "accessibilityContrastReview": "36-incomplete-color-contrast-records-due-to-gradient-or-pseudo-backgrounds;zero-confirmed-axe-violations;human-contrast-review-pending",
-    "portfolioPerformance": "passed-run-42513404040-attempt-2;20-samples-per-host;local-github-pages-cloudflare-p50-p75-maximum-cls-0.0000",
-    "cloudflareProductionDeployment": "success-deployment-592357af-e235-4d3f-9912-bbca7edbfc51;main-045bc84526ef823a37599c6790d144d68465d35c;direct-authorized-Pages-API;build-success;deploy-success",
-    "appsScriptProductionDeployment": "skipped-run-42513404009;missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID;build-target-passed-no-production-publish"
+    "accessibilityContrastReview": "36-incomplete-axe-rule-checks;zero-confirmed-axe-violations;manual-human-contrast-review-pending",
+    "portfolioPerformance": "passed-run-42514976406;20-samples-per-host;local-p75-ttfb4-dcl96-load97-fcp220-lcp316-cls0;github-pages-p75-ttfb109-dcl266-load293-fcp332-lcp400-cls0;cloudflare-pages-p75-ttfb83-dcl282-load300-fcp328-lcp0;36-incomplete-contrast-checks-human-review",
+    "cloudflareProductionDeployment": "success-deployment-107de2a2-d69c-4b9d-ae2c-38da68c7bad4;main-a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67;queued-initialize-clone-build-deploy-success",
+    "appsScriptProductionDeployment": "skipped-run-42514976476;missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID;build-target-passed-no-production-publish",
+    "latestAppsScriptAttemptRun": "42514976476;credential-check-passed;actual-publish-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -107,28 +108,29 @@
     "activePagesSource": "GitHub Actions deployment succeeded; repository Pages source setting still requires owner-side confirmation",
     "appsScriptSync": "deferred-not-required-for-static-portfolio",
     "portfolioPagesPublished": true,
-    "portfolioPagesRun": "42483757053",
-    "latestPortfolioCodeCommit": "045bc84526ef823a37599c6790d144d68465d35c",
-    "cloudflareProductionDeployment": "592357af-e235-4d3f-9912-bbca7edbfc51",
-    "cloudflareProductionCommit": "045bc84526ef823a37599c6790d144d68465d35c",
-    "cloudflareWorkflow": "GitHub Actions credential-check passed but actual deploy job skipped because CLOUDFLARE_API_TOKEN is absent; production deployment 592357af-e235-4d3f-9912-bbca7edbfc51 was created via authorized Pages API for main application commit 045bc84526ef823a37599c6790d144d68465d35c and build/deploy succeeded",
+    "portfolioPagesRun": "42514976384",
+    "latestPortfolioCodeCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
+    "cloudflareProductionDeployment": "107de2a2-d69c-4b9d-ae2c-38da68c7bad4",
+    "cloudflareProductionCommit": "a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67",
+    "cloudflareWorkflow": "Cloudflare production deployment 107de2a2-d69c-4b9d-ae2c-38da68c7bad4 created through authorized Cloudflare API from current main commit a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67; all deployment stages succeeded; GitHub Actions workflow remains blocked by missing private CLOUDFLARE_API_TOKEN",
     "appsScriptWorkflow": "actual-production-deploy-success-run-42476478245-on-fa5d412506387622ca39df792fcaed62eb88cb67",
-    "latestPagesAttemptRun": "42513404002",
-    "latestPagesAttemptCodeCommit": "045bc84526ef823a37599c6790d144d68465d35c",
-    "latestPagesAttemptStatus": "passed-build-and-deploy-on-main",
+    "latestPagesAttemptRun": "42514976384",
+    "latestPagesAttemptCodeCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
+    "latestPagesAttemptStatus": "passed-build-and-deploy-on-main-41ea1004",
     "pagesArtifactId": "13518846598",
     "pagesArtifactSizeBytes": 3817565,
-    "latestDocumentationCommit": "4df636da5d2662f95c3c6c30df3b7e18cd37f942",
-    "portfolioBrowserQaRun": "42483757051",
+    "latestDocumentationCommit": "a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67",
+    "portfolioBrowserQaRun": "42514976406",
     "cloudflareLatestAttemptRun": "42399972690; configuration-check-passed; actual-production-deploy-job-skipped-missing-CLOUDFLARE_API_TOKEN",
     "appsScriptLatestAttemptRun": "42399972770; configuration-check-passed; actual-production-deploy-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
-    "latestCloudflareAttemptRun": "manual-pages-api-deployment-592357af-e235-4d3f-9912-bbca7edbfc51;commit-045bc84526ef823a37599c6790d144d68465d35c;build-success;deploy-success",
-    "latestAppsScriptAttemptRun": "42513404009;configuration-check-passed;actual-publish-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
-    "cloudflareDeploymentUrl": "https://592357af.pooya-labs-platform.pages.dev/",
+    "latestCloudflareAttemptRun": "Cloudflare-API-deployment-107de2a2-d69c-4b9d-ae2c-38da68c7bad4;main-a37de4cf;all-five-stages-success",
+    "latestAppsScriptAttemptRun": "42514976476;credential-check-passed;actual-publish-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
+    "cloudflareDeploymentUrl": "https://107de2a2.pooya-labs-platform.pages.dev/",
     "cloudflareCanonicalUrl": "https://pooya-labs-platform.pages.dev/",
-    "cloudflareProductionStage": "build-success;deploy-success",
-    "cloudflareAutoDeploy": "Git source main and path filters configured; automatic GitHub Actions publishing requires private CLOUDFLARE_API_TOKEN; direct Pages API production deploy verified",
-    "latestAppsScriptProductionDeploy": "42513404009;actual-publish-skipped-missing-secrets;Apps-Script-build-artifact-passed"
+    "cloudflareProductionStage": "queued-success;initialize-success;clone_repo-success;build-success;deploy-success",
+    "cloudflareAutoDeploy": "Git source main and path filters configured; Cloudflare API production deploy for a37de4cf verified; GitHub Actions automated deploy remains blocked by missing private CLOUDFLARE_API_TOKEN; push-trigger behavior not yet verified",
+    "latestAppsScriptProductionDeploy": "42514976476;credential-check-passed;actual-publish-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
+    "brandAssetParity": "GitHub-Pages-41ea1004;Cloudflare-a37de4cf-includes-41ea1004-asset;production-asset-parity-verified"
   },
   "previousProjects": {
     "inspected": true,
@@ -139,14 +141,14 @@
     "finalPortfolioIntegrationStage": "Phase 9 — immediately before Phase 10 release",
     "lastReadOnlyRecheckDate": "2026-11-08",
     "latestObservedCommits": {
-      "aetherflow": "b7ee1de0c300b6457958eadb04a93558f8cec196",
-      "orbit": "161913be3134d8ad89d8cbb535b066c01768fbd1",
-      "pooyaOs": "b3e4ee8f3a6352aa8d17320584570d9b8ec798e7",
-      "nexusCanvas": "ebcda40e0334822ab75a43093cd923f599bebfb5",
-      "luminaGlass": "9c479da9c726d044f3482aa10fdc8aa27307d694",
-      "auraPulse": "99f90489f50d349be565640cf60738e181436245",
-      "globalcart": "2101f02cf60a0aba9291757a699d843c41455e1f",
-      "salonBooking": "fcd7b0fcfedf8f94227e164ef60ce74549fe1731"
+      "aetherflow": "2ce6c7450186a6e50332c12872b17f4b01196739",
+      "orbit": "970d9723ee4419df82979a5e232f4fed3c8ab5a2",
+      "pooyaOs": "f4b93d7f95a1c25dfd62fd4c28b64de4fac0ec6c",
+      "nexusCanvas": "9f2756b1846622caa43e3947c4387c71a3e988c9",
+      "luminaGlass": "f8e6c958d33d494d9d26ff98279897d8bfd3aa35",
+      "auraPulse": "b4a83648025d30162ad8754516b7c419b56e68ea",
+      "globalcart": "fed6f59f62c9d853ae82099b7266339ada15f9c2",
+      "salonBooking": "ca745a46c863010f2d7133356a0209abf928a12"
     }
   },
   "blockers": [
@@ -161,7 +163,7 @@
     "Performance budgets remain report-only until representative physical Android/device and network review is complete; post-remediation Chromium CI shows p50/p75/maximum CLS 0 on all three hosts but is not physical-device acceptance.",
     "Manual accessibility acceptance remains open: 36 incomplete axe color-contrast checks are not passes; complete visual contrast, keyboard-only, focus visibility, and screen-reader review.",
     "Cloudflare GitHub Actions auto-deployment still requires the private CLOUDFLARE_API_TOKEN secret; the current production deployment succeeded through the authorized Cloudflare Pages API.",
-    "Apps Script production publishing was skipped in run 42513404009 because CLASPRC_JSON, CLASP_JSON, and GAS_DEPLOYMENT_ID are not configured. The Apps Script build target passed; do not claim the Apps Script Web App was updated."
+    "Apps Script production publishing was skipped in run 42514976476 because CLASPRC_JSON, CLASP_JSON, and GAS_DEPLOYMENT_ID are not configured. The Apps Script build target passed; do not claim the Apps Script Web App was updated."
   ],
   "nextAction": "Continue Phase 7 owner/device readiness: review the 36 incomplete contrast items, test GitHub Pages and Cloudflare production on physical Android and representative networks, validate external social crawler previews, rehearse public-host rollback/recovery, and obtain owner visual/content approval. Configure private Cloudflare/Apps Script Actions secrets only if automatic publishing is needed. Do not start Phase 8 redesign until the Phase 7 owner/device gate is met.",
   "securityBaseline": {
@@ -275,6 +277,48 @@
       "cloudflarePages": {
         "cumulativeLayoutShift": 0
       }
+    },
+    "latestVerificationRun": "42514976406",
+    "latestVerificationArtifact": "13631024148",
+    "latestVerificationSourceCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
+    "latestCloudflareDeployment": "107de2a2-d69c-4b9d-ae2c-38da68c7bad4",
+    "latestP75": {
+      "localBuild": {
+        "ttfbMs": 4,
+        "domContentLoadedMs": 96,
+        "loadEventMs": 97,
+        "firstContentfulPaintMs": 220,
+        "largestContentfulPaintMs": 316,
+        "cumulativeLayoutShift": 0,
+        "totalResourceBytes": 178276,
+        "javascriptBytes": 129364,
+        "stylesheetBytes": 40692,
+        "imageBytes": 8220
+      },
+      "githubPages": {
+        "ttfbMs": 109,
+        "domContentLoadedMs": 266,
+        "loadEventMs": 293,
+        "firstContentfulPaintMs": 332,
+        "largestContentfulPaintMs": 400,
+        "cumulativeLayoutShift": 0,
+        "totalResourceBytes": 181290,
+        "javascriptBytes": 130735,
+        "stylesheetBytes": 42310,
+        "imageBytes": 8245
+      },
+      "cloudflarePages": {
+        "ttfbMs": 83,
+        "domContentLoadedMs": 282,
+        "loadEventMs": 300,
+        "firstContentfulPaintMs": 328,
+        "largestContentfulPaintMs": 400,
+        "cumulativeLayoutShift": 0,
+        "totalResourceBytes": 178821,
+        "javascriptBytes": 127971,
+        "stylesheetBytes": 42726,
+        "imageBytes": 8124
+      }
     }
   },
   "operations": {
@@ -330,7 +374,7 @@
     "projectIntegrationPhase": 9,
     "penultimateRedesignOwnerApproval": "pending"
   },
-  "latestVerifiedCommit": "31a1b8022e61e6b6ba8cc5d9c163bb2c3dbe149f",
+  "latestVerifiedCommit": "a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -497,52 +541,49 @@
     ],
     "projectIntegration": "deferred-to-phase-9-after-phase-8-redesign-approval; all-eight-project portfolio integration pending"
   },
-  "latestBranchHeadAtCheckpoint": "31a1b8022e61e6b6ba8cc5d9c163bb2c3dbe149f",
+  "latestBranchHeadAtCheckpoint": "a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
     "automatedContract": "passed-run-42231110043",
     "manualKeyboardAndScreenReaderReview": "pending",
-    "browserQa": "passed-run-42513404040-attempt-2;18-routes;36-viewports;zero-failures;artifact-13630148273",
-    "axeLastCompletedRun": "42476478346",
+    "browserQa": "passed-run-42514976406;18-routes;zero-failures;zero-confirmed-axe-violations;36-incomplete-axe-rules;artifact-13631024148",
+    "axeLastCompletedRun": "42514976406",
     "axeLastCompletedCounts": {
       "critical": 0,
       "serious": 0,
       "moderate": 0,
       "minor": 0,
       "unknown": 0,
-      "incompleteRuleChecks": 36,
-      "colorContrastIncomplete": 34,
-      "ariaProhibitedAttrIncomplete": 2
+      "incompleteRuleChecks": 36
     },
     "strictAxeGate": "critical-and-serious-findings-fail-browser-qa; incomplete-rule-details-retained",
-    "latestBrowserQaArtifact": "13630148273",
-    "latestDetailedAxeCountsSource": "42513404040-attempt-2",
+    "latestBrowserQaArtifact": "13631024148",
+    "latestDetailedAxeCountsSource": "42514976406",
     "latestAxeCounts": {
       "critical": 0,
       "serious": 0,
       "moderate": 0,
       "minor": 0,
       "unknown": 0,
-      "incompleteRuleChecks": 36,
-      "colorContrastIncomplete": 36
+      "incompleteRuleChecks": 36
     }
   },
   "upstreamEvidence": {
     "aetherflow": {
       "repository": "pooya-labs/aetherflow",
       "branch": "main",
-      "inspectedHead": "b7ee1de0c300b6457958eadb04a93558f8cec196",
-      "latestCommitAt": "2026-11-08T17:39:03Z",
+      "inspectedHead": "2ce6c7450186a6e50332c12872b17f4b01196739",
+      "latestCommitAt": "2026-11-08T19:25:54Z",
       "readmeMilestone": "M00-M07 complete; M08 in progress",
       "inspectionMode": "read-only",
       "upstreamRepositoryModified": false,
-      "latestObservedChange": "Apps Script dashboard now labels bridge records as synthetic demo data; M07/M08 public badge mismatch and live API CORS acceptance remain open."
+      "latestObservedChange": "Latest main commit changed only the bilingual README ownership mark to the centered rounded black-tile platform monogram. Previously recorded M07/M08, dashboard and live API CORS acceptance gaps remain."
     },
     "orbit": {
       "repository": "pooya-labs/orbit",
       "branch": "main",
-      "inspectedHead": "161913be3134d8ad89d8cbb535b066c01768fbd1",
+      "inspectedHead": "970d9723ee4419df82979a5e232f4fed3c8ab5a2",
       "pr136Merged": true,
       "stableRelease": "v1.0.0",
       "ci": "passed-run-42223939950",
@@ -594,13 +635,14 @@
         }
       ],
       "pullRequestCheckpointAt": "2026-11-07T17:14:39Z",
-      "latestCommitAt": "2026-11-07T21:59:24Z",
-      "latestObservedChange": "Documentation-only correction to D1 implementation gate numbering; gateway remains disabled/fail-closed pending origin, secret, bindings, and CF01-CF05."
+      "latestCommitAt": "2026-11-08T19:25:47Z",
+      "latestObservedChange": "Latest main commit changed only the README ownership mark to the centered rounded black-tile platform monogram. The previously recorded Cloudflare Worker gateway remains unconfigured/fail-closed.",
+      "inspectionMode": "read-only"
     },
     "globalcart": {
       "repository": "pooya-labs/globalcart",
       "branch": "main",
-      "inspectedHead": "2101f02cf60a0aba9291757a699d843c41455e1f",
+      "inspectedHead": "fed6f59f62c9d853ae82099b7266339ada15f9c2",
       "release": "0.2.3-dev",
       "stage": "M09.8",
       "currentAppSourceSha": "6192f8eccdbf8092c31e06a0f37a53485c3e3589",
@@ -637,51 +679,52 @@
       ],
       "projectContextHandoffStaleAt": "8a89f0d612cdf69d619b64049304eaa789b4785c",
       "upstreamRepositoryModified": false,
-      "latestCommitAt": "2026-11-08T17:33:09Z",
+      "latestCommitAt": "2026-11-08T19:30:41Z",
       "portfolioScreenshotPublish": "42394145400-skipped",
-      "latestObservedChange": "Catalog snapshot, lockfile, and site imagery persisted by CI; no application fix was included in this bot commit. Previous hero-product-tile accessible-name Browser E2E failures still need fresh exact-SHA verification."
+      "latestObservedChange": "Latest main commit added desktop and mobile storefront-home screenshots under docs/screenshots only; no application code changed. Existing exact-SHA accessibility-name and full PDP/gallery acceptance tasks remain open.",
+      "inspectionMode": "read-only"
     },
     "pooyaOs": {
       "repository": "pooya-labs/pooya-os",
       "branch": "main",
-      "inspectedHead": "b3e4ee8f3a6352aa8d17320584570d9b8ec798e7",
-      "latestCommitAt": "2026-11-08T16:14:29Z",
+      "inspectedHead": "f4b93d7f95a1c25dfd62fd4c28b64de4fac0ec6c",
+      "latestCommitAt": "2026-11-08T19:25:39Z",
       "inspectionMode": "read-only",
       "upstreamRepositoryModified": false,
-      "latestObservedChange": "Window frames reserve additional footer/dock space and mobile safe-area space."
+      "latestObservedChange": "Latest main commit changed only the bilingual README ownership mark to the centered rounded black-tile platform monogram; the window safe-area work remains the latest application change."
     },
     "nexusCanvas": {
       "repository": "pooya-labs/nexus-canvas",
       "branch": "main",
-      "inspectedHead": "ebcda40e0334822ab75a43093cd923f599bebfb5",
-      "latestCommitAt": "2026-11-08T16:34:35Z",
+      "inspectedHead": "9f2756b1846622caa43e3947c4387c71a3e988c9",
+      "latestCommitAt": "2026-11-08T19:25:45Z",
       "inspectionMode": "read-only",
       "upstreamRepositoryModified": false,
-      "latestObservedChange": "Removed undefined footer language variable; replacement creator/ecosystem strings are hardcoded English and require localized-parity review before final integration."
+      "latestObservedChange": "Latest main commit changed only the bilingual README ownership mark to the centered rounded black-tile platform monogram; the footer localization review remains open."
     },
     "luminaGlass": {
       "repository": "pooya-labs/lumina-glass",
       "branch": "main",
-      "inspectedHead": "9c479da9c726d044f3482aa10fdc8aa27307d694",
-      "latestCommitAt": "2026-11-08T16:56:19Z",
+      "inspectedHead": "f8e6c958d33d494d9d26ff98279897d8bfd3aa35",
+      "latestCommitAt": "2026-11-08T19:25:43Z",
       "inspectionMode": "read-only",
       "upstreamRepositoryModified": false,
-      "latestObservedChange": "Unified ecosystem project marks, added missing AetherFlow/ORBIT/Salon Booking live links, and normalized Salon Booking logo treatment."
+      "latestObservedChange": "Latest main commit changed only the bilingual README ownership mark to the centered rounded black-tile platform monogram; feature-specific evidence and clarity review remain open."
     },
     "auraPulse": {
       "repository": "pooya-labs/aurapulse",
       "branch": "main",
-      "inspectedHead": "99f90489f50d349be565640cf60738e181436245",
-      "latestCommitAt": "2026-11-08T16:29:43Z",
+      "inspectedHead": "b4a83648025d30162ad8754516b7c419b56e68ea",
+      "latestCommitAt": "2026-11-08T19:25:41Z",
       "inspectionMode": "read-only",
       "upstreamRepositoryModified": false,
-      "latestObservedChange": "Footer owner marks now reference the latest Pooya Labs Platform monogram; Binance ticker remains subject to CORS and simulated fallback disclosures."
+      "latestObservedChange": "Latest main commit changed only the bilingual README ownership mark to the centered rounded black-tile platform monogram; ticker CORS/simulated-fallback restrictions remain."
     },
     "salonBooking": {
       "repository": "pooya-labs/salon-booking",
       "branch": "main",
-      "inspectedHead": "fcd7b0fcfedf8f94227e164ef60ce74549fe1731",
-      "latestCommitAt": "2026-11-08T17:36:21Z",
+      "inspectedHead": "ca745a46c863010f2d7133356a0209abf928a12",
+      "latestCommitAt": "2026-11-08T19:25:52Z",
       "release": "v1.0.0",
       "inspectionMode": "read-only",
       "upstreamRepositoryModified": false,
@@ -709,7 +752,7 @@
         "run": "42394326440",
         "conclusion": "success"
       },
-      "latestObservedChange": "Pooya Labs Platform ownership mark now loads from a local asset; customer/admin privacy restrictions remain unchanged."
+      "latestObservedChange": "Latest main commit changed only the bilingual README ownership mark to the centered rounded black-tile platform monogram; owner permission and privacy-reviewed imagery restrictions remain."
     }
   },
   "novelLibrary": {
@@ -755,9 +798,9 @@
     ],
     "runtimeSourceChanged": true,
     "deploymentStillAlignedWithLatestApplicationCode": true,
-    "latestRecordedRepositoryCi": "42476478338;67/67 contract tests; zero failures; TypeScript; Pages/GAS/Cloudflare build targets; main fa5d412",
-    "latestRecordedBrowserQa": "42476478346;17/17 routes;34/34 viewports;zero axe violations;36 incomplete rules remain manual",
-    "latestRecordedPagesDeployment": "42476478354;build and deploy passed on main fa5d412",
+    "latestRecordedRepositoryCi": "42515288490;success;main-a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67",
+    "latestRecordedBrowserQa": "42514976406;success;18-of-18-routes;zero-failures;zero-confirmed-axe-violations;36-incomplete-checks;artifact-13631024148",
+    "latestRecordedPagesDeployment": "42514976384;build-and-deploy-success;asset-commit-41ea1004433196aa81e4e50b17a1620f110ecea8",
     "firstContractRunIssue": "42391868132 exposed one stale contract assertion; corrected without weakening checks",
     "correctionCommit": "087fee17a8bfff503075dbae14609d530a7e63a4",
     "currentHeadCiVerified": true,
@@ -780,38 +823,38 @@
     "latestAppCodeCheckpoint": "e66f4b42562fb6a164117e2b8a3f9905634a1b9e",
     "currentHeadBrowserQaVerified": true,
     "currentHeadPagesDeploymentVerified": true,
-    "cloudflareProductionDeploy": "skipped-missing-CLOUDFLARE_API_TOKEN; actual deploy job skipped in run 42399972690",
-    "appsScriptProductionDeploy": "skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID; actual deploy job skipped in run 42399972770",
-    "latestDocumentationCi": "pending-main-run-42476877083",
-    "externalSourceRecheckAt": "2026-11-07T17:15:00Z",
+    "cloudflareProductionDeploy": "success-deployment-107de2a2-d69c-4b9d-ae2c-38da68c7bad4;main-a37de4cf;all-stages-success;verified-through-authorized-Cloudflare-API",
+    "appsScriptProductionDeploy": "skipped-run-42514976476;credential-check-passed;actual-publish-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
+    "latestDocumentationCi": "PR-14 validation;repository-CI-42516564741;success",
+    "externalSourceRecheckAt": "2026-11-08T19:30:41Z",
     "externalSourceHeads": {
-      "aetherflow": "c7cb553f0751514df0d916e69c29807636e66c67",
-      "orbit": "268017365cd22f7db9dd8895fb59fbccc76c9b8f",
-      "pooyaOs": "1d408c0881d480db8f1c1a7a9f94272a93d4e617",
-      "nexusCanvas": "df05f90b0463e5681324efec9083c9fe20c2cc7c",
-      "luminaGlass": "06fa93428a00442e5ec53d5486c3615048f66842",
-      "auraPulse": "7f3611cae0d74e06b6b01af534a5f84a79e5901c",
-      "globalcart": "9afa4f5d726df51ae4f9b95b30982fb5ecd3482a",
-      "salonBooking": "4c4840c639da099379e8f65b387b1589685c6afd"
+      "aetherflow": "2ce6c7450186a6e50332c12872b17f4b01196739",
+      "orbit": "970d9723ee4419df82979a5e232f4fed3c8ab5a2",
+      "pooyaOs": "f4b93d7f95a1c25dfd62fd4c28b64de4fac0ec6c",
+      "nexusCanvas": "9f2756b1846622caa43e3947c4387c71a3e988c9",
+      "luminaGlass": "f8e6c958d33d494d9d26ff98279897d8bfd3aa35",
+      "auraPulse": "b4a83648025d30162ad8754516b7c419b56e68ea",
+      "globalcart": "fed6f59f62c9d853ae82099b7266339ada15f9c2",
+      "salonBooking": "ca745a46c863010f2d7133356a0209abf928a12"
     },
     "latestExternalEvidence": {
       "globalcartE2E": "42393544303 failed: 137 passed / 3 failed / 9 skipped; empty hero-product accessible names",
       "salonBookingCi": "42394326231 failed in Linux and Windows owner-dashboard date-range QA; Pages workflow 42394326440 passed",
       "orbitOpenPRs": "137, 138, 140 draft, 142 draft; none merged into main"
     },
-    "latestMainHead": "66c08923be9b814494d17af7ffb9877c5f7c73b1",
-    "latestRepositoryCi": "42483757067;TypeScript;all-three-build-targets;contract-test-step-passed;main-7a2d6c",
-    "latestBrowserQa": "42483757051;17-routes;34-viewports;workflow-passed;report-artifact-13618234167",
-    "latestPagesDeployment": "42483757053;build-and-deploy-passed;main-7a2d6c",
+    "latestMainHead": "a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67",
+    "latestRepositoryCi": "42515288490;success;main-a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67",
+    "latestBrowserQa": "42514976406;success;18-of-18-routes;zero-failures;zero-confirmed-axe-violations;36-incomplete-checks;artifact-13631024148",
+    "latestPagesDeployment": "42514976384;build-and-deploy-success;asset-commit-41ea1004433196aa81e4e50b17a1620f110ecea8",
     "latestMotionCaptureRun": "42399972697-success;29-png-candidates;7-webm-reels;artifact-13584314344;contact-sheet-scan-complete;unpublished-owner-approval-pending",
     "ownerDesignFeedbackRound1": "implemented",
     "ownerDesignFeedbackRound2": "implemented",
-    "latestRecordedCloudflareDeploy": "42476478409;actual deployment succeeded on main fa5d412",
+    "latestRecordedCloudflareDeploy": "Cloudflare-API-deployment-107de2a2-d69c-4b9d-ae2c-38da68c7bad4;main-a37de4cf;build-and-deploy-success",
     "latestRecordedAppsScriptDeploy": "42476478245;actual deployment succeeded on main fa5d412",
-    "latestCloudflareProductionDeploy": "42483757077;credential-check-passed;actual-deploy-skipped-missing-CLOUDFLARE_API_TOKEN",
+    "latestCloudflareProductionDeploy": "107de2a2-d69c-4b9d-ae2c-38da68c7bad4;main-a37de4cf;success",
     "latestAppsScriptProductionDeploy": "42483757133;config-check-passed;actual-publish-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
     "ownerDesignFeedbackRound3": "implemented;visual-approval-pending",
-    "latestDocumentationCheckpoint": "handoff/state/roadmap/changelog reconciled in documentation checkpoint 4a879275f4a468c14eec4096a80e5e96929af098; CI run 42484893908 is validating this checkpoint",
+    "latestDocumentationCheckpoint": "PR-14 evidence refresh;branch-head-82dde47f;docs-only;CI-and-browser-QA-validation-running",
     "commitsAheadOfPreviousAppCheckpoint": 8
   },
   "latestOwnerFeedback": {
@@ -835,66 +878,30 @@
   "latestTask": "P7-12",
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-08",
-  "latestDocumentationCommit": "31a1b8022e61e6b6ba8cc5d9c163bb2c3dbe149f",
-  "latestDocumentationCheckpoint": "Documentation checkpoint 31a1b802 records merged PR #13, post-remediation three-host performance (p50/p75/max CLS zero), current Pages and Cloudflare deployments, manual accessibility/physical-device follow-ups, and missing automation secrets; machine state synchronized in subsequent commit.",
-  "latestRepositoryCiRun": "42513404028",
-  "latestBrowserQaRun": "42513404040",
+  "latestDocumentationCommit": "a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67",
+  "latestDocumentationCheckpoint": "PR #14 head 82dde47fd109cf4cf5d6dcfd0c722ded94406ec3 refreshes eight upstream heads and three-host evidence; docs-only; Browser QA validation pending.",
+  "latestRepositoryCiRun": "42515288490",
+  "latestBrowserQaRun": "42514976406",
   "latestPerformanceBaseline": {
-    "run": "42513404040",
-    "attempt": 2,
-    "artifact": "13630148273",
-    "sourceCommit": "045bc84526ef823a37599c6790d144d68465d35c",
+    "run": "42514976406",
+    "attempt": 1,
+    "artifact": "13631024148",
+    "sourceCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
+    "cloudflareDeployment": "107de2a2-d69c-4b9d-ae2c-38da68c7bad4",
+    "cloudflareSourceCommit": "a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67",
     "samplesPerHost": 20,
     "hosts": [
       "local-build",
       "github-pages",
       "cloudflare-pages"
     ],
-    "p50": {
-      "localBuild": {
-        "ttfbMs": 3,
-        "domContentLoadedMs": 67,
-        "loadEventMs": 71,
-        "firstContentfulPaintMs": 192,
-        "largestContentfulPaintMs": 228,
-        "cumulativeLayoutShift": 0,
-        "totalResourceBytes": 178204,
-        "javascriptBytes": 129364,
-        "stylesheetBytes": 40692,
-        "imageBytes": 8148
-      },
-      "githubPages": {
-        "ttfbMs": 26,
-        "domContentLoadedMs": 115,
-        "loadEventMs": 123,
-        "firstContentfulPaintMs": 228,
-        "largestContentfulPaintMs": 264,
-        "cumulativeLayoutShift": 0,
-        "totalResourceBytes": 181218,
-        "javascriptBytes": 130735,
-        "stylesheetBytes": 42310,
-        "imageBytes": 8173
-      },
-      "cloudflarePages": {
-        "ttfbMs": 120,
-        "domContentLoadedMs": 361,
-        "loadEventMs": 372,
-        "firstContentfulPaintMs": 424,
-        "largestContentfulPaintMs": 424,
-        "cumulativeLayoutShift": 0,
-        "totalResourceBytes": 178752,
-        "javascriptBytes": 127902,
-        "stylesheetBytes": 42726,
-        "imageBytes": 8124
-      }
-    },
     "p75": {
       "localBuild": {
         "ttfbMs": 4,
-        "domContentLoadedMs": 106,
-        "loadEventMs": 108,
-        "firstContentfulPaintMs": 228,
-        "largestContentfulPaintMs": 272,
+        "domContentLoadedMs": 96,
+        "loadEventMs": 97,
+        "firstContentfulPaintMs": 220,
+        "largestContentfulPaintMs": 316,
         "cumulativeLayoutShift": 0,
         "totalResourceBytes": 178276,
         "javascriptBytes": 129364,
@@ -902,11 +909,11 @@
         "imageBytes": 8220
       },
       "githubPages": {
-        "ttfbMs": 43,
-        "domContentLoadedMs": 149,
-        "loadEventMs": 151,
-        "firstContentfulPaintMs": 256,
-        "largestContentfulPaintMs": 304,
+        "ttfbMs": 109,
+        "domContentLoadedMs": 266,
+        "loadEventMs": 293,
+        "firstContentfulPaintMs": 332,
+        "largestContentfulPaintMs": 400,
         "cumulativeLayoutShift": 0,
         "totalResourceBytes": 181290,
         "javascriptBytes": 130735,
@@ -914,28 +921,51 @@
         "imageBytes": 8245
       },
       "cloudflarePages": {
-        "ttfbMs": 185,
-        "domContentLoadedMs": 416,
-        "loadEventMs": 504,
-        "firstContentfulPaintMs": 576,
-        "largestContentfulPaintMs": 584,
+        "ttfbMs": 83,
+        "domContentLoadedMs": 282,
+        "loadEventMs": 300,
+        "firstContentfulPaintMs": 328,
+        "largestContentfulPaintMs": 400,
         "cumulativeLayoutShift": 0,
-        "totalResourceBytes": 178866,
+        "totalResourceBytes": 178821,
         "javascriptBytes": 127971,
         "stylesheetBytes": 42726,
-        "imageBytes": 8193
+        "imageBytes": 8124
       }
+    }
+  },
+  "upstreamMainHeads": {
+    "AetherFlow": {
+      "sha": "2ce6c7450186a6e50332c12872b17f4b01196739",
+      "observedAtUtc": "2026-11-08 19:25:54 UTC"
     },
-    "maximum": {
-      "localBuild": {
-        "cumulativeLayoutShift": 0
-      },
-      "githubPages": {
-        "cumulativeLayoutShift": 0
-      },
-      "cloudflarePages": {
-        "cumulativeLayoutShift": 0
-      }
+    "ORBIT": {
+      "sha": "970d9723ee4419df82979a5e232f4fed3c8ab5a2",
+      "observedAtUtc": "2026-11-08 19:25:47 UTC"
+    },
+    "Pooya.OS": {
+      "sha": "f4b93d7f95a1c25dfd62fd4c28b64de4fac0ec6c",
+      "observedAtUtc": "2026-11-08 19:25:39 UTC"
+    },
+    "NexusCanvas": {
+      "sha": "9f2756b1846622caa43e3947c4387c71a3e988c9",
+      "observedAtUtc": "2026-11-08 19:25:45 UTC"
+    },
+    "LuminaGlass": {
+      "sha": "f8e6c958d33d494d9d26ff98279897d8bfd3aa35",
+      "observedAtUtc": "2026-11-08 19:25:43 UTC"
+    },
+    "AuraPulse": {
+      "sha": "b4a83648025d30162ad8754516b7c419b56e68ea",
+      "observedAtUtc": "2026-11-08 19:25:41 UTC"
+    },
+    "GlobalCart": {
+      "sha": "fed6f59f62c9d853ae82099b7266339ada15f9c2",
+      "observedAtUtc": "2026-11-08 19:30:41 UTC"
+    },
+    "Salon Booking": {
+      "sha": "ca745a46c863010f2d7133356a0209abf928a12",
+      "observedAtUtc": "2026-11-08 19:25:52 UTC"
     }
   }
 }
