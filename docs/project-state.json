@@ -614,7 +614,7 @@
     ],
     "documentationCheckpointCi": "passed-run-42394443146-on-993d29b713c7af13ccd77ea7587161c767cf379a",
     "latestMainCodeCheckpoint": "7a2d6c38731ea57e66bcedc5363566905ab5affe",
-    "latestDocCheckpoint": "4df636da5d2662f95c3c6c30df3b7e18cd37f942",
+    "latestDocCheckpoint": "4a879275f4a468c14eec4096a80e5e96929af098",
     "latestAppCodeCheckpoint": "e66f4b42562fb6a164117e2b8a3f9905634a1b9e",
     "currentHeadBrowserQaVerified": true,
     "currentHeadPagesDeploymentVerified": true,
@@ -649,7 +649,7 @@
     "latestCloudflareProductionDeploy": "42483757077;credential-check-passed;actual-deploy-skipped-missing-CLOUDFLARE_API_TOKEN",
     "latestAppsScriptProductionDeploy": "42483757133;config-check-passed;actual-publish-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
     "ownerDesignFeedbackRound3": "implemented;visual-approval-pending",
-    "latestDocumentationCheckpoint": "current handoff/state reconciliation is part of this documentation checkpoint; CI verification follows the push",
+    "latestDocumentationCheckpoint": "handoff/state/roadmap/changelog reconciled in documentation checkpoint 4a879275f4a468c14eec4096a80e5e96929af098; CI run 42484893908 is validating this checkpoint",
     "commitsAheadOfPreviousAppCheckpoint": 8
   },
   "latestOwnerFeedback": {
@@ -672,5 +672,7 @@
   },
   "latestTask": "P7-09",
   "latestTaskBranch": "main",
-  "lastUpdated": "2026-11-08T13:11:25Z"
+  "lastUpdated": "2026-11-08T13:11:25Z",
+  "latestDocumentationCommit": "4a879275f4a468c14eec4096a80e5e96929af098",
+  "latestDocumentationCheckpoint": "handoff/state/roadmap/changelog reconciled in documentation checkpoint 4a879275f4a468c14eec4096a80e5e96929af098; CI run 42484893908 is validating this checkpoint"
 }
