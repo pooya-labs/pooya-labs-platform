@@ -25,5 +25,9 @@ test('performance baseline is part of Browser QA and can be enforced after basel
   assert.match(workflow, /qa:portfolio:performance/);
   assert.match(workflow, /PORTFOLIO_PERF_ARTIFACT_DIR/);
   assert.match(script, /PORTFOLIO_PERF_ENFORCE/);
+  assert.match(script, /PORTFOLIO_PERF_REPORT_NAME/);
+  assert.match(workflow, /performance-local\\.json/);
+  assert.match(workflow, /performance-github-pages\\.json/);
+  assert.match(workflow, /performance-cloudflare-pages\\.json/);
   assert.ok(packageJson.scripts['qa:portfolio:performance']);
 });
