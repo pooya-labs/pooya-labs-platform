@@ -1,3 +1,10 @@
+## 2026-11-08 — Repository quality and release conventions
+
+- Added a zero-dependency repository quality command for JavaScript syntax/debugger checks and consistent source/config formatting.
+- Added `.editorconfig`, exposed `npm run lint` and `npm run format:check`, and wired both into Repository CI.
+- Added contributor workflow guidance and a release checklist that preserves the pre-alpha/V1 approval gates.
+- CI verification for this change is pending; see the pull request checks before treating the new commands as accepted.
+
 ## 2026-11-08 — Accessibility semantics and Cloudflare production refresh
 
 - Fixed the homepage proof-statistics container by assigning a valid `group` role to its descriptive `aria-label`; the four repeated `aria-prohibited-attr` incomplete findings are no longer present in the latest axe report.

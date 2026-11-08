@@ -1,0 +1,58 @@
+# Contributing
+
+This repository is the source of truth for the Pooya Labs personal portfolio. Keep changes focused on the public portfolio, its documented owner workspace, or the delivery tooling. Independent showcase projects remain in their own repositories.
+
+## Before changing code
+
+1. Read [the roadmap](docs/ROADMAP.md), [current status](docs/STATUS.md), and [next task](docs/NEXT.md).
+2. Check the relevant source and tests before editing. Preserve verified project facts, attribution, links, and release boundaries.
+3. Do not add a dependency or a new service for a task that can be handled with the existing toolchain.
+4. Never commit secrets, private customer data, unapproved screenshots, or invented project metrics.
+
+## Local checks
+
+Use the repository's Node.js engine requirement and install the workspace dependencies:
+
+```sh
+npm install
+npm run lint
+npm run format:check
+npm run typecheck
+npm test
+npm run build
+npm run build:cloudflare
+```
+
+The lightweight lint and format checks are intentionally dependency-free. Lint checks JavaScript syntax and rejects committed `debugger` statements. Formatting checks enforce UTF-8, LF endings, a final newline, no trailing whitespace, and spaces for indentation across tracked source/config files. TypeScript correctness is checked separately by `typecheck`.
+
+For browser-level verification, run:
+
+```sh
+npm run qa:portfolio:browser --workspace @pooya-labs/platform
+```
+
+Treat automated mobile emulation as regression evidence, not proof of behavior on a physical phone. Record incomplete accessibility checks honestly; a tool's inability to calculate a contrast ratio is neither a pass nor a confirmed violation.
+
+## Branches and commits
+
+Use a short task-specific branch, for example `fix/mobile-project-grid` or `docs/release-process`. Keep commits small and use Conventional Commit prefixes:
+
+- `feat:` user-facing capability
+- `fix:` defect correction
+- `test:` tests or verification
+- `refactor:` behavior-preserving restructuring
+- `docs:` documentation
+- `chore:` maintenance and tooling
+- `ci:` automation and workflow changes
+
+Do not rewrite shared history. Do not merge a change while its required CI or browser checks are failing.
+
+## Pull request expectations
+
+A pull request should state the user-visible effect, affected routes/targets, verification performed, known limitations, and any owner decision still required. Update the roadmap, status, next-task handoff, and changelog when a change materially alters project state. Keep generated screenshots and other review artifacts out of the public repository unless an explicit approval/checksum workflow authorizes them.
+
+## Deployment and release safety
+
+GitHub Pages and Cloudflare Pages are separate outputs. Verify the deployment for the exact application commit and host; a successful build is not by itself proof of publication. Keep deployment credentials in repository/host secret stores, never in source or chat.
+
+The current site is a pre-alpha portfolio draft. Follow [the release checklist](docs/RELEASE.md); do not create or describe a V1 release until every required owner, content, accessibility, physical-device, and recovery gate is complete.
