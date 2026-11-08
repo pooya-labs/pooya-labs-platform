@@ -1,3 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Pooya Labs mark">
-<defs><linearGradient id="silver" x1="18" y1="12" x2="94" y2="108" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset=".42" stop-color="#c8d0d8"/><stop offset=".72" stop-color="#f5f7fa"/><stop offset="1" stop-color="#8e9aa7"/></linearGradient><linearGradient id="edge" x1="30" y1="22" x2="80" y2="94" gradientUnits="userSpaceOnUse"><stop stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#7d8997" stop-opacity=".25"/></linearGradient></defs>
-<path d="M17 103V17h57c19 0 31 9 31 25 0 17-13 27-34 27H48L17 103Zm19-31 17-17h17c10 0 16-4 16-12 0-7-5-10-15-10H36v39Z" fill="url(#silver)" stroke="url(#edge)" stroke-width="1.2" stroke-linejoin="round"/><path d="M17 103 48 69h20L36 103Z" fill="#66717d" opacity=".38"/><path d="M36 33h49c8 0 13 2 16 6-3-12-13-18-29-18H36v12Z" fill="#fff" opacity=".2"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Pooya Labs gold P mark">
+  <defs>
+    <linearGradient id="gold" x1="18" y1="10" x2="92" y2="108" gradientUnits="userSpaceOnUse"><stop stop-color="#fff0c5"/><stop offset=".22" stop-color="#e9c77e"/><stop offset=".48" stop-color="#a9752f"/><stop offset=".7" stop-color="#f6dfa5"/><stop offset="1" stop-color="#b47c35"/></linearGradient>
+    <linearGradient id="cut" x1="32" y1="28" x2="83" y2="82" gradientUnits="userSpaceOnUse"><stop stop-color="#fff8e8" stop-opacity=".9"/><stop offset="1" stop-color="#6e471f" stop-opacity=".24"/></linearGradient>
+  </defs>
+  <path d="M18 105V15h54c21 0 34 10 34 28 0 19-14 30-37 30H49L18 105Zm19-31 18-18h15c11 0 17-4 17-13 0-8-6-12-17-12H37v43Z" fill="url(#gold)" stroke="url(#cut)" stroke-width="1.25" stroke-linejoin="round"/>
+  <path d="M18 105 49 73h19L37 105Z" fill="#70471f" opacity=".3"/><path d="M37 31h48c10 0 16 3 19 8-3-15-14-22-32-22H37v14Z" fill="#fff" opacity=".24"/>
+</svg>
