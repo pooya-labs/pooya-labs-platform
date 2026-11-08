@@ -331,6 +331,14 @@ function renderArchitectureDiagram(slug: string, locale: Locale): string {
     return `<path d="M ${sx} ${sy} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${tx} ${ty}" fill="none" stroke="#64cfa9" stroke-opacity=".48" stroke-width="2.5" marker-end="url(#arrow)" />`;
   }).join('');
 
+  const headingTitle = renderDiagramTextLines(
+    wrapDiagramLabel(diagram.title[locale], 60, 1),
+    800, 78, 22, locale, fontFamily, isRtl ? 26 : 30, '#edf6f1', 700
+  );
+  const headingCaption = renderDiagramTextLines(
+    wrapDiagramLabel(diagram.caption[locale], 110, 2),
+    800, 120, 17, locale, fontFamily, isRtl ? 13 : 15, '#a1b6ad'
+  );
   const nodes = diagram.nodes.map((item, index) => {
     const kind = item.kind ?? 'core';
     const titleLines = wrapDiagramLabel(item.title[locale], 23, 2);
@@ -366,8 +374,8 @@ function renderArchitectureDiagram(slug: string, locale: Locale): string {
     </defs>
     <rect width="1600" height="900" rx="26" fill="url(#bg)"/><rect width="1600" height="900" rx="26" fill="url(#grid)"/>
     <circle cx="1350" cy="120" r="430" fill="url(#glow)"/>
-    <text x="${locale === 'fa' ? 1510 : 88}" y="91" text-anchor="${locale === 'fa' ? 'end' : 'start'}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" unicode-bidi="plaintext" font-family="${fontFamily}" font-size="${isRtl ? 26 : 30}" font-weight="700" fill="#edf6f1">${escapeXml(diagram.title[locale])}</text>
-    <text x="${locale === 'fa' ? 1510 : 90}" y="132" text-anchor="${locale === 'fa' ? 'end' : 'start'}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" unicode-bidi="plaintext" font-family="${fontFamily}" font-size="${isRtl ? 13 : 15}" fill="#a1b6ad">${escapeXml(diagram.caption[locale])}</text>
+    ${headingTitle}
+    ${headingCaption}
     <path d="M88 164H1512" stroke="#9fc9d1" stroke-opacity=".13"/>
     ${edges}
     ${nodes}
