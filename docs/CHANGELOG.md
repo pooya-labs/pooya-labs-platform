@@ -1,3 +1,14 @@
+## 2026-11-08 — CLS remediation, three-host verification, and production parity
+
+- Merged PR [#13](https://github.com/pooya-labs/pooya-labs-platform/pull/13) at application commit [`045bc845`](https://github.com/pooya-labs/pooya-labs-platform/commit/045bc84526ef823a37599c6790d144d68465d35c). Direct case-study pages now share a server-rendered React component that the browser hydrates, preserving crawler-readable markup while avoiding the previous root replacement shift.
+- Restored the bespoke animated hero scenes and separate desktop/mobile interface evidence gallery; mobile screenshot frames support native touch scroll chaining to the outer case-study page.
+- Repository CI [42513404028](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42513404028) passed dependency audit (0 reported vulnerabilities), lint/format, TypeScript, all three build targets, and repository contracts.
+- Browser QA [42513404040](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42513404040) attempt 2 passed 18/18 routes and 36/36 viewport checks, zero failures, and zero confirmed axe violations. 36 color-contrast checks remain incomplete for manual review.
+- Post-remediation performance artifact [13630148273](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42513404040/artifacts/13630148273) collected 20 samples per host; p50/p75/maximum CLS were 0.0000 across local build, GitHub Pages, and Cloudflare Pages.
+- GitHub Pages deployment [42513404002](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42513404002) succeeded. Cloudflare production deployment [`592357af`](https://592357af.pooya-labs-platform.pages.dev/) was published through the authorized Pages API and passed build/deploy on the same main application commit.
+- Cloudflare GitHub Actions automation still requires the private `CLOUDFLARE_API_TOKEN` secret. Apps Script production publishing remains skipped until `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` are configured.
+- Performance enforcement remains report-only. Physical Android review, manual contrast/keyboard/screen-reader acceptance, external share-crawler validation, rollback rehearsal, and owner visual/content approval are still required; no V1 release is claimed.
+
 ## 2026-11-08 — Phase 7 security and performance baseline
 
 - Added a dependency advisory gate (`npm audit --audit-level=high`) to Repository CI; the current PR run reported **0 vulnerabilities**.
