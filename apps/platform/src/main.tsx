@@ -1,6 +1,8 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import App from './App';
+import { HydratedCaseStudy } from './PortfolioHome';
+import { portfolioProjects } from './content/projects';
 import './styles.css';
 import './portfolio.css';
 
@@ -17,8 +19,27 @@ if (!rootElement) {
   throw new Error('Platform root element was not found.');
 }
 
-createRoot(rootElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-);
+const directCaseStudy = window.location.pathname.match(/\\/(?:en\\/)?projects\\/([^/]+)\\/?$/);
+const directProject = directCaseStudy
+  ? portfolioProjects.find((project) => project.slug === directCaseStudy[1]) ?? null
+  : null;
+
+if (directProject) {
+  const language = window.location.pathname.includes('/en/projects/') ? 'en' : 'fa';
+  hydrateRoot(
+    rootElement,
+    <React.StrictMode>
+      <HydratedCaseStudy
+        project={directProject}
+        language={language}
+        baseUrl={import.meta.env.BASE_URL}
+      />
+    </React.StrictMode>,
+  );
+} else {
+  createRoot(rootElement).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+  );
+}
