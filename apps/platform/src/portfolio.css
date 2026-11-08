@@ -2337,7 +2337,7 @@
   direction:ltr;unicode-bidi:isolate;white-space:nowrap;display:inline-block;
 }
 .portfolio-hero-title .hero-title-word {
-  padding-inline-end:.13em;margin-inline-end:-.13em;
+  padding-inline-end:.18em;margin-inline-end:0;
   overflow:visible;text-wrap:nowrap;
 }
 .portfolio-hero-title .hero-gradient { overflow:visible; }

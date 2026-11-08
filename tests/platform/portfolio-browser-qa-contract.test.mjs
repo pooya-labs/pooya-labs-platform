@@ -105,3 +105,22 @@ test('browser QA validates homepage motion sections and bidi-isolated hero headl
   assert.match(script, /heroCapabilityTitleIsolated/);
   assert.match(script, /first-page headline is not isolated from mixed bidirectional text/);
 });
+
+
+test('thoughtful headline QA measures real text and terminal-glyph bounds after font loading', () => {
+  assert.ok(script.includes('document.fonts?.ready'));
+  assert.ok(script.includes('document.createRange()'));
+  assert.ok(script.includes('lastGlyphRight <= lineRect.right + 1'));
+  assert.ok(script.includes('thoughtfulWordLayout'));
+  assert.ok(!script.includes('word.scrollWidth <= word.clientWidth'));
+  assert.ok(portfolioCss.includes('padding-inline-end:.18em'));
+  assert.ok(portfolioCss.includes('margin-inline-end:0'));
+});
+
+test('QA stores visual screenshots as workflow artifacts, not public site assets', () => {
+  assert.ok(script.includes('shouldCaptureVisual'));
+  assert.ok(script.includes('path.join(artifactDir, fileName)'));
+  assert.ok(script.includes('routeRecord.visualEvidence'));
+  assert.ok(workflow.includes('path: apps/platform/artifacts/portfolio-browser-qa/'));
+  assert.ok(script.includes('never published to the website'));
+});

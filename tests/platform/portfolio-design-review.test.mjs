@@ -113,7 +113,8 @@ test('the English hero keeps thoughtful as an isolated, unbroken LTR word', () =
   assert.ok(home.includes('<bdi dir="ltr" className="hero-title-word">{t.headlineWord}</bdi>'));
   assert.ok(css.includes('.portfolio-hero-title .hero-title-word'));
   assert.ok(css.includes('white-space:nowrap'));
-  assert.ok(css.includes('padding-inline-end:.13em'));
+  assert.ok(css.includes('padding-inline-end:.18em'));
+  assert.ok(css.includes('margin-inline-end:0'));
   const browserQa = readFile(new URL('../../apps/platform/scripts/portfolio-browser-qa.mjs', import.meta.url), 'utf8');
   return browserQa.then((source) => assert.ok(source.includes('thoughtful headline word is missing, split, or clipped')));
 });

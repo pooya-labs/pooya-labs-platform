@@ -30,6 +30,7 @@ const viewports = [
 const baseUrl = new URL(process.env.PORTFOLIO_BASE_URL || 'http://127.0.0.1:4173/pooya-labs-platform/');
 if (!baseUrl.pathname.endsWith('/')) baseUrl.pathname += '/';
 const artifactDir = path.resolve(process.env.PORTFOLIO_QA_ARTIFACT_DIR || 'artifacts/portfolio-browser-qa');
+await mkdir(artifactDir, { recursive: true });
 const report = {
   generatedAt: new Date().toISOString(),
   baseUrl: baseUrl.href,
@@ -44,7 +45,7 @@ const report = {
     incompleteRules: [],
     findings: [],
   },
-  note: 'Automated Chromium smoke and responsive checks. This is not a manual screen-reader audit or WCAG certification.',
+  note: 'Automated Chromium smoke and responsive checks. Homepage desktop/mobile and project desktop screenshots are retained only as private workflow artifacts, never published to the website. This is not a manual screen-reader audit or WCAG certification.',
 };
 
 function addFailure(route, viewport, message) {
@@ -94,6 +95,7 @@ try {
       }
 
       await page.locator('main h1').first().waitFor({ state: 'visible', timeout: 10000 });
+      await page.evaluate(() => document.fonts?.ready);
       routeRecord.title = await page.title();
       const semantics = await page.evaluate(() => {
         const main = document.querySelector('main');
@@ -117,14 +119,65 @@ try {
           heroTitleRunsIsolated: Array.from(document.querySelectorAll('.portfolio-hero-title .hero-title-line')).every((node) => node.getAttribute('dir') === 'auto'),
           thoughtfulWord: (() => {
             const word = document.querySelector('.portfolio-hero-title .hero-title-word');
-            if (!(word instanceof HTMLElement)) return null;
-            const wordRect = word.getBoundingClientRect();
-            const lineRect = word.parentElement?.getBoundingClientRect();
+            const line = word?.closest('.hero-gradient');
+            const title = word?.closest('.portfolio-hero-title');
+            if (!(word instanceof HTMLElement) || !(line instanceof HTMLElement) || !(title instanceof HTMLElement)) return null;
+            const range = document.createRange();
+            range.selectNodeContents(word);
+            const textRect = range.getBoundingClientRect();
+            const lineRect = line.getBoundingClientRect();
+            const titleRect = title.getBoundingClientRect();
+            const textNode = word.firstChild;
+            let lastGlyph = null;
+            if (textNode instanceof Text && textNode.textContent.length > 0) {
+              const glyph = document.createRange();
+              glyph.setStart(textNode, textNode.textContent.length - 1);
+              glyph.setEnd(textNode, textNode.textContent.length);
+              const rect = glyph.getBoundingClientRect();
+              lastGlyph = { left: rect.left, right: rect.right, width: rect.width };
+            }
+            const clippingAncestors = [];
+            for (let node = word; node instanceof HTMLElement; node = node.parentElement) {
+              const overflowX = getComputedStyle(node).overflowX;
+              if (['hidden', 'clip', 'auto', 'scroll'].includes(overflowX)) {
+                const rect = node.getBoundingClientRect();
+                const left = rect.left + node.clientLeft;
+                clippingAncestors.push({ selector: node.className?.toString?.() || node.tagName.toLowerCase(), left, right: left + node.clientWidth });
+              }
+              if (node === title) break;
+            }
+            const clippedByAncestor = clippingAncestors.some((ancestor) =>
+              textRect.left < ancestor.left - 1 || textRect.right > ancestor.right + 1
+            );
+            const whiteSpace = getComputedStyle(word).whiteSpace;
+            const fullyContained = Boolean(
+              range.getClientRects().length === 1 &&
+              textRect.width > 0 &&
+              lastGlyph?.width > 0 &&
+              whiteSpace === 'nowrap' &&
+              textRect.left >= lineRect.left - 1 &&
+              textRect.right <= lineRect.right + 1 &&
+              textRect.left >= titleRect.left - 1 &&
+              textRect.right <= titleRect.right + 1 &&
+              lastGlyph.right <= lineRect.right + 1 &&
+              !clippedByAncestor
+            );
             return {
               text: word.textContent?.trim() ?? '',
-              width: wordRect.width,
-              scrollWidth: word.scrollWidth,
-              fullyContained: Boolean(lineRect && wordRect.width > 0 && wordRect.left >= lineRect.left - 1 && wordRect.right <= lineRect.right + 1 && word.scrollWidth <= word.clientWidth + 1),
+              direction: getComputedStyle(word).direction,
+              whiteSpace,
+              rangeCount: range.getClientRects().length,
+              rangeWidth: textRect.width,
+              textLeft: textRect.left,
+              textRight: textRect.right,
+              lineLeft: lineRect.left,
+              lineRight: lineRect.right,
+              titleLeft: titleRect.left,
+              titleRight: titleRect.right,
+              lastGlyph,
+              clippingAncestors,
+              clippedByAncestor,
+              fullyContained,
             };
           })(),
           caseStudyMotionScene: document.querySelector('.case-study-motion-art')?.className ?? null,
@@ -135,6 +188,7 @@ try {
       routeRecord.headingCount = semantics.headingCount;
       routeRecord.mainId = semantics.mainId;
       routeRecord.missingImageAltCount = semantics.missingImageAltCount;
+      if (route.label === 'home-en') routeRecord.thoughtfulWordLayout = semantics.thoughtfulWord;
 
       if (routeRecord.title.trim().length === 0) addFailure(route, null, 'Page title is empty.');
       if (semantics.locale !== route.locale) addFailure(route, null, 'Document language does not match the route.');
@@ -159,12 +213,43 @@ try {
       for (const viewport of viewports) {
         await page.setViewportSize({ width: viewport.width, height: viewport.height });
         await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+        const shouldCaptureVisual = route.label === 'home-en' || (route.label !== 'home-fa' && route.label !== 'home-en' && viewport.name === 'desktop');
+        if (shouldCaptureVisual) {
+          const fileName = route.label + '-' + viewport.name + '.png';
+          await page.screenshot({ path: path.join(artifactDir, fileName), fullPage: false, animations: 'disabled' });
+          routeRecord.visualEvidence ??= [];
+          routeRecord.visualEvidence.push(fileName);
+        }
         const metrics = await page.evaluate(() => {
           const word = document.querySelector('.portfolio-hero-title .hero-title-word');
-          const lineRect = word?.parentElement?.getBoundingClientRect();
-          const wordRect = word?.getBoundingClientRect();
+          const line = word?.closest('.hero-gradient');
+          const title = word?.closest('.portfolio-hero-title');
+          if (!word || !line || !title) return { headlineWordContained: true };
+          const range = document.createRange();
+          range.selectNodeContents(word);
+          const textRect = range.getBoundingClientRect();
+          const lineRect = line.getBoundingClientRect();
+          const titleRect = title.getBoundingClientRect();
+          const textNode = word.firstChild;
+          let lastGlyphRight = null;
+          if (textNode instanceof Text && textNode.textContent.length > 0) {
+            const glyph = document.createRange();
+            glyph.setStart(textNode, textNode.textContent.length - 1);
+            glyph.setEnd(textNode, textNode.textContent.length);
+            lastGlyphRight = glyph.getBoundingClientRect().right;
+          }
           return ({
-          headlineWordContained: !word || Boolean(lineRect && wordRect && wordRect.width > 0 && wordRect.left >= lineRect.left - 1 && wordRect.right <= lineRect.right + 1 && word.scrollWidth <= word.clientWidth + 1),
+          headlineWordContained: Boolean(
+            range.getClientRects().length === 1 &&
+            textRect.width > 0 &&
+            getComputedStyle(word).whiteSpace === 'nowrap' &&
+            textRect.left >= lineRect.left - 1 &&
+            textRect.right <= lineRect.right + 1 &&
+            textRect.left >= titleRect.left - 1 &&
+            textRect.right <= titleRect.right + 1 &&
+            lastGlyphRight !== null &&
+            lastGlyphRight <= lineRect.right + 1
+          ),
           viewportWidth: window.innerWidth,
           documentWidth: document.documentElement.scrollWidth,
           bodyWidth: document.body.scrollWidth,
