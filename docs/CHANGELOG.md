@@ -1,3 +1,12 @@
+## 2026-11-08 — GitHub Actions Node 24 runtime migration
+
+- Updated all 10 workflows to current maintained action majors: [checkout v7.0.1](https://github.com/actions/checkout/releases/tag/v7.0.1), [setup-node v7.1.0](https://github.com/actions/setup-node/releases/tag/v7.1.0), [upload-artifact v7.0.2](https://github.com/actions/upload-artifact/releases/tag/v7.0.2), [upload-pages-artifact v5.0.0](https://github.com/actions/upload-pages-artifact/releases/tag/v5.0.0), and [deploy-pages v5.0.1](https://github.com/actions/deploy-pages/releases/tag/v5.0.1). The updated action metadata uses the Node 24 runtime.
+- Updated the two workflow contract tests that deliberately verify artifact-only uploads; the checks remain enabled and now assert `upload-artifact@v7`.
+- Repository CI [42501048926](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42501048926) passed **92/92 tests**, TypeScript, and all three independent build targets. Its log contains no Node.js 20 deprecation warning.
+- Browser QA [42501048917](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42501048917) passed **18/18 routes** and **36/36 viewport checks**, with zero failures, zero horizontal overflow, and zero confirmed axe violations. Forty axe checks remain incomplete for manual review.
+- GitHub Pages deployment [42500830187](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42500830187) passed with the updated actions.
+- No application source files were changed in this maintenance task; the Cloudflare production deployment remains the current application build.
+
 ## 2026-11-08 — Cloudflare production parity restored
 
 - Published the current `main` application to the existing Cloudflare Pages project `pooya-labs-platform`, replacing the stale 2026-11-06 production build.

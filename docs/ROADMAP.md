@@ -18,7 +18,7 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [x] Add GitHub Actions CI for type-check, builds, tests, and Pages deployment.
 - [x] Add bilingual and RTL/LTR foundations.
 - [ ] Add linting, formatting, contribution, and release conventions.
-- [ ] Update GitHub Actions to maintained Node 24-compatible action releases and confirm the Node.js 20 deprecation warning is gone.
+- [x] Update GitHub Actions to maintained Node 24-compatible action releases and confirm the Node.js 20 deprecation warning is gone.
 - [ ] Verify the active GitHub Pages source is GitHub Actions and that the canonical public site tracks the latest successful build.
 
 ## Phase 2 — Public portfolio foundation
@@ -156,4 +156,16 @@ This phase must not block V1. Source projects remain independent unless Pooya ex
 - [x] Keep preview-branch publishing disabled; the GitHub Pages and Cloudflare Pages build outputs remain independent.
 - [ ] Check the refreshed Cloudflare host on a physical Android device and compare its visual rendering against GitHub Pages.
 - [ ] Continue P7-11 owner review: approve the full design/motion, content, project order, and personal contribution wording before Phase 8.
+
+
+
+### Phase 1 — Node 24 GitHub Actions runtime maintenance (2026-11-08)
+
+- [x] Migrate all 10 repository workflows from legacy action majors to current Node 24-compatible releases: `actions/checkout@v7`, `actions/setup-node@v7`, `actions/upload-artifact@v7`, `actions/upload-pages-artifact@v5`, and `actions/deploy-pages@v5`.
+- [x] Align the Browser QA and project-capture workflow contract tests with the maintained artifact action version; keep both tests active.
+- [x] Confirm the action manifests use Node 24 and the successful repository CI log contains no Node.js 20 deprecation warning.
+- [x] Pass Repository CI [42501048926](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42501048926): TypeScript, all three build targets, and 92/92 contract tests.
+- [x] Pass Browser QA [42501048917](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42501048917): 18/18 routes, 36/36 viewport checks, zero failures, and zero confirmed axe violations.
+- [x] Pass GitHub Pages deployment [42500830187](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42500830187) using the updated Pages actions.
+- [ ] Continue manual accessibility review; 40 axe checks remain incomplete and require human inspection.
 

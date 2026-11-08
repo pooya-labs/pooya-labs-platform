@@ -6,6 +6,15 @@
 **Current phase:** Phase 7 — Owner-led visual redesign and release review  
 **Release:** Pre-alpha / portfolio draft
 
+## Latest verified checkpoint — Node 24 Actions runtime migration (2026-11-08)
+
+- Updated all 10 repository workflows to current maintained action majors: checkout v7, setup-node v7, upload-artifact v7, upload-pages-artifact v5, and deploy-pages v5. The exact current minor releases are recorded in CHANGELOG.md.
+- Verified the updated checkout, setup-node, upload-artifact, and deploy-pages action manifests use Node 24. The latest successful Repository CI log contains no Node.js 20 deprecation warning.
+- Repository CI [42501048926](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42501048926) passed TypeScript, all three build targets, and 92/92 contract tests.
+- Browser QA [42501048917](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42501048917) passed 18/18 routes and 36/36 desktop/mobile viewport checks, with zero failures and zero confirmed axe violations. Forty axe checks remain incomplete and are not counted as passed.
+- GitHub Pages [42500830187](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42500830187) passed using the updated deployment actions.
+
+
 ## Latest verified checkpoint — Cloudflare production parity (2026-11-08)
 
 - Corrected the stale Cloudflare Pages production host by publishing main commit `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746` to deployment [`efa5ecb4-356d-4112-be60-31401506d940`](https://efa5ecb4.pooya-labs-platform.pages.dev/). Cloudflare confirmed successful `build` and `deploy` stages.
@@ -18,7 +27,7 @@
 
 ## Latest verified checkpoint — homepage Projects Android visibility (2026-11-08)
 
-- Latest verified `main` HEAD: `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746` (documentation-only checkpoint); the current application fix is `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`.
+- Latest verified `main` HEAD: `66c08923be9b814494d17af7ffb9877c5f7c73b1` (workflow/test maintenance checkpoint); the current application fix is `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`.
 - Application fix commit: `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`; final Browser QA harness/DOM-measurement commit: `5131660b0b3e0156ac350f6a9aafc648556fc814`.
 - Root cause: the homepage Projects section, its heading, and its long list of project cards were hidden behind separate IntersectionObserver reveal gates. On mobile, the reveal conditions could leave the content at opacity zero. All three reveal gates were removed. The card visuals and their own animations remain intact.
 - Browser QA now checks both default Persian and English homepage routes. It confirmed the Projects section, heading, and first card at opacity 1 on desktop and mobile in both languages, with all eight project-card animations active.
