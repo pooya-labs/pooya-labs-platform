@@ -68,6 +68,29 @@ GitHub Pages deployment [42513404002](https://github.com/pooya-labs/pooya-labs-p
 
 **Remaining measurement limits:** this is repeatable Chromium CI evidence, not physical-device acceptance. Resource Timing can omit cross-origin transfer sizes when Timing-Allow-Origin is unavailable; font byte values of zero do not prove that font downloads are free. Keep `PORTFOLIO_PERF_ENFORCE=0` until representative physical-device/network checks and owner review are complete.
 
+## Latest three-host verification after the monogram asset publish — 2026-11-08
+
+Browser QA run [42514976406](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976406), artifact [13631024148](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976406/artifacts/13631024148), measured 20 cold-context samples per host after Cloudflare deployment [`107de2a2`](https://107de2a2.pooya-labs-platform.pages.dev/) completed from current main commit `a37de4cf`. GitHub Pages was serving application asset revision `41ea1004`; the Cloudflare source commit includes that same asset revision.
+
+| Metric (p75) | Local build | GitHub Pages | Cloudflare Pages |
+|---|---:|---:|---:|
+| Time to first byte | 4 ms | 109 ms | 83 ms |
+| DOM content loaded | 96 ms | 266 ms | 282 ms |
+| Load event | 97 ms | 293 ms | 300 ms |
+| First Contentful Paint | 220 ms | 332 ms | 328 ms |
+| Largest Contentful Paint | 316 ms | 400 ms | 400 ms |
+| Cumulative Layout Shift | **0.0000** | **0.0000** | **0.0000** |
+| Observed total resource bytes | 178,276 | 181,290 | 178,821 |
+| JavaScript bytes | 129,364 | 130,735 | 127,971 |
+| CSS bytes | 40,692 | 42,310 | 42,726 |
+| Images with visible timing sizes | 8,220 | 8,245 | 8,124 |
+
+The same browser run completed **18/18 routes** with zero reported failures and zero confirmed Axe violations. **36 incomplete color-contrast checks remain** because automated analysis cannot determine certain gradient/pseudo-element backgrounds; they are not passes and still require human review.
+
+Cloudflare's deployment record confirms successful `queued`, `initialize`, `clone_repo`, `build`, and `deploy` stages for commit `a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67`. GitHub Pages build/deploy run [42514976384](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976384) succeeded for asset revision `41ea1004`.
+
+This remains a Chromium CI regression measurement, not physical Android/network acceptance. Keep performance enforcement report-only until representative device/network checks and owner review are complete.
+
 ## Measurement limitations
 
 - Cross-origin assets that omit Timing-Allow-Origin may report zero transfer/encoded size. Those zeroes are explicitly counted and must not be interpreted as free downloads.
