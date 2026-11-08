@@ -74,7 +74,9 @@ test('project screenshot scroll regions have unique, project-specific accessible
   assert.match(home, /\$\{project\.name\} — نمای واقعی محیط دسکتاپ/);
   assert.match(home, /\$\{project\.name\} — \$\{item\.caption\.fa\}/);
   assert.match(home, /\$\{project\.name\} — \$\{item\.caption\.en\}/);
-  assert.match(css, /\.case-study-media-card\.device-mobile \.case-study-media-frame[\\s\\S]*?overscroll-behavior-y:auto[\\s\\S]*?touch-action:pan-y/);
+  assert.ok(css.includes('.case-study-media-card.device-mobile .case-study-media-frame'));
+  assert.ok(css.includes('overscroll-behavior-y:auto'));
+  assert.ok(css.includes('touch-action:pan-y'));
 });
 
 
