@@ -1,3 +1,13 @@
+## Latest checkpoint — upstream source refresh and owner-packet correction (2026-11-09)
+
+- Refreshed the read-only branch-head, release, and open-PR inventory for all eight independent projects in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md). No upstream repository was modified.
+- Corrected the owner packet's GlobalCart status from the stale `0.2.3-dev / M09.8` label to the published stable portfolio/demo release **v1.0.0**. The simulation boundary remains explicit; this is not a live retailer.
+- GlobalCart Browser E2E passed on UI-code commit `905c6cf91bef` (run [42516946135](https://github.com/pooya-labs/globalcart/actions/runs/42516946135)); later main-head changes through `36a7bb70aabb` are generated catalog/FX snapshots, media, and docs. PR #23 remains open/unmerged and its claimed manual acceptance is not treated as current-main evidence.
+- AetherFlow main is now `9aa543d60abf`; storage-only Apps Script write/refresh/read-back passed against a persistent fixture (run [42520483486](https://github.com/pooya-labs/aetherflow/actions/runs/42520483486)). The live owner Sheet check remains outstanding. Latest Rust CI [42520698416](https://github.com/pooya-labs/aetherflow/actions/runs/42520698416) was still running at inspection time; supply-chain [42520698425](https://github.com/pooya-labs/aetherflow/actions/runs/42520698425) and Pages [42520696992](https://github.com/pooya-labs/aetherflow/actions/runs/42520696992) passed.
+- ORBIT PR [#138](https://github.com/pooya-labs/orbit/pull/138) remains open/unmerged; its candidate Keycloak build does not resolve the still-open production image security gate.
+- Platform main baseline before this documentation update was `8ae608342aaf`; Repository CI [42520197557](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42520197557) passed. Browser QA [42519985093](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42519985093) passed on the documentation review branch. No application runtime, visual design, public deployment, or independent project source was changed in this checkpoint.
+- Phase 7 remains active. Manual contrast/keyboard/screen-reader review, physical Android review, social crawler validation, current Pages-source confirmation, Cloudflare Actions secret, rollback rehearsal, and owner content/media decisions remain open. All eight project owner-review states remain pending.
+
 ## Post-merge verification — owner packet and Phase 7 handoff (2026-11-08)
 
 - PR [#16](https://github.com/pooya-labs/pooya-labs-platform/pull/16) merged to main as commit [`aca57350`](https://github.com/pooya-labs/pooya-labs-platform/commit/aca573500192f8581896bde10e68ef82c0ca2256); the bilingual packet is now in [`docs/OWNER-REVIEW-PACKET.md`](OWNER-REVIEW-PACKET.md).
