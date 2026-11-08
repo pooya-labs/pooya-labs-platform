@@ -170,3 +170,12 @@ test('progressive reveal triggers as soon as a section intersects a mobile scrol
   assert.match(home, /if \(!entry\.isIntersecting\) continue/);
   assert.match(home, /observer\.unobserve\(entry\.target\)/);
 });
+
+
+test('homepage Projects content is never hidden behind intersection-based reveal gates', () => {
+  assert.match(home, /className="portfolio-projects portfolio-container" id="projects"/);
+  assert.doesNotMatch(home, /id="projects" data-reveal="projects"/);
+  assert.doesNotMatch(home, /portfolio-section-heading" data-reveal="projects-heading"/);
+  assert.doesNotMatch(home, /portfolio-project-card" key=\{project\.name\} data-reveal="project-card"/);
+  assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} compact \/>/);
+});

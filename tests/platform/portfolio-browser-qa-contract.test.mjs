@@ -210,6 +210,8 @@ test('homepage browser QA checks both default Persian and English project grids 
   assert.match(script, /sectionOpacity/);
   assert.match(script, /sectionHasRevealGate/);
   assert.match(script, /firstCardVisible/);
+  assert.match(script, /headingOpacity/);
+  assert.match(script, /firstCardHasRevealGate/);
   assert.match(script, /Projects section or its first card remained hidden/);
 });
 

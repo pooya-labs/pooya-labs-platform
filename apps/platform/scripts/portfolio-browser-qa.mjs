@@ -285,11 +285,16 @@ try {
           const gridState = await page.locator('#projects').evaluate((section) => {
             const cards = Array.from(section.querySelectorAll<HTMLElement>('.portfolio-project-card'));
             const firstCard = cards[0];
+            const heading = section.querySelector<HTMLElement>('.portfolio-section-heading');
             const firstOpacity = firstCard ? Number.parseFloat(getComputedStyle(firstCard).opacity) : 0;
+            const headingOpacity = heading ? Number.parseFloat(getComputedStyle(heading).opacity) : 0;
             return {
               sectionOpacity: Number.parseFloat(getComputedStyle(section).opacity),
               sectionHasRevealGate: section.hasAttribute('data-reveal'),
+              headingOpacity,
+              headingHasRevealGate: heading?.hasAttribute('data-reveal') ?? false,
               firstCardOpacity: firstOpacity,
+              firstCardHasRevealGate: firstCard?.hasAttribute('data-reveal') ?? false,
               firstCardVisible: firstOpacity >= .99,
             };
           });
@@ -304,7 +309,7 @@ try {
             };
           }));
           const allCardsAnimated = cardStates.length === 8 && cardStates.every((card) => card.motionClass && card.activeAnimationCount > 0);
-          const gridVisible = gridState.sectionOpacity >= .99 && !gridState.sectionHasRevealGate && gridState.firstCardVisible;
+          const gridVisible = gridState.sectionOpacity >= .99 && !gridState.sectionHasRevealGate && gridState.headingOpacity >= .99 && !gridState.headingHasRevealGate && gridState.firstCardVisible && !gridState.firstCardHasRevealGate;
           projectGridMotion = { available: true, passed: allCardsAnimated && gridVisible, ...gridState, cardCount: cardStates.length, cards: cardStates };
           routeRecord.projectGridMotion ??= [];
           routeRecord.projectGridMotion.push({ viewport: viewport.name, ...projectGridMotion });
