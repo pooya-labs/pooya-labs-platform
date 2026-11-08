@@ -63,7 +63,7 @@ test('the signal-orbit emerald monogram is used throughout the site identity', (
   assert.match(home, /portfolio-github-mark/);
   assert.match(home, /portfolio-contact-github/);
   assert.match(home, /github\.com\/pooya-labs/);
-  assert.match(favicon, /type="image\/webp" href="%BASE_URL%brand\/pooya-monogram\.webp"/);
+  assert.match(favicon, /type="image\/svg\\+xml" href="%BASE_URL%favicon\\.svg"/);
   assert.doesNotMatch(home, /brand\/pooya-mark\.svg|brand\/pooya-mark-emerald\.webp/);
 });
 
