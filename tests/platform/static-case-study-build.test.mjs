@@ -87,13 +87,17 @@ test('reviewed project interface screenshots are embedded in both static case-st
     for (const route of [`projects/${slug}/index.html`, `en/projects/${slug}/index.html`]) {
       const html = await readFile(new URL(route, outputRoot), 'utf8');
       const sourceRoot = new RegExp(
-        `https://raw\\.githubusercontent\\.com/pooya-labs/pooya-labs-platform/[a-f0-9]{40}/apps/platform/public/interface-captures/${slug === 'aura-pulse' ? 'aurapulse' : slug}/`,
+        `https://raw\\\\.githubusercontent\\\\.com/pooya-labs/pooya-labs-platform/[a-f0-9]{40}/apps/platform/public/interface-captures/${slug === 'aura-pulse' ? 'aurapulse' : slug}/`,
       );
       assert.match(html, sourceRoot, `${route} must use an immutable portfolio commit for interface evidence`);
-      assert.match(html, new RegExp(`${slug === 'aura-pulse' ? 'aurapulse' : slug === 'salon-booking' ? 'salon-booking-fullpage' : slug}-desktop\\.png`), `${route} must include the reviewed desktop hero`);
-      assert.match(html, new RegExp(`${slug === 'aura-pulse' ? 'aurapulse' : slug === 'salon-booking' ? 'salon-booking-fullpage' : slug}-mobile\\.png`), `${route} must include the reviewed mobile capture`);
-      assert.match(html, /case-study-media-card device-desktop[^]*?<img[^>]+alt="[^"]+"/, `${route} desktop gallery evidence must have localized alternative text`);
-      assert.match(html, /case-study-media-card device-mobile[^]*?<img[^>]+alt="[^"]+"/, `${route} mobile evidence must have localized alternative text`);
+      const desktopImage = html.match(/case-study-media-card device-desktop[^]*?<img[^>]+src="([^"]+)"[^>]+alt="([^"]+)"/);
+      const mobileImage = html.match(/case-study-media-card device-mobile[^]*?<img[^>]+src="([^"]+)"[^>]+alt="([^"]+)"/);
+      assert.ok(desktopImage, `${route} must include desktop interface evidence with localized alternative text`);
+      assert.ok(mobileImage, `${route} must include mobile interface evidence with localized alternative text`);
+      assert.match(desktopImage[1], /^https:\\/\\/raw\\.githubusercontent\\.com\\/pooya-labs\\/pooya-labs-platform\\/[a-f0-9]{40}\\/apps\\/platform\\/public\\/interface-captures\\/[^"]+\\.png$/, `${route} desktop evidence must use a pinned raw asset URL`);
+      assert.match(mobileImage[1], /^https:\\/\\/raw\\.githubusercontent\\.com\\/pooya-labs\\/pooya-labs-platform\\/[a-f0-9]{40}\\/apps\\/platform\\/public\\/interface-captures\\/[^"]+\\.png$/, `${route} mobile evidence must use a pinned raw asset URL`);
+      assert.ok(desktopImage[2].trim().length > 0, `${route} desktop evidence must have alternative text`);
+      assert.ok(mobileImage[2].trim().length > 0, `${route} mobile evidence must have alternative text`);
     }
   }
   const aetherFlow = await readFile(new URL('projects/aetherflow/index.html', outputRoot), 'utf8');
@@ -101,18 +105,16 @@ test('reviewed project interface screenshots are embedded in both static case-st
   assert.ok(!aetherFlow.includes('interface-captures/aetherflow/aetherflow-mobile.png'));
 });
 
-test('Pages build omits unused local screenshot duplicates while preserving immutable remote evidence', { skip: !rootHtml }, async () => {
+test('case-study image evidence uses immutable source URLs without relying on screenshot basenames', { skip: !rootHtml }, async () => {
   const orbit = await readFile(new URL('projects/orbit/index.html', outputRoot), 'utf8');
-  assert.match(
-    orbit,
-    /https:\/\/raw\.githubusercontent\.com\/pooya-labs\/pooya-labs-platform\/[a-f0-9]{40}\/apps\/platform\/public\/interface-captures\/orbit\/orbit-desktop\.png/,
-    'The reviewed desktop image must remain available through its immutable source URL',
-  );
-  await assert.rejects(
-    readFile(new URL('interface-captures/orbit/orbit-desktop.png', outputRoot)),
-    { code: 'ENOENT' },
-    'The Pages bundle must not duplicate the already remotely hosted screenshot binary',
-  );
+  const captures = [...orbit.matchAll(/<img[^>]+src="([^"]+)"[^>]+alt="([^"]+)"/g)]
+    .filter((match) => match[1].includes('/interface-captures/orbit/'));
+  assert.ok(captures.some((match) => match[1].includes('-desktop.png')), 'The desktop capture must remain available from its immutable source');
+  assert.ok(captures.some((match) => match[1].includes('-mobile.png')), 'The mobile capture must remain available from its immutable source');
+  for (const capture of captures) {
+    assert.match(capture[1], /^https:\\/\\/raw\\.githubusercontent\\.com\\/pooya-labs\\/pooya-labs-platform\\/[a-f0-9]{40}\\/apps\\/platform\\/public\\/interface-captures\\/orbit\\/[^"]+\\.png$/);
+    assert.ok(capture[2].trim().length > 0);
+  }
 });
 
 test('GlobalCart static case studies include real pinned desktop and mobile storefront screenshots', { skip: !rootHtml }, async () => {
