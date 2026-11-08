@@ -1,3 +1,11 @@
+## 2026-11-09 — Phase 7 upstream source and release-state refresh
+
+- Rechecked the exact current `main` heads and observed open PRs across all eight independent project repositories; recorded the new source inventory in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md). All upstream inspection was read-only.
+- Corrected the bilingual owner-review packet to identify GlobalCart's published stable portfolio/demo v1.0.0 release. Preserved its marketplace-simulation boundary and distinguished its successful Browser E2E run on UI commit `905c6cf` from physical-device, screen-reader, field-CWV, and owner approval.
+- Recorded AetherFlow's storage-only Apps Script persistence action and fixture QA result; live owner-Sheet verification remains pending. Recorded ORBIT PR #138 as open/unmerged with its production Keycloak security gate still blocked.
+- Updated the owner-packet contract test for the corrected GlobalCart release status. This is documentation and test maintenance only; no application code, public deployment, or upstream project repository changed.
+- Platform main baseline `8ae608342aaf` had passing Repository CI [42520197557](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42520197557). The refreshed packet still requires explicit owner review; Phase 7 manual accessibility/device, deployment/recovery, social-preview, and owner approval gates remain open.
+
 ## 2026-11-08 — Owner packet merged and post-merge verification
 
 - Merged bilingual [owner review packet](OWNER-REVIEW-PACKET.md) via PR [#16](https://github.com/pooya-labs/pooya-labs-platform/pull/16), main commit [`aca57350`](https://github.com/pooya-labs/pooya-labs-platform/commit/aca573500192f8581896bde10e68ef82c0ca2256).
