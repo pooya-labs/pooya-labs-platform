@@ -4,6 +4,7 @@
 - The probe records TTFB, DOMContentLoaded, load, FCP, LCP, CLS, JS/CSS/image/font resource sizes, hidden cross-origin transfer-size entries, HTTP errors, and horizontal overflow. Initial run is report-only; budgets will be enforced after reviewing actual baseline data.
 - Added [PERFORMANCE-BUDGET.md](PERFORMANCE-BUDGET.md) with initial guardrails and explicit limitations; CI now uploads the JSON report as part of the existing private Browser QA artifact.
 - Added an npm audit high-severity gate to Repository CI. Its first result is pending; do not claim dependency security clearance until it passes and any findings are resolved.
+- Browser QA [42506834297](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42506834297) passed the existing checks: 18/18 routes, 36/36 viewports, zero failures, zero confirmed axe violations; 36 incomplete contrast records remain. The first performance invocation did not start because the command targeted the app workspace instead of the root script; this was corrected on the branch and a rerun is required.
 - Browser QA workflow now runs the performance probe after the existing responsive/accessibility/keyboard checks.
 
 ## Release sequence decision — 2026-11-08
