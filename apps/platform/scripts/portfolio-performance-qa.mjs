@@ -18,6 +18,8 @@ const viewports = [
 const baseUrl = new URL(process.env.PORTFOLIO_BASE_URL || 'http://127.0.0.1:4173/pooya-labs-platform/');
 if (!baseUrl.pathname.endsWith('/')) baseUrl.pathname += '/';
 const artifactDir = path.resolve(process.env.PORTFOLIO_PERF_ARTIFACT_DIR || 'apps/platform/artifacts/portfolio-browser-qa');
+const reportName = process.env.PORTFOLIO_PERF_REPORT_NAME || 'performance-report.json';
+const environmentLabel = process.env.PORTFOLIO_PERF_ENVIRONMENT || 'local-build';
 const enforceBudgets = process.env.PORTFOLIO_PERF_ENFORCE === '1';
 const budgets = {
   ttfbMs: 1200,
@@ -33,6 +35,7 @@ await mkdir(artifactDir, { recursive: true });
 const report = {
   generatedAt: new Date().toISOString(),
   baseUrl: baseUrl.href,
+  environment: environmentLabel,
   mode: enforceBudgets ? 'enforced' : 'baseline-only',
   budgets,
   routes: [],
@@ -184,5 +187,5 @@ await writeFile(path.join(artifactDir, 'performance-report.json'), JSON.stringif
 console.log('Portfolio performance baseline: ' + report.routes.length + '/' + (routes.length * viewports.length) + ' measurements collected.');
 console.log('p75 summary: ' + JSON.stringify(Object.fromEntries(Object.entries(report.summary).map(([key, value]) => [key, value.p75]))));
 console.log('Failures: ' + report.failures.length + '.');
-console.log('Report: ' + path.join(artifactDir, 'performance-report.json'));
+console.log('Report: ' + path.join(artifactDir, reportName));
 if (report.failures.length > 0) process.exitCode = 1;
