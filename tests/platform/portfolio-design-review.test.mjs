@@ -22,9 +22,9 @@ test('architecture diagram labels are wrapped and centered within fixed node geo
 test('direct route startup uses document scrolling and disables browser position restoration', () => {
   assert.match(main, /window\.history\.scrollRestoration = 'manual'/);
   assert.match(main, /window\.scrollTo\(0, 0\)/);
-  const finalRootRule = css.lastIndexOf('.portfolio-page {');
-  assert.ok(finalRootRule >= 0);
-  assert.match(css.slice(finalRootRule, finalRootRule + 1400), /height:100vh;height:100dvh;[\s\S]*?overflow-y:auto/);
+  const scrollRule = css.lastIndexOf('/* One scroll surface for the public portfolio');
+  assert.ok(scrollRule >= 0);
+  assert.match(css.slice(scrollRule, scrollRule + 900), /height:100vh;height:100dvh;[\s\S]*?overflow-y:auto/);
 });
 
 test('proof scene follows the Stripe hierarchy with metrics before a full-width radial field', () => {
