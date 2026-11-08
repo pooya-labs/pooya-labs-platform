@@ -1,6 +1,6 @@
 # Visual Direction — Pooya Labs personal portfolio
 
-**Status:** First public portfolio layout implemented as an early draft. It is not the final visual design. A full owner-reviewed redesign is a release-blocking roadmap milestone.
+**Status:** The current motion-led portfolio is a review baseline, not the final design. A complete new redesign with two owner review/approval rounds is Phase 8, the penultimate stage before V1. Full portfolio-level integration of all eight projects is Phase 9, immediately before release.
 
 ## Product first
 
@@ -19,8 +19,8 @@ Do not let a workspace dashboard, metrics panel, product catalogue, or decorativ
 - Original Antigravity-inspired spatial depth, not a copy of Google's UI or assets.
 - Project cards should feel like individual engineered artifacts, not generic SaaS KPI tiles.
 - Large typography and meaningful whitespace; project descriptions and evidence remain readable.
-- Dark mode is the primary presentation. Light mode may be added after the first full design review.
-- Persian is the initial language with complete English LTR parity.
+- Both dark and light themes are already implemented; the final redesign must retain and refine both.
+- English is the default language (LTR); Persian is available through the language toggle with complete RTL parity.
 - Responsive from large desktop to narrow mobile, with no critical interaction dependent on hover.
 
 ## Motion and pointer behavior
@@ -52,7 +52,7 @@ The current implementation contains:
 
 Project descriptions, skill emphasis, featured-project order, photos/avatar, contact channels, and public bio are content drafts and require Pooya's review before launch.
 
-## Mandatory pre-release redesign and owner feedback
+## Phase 8 — mandatory complete redesign and owner feedback (penultimate stage)
 
 This is a release-blocking gate, not optional polish:
 1. Present a complete visual and content prototype to Pooya.
@@ -66,7 +66,7 @@ Review criteria: distinctive personal identity, strong project storytelling, cre
 
 ## 2026-11-07 — Motion-led direction, using Framer as a reference
 
-Pooya selected [Framer](https://www.framer.com/) as the visual/motion reference for the Phase 7 redesign. Use its general interaction language as inspiration: confident oversized type, restrained dark canvas, sticky translucent navigation, large website previews, layered image compositions, editorial section transitions, marquees, and polished hover/scroll motion. This is a design reference, not permission to reuse Framer's logo, copy, proprietary site assets, templates, or exact page composition. The result must remain an original Pooya Labs portfolio.
+Pooya selected [Framer](https://www.framer.com/) as the visual/motion reference for the Phase 8 redesign. Use its general interaction language as inspiration: confident oversized type, restrained dark canvas, sticky translucent navigation, large website previews, layered image compositions, editorial section transitions, marquees, and polished hover/scroll motion. This is a design reference, not permission to reuse Framer's logo, copy, proprietary site assets, templates, or exact page composition. The result must remain an original Pooya Labs portfolio.
 
 ### First implementation pass
 - The homepage hero now uses actual pinned project interface imagery (GlobalCart, ORBIT, NexusCanvas, LuminaGlass, and AuraPulse) in a layered 3D screenshot stage; screenshot-backed project cards are preferred over logo-only art wherever current reviewed assets exist.
@@ -85,4 +85,12 @@ Pooya selected [Framer](https://www.framer.com/) as the visual/motion reference 
 - The capture artifact includes desktop/mobile scenarios such as ORBIT incidents and connection prompts, NexusCanvas Mobile Rack and export modal, and LuminaGlass Audio Lab and local task board. Audio was not started, and no data was imported or modified.
 
 ### Review still required
-This is the first design pass, not final Phase 7 approval. Review the generated capture artifact and the new site on desktop/mobile, then record the first feedback round. A second review remains required after those revisions. Do not publish unreviewed captures or mark the redesign gate complete before explicit owner approval.
+This is the first design pass, not final Phase 8 approval. Review the generated capture artifact and the new site on desktop/mobile, then record the first feedback round. A second review remains required after those revisions. Do not publish unreviewed captures or mark the redesign gate complete before explicit owner approval.
+
+
+## Release sequence (2026-11-08)
+
+- Phase 7 closes engineering, evidence-baseline, performance, security, accessibility-preparation, deployment/recovery, and owner/device readiness before any new visual rebuild.
+- Phase 8 is the penultimate stage: complete redesign of every public surface followed by two explicit owner feedback/approval rounds.
+- Phase 9 is the final implementation stage before V1: refresh and fully integrate all eight independent projects into the approved design, including their verified facts, case studies, current links, diagrams, approved media, and useful demos. Source-code imports remain opt-in and require a separate architecture/licensing approval.
+- Phase 10 is release hardening and V1 publication. No V1 tag is permitted before Phases 7–9 are complete.
