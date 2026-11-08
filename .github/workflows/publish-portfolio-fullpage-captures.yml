@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'docs/approved-interface-captures/portfolio-2026-11-08.json'
+      - '.github/workflows/publish-portfolio-fullpage-captures.yml'
 
 permissions:
   contents: write
