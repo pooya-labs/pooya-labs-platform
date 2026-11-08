@@ -5,6 +5,7 @@
 **Review state:** Prepared; owner approval is still pending.  
 **Purpose:** Give Pooya one place to review public biography, project order, role attribution, status labels, contact channels, and media boundaries before Phase 8.  
 **Important:** This document is a review snapshot, not approval to publish new claims or media. All eight project registry entries currently remain marked as needs-owner-review.
+**Owner-confirmed platform identity (2026-11-09):** Use **Pooya Monogram (پویا مونوگرام)** and the centered black-tile monogram as the Pooya Labs Platform owner identity in the homepage footer, case-study footers, bilingual README ownership blocks, and structured metadata. Credit **Pooya Goodarzi** as creator and maintainer. This narrow confirmation applies to the platform brand only; it does not approve the eight independent project dossiers/media or close any Phase 7–10 release gate.
 
 ## 1. Homepage identity and copy currently in the repository
 

@@ -12,6 +12,12 @@
 - Identified that the three capture publishers push directly to `main`; a strict require-PR ruleset must first migrate this path to PR-based publishing or explicitly accept the broader GitHub Actions bypass.
 - Updated STATUS, NEXT, ROADMAP, RELEASE, SECURITY-MODEL, and project-state. Documentation only; no GitHub settings, secrets, application source, or deployment changed.
 
+## 2026-11-09 — Pooya Monogram owner identity
+
+- Added the owner identity **Pooya Monogram / پویا مونوگرام** with the centered rounded black-tile monogram to the homepage and all bilingual case-study footers, both README ownership sections, and Person/Brand structured metadata.
+- Credited **Pooya Goodarzi** as creator and maintainer. Added Browser QA checks for all 18 localized routes and a dedicated owner-identity contract test; the browser check passed 18/18 routes and 36/36 viewports with zero failures.
+- This is a limited brand-identity confirmation; it does not approve all portfolio copy/media or satisfy the remaining release gates. The platform remains pre-alpha and no V1 tag or deployment is claimed.
+
 ## 2026-11-09 — Source audit and owner packet merged
 
 - Merged PR [#18](https://github.com/pooya-labs/pooya-labs-platform/pull/18) as [`23f1689`](https://github.com/pooya-labs/pooya-labs-platform/commit/23f16896624ef391e284d3579a7f7278f5c8cbaf).

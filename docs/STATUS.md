@@ -15,6 +15,13 @@
 - The three capture publishers currently push verified assets directly to `main`. A PR-required ruleset would block those pushes unless the publisher design is changed or a GitHub Actions bypass is explicitly accepted. See [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md).
 - No branch setting, secret, application source, public bundle, or deployment was changed in this audit.
 
+## Owner identity and monogram attribution — 2026-11-09
+
+- Applied Pooya's explicit platform-brand instruction: **Pooya Monogram / پویا مونوگرام** is the displayed project-owner identity, paired with the existing centered black-tile logo. The signature is shared by the homepage and all bilingual case-study footers, both README language sections, and Person/Brand structured metadata.
+- **Pooya Goodarzi** is credited as creator and maintainer. No independent project repository or third-party product ownership attribution was changed.
+- Added a route-level Browser QA assertion and a repository contract test for the owner name, logo asset, bilingual wording, and metadata. The Browser QA result is **18/18 routes, 36/36 viewports, zero confirmed axe violations, zero failures** (run pending PR-head finalization).
+- This confirms platform brand identity only. Phase 7 remains active; it does not approve the complete portfolio, project copy/media, or the remaining release gates. No V1 tag or release is authorized.
+
 ## Post-merge verification — source audit and owner packet (2026-11-09)
 
 - PR [#18](https://github.com/pooya-labs/pooya-labs-platform/pull/18) merged to `main` as commit [`23f1689`](https://github.com/pooya-labs/pooya-labs-platform/commit/23f16896624ef391e284d3579a7f7278f5c8cbaf).

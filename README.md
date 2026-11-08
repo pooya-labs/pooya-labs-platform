@@ -10,9 +10,9 @@ The latest case-study pass now server-renders the same component that the browse
 
 ## Project ownership
 
-<p align="center"><a href="https://pooya-labs.github.io/pooya-labs-platform/"><img src="https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/main/apps/platform/public/brand/pooya-monogram-tile.svg" alt="Pooya Labs Platform monogram" width="96" /></a></p>
+<p align="center"><a href="https://pooya-labs.github.io/pooya-labs-platform/"><img src="https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/main/apps/platform/public/brand/pooya-monogram-tile.svg" alt="Pooya Monogram — project owner mark" width="96" /></a></p>
 
-**Created, owned and maintained by [Pooya Labs Platform](https://pooya-labs.github.io/pooya-labs-platform/).** Founder and product engineer: **Pooya Goodarzi**.
+**Project owner identity:** [Pooya Monogram (پویا مونوگرام)](https://github.com/pooya-labs). **Created and maintained by:** **Pooya Goodarzi**, through Pooya Labs Platform.
 
 ## The visitor journey
 
@@ -128,6 +128,6 @@ npm run build:gas
 
 ### مالکیت و نگه‌داری
 
-<p align="center"><a href="https://pooya-labs.github.io/pooya-labs-platform/"><img src="https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/main/apps/platform/public/brand/pooya-monogram-tile.svg" alt="نشان مونوگرام پویا لبز" width="96" /></a></p>
+<p align="center"><a href="https://pooya-labs.github.io/pooya-labs-platform/"><img src="https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/main/apps/platform/public/brand/pooya-monogram-tile.svg" alt="نشان مالک پروژه، پویا مونوگرام" width="96" /></a></p>
 
-**ایجاد، مالکیت و نگه‌داری: [پلتفرم پویا لبز](https://pooya-labs.github.io/pooya-labs-platform/)** · بنیان‌گذار و مهندس محصول: **پویا گودرزی**.
+**هویت مالک پروژه:** [پویا مونوگرام (Pooya Monogram)](https://github.com/pooya-labs). **سازنده و نگه‌دارنده:** **پویا گودرزی**، در چارچوب پلتفرم پویا لبز.

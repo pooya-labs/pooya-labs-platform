@@ -10,6 +10,7 @@ This checklist governs public portfolio releases. The current release remains **
 - [ ] Pass the portfolio browser QA workflow for the expected Persian/English routes, desktop/mobile viewports, reduced-motion behavior, and gallery scroll chaining.
 - [ ] Review accessibility findings. Distinguish confirmed violations from incomplete automated checks; manually verify contrast, focus visibility, keyboard operation, and screen-reader flow in both languages and themes.
 - [ ] Verify public biography, project order, project descriptions, contribution/role statements, statuses, contact details, repository links, demo links, and all published media with the owner.
+- [ ] Verify the Pooya Monogram owner signature and black-tile logo on the homepage and every bilingual case-study route, plus both README ownership blocks and structured metadata on the deployed hosts.
 - [ ] Complete physical-device review on representative mobile hardware and browsers. Browser emulation does not satisfy this gate.
 - [ ] Verify SEO/canonical/hreflang/sitemap/social-card output and test representative external sharing clients.
 - [ ] Review privacy, security, performance, and dependency changes. Never publish private customer or admin data.

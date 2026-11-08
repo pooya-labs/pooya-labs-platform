@@ -1985,7 +1985,7 @@
 .portfolio-footer { width:100%;margin-top:0;padding:0;border:0;background:#080d0e;color:#9baa9f; }
 .portfolio-page[data-theme="light"] .portfolio-footer { background:#e8ede7;color:#607166; }
 .portfolio-footer-inner {
-  display:grid;grid-template-columns:minmax(200px,.9fr) minmax(180px,1fr) auto auto;
+  display:grid;grid-template-columns:minmax(165px,.85fr) minmax(160px,.95fr) minmax(180px,1fr) auto auto;
   align-items:center;gap:22px;padding-top:27px;padding-bottom:28px;border-top:1px solid rgba(202,224,210,.1);
 }
 .portfolio-page[data-theme="light"] .portfolio-footer-inner { border-top-color:rgba(35,55,45,.12); }
@@ -3030,3 +3030,15 @@
   .case-study-media-card.device-mobile .case-study-media-frame { max-height:72svh; }
   .case-study-scroll-note { font-size:8px; }
 }
+
+/* Shared platform owner identity on the homepage and every case study. */
+.portfolio-owner-attribution { display:inline-flex; align-items:center; gap:10px; min-width:0; padding:7px 11px 7px 7px; border:1px solid var(--pf-line); border-radius:13px; color:var(--pf-text); background:color-mix(in srgb,var(--pf-bg-soft) 70%,transparent); text-align:start; transition:border-color .2s ease,transform .2s ease; }
+.portfolio-owner-attribution:hover { border-color:var(--pf-line-strong); transform:translateY(-1px); }
+.portfolio-owner-attribution:focus-visible { outline:2px solid var(--pf-cyan); outline-offset:3px; }
+.portfolio-owner-attribution > img { display:block; width:38px; height:38px; flex:0 0 38px; border-radius:10px; object-fit:contain; background:#000; }
+.portfolio-owner-attribution-copy { display:grid; gap:2px; min-width:0; line-height:1.35; }
+.portfolio-owner-attribution-label { color:var(--pf-dim); font-size:7px; font-weight:650; letter-spacing:.15em; }
+.portfolio-owner-attribution strong { color:var(--pf-text); font-size:10px; font-weight:750; letter-spacing:.08em; }
+.portfolio-owner-attribution-byline { color:var(--pf-muted); font-size:8px; }
+.portfolio-footer-inner .portfolio-owner-attribution { justify-self:start; max-width:100%; }
+@media (max-width:680px) { .portfolio-footer .portfolio-owner-attribution { flex:0 1 100%; width:100%; } .portfolio-footer-inner .portfolio-owner-attribution { width:fit-content; max-width:100%; } .portfolio-owner-attribution { max-width:100%; } }
