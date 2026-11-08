@@ -698,7 +698,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             <h2 id="portfolio-proof-title">{t.proofTitle}</h2>
             <p>{t.proofSub}</p>
           </div>
-          <div className="portfolio-proof-stats" aria-label={t.proofEyebrow}>
+          <div className="portfolio-proof-stats" role="group" aria-label={t.proofEyebrow}>
             <article><strong>08</strong><small>{t.proofStat1}</small></article>
             <article><strong>16</strong><small>{t.proofStat2}</small></article>
             <article><strong>02</strong><small>{t.proofStat3}</small></article>

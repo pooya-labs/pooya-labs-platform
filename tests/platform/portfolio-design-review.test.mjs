@@ -32,7 +32,7 @@ test('proof scene follows the Stripe hierarchy with metrics before a full-width 
   assert.match(home, /const proofRays = Array\.from\(\{ length: 112 \}/);
   assert.match(home, /const proofParticles = Array\.from\(\{ length: 72 \}/);
   assert.match(home, /className="portfolio-proof"/);
-  assert.match(home, /className="portfolio-proof-stats"/);
+  assert.match(home, /className="portfolio-proof-stats" role="group" aria-label=\{t\.proofEyebrow\}/);
   assert.match(home, /className="proof-radial-svg"/);
   assert.match(home, /className="proof-ray"/);
   assert.match(home, /className="proof-particle"/);
@@ -178,4 +178,11 @@ test('homepage Projects content is never hidden behind intersection-based reveal
   assert.doesNotMatch(home, /portfolio-section-heading" data-reveal="projects-heading"/);
   assert.doesNotMatch(home, /portfolio-project-card" key=\{project\.name\} data-reveal="project-card"/);
   assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} compact \/>/);
+});
+
+
+test('header contrast remains inspectable without a decorative pseudo-element over its text', () => {
+  assert.doesNotMatch(css, /\.portfolio-header::after/);
+  assert.match(css, /\.portfolio-header\s*\{[\s\S]*?background:\s*var\(--pf-control-bg\)/);
+  assert.match(css, /\.portfolio-nav\s*\{[\s\S]*?background:\s*var\(--pf-control-surface\)/);
 });

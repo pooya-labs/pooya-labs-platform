@@ -493,14 +493,6 @@
   border-bottom: 1px solid rgba(255,255,255,.065);
   backdrop-filter: blur(24px) saturate(155%);
 }
-.portfolio-header::after {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  bottom: -1px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(119,196,255,.32), rgba(141,238,208,.2), transparent);
-}
 .portfolio-brand-mark {
   border-color: rgba(148, 198, 255, .25);
   background: linear-gradient(145deg, rgba(59, 107, 174, .5), rgba(18, 29, 51, .9));
