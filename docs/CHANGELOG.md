@@ -192,3 +192,11 @@
 - Added paired desktop/mobile media presentation and extended the capture runner to produce full-page desktop/mobile evidence for public projects, including Salon Booking's customer-facing route only.
 - New screenshots remain private review artifacts until the capture run succeeds and images pass visual/privacy review.
 - Validation: pending GitHub Actions on `feat/portfolio-polish-stripe-motion`.
+
+
+## 2026-11-08 — Responsive capture review
+
+- Captured 47 real browser screenshots and 8 short motion reels from the public project demos at desktop and mobile viewports.
+- Approved 14 full-page desktop/mobile screenshots for seven projects after visual and privacy review; Salon Booking capture is restricted to the customer-facing page.
+- Added a publishing workflow that verifies the exact artifact, PNG signatures, dimensions, byte sizes, and SHA-256 checksums before committing screenshots.
+- GlobalCart's new full-page capture is held back because the live product collection currently displays blank placeholders; its existing curated screenshots remain active.
