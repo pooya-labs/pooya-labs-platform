@@ -59,7 +59,7 @@ test('Vite emits crawler-readable Persian and English case-study pages', { skip:
 });
 
 test('reviewed project interface screenshots are embedded in both static case-study locales', { skip: !rootHtml }, async () => {
-  const projects = ['orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse'];
+  const projects = ['orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'salon-booking'];
   for (const slug of projects) {
     for (const route of [`projects/${slug}/index.html`, `en/projects/${slug}/index.html`]) {
       const html = await readFile(new URL(route, outputRoot), 'utf8');
@@ -67,8 +67,8 @@ test('reviewed project interface screenshots are embedded in both static case-st
         `https://raw\\.githubusercontent\\.com/pooya-labs/pooya-labs-platform/[a-f0-9]{40}/apps/platform/public/interface-captures/${slug === 'aura-pulse' ? 'aurapulse' : slug}/`,
       );
       assert.match(html, sourceRoot, `${route} must use an immutable portfolio commit for interface evidence`);
-      assert.match(html, new RegExp(`${slug}-desktop\\.png`), `${route} must include the reviewed desktop hero`);
-      assert.match(html, new RegExp(`${slug}-mobile\\.png`), `${route} must include the reviewed mobile capture`);
+      assert.match(html, new RegExp(`${slug === 'aura-pulse' ? 'aurapulse' : slug === 'salon-booking' ? 'salon-booking-fullpage' : slug}-desktop\\.png`), `${route} must include the reviewed desktop hero`);
+      assert.match(html, new RegExp(`${slug === 'aura-pulse' ? 'aurapulse' : slug === 'salon-booking' ? 'salon-booking-fullpage' : slug}-mobile\\.png`), `${route} must include the reviewed mobile capture`);
       assert.match(html, /case-study-visual-image visual-interface[^>]+alt="[^"]+"/, `${route} desktop evidence must have localized alternative text`);
       assert.match(html, /case-study-media-card device-mobile[^]*?<img[^>]+alt="[^"]+"/, `${route} mobile evidence must have localized alternative text`);
     }
