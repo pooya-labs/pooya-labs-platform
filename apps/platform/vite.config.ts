@@ -126,7 +126,7 @@ function staticPageHtml(template: string, project: PortfolioProject, locale: Loc
   };
   html = replaceTag(html, /<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify(structuredData)}</script>`, 'JSON-LD');
   const appMarkup = renderToString(createElement(HydratedCaseStudy, { project, language: locale, baseUrl: SITE_BASE }));
-  html = replaceTag(html, /<div id="root"><\\/div>/, `<div id="root">${appMarkup}</div>`, 'root mount');
+  html = replaceTag(html, /<div id="root"><\/div>/, \`<div id="root">\${appMarkup}</div>\`, 'root mount');
   return html;
 }
 
