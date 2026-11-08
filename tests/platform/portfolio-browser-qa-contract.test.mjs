@@ -70,3 +70,12 @@ test('browser QA includes a pinned axe-core Playwright scan for WCAG 2.2 AA and 
   assert.match(portfolioCss, /\.case-study-back \{ min-height: 36px/);
   assert.match(script, /impactCounts/);
 });
+
+
+test('browser QA rejects stale middle-of-page scroll restoration on direct route entry', () => {
+  assert.match(script, /initialWindowScrollY: window\.scrollY/);
+  assert.match(script, /initialDocumentScrollTop: document\.scrollingElement/);
+  assert.match(script, /initialPortfolioScrollTop: document\.querySelector\('\.portfolio-page'\)/);
+  assert.match(script, /history\.scrollRestoration/);
+  assert.match(script, /direct route did not open at the top of the page/);
+});

@@ -1,4 +1,4 @@
-import { Activity, ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Layers3, Monitor, Moon, Sun, TerminalSquare } from 'lucide-react';
+import { Activity, ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Camera, Layers3, Monitor, Moon, Send, Sun, TerminalSquare } from 'lucide-react';
 import { useEffect, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
 import { portfolioProjects as projects, type PortfolioProject } from './content/projects';
 import { coreDossiers } from './content/case-study-dossiers-core';
@@ -25,6 +25,24 @@ function getProjectRouteHref(slug: string, language: Language): string {
   if (import.meta.env.BASE_URL === './') return `?project=${encodeURIComponent(slug)}`;
   return `${import.meta.env.BASE_URL}${language === 'en' ? 'en/' : ''}projects/${encodeURIComponent(slug)}/`;
 }
+
+const proofRays = Array.from({ length: 112 }, (_, index) => {
+  const progress = index / 111;
+  const x = 34 + progress * 1132;
+  const spread = Math.abs(progress - 0.5) * 2;
+  const y = 26 + spread * 112 + ((index * 17) % 9) * 2;
+  const bend = (index % 7 - 3) * 7;
+  const c1x = 600 + (x - 600) * 0.16 + bend;
+  const c2x = 600 + (x - 600) * 0.78 - bend;
+  const c2y = y + 88 + ((index * 13) % 20);
+  return { id: index, x, y, c1x, c2x, c2y, opacity: 0.2 + ((index * 19) % 55) / 100, width: index % 9 === 0 ? 1.6 : 0.85 };
+});
+const proofParticles = Array.from({ length: 72 }, (_, index) => {
+  const progress = ((index * 37) % 71) / 70;
+  const x = 56 + progress * 1088;
+  const y = 52 + ((index * 53) % 250);
+  return { id: index, x, y, radius: index % 8 === 0 ? 2.1 : 1.1, delay: (index % 13) * -0.43 };
+});
 
 interface PortfolioHomeProps {
   language: Language;
@@ -53,7 +71,7 @@ const text = {
     selected: 'کارهای منتخب',
     selectedSub: 'پروژه‌ها و آزمایش‌هایی که بخشی از مسیر یادگیری و مهندسی من هستند.',
     allProjects: '۸ پروژه در ویترین',
-    proofEyebrow: 'مقیاس کار', proofTitle: 'از ایده تا محصول، با شواهد واقعی.', proofSub: 'پروژه‌ها، مسیرهای مستند و محیط‌هایی که واقعاً ساخته و منتشر شده‌اند.', proofStat1: 'پروژه مستقل', proofStat2: 'صفحه مطالعه موردی', proofStat3: 'زبان رابط', proofStat4: 'مسیر انتشار',
+    proofEyebrow: 'بنیان مهندسی', proofTitle: 'پشت هر پروژه، یک بنیان مهندسی.', proofSub: 'نرم‌افزار، سیستم و تجربه‌های محصولی که با شواهد واقعی ساخته شده‌اند.', proofStat1: 'پروژه مستقل', proofStat2: 'صفحه مطالعه موردی', proofStat3: 'زبان رابط', proofStat4: 'مسیر انتشار',
     aboutEyebrow: 'کمی درباره من',
     aboutTitle: 'از طراحی محصول تا ساخت سیستم‌های نرم‌افزاری.',
     aboutBody: 'در پروژه‌هایم از رابط‌های تعاملی و ابزارهای بصری تا سیستم‌های توزیع‌شده، داشبوردهای داده و محصولات وب کار کرده‌ام. تلاشم این است که هر پروژه با معماری مشخص، مرزهای روشن، تست و توضیح صادقانه از وضعیت واقعی ارائه شود.',
@@ -68,7 +86,7 @@ const text = {
     contactEyebrow: 'در تماس باشیم',
     contactTitle: 'ایده‌ای برای ساختن داریم؟',
     contactBody: 'برای دیدن کدها، روند توسعه و پروژه‌های تازه، از گیت‌هاب من شروع کن.',
-    contactAction: 'مشاهده پروفایل گیت‌هاب',
+    contactAction: 'مشاهده پروفایل گیت‌هاب', contactTelegram: 'تلگرام', contactInstagram: 'اینستاگرام',
     footer: 'طراحی و توسعه با کنجکاوی و وسواس مهندسی.',
     workspace: 'ورود به فضای کاری',
     language: 'English',
@@ -105,7 +123,7 @@ const text = {
     selected: 'Selected work',
     selectedSub: 'Projects and experiments that are part of my engineering journey.',
     allProjects: '8 projects featured',
-    proofEyebrow: 'THE WORK, IN NUMBERS', proofTitle: 'Built with intent. Shown with evidence.', proofSub: 'Independent projects, documented case studies, and real interfaces across multiple runtimes.', proofStat1: 'Independent projects', proofStat2: 'Case-study routes', proofStat3: 'Interface languages', proofStat4: 'Publishing targets',
+    proofEyebrow: 'THE ENGINEERING FOUNDATION', proofTitle: 'The foundation behind every project.', proofSub: 'Software, systems, and product experiences built with visible evidence.', proofStat1: 'Independent projects', proofStat2: 'Case-study routes', proofStat3: 'Interface languages', proofStat4: 'Publishing targets',
     aboutEyebrow: 'A little about me',
     aboutTitle: 'From product design to building software systems.',
     aboutBody: 'My projects span interactive interfaces and visual tools, distributed systems, data dashboards, and web products. I aim to present each one with a clear architecture, honest boundaries, testing, and an accurate account of its current state.',
@@ -120,7 +138,7 @@ const text = {
     contactEyebrow: 'Let’s connect',
     contactTitle: 'Have something worth building?',
     contactBody: 'For source code, development updates, and new projects, start with my GitHub profile.',
-    contactAction: 'View GitHub profile',
+    contactAction: 'View GitHub profile', contactTelegram: 'Telegram', contactInstagram: 'Instagram',
     footer: 'Designed and built with curiosity and engineering care.',
     workspace: 'Open workspace',
     language: 'فارسی',
@@ -157,7 +175,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
       <header className="portfolio-header">
         <a className="portfolio-brand" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}>
           <span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /></span>
-          <span><strong>POOYA</strong><small>PROJECT CASE STUDY</small></span>
+          <span><strong>POOYA LABS</strong><small>PROJECT CASE STUDY</small></span>
         </a>
         <div className="portfolio-header-actions">
           <button className="portfolio-theme" type="button" onClick={() => onThemeChange(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? (rtl ? 'فعال‌کردن حالت روشن' : 'Switch to light mode') : (rtl ? 'فعال‌کردن حالت تیره' : 'Switch to dark mode')} title={theme === 'dark' ? (rtl ? 'حالت روشن' : 'Light mode') : (rtl ? 'حالت تیره' : 'Dark mode')}>{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}<span>{theme === 'dark' ? (rtl ? 'روشن' : 'Light') : (rtl ? 'تیره' : 'Dark')}</span></button>
@@ -264,11 +282,17 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
           <p>{project.caseStudy.boundaries[language]}</p>
         </section>
       </main>
-      <footer className="portfolio-footer portfolio-container">
-        <a className="portfolio-brand" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}><span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /></span><span><strong>POOYA LABS</strong><small>PERSONAL PORTFOLIO</small></span></a>
-        <span>{project.name} · {project.status[language]}</span>
-        <a href={project.repositoryUrl} target="_blank" rel="noreferrer"><Code2 size={16} /> {t.source}</a>
-        <small>© {new Date().getFullYear()} POOYA LABS</small>
+      <footer className="portfolio-footer">
+        <div className="portfolio-footer-inner portfolio-container">
+          <a className="portfolio-brand" href="#top"><span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /></span><span><strong>POOYA LABS</strong><small>INDEPENDENT SOFTWARE BUILDER</small></span></a>
+          <p>{t.footer}</p>
+          <div className="portfolio-footer-socials">
+            <a href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Code2 size={17} /> GitHub</a>
+            <a href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><Send size={16} /> @pooyayee</a>
+            <a href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><Camera size={16} /> @_p.ooya</a>
+          </div>
+          <small>© {new Date().getFullYear()} POOYA LABS</small>
+        </div>
       </footer>
     </div>
   );
@@ -411,7 +435,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
       <header className="portfolio-header">
         <a className="portfolio-brand" href="#top">
           <span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /></span>
-          <span><strong>POOYA</strong><small>INDEPENDENT BUILDER</small></span>
+          <span><strong>POOYA LABS</strong><small>INDEPENDENT BUILDER</small></span>
         </a>
         <nav className="portfolio-nav" aria-label={rtl ? 'ناوبری اصلی' : 'Main navigation'}>
           <a href="#about">{t.navAbout}</a>
@@ -477,10 +501,30 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
           </div>
         </div>
 
-        <section className="portfolio-proof portfolio-container" aria-labelledby="portfolio-proof-title" data-reveal="portfolio-proof">
-          <div className="portfolio-proof-copy"><div className="portfolio-eyebrow"><span className="eyebrow-pulse" />{t.proofEyebrow}</div><h2 id="portfolio-proof-title">{t.proofTitle}</h2><p>{t.proofSub}</p></div>
-          <div className="portfolio-proof-visual" aria-hidden="true"><div className="proof-burst proof-burst-rays" /><div className="proof-burst proof-burst-core" /><div className="proof-burst proof-burst-particles" /><span className="proof-orbit proof-orbit-one" /><span className="proof-orbit proof-orbit-two" /></div>
-          <div className="portfolio-proof-stats"><article><strong>08</strong><small>{t.proofStat1}</small></article><article><strong>16</strong><small>{t.proofStat2}</small></article><article><strong>02</strong><small>{t.proofStat3}</small></article><article><strong>03</strong><small>{t.proofStat4}</small></article></div>
+        <section className="portfolio-proof" aria-labelledby="portfolio-proof-title" data-reveal="portfolio-proof">
+          <div className="portfolio-proof-heading">
+            <div className="portfolio-eyebrow"><span className="eyebrow-pulse" />{t.proofEyebrow}</div>
+            <h2 id="portfolio-proof-title">{t.proofTitle}</h2>
+            <p>{t.proofSub}</p>
+          </div>
+          <div className="portfolio-proof-stats" aria-label={t.proofEyebrow}>
+            <article><strong>08</strong><small>{t.proofStat1}</small></article>
+            <article><strong>16</strong><small>{t.proofStat2}</small></article>
+            <article><strong>02</strong><small>{t.proofStat3}</small></article>
+            <article><strong>03</strong><small>{t.proofStat4}</small></article>
+          </div>
+          <div className="portfolio-proof-visual" aria-hidden="true">
+            <svg className="proof-radial-svg" viewBox="0 0 1200 390" preserveAspectRatio="xMidYMax meet">
+              <defs>
+                <radialGradient id="proof-core-gradient"><stop stopColor="#bda7ff" stopOpacity=".42" /><stop offset=".42" stopColor="#8f78df" stopOpacity=".16" /><stop offset="1" stopColor="#8f78df" stopOpacity="0" /></radialGradient>
+                <linearGradient id="proof-line-gradient" x1="0" y1="1" x2="1" y2="0"><stop stopColor="#8775d8" stopOpacity=".12" /><stop offset=".52" stopColor="#a99df1" stopOpacity=".82" /><stop offset="1" stopColor="#81b7d5" stopOpacity=".18" /></linearGradient>
+              </defs>
+              <ellipse className="proof-radial-glow" cx="600" cy="365" rx="450" ry="220" fill="url(#proof-core-gradient)" />
+              {proofRays.map((ray) => <path key={ray.id} className="proof-ray" d={'M 600 386 C ' + ray.c1x.toFixed(1) + ' 220, ' + ray.c2x.toFixed(1) + ' ' + ray.c2y.toFixed(1) + ', ' + ray.x.toFixed(1) + ' ' + ray.y.toFixed(1)} stroke="url(#proof-line-gradient)" strokeWidth={ray.width} strokeOpacity={ray.opacity} fill="none" />)}
+              {proofParticles.map((particle) => <circle key={particle.id} className="proof-particle" cx={particle.x} cy={particle.y} r={particle.radius} style={{ animationDelay: particle.delay + 's' }} />)}
+              <path className="proof-baseline" d="M 175 385 Q 600 300 1025 385" fill="none" />
+            </svg>
+          </div>
         </section>
 
         <section className="portfolio-capabilities portfolio-container" aria-labelledby="capabilities-title" data-reveal="capabilities">
@@ -586,7 +630,11 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
           <div className="portfolio-eyebrow"><span className="eyebrow-index">05 /</span>{t.contactEyebrow}</div>
           <h2>{t.contactTitle}</h2>
           <p>{t.contactBody}</p>
-          <a className="portfolio-primary portfolio-contact-github" href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><img className="contact-github-mark" src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /><span>{t.contactAction}<small>github.com/pooya-labs</small></span><ArrowUpRight size={16} /></a>
+          <div className="portfolio-contact-actions">
+            <a className="portfolio-primary portfolio-contact-github" href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer"><Code2 size={18} /><span>{t.contactAction}<small>github.com/pooya-labs</small></span><ArrowUpRight size={16} /></a>
+            <a className="portfolio-social-button" href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><Send size={17} /><span>{t.contactTelegram}<small>@pooyayee</small></span><ArrowUpRight size={15} /></a>
+            <a className="portfolio-social-button" href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><Camera size={17} /><span>{t.contactInstagram}<small>@_p.ooya</small></span><ArrowUpRight size={15} /></a>
+          </div>
         </section>
       </main>
 

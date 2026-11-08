@@ -106,6 +106,10 @@ try {
           mainCount: document.querySelectorAll('main').length,
           canonical: canonical?.href ?? null,
           missingImageAltCount: document.querySelectorAll('img:not([alt])').length,
+          initialWindowScrollY: window.scrollY,
+          initialDocumentScrollTop: document.scrollingElement?.scrollTop ?? 0,
+          initialPortfolioScrollTop: document.querySelector('.portfolio-page')?.scrollTop ?? 0,
+          scrollRestoration: history.scrollRestoration,
         };
       });
       routeRecord.canonical = semantics.canonical;
@@ -120,6 +124,10 @@ try {
       if (semantics.mainCount !== 1 || semantics.mainId !== route.mainId) addFailure(route, null, 'Expected one main landmark with the correct skip-link target.');
       if (!semantics.canonical || new URL(semantics.canonical).pathname !== targetUrl.pathname) addFailure(route, null, 'Canonical URL does not match the current route.');
       if (semantics.missingImageAltCount > 0) addFailure(route, null, 'One or more images have no alt attribute.');
+      if (semantics.initialWindowScrollY > 1 || semantics.initialDocumentScrollTop > 1 || semantics.initialPortfolioScrollTop > 1) {
+        addFailure(route, null, 'A direct route did not open at the top of the page.');
+      }
+      if (semantics.scrollRestoration !== 'manual') addFailure(route, null, 'Browser scroll restoration is not disabled for direct entry.');
 
       for (const viewport of viewports) {
         await page.setViewportSize({ width: viewport.width, height: viewport.height });

@@ -1,17 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="Pooya Labs monogram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Pooya Labs P monogram">
   <defs>
-    <linearGradient id="gold" x1="22" y1="18" x2="133" y2="145" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#fff0c7"/><stop offset=".22" stop-color="#e8c77f"/><stop offset=".48" stop-color="#b9863b"/><stop offset=".7" stop-color="#f5dda0"/><stop offset="1" stop-color="#8b5d25"/>
+    <linearGradient id="mark-main" x1="18" y1="16" x2="82" y2="82" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2F6F2"/><stop offset="1" stop-color="#C7D8D0"/>
     </linearGradient>
-    <linearGradient id="fold" x1="45" y1="70" x2="88" y2="143" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#fff5d8" stop-opacity=".96"/><stop offset=".48" stop-color="#d9ad62" stop-opacity=".68"/><stop offset="1" stop-color="#76501f" stop-opacity=".9"/>
-    </linearGradient>
-    <linearGradient id="edge" x1="30" y1="18" x2="128" y2="118" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#fff8e4"/><stop offset=".55" stop-color="#d9b36d"/><stop offset="1" stop-color="#93662d"/>
+    <linearGradient id="mark-accent" x1="38" y1="42" x2="78" y2="72" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#72DDB5"/><stop offset="1" stop-color="#269B76"/>
     </linearGradient>
   </defs>
-  <path d="M24 20h69c25 0 43 16 43 39 0 25-21 43-52 43H73v37L24 160V20Zm49 27v30h12c15 0 24-6 24-16 0-9-7-14-19-14H73Z" fill="url(#gold)" stroke="url(#edge)" stroke-width="1.4" stroke-linejoin="round"/>
-  <path d="M24 91h49v48l-49 21V91Z" fill="url(#fold)"/>
-  <path d="M73 47h57c-5 10-13 18-24 24-9 5-20 7-33 7V47Z" fill="#fff1c9" opacity=".22"/>
-  <path d="M24 20h69c25 0 43 16 43 39 0 25-21 43-52 43H73" fill="none" stroke="#fff4d2" stroke-opacity=".42" stroke-width="1.2"/>
+  <path d="M24 78V18h29c19 0 29 10 29 26S72 70 53 70H39" fill="none" stroke="url(#mark-main)" stroke-width="9" stroke-linecap="square" stroke-linejoin="round"/>
+  <path d="M39 70 73 42" fill="none" stroke="url(#mark-accent)" stroke-width="8" stroke-linecap="square" stroke-linejoin="round"/>
+  <path d="M39 70v8" fill="none" stroke="#36BC8B" stroke-width="8" stroke-linecap="square"/>
 </svg>

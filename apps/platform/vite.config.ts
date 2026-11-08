@@ -221,21 +221,86 @@ function staticPageHtml(template: string, project: PortfolioProject, locale: Loc
 }
 
 
+function wrapDiagramLabel(value: string, maxChars: number, maxLines = 2): string[] {
+  const words = value.trim().split(/\s+/).filter(Boolean);
+  const lines: string[] = [];
+  let line = '';
+
+  const pushWord = (word: string) => {
+    if (!line) {
+      line = word;
+      return;
+    }
+    if (line.length + 1 + word.length <= maxChars) {
+      line += ' ' + word;
+      return;
+    }
+    lines.push(line);
+    line = word;
+  };
+
+  for (const originalWord of words) {
+    if (originalWord.length <= maxChars) {
+      pushWord(originalWord);
+      continue;
+    }
+    const chunks = Array.from({ length: Math.ceil(originalWord.length / maxChars) }, (_, index) =>
+      originalWord.slice(index * maxChars, (index + 1) * maxChars)
+    );
+    chunks.forEach((chunk, index) => {
+      if (index > 0 || line) {
+        lines.push(line);
+        line = '';
+      }
+      line = chunk;
+      if (index < chunks.length - 1) {
+        lines.push(line);
+        line = '';
+      }
+    });
+  }
+  if (line) lines.push(line);
+
+  if (lines.length > maxLines) {
+    const visible = lines.slice(0, maxLines);
+    const last = visible[maxLines - 1];
+    visible[maxLines - 1] = (last.length >= maxChars ? last.slice(0, maxChars - 1) : last) + '…';
+    return visible;
+  }
+  return lines.length ? lines : [''];
+}
+
+function renderDiagramTextLines(
+  lines: readonly string[],
+  x: number,
+  firstBaseline: number,
+  lineHeight: number,
+  locale: Locale,
+  fontFamily: string,
+  fontSize: number,
+  fill: string,
+  weight = 400,
+): string {
+  const direction = locale === 'fa' ? 'rtl' : 'ltr';
+  const tspans = lines.map((line, index) =>
+    `<tspan x="${x}" dy="${index === 0 ? 0 : lineHeight}">${escapeXml(line)}</tspan>`
+  ).join('');
+  return `<text x="${x}" y="${firstBaseline}" text-anchor="middle" direction="${direction}" unicode-bidi="plaintext" font-family="${fontFamily}" font-size="${fontSize}" font-weight="${weight}" fill="${fill}">${tspans}</text>`;
+}
+
 function renderArchitectureDiagram(slug: string, locale: Locale): string {
   const diagram = architectureDiagrams[slug];
   if (!diagram) throw new Error('Missing architecture diagram for ' + slug);
   const width = 1600;
   const height = 900;
   const nodeWidth = 300;
-  const nodeHeight = 155;
+  const nodeHeight = 172;
   const isRtl = locale === 'fa';
-  const textAnchor = isRtl ? 'end' : 'start';
   const fontFamily = isRtl ? 'Amiri,Tahoma,Arial,sans-serif' : 'Inter,Segoe UI,Tahoma,Arial,sans-serif';
-  const titleFontSize = isRtl ? 19 : 23;
-  const detailFontSize = isRtl ? 13 : 15;
-  const headingFontFamily = fontFamily;
-  const labelX = (node: (typeof diagram.nodes)[number]) => isRtl ? node.x + nodeWidth - 24 : node.x + 24;
+  const titleFontSize = isRtl ? 19 : 21;
+  const detailFontSize = isRtl ? 12 : 14;
   const byId = new Map(diagram.nodes.map((node) => [node.id, node]));
+
   const edges = diagram.edges.map((edge) => {
     const from = byId.get(edge.from);
     const to = byId.get(edge.to);
@@ -263,40 +328,59 @@ function renderArchitectureDiagram(slug: string, locale: Locale): string {
     const c1y = Math.abs(deltaX) >= Math.abs(deltaY) ? sy : sy + Math.sign(deltaY) * control;
     const c2x = Math.abs(deltaX) >= Math.abs(deltaY) ? tx - Math.sign(deltaX) * control : tx;
     const c2y = Math.abs(deltaX) >= Math.abs(deltaY) ? ty : ty - Math.sign(deltaY) * control;
-    return `<path d="M ${sx} ${sy} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${tx} ${ty}" fill="none" stroke="#69d9dc" stroke-opacity=".68" stroke-width="3" marker-end="url(#arrow)" />`;
+    return `<path d="M ${sx} ${sy} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${tx} ${ty}" fill="none" stroke="#64cfa9" stroke-opacity=".48" stroke-width="2.5" marker-end="url(#arrow)" />`;
   }).join('');
+
+  const headingTitle = renderDiagramTextLines(
+    wrapDiagramLabel(diagram.title[locale], 60, 1),
+    800, 78, 22, locale, fontFamily, isRtl ? 26 : 30, '#edf6f1', 700
+  );
+  const headingCaption = renderDiagramTextLines(
+    wrapDiagramLabel(diagram.caption[locale], 110, 2),
+    800, 120, 17, locale, fontFamily, isRtl ? 13 : 15, '#a1b6ad'
+  );
   const nodes = diagram.nodes.map((item, index) => {
     const kind = item.kind ?? 'core';
-    const title = escapeXml(item.title[locale]);
-    const detail = escapeXml(item.detail[locale]);
+    const titleLines = wrapDiagramLabel(item.title[locale], 23, 2);
+    const detailLines = wrapDiagramLabel(item.detail[locale], isRtl ? 34 : 35, 2);
+    const centerX = item.x + nodeWidth / 2;
+    const titleBaseline = item.y + 88 - (titleLines.length - 1) * 11;
+    const detailBaseline = item.y + 139 - (detailLines.length - 1) * 8;
+    const fill = kind === 'storage' ? 'url(#storage)' : kind === 'external' ? 'url(#external)' : kind === 'local' ? 'url(#local)' : 'url(#node)';
+    const stroke = kind === 'storage' ? '#69c89f' : kind === 'external' ? '#6baec1' : '#63bda7';
+    const dot = kind === 'storage' ? '#78ddb0' : '#7bd9c6';
+    const title = renderDiagramTextLines(titleLines, centerX, titleBaseline, 22, locale, fontFamily, titleFontSize, '#f1f7f5', 650);
+    const detail = renderDiagramTextLines(detailLines, centerX, detailBaseline, 16, locale, fontFamily, detailFontSize, '#a9c0bb');
     return `<g>
-      <rect x="${item.x}" y="${item.y}" width="${nodeWidth}" height="${nodeHeight}" rx="19" fill="${kind === 'storage' ? 'url(#storage)' : kind === 'external' ? 'url(#external)' : kind === 'local' ? 'url(#local)' : 'url(#node)'}" stroke="${kind === 'storage' ? '#78d9b1' : kind === 'external' ? '#76d8e8' : '#6edbce'}" stroke-opacity=".45" stroke-width="1.5" />
-      <circle cx="${item.x + 27}" cy="${item.y + 29}" r="5" fill="${kind === 'storage' ? '#78e1b5' : '#75e5e5'}" />
-      <text x="${item.x + nodeWidth - 24}" y="${item.y + 37}" text-anchor="end" font-family="Inter,Segoe UI,Tahoma,Arial,sans-serif" font-size="13" letter-spacing="2" fill="#7897a4">${String(index + 1).padStart(2, '0')}</text>
-      <text x="${labelX(item)}" y="${item.y + 83}" text-anchor="${textAnchor}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="${fontFamily}" font-size="${titleFontSize}" font-weight="650" fill="#eaf8f8">${title}</text>
-      <text x="${labelX(item)}" y="${item.y + 119}" text-anchor="${textAnchor}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="${fontFamily}" font-size="${detailFontSize}" fill="#9bb6bf">${detail}</text>
+      <rect x="${item.x}" y="${item.y}" width="${nodeWidth}" height="${nodeHeight}" rx="18" fill="${fill}" stroke="${stroke}" stroke-opacity=".62" stroke-width="1.6" />
+      <path d="M ${item.x + 18} ${item.y + 1} H ${item.x + nodeWidth - 18}" stroke="#ffffff" stroke-opacity=".08" />
+      <circle cx="${item.x + 27}" cy="${item.y + 29}" r="5" fill="${dot}" />
+      <text x="${item.x + nodeWidth - 24}" y="${item.y + 37}" text-anchor="end" font-family="Inter,Segoe UI,Tahoma,Arial,sans-serif" font-size="13" letter-spacing="2" fill="#8ba6a0">${String(index + 1).padStart(2, '0')}</text>
+      ${title}
+      ${detail}
     </g>`;
   }).join('');
+
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" lang="${locale}" aria-label="${escapeXml(diagram.title[locale])}">
     <defs>
-      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#070d15"/><stop offset=".58" stop-color="#0d1d2a"/><stop offset="1" stop-color="#102b2a"/></linearGradient>
-      <linearGradient id="node" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173442"/><stop offset="1" stop-color="#10232f"/></linearGradient>
-      <linearGradient id="storage" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173b37"/><stop offset="1" stop-color="#122a2c"/></linearGradient>
-      <linearGradient id="external" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#19374a"/><stop offset="1" stop-color="#132538"/></linearGradient>
-      <linearGradient id="local" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#29384a"/><stop offset="1" stop-color="#172937"/></linearGradient>
-      <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" stroke="#b9d8e0" stroke-opacity=".055" stroke-width="1"/></pattern>
-      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#79e5d1"/></marker>
-      <radialGradient id="glow"><stop stop-color="#32b6bc" stop-opacity=".17"/><stop offset="1" stop-color="#32b6bc" stop-opacity="0"/></radialGradient>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080d12"/><stop offset=".58" stop-color="#101a21"/><stop offset="1" stop-color="#12231f"/></linearGradient>
+      <linearGradient id="node" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1b3036"/><stop offset="1" stop-color="#14252a"/></linearGradient>
+      <linearGradient id="storage" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1a3730"/><stop offset="1" stop-color="#142821"/></linearGradient>
+      <linearGradient id="external" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1a3540"/><stop offset="1" stop-color="#142a31"/></linearGradient>
+      <linearGradient id="local" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#293a40"/><stop offset="1" stop-color="#1b2b30"/></linearGradient>
+      <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" fill="none" stroke="#b9d8e0" stroke-opacity=".045" stroke-width="1"/></pattern>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#7bd8b6"/></marker>
+      <radialGradient id="glow"><stop stop-color="#55c69e" stop-opacity=".13"/><stop offset="1" stop-color="#55c69e" stop-opacity="0"/></radialGradient>
     </defs>
     <rect width="1600" height="900" rx="26" fill="url(#bg)"/><rect width="1600" height="900" rx="26" fill="url(#grid)"/>
     <circle cx="1350" cy="120" r="430" fill="url(#glow)"/>
-    <text x="${locale === 'fa' ? 1510 : 88}" y="91" text-anchor="${locale === 'fa' ? 'end' : 'start'}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="${headingFontFamily}" font-size="${isRtl ? 26 : 30}" font-weight="700" fill="#e8fbfa">${escapeXml(diagram.title[locale])}</text>
-    <text x="${locale === 'fa' ? 1510 : 90}" y="132" text-anchor="${locale === 'fa' ? 'end' : 'start'}" direction="${locale === 'fa' ? 'rtl' : 'ltr'}" font-family="${headingFontFamily}" font-size="${isRtl ? 14 : 17}" fill="#8faeb7">${escapeXml(diagram.caption[locale])}</text>
-    <path d="M88 164H1512" stroke="#9fc9d1" stroke-opacity=".15"/>
+    ${headingTitle}
+    ${headingCaption}
+    <path d="M88 164H1512" stroke="#9fc9d1" stroke-opacity=".13"/>
     ${edges}
     ${nodes}
-    <text x="88" y="855" font-family="ui-monospace,monospace" font-size="13" letter-spacing="3" fill="#6c8792">POOYA LABS · DOCUMENTED SYSTEM VIEW</text>
-    <text x="1512" y="855" text-anchor="end" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2" fill="#6c8792">${slug.toUpperCase()}</text>
+    <text x="88" y="880" font-family="ui-monospace,monospace" font-size="11" letter-spacing="2" fill="#72877f">POOYA LABS · DOCUMENTED SYSTEM VIEW</text>
+    <text x="1512" y="880" text-anchor="end" font-family="ui-monospace,monospace" font-size="11" letter-spacing="1.5" fill="#72877f">${slug.toUpperCase()}</text>
   </svg>`;
 }
 
