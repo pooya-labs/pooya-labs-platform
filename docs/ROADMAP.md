@@ -137,3 +137,12 @@ This phase must not block V1. Source projects remain independent unless Pooya ex
 - [x] Add immutable, commit-pinned desktop/mobile screenshot references to seven project case studies.
 - [x] Make screenshot frames keyboard-focusable, labelled, and scrollable.
 - [ ] Verify all gallery assets on the live site and collect Pooya's second feedback round.
+
+
+### Phase 7 — product-aligned motion and Android gallery behavior (2026-11-08)
+
+- [ ] Replace the shared abstract hero treatment with eight motion scenes that explain each project's actual workflow or interface.
+- [ ] Add a compact, project-specific motion signature to every project card in the selected-work grid.
+- [ ] Allow native vertical touch scroll chaining from the end of a full-page mobile screenshot into the remaining case-study page on Android.
+- [ ] Extend Chromium Browser QA to inspect every localized project route at desktop/mobile sizes, verify reduced-motion behavior, and exercise a touch swipe at the gallery boundary.
+- [ ] Review the updated motion and gesture behavior on a physical Android device before owner acceptance.

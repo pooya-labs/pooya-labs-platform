@@ -1,59 +1,52 @@
-# Next Task — Owner review and pre-V1 release readiness
+# Next Task — Android gallery handoff and product-motion acceptance
 
-**Task ID:** P7-09  
+**Task ID:** P7-10  
 **Checkpoint date:** 2026-11-08  
-**Verified application `main` SHA:** `377dbcbc2544976485f04fd1aeeb1b19d09d7bf7`  
+**Starting `main` SHA:** `70813af81c459664f23f676ef3a85f8682aafe70`  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
 
 ## Product direction
 
-Pooya Labs is a personal engineering portfolio first. Its primary visitor journey is to meet Pooya, explore selected work, inspect evidence-backed case studies, and connect. The Spatial OS workspace is secondary; a generic customer account/dashboard is not part of this product. Independent project repositories remain separate. Do not import or modify their source code as part of this portfolio task.
+Pooya Labs remains a personal engineering portfolio first. Its visitor journey is to meet Pooya, explore selected work, inspect evidence-backed case studies, and connect. The Spatial OS workspace is secondary. Independent project repositories remain separate; do not import or modify their source code.
 
-## Current implementation
+## Implemented in this checkpoint
 
-- Public portfolio homepage in Persian/RTL by default, with English/LTR switching and dark/light themes.
-- Eight bilingual project dossiers, eight architecture diagrams, and sixteen crawler-readable localized case-study routes.
-- Seventeen 1200×627 PNG social-preview cards, with matching SVG sources, canonical metadata, sitemap, robots.txt, and Person JSON-LD.
-- The site uses the two original owner-designed image files supplied by Pooya: the portrait geometric monogram in the header, About stamp, and favicon; and the horizontal POOYA — LABS wordmark in the About section. Both are exact image assets, not a recreated SVG substitute. The monogram has no badge or square frame.
-- The English hero renders into thoughtful on one solid-mint LTR line, without gradient text clipping. Browser QA waits for fonts and measures the actual text range and final glyph; desktop and mobile both confirm the complete g remains visible.
-- Eight case-study pages now have product-specific hero motion: distributed worker graph (AetherFlow), telemetry orbits (ORBIT), floating desktop windows (Pooya.OS), service topology (NexusCanvas), refractive rings (LuminaGlass), chart bars (AuraPulse), floating catalog panels (GlobalCart), and an appointment calendar (Salon Booking).
-- Instagram contact actions use the dedicated Instagram glyph rather than a generic camera icon. Browser QA retains private homepage desktop/mobile, all bilingual project desktop views, and a settled About-section screenshot proving the supplied wordmark is loaded; these images are workflow artifacts only and never enter the public site.
-- Bidi-isolated hero text and architecture-diagram labels; direct route entry resets to the top; project screenshots have labelled, keyboard-focusable, internally scrollable frames.
-- About, contact, and footer sections include the approved mark, GitHub, Telegram (`@pooyayee`), and Instagram (`@_p.ooya`) links.
-- Fourteen approved full-page desktop/mobile captures are published for seven projects: AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and Salon Booking. Salon Booking imagery is restricted to its public customer flow. GlobalCart keeps its curated screenshots; its full-page capture remains withheld while the public collection grid has blank product placeholders.
-- The novels library and in-site reader are implemented, but the public catalog is intentionally empty until Pooya supplies titles, copy, covers, and manuscripts.
+- Eight dedicated case-study hero scenes replace the previous repeated orbit/line treatment:
+  - **AetherFlow:** trigger → leased worker → durable commit, with moving execution packets.
+  - **ORBIT:** service-health and incident cards, illustrative metrics/logs/traces, and a trace curve.
+  - **Pooya.OS:** overlapping desktop windows, profile surface, local terminal cursor, and dock.
+  - **NexusCanvas:** gateway/service/worker/database topology with animated graph edges.
+  - **LuminaGlass:** glass prism, refraction rings, moving light, and optical control panel.
+  - **AuraPulse:** candle/price chart labelled SIMULATED; no live-market claim.
+  - **GlobalCart:** product-discovery tiles flowing into a compare/cart action.
+  - **Salon Booking:** appointment grid, selected time slot, and confirmation card.
+- The selected-work grid receives a compact motion signature for each of the same eight products.
+- Full-page mobile screenshot frames use native vertical touch scrolling and scroll chaining. A swipe that reaches the inner frame's lower edge should continue through the remaining case-study page instead of being trapped by the image.
+- A bilingual hint explains the nested image-scroll interaction.
+- Browser QA now captures all localized project routes at desktop and mobile sizes, checks reduced-motion, and uses Chromium touch input to test scroll handoff from the gallery to the outer page.
+- Reduced-motion preferences disable the new project-scene and project-card animations while leaving the content visible.
 
-## Latest verified main-branch checks
+## Validation state
 
-Validation code commit: 377dbcbc2544976485f04fd1aeeb1b19d09d7bf7. The final browser-QA and contract-test harness checkpoint is a08de7ec138c8790134a177b20a80ca7af137699 (QA/test-only changes after the published application source).
-
-| Check | Run | Verified result |
-|---|---:|---|
-| Repository CI | [42491842095](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842095) | Passed on QA/test harness commit a08de7ec: TypeScript, all three build targets, and repository contract tests |
-| Portfolio Browser QA | [42491842131](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842131) | Passed: 17 localized routes × desktop/mobile (34 checks), zero failures, zero horizontal overflow, zero axe violations; 36 axe checks remain incomplete for human review. Private artifact [13621507487](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842131) contains 19 PNGs |
-| GitHub Pages | [42491842070](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842070) | Build and deployment jobs passed; the corrected exact wordmark asset is present on the published source commit |
-| Cloudflare Pages | [42491842068](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842068) | Credential check ran; production deploy skipped because CLOUDFLARE_API_TOKEN is not configured |
-| Apps Script | [42491842057](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842057) | Configuration check ran; publication skipped because clasp deployment secrets are not configured |
-
-The inspected Browser QA artifact contains homepage desktop/mobile, a settled About-section image, and desktop images of all eight projects in Persian and English. The About report confirms the owner wordmark loaded at its intrinsic 390×142 dimensions. The measured thoughtful text range contains one unbroken LTR run and its final glyph remains inside the title bounds. The report records zero failures, zero horizontal overflow, and zero axe violations; 36 axe incomplete checks are not confirmed violations and still need manual review. Project heroes also expose running visual animations under normal motion preferences, while a separate check confirms that prefers-reduced-motion disables them. Keyboard-only, contrast, and screen-reader review remain open.
+The changes are committed with this handoff, but the new CI, Browser QA, physical Android behavior, and Pages deployment are not yet confirmed. Do not mark the roadmap items complete until the exact main-branch workflows pass. A desktop Chromium touch emulation is useful regression evidence, but it is not a substitute for checking a physical Android device.
 
 ## Immediate next steps
 
-1. **Owner visual review:** inspect the deployed [GitHub Pages portfolio](https://pooya-labs.github.io/pooya-labs-platform/) on a real desktop and phone. Review the emerald mark in the header/About/footer, hero timing, radial proof scene, Systems in Motion, craft gallery, theme controls, project galleries, architecture diagrams, contact actions, and footer.
-2. **Content approval:** confirm the public biography and positioning, first three featured projects and ordering, personal contribution/role wording, project statuses, links, and contact handles. Do not invent outcomes or metrics.
-3. **Manual accessibility:** inspect the latest Browser QA artifact; manually check color contrast, focus visibility, keyboard-only navigation, and screen-reader flow in both languages/directions and both themes.
-4. **Social and SEO validation:** test the 17 PNG preview cards in external LinkedIn/Facebook crawlers and refresh caches; confirm canonical URLs and shared-page rendering.
-5. **Phase 8 hardening:** measure real desktop/mobile performance, review security and privacy boundaries, verify every public claim and link, and rehearse deployment rollback and backup/restore before requesting V1 approval.
+1. Verify TypeScript, all build targets, and repository contract tests.
+2. Run the 17 localized-route / desktop-mobile Browser QA matrix; inspect the mobile gallery scroll-handoff records and any failures.
+3. Check the private screenshots for all eight redesigned motion scenes at 390px and desktop widths.
+4. Verify that reduced-motion disables all new scene animations without hiding content.
+5. Review the published GitHub Pages version on Android Chrome and confirm that a swipe after reaching the bottom of a mobile screenshot continues into the next case-study section.
+6. Continue the owner visual/content review, manual accessibility checks, social-preview validation, and Phase 8 hardening. The release remains pre-alpha; no V1 tag is authorized.
 
-## Evidence boundaries — keep these claims accurate
+## Evidence boundaries
 
-- **AetherFlow:** the public M07 badge / documented M08 status and duplicate Dashboard navigation still need reconciliation. Do not claim unverified API acceptance.
-- **ORBIT:** the Cloudflare gateway is not live-connected until its origin, secret, route, and CF01–CF05 acceptance are complete. Do not claim live telemetry.
-- **AuraPulse:** the showcased trading dashboard is simulated; the capture environment cannot verify the Binance ticker connection.
-- **GlobalCart:** do not publish the new full-page capture while the collection grid visibly has blank product placeholders.
-- **Salon Booking:** use only owner-approved public customer-flow imagery; never capture admin routes or customer records.
-- Keep all independent project repositories untouched unless Pooya explicitly requests work in them.
+- AetherFlow's M07/M08 badge/navigation mismatch remains upstream; this animation does not claim API acceptance.
+- ORBIT's Cloudflare gateway is not live-connected until its origin, secret, route, and CF01–CF05 acceptance are complete.
+- AuraPulse's market visual is a simulation, not live Binance data.
+- GlobalCart's full-page capture remains withheld while the product grid has blank placeholders.
+- Salon Booking visuals remain restricted to approved public customer-facing screens; never capture admin routes or customer records.
 
 ## Release gate
 
-The site is published on GitHub Pages, but the product release remains **pre-alpha / portfolio draft**. Phase 7 implementation is in place; owner visual/content approval and manual acceptance remain open. Phase 8 release hardening and explicit V1 approval are mandatory. Do not create a V1 tag or call the portfolio final before those gates pass.
+The current milestone improves motion and mobile behavior; it does not close the full Phase 7 owner review or Phase 8 release gates. Keep the site labelled **pre-alpha / portfolio draft** until owner approval, manual accessibility, performance/security review, deployment recovery rehearsal, and explicit V1 sign-off are complete.

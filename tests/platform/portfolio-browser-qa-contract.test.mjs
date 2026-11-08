@@ -159,3 +159,35 @@ test('About visual evidence waits for the reveal transition and the supplied wor
   assert.match(script, /wordmark\.getAnimations\(\)\.every\(\(animation\) => animation\.playState === 'finished'\)/);
   assert.match(script, /home-en-about-desktop\.png/);
 });
+
+
+test('the eight case-study heroes use product-specific motion scenes rather than a generic orbit', () => {
+  for (const slug of ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'global-cart', 'salon-booking']) {
+    assert.ok(portfolioCss.includes(`.scene-${slug}`), `Missing dedicated hero scene styles for ${slug}`);
+    assert.ok(portfolioCss.includes(`.card-scene-${slug}`), `Missing compact project-card motion for ${slug}`);
+  }
+  assert.match(portfolioSource, /function ProjectMotionScene/);
+  assert.match(portfolioSource, /case-study-motion-art scene-\$\{slug\}/);
+  assert.match(portfolioSource, /<ProjectMotionScene slug=\{project\.slug\} \/>/);
+  assert.match(portfolioSource, /<ProjectMotionScene slug=\{project\.slug\} compact \/>/);
+  assert.match(portfolioSource, /market-simulated/);
+  assert.match(portfolioSource, /SIMULATED/);
+});
+
+test('mobile case-study screenshots allow native Android scroll chaining into the remaining page', () => {
+  assert.match(portfolioCss, /overscroll-behavior-y:auto/);
+  assert.match(portfolioCss, /touch-action:pan-y pinch-zoom/);
+  assert.match(portfolioCss, /-webkit-overflow-scrolling:touch/);
+  assert.match(portfolioSource, /data-gallery-scroll="true"/);
+  assert.match(portfolioSource, /case-study-scroll-note/);
+  assert.match(script, /Input\.dispatchTouchEvent/);
+  assert.match(script, /Emulation\.setTouchEmulationEnabled/);
+  assert.match(script, /caseStudyGalleryScroll/);
+  assert.match(script, /outerScrollTop > setup\.outerBefore/);
+});
+
+test('reduced-motion QA checks the replacement product-specific scene animations', () => {
+  assert.match(script, /\.case-study-motion-art \.scene-animated/);
+  assert.match(script, /reducedMotionAnimationName/);
+  assert.match(portfolioCss, /\.case-study-motion-art \.scene-animated[\s\S]*?animation:none!important/);
+});

@@ -7,12 +7,12 @@
   "phase": 7,
   "phaseName": "Owner-led visual redesign and release review",
   "currentTask": {
-    "id": "P7-09",
-    "title": "Owner visual review and pre-V1 release readiness",
-    "status": "The exact owner-supplied portrait monogram and horizontal POOYA — LABS wordmark are used in the public site (the uploaded logo assets were byte-verified against their converted files). The English into thoughtful line is unbroken and range-checked. All eight product-specific case-study motion scenes are visible; Browser QA verifies active animations and reduced-motion behavior. Application asset commit 377dbcbc2544976485f04fd1aeeb1b19d09d7bf7 and QA harness commit a08de7ec138c8790134a177b20a80ca7af137699 passed Repository CI, Browser QA, and GitHub Pages deployment. Browser QA artifact 13621507487 contains 19 inspected images, including a settled About screenshot with the horizontal wordmark loaded at 390×142. Zero QA failures, zero overflow, zero axe violations; 36 incomplete axe checks remain for manual review. Owner content approval, social-crawler validation, manual accessibility review, and Phase 8 hardening remain open."
+    "id": "P7-10",
+    "title": "Product-aligned case-study motion and Android gallery scroll handoff",
+    "status": "Implementation committed with validation pending: eight product-specific case-study scenes and eight compact project-card scenes replace the repeated abstract motif. Full-page mobile gallery frames now use native vertical scroll chaining; the Browser QA harness captures project pages at both viewport sizes and emulates a touch swipe at the inner gallery boundary. Awaiting exact-main TypeScript/build/contract CI, mobile gesture QA, reduced-motion validation, and GitHub Pages deployment. Physical Android confirmation remains required."
   },
   "lastCheckpointDate": "2026-11-08",
-  "latestVerifiedCodeCommit": "377dbcbc2544976485f04fd1aeeb1b19d09d7bf7",
+  "latestVerifiedCodeCommit": "70813af81c459664f23f676ef3a85f8682aafe70",
   "tests": {
     "repositoryCi": "passed-run-42491842095-on-main-a08de7ec138c8790134a177b20a80ca7af137699;TypeScript;Pages-GAS-Cloudflare-build-targets;repository-contract-tests",
     "transportHarnessContract": "passed",
@@ -67,7 +67,9 @@
     "latestBrowserQaRun": "42491842131",
     "latestPagesDeploymentRun": "42491842070",
     "latestCloudflareAttempt": "run-42491842068;CLOUDFLARE_API_TOKEN-not-configured;credential-check-passed;production-deploy-job-skipped",
-    "latestAppsScriptAttempt": "run-42491842057;CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID-not-configured;configuration-check-passed;production-publish-job-skipped"
+    "latestAppsScriptAttempt": "run-42491842057;CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID-not-configured;configuration-check-passed;production-publish-job-skipped",
+    "pendingProductMotionAndGalleryQa": "pending-exact-main-commit",
+    "pendingAndroidTouchHandoff": "pending-chromium-mobile-touch-test-and-physical-android-review"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -127,7 +129,7 @@
     "The novels catalog is intentionally empty pending Pooya-provided titles, descriptions, covers, and manuscripts.",
     "Complete Phase 8 performance/security/accessibility/recovery review and rehearse rollback before requesting V1 approval. The site remains pre-alpha; no V1 tag is authorized."
   ],
-  "nextAction": "Pooya to review the latest GitHub Pages portfolio on real desktop and mobile devices, approve public content and visual design, inspect the latest Browser QA artifact, complete manual accessibility and social-preview validation, then proceed to Phase 8 hardening. No V1 release is approved.",
+  "nextAction": "Validate the P7-10 commit on exact main: TypeScript/build/contracts, 17-route desktop/mobile Browser QA, inner-gallery touch scroll handoff, reduced-motion, and GitHub Pages deployment. Then review on a physical Android device and continue Phase 7 owner acceptance. No V1 release is approved.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -674,5 +676,6 @@
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-08T14:52:51Z",
   "latestDocumentationCommit": "4a879275f4a468c14eec4096a80e5e96929af098",
-  "latestDocumentationCheckpoint": "handoff/state/roadmap/changelog reconciled in documentation checkpoint 4a879275f4a468c14eec4096a80e5e96929af098; CI run 42484893908 is validating this checkpoint"
+  "latestDocumentationCheckpoint": "handoff/state/roadmap/changelog reconciled in documentation checkpoint 4a879275f4a468c14eec4096a80e5e96929af098; CI run 42484893908 is validating this checkpoint",
+  "pendingImplementationCommit": "P7-10 changes in commit following 70813af81c459664f23f676ef3a85f8682aafe70; automated verification pending"
 }

@@ -1,3 +1,11 @@
+## 2026-11-08 — Product-aligned project motion and Android gallery handoff
+
+- Replaced the single abstract motif used across case-study pages with eight distinct product narratives: durable workflow execution, observability signals, a spatial desktop workspace, service topology editing, optical glass controls, a simulated market chart, product discovery/compare, and appointment scheduling.
+- Added a matching compact animated signature to each card in the selected-project grid. The scenes are presentation-only; they do not claim live telemetry, real-time trading data, or production status. AuraPulse remains explicitly labelled as simulated.
+- Changed full-page mobile screenshot frames to use native vertical touch scrolling and scroll chaining. When the inner image reaches its end, a continuing swipe can move the outer case-study page. Added a bilingual hint below mobile captures.
+- Extended the private Chromium Browser QA to retain desktop/mobile project captures, verify the replacement scene animations and reduced-motion fallback, and emulate a touch swipe at the mobile gallery boundary.
+- Validation and GitHub Pages publication are pending for this checkpoint. No independent project repository was changed.
+
 ## 2026-11-08 — Owner-designed Pooya identity and final visual verification
 
 - Replaced the previous generated monogram with the exact owner-supplied portrait mark in the header, About stamp, and favicon. Removed the enclosing square/badge. The original horizontal POOYA — LABS wordmark is used in About. Both uploads are stored as clean transparent WebP assets; their Git blob hashes were checked against the converted files to catch an incomplete or incorrect logo upload.

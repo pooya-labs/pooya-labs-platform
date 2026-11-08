@@ -45,7 +45,7 @@ const report = {
     incompleteRules: [],
     findings: [],
   },
-  note: 'Automated Chromium smoke and responsive checks. Homepage desktop/mobile and project desktop screenshots are retained only as private workflow artifacts, never published to the website. This is not a manual screen-reader audit or WCAG certification.',
+  note: 'Automated Chromium smoke and responsive checks. Homepage and bilingual project desktop/mobile screenshots are retained only as private workflow artifacts, never published to the website. Mobile case-study routes also exercise touch scroll chaining from the full-page screenshot frame to the outer page. This is not a manual screen-reader audit or WCAG certification.',
 };
 
 function addFailure(route, viewport, message) {
@@ -217,7 +217,7 @@ try {
       for (const viewport of viewports) {
         await page.setViewportSize({ width: viewport.width, height: viewport.height });
         await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
-        const shouldCaptureVisual = route.label === 'home-en' || (route.label !== 'home-fa' && route.label !== 'home-en' && viewport.name === 'desktop');
+        const shouldCaptureVisual = route.label === 'home-en' || (route.label !== 'home-fa' && route.label !== 'home-en');
         if (shouldCaptureVisual) {
           const fileName = route.label + '-' + viewport.name + '.png';
           await page.screenshot({ path: path.join(artifactDir, fileName), fullPage: false, animations: 'allow' });
@@ -276,6 +276,92 @@ try {
         if (route.label !== 'home-en' && route.label !== 'home-fa') {
           if (motionState.activeAnimationCount < 3) addFailure(route, viewport.name, 'The case-study hero does not expose at least three running visual animations.');
           if ((motionState.opacity ?? 0) < .7) addFailure(route, viewport.name, 'The project motion layer is too faint to be a visible foreground visual.');
+        }
+
+        let caseStudyGalleryScroll = { available: false, passed: true, skippedReason: 'Not a mobile case-study route.' };
+        if (viewport.name === 'mobile' && route.label !== 'home-en' && route.label !== 'home-fa') {
+          const frame = page.locator('.case-study-media-card.device-mobile .case-study-media-frame').first();
+          if (await frame.count()) {
+            await frame.scrollIntoViewIfNeeded();
+            const setup = await frame.evaluate((element) => {
+              const pageScroller = document.querySelector('.portfolio-page');
+              const image = element.querySelector('img');
+              if (!(element instanceof HTMLElement) || !(pageScroller instanceof HTMLElement)) {
+                return { available: false, reason: 'Scroll containers not found.' };
+              }
+              const innerMaxScroll = Math.max(0, element.scrollHeight - element.clientHeight);
+              const outerMaxScroll = Math.max(0, pageScroller.scrollHeight - pageScroller.clientHeight);
+              element.scrollTop = innerMaxScroll;
+              const rect = element.getBoundingClientRect();
+              return {
+                available: innerMaxScroll > 40 && outerMaxScroll - pageScroller.scrollTop > 40,
+                reason: innerMaxScroll <= 40 ? 'The mobile capture has no internal overflow.' : 'No outer page content remains below the capture.',
+                innerMaxScroll,
+                outerBefore: pageScroller.scrollTop,
+                outerMaxScroll,
+                viewportHeight: window.innerHeight,
+                imageLoaded: image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0,
+                rect: { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom },
+                overflowY: getComputedStyle(element).overflowY,
+                overscrollBehaviorY: getComputedStyle(element).overscrollBehaviorY,
+                touchAction: getComputedStyle(element).touchAction,
+              };
+            });
+            if (setup.available) {
+              const x = Math.round(Math.min(setup.rect.right - 24, Math.max(setup.rect.left + 24, setup.rect.left + (setup.rect.right - setup.rect.left) * .55)));
+              const startY = Math.round(Math.min(setup.rect.bottom - 28, setup.viewportHeight - 28));
+              const endY = Math.round(Math.max(setup.rect.top + 28, startY - 150));
+              const touch = await context.newCDPSession(page);
+              try {
+                await touch.send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 1 });
+                await touch.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ id: 1, x, y: startY }] });
+                for (let step = 1; step <= 5; step += 1) {
+                  await touch.send('Input.dispatchTouchEvent', {
+                    type: 'touchMove',
+                    touchPoints: [{ id: 1, x, y: Math.round(startY + (endY - startY) * step / 5) }],
+                  });
+                }
+                await touch.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+                await page.waitForTimeout(220);
+              } finally {
+                await touch.send('Emulation.setTouchEmulationEnabled', { enabled: false });
+                await touch.detach();
+              }
+              const after = await frame.evaluate((element) => {
+                const pageScroller = document.querySelector('.portfolio-page');
+                return {
+                  innerScrollTop: element instanceof HTMLElement ? element.scrollTop : 0,
+                  outerScrollTop: pageScroller instanceof HTMLElement ? pageScroller.scrollTop : 0,
+                };
+              });
+              caseStudyGalleryScroll = {
+                available: true,
+                passed: after.outerScrollTop > setup.outerBefore + 4,
+                ...setup,
+                ...after,
+                gesture: 'Chromium touch input at the inner gallery boundary',
+              };
+              if (!caseStudyGalleryScroll.passed) {
+                addFailure(route, viewport.name, 'A touch swipe at the end of the mobile screenshot did not continue scrolling the outer case-study page.');
+              }
+              if (setup.overflowY !== 'auto' || setup.overscrollBehaviorY !== 'auto' || !setup.touchAction.includes('pan-y')) {
+                addFailure(route, viewport.name, 'The mobile gallery does not expose native vertical touch scroll chaining.');
+              }
+              await page.evaluate(() => {
+                const pageScroller = document.querySelector('.portfolio-page');
+                if (pageScroller instanceof HTMLElement) {
+                  pageScroller.style.scrollBehavior = 'auto';
+                  pageScroller.scrollTop = 0;
+                }
+                const gallery = document.querySelector('.case-study-media-card.device-mobile .case-study-media-frame');
+                if (gallery instanceof HTMLElement) gallery.scrollTop = 0;
+              });
+            } else {
+              caseStudyGalleryScroll = { available: false, passed: true, skippedReason: setup.reason, ...setup };
+            }
+          } else {
+            caseStudyGalleryScroll = { available: false, passed: true, skippedReason: 'This project has no published mobile interface capture.' };
+          }
         }
         const metrics = await page.evaluate(() => {
           const word = document.querySelector('.portfolio-hero-title .hero-title-word');
@@ -374,6 +460,7 @@ try {
           ...metrics,
           motionState,
           scrollMetrics,
+          caseStudyGalleryScroll,
           axeViolationCount: axeFindings.length,
           axeIncompleteRuleCount: axeResults.incomplete.length,
         });
@@ -421,7 +508,7 @@ try {
 
       if (route.label === 'aetherflow-en') {
         await page.emulateMedia({ reducedMotion: 'reduce' });
-        const reducedMotionState = await page.locator('.case-study-motion-art .motion-track').first().evaluate((node) => getComputedStyle(node).animationName);
+        const reducedMotionState = await page.locator('.case-study-motion-art .scene-animated').first().evaluate((node) => getComputedStyle(node).animationName);
         routeRecord.reducedMotionAnimationName = reducedMotionState;
         if (reducedMotionState !== 'none') addFailure(route, null, 'The case-study motion does not respect prefers-reduced-motion.');
         await page.emulateMedia({ reducedMotion: 'no-preference' });

@@ -215,6 +215,145 @@ const text = {
   },
 } satisfies Record<Language, Record<string, string>>;
 
+
+function ProjectMotionScene({ slug, compact = false }: { slug: string; compact?: boolean }): ReactNode {
+  if (compact) {
+    return (
+      <div className={`project-card-motion card-scene-${slug}`} aria-hidden="true">
+        {slug === 'aetherflow' && <><i className="mini-flow-node" /><i className="mini-flow-edge" /><i className="mini-flow-node second" /><i className="mini-flow-edge second" /><i className="mini-flow-node third" /><b className="mini-flow-packet" /></>}
+        {slug === 'orbit' && <><i className="mini-orbit-ring" /><i className="mini-orbit-ring second" /><b className="mini-orbit-pulse" /><span className="mini-orbit-bars"><i /><i /><i /><i /><i /></span></>}
+        {slug === 'pooya-os' && <><i className="mini-os-window back" /><i className="mini-os-window front" /><b className="mini-os-cursor" /></>}
+        {slug === 'nexus-canvas' && <><i className="mini-nexus-edge one" /><i className="mini-nexus-edge two" /><i className="mini-nexus-edge three" /><b className="mini-nexus-node one" /><b className="mini-nexus-node two" /><b className="mini-nexus-node three" /><b className="mini-nexus-node four" /></>}
+        {slug === 'lumina-glass' && <><i className="mini-glass-orb" /><i className="mini-glass-orbit one" /><i className="mini-glass-orbit two" /><b className="mini-glass-sheen" /></>}
+        {slug === 'aura-pulse' && <><span className="mini-market-bars"><i /><i /><i /><i /><i /><i /><i /></span><b className="mini-market-line" /></>}
+        {slug === 'global-cart' && <><i className="mini-cart-product one" /><i className="mini-cart-product two" /><i className="mini-cart-product three" /><b className="mini-cart-basket" /></>}
+        {slug === 'salon-booking' && <><span className="mini-booking-grid">{Array.from({ length: 12 }, (_, index) => <i key={index} />)}</span><b className="mini-booking-slot" /></>}
+      </div>
+    );
+  }
+
+  const shell = (className: string, children: ReactNode) => (
+    <div className={`case-study-motion-art scene-${slug} ${className}`} aria-hidden="true">{children}</div>
+  );
+
+  switch (slug) {
+    case 'aetherflow':
+      return shell('flow-scene', <>
+        <div className="scene-topline"><span>EXECUTION GRAPH / 01</span><i><b className="scene-animated flow-live-dot" />DURABLE RUN</i></div>
+        <div className="flow-sequence">
+          <div className="flow-step flow-trigger"><span className="flow-icon">↳</span><strong>TRIGGER</strong><small>event received</small></div>
+          <span className="flow-edge"><i className="scene-animated" /><b className="scene-animated flow-packet" /></span>
+          <div className="flow-step flow-worker"><span className="flow-icon">01</span><strong>WORKER</strong><small>lease active</small></div>
+          <span className="flow-edge"><i className="scene-animated" /><b className="scene-animated flow-packet second" /></span>
+          <div className="flow-step flow-commit"><span className="flow-icon">✓</span><strong>COMMIT</strong><small>state persisted</small></div>
+        </div>
+        <div className="flow-foot"><span>RETRY / RECOVERY</span><div><i /><i /><i /><i /></div><span>AT-LEAST-ONCE</span></div>
+        <span className="flow-sweep scene-animated" />
+      </>);
+    case 'orbit':
+      return shell('orbit-scene', <>
+        <div className="scene-topline"><span>OBSERVABILITY / SIGNAL MAP</span><i><b className="scene-animated orbit-live-dot" />DEMO SIGNALS</i></div>
+        <div className="orbit-dashboard">
+          <div className="orbit-health-card"><small>SERVICE HEALTH</small><strong>HEALTHY</strong><span className="scene-animated orbit-health-pulse" /></div>
+          <div className="orbit-stat-card"><small>INCIDENT FLOW</small><strong>01 <em>OPEN</em></strong><span>ACK → INVESTIGATE → RESOLVE</span></div>
+          <div className="orbit-chart-card">
+            <div className="orbit-chart-label"><span>METRICS / LOGS / TRACES</span><b>ILLUSTRATIVE</b></div>
+            <svg viewBox="0 0 420 150" preserveAspectRatio="none">
+              <path className="orbit-chart-grid" d="M0 30H420 M0 75H420 M0 120H420" />
+              <path className="orbit-chart-path scene-animated" d="M0 105 C38 99 48 43 86 58 S140 112 176 82 S224 28 260 48 S309 104 343 72 S389 39 420 24" />
+              <circle className="orbit-chart-point scene-animated" cx="343" cy="72" r="5" />
+            </svg>
+          </div>
+          <div className="orbit-log-card"><i /><span>trace.span.completed</span><b>12 ms</b><i /><span>incident.timeline.updated</span><b>now</b></div>
+        </div>
+        <span className="orbit-signal-ring scene-animated" />
+      </>);
+    case 'pooya-os':
+      return shell('os-scene', <>
+        <div className="scene-topline"><span>POOYA.OS / SPATIAL WORKSPACE</span><i>LOCAL PREVIEW</i></div>
+        <div className="os-desktop">
+          <div className="os-window os-window-back scene-animated"><div className="os-titlebar"><i /><i /><i /><span>FILES / PROJECTS</span></div><div className="os-file-lines"><b /><b /><b /><b /></div></div>
+          <div className="os-window os-window-front scene-animated"><div className="os-titlebar"><i /><i /><i /><span>ENGINEERING PROFILE</span></div><div className="os-window-body"><div className="os-avatar">P</div><div className="os-profile-lines"><b /><b /><b /></div></div><div className="os-terminal-line"><span>pooya@workspace</span><i className="scene-animated os-cursor" /></div></div>
+          <div className="os-dock"><i /><i /><i /><i /><i /></div>
+        </div>
+        <span className="os-focus-glow scene-animated" />
+      </>);
+    case 'nexus-canvas':
+      return shell('nexus-scene', <>
+        <div className="scene-topline"><span>NEXUS CANVAS / TOPOLOGY</span><i>GRAPH MODEL</i></div>
+        <div className="nexus-stage">
+          <svg className="nexus-wires" viewBox="0 0 520 300" preserveAspectRatio="none">
+            <path className="nexus-edge scene-animated" d="M76 145 C140 145 140 62 218 62 S302 145 386 145" />
+            <path className="nexus-edge secondary scene-animated" d="M76 145 C142 145 145 244 232 244 S306 145 386 145" />
+            <path className="nexus-edge third scene-animated" d="M218 62 C260 62 272 145 386 145 L462 78" />
+          </svg>
+          <div className="nexus-node node-gateway"><i />GATEWAY<small>edge</small></div>
+          <div className="nexus-node node-service"><i />SERVICE<small>api</small></div>
+          <div className="nexus-node node-worker"><i />WORKER<small>async</small></div>
+          <div className="nexus-node node-database"><i />DATABASE<small>store</small></div>
+          <span className="nexus-focus-ring scene-animated" />
+        </div>
+        <div className="nexus-toolbar"><span>CANVAS / 04 NODES</span><span>SNAPSHOT READY</span></div>
+      </>);
+    case 'lumina-glass':
+      return shell('glass-scene', <>
+        <div className="scene-topline"><span>LUMINAGLASS / OPTICAL STUDIO</span><i>REFRACTION LAB</i></div>
+        <div className="glass-stage">
+          <div className="glass-orbit glass-orbit-a scene-animated" /><div className="glass-orbit glass-orbit-b scene-animated" />
+          <div className="glass-prism scene-animated"><i /><b /></div>
+          <span className="glass-light-ray ray-a scene-animated" /><span className="glass-light-ray ray-b scene-animated" />
+          <div className="glass-controls"><span>BLUR <b>24 PX</b></span><i /><span>REFRACTION <b>0.72</b></span><i /><div><b /><b /><b /><b /></div></div>
+        </div>
+        <span className="glass-footnote">LIGHT / DEPTH / MATERIAL</span>
+      </>);
+    case 'aura-pulse':
+      return shell('market-scene', <>
+        <div className="scene-topline"><span>AURAPULSE / MARKET VIEW</span><i className="market-simulated">SIMULATED</i></div>
+        <div className="market-stage">
+          <div className="market-symbol"><strong>BTC / USD</strong><span>PRICE MOVEMENT · SAMPLE DATA</span></div>
+          <div className="market-chart">
+            <svg viewBox="0 0 520 230" preserveAspectRatio="none">
+              <path className="market-grid" d="M0 45H520 M0 92H520 M0 139H520 M0 186H520" />
+              <path className="market-line scene-animated" d="M0 175 C38 164 50 128 84 139 S132 170 164 119 S214 92 247 111 S290 72 328 89 S370 123 405 74 S468 58 520 28" />
+              <circle className="market-point scene-animated" cx="405" cy="74" r="6" />
+            </svg>
+            <div className="market-candles">{[34, 54, 42, 72, 49, 88, 62, 96, 71, 110, 84, 126, 103, 138].map((height, index) => <i className="scene-animated" key={index} style={{ height: height + 'px', animationDelay: (index * -0.13) + 's' }} />)}</div>
+          </div>
+          <div className="market-range"><span>1H</span><span>24H</span><span>7D</span><b>30D</b></div>
+        </div>
+      </>);
+    case 'global-cart':
+      return shell('commerce-scene', <>
+        <div className="scene-topline"><span>GLOBALCART / PRODUCT DISCOVERY</span><i>CATALOG FLOW</i></div>
+        <div className="commerce-stage">
+          <div className="commerce-products">
+            <div className="commerce-product product-a scene-animated"><span className="commerce-product-art headphones" /><b>Audio</b><small>01 / LISTING</small></div>
+            <div className="commerce-product product-b scene-animated"><span className="commerce-product-art device" /><b>Devices</b><small>02 / DETAILS</small></div>
+            <div className="commerce-product product-c scene-animated"><span className="commerce-product-art home" /><b>Home</b><small>03 / DISCOVERY</small></div>
+          </div>
+          <div className="commerce-cart scene-animated"><span>↗</span><b>COMPARE</b><i /></div>
+          <span className="commerce-route scene-animated" />
+        </div>
+        <div className="commerce-foot"><span>SEARCH</span><span>FILTER</span><span>COMPARE</span><span>DETAIL</span></div>
+      </>);
+    case 'salon-booking':
+      return shell('booking-scene', <>
+        <div className="scene-topline"><span>SALON BOOKING / APPOINTMENTS</span><i>WEEKLY SCHEDULE</i></div>
+        <div className="booking-stage">
+          <div className="booking-calendar">
+            <div className="booking-calendar-head"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span></div>
+            <div className="booking-slots">{Array.from({ length: 25 }, (_, index) => <i key={index} className={index === 11 ? 'selected' : index % 6 === 0 ? 'busy' : ''} />)}</div>
+            <span className="booking-sweep scene-animated" />
+          </div>
+          <div className="booking-confirmation scene-animated"><span>✓</span><div><b>APPOINTMENT</b><small>11:30 / CONFIRMED</small></div><i /></div>
+          <span className="booking-orbit-dot scene-animated" />
+        </div>
+      </>);
+    default:
+      return shell('generic-scene', <div className="scene-topline"><span>PROJECT / SYSTEM MAP</span><i>READY</i></div>);
+  }
+}
+
 function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeChange, onBack }: { project: PortfolioProject; language: Language; onLanguageChange: (language: Language) => void; theme: Theme; onThemeChange: (theme: Theme) => void; onBack: () => void }): ReactNode {
   const t = text[language];
   const rtl = language === 'fa';
@@ -246,20 +385,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
             {(project.caseStudyHeroAsset ?? project.visualAsset) && <img className={'case-study-visual-image visual-' + (project.caseStudyHeroAsset ?? project.visualAsset)!.kind}
               src={(project.caseStudyHeroAsset ?? project.visualAsset)!.url} alt={(project.caseStudyHeroAsset ?? project.visualAsset)!.alt[language]} loading="eager" decoding="async"
               onError={(event) => { event.currentTarget.remove(); event.currentTarget.parentElement?.classList.remove('has-visual'); }} />}
-            <div className={`case-study-motion-art scene-${project.slug}`} aria-hidden="true">
-              <span className="motion-orbit motion-orbit-a" />
-              <span className="motion-orbit motion-orbit-b" />
-              <span className="motion-track motion-track-a" />
-              <span className="motion-track motion-track-b" />
-              <span className="motion-core" />
-              <span className="motion-node motion-node-a" />
-              <span className="motion-node motion-node-b" />
-              <span className="motion-node motion-node-c" />
-              <span className="motion-panel motion-panel-a"><i /><i /><i /></span>
-              <span className="motion-panel motion-panel-b"><i /><i /><i /></span>
-              <span className="motion-bars">{Array.from({ length: 7 }, (_, index) => <i key={index} />)}</span>
-              <span className="motion-calendar">{Array.from({ length: 12 }, (_, index) => <i key={index} />)}</span>
-            </div>
+            <ProjectMotionScene slug={project.slug} />
             <div className="case-study-art-fallback" aria-hidden="true">
               <div className="art-orbit orbit-outer" /><div className="art-orbit orbit-inner" />
               <div className="art-monogram"><span>{project.name.slice(0,1)}</span><i /></div>
@@ -287,7 +413,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
             </div>
             <div className="case-study-media-grid">
               {desktopCapture && <figure className="case-study-media-card device-desktop"><div className="case-study-media-frame" role="region" tabIndex={0} aria-label={language === 'fa' ? `${project.name} — نمای واقعی محیط دسکتاپ` : `${project.name} — actual desktop interface`}><img src={desktopCapture.url} alt={desktopCapture.alt[language]} loading="lazy" decoding="async" /></div><figcaption>{language === 'fa' ? 'نمای واقعی محیط دسکتاپ' : 'Actual desktop interface'}</figcaption></figure>}
-              {mobileCaptures.map((item) => <figure className={`case-study-media-card device-${item.device}`} key={item.url}><div className="case-study-media-frame" role="region" tabIndex={0} aria-label={language === 'fa' ? `${project.name} — ${item.caption.fa}` : `${project.name} — ${item.caption.en}`}><img src={item.url} alt={item.alt[language]} loading="lazy" decoding="async" /></div><figcaption>{item.caption[language]}</figcaption></figure>)}
+              {mobileCaptures.map((item) => <figure className={`case-study-media-card device-${item.device}`} key={item.url}><div className="case-study-media-frame" data-gallery-scroll="true" role="region" tabIndex={0} aria-label={language === 'fa' ? `${project.name} — ${item.caption.fa}` : `${project.name} — ${item.caption.en}`}><img src={item.url} alt={item.alt[language]} loading="lazy" decoding="async" /></div><figcaption>{item.caption[language]}{item.device === 'mobile' && <span className="case-study-scroll-note">{language === 'fa' ? 'داخل تصویر اسکرول کن؛ بعد از رسیدن به انتها، صفحه ادامه پیدا می‌کند.' : 'Scroll inside the image; the page continues once the image reaches its end.'}</span>}</figcaption></figure>)}
             </div>
           </section>
         )}
@@ -695,6 +821,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
                   {(project.caseStudyHeroAsset ?? project.visualAsset) && <img className="project-art-image" src={(project.caseStudyHeroAsset ?? project.visualAsset)!.url}
                     alt={(project.caseStudyHeroAsset ?? project.visualAsset)!.alt[language]} loading="lazy" decoding="async"
                     onError={(event) => { event.currentTarget.remove(); event.currentTarget.parentElement?.classList.remove('has-visual'); }} />}
+                  <ProjectMotionScene slug={project.slug} compact />
                   <div className="project-art-fallback" aria-hidden="true">
                     <div className={`project-art-orbit art-${project.number}`} />
                     <div className="project-art-core"><span>{project.name.slice(0, 1)}</span></div>
