@@ -53,12 +53,16 @@ test('owner contact links are visible, labelled, and included in the footer and 
   assert.match(metadata, /https:\/\/instagram\.com\/_p\.ooya/);
 });
 
-test('the same minimal emerald P monogram is used for the brand mark and favicon', () => {
-  assert.match(mark, /viewBox="0 0 96 96"/);
-  assert.match(mark, /mark-accent/);
-  assert.match(favicon, /viewBox="0 0 96 96"/);
-  assert.match(favicon, /#4AC99A/);
-  assert.doesNotMatch(mark, /gold|metallic|#d8b36a/i);
+test('the supplied gold folded-ribbon mark is used in the About and GitHub surfaces', () => {
+  assert.match(mark, /viewBox="0 0 167 183"/);
+  assert.match(mark, /linearGradient id="gold"/);
+  assert.match(mark, /#fff3c9/);
+  assert.match(home, /className="stamp-core"><img/);
+  assert.match(home, /portfolio-github-mark/);
+  assert.match(home, /portfolio-contact-github/);
+  assert.match(home, /github\.com\/pooya-labs/);
+  assert.match(favicon, /linearGradient id="gold"/);
+  assert.doesNotMatch(mark, /#4AC99A|mark-accent/);
 });
 
 
