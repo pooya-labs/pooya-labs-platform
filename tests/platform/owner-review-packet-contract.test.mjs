@@ -21,9 +21,10 @@ test('owner review packet includes all eight projects, order, statuses, and attr
   assert.match(packet, /Stable v1\.0\.0/);
   assert.match(packet, /Stable portfolio\/demo release · v1\.0\.0/);
   assert.match(packet, /Released · v1\.0\.0/);
-  assert.match(packet, /Stable portfolio\/demo release · v1\.0\.0/);
+  assert.match(packet, /owner-confirmed real desktop\/mobile review/);
   assert.match(packet, /does not identify an individual author or contribution split/);
   assert.match(packet, /salon owner as product owner/);
+  assert.match(packet, /manual new-version redeploy/);
 });
 
 test('owner packet preserves current demo/simulation and privacy limitations', () => {
