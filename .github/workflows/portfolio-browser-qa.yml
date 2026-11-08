@@ -16,7 +16,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: portfolio-browser-qa
+  group: portfolio-browser-qa-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
