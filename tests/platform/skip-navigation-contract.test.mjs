@@ -6,16 +6,14 @@ const portfolio = await readFile(new URL('../../apps/platform/src/PortfolioHome.
 const viteConfig = await readFile(new URL('../../apps/platform/vite.config.ts', import.meta.url), 'utf8');
 const css = await readFile(new URL('../../apps/platform/src/portfolio.css', import.meta.url), 'utf8');
 
-test('Persian and English pages expose visible-on-focus skip navigation', () => {
+test('Persian and English pages expose visible-on-focus skip navigation in the shared hydrated component', () => {
   assert.ok(portfolio.includes("skipToContent: 'رفتن به محتوای اصلی'"));
   assert.ok(portfolio.includes("skipToContent: 'Skip to main content'"));
   assert.ok(portfolio.includes('className="portfolio-skip-link" href="#top">{t.skipToContent}'));
   assert.ok(portfolio.includes('<main id="top" tabIndex={-1}>'));
   assert.ok(portfolio.includes('className="portfolio-skip-link" href="#main-content">{t.skipToContent}'));
   assert.ok(portfolio.includes('<main id="main-content" tabIndex={-1} className="case-study-main'));
-  assert.ok(viteConfig.includes("skipToContent: 'رفتن به محتوای اصلی'"));
-  assert.ok(viteConfig.includes("skipToContent: 'Skip to main content'"));
-  assert.ok(viteConfig.includes('<a class="portfolio-skip-link" href="#main-content">${t.skipToContent}</a>'));
+  assert.ok(viteConfig.includes('renderToString(createElement(HydratedCaseStudy'), 'Static case studies must render the same skip-navigation component used by hydration');
   assert.ok(viteConfig.includes('<main id="main-content" tabindex="-1" class="case-study-main'));
   assert.ok(css.includes('.portfolio-skip-link {\n  position: fixed;'));
   assert.ok(css.includes('.portfolio-skip-link:focus, .portfolio-skip-link:focus-visible'));
