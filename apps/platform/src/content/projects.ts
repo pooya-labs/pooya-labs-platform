@@ -210,6 +210,11 @@ const projectEntries: PortfolioProject[] = [
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/aurapulse/7f3611cae0d74e06b6b01af534a5f84a79e5901c/public/assets/quant-core.webp', kind: 'illustration', alt: { fa: 'تصویر هسته داده AuraPulse', en: 'AuraPulse quantitative core artwork' } },
     slug: 'aura-pulse',
     name: 'AuraPulse',
+    visualAsset: {
+      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/6deb62f48a8350f5ed293ac3dbcd27c9d30113dd/apps/platform/public/interface-captures/aurapulse/aurapulse-desktop.png',
+      kind: 'interface',
+      alt: { fa: 'تصویر واقعی داشبورد AuraPulse در نمای دسکتاپ', en: 'Actual AuraPulse dashboard screenshot on desktop' },
+    },
     caseStudyHeroAsset: {
       url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/6deb62f48a8350f5ed293ac3dbcd27c9d30113dd/apps/platform/public/interface-captures/aurapulse/aurapulse-desktop.png',
       kind: 'interface',
@@ -289,6 +294,24 @@ const projectEntries: PortfolioProject[] = [
     },
     slug: 'salon-booking',
     name: 'Salon Booking',
+    visualAsset: {
+      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/6deb62f48a8350f5ed293ac3dbcd27c9d30113dd/apps/platform/public/interface-captures/salon-booking/salon-booking-fullpage-desktop.png',
+      kind: 'interface',
+      alt: { fa: 'تصویر واقعی سامانه رزرو شایان سالن در نمای دسکتاپ', en: 'Actual Shayan Salon booking experience on desktop' },
+    },
+    caseStudyHeroAsset: {
+      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/6deb62f48a8350f5ed293ac3dbcd27c9d30113dd/apps/platform/public/interface-captures/salon-booking/salon-booking-fullpage-desktop.png',
+      kind: 'interface',
+      alt: { fa: 'تصویر کامل مسیر رزرو مشتری شایان سالن', en: 'Full customer booking journey for Shayan Salon' },
+    },
+    caseStudyMedia: [
+      {
+        url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/6deb62f48a8350f5ed293ac3dbcd27c9d30113dd/apps/platform/public/interface-captures/salon-booking/salon-booking-fullpage-mobile.png',
+        caption: { fa: 'نمای کامل سامانه رزرو در موبایل', en: 'Full salon booking experience on mobile' },
+        alt: { fa: 'نمای موبایل سامانه رزرو شایان سالن بدون اطلاعات مشتریان', en: 'Shayan Salon mobile booking view without customer data' },
+        device: 'mobile',
+      },
+    ],
     caseStudy: {
       challenge: { fa: "رزرو نوبت به تقویم زمان‌محور، جلوگیری از تداخل، مسیر ساده مشتری و ابزار جداگانه مدیر نیاز دارد. تجربه فارسی باید تاریخ شمسی و timezone ایران را دقیق نگه دارد.", en: "Appointment booking needs time-aware scheduling, conflict prevention, a simple customer journey, and a separate manager workspace. The Persian experience must preserve Jalali dates and Iran's timezone." },
       approach: { fa: "وب‌سایت و پنل مدیریت با React، TypeScript و Vite روی GitHub Pages منتشر شده‌اند. مسیر فعال درخواست‌ها از bridge مخفی به Google Apps Script و Google Sheets خصوصی می‌رسد و اعلان مدیر از Firebase Cloud Messaging استفاده می‌کند.", en: "The public site and owner workspace are published with React, TypeScript, and Vite on GitHub Pages. The active request path uses a hidden bridge to Google Apps Script and private Google Sheets, with Firebase Cloud Messaging for manager notifications." },
