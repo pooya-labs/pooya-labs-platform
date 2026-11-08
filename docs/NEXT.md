@@ -2,7 +2,7 @@
 
 **Task ID:** P7-12  
 **Checkpoint date:** 2026-11-09  
-**Latest verified `main` docs checkpoint:** PR [#18](https://github.com/pooya-labs/pooya-labs-platform/pull/18) merged as [`23f1689`](https://github.com/pooya-labs/pooya-labs-platform/commit/23f16896624ef391e284d3579a7f7278f5c8cbaf); post-merge Repository CI [42522790018](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42522790018) and Browser QA [42522600586](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42522600586) passed. See [Project Status](STATUS.md) and [project-state.json](project-state.json)  
+**Latest verified `main` docs checkpoint:** PR [#19](https://github.com/pooya-labs/pooya-labs-platform/pull/19) merged as [`659189d`](https://github.com/pooya-labs/pooya-labs-platform/commit/659189dd99af59154cbfd88ce5f9dcecb23e1e0e); main Repository CI [42523193131](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42523193131) passed and Browser QA [42523017840](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42523017840) passed. See [Project Status](STATUS.md) and [project-state.json](project-state.json)  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
 
 ## Post-merge verification — 2026-11-09
@@ -18,14 +18,14 @@ PR [#18](https://github.com/pooya-labs/pooya-labs-platform/pull/18) merged to ma
 
 ## Latest read-only source recheck — 2026-11-09
 
-The exact current `main` heads, latest commits, release status, and material open-PR states for all eight independent projects are recorded in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
+The exact current `main` heads, release status, and material open-PR states for all eight independent projects are recorded in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 
-- **AetherFlow:** current main `dc1edea3946e`; M08 remains experimental/in progress. The owner completed one live Apps Script private-Sheet write/reload/read check and Browser QA passed 12 tests. A follow-up source correction keeps new storage-only rows in `pending`, but the live Apps Script deployment still needs a manual new-version redeploy. Latest Rust CI and supply-chain checks were still running at inspection.
-- **GlobalCart:** current main `220b216fbad4`; stable portfolio/demo release v1.0.0 is complete. Merged-main Browser E2E passed **163 / 9 intentional skips / 0 failed**. Current-main documentation records owner-confirmed physical desktop/mobile, actual platform screen-reader, and full human RTL/LTR review on 2026-11-08; exact device/browser matrix was not recorded. Physical tablet and field Core Web Vitals remain unverified/optional. PR #23 was closed without merge.
-- **ORBIT:** main unchanged; PR #138 remains open. Its candidate Keycloak build is CI-only, and the strict production-image scan still fails on unresolved findings.
-- **Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and Salon Booking:** main heads remain the same as in the prior checkpoint; no open PRs were observed at the recheck.
+- **AetherFlow:** current main `dc1edea3946e`; M08 remains experimental/in progress. Owner-confirmed live Apps Script persistence and 12-test browser fixture pass remain recorded; current-main Rust CI [42522117027](https://github.com/pooya-labs/aetherflow/actions/runs/42522117027), supply-chain/security [42522117055](https://github.com/pooya-labs/aetherflow/actions/runs/42522117055), and Pages [42522116708](https://github.com/pooya-labs/aetherflow/actions/runs/42522116708) all passed. Checked-in pending-state correction still needs manual new-version deployment.
+- **GlobalCart:** current main `75ed390c2c47`; v1.0.0 remains published. PR #27 merged bilingual case-study copy/metadata and new locale/screenshot checks as `e70c129`; Browser E2E, Security and Pages deployment passed on that commit. The newer `75ed390` commit only changes `data/catalog.json`; current-SHA catalog smoke, live visual QA and Lighthouse passed. No newer Pages deployment was found after the data snapshot, so public catalog synchronization remains a Phase 9 check.
+- **ORBIT:** main unchanged; PR #138 latest observed head is `f25c9f33f63d`. The strict production-image scan failed again; candidate build/CI were still running and repository Security queued at last inspection. No candidate is published/deployed.
+- **Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and Salon Booking:** current main heads remain the same as the previous audit; no material source changes were observed.
 
-The bilingual [OWNER-REVIEW-PACKET.md](OWNER-REVIEW-PACKET.md) now reflects the current GlobalCart release and the new source-backed AetherFlow/GlobalCart acceptance facts. The source facts do not imply approval of the Pooya Labs portfolio copy/media. No upstream repository was modified.
+The source audit was refreshed read-only; no upstream project repository was modified. The source facts do not approve the Pooya Labs portfolio copy/media. Keep Phase 8/9 gated on Phase 7 exit inputs and owner approval.
 
 ## Post-remediation verification checkpoint — 2026-11-08
 

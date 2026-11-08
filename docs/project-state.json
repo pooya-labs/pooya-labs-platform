@@ -150,7 +150,7 @@
       "nexusCanvas": "9f2756b1846622caa43e3947c4387c71a3e988c9",
       "luminaGlass": "f8e6c958d33d494d9d26ff98279897d8bfd3aa35",
       "auraPulse": "b4a83648025d30162ad8754516b7c419b56e68ea",
-      "globalcart": "220b216fbad421ab2a5e40ad52bcb331eb315d57",
+      "globalcart": "75ed390c2c47866837adb2c14354e92c21f6935b",
       "salonBooking": "ca745a46c863010f2d7133356a0209abf928a12"
     }
   },
@@ -168,7 +168,7 @@
     "Cloudflare GitHub Actions auto-deployment still requires the private CLOUDFLARE_API_TOKEN secret; the current production deployment succeeded through the authorized Cloudflare Pages API.",
     "Apps Script production publishing was skipped in run 42514976476 because CLASPRC_JSON, CLASP_JSON, and GAS_DEPLOYMENT_ID are not configured. The Apps Script build target passed; do not claim the Apps Script Web App was updated."
   ],
-  "nextAction": "Review the refreshed bilingual docs/OWNER-REVIEW-PACKET.md and confirm the Pooya Labs site headline/biography, AI Engineering positioning, featured order, per-project public wording, contact channels, permitted personal assets, Salon Booking permission, and Novels decision. Separately complete the remaining Phase 7 platform-specific human contrast/keyboard/screen-reader and physical Android checks, social-crawler validation, Pages-source confirmation, Cloudflare Actions secret, and rollback rehearsal. Do not begin Phase 8 until Phase 7 exit inputs are explicitly accepted.",
+  "nextAction": "Continue Phase 7 readiness. Verify that GlobalCart's public GitHub Pages deployment reflects current main catalog data at 75ed390; AetherFlow still needs its owner to manually redeploy the checked-in pending-state Code.gs correction; ORBIT PR #138 remains blocked by its strict production-image scan. Separately complete Pooya Labs platform manual accessibility/device, social crawler, host-source, Cloudflare automation, rollback and owner-approval gates. Do not begin Phase 8 until Phase 7 exit inputs are accepted.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -609,15 +609,15 @@
       "readmeMilestone": "M00-M07 complete; M08 in progress",
       "inspectionMode": "read-only",
       "upstreamRepositoryModified": false,
-      "latestObservedChange": "Owner-confirmed live Apps Script private-Sheet write/reload/read acceptance for a bounded storage-only record; Browser QA 42521608664 passed 12 tests. New Code.gs records remain pending until actual execution; this correction is checked in but requires a manual new-version Apps Script redeploy. AetherFlow M08 remains open and experimental.",
+      "latestObservedChange": "Owner-confirmed live Apps Script private-Sheet write/reload/read acceptance for a bounded storage-only record; Browser QA 42521608664 passed 12 tests. All latest main-head Rust CI, supply-chain/security and Pages workflows 42522117027, 42522117055 and 42522116708 now passed. New Code.gs pending-state correction still needs manual new-version deployment; M08 remains open/experimental.",
       "latestRustCi": {
         "run": "42522117027",
-        "conclusion": "in_progress-at-last-inspection",
+        "conclusion": "success",
         "url": "https://github.com/pooya-labs/aetherflow/actions/runs/42522117027"
       },
       "latestSupplyChain": {
         "run": "42522117055",
-        "conclusion": "in_progress-at-last-inspection",
+        "conclusion": "success",
         "url": "https://github.com/pooya-labs/aetherflow/actions/runs/42522117055"
       },
       "latestPages": {
@@ -707,20 +707,28 @@
           "title": "security: update deferred Keycloak origin to 26.8.2",
           "draft": false,
           "merged": false,
-          "latestHeadSha": "ea4f77b695f97daed16a9cbeb1c66b914120707c",
+          "latestHeadSha": "f25c9f33f63d2ce147480e771e07ed95b8689451",
           "candidateBuild": {
-            "run": "42521243776",
-            "conclusion": "success",
+            "run": "42523790738",
+            "status": "in_progress-at-last-inspection",
+            "url": "https://github.com/pooya-labs/orbit/actions/runs/42523790738",
             "platform": "linux/amd64",
             "published": false
           },
+          "repositoryCi": {
+            "run": "42523790926",
+            "status": "in_progress-at-last-inspection",
+            "url": "https://github.com/pooya-labs/orbit/actions/runs/42523790926"
+          },
           "repositorySecurity": {
-            "run": "42521243786",
-            "conclusion": "success"
+            "run": "42523790693",
+            "status": "queued-at-last-inspection",
+            "url": "https://github.com/pooya-labs/orbit/actions/runs/42523790693"
           },
           "productionImageSecurity": {
-            "run": "42521243847",
+            "run": "42523790800",
             "conclusion": "failure",
+            "url": "https://github.com/pooya-labs/orbit/actions/runs/42523790800",
             "unresolved": [
               "SQLite FTS5 HIGH",
               "upstream Guava"
@@ -730,50 +738,44 @@
       ],
       "pullRequestCheckpointAt": "2026-11-07T17:14:39Z",
       "latestCommitAt": "2026-11-08T19:25:47Z",
-      "latestObservedChange": "Main remains unchanged. PR #138 now has a passing CI-only Keycloak 26.8.2 linux/amd64 candidate and passing repository Security workflow; the strict production-image scan still fails on SQLite FTS5 and upstream Guava. Candidate is not published/deployed.",
+      "latestObservedChange": "Main remains unchanged. PR #138 advanced to head f25c9f33f63d. Latest strict deferred-production-image scan 42523790800 failed again with SQLite FTS5 and upstream Guava unresolved. Candidate build and CI were still running and repository Security queued at last inspection; candidate remains CI-only, not published or deployed.",
       "inspectionMode": "read-only"
     },
     "globalcart": {
       "repository": "pooya-labs/globalcart",
       "branch": "main",
-      "inspectedHead": "220b216fbad421ab2a5e40ad52bcb331eb315d57",
+      "inspectedHead": "75ed390c2c47866837adb2c14354e92c21f6935b",
       "release": "v1.0.0",
       "stage": "stable-portfolio-demo-release-closed",
-      "currentAppSourceSha": "905c6cf91bef53761d915421cbf4cd73837b1476",
-      "headDeltaFromAppSource": "two commits after 61ce7f5: accessibility markup/E2E changes in app SHA 6192f8 and a final data/catalog.json snapshot persistence commit at main HEAD; no app code changed after 6192f8",
-      "pagesDeployment": "42521324455-success-on-220b216",
-      "security": "42521324428-success-on-220b216",
+      "currentAppSourceSha": "e70c129661adf027f7cef4b42395b16bd9dc4694",
+      "headDeltaFromAppSource": "PR #27 merged bilingual v1.0 case-study copy, page metadata, locale regression and screenshot coverage in e70c129; Pages deployment, Browser E2E and Security passed on e70c129. The current main head 75ed390 changes only data/catalog.json relative to e70c129. Catalog smoke, live visual QA and Lighthouse passed on 75ed390; no subsequent Pages deployment was found after that catalog snapshot.",
+      "pagesDeployment": "42523072179-success-on-e70c129; no newer Pages deployment found after 75ed390 catalog snapshot",
+      "security": "42523072096-success-on-e70c129",
       "browserE2E": {
-        "run": "42516946135",
+        "run": "42523072165",
         "conclusion": "success",
-        "passed": 163,
-        "skipped": 9,
-        "failed": 0,
-        "sourceCommit": "905c6cf91bef53761d915421cbf4cd73837b1476",
-        "browsers": [
-          "Chromium",
-          "Firefox",
-          "WebKit"
-        ]
+        "sourceCommit": "e70c129661adf027f7cef4b42395b16bd9dc4694",
+        "note": "cross-browser E2E completed successfully after PR #27 merged"
       },
-      "lighthouse": "42521506954-success-on-220b216",
-      "postDeployVisualQa": "42521507125-success-on-220b216",
-      "shopifyCatalogSmoke": "42521507117-success-on-220b216",
+      "lighthouse": "42523222402-success-on-75ed390",
+      "postDeployVisualQa": "42523222311-success-on-75ed390",
+      "shopifyCatalogSmoke": "42523222366-success-on-75ed390",
       "pending": [
+        "verify the published GitHub Pages catalog is synchronized with current main data/catalog.json at 75ed390; the last observed Pages deployment is 42523072179 on e70c129",
         "physical tablet review remains unverified",
         "eligible normal-network/CDN field Core Web Vitals remain unmeasured and optional",
-        "repeat the source/content/media review during Phase 9 before final portfolio integration",
-        "owner approval of Pooya Labs portfolio copy, project ordering, and media remains separate from GlobalCart project QA"
+        "repeat source/content/media review during Phase 9 before final portfolio integration",
+        "owner approval of Pooya Labs portfolio copy, project ordering and media remains separate from GlobalCart project QA"
       ],
       "projectContextHandoffStaleAt": "8a89f0d612cdf69d619b64049304eaa789b4785c",
       "upstreamRepositoryModified": false,
-      "latestCommitAt": "2026-11-08T20:40:28Z",
+      "latestCommitAt": "2026-11-08T21:02:20Z",
       "portfolioScreenshotPublish": "42394145400-skipped",
-      "latestObservedChange": "Stable portfolio/demo v1.0.0 scope complete and closed. Main commit 220b216 records owner-confirmed physical desktop/mobile, actual platform screen-reader and full human RTL/LTR review; exact hardware/browser matrix not recorded. Merged-main Browser E2E passed 163/9/0. PR #23 closed without merge; latest main deployment, security, Lighthouse, visual QA and catalog smoke passed.",
+      "latestObservedChange": "Stable portfolio/demo release v1.0.0 remains published. PR #27 merged updated bilingual case-study copy, release/QA disclosures, metadata and locale/screenshot tests; E2E, Security and Pages deploy passed on e70c129. Latest main 75ed390 is a data/catalog.json-only snapshot relative to e70c129; catalog smoke, live visual QA and Lighthouse succeeded against latest SHA, but no later Pages deployment was found after that snapshot. Owner-confirmed physical desktop/mobile, screen-reader and human RTL/LTR QA remain recorded; exact device matrix not supplied.",
       "inspectionMode": "read-only",
       "tagTargetSha": "dfe9a98c70a9bbde3f5444c6f2cad2abd74269ac",
       "releaseUrl": "https://github.com/pooya-labs/globalcart/releases/tag/v1.0.0",
-      "releaseWorkflow": "42521684924-success;existing-v1.0.0-detected;duplicate-publication-skipped",
+      "releaseWorkflow": "42523611486-success-on-75ed390;existing-v1.0.0-release-remains-published",
       "openPullRequests": [],
       "closedPullRequests": [
         {
@@ -792,7 +794,15 @@
           "full-human-rtl-ltr"
         ],
         "details": "owner confirmation recorded in current main docs; exact device/browser matrix was not recorded"
-      }
+      },
+      "mergedPullRequests": [
+        {
+          "number": 27,
+          "title": "docs(case-study): align bilingual copy with v1.0 release",
+          "mergeCommitSha": "e70c129661adf027f7cef4b42395b16bd9dc4694",
+          "mergedAt": "2026-11-08T21:01:36Z"
+        }
+      ]
     },
     "pooyaOs": {
       "repository": "pooya-labs/pooya-os",
@@ -988,8 +998,8 @@
   "latestTask": "P7-12",
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-09",
-  "latestDocumentationCommit": "23f16896624ef391e284d3579a7f7278f5c8cbaf",
-  "latestDocumentationCheckpoint": "merged-PR-18;main:23f16896624ef391e284d3579a7f7278f5c8cbaf;Repository-CI:42522790018;Browser-QA:42522600586",
+  "latestDocumentationCommit": "659189dd99af59154cbfd88ce5f9dcecb23e1e0e",
+  "latestDocumentationCheckpoint": "phase7-postrelease-read-only-recheck-2026-11-09;GlobalCart:75ed390;ORBIT-PR138:f25c9f3",
   "latestRepositoryCiRun": "42522790018",
   "latestBrowserQaRun": "42522600586",
   "latestPerformanceBaseline": {
@@ -1070,8 +1080,8 @@
       "observedAtUtc": "2026-11-08 19:25:41 UTC"
     },
     "GlobalCart": {
-      "sha": "220b216fbad421ab2a5e40ad52bcb331eb315d57",
-      "observedAtUtc": "2026-11-08 20:40:28 UTC"
+      "sha": "75ed390c2c47866837adb2c14354e92c21f6935b",
+      "observedAtUtc": "2026-11-08 21:02:20 UTC"
     },
     "Salon Booking": {
       "sha": "ca745a46c863010f2d7133356a0209abf928a12",
@@ -1148,8 +1158,8 @@
         "observedAtUtc": "2026-11-08 19:25:41 UTC"
       },
       "GlobalCart": {
-        "sha": "220b216fbad421ab2a5e40ad52bcb331eb315d57",
-        "observedAtUtc": "2026-11-08 20:40:28 UTC"
+        "sha": "75ed390c2c47866837adb2c14354e92c21f6935b",
+        "observedAtUtc": "2026-11-08 21:02:20 UTC"
       },
       "Salon Booking": {
         "sha": "ca745a46c863010f2d7133356a0209abf928a12",
@@ -1167,6 +1177,11 @@
     "platformMainCommit": "23f16896624ef391e284d3579a7f7278f5c8cbaf",
     "mergedPullRequest": 18,
     "postMergeRepositoryCiRun": "42522790018",
-    "browserQaRun": "42522600586"
+    "browserQaRun": "42522600586",
+    "globalcartCurrentMain": "75ed390c2c47866837adb2c14354e92c21f6935b",
+    "globalcartCaseStudyMerge": "e70c129661adf027f7cef4b42395b16bd9dc4694",
+    "globalcartLastPagesDeployment": "42523072179-on-e70c129; no later Pages run identified after 75ed390 catalog snapshot",
+    "orbitPR138Head": "f25c9f33f63d2ce147480e771e07ed95b8689451",
+    "orbitLatestProductionImageScan": "42523790800-failure"
   }
 }
