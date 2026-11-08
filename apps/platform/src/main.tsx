@@ -19,9 +19,11 @@ if (!rootElement) {
   throw new Error('Platform root element was not found.');
 }
 
-const directCaseStudy = window.location.pathname.match(/\\/(?:en\\/)?projects\\/([^/]+)\\/?$/);
-const directProject = directCaseStudy
-  ? portfolioProjects.find((project) => project.slug === directCaseStudy[1]) ?? null
+const routeSegments = window.location.pathname.split('/').filter(Boolean);
+const projectsSegmentIndex = routeSegments.lastIndexOf('projects');
+const directProjectSlug = projectsSegmentIndex >= 0 ? routeSegments[projectsSegmentIndex + 1] : null;
+const directProject = directProjectSlug
+  ? portfolioProjects.find((project) => project.slug === directProjectSlug) ?? null
   : null;
 
 if (directProject) {
