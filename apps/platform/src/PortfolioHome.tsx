@@ -86,7 +86,7 @@ const text = {
     contactEyebrow: 'در تماس باشیم',
     contactTitle: 'ایده‌ای برای ساختن داریم؟',
     contactBody: 'برای دیدن کدها، روند توسعه و پروژه‌های تازه، از گیت‌هاب من شروع کن.',
-    contactAction: 'مشاهده پروفایل گیت‌هاب', contactTelegram: 'تلگرام', contactInstagram: 'اینستاگرام', contactDirect: 'راه‌های ارتباط مستقیم',
+    contactAction: 'مشاهده پروفایل گیت‌هاب', contactTelegram: 'تلگرام', contactInstagram: 'اینستاگرام',
     footer: 'طراحی و توسعه با کنجکاوی و وسواس مهندسی.',
     workspace: 'ورود به فضای کاری',
     language: 'English',
@@ -138,7 +138,7 @@ const text = {
     contactEyebrow: 'Let’s connect',
     contactTitle: 'Have something worth building?',
     contactBody: 'For source code, development updates, and new projects, start with my GitHub profile.',
-    contactAction: 'View GitHub profile', contactTelegram: 'Telegram', contactInstagram: 'Instagram', contactDirect: 'Direct contact',
+    contactAction: 'View GitHub profile', contactTelegram: 'Telegram', contactInstagram: 'Instagram',
     footer: 'Designed and built with curiosity and engineering care.',
     workspace: 'Open workspace',
     language: 'فارسی',
@@ -435,7 +435,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
       <header className="portfolio-header">
         <a className="portfolio-brand" href="#top">
           <span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /></span>
-          <span><strong>POOYA</strong><small>INDEPENDENT BUILDER</small></span>
+          <span><strong>POOYA LABS</strong><small>INDEPENDENT BUILDER</small></span>
         </a>
         <nav className="portfolio-nav" aria-label={rtl ? 'ناوبری اصلی' : 'Main navigation'}>
           <a href="#about">{t.navAbout}</a>
