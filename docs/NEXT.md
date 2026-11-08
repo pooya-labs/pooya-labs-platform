@@ -2,7 +2,7 @@
 
 **Task ID:** P7-09  
 **Checkpoint date:** 2026-11-08  
-**Verified application `main` SHA:** `59a0c5a7179cc96260e50e59c561de44a89520e7`  
+**Verified application `main` SHA:** `377dbcbc2544976485f04fd1aeeb1b19d09d7bf7`  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
 
 ## Product direction
@@ -14,10 +14,10 @@ Pooya Labs is a personal engineering portfolio first. Its primary visitor journe
 - Public portfolio homepage in Persian/RTL by default, with English/LTR switching and dark/light themes.
 - Eight bilingual project dossiers, eight architecture diagrams, and sixteen crawler-readable localized case-study routes.
 - Seventeen 1200×627 PNG social-preview cards, with matching SVG sources, canonical metadata, sitemap, robots.txt, and Person JSON-LD.
-- Motion-led homepage with a refreshed emerald folded-ribbon monogram and matching favicon. The header mark is deliberately borderless (no square badge); its restrained entrance/aura motion respects reduced-motion settings.
-- The English hero separates `into` and `thoughtful` into isolated LTR runs, reserves terminal-glyph space, and is checked using actual text-range geometry after fonts load. Desktop and mobile screenshots confirm the final `g` is fully visible.
+- The site uses the two original owner-designed image files supplied by Pooya: the portrait geometric monogram in the header, About stamp, and favicon; and the horizontal POOYA — LABS wordmark in the About section. Both are exact image assets, not a recreated SVG substitute. The monogram has no badge or square frame.
+- The English hero renders into thoughtful on one solid-mint LTR line, without gradient text clipping. Browser QA waits for fonts and measures the actual text range and final glyph; desktop and mobile both confirm the complete g remains visible.
 - Eight case-study pages now have product-specific hero motion: distributed worker graph (AetherFlow), telemetry orbits (ORBIT), floating desktop windows (Pooya.OS), service topology (NexusCanvas), refractive rings (LuminaGlass), chart bars (AuraPulse), floating catalog panels (GlobalCart), and an appointment calendar (Salon Booking).
-- Instagram contact actions use a dedicated Instagram glyph rather than the generic camera icon. Browser QA retains private homepage desktop/mobile and bilingual project desktop screenshots as workflow artifacts only; none are published into the website.
+- Instagram contact actions use the dedicated Instagram glyph rather than a generic camera icon. Browser QA retains private homepage desktop/mobile, all bilingual project desktop views, and a settled About-section screenshot proving the supplied wordmark is loaded; these images are workflow artifacts only and never enter the public site.
 - Bidi-isolated hero text and architecture-diagram labels; direct route entry resets to the top; project screenshots have labelled, keyboard-focusable, internally scrollable frames.
 - About, contact, and footer sections include the approved mark, GitHub, Telegram (`@pooyayee`), and Instagram (`@_p.ooya`) links.
 - Fourteen approved full-page desktop/mobile captures are published for seven projects: AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and Salon Booking. Salon Booking imagery is restricted to its public customer flow. GlobalCart keeps its curated screenshots; its full-page capture remains withheld while the public collection grid has blank product placeholders.
@@ -25,17 +25,17 @@ Pooya Labs is a personal engineering portfolio first. Its primary visitor journe
 
 ## Latest verified main-branch checks
 
-All results below refer to the same application commit, `7a2d6c38731ea57e66bcedc5363566905ab5affe`.
+Validation code commit: 377dbcbc2544976485f04fd1aeeb1b19d09d7bf7. The final browser-QA and contract-test harness checkpoint is a08de7ec138c8790134a177b20a80ca7af137699 (QA/test-only changes after the published application source).
 
 | Check | Run | Verified result |
 |---|---:|---|
-| Repository CI | [42487890470](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890470) | Passed on application commit `59a0c5a7`: TypeScript, all three build targets, and repository contract tests |
-| Portfolio Browser QA | [42487890517](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890517) | Passed: 17 routes × desktop/mobile (34 viewport checks), zero failures, zero horizontal overflow, zero axe violations; 36 axe checks remain incomplete for human review. Private visual artifact [13620068611](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890517) contains 18 PNGs |
-| GitHub Pages | [42487890534](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890534) | Build and deployment jobs passed on the same application commit |
-| Cloudflare Pages | [42487890531](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890531) | Credential check ran; deploy job skipped because `CLOUDFLARE_API_TOKEN` is not configured |
-| Apps Script | [42487890498](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890498) | Configuration check ran; publish job skipped because clasp deployment secrets are not configured |
+| Repository CI | [42491842095](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842095) | Passed on QA/test harness commit a08de7ec: TypeScript, all three build targets, and repository contract tests |
+| Portfolio Browser QA | [42491842131](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842131) | Passed: 17 localized routes × desktop/mobile (34 checks), zero failures, zero horizontal overflow, zero axe violations; 36 axe checks remain incomplete for human review. Private artifact [13621507487](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842131) contains 19 PNGs |
+| GitHub Pages | [42491842070](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842070) | Build and deployment jobs passed; the corrected exact wordmark asset is present on the published source commit |
+| Cloudflare Pages | [42491842068](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842068) | Credential check ran; production deploy skipped because CLOUDFLARE_API_TOKEN is not configured |
+| Apps Script | [42491842057](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842057) | Configuration check ran; publication skipped because clasp deployment secrets are not configured |
 
-The latest Browser QA artifact for run [42487890517](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890517) was inspected. Its 18 private screenshots cover the homepage in desktop/mobile and all eight projects in Persian/English desktop. The report records zero failures, zero horizontal overflow, and zero axe violations across 34 viewports. It retains 36 incomplete axe checks; these are not confirmed violations, but still require manual inspection. Keyboard-only and screen-reader review also remains open.
+The inspected Browser QA artifact contains homepage desktop/mobile, a settled About-section image, and desktop images of all eight projects in Persian and English. The About report confirms the owner wordmark loaded at its intrinsic 390×142 dimensions. The measured thoughtful text range contains one unbroken LTR run and its final glyph remains inside the title bounds. The report records zero failures, zero horizontal overflow, and zero axe violations; 36 axe incomplete checks are not confirmed violations and still need manual review. Project heroes also expose running visual animations under normal motion preferences, while a separate check confirms that prefers-reduced-motion disables them. Keyboard-only, contrast, and screen-reader review remain open.
 
 ## Immediate next steps
 

@@ -6,6 +6,19 @@
 **Current phase:** Phase 7 — Owner-led visual redesign and release review  
 **Release:** Pre-alpha / portfolio draft
 
+## Latest verified checkpoint — 2026-11-08 14:52 UTC
+
+- The two owner-provided logo files are used directly. The portrait monogram WebP in the header, About stamp, and favicon is byte-for-byte the converted upload (blob 2bca324f5e6ab012a396705196e85d3a808b48a5); the horizontal wordmark in About is byte-for-byte the clean converted upload (blob 12609dd18bbf8af7bb4ffa875b5265eb65a62640). The previous generated SVG mark is no longer referenced in app markup. The About mark has no frame or badge.
+- Verified application asset commit: 377dbcbc2544976485f04fd1aeeb1b19d09d7bf7. QA harness checkpoint: a08de7ec138c8790134a177b20a80ca7af137699.
+- The English into thoughtful phrase is a single plain-color, unbroken LTR row without gradient text clipping. Browser QA measures the actual Range bounds after fonts load: one text rectangle, no clipping ancestors, and the final glyph fully inside the title line on desktop and mobile.
+- Eight product-specific case-study motion scenes are visible foreground visuals. Browser QA verifies at least three active animations and opacity >= 0.7 per project hero on both viewport sizes; run 42491842131 passed. A separate reduced-motion emulation confirms that the animations turn off when requested.
+- Repository CI [42491842095](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842095) passed TypeScript, all three build targets, and repository contract tests.
+- Browser QA [42491842131](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842131) passed 17 localized routes / 34 desktop-mobile checks with zero failures, zero horizontal overflow, zero missing-alt findings, and zero axe violations. There are still 36 incomplete axe checks, which are not confirmed violations and need manual review.
+- Private artifact [13621507487](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842131) contains 19 PNGs. Its home-en-about-desktop.png capture waits until the About reveal and wordmark entrance animation finish; the report confirms the owner wordmark loaded at 390×142. That image was opened and visually inspected alongside homepage desktop/mobile and all 16 bilingual project desktop captures.
+- GitHub Pages [42491842070](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842070) passed build and deployment. Public site: https://pooya-labs.github.io/pooya-labs-platform/.
+- Cloudflare [42491842068](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842068) and Apps Script [42491842057](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842057) passed credential/configuration checks but skipped production deployment because their required secrets are not configured.
+- Release remains pre-alpha / portfolio draft. Manual contrast/keyboard/screen-reader review, external social-preview validation, owner content approval, and Phase 8 hardening remain open.
+
 ## Latest verified checkpoint — 2026-11-08 14:04 UTC
 
 - Verified application commit: `59a0c5a7179cc96260e50e59c561de44a89520e7` on `main`. This checkpoint contains the borderless emerald monogram, the split/isolated English `thoughtful` headline with extra terminal-glyph space, the dedicated Instagram glyph, and eight product-specific case-study motion scenes.
