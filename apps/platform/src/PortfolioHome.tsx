@@ -198,8 +198,8 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
               <span className="case-study-media-note">{language === 'fa' ? 'نمای کامل محیط / دسکتاپ و موبایل' : 'FULL-PAGE PRODUCT / RESPONSIVE VIEWS'}</span>
             </div>
             <div className="case-study-media-grid">
-              {desktopCapture && <figure className="case-study-media-card device-desktop"><div className="case-study-media-frame"><img src={desktopCapture.url} alt={desktopCapture.alt[language]} loading="lazy" decoding="async" /></div><figcaption>{language === 'fa' ? 'نمای واقعی محیط دسکتاپ' : 'Actual desktop interface'}</figcaption></figure>}
-              {mobileCaptures.map((item) => <figure className={`case-study-media-card device-${item.device}`} key={item.url}><div className="case-study-media-frame"><img src={item.url} alt={item.alt[language]} loading="lazy" decoding="async" /></div><figcaption>{item.caption[language]}</figcaption></figure>)}
+              {desktopCapture && <figure className="case-study-media-card device-desktop"><div className="case-study-media-frame" role="region" tabIndex={0} aria-label={language === 'fa' ? 'قاب اسکرول‌پذیر تصویر پروژه' : 'Scrollable project screenshot frame'}><img src={desktopCapture.url} alt={desktopCapture.alt[language]} loading="lazy" decoding="async" /></div><figcaption>{language === 'fa' ? 'نمای واقعی محیط دسکتاپ' : 'Actual desktop interface'}</figcaption></figure>}
+              {mobileCaptures.map((item) => <figure className={`case-study-media-card device-${item.device}`} key={item.url}><div className="case-study-media-frame" role="region" tabIndex={0} aria-label={language === 'fa' ? 'قاب اسکرول‌پذیر تصویر پروژه' : 'Scrollable project screenshot frame'}><img src={item.url} alt={item.alt[language]} loading="lazy" decoding="async" /></div><figcaption>{item.caption[language]}</figcaption></figure>)}
             </div>
           </section>
         )}
