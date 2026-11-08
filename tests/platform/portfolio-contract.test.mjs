@@ -132,7 +132,7 @@ test('portfolio includes canonical, social, structured-data, and brand metadata'
   assert.match(metadata, /name="twitter:card"/);
   assert.match(metadata, /rel="canonical"/);
   assert.match(metadata, /application\/ld\+json/);
-  assert.match(metadata, /favicon\.svg/);
+  assert.match(metadata, /brand\/pooya-monogram\.webp/);
   assert.match(portfolio, /document\.title = pageTitle/);
   assert.match(portfolio, /og:url/);
   assert.match(portfolio, /link\[rel="canonical"\]/);
