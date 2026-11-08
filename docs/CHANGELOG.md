@@ -182,3 +182,13 @@
 - Changed the roadmap so a complete redesign using Pooya's feedback is a mandatory pre-release gate with two review rounds and explicit approval.
 - Clarified that a generic customer login/dashboard is not part of the portfolio by default and that Apps Script is deferred.
 - Added ADR-0006, portfolio product-surface and architecture documentation, and contract tests.
+
+
+## 2026-11-08 — Portfolio visual polish round 1
+
+- Reworked the portfolio header controls into a compact, clearer utility group and selected the supplied metallic-gold P mark for brand consistency.
+- Added an original Stripe-inspired radial light-burst section with truthful Pooya Labs portfolio metrics; no Stripe code, fonts, or proprietary assets are reused.
+- Hardened case-study card/grid text wrapping and media-frame sizing to prevent desktop copy from escaping its containers.
+- Added paired desktop/mobile media presentation and extended the capture runner to produce full-page desktop/mobile evidence for public projects, including Salon Booking's customer-facing route only.
+- New screenshots remain private review artifacts until the capture run succeeds and images pass visual/privacy review.
+- Validation: pending GitHub Actions on `feat/portfolio-polish-stripe-motion`.
