@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="17" fill="#0a1018"/><path d="M13 54V10h29c10 0 17 6 17 15 0 10-7 16-18 16H29L13 54Zm10-16 9-9h9c5 0 8-2 8-5s-3-5-8-5H23v19Z" fill="#e8edf2" stroke="#9ba7b4" stroke-width="1" stroke-linejoin="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Pooya Labs">
+  <defs>
+    <linearGradient id="gold" x1="18" y1="10" x2="92" y2="108" gradientUnits="userSpaceOnUse"><stop stop-color="#fff0c5"/><stop offset=".22" stop-color="#e9c77e"/><stop offset=".48" stop-color="#a9752f"/><stop offset=".7" stop-color="#f6dfa5"/><stop offset="1" stop-color="#b47c35"/></linearGradient>
+    <linearGradient id="cut" x1="32" y1="28" x2="83" y2="82" gradientUnits="userSpaceOnUse"><stop stop-color="#fff8e8" stop-opacity=".9"/><stop offset="1" stop-color="#6e471f" stop-opacity=".24"/></linearGradient>
+  </defs>
+  <path d="M18 105V15h54c21 0 34 10 34 28 0 19-14 30-37 30H49L18 105Zm19-31 18-18h15c11 0 17-4 17-13 0-8-6-12-17-12H37v43Z" fill="url(#gold)" stroke="url(#cut)" stroke-width="1.25" stroke-linejoin="round"/>
+  <path d="M18 105 49 73h19L37 105Z" fill="#70471f" opacity=".3"/><path d="M37 31h48c10 0 16 3 19 8-3-15-14-22-32-22H37v14Z" fill="#fff" opacity=".24"/>
+</svg>
