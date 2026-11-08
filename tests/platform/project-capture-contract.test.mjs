@@ -20,6 +20,8 @@ test('preview capture covers eight public project demos with two responsive view
   assert.match(script, /slug: 'salon-booking'/);
   assert.match(script, /const defaultView = target\.slug === 'nexus-canvas' && viewport\.name === 'mobile' \? 'Mobile Rack' : 'Overview'/);
   assert.match(script, /captureScenario\('overview', defaultView\)/);
+  assert.match(script, /captureScenario\('fullpage', 'Full page \/ all sections', true\)/);
+  assert.match(script, /public customer booking journey only/);
   assert.ok(script.includes("captureScenario('incidents', 'Incidents · API authentication required')"));
   assert.ok(script.includes("captureScenario(view.toLowerCase() + '-connection'"));
   assert.match(script, /Metrics/);
