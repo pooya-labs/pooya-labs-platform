@@ -2,8 +2,18 @@
 
 **Task ID:** P7-12  
 **Checkpoint date:** 2026-11-09  
-**Latest verified `main` docs checkpoint:** PR [#18](https://github.com/pooya-labs/pooya-labs-platform/pull/18) merged as [`23f1689`](https://github.com/pooya-labs/pooya-labs-platform/commit/23f16896624ef391e284d3579a7f7278f5c8cbaf); post-merge Repository CI [42522790018](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42522790018) and Browser QA [42522600586](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42522600586) passed. See [Project Status](STATUS.md) and [project-state.json](project-state.json)  
+**Latest verified `main` docs checkpoint:** PR [#19](https://github.com/pooya-labs/pooya-labs-platform/pull/19) merged; current main HEAD is [`659189d`](https://github.com/pooya-labs/pooya-labs-platform/commit/659189dd99af59154cbfd88ce5f9dcecb23e1e0e). Main Repository CI [42523193131](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42523193131) passed; latest observed Browser QA remains PR #18 run [42522600586](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42522600586). See [Project Status](STATUS.md) and [project-state.json](project-state.json)  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
+
+## GitHub governance audit — 2026-11-09
+
+- Main HEAD: `659189dd99af59154cbfd88ce5f9dcecb23e1e0e`; main CI [42523193131](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42523193131) passed.
+- The main branch is currently unprotected and the repository has no rulesets or required status-check contexts.
+- All ten Actions workflows were checked for declared token permissions. Validation/capture jobs are read-only; Pages has deployment-only scopes; three artifact publishers have `contents: write` and `actions: read`.
+- The three publishers push their reviewed artifacts directly to `main`. Resolve that automation path before turning on a strict require-PR ruleset.
+- See [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md) for evidence, observed check names, and the owner-side setup procedure.
+
+**Next atomic task:** choose the secure artifact-publisher path (PRs via a GitHub App token, or a consciously accepted GitHub Actions ruleset bypass), then configure and test the `main` ruleset. Do not mark Phase 7 complete before a test PR proves the checks are enforced.
 
 ## Post-merge verification — 2026-11-09
 

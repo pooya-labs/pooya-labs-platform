@@ -1,3 +1,10 @@
+## 2026-11-09 — GitHub Actions permission and branch-governance audit
+
+- Added [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md) with the observed unprotected-main state, the ten-workflow permission inventory, current check names, and the safe ruleset setup sequence.
+- Confirmed read-only scopes for validation/capture workflows, deployment-specific Pages scopes, and write permissions only on the three reviewed-capture publishers. No `pull_request_target` or `workflow_run` trigger was found.
+- Identified that the three capture publishers push directly to `main`; a strict require-PR ruleset must first migrate this path to PR-based publishing or explicitly accept the broader GitHub Actions bypass.
+- Updated STATUS, NEXT, ROADMAP, RELEASE, SECURITY-MODEL, and project-state. Documentation only; no GitHub settings, secrets, application source, or deployment changed.
+
 ## 2026-11-09 — Source audit and owner packet merged
 
 - Merged PR [#18](https://github.com/pooya-labs/pooya-labs-platform/pull/18) as [`23f1689`](https://github.com/pooya-labs/pooya-labs-platform/commit/23f16896624ef391e284d3579a7f7278f5c8cbaf).
