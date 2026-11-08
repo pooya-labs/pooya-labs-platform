@@ -140,6 +140,43 @@ try {
             document.documentElement.scrollWidth > window.innerWidth + 1 ||
             document.body.scrollWidth > window.innerWidth + 1,
         }));
+        const scrollMetrics = await page.evaluate(() => {
+          const scroller = document.querySelector('.portfolio-page');
+          if (!(scroller instanceof HTMLElement)) {
+            return { scrollContainerFound: false, scrollHeight: 0, clientHeight: 0, maxScrollTop: 0, canScroll: false };
+          }
+          const maxScrollTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+          scroller.scrollTop = 0;
+          scroller.scrollTop = Math.min(480, maxScrollTop);
+          const result = {
+            scrollContainerFound: true,
+            scrollHeight: scroller.scrollHeight,
+            clientHeight: scroller.clientHeight,
+            maxScrollTop,
+            canScroll: maxScrollTop > 100 && scroller.scrollTop > 100,
+          };
+          scroller.scrollTop = 0;
+          return result;
+        });
+        if (!scrollMetrics.canScroll) {
+          addFailure(route, viewport.name, 'The portfolio scroll container cannot move through the page content.');
+        }
+        if (viewport.name === 'desktop') {
+          await page.mouse.move(Math.floor(viewport.width / 2), Math.floor(viewport.height / 2));
+          await page.mouse.wheel(0, 720);
+          try {
+            await page.waitForFunction(() => {
+              const scroller = document.querySelector('.portfolio-page');
+              return scroller instanceof HTMLElement && scroller.scrollTop > 30;
+            }, null, { timeout: 1800 });
+          } catch {
+            addFailure(route, viewport.name, 'Mouse-wheel input did not scroll the public portfolio.');
+          }
+          await page.evaluate(() => {
+            const scroller = document.querySelector('.portfolio-page');
+            if (scroller instanceof HTMLElement) scroller.scrollTop = 0;
+          });
+        }
         const axeResults = await new AxeBuilder({ page }).withTags(report.accessibility.tags).analyze();
         const axeFindings = axeResults.violations.map((violation) => ({
           id: violation.id,
@@ -155,6 +192,7 @@ try {
         routeRecord.viewportChecks.push({
           ...viewport,
           ...metrics,
+          scrollMetrics,
           axeViolationCount: axeFindings.length,
           axeIncompleteRuleCount: axeResults.incomplete.length,
         });
