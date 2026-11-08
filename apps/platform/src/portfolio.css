@@ -1630,3 +1630,17 @@
 .case-study-media-frame img { width:100%; height:auto; max-height:none; object-fit:initial; }
 .case-study-media-card.device-mobile .case-study-media-frame { max-height:640px; }
 .case-study-media-card.device-mobile .case-study-media-frame img { width:100%; height:auto; max-width:100%; max-height:none; }
+
+/* Match the reference rhythm: centered headline, compact stat rail, then a full-width radial field. */
+.portfolio-proof { grid-template-columns:minmax(0,1fr); min-height:560px; gap:20px; padding:66px clamp(24px,5vw,72px) 0; }
+.portfolio-proof-copy { max-width:760px; margin-inline:auto; text-align:center; }
+.portfolio-proof-copy p { margin-inline:auto; }
+.portfolio-proof-stats { grid-column:1; grid-row:2; width:100%; margin-top:5px; }
+.portfolio-proof-visual { grid-column:1; grid-row:3; width:100%; min-height:280px; }
+.proof-burst-rays { inset:-8% -8% -78%; }
+.proof-burst-core { inset:25% 5% -48%; }
+@media(max-width:680px) {
+  .portfolio-proof { min-height:0; gap:18px; padding:52px 20px 0; }
+  .portfolio-proof-stats { grid-row:2; }
+  .portfolio-proof-visual { grid-row:3; min-height:210px; }
+}
