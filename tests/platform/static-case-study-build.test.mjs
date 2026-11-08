@@ -130,3 +130,16 @@ test('built sitemap and robots file advertise the new static routes', { skip: !r
   }
   assert.match(robots, /Sitemap: https:\/\/pooya-labs\.github\.io\/pooya-labs-platform\/sitemap\.xml/);
 });
+
+
+test('generated bilingual architecture SVGs wrap labels inside centered node bounds', { skip: !rootHtml }, async () => {
+  for (const locale of ['fa', 'en']) {
+    const suffix = locale === 'en' ? '-en' : '';
+    const svg = await readFile(new URL('architecture/orbit' + suffix + '.svg', outputRoot), 'utf8');
+    assert.match(svg, /width="1600" height="900"/);
+    assert.match(svg, /text-anchor="middle" direction="(?:fa|en)" unicode-bidi="plaintext"/);
+    assert.match(svg, /<tspan x="\\d+" dy="22">/);
+    assert.match(svg, /height="172"/);
+    assert.match(svg, /stroke="#64cfa9"/);
+  }
+});
