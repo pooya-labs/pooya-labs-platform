@@ -37,7 +37,34 @@ The initial baseline was collected by Browser QA run [42507165883](https://githu
 
 **Interpretation:** these local-runner numbers are fast because the HTML/CSS/JS are served from the CI machine, not because a visitor's network will match them. Resource Timing reported hidden transfer sizes for 1–5 cross-origin assets per route; those assets are not included reliably in the byte totals. Font bytes were zero in this measurement and must not be interpreted as proof that every font request has zero cost.
 
-A layout-shift warning needs follow-up: NexusCanvas desktop recorded CLS 0.1713 and ORBIT desktop 0.1202; other samples were lower. The current branch extends the probe to include the DOM source and before/after rectangles for each non-input layout-shift event. Do not close the Phase 7 performance task or enable budget enforcement until those sources are reviewed and the published-host measurements have been collected.
+## Three-host baseline and CLS investigation — 2026-11-08
+
+Browser QA run [42509020267](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020267), artifact [13628113221](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020267/artifacts/13628113221), collected **20 cold-context measurements per host** (the English/Persian homepage and all eight English project routes, each at desktop and mobile sizes).
+
+| Metric (p75) | Local build | GitHub Pages | Cloudflare Pages |
+|---|---:|---:|---:|
+| TTFB | 4 ms | 42 ms | 123 ms |
+| DOM content loaded | 101 ms | 124 ms | 258 ms |
+| Load event | 104 ms | 174 ms | 258 ms |
+| First Contentful Paint | 112 ms | 156 ms | 340 ms |
+| Largest Contentful Paint | 300 ms | 400 ms | 472 ms |
+| Cumulative Layout Shift | **0.1713** | **0.1713** | **0.1713** |
+| Observed total resource bytes | 177,671 | 180,710 | 178,476 |
+| JavaScript bytes | 128,533 | 129,920 | 127,332 |
+| CSS bytes | 40,577 | 42,204 | 42,696 |
+| Image bytes with visible timing sizes | 8,220 | 8,245 | 8,158 |
+
+All 60 route/viewport/host measurements completed with zero HTTP, uncaught-page-error, or horizontal-overflow failures. These are CI Chromium samples, not a substitute for real-device and representative-network measurements. Resource Timing cannot expose all cross-origin transfer sizes; zero font-byte reports and hidden cross-origin sizes are not evidence of zero download cost.
+
+### Confirmed layout-shift source
+
+The high CLS is reproducible on desktop direct-entry case-study routes. The build plugin in `apps/platform/vite.config.ts` inserts crawler-readable static case-study markup inside `<div id="root">`. The browser entry point in `apps/platform/src/main.tsx` then calls `createRoot(rootElement).render(...)` rather than hydrating the existing markup. React therefore clears the pre-rendered nodes after the initial paint and replaces them with the interactive case-study component. The performance observer records the corresponding large node removals around the interface-capture section.
+
+This is a confirmed source-level explanation, not a completed remediation. Preserve direct-route SEO and accessible content while choosing a hydration-safe rendering strategy, then repeat all three host baselines. Do not hide the static content or raise budgets to make CLS appear green.
+
+The dependency audit and browser workflows are green, but the performance gate remains open. Keep `PORTFOLIO_PERF_ENFORCE=0` until the root cause is corrected and the new baseline is reviewed.
+
+
 
 ## Measurement limitations
 

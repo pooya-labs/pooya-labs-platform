@@ -99,7 +99,8 @@ This phase is the work currently in progress. Complete every autonomous engineer
 - [x] Keep Node 24-compatible GitHub Actions and the passing Repository CI/Browser QA checks.
 - [x] Add a cold-context Chromium performance probe for the homepage and all eight project routes at desktop/mobile sizes; collect navigation timing, FCP/LCP, CLS, and resource-size data.
 - [ ] Review the first performance baseline, calibrate realistic budgets, and enable enforcement only after measured review.
-- [ ] Add a high-severity dependency advisory gate and resolve any current findings before closing Phase 7.
+- [ ] Resolve the confirmed CLS caused by the generated static case-study markup being replaced by `createRoot`; retain crawler-readable direct routes and repeat the three-host baseline.
+- [x] Add a high-severity dependency advisory gate; Repository CI run [42509020236](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020236) reported 0 dependency vulnerabilities.
 - [ ] Complete responsive navigation, keyboard-only operation, visible focus, and screen-reader-flow audit for Persian and English, both themes.
 - [ ] Resolve or document every reproducible accessibility defect. Manually evaluate gradient/pseudo-background contrast cases that axe cannot calculate; incomplete checks are not passes.
 - [ ] Establish measurable performance budgets for initial load, route transitions, largest media, animation cost, and mobile responsiveness; measure the current implementation against them.

@@ -1,11 +1,12 @@
-## Phase 7 readiness implementation — security and performance probes (2026-11-08)
+## Phase 7 readiness implementation — security and performance baseline (2026-11-08)
 
-- Added a cold-context Chromium performance probe for the bilingual homepage and all eight English project routes at 1440×1000 and 390×844 viewports.
-- The probe records TTFB, DOMContentLoaded, load, FCP, LCP, CLS, JS/CSS/image/font resource sizes, hidden cross-origin transfer-size entries, HTTP errors, and horizontal overflow. Initial run is report-only; budgets will be enforced after reviewing actual baseline data.
-- Added [PERFORMANCE-BUDGET.md](PERFORMANCE-BUDGET.md) with initial guardrails and explicit limitations; CI now uploads the JSON report as part of the existing private Browser QA artifact.
-- Added an npm audit high-severity gate to Repository CI. Its first result is pending; do not claim dependency security clearance until it passes and any findings are resolved.
-- Browser QA [42506834297](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42506834297) passed the existing checks: 18/18 routes, 36/36 viewports, zero failures, zero confirmed axe violations; 36 incomplete contrast records remain. The first performance invocation did not start because the command targeted the app workspace instead of the root script; this was corrected on the branch and a rerun is required.
-- Browser QA workflow now runs the performance probe after the existing responsive/accessibility/keyboard checks.
+- Added a cold-context Chromium performance probe for the Persian/English homepage and all eight English case-study routes at desktop (1440×1000) and mobile (390×844) sizes. It records navigation timing, FCP/LCP, CLS, resource sizes, route errors, and horizontal overflow.
+- Repository CI [42509020236](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020236) passed on PR #13 head `0dd3eca221df8e5b28b796b3db7b8e6462382fc4`: dependency audit reported **0 vulnerabilities**, lint and format checks passed for 49 files, TypeScript passed, all three Pages/Apps Script/Cloudflare builds passed, and **96/96 contract tests** passed.
+- Browser QA [42509020267](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020267) passed **18/18 routes**, **36/36 viewport checks**, and zero failures. Axe reported zero confirmed violations; **36 incomplete color-contrast checks** remain for human review and are not counted as passes.
+- Three-host performance measurements completed: **20 samples per host** for the English/Persian homepages and eight English project routes. The report is retained in [artifact 13628113221](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020267/artifacts/13628113221). Full p75 values and limitations are in [PERFORMANCE-BUDGET.md](PERFORMANCE-BUDGET.md).
+- The measured CLS is not accepted: investigation traced the large desktop case-study shifts to the static HTML case-study markup being inserted into `#root` during the build and then removed when `main.tsx` calls `createRoot` instead of hydrating that markup. This is a confirmed source-level explanation, not a completed fix. Keep performance budgets report-only until a hydration-safe approach is implemented and the three-host baseline is repeated.
+- The new audit and performance checks are tooling/readiness work only. The application UI and deployed build are unchanged; no production deployment is implied by these checks.
+
 
 ## Release sequence decision — 2026-11-08
 
