@@ -85,7 +85,9 @@
     "portfolioPerformance": "passed-run-42514976406;20-samples-per-host;local-p75-ttfb4-dcl96-load97-fcp220-lcp316-cls0;github-pages-p75-ttfb109-dcl266-load293-fcp332-lcp400-cls0;cloudflare-pages-p75-ttfb83-dcl282-load300-fcp328-lcp0;36-incomplete-contrast-checks-human-review",
     "cloudflareProductionDeployment": "success-deployment-107de2a2-d69c-4b9d-ae2c-38da68c7bad4;main-a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67;queued-initialize-clone-build-deploy-success",
     "appsScriptProductionDeployment": "skipped-run-42514976476;missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID;build-target-passed-no-production-publish",
-    "latestAppsScriptAttemptRun": "42514976476;credential-check-passed;actual-publish-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID"
+    "latestAppsScriptAttemptRun": "42514976476;credential-check-passed;actual-publish-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
+    "credentialScan": "passed-run-42517885668-on-PR15-head-e7b5d2e4a592;tracked-source-and-dist-pages-dist-cloudflare;no-recognized-matches;values-redacted",
+    "repositoryCiSecurityTask": "passed-run-42517885668;npm-audit-zero-vulnerabilities;credential-scan-no-recognized-matches;contract-tests-101-of-101;all-build-targets-success"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -152,7 +154,7 @@
     }
   },
   "blockers": [
-    "Phase 7 technical closeout is active: finish measurable performance budgets, security/dependency/secret and public/private asset review, external social-crawler validation, active Pages-source verification, Cloudflare deployment automation/manual runbook, and rollback/recovery rehearsal.",
+    "Phase 7 technical closeout is active: tracked-source/public-build credential scan is implemented and passed; finish manual public/private asset boundary review, external link safety and deployment-permission review, external social-crawler validation, Pages-source verification, Cloudflare automation, and rollback/recovery rehearsal.",
     "External LinkedIn/Facebook social crawler rendering and cache-refresh validation for the 17 PNG social cards remains open.",
     "AetherFlow's public M07/M08 mismatch, duplicate Dashboard navigation, live API CORS acceptance, personal role attribution, and license choice remain unresolved; latest dashboard patch now labels Apps Script records synthetic.",
     "ORBIT's Cloudflare Worker is still not connected to a configured origin or secret; CF01-CF05 runtime acceptance remains open and must not be represented as live telemetry.",
@@ -165,7 +167,7 @@
     "Cloudflare GitHub Actions auto-deployment still requires the private CLOUDFLARE_API_TOKEN secret; the current production deployment succeeded through the authorized Cloudflare Pages API.",
     "Apps Script production publishing was skipped in run 42514976476 because CLASPRC_JSON, CLASP_JSON, and GAS_DEPLOYMENT_ID are not configured. The Apps Script build target passed; do not claim the Apps Script Web App was updated."
   ],
-  "nextAction": "Continue Phase 7 owner/device readiness: review the 36 incomplete contrast items, test GitHub Pages and Cloudflare production on physical Android and representative networks, validate external social crawler previews, rehearse public-host rollback/recovery, and obtain owner visual/content approval. Configure private Cloudflare/Apps Script Actions secrets only if automatic publishing is needed. Do not start Phase 8 redesign until the Phase 7 owner/device gate is met.",
+  "nextAction": "Continue Phase 7: complete the broader security/privacy and public/private asset review (the new automated credential scan is preventive, not exhaustive), finish human accessibility and physical Android checks, validate social crawler previews, rehearse rollback/recovery, and prepare owner approval. Do not start Phase 8 redesign before the Phase 7 owner/device gate.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -173,7 +175,35 @@
     "ownerApproved": true,
     "adminAuthenticationFinalized": false,
     "protectedFeaturesAllowed": false,
-    "acceptedDecision": "docs/decisions/ADR-0004-public-admin-boundary.md"
+    "acceptedDecision": "docs/decisions/ADR-0004-public-admin-boundary.md",
+    "trackedCredentialScan": {
+      "implementation": "scripts/secret-scan.mjs",
+      "command": "npm run security:secrets",
+      "scope": [
+        "git-tracked-utf8-files",
+        "dist/pages",
+        "dist/cloudflare"
+      ],
+      "checks": [
+        "private-key-blocks",
+        "AWS-AKIA-ASIA-access-key-IDs",
+        "GitHub-token-formats",
+        "Google-API-key-format",
+        "Slack-token-format",
+        "Stripe-live-secret-format",
+        "quoted-credential-assignments",
+        "credential-bearing-file-paths"
+      ],
+      "lastRun": 42517885668,
+      "validatedCommit": "e7b5d2e4a592700ea309ff55f4428947cd7e2816",
+      "result": "passed-no-recognized-matches",
+      "limitations": [
+        "binary-file-contents-not-scanned",
+        "Git-history-not-scanned",
+        "high-confidence-known-patterns-only",
+        "does-not-rotate-or-revoke-credentials"
+      ]
+    }
   },
   "performance": {
     "budgetsDocumented": true,

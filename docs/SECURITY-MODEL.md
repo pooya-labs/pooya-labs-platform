@@ -29,6 +29,18 @@ Trust boundaries:
 - Third-party mini-app iframe ↔ platform shell, using a separately validated message protocol.
 - GitHub Actions ↔ public repository content and test artifacts.
 
+## Repository and public-build credential scanning — 2026-11-08
+
+A preventive, dependency-free scanner now runs in Repository CI after the Pages and Cloudflare bundles are built.
+
+- Implementation: `scripts/secret-scan.mjs`; command: `npm run security:secrets`.
+- CI scans UTF-8 text in all tracked files and the generated `dist/pages` and `dist/cloudflare` trees. It flags common private-key blocks, selected provider token formats (AWS access-key IDs, GitHub tokens, Google API keys, Slack tokens, Stripe live keys), long quoted credential assignments, and credential-bearing filenames such as `.env`, `.clasp.json`, private-key files, and service-account JSON.
+- CI output contains only the file path, line number, and rule name. It never prints matched credential values.
+- Repository CI [42517885668](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42517885668) passed: dependency audit reported **0 vulnerabilities**, both public builds completed, the credential scan reported **no recognized matches**, and the contract suite passed **101/101 tests**.
+- Contract tests cover positive provider-pattern detection, quoted secret assignments, placeholder exclusions, sensitive filenames, and ordinary link/commit-ID false positives.
+
+**Limitations:** this is a high-confidence pattern scanner, not an exhaustive DLP tool. It does not inspect binary file contents, scan the full Git history, detect every unknown/custom token format, or rotate credentials. It must not be treated as proof that every secret is absent. Continue using private secret stores, review any alert, and manually inspect public/private asset boundaries and deployment permissions before release.
+
 ## Threat scenarios and baseline controls
 
 | Threat | Baseline control before feature release |

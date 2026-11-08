@@ -105,6 +105,7 @@ This phase is the work currently in progress. Complete every autonomous engineer
 - [ ] Complete responsive navigation, keyboard-only operation, visible focus, and screen-reader-flow audit for Persian and English, both themes.
 - [ ] Resolve or document every reproducible accessibility defect. Manually evaluate gradient/pseudo-background contrast cases that axe cannot calculate; incomplete checks are not passes.
 - [ ] Establish measurable performance budgets for initial load, route transitions, largest media, animation cost, and mobile responsiveness; measure the current implementation against them.
+- [x] Add a dependency-free high-confidence credential scan for tracked source and both public build outputs; Repository CI [42517885668](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42517885668) passed the scan with no recognized matches, 0 dependency vulnerabilities, and 101/101 contract tests. The scanner's pattern and binary/history limitations are documented in [SECURITY-MODEL.md](SECURITY-MODEL.md); broader security review remains open.
 - [ ] Review dependency/security posture, secret exposure, public/private asset boundaries, external link safety, and deployment permissions.
 - [ ] Validate all 17 PNG social preview cards with external crawler/share clients and document which clients/cache refreshes were actually verified.
 - [ ] Confirm GitHub Pages source configuration and verify the canonical site serves the exact latest application build.

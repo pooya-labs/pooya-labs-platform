@@ -1,3 +1,10 @@
+## 2026-11-08 — CI credential scan for tracked files and public builds
+
+- Added a zero-dependency secret scan to Repository CI for tracked UTF-8 files and the generated GitHub Pages and Cloudflare bundles.
+- Common private-key/provider-token formats, quoted credential assignments, and credential-bearing file paths are checked. CI output redacts values and reports only path, line, and rule.
+- Repository CI [42517885668](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42517885668) passed: dependency audit **0 vulnerabilities**, scan **no recognized matches**, repository contracts **101/101 passed**.
+- This scan does not inspect binary contents or Git history and cannot identify every custom credential format. Broader security/privacy review remains open; no V1 release is claimed.
+
 ## 2026-11-08 — Current upstream audit and monogram asset verification
 
 - Rechecked the exact `main` heads and inspected the diffs of all eight independent project repositories; the current SHAs and timestamps are listed in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
