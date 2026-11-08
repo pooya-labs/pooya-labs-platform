@@ -23,7 +23,9 @@ test('direct route startup uses document scrolling and disables browser position
   assert.match(main, /window\.history\.scrollRestoration = 'manual'/);
   assert.match(main, /window\.scrollTo\(0, 0\)/);
   assert.match(css, /height:auto;min-height:100vh;overflow-x:clip;overflow-y:visible/);
-  assert.doesNotMatch(css, /\.portfolio-page\s*\{[^}]*height:\s*100%/);
+  const finalRootRule = css.lastIndexOf('.portfolio-page {');
+  assert.ok(finalRootRule >= 0);
+  assert.match(css.slice(finalRootRule, finalRootRule + 700), /height:auto;min-height:100vh;overflow-x:clip;overflow-y:visible/);
 });
 
 test('proof scene follows the Stripe hierarchy with metrics before a full-width radial field', () => {
