@@ -84,9 +84,9 @@ test('the first-page English headline runs are isolated from surrounding RTL dir
 });
 
 test('two additional animated sections are bilingual, responsive, and reduced-motion safe', () => {
-  assert.match(home, /className="portfolio-system-field"/);
+  assert.match(home, /className="portfolio-system-field portfolio-container"/);
   assert.match(home, /className="system-field-node"/);
-  assert.match(home, /className="portfolio-craft"/);
+  assert.match(home, /className="portfolio-craft portfolio-container"/);
   assert.match(home, /className="craft-principle"/);
   for (const copy of ['systemEyebrow:', 'systemTitle:', 'systemNode1:', 'systemNode2:', 'systemNode3:', 'craftEyebrow:', 'craftTitle:', 'craft1Title:', 'craft2Title:', 'craft3Title:', 'craft4Title:']) {
     assert.equal((home.match(new RegExp(copy, 'g')) ?? []).length, 2, copy + ' must be localized in Persian and English');
