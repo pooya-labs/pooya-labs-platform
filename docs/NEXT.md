@@ -43,6 +43,13 @@ Latest read-only `main` heads inspected on 2026-11-08 19:30 UTC: AetherFlow `2ce
 - Continue the broader Phase 7 review: manual public/private asset boundary review, workflow/deployment permissions, link safety, human contrast/keyboard/screen-reader checks, social crawler validation, rollback rehearsal, and owner/device acceptance.
 
 
+## Owner review packet prepared — 2026-11-08
+
+- [`docs/OWNER-REVIEW-PACKET.md`](OWNER-REVIEW-PACKET.md) now consolidates the current bilingual homepage copy, project order, status and role wording, contact channels, media inventory, public disclosure boundaries, and the empty Novels decision.
+- The packet is prepared but **not approved**. All eight project review states remain `needs-owner-review`; owner decisions on biography/copy, featured order, roles, statuses, public media, Salon Booking permission, and Novels content remain pending.
+- PR [#16](https://github.com/pooya-labs/pooya-labs-platform/pull/16) includes the packet and a contract test that guards its coverage and non-approval language.
+
+
 ## Phase 7 work order
 
 1. Complete repository-level quality, security, dependency, secret/asset boundary, and workflow review.

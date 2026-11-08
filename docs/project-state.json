@@ -14,7 +14,7 @@
   "lastCheckpointDate": "2026-11-08",
   "latestVerifiedCodeCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
   "tests": {
-    "repositoryCi": "passed-run-42515288490;current-main-docs-head-a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67;dependency-audit-lint-format-TypeScript-three-build-targets-contract-tests-success",
+    "repositoryCi": "passed-run-42518373614;main-15c2535ad5fe;dependency-audit-zero-vulnerabilities;credential-scan-no-recognized-matches;contract-tests-101-of-101;all-three-builds-success",
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
@@ -39,7 +39,7 @@
     "staticCaseStudySectionOrder": "passed-run-42227942261-and-42230046270",
     "lastVerifiedTestCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
     "skipNavigationContract": "passed-run-42231110043-bilingual-fixed-position-reduced-motion",
-    "portfolioBrowserQa": "passed-run-42514976406;application-asset-revision-41ea1004433196aa81e4e50b17a1620f110ecea8;18-of-18-routes;zero-failures;zero-confirmed-axe-violations;36-incomplete-color-contrast-checks-require-human-review;20-cold-context-samples-per-host;CLS-p75-0-all-hosts;LCP-p75-local-316ms-GitHubPages-400ms-CloudflarePages-400ms;cloudflare-production-107de2a2-deployed-before-probe-from-main-a37de4cf",
+    "portfolioBrowserQa": "passed-run-42518373619;main-15c2535ad5fe;18-of-18-routes;zero-failures;zero-confirmed-axe-violations;36-incomplete-contrast-checks-remain-for-human-review",
     "portfolioBrowserQaArtifact": "13631024148",
     "portfolioBrowserQaStrictGate": "passed-run-42514976406;18-of-18-routes;zero-failures;zero-confirmed-axe-violations;36-incomplete-checks-remain-human-review;performance-report-only",
     "pagesArtifactAudit": "passed-run-42238363799-artifact-13511808294-17-html-17-png-1200x627-17-sitemap-urls-all-canonical-og-description-jsonld-and-case-study-hreflang",
@@ -61,11 +61,11 @@
     "documentationCheckpoint": "passed-run-42496528868-on-b429828f0ed8f967317934fffed32daffa7b6a5f;state-roadmap-next-status-and-ADR-synchronized",
     "githubActionsRuntimeWarning": "none-observed-in-latest-successful-run-42502717615",
     "latestVerifiedTestCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
-    "latestDocumentationCheckpoint": "passed-quality-and-release-conventions-PR-12-merge-1746c11ee87fba4a37ea8fff0f548cb832fe4b22;CI-42504771438;Browser-QA-42504771467",
+    "latestDocumentationCheckpoint": "PR-16-owner-review-packet-and-contract-tests;owner-approval-pending;no-project-review-state-upgraded",
     "latestDetailedAxeReport": "run-42514976406;zero-confirmed-axe-violations;36-incomplete-axe-checks;artifact-13631024148",
-    "latestRepositoryCiRun": "42515288490",
-    "latestBrowserQaRun": "42514976406",
-    "latestPagesDeploymentRun": "42514976384",
+    "latestRepositoryCiRun": "42518373614",
+    "latestBrowserQaRun": "42518373619",
+    "latestPagesDeploymentRun": "42518373632",
     "latestCloudflareAttempt": "success-deployment-107de2a2-d69c-4b9d-ae2c-38da68c7bad4;main-a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67;all-five-stages-success;includes-41ea1004-asset",
     "latestAppsScriptAttempt": "run-42514976476;configuration-check-passed;actual-publish-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
     "pendingProductMotionAndGalleryQa": "passed-run-42496014812",
@@ -86,7 +86,7 @@
     "cloudflareProductionDeployment": "success-deployment-107de2a2-d69c-4b9d-ae2c-38da68c7bad4;main-a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67;queued-initialize-clone-build-deploy-success",
     "appsScriptProductionDeployment": "skipped-run-42514976476;missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID;build-target-passed-no-production-publish",
     "latestAppsScriptAttemptRun": "42514976476;credential-check-passed;actual-publish-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
-    "credentialScan": "passed-run-42517885668-on-PR15-head-e7b5d2e4a592;tracked-source-and-dist-pages-dist-cloudflare;no-recognized-matches;values-redacted",
+    "credentialScan": "passed-run-42518373614;main-15c2535ad5fe;tracked-source-and-dist-pages-dist-cloudflare;no-recognized-matches;values-redacted",
     "repositoryCiSecurityTask": "passed-run-42517885668;npm-audit-zero-vulnerabilities;credential-scan-no-recognized-matches;contract-tests-101-of-101;all-build-targets-success"
   },
   "hosting": {
@@ -110,15 +110,15 @@
     "activePagesSource": "GitHub Actions deployment succeeded; repository Pages source setting still requires owner-side confirmation",
     "appsScriptSync": "deferred-not-required-for-static-portfolio",
     "portfolioPagesPublished": true,
-    "portfolioPagesRun": "42514976384",
+    "portfolioPagesRun": "42518373632",
     "latestPortfolioCodeCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
     "cloudflareProductionDeployment": "107de2a2-d69c-4b9d-ae2c-38da68c7bad4",
     "cloudflareProductionCommit": "a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67",
     "cloudflareWorkflow": "Cloudflare production deployment 107de2a2-d69c-4b9d-ae2c-38da68c7bad4 created through authorized Cloudflare API from current main commit a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67; all deployment stages succeeded; GitHub Actions workflow remains blocked by missing private CLOUDFLARE_API_TOKEN",
     "appsScriptWorkflow": "actual-production-deploy-success-run-42476478245-on-fa5d412506387622ca39df792fcaed62eb88cb67",
-    "latestPagesAttemptRun": "42514976384",
-    "latestPagesAttemptCodeCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
-    "latestPagesAttemptStatus": "passed-build-and-deploy-on-main-41ea1004",
+    "latestPagesAttemptRun": "42518373632",
+    "latestPagesAttemptCodeCommit": "15c2535ad5fe8a2d2e2b226a99cd4147bdbba46b",
+    "latestPagesAttemptStatus": "passed-build-and-deploy-on-main-15c2535ad5fe",
     "pagesArtifactId": "13518846598",
     "pagesArtifactSizeBytes": 3817565,
     "latestDocumentationCommit": "a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67",
@@ -167,7 +167,7 @@
     "Cloudflare GitHub Actions auto-deployment still requires the private CLOUDFLARE_API_TOKEN secret; the current production deployment succeeded through the authorized Cloudflare Pages API.",
     "Apps Script production publishing was skipped in run 42514976476 because CLASPRC_JSON, CLASP_JSON, and GAS_DEPLOYMENT_ID are not configured. The Apps Script build target passed; do not claim the Apps Script Web App was updated."
   ],
-  "nextAction": "Continue Phase 7: complete the broader security/privacy and public/private asset review (the new automated credential scan is preventive, not exhaustive), finish human accessibility and physical Android checks, validate social crawler previews, rehearse rollback/recovery, and prepare owner approval. Do not start Phase 8 redesign before the Phase 7 owner/device gate.",
+  "nextAction": "Review docs/OWNER-REVIEW-PACKET.md and decide the outstanding biography/headline, AI Engineering positioning, project order, roles/statuses, contact channels, public media permissions, Salon Booking permission, and Novels catalog. Continue the remaining Phase 7 manual accessibility, physical-device, social crawler, Cloudflare automation, and rollback checks. Do not begin Phase 8 until the owner/device exit gate is satisfied.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -555,7 +555,7 @@
     "socialPreviewCards": "17 PNG primary images plus 17 SVG source cards",
     "externalSocialPreviewValidation": "pending-authenticated-linkedin-facebook-crawler-and-cache-refresh",
     "actualUiScreenshots": "14 approved full-page desktop/mobile captures across seven projects published; AuraPulse and Salon Booking card assets now connected; GlobalCart full-page capture remains withheld pending storefront-grid repair",
-    "ownerContentApproval": "pending",
+    "ownerContentApproval": "pending-owner-review-packet-prepared-2026-11-08",
     "fullSiteRedesign": "three previous implementation/feedback rounds exist; complete new Phase 8 redesign and explicit second-round approval still required",
     "keyboardSkipNavigation": "implemented-bilingual-home-and-case-study-routes-contract-passed-manual-review-pending",
     "novelLibrary": "implemented-with-empty-catalog; final titles, descriptions, manuscripts and covers pending Pooya",
@@ -997,5 +997,34 @@
       "sha": "ca745a46c863010f2d7133356a0209abf928a12",
       "observedAtUtc": "2026-11-08 19:25:52 UTC"
     }
+  },
+  "ownerReviewPacket": {
+    "path": "docs/OWNER-REVIEW-PACKET.md",
+    "prepared": true,
+    "status": "prepared-owner-approval-pending",
+    "preparedOn": "2026-11-08",
+    "includes": [
+      "bilingual-homepage-headline-introduction-about",
+      "language-and-theme-defaults",
+      "eight-project-featured-order",
+      "source-backed-status-and-role-attribution",
+      "public-contact-channels",
+      "project-specific-disclosure-boundaries",
+      "brand-screenshot-and-social-media-review",
+      "novels-empty-catalog-decision"
+    ],
+    "ownerDecisionsPending": [
+      "headline-introduction-about-copy",
+      "AI-Engineering-positioning-wording",
+      "featured-project-order",
+      "per-project-role-and-contribution-wording",
+      "project-status-labels",
+      "public-contact-channels",
+      "personal-assets-and-screenshot-permission",
+      "Salon-Booking-owner-permission-and-redacted-media",
+      "Novels-content-or-empty-section-decision"
+    ],
+    "allProjectReviewStatesRemain": "needs-owner-review",
+    "approvalRecorded": false
   }
 }

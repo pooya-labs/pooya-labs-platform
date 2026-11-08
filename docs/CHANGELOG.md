@@ -1,3 +1,9 @@
+## 2026-11-08 — Bilingual owner review packet
+
+- Added `docs/OWNER-REVIEW-PACKET.md` to consolidate the current Persian/English homepage copy, presentation defaults, eight-project order, status labels, source-backed role wording, contacts, media inventory, public disclosure boundaries, and the empty Novels decision.
+- Added contract tests for all eight project entries and the packet's owner-approval/privacy boundaries.
+- The packet completes preparation only. All eight source-registry review states and all owner content/media approvals remain pending; no redesign or release approval is implied.
+
 ## 2026-11-08 — CI credential scan for tracked files and public builds
 
 - Added a zero-dependency secret scan to Repository CI for tracked UTF-8 files and the generated GitHub Pages and Cloudflare bundles.

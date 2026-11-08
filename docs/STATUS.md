@@ -1,3 +1,12 @@
+## Latest verified checkpoint — bilingual owner review packet prepared (2026-11-08)
+
+- Added [`docs/OWNER-REVIEW-PACKET.md`](OWNER-REVIEW-PACKET.md), a bilingual snapshot of the current homepage headline/introduction/About copy, language/theme defaults, project order, source-backed status and role wording, public contact links, media inventory, disclosure boundaries, and the empty Novels decision.
+- The packet explicitly records the AetherFlow individual-contribution limitation and Salon Booking's separate product owner; it preserves the simulation/synthetic-data, connection-required, privacy, and owner-permission boundaries for each relevant project.
+- The packet is a review aid, not approval. All eight project registry entries remain `needs-owner-review`; Salon Booking permission, personal media approval, and the Novels content decision remain open.
+- PR [#16](https://github.com/pooya-labs/pooya-labs-platform/pull/16) adds the packet and contract tests. Its latest-head Repository CI [42519044446](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42519044446) passed; Browser QA [42519044457](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42519044457) is being validated on the same docs-only PR.
+- Mainline after PR #15 is healthy: Repository CI [42518373614](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42518373614), Browser QA [42518373619](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42518373619), and GitHub Pages [42518373632](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42518373632) all passed. The Cloudflare Actions deploy job in [42518373586](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42518373586) skipped at its credential gate; the prior authorized Cloudflare production deployment remains recorded separately.
+- The packet completes preparation only. Owner content approval, manual accessibility/device checks, social crawler verification, deployment automation, and rollback rehearsal remain open.
+
 ## Latest verified checkpoint — tracked-source and public-bundle credential scan (2026-11-08)
 
 - Added `scripts/secret-scan.mjs` and the root command `npm run security:secrets`; Repository CI runs it after both static hosting bundles are built.
