@@ -140,6 +140,41 @@ try {
             document.documentElement.scrollWidth > window.innerWidth + 1 ||
             document.body.scrollWidth > window.innerWidth + 1,
         }));
+        const scrollMetrics = await page.evaluate(() => {
+          const scroller = document.querySelector('.portfolio-page');
+          if (!scroller) return { scrollContainerFound: false, scrollHeight: 0, clientHeight: 0, maxScrollTop: 0, canScroll: false };
+          const start = scroller.scrollTop;
+          const maxScrollTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+          scroller.scrollTop = Math.min(480, maxScrollTop);
+          const moved = scroller.scrollTop > start + 100;
+          const reachedBottom = maxScrollTop > 0;
+          const result = {
+            scrollContainerFound: true,
+            scrollHeight: scroller.scrollHeight,
+            clientHeight: scroller.clientHeight,
+            maxScrollTop,
+            canScroll: moved && reachedBottom,
+          };
+          scroller.scrollTop = 0;
+          return result;
+        });
+        routeRecord.viewportChecks.push({ ...viewport, scrollMetrics });
+        if (!scrollMetrics.canScroll) {
+          addFailure(route, viewport.name, 'The portfolio scroll container cannot move through the page content.');
+        }
+        if (viewport.name === 'desktop') {
+          await page.mouse.move(Math.floor(viewport.width / 2), Math.floor(viewport.height / 2));
+          await page.mouse.wheel(0, 720);
+          try {
+            await page.waitForFunction(() => {
+              const scroller = document.querySelector('.portfolio-page');
+              return Boolean(scroller && scroller.scrollTop > 20);
+            }, null, { timeout: 1500 });
+          } catch {
+            addFailure(route, viewport.name, 'Mouse-wheel scrolling did not move the portfolio page.');
+          }
+          await page.evaluate(() => document.querySelector('.portfolio-page')?.scrollTo({ top: 0, left: 0, behavior: 'instant' }));
+        }
         const axeResults = await new AxeBuilder({ page }).withTags(report.accessibility.tags).analyze();
         const axeFindings = axeResults.violations.map((violation) => ({
           id: violation.id,
