@@ -1,8 +1,25 @@
 # Project content audit — pre-release source of truth
 
-**Last reviewed:** 2026-11-08  
+**Last reviewed:** 2026-11-08 19:30 UTC  
 **Purpose:** Separate facts supported by the eight source repositories from information/evidence still required before Pooya Labs V1.  
 **Rule:** Do not fill gaps with assumptions. Keep verified descriptions in the portfolio and keep missing items as release checklist tasks.
+
+## Latest upstream `main` recheck — 2026-11-08 19:30 UTC
+
+This checkpoint supersedes the older upstream head inventory below for current branch-head references. Each commit was fetched from the corresponding public repository and its diff inspected.
+
+| Project | Current `main` SHA | Latest commit (UTC) | Observed delta in this recheck |
+|---|---|---:|---|
+| AetherFlow | [`2ce6c7450186`](https://github.com/pooya-labs/aetherflow/commit/2ce6c7450186a6e50332c12872b17f4b01196739) | 19:25 | README ownership artwork updated to the centered rounded black-tile Pooya Labs monogram; bilingual ownership blocks retained. |
+| ORBIT | [`970d9723ee44`](https://github.com/pooya-labs/orbit/commit/970d9723ee4419df82979a5e232f4fed3c8ab5a2) | 19:25 | README ownership artwork updated to the centered rounded black-tile Pooya Labs monogram; bilingual ownership blocks retained. |
+| Pooya.OS | [`f4b93d7f95a1`](https://github.com/pooya-labs/pooya-os/commit/f4b93d7f95a1c25dfd62fd4c28b64de4fac0ec6c) | 19:25 | README ownership artwork updated to the centered rounded black-tile Pooya Labs monogram; bilingual ownership blocks retained. |
+| NexusCanvas | [`9f2756b18466`](https://github.com/pooya-labs/nexus-canvas/commit/9f2756b1846622caa43e3947c4387c71a3e988c9) | 19:25 | README ownership artwork updated to the centered rounded black-tile Pooya Labs monogram; bilingual ownership blocks retained. |
+| LuminaGlass | [`f8e6c958d33d`](https://github.com/pooya-labs/lumina-glass/commit/f8e6c958d33d494d9d26ff98279897d8bfd3aa35) | 19:25 | README ownership artwork updated to the centered rounded black-tile Pooya Labs monogram; bilingual ownership blocks retained. |
+| AuraPulse | [`b4a83648025d`](https://github.com/pooya-labs/aurapulse/commit/b4a83648025d30162ad8754516b7c419b56e68ea) | 19:25 | README ownership artwork updated to the centered rounded black-tile Pooya Labs monogram; bilingual ownership blocks retained. |
+| GlobalCart | [`fed6f59f62c9`](https://github.com/pooya-labs/globalcart/commit/fed6f59f62c9d853ae82099b7266339ada15f9c2) | 19:30 | Two storefront-home screenshot files added under docs/screenshots; no application code changed. |
+| Salon Booking | [`ca745a46c863`](https://github.com/pooya-labs/salon-booking/commit/ca745a46c863010f2d7133356a0209abf928a12) | 19:25 | README ownership artwork updated to the centered rounded black-tile Pooya Labs monogram; bilingual ownership blocks retained. |
+
+The seven README-only changes point to `pooya-monogram-tile.svg` at 96px in both English and Persian ownership sections. GlobalCart's commit adds `docs/screenshots/storefront-home-desktop.png` and `docs/screenshots/storefront-home-mobile.png`; it contains no application-code change. These are source-head and change-inventory findings only: no independent repository was modified, no new application behavior was accepted, and final feature/content/media acceptance remains reserved for Phase 9.
 
 ## What is already populated
 

@@ -1,3 +1,12 @@
+## 2026-11-08 — Current upstream audit and monogram asset verification
+
+- Rechecked the exact `main` heads and inspected the diffs of all eight independent project repositories; the current SHAs and timestamps are listed in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
+- Seven repositories updated their English and Persian README ownership blocks to the centered rounded black-tile Pooya Labs monogram. GlobalCart added desktop and mobile storefront homepage evidence screenshots. No independent application code was changed.
+- The platform's monogram-tile asset revision [`41ea1004`](https://github.com/pooya-labs/pooya-labs-platform/commit/41ea1004433196aa81e4e50b17a1620f110ecea8) passed GitHub Pages build/deploy [42514976384](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976384) and Browser QA [42514976406](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976406): 18/18 routes, zero failures, and zero confirmed Axe violations; 36 contrast checks remain incomplete for human review.
+- The latest performance run measured p75 CLS 0.0000 on all three hosts and p75 LCP of 316 ms local, 400 ms on GitHub Pages, and 400 ms on Cloudflare Pages.
+- Repository CI [42515288490](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42515288490) passed on the current main docs head. Cloudflare's last confirmed deployment remains on `045bc845`, before the new tile asset; automatic publishing still requires the private `CLOUDFLARE_API_TOKEN` secret.
+- The portfolio remains pre-alpha; no V1 approval or release is claimed.
+
 ## 2026-11-08 — CLS remediation, three-host verification, and production parity
 
 - Merged PR [#13](https://github.com/pooya-labs/pooya-labs-platform/pull/13) at application commit [`045bc845`](https://github.com/pooya-labs/pooya-labs-platform/commit/045bc84526ef823a37599c6790d144d68465d35c). Direct case-study pages now share a server-rendered React component that the browser hydrates, preserving crawler-readable markup while avoiding the previous root replacement shift.
