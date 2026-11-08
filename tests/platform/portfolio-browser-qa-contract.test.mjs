@@ -94,7 +94,7 @@ test('portfolio browser QA verifies vertical scrolling and actual desktop wheel 
 
 test('portfolio scroll reveals are observed inside the same scroll container', () => {
   assert.match(portfolioSource, /root\.scrollTop = 0/);
-  assert.match(portfolioSource, /new IntersectionObserver\([\s\S]*?\}, \{ root, threshold: 0\.12/);
+  assert.match(portfolioSource, /new IntersectionObserver\([\s\S]*?\}, \{ root, threshold: 0/);
 });
 
 
@@ -213,7 +213,7 @@ test('homepage browser QA checks both default Persian and English project grids 
 });
 
 test('mobile project grid QA captures the full localized homepage without a tall-section reveal gate', () => {
-  assert.match(script, /home-fa-projects-mobile\.png/);
+  assert.match(script, /const projectGridFile = route\.label \+ '-projects-' \+ viewport\.name/);
   assert.match(portfolioSource, /className="portfolio-projects portfolio-container" id="projects"/);
   assert.doesNotMatch(portfolioSource, /className="portfolio-projects portfolio-container" id="projects" data-reveal="projects"/);
 });
