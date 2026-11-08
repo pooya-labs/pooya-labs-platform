@@ -333,7 +333,7 @@ function renderArchitectureDiagram(slug: string, locale: Locale): string {
 
   const nodes = diagram.nodes.map((item, index) => {
     const kind = item.kind ?? 'core';
-    const titleLines = wrapDiagramLabel(item.title[locale], isRtl ? 23 : 25, 2);
+    const titleLines = wrapDiagramLabel(item.title[locale], 23, 2);
     const detailLines = wrapDiagramLabel(item.detail[locale], isRtl ? 34 : 35, 2);
     const centerX = item.x + nodeWidth / 2;
     const titleBaseline = item.y + 88 - (titleLines.length - 1) * 11;
