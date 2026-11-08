@@ -95,3 +95,13 @@ test('portfolio scroll reveals are observed inside the same scroll container', (
   assert.match(portfolioSource, /root\.scrollTop = 0/);
   assert.match(portfolioSource, /new IntersectionObserver\([\s\S]*?\}, \{ root, threshold: 0\.12/);
 });
+
+
+test('browser QA validates homepage motion sections and bidi-isolated hero headlines', () => {
+  assert.match(script, /systemFieldCount: document\.querySelectorAll\('\.portfolio-system-field'\)\.length/);
+  assert.match(script, /systemNodeCount: document\.querySelectorAll\('\.system-field-node'\)\.length/);
+  assert.match(script, /craftPrincipleCount: document\.querySelectorAll\('\.craft-principle'\)\.length/);
+  assert.match(script, /heroTitleRunsIsolated/);
+  assert.match(script, /heroCapabilityTitleIsolated/);
+  assert.match(script, /first-page headline is not isolated from mixed bidirectional text/);
+});
