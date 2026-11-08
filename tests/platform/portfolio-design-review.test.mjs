@@ -140,19 +140,25 @@ test('Instagram contact uses a dedicated brand glyph instead of a camera icon', 
   assert.ok(instagram.includes('instagram-gradient'));
 });
 
-test('each product case study receives its own decorative motion language', () => {
-  const projects = readFile(new URL('../../apps/platform/src/content/projects.ts', import.meta.url), 'utf8');
-  return projects.then((source) => {
-    for (const slug of ['aetherflow','orbit','pooya-os','nexus-canvas','lumina-glass','aura-pulse','global-cart','salon-booking']) {
-      assert.ok(source.includes("slug: '" + slug + "'"));
-      assert.ok(css.includes('.scene-' + slug + ' {'));
-    }
-    assert.ok(home.includes('case-study-motion-art scene-${project.slug}'));
-    assert.ok(home.includes('motion-calendar'));
-    assert.ok(home.includes('motion-bars'));
-    assert.ok(css.includes('.case-study-motion-art::before'));
-    assert.ok(css.includes('@keyframes scene-packet-travel'));
-    assert.ok(css.includes('opacity:.9!important'));
-    assert.ok(css.includes('.motion-track::after'));
-  });
+test('each case study and selected-project card receives a product-specific motion composition', async () => {
+  const projects = await readFile(new URL('../../apps/platform/src/content/projects.ts', import.meta.url), 'utf8');
+  const slugs = ['aetherflow','orbit','pooya-os','nexus-canvas','lumina-glass','aura-pulse','global-cart','salon-booking'];
+  for (const slug of slugs) {
+    assert.ok(projects.includes("slug: '" + slug + "'"), `Missing content entry for ${slug}`);
+    assert.ok(css.includes('.scene-' + slug + ' {'), `Missing case-study scene styling for ${slug}`);
+    assert.ok(css.includes('.card-scene-' + slug), `Missing project-card motion for ${slug}`);
+  }
+  assert.match(home, /function ProjectMotionScene/);
+  assert.match(home, /case-study-motion-art scene-\$\{slug\}/);
+  assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} \/>/);
+  assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} compact \/>/);
+  for (const visual of ['flow-sequence','orbit-dashboard','os-desktop','nexus-stage','glass-stage','market-stage','commerce-stage','booking-stage']) {
+    assert.ok(home.includes(visual), `Missing product narrative visual: ${visual}`);
+  }
+  for (const animation of ['flow-packet-pass','orbit-trace-draw','os-window-front-float','nexus-edge-flow','glass-prism-hover','market-line-draw','commerce-route-pulse','booking-slot-breathe']) {
+    assert.ok(css.includes('@keyframes ' + animation), `Missing motion behavior: ${animation}`);
+  }
+  assert.match(home, /market-simulated/);
+  assert.match(home, /SIMULATED/);
+  assert.match(css, /@media \(prefers-reduced-motion:reduce\)[\s\S]*?\.case-study-motion-art \.scene-animated[\s\S]*?animation:none!important/);
 });
