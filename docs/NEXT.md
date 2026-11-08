@@ -2,9 +2,10 @@
 
 **Task ID:** P7-11  
 **Checkpoint date:** 2026-11-08  
-**Latest verified `main` HEAD:** `6e6ed8fd16813e2b21e605b84a888d23aaace073`  
+**Latest verified `main` HEAD:** `b429828f0ed8f967317934fffed32daffa7b6a5f`  
 **Application motion commit:** `714d4ea2ea017189886ddb4e0d2e386e19edcaf3`  
 **Browser QA commit:** `549c6a3c66eade850d175cddad3a7b7dea5466e8`  
+**Latest documentation commit:** `b429828f0ed8f967317934fffed32daffa7b6a5f` (CI passed)  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
 
 ## Product direction

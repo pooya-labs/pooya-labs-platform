@@ -8,7 +8,7 @@
 
 ## Latest verified checkpoint — product motion and mobile gallery (2026-11-08)
 
-- Latest verified `main` HEAD: `6e6ed8fd16813e2b21e605b84a888d23aaace073`.
+- Latest verified `main` HEAD: `b429828f0ed8f967317934fffed32daffa7b6a5f`. Documentation-only checkpoint CI [42496528868](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496528868) also passed on this exact HEAD: TypeScript, all three builds, 87/87 tests.
 - Application motion and clean case-study hero commit: `714d4ea2ea017189886ddb4e0d2e386e19edcaf3`; browser QA harness update: `549c6a3c66eade850d175cddad3a7b7dea5466e8`.
 - Eight case-study hero visuals are product-specific; the old generic orbit composition and static screenshot/monogram overlay were removed from the hero. Screenshots remain in the lower evidence gallery.
 - The eight selected-project cards each have their own compact animated scene. Browser QA recorded running animations for all 8 cards at desktop and all 8 at mobile.
