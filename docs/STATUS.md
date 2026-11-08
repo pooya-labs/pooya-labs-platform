@@ -1,3 +1,13 @@
+## Post-merge verification — Pooya Monogram owner identity (2026-11-09)
+
+- PR [#20](https://github.com/pooya-labs/pooya-labs-platform/pull/20) merged as [`558970f`](https://github.com/pooya-labs/pooya-labs-platform/commit/558970fefad25fa16632a8d740eb1a7a32c8f3bd).
+- Main Repository CI [42526088297](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088297) passed: 110 contract tests, zero failures, typecheck, all three build targets, dependency audit, and credential scan.
+- Merged-main Browser QA [42526088326](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088326) passed **18/18 localized routes**, **36/36 viewports**, zero confirmed axe violations, and zero failures. Axe still reports **36 incomplete rule checks**; these are not passes and remain in the manual contrast/accessibility review.
+- GitHub Pages run [42526088212](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088212) deployed the exact `558970f` commit and reported success at https://pooya-labs.github.io/pooya-labs-platform/.
+- Cloudflare workflow [42526088253](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088253) skipped its production publish because `CLOUDFLARE_API_TOKEN` is absent. Apps Script workflow [42526088224](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088224) skipped the actual Web App publish because `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` are not configured. No deployment to those two targets is claimed for this commit.
+- Pooya Monogram / پویا مونوگرام is now the named owner identity on the homepage and all bilingual case-study footers, the English and Persian README ownership blocks, and Person/Brand structured metadata; Pooya Goodarzi is credited as creator and maintainer.
+- The owner confirmed the platform identity only. The release remains **pre-alpha** in Phase 7; no V1 tag or release was created. The full-site owner/device/accessibility review, governance hardening, content approvals, Phase 8 redesign, Phase 9 project integration, and Phase 10 release gates remain open.
+
 ## Post-merge verification — GitHub governance audit (2026-11-09)
 
 - PR [#22](https://github.com/pooya-labs/pooya-labs-platform/pull/22) merged to `main` as [`a009b4c`](https://github.com/pooya-labs/pooya-labs-platform/commit/a009b4c65b8ea964b4b43f39ed636f86d56ffe33).
@@ -19,7 +29,7 @@
 
 - Applied Pooya's explicit platform-brand instruction: **Pooya Monogram / پویا مونوگرام** is the displayed project-owner identity, paired with the existing centered black-tile logo. The signature is shared by the homepage and all bilingual case-study footers, both README language sections, and Person/Brand structured metadata.
 - **Pooya Goodarzi** is credited as creator and maintainer. No independent project repository or third-party product ownership attribution was changed.
-- Added a route-level Browser QA assertion and a repository contract test for the owner name, logo asset, bilingual wording, and metadata. The Browser QA result is **18/18 routes, 36/36 viewports, zero confirmed axe violations, zero failures** (run pending PR-head finalization).
+- Added a route-level Browser QA assertion and a repository contract test for the owner name, logo asset, bilingual wording, and metadata. Merged-main Browser QA [42526088326](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088326) confirmed **18/18 routes, 36/36 viewports, zero confirmed axe violations, zero failures**; 36 incomplete axe checks still require manual review.
 - This confirms platform brand identity only. Phase 7 remains active; it does not approve the complete portfolio, project copy/media, or the remaining release gates. No V1 tag or release is authorized.
 
 ## Post-merge verification — source audit and owner packet (2026-11-09)

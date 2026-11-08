@@ -1,8 +1,16 @@
+## Latest merged-main checkpoint — Pooya Monogram ownership (2026-11-09)
+
+PR [#20](https://github.com/pooya-labs/pooya-labs-platform/pull/20) merged as [`558970f`](https://github.com/pooya-labs/pooya-labs-platform/commit/558970fefad25fa16632a8d740eb1a7a32c8f3bd). Main Repository CI [42526088297](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088297) passed 110 contract tests and all build/security checks. Browser QA [42526088326](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088326) passed 18/18 localized routes, 36/36 viewports, zero confirmed axe violations, and zero failures; 36 incomplete axe checks remain manual review.
+
+GitHub Pages deployment [42526088212](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088212) succeeded on this exact commit. Cloudflare publish [42526088253](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088253) and Apps Script publish [42526088224](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088224) were skipped because their required deployment secrets/configuration are absent; do not treat them as deployed.
+
+Pooya Monogram (پویا مونوگرام) is now the platform owner identity, with the existing centered black-tile monogram on the homepage and case-study footers, the bilingual README, and structured metadata. Pooya Goodarzi is named as creator and maintainer. This identity confirmation does not approve project content or close release gates. The platform remains pre-alpha / Phase 7, with no V1 tag.
+
 # Next Task — Phase 7 pre-redesign readiness closeout
 
 **Task ID:** P7-12  
 **Checkpoint date:** 2026-11-09  
-**Latest verified `main` docs checkpoint:** PR [#22](https://github.com/pooya-labs/pooya-labs-platform/pull/22) merged as [`a009b4c`](https://github.com/pooya-labs/pooya-labs-platform/commit/a009b4c65b8ea964b4b43f39ed636f86d56ffe33); merged-main Repository CI [42524729014](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524729014) passed. PR CI [42524475237](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524475237) and Browser QA [42524475250](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524475250) also passed on the PR head. See [Project Status](STATUS.md) and [project-state.json](project-state.json)  
+**Latest verified `main` checkpoint:** PR [#20](https://github.com/pooya-labs/pooya-labs-platform/pull/20) merged as [`558970f`](https://github.com/pooya-labs/pooya-labs-platform/commit/558970fefad25fa16632a8d740eb1a7a32c8f3bd); merged-main Repository CI [42526088297](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088297), Browser QA [42526088326](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088326), and GitHub Pages deployment [42526088212](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088212) passed. See [Project Status](STATUS.md) and [project-state.json](project-state.json) See [Project Status](STATUS.md) and [project-state.json](project-state.json)  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
 
 ## Post-merge verification — governance audit (2026-11-09)
