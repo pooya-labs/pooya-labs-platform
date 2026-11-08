@@ -752,7 +752,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         <NovelLibrarySection language={language} novels={novelCatalog.filter((novel) => novel.published)} loading={novelCatalogLoading} error={novelCatalogError} onOpen={openNovel} />
 
         <section className="portfolio-about portfolio-container" id="about" data-reveal="about">
-          <div className="about-stamp"><div className="stamp-orbit" /><div className="stamp-core"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="Pooya Labs" /></div><span>ABOUT / POOYA</span></div>
+          <div className="about-stamp"><div className="stamp-orbit" /><div className="stamp-core"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark-emerald.webp`} alt="Pooya Labs" /></div><span>ABOUT / POOYA</span></div>
           <div className="about-content">
             <div className="portfolio-eyebrow"><span className="eyebrow-index">03 /</span>{t.aboutEyebrow}</div>
             <h2>{t.aboutTitle}</h2>
