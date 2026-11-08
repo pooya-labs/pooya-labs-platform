@@ -1,3 +1,11 @@
+## Latest implementation checkpoint — repository quality conventions (2026-11-08)
+
+- Added dependency-free JavaScript syntax/debugger checks and source/config formatting checks; these do not add runtime or development dependencies.
+- Added `.editorconfig`, root npm commands `lint` and `format:check`, and required both checks in Repository CI.
+- Added [CONTRIBUTING.md](../CONTRIBUTING.md) and [RELEASE.md](RELEASE.md) to standardize local validation, commit/PR expectations, deployment evidence, and V1 restrictions.
+- The main-branch CI result is pending review/merge. The live site and release state are unchanged; pre-alpha remains the accurate label.
+- Physical Android review, owner design/content approval, and human accessibility acceptance remain open.
+
 # Project Status
 
 **Last updated:** 2026-11-08  
