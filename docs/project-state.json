@@ -61,7 +61,8 @@
     "novelLibrary": "implemented-and-covered-by-six-new-contract-tests",
     "documentationCheckpoint": "passed-run-42402277427-on-5295333; documentation state, changelog, roadmap and handoff updates validated",
     "githubActionsRuntimeWarning": "Node.js 20 deprecation warning emitted for checkout/setup-node/upload-artifact actions; upgrade to maintained Node 24-compatible releases.",
-    "latestVerifiedTestCommit": "fa5d412506387622ca39df792fcaed62eb88cb67"
+    "latestVerifiedTestCommit": "fa5d412506387622ca39df792fcaed62eb88cb67",
+    "latestDocumentationCheckpoint": "passed-documentation-handoff-PR-8-merge-4df636da5d2662f95c3c6c30df3b7e18cd37f942;follow-up-main-CI-run-42476877083"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -95,7 +96,7 @@
     "latestPagesAttemptStatus": "passed-build-and-deploy",
     "pagesArtifactId": "13518846598",
     "pagesArtifactSizeBytes": 3817565,
-    "latestDocumentationCommit": "5295333aa36947e592b58790cb1e88fc83f4d30c",
+    "latestDocumentationCommit": "4df636da5d2662f95c3c6c30df3b7e18cd37f942",
     "portfolioBrowserQaRun": "42391868133",
     "cloudflareLatestAttemptRun": "42399972690; configuration-check-passed; actual-production-deploy-job-skipped-missing-CLOUDFLARE_API_TOKEN",
     "appsScriptLatestAttemptRun": "42399972770; configuration-check-passed; actual-production-deploy-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID"
@@ -177,7 +178,7 @@
     "secondOwnerFeedbackRound": "implemented",
     "thirdOwnerFeedbackRound": "implemented;owner-visual-approval-pending"
   },
-  "latestVerifiedCommit": "fa5d412506387622ca39df792fcaed62eb88cb67",
+  "latestVerifiedCommit": "4df636da5d2662f95c3c6c30df3b7e18cd37f942",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -326,7 +327,7 @@
     "manualAccessibility": "36-incomplete-axe-rules-remain-for-human-review;34-color-contrast;2-aria-prohibited-attr;keyboard-and-screen-reader-review-pending",
     "v1Approval": "not-approved"
   },
-  "latestBranchHeadAtCheckpoint": "fa5d412506387622ca39df792fcaed62eb88cb67",
+  "latestBranchHeadAtCheckpoint": "4df636da5d2662f95c3c6c30df3b7e18cd37f942",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -580,13 +581,13 @@
     ],
     "documentationCheckpointCi": "passed-run-42394443146-on-993d29b713c7af13ccd77ea7587161c767cf379a",
     "latestMainCodeCheckpoint": "fa5d412506387622ca39df792fcaed62eb88cb67",
-    "latestDocCheckpoint": "5295333aa36947e592b58790cb1e88fc83f4d30c",
+    "latestDocCheckpoint": "4df636da5d2662f95c3c6c30df3b7e18cd37f942",
     "latestAppCodeCheckpoint": "e66f4b42562fb6a164117e2b8a3f9905634a1b9e",
     "currentHeadBrowserQaVerified": true,
     "currentHeadPagesDeploymentVerified": true,
     "cloudflareProductionDeploy": "skipped-missing-CLOUDFLARE_API_TOKEN; actual deploy job skipped in run 42399972690",
     "appsScriptProductionDeploy": "skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID; actual deploy job skipped in run 42399972770",
-    "latestDocumentationCi": "42402277427; current documentation/state checkpoint 5295333 passed full repository CI",
+    "latestDocumentationCi": "pending-main-run-42476877083",
     "externalSourceRecheckAt": "2026-11-07T17:15:00Z",
     "externalSourceHeads": {
       "aetherflow": "c7cb553f0751514df0d916e69c29807636e66c67",
@@ -603,8 +604,8 @@
       "salonBookingCi": "42394326231 failed in Linux and Windows owner-dashboard date-range QA; Pages workflow 42394326440 passed",
       "orbitOpenPRs": "137, 138, 140 draft, 142 draft; none merged into main"
     },
-    "latestMainHead": "fa5d412506387622ca39df792fcaed62eb88cb67",
-    "latestRepositoryCi": "42476478338-success;67-of-67-tests;TypeScript;three-target-builds",
+    "latestMainHead": "4df636da5d2662f95c3c6c30df3b7e18cd37f942",
+    "latestRepositoryCi": "42476877083; documentation/state checkpoint; full repository CI success on main 4df636da",
     "latestBrowserQa": "42476478346-success;17-of-17-routes;34-of-34-viewports;zero-axe-violations;36-incomplete-checks",
     "latestPagesDeployment": "42476478354-success;main-fa5d412",
     "latestMotionCaptureRun": "42399972697-success;29-png-candidates;7-webm-reels;artifact-13584314344;contact-sheet-scan-complete;unpublished-owner-approval-pending",
@@ -636,5 +637,5 @@
   },
   "latestTask": "P7-09",
   "latestTaskBranch": "main",
-  "lastUpdated": "2026-11-08T11:37:00Z"
+  "lastUpdated": "2026-11-08T11:42:00Z"
 }
