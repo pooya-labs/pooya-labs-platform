@@ -59,6 +59,7 @@ try {
         }
         window.__portfolioLcp = null;
         window.__portfolioCls = 0;
+        window.__portfolioLayoutShifts = [];
         try {
           new PerformanceObserver((list) => {
             const last = list.getEntries().at(-1);
@@ -66,7 +67,33 @@ try {
           }).observe({ type: 'largest-contentful-paint', buffered: true });
           new PerformanceObserver((list) => {
             for (const entry of list.getEntries()) {
-              if (!entry.hadRecentInput) window.__portfolioCls += entry.value;
+              if (!entry.hadRecentInput) {
+                window.__portfolioCls += entry.value;
+                window.__portfolioLayoutShifts.push({
+                  value: Number(entry.value.toFixed(4)),
+                  startTimeMs: Math.round(entry.startTime),
+                  sources: (entry.sources || []).slice(0, 5).map((source) => {
+                    const node = source.node;
+                    return {
+                      tag: node?.tagName?.toLowerCase() ?? null,
+                      id: node?.id ?? null,
+                      className: typeof node?.className === 'string' ? node.className.slice(0, 180) : null,
+                      previousRect: source.previousRect ? {
+                        x: Math.round(source.previousRect.x),
+                        y: Math.round(source.previousRect.y),
+                        width: Math.round(source.previousRect.width),
+                        height: Math.round(source.previousRect.height),
+                      } : null,
+                      currentRect: source.currentRect ? {
+                        x: Math.round(source.currentRect.x),
+                        y: Math.round(source.currentRect.y),
+                        width: Math.round(source.currentRect.width),
+                        height: Math.round(source.currentRect.height),
+                      } : null,
+                    };
+                  }),
+                });
+              }
             }
           }).observe({ type: 'layout-shift', buffered: true });
         } catch {}
@@ -110,6 +137,7 @@ try {
           firstContentfulPaintMs: Math.round(paint.find((entry) => entry.name === 'first-contentful-paint')?.startTime ?? 0) || null,
           largestContentfulPaintMs: Number.isFinite(window.__portfolioLcp) ? Math.round(window.__portfolioLcp) : null,
           cumulativeLayoutShift: Number(window.__portfolioCls.toFixed(4)),
+          layoutShiftEvents: (window.__portfolioLayoutShifts || []).sort((a, b) => b.value - a.value).slice(0, 10),
           resourceCount: resources.length,
           totalResourceBytes: sizeOf(resources),
           javascriptBytes: sizeOf(scripts),
