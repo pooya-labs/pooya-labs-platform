@@ -92,6 +92,21 @@ const text = {
     language: 'English',
     themeToggle: 'حالت روشن',
     capabilityEyebrow: 'مهارت‌ها / رویکرد', capabilityTitle: 'مهندسی با تمرکز بر تجربه و جزئیات.', capabilitySub: 'از رابط‌های دقیق تا سیستم‌های قابل اتکا؛ هر لایه با هدف روشن ساخته می‌شود.',
+    systemEyebrow: 'جریان سیستم‌ها',
+    systemTitle: 'سه لایه، یک تجربه‌ی یکپارچه.',
+    systemSub: 'رابط، منطق و زیرساخت وقتی خوب کنار هم قرار می‌گیرند که مسیر داده و رفتارشان روشن باشد.',
+    systemStatus: 'یک جریان پیوسته / سه لایه',
+    systemNode1: 'تجربه',
+    systemNode1Meta: 'طراحی و تعامل',
+    systemNode1Body: 'جایی که کاربر با محصول ارتباط می‌گیرد.',
+    systemNode2: 'منطق',
+    systemNode2Meta: 'مدل و جریان داده',
+    systemNode2Body: 'جایی که تصمیم‌ها و رفتار محصول شکل می‌گیرند.',
+    systemNode3: 'زیرساخت',
+    systemNode3Meta: 'اجرا و مشاهده‌پذیری',
+    systemNode3Body: 'جایی که پایداری و وضوح عملیاتی معنا پیدا می‌کند.',
+    systemFoot: 'طراحی ← منطق ← اجرا',
+
     capability1Title: 'تجربه‌های محصولی سنجیده', capability1Body: 'رابط‌هایی سریع، واضح و واکنش‌گرا که جزئیات بصری را با دسترس‌پذیری و رفتار قابل پیش‌بینی همراه می‌کنند.',
     capability2Title: 'سیستم‌های متصل و قابل مشاهده', capability2Body: 'معماری، جریان داده و سیگنال‌های عملیاتی را به ساختارهایی تبدیل می‌کنم که بتوان آن‌ها را فهمید و آزمایش کرد.',
     capability3Title: 'ابزارهای خلاق و تعاملی', capability3Body: 'از canvasهای بصری تا تجربه‌های مرورگری؛ ایده‌ها را به ابزارهایی تبدیل می‌کنم که می‌شود با آن‌ها کار کرد.',
@@ -100,6 +115,18 @@ const text = {
     process2Title: 'طراحی ساختار', process2Body: 'مدل داده، معماری و زبان بصری را پیش از پیچیده‌شدن پیاده‌سازی روشن می‌کنم.',
     process3Title: 'ساخت و اصلاح', process3Body: 'قابلیت‌ها را مرحله‌ای می‌سازم و با بازخورد و تست، لبه‌های ناپیدا را پیدا می‌کنم.',
     process4Title: 'اعتبارسنجی', process4Body: 'رفتار، دسترس‌پذیری و مرزهای واقعی هر خروجی را بررسی و مستند می‌کنم.',
+    craftEyebrow: 'اصول ساخت',
+    craftTitle: 'تجربه‌ی خوب از تصمیم‌های درست می‌آید.',
+    craftSub: 'حرکت، وضوح و جزئیات باید به فهم محصول کمک کنند؛ نه اینکه مزاحم آن شوند.',
+    craft1Title: 'وضوح',
+    craft1Body: 'هر بخش باید بدون شلوغی، هدف و نقش خودش را نشان دهد.',
+    craft2Title: 'حرکت هدفمند',
+    craft2Body: 'انیمیشن وقتی ارزش دارد که تغییر را توضیح دهد یا بازخوردی مفید بسازد.',
+    craft3Title: 'قابلیت اتکا',
+    craft3Body: 'رفتارهای مهم باید قابل مشاهده، آزمون و بازبینی باشند.',
+    craft4Title: 'کنجکاوی',
+    craft4Body: 'ایده‌ها و ابزارهای تازه را با آزمایش‌های کوچک و قابل سنجش بررسی می‌کنم.',
+
     status: 'وضعیت پروژه',
     caseStudy: 'مطالعه موردی به‌زودی',
     demo: 'دمو', source: 'سورس', caseStudyReady: 'مطالعه موردی',
@@ -144,6 +171,21 @@ const text = {
     language: 'فارسی',
     themeToggle: 'Switch to light mode',
     capabilityEyebrow: 'CAPABILITIES / APPROACH', capabilityTitle: 'Thoughtful engineering, from interface to infrastructure.', capabilitySub: 'Distinct layers, one clear intent: make complex things feel considered and usable.',
+    systemEyebrow: 'SYSTEMS IN MOTION',
+    systemTitle: 'Three layers. One coherent experience.',
+    systemSub: 'Interface, logic, and infrastructure work best when their data and behavior form one understandable path.',
+    systemStatus: 'ONE FLOW / THREE LAYERS',
+    systemNode1: 'Experience',
+    systemNode1Meta: 'Design & interaction',
+    systemNode1Body: 'Where people meet the product.',
+    systemNode2: 'Logic',
+    systemNode2Meta: 'Models & data flow',
+    systemNode2Body: 'Where decisions and product behavior take shape.',
+    systemNode3: 'Infrastructure',
+    systemNode3Meta: 'Runtime & observability',
+    systemNode3Body: 'Where reliability and operational clarity live.',
+    systemFoot: 'DESIGN → LOGIC → DELIVERY',
+
     capability1Title: 'Product experiences with intent', capability1Body: 'Fast, readable, responsive interfaces where visual detail works alongside accessibility and predictable behavior.',
     capability2Title: 'Connected, observable systems', capability2Body: 'Turning architecture, data flow, and operational signals into structures people can understand, inspect, and test.',
     capability3Title: 'Creative tools and interactions', capability3Body: 'From visual canvases to browser-native experiments, ideas become useful tools you can actually work with.',
@@ -152,6 +194,18 @@ const text = {
     process2Title: 'Shape the system', process2Body: 'Make the data model, architecture, and visual language clear before complexity grows.',
     process3Title: 'Build and refine', process3Body: 'Ship in deliberate steps, then use feedback and tests to uncover the hidden edges.',
     process4Title: 'Validate the details', process4Body: 'Check behavior, accessibility, and real scope, then document what the result does and does not do.',
+    craftEyebrow: 'CRAFT PRINCIPLES',
+    craftTitle: 'Good experiences come from good decisions.',
+    craftSub: 'Motion, clarity, and detail should make a product easier to understand — never harder.',
+    craft1Title: 'Clarity',
+    craft1Body: 'Every layer should communicate its purpose without adding noise.',
+    craft2Title: 'Purposeful motion',
+    craft2Body: 'Animation earns its place when it explains change or gives useful feedback.',
+    craft3Title: 'Reliability',
+    craft3Body: 'Important behavior should be observable, testable, and honest about its limits.',
+    craft4Title: 'Curiosity',
+    craft4Body: 'New tools and ideas deserve small, measurable experiments.',
+
     status: 'Project status',
     caseStudy: 'Case study coming soon',
     demo: 'Live demo', source: 'Source', caseStudyReady: 'Case study',
@@ -457,8 +511,8 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         <section className="portfolio-hero portfolio-container">
           <div className="portfolio-hero-copy" data-reveal="hero-copy">
             <div className="portfolio-eyebrow"><span className="eyebrow-pulse" />{t.eyebrow}</div>
-            <h1 className="portfolio-hero-title"><span className="hero-title-line">{t.headlineA}</span><span className="hero-title-line hero-gradient">{t.headlineB}</span><span className="hero-title-line">{t.headlineC}</span></h1>
-            <p className="portfolio-intro">{t.intro}</p>
+            <h1 className="portfolio-hero-title" dir="auto"><span dir="auto" className="hero-title-line">{t.headlineA}</span><span dir="auto" className="hero-title-line hero-gradient">{t.headlineB}</span><span dir="auto" className="hero-title-line">{t.headlineC}</span></h1>
+            <p className="portfolio-intro" dir="auto">{t.intro}</p>
             <div className="portfolio-hero-actions">
               <a className="portfolio-primary" href="#projects">{t.explore}<ArrowDown size={16} /></a>
               <a className="portfolio-secondary portfolio-github-link" href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><img className="portfolio-github-mark" src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" />{t.github}<ExternalLink size={13} /></a>
@@ -530,7 +584,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         </section>
 
         <section className="portfolio-capabilities portfolio-container" aria-labelledby="capabilities-title" data-reveal="capabilities">
-          <div className="portfolio-section-heading"><div><div className="portfolio-eyebrow"><span className="eyebrow-index">01 /</span>{t.capabilityEyebrow}</div><h2 id="capabilities-title">{t.capabilityTitle}</h2><p>{t.capabilitySub}</p></div><span className="portfolio-section-meta">DESIGN / SYSTEMS / TOOLS</span></div>
+          <div className="portfolio-section-heading"><div><div className="portfolio-eyebrow"><span className="eyebrow-index">01 /</span>{t.capabilityEyebrow}</div><h2 id="capabilities-title" dir="auto"><bdi dir="auto">{t.capabilityTitle}</bdi></h2><p dir="auto">{t.capabilitySub}</p></div><span className="portfolio-section-meta">DESIGN / SYSTEMS / TOOLS</span></div>
           <div className="capability-grid">
             <article className="capability-card" data-reveal="capability-card">
               <div className="capability-card-top"><span>01 — INTERFACE</span><Layers3 size={17} /></div>
@@ -547,6 +601,68 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
               <div className="capability-visual capability-terminal" aria-hidden="true"><div className="capability-terminal-top"><span>pooya-labs / studio</span><i>● LIVE PREVIEW</i></div><div className="capability-code-lines"><span><b>01</b><code><i>const</i> idea = <em>'make it useful'</em>;</code></span><span><b>02</b><code><i>const</i> system = <em>design(idea)</em>;</code></span><span><b>03</b><code><i>await</i> validate(system);</code></span><span><b>04</b><code className="capability-cursor">ship(system)</code></span></div></div>
               <div className="capability-card-copy"><span className="capability-index">INTERACTIVE EXPERIMENTS</span><h3>{t.capability3Title}</h3><p>{t.capability3Body}</p></div>
             </article>
+          </div>
+        </section>
+
+        <section className="portfolio-system-field portfolio-container" aria-labelledby="system-field-title" data-reveal="system-field">
+          <div className="portfolio-section-heading system-field-heading">
+            <div>
+              <div className="portfolio-eyebrow"><span className="eyebrow-index">02 /</span>{t.systemEyebrow}</div>
+              <h2 id="system-field-title" dir="auto">{t.systemTitle}</h2>
+              <p dir="auto">{t.systemSub}</p>
+            </div>
+            <span className="portfolio-section-meta">DESIGN / LOGIC / DELIVERY</span>
+          </div>
+          <div className="system-field-panel">
+            <div className="system-field-topline">
+              <span className="system-field-label">POOYA LABS / SYSTEM MAP</span>
+              <span className="system-field-status"><i />{t.systemStatus}</span>
+            </div>
+            <div className="system-field-stage">
+              <svg className="system-field-wires" viewBox="0 0 1000 280" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="system-wire-gradient" x1="0" y1="0" x2="1" y2="0">
+                    <stop stopColor="#47bda0" stopOpacity=".12" />
+                    <stop offset=".5" stopColor="#70e6ce" stopOpacity=".9" />
+                    <stop offset="1" stopColor="#5d9fe5" stopOpacity=".16" />
+                  </linearGradient>
+                  <filter id="system-wire-glow" x="-20%" y="-40%" width="140%" height="180%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                </defs>
+                <path className="system-wire-base" d="M130 140 C250 28 365 28 500 140 S750 252 870 140" />
+                <path className="system-wire-flow" d="M130 140 C250 28 365 28 500 140 S750 252 870 140" filter="url(#system-wire-glow)" />
+                <path className="system-wire-orbit" d="M130 140 C250 28 365 28 500 140 S750 252 870 140" />
+                <circle className="system-wire-anchor" cx="130" cy="140" r="8" />
+                <circle className="system-wire-anchor" cx="500" cy="140" r="8" />
+                <circle className="system-wire-anchor" cx="870" cy="140" r="8" />
+              </svg>
+              <div className="system-field-nodes">
+                <article className="system-field-node" data-reveal="system-node">
+                  <div className="system-node-top"><span>01 / INPUT</span><Layers3 size={16} /></div>
+                  <div className="system-node-mark system-node-mark-interface"><i /><i /><i /></div>
+                  <h3>{t.systemNode1}</h3>
+                  <strong>{t.systemNode1Meta}</strong>
+                  <p>{t.systemNode1Body}</p>
+                </article>
+                <article className="system-field-node system-field-node-core" data-reveal="system-node">
+                  <div className="system-node-top"><span>02 / LOGIC</span><Activity size={16} /></div>
+                  <div className="system-node-mark system-node-mark-core"><i /><i /><i /></div>
+                  <h3>{t.systemNode2}</h3>
+                  <strong>{t.systemNode2Meta}</strong>
+                  <p>{t.systemNode2Body}</p>
+                </article>
+                <article className="system-field-node" data-reveal="system-node">
+                  <div className="system-node-top"><span>03 / OUTPUT</span><TerminalSquare size={16} /></div>
+                  <div className="system-node-mark system-node-mark-output"><i /><i /><i /></div>
+                  <h3>{t.systemNode3}</h3>
+                  <strong>{t.systemNode3Meta}</strong>
+                  <p>{t.systemNode3Body}</p>
+                </article>
+              </div>
+            </div>
+            <div className="system-field-foot"><span>{t.systemFoot}</span><span>01 — 03</span></div>
           </div>
         </section>
 
@@ -597,6 +713,39 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             <article className="process-step" data-reveal="process-step"><span className="process-number">02</span><span className="process-marker"><i /></span><div><h3>{t.process2Title}</h3><p>{t.process2Body}</p></div></article>
             <article className="process-step" data-reveal="process-step"><span className="process-number">03</span><span className="process-marker"><i /></span><div><h3>{t.process3Title}</h3><p>{t.process3Body}</p></div></article>
             <article className="process-step" data-reveal="process-step"><span className="process-number">04</span><span className="process-marker"><i /></span><div><h3>{t.process4Title}</h3><p>{t.process4Body}</p></div></article>
+          </div>
+        </section>
+
+        <section className="portfolio-craft portfolio-container" aria-labelledby="craft-title" data-reveal="craft">
+          <div className="portfolio-section-heading">
+            <div>
+              <div className="portfolio-eyebrow"><span className="eyebrow-index">04 /</span>{t.craftEyebrow}</div>
+              <h2 id="craft-title" dir="auto">{t.craftTitle}</h2>
+              <p dir="auto">{t.craftSub}</p>
+            </div>
+            <span className="portfolio-section-meta">CLARITY / MOTION / TRUST</span>
+          </div>
+          <div className="craft-principles-grid">
+            <article className="craft-principle" data-reveal="craft-principle">
+              <div className="craft-principle-visual craft-visual-clarity" aria-hidden="true"><i /><i /><i /><i /></div>
+              <div className="craft-principle-meta"><span>01 / CLARITY</span><span className="craft-principle-pulse" /></div>
+              <h3>{t.craft1Title}</h3><p>{t.craft1Body}</p>
+            </article>
+            <article className="craft-principle" data-reveal="craft-principle">
+              <div className="craft-principle-visual craft-visual-motion" aria-hidden="true"><i /><i /><i /><b /></div>
+              <div className="craft-principle-meta"><span>02 / MOTION</span><span className="craft-principle-pulse" /></div>
+              <h3>{t.craft2Title}</h3><p>{t.craft2Body}</p>
+            </article>
+            <article className="craft-principle" data-reveal="craft-principle">
+              <div className="craft-principle-visual craft-visual-reliability" aria-hidden="true"><i /><b /></div>
+              <div className="craft-principle-meta"><span>03 / RELIABILITY</span><span className="craft-principle-pulse" /></div>
+              <h3>{t.craft3Title}</h3><p>{t.craft3Body}</p>
+            </article>
+            <article className="craft-principle" data-reveal="craft-principle">
+              <div className="craft-principle-visual craft-visual-curiosity" aria-hidden="true"><i /><i /><i /><i /><i /><i /><i /><i /><i /></div>
+              <div className="craft-principle-meta"><span>04 / CURIOSITY</span><span className="craft-principle-pulse" /></div>
+              <h3>{t.craft4Title}</h3><p>{t.craft4Body}</p>
+            </article>
           </div>
         </section>
 
