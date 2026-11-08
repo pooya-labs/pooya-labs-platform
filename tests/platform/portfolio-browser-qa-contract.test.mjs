@@ -220,3 +220,10 @@ test('mobile project grid QA captures the full localized homepage without a tall
   assert.match(portfolioSource, /className="portfolio-projects portfolio-container" id="projects"/);
   assert.doesNotMatch(portfolioSource, /className="portfolio-projects portfolio-container" id="projects" data-reveal="projects"/);
 });
+
+
+test('Browser QA uses plain JavaScript DOM selectors in its visibility measurement', () => {
+  assert.doesNotMatch(script, /querySelector(?:All)?<HTMLElement>/);
+  assert.match(script, /const heading = section\.querySelector\('\.portfolio-section-heading'\)/);
+  assert.match(script, /const cards = Array\.from\(section\.querySelectorAll\('\.portfolio-project-card'\)\)/);
+});

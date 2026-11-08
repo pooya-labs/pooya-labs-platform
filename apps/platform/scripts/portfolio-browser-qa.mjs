@@ -283,9 +283,9 @@ try {
           await page.locator('#projects .portfolio-project-card').first().scrollIntoViewIfNeeded();
           await page.waitForTimeout(550);
           const gridState = await page.locator('#projects').evaluate((section) => {
-            const cards = Array.from(section.querySelectorAll<HTMLElement>('.portfolio-project-card'));
+            const cards = Array.from(section.querySelectorAll('.portfolio-project-card'));
             const firstCard = cards[0];
-            const heading = section.querySelector<HTMLElement>('.portfolio-section-heading');
+            const heading = section.querySelector('.portfolio-section-heading');
             const firstOpacity = firstCard ? Number.parseFloat(getComputedStyle(firstCard).opacity) : 0;
             const headingOpacity = heading ? Number.parseFloat(getComputedStyle(heading).opacity) : 0;
             return {
