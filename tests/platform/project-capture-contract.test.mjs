@@ -51,7 +51,7 @@ test('capture is artifact-only and never publishes or commits screenshot files',
   assert.match(workflow, /image: mcr\.microsoft\.com\/playwright:v1\.64\.1-noble/);
   assert.doesNotMatch(workflow, /playwright install --with-deps/);
   assert.match(workflow, /npm run capture:projects --workspace @pooya-labs\/platform/);
-  assert.match(workflow, /actions\/upload-artifact@v4/);
+  assert.match(workflow, /actions\/upload-artifact@v7/);
   assert.match(workflow, /name: project-interface-captures/);
   assert.match(workflow, /retention-days: 14/);
   assert.doesNotMatch(workflow, /deploy-pages|git push|create pull request/i);

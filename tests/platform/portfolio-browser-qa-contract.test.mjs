@@ -45,7 +45,7 @@ test('browser QA is a separate Chromium workflow and uploads a report without pu
   assert.match(workflow, /npx playwright install --with-deps chromium/);
   assert.match(workflow, /npm run build:pages/);
   assert.match(workflow, /portfolio-browser-qa-report/);
-  assert.match(workflow, /actions\/upload-artifact@v4/);
+  assert.match(workflow, /actions\/upload-artifact@v7/);
   assert.doesNotMatch(workflow, /deploy-pages|git push|create pull request/i);
   assert.equal(packageJson.devDependencies.playwright, '1.64.1');
 });
