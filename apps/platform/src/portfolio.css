@@ -2050,3 +2050,19 @@
   .portfolio-footer-socials { gap:10px; }
 }
 @media (prefers-reduced-motion:reduce) { .proof-ray,.proof-particle,.proof-radial-glow { animation:none!important; } }
+
+
+/* The portfolio itself is the scroll viewport; the workspace shell intentionally locks body scrolling. */
+.portfolio-page {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  max-height: 100vh;
+  max-height: 100dvh;
+  overflow-x: clip;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+}
