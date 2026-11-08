@@ -381,15 +381,8 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
       <main id="main-content" tabIndex={-1} className="case-study-main portfolio-container">
         <a className="case-study-back" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}><ArrowUpLeft size={15} />{t.backProjects}</a>
         <section className="case-study-hero" data-reveal="case-study-hero">
-          <div className={'case-study-visual' + ((project.caseStudyHeroAsset ?? project.visualAsset) ? ' has-visual' : '')}>
-            {(project.caseStudyHeroAsset ?? project.visualAsset) && <img className={'case-study-visual-image visual-' + (project.caseStudyHeroAsset ?? project.visualAsset)!.kind}
-              src={(project.caseStudyHeroAsset ?? project.visualAsset)!.url} alt={(project.caseStudyHeroAsset ?? project.visualAsset)!.alt[language]} loading="eager" decoding="async"
-              onError={(event) => { event.currentTarget.remove(); event.currentTarget.parentElement?.classList.remove('has-visual'); }} />}
+          <div className="case-study-visual">
             <ProjectMotionScene slug={project.slug} />
-            <div className="case-study-art-fallback" aria-hidden="true">
-              <div className="art-orbit orbit-outer" /><div className="art-orbit orbit-inner" />
-              <div className="art-monogram"><span>{project.name.slice(0,1)}</span><i /></div>
-            </div>
             <span className="case-study-index">{project.number} / POOYA LABS</span>
           </div>
           <div className="case-study-heading">

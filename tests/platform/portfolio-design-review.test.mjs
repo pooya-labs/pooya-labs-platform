@@ -149,6 +149,7 @@ test('each case study and selected-project card receives a product-specific moti
     assert.ok(css.includes('.card-scene-' + slug), `Missing project-card motion for ${slug}`);
   }
   assert.match(home, /function ProjectMotionScene/);
+  assert.doesNotMatch(home, /case-study-art-fallback|case-study-visual-image/);
   assert.match(home, /case-study-motion-art scene-\$\{slug\}/);
   assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} \/>/);
   assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} compact \/>/);
