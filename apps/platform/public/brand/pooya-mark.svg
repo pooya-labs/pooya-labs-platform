@@ -1,13 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Pooya Labs P monogram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 167 183" role="img" aria-label="Pooya Labs gold folded-ribbon P mark">
   <defs>
-    <linearGradient id="mark-main" x1="18" y1="16" x2="82" y2="82" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#F2F6F2"/><stop offset="1" stop-color="#C7D8D0"/>
+    <linearGradient id="gold" x1="16" y1="9" x2="150" y2="166" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff3c9"/>
+      <stop offset=".2" stop-color="#e9bf76"/>
+      <stop offset=".43" stop-color="#fff0be"/>
+      <stop offset=".67" stop-color="#c78c45"/>
+      <stop offset=".84" stop-color="#f2d18d"/>
+      <stop offset="1" stop-color="#a66d32"/>
     </linearGradient>
-    <linearGradient id="mark-accent" x1="38" y1="42" x2="78" y2="72" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#72DDB5"/><stop offset="1" stop-color="#269B76"/>
+    <linearGradient id="fold" x1="37" y1="65" x2="88" y2="164" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff0b9"/>
+      <stop offset=".5" stop-color="#c48b45"/>
+      <stop offset="1" stop-color="#70431f"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="14" y1="13" x2="151" y2="151" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff8dc" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#8b5a2c" stop-opacity=".55"/>
     </linearGradient>
   </defs>
-  <path d="M24 78V18h29c19 0 29 10 29 26S72 70 53 70H39" fill="none" stroke="url(#mark-main)" stroke-width="9" stroke-linecap="square" stroke-linejoin="round"/>
-  <path d="M39 70 73 42" fill="none" stroke="url(#mark-accent)" stroke-width="8" stroke-linecap="square" stroke-linejoin="round"/>
-  <path d="M39 70v8" fill="none" stroke="#36BC8B" stroke-width="8" stroke-linecap="square"/>
+  <g stroke="url(#edge)" stroke-width="1.1" stroke-linejoin="round">
+    <path fill="url(#gold)" d="M13 14 15 38 111 38 135 54 122 69 96 83 63 82 62 126 85 112 123 103 149 76 149 39 125 15 110 11Z"/>
+    <path fill="url(#gold)" d="M96 53 29 51 14 55 13 166 17 166 50 138 50 85Z"/>
+  </g>
+  <path d="M14 83 50 85 50 138 17 166 13 166Z" fill="url(#fold)" opacity=".92"/>
+  <path d="M50 85 96 53 69 73 50 97Z" fill="#fff2c8" opacity=".28"/>
+  <path d="M62 126 85 112 123 103 96 111 63 145Z" fill="#7d4e26" opacity=".28"/>
+  <path d="M17 14 110 11 125 15 111 17 17 18Z" fill="#fff8e2" opacity=".24"/>
 </svg>
