@@ -9,6 +9,8 @@ on:
       - 'package.json'
       - '.github/workflows/portfolio-browser-qa.yml'
       - 'tests/platform/portfolio-browser-qa-contract.test.mjs'
+      - 'tests/platform/portfolio-performance-contract.test.mjs'
+      - 'apps/platform/scripts/portfolio-performance-qa.mjs'
   pull_request:
     branches: [main]
 
@@ -53,6 +55,30 @@ jobs:
           PORTFOLIO_BASE_URL: http://127.0.0.1:4173/pooya-labs-platform/
           PORTFOLIO_QA_ARTIFACT_DIR: artifacts/portfolio-browser-qa
         run: npm run qa:portfolio:browser --workspace @pooya-labs/platform
+      - name: Measure cold-route performance baseline
+        env:
+          PORTFOLIO_BASE_URL: http://127.0.0.1:4173/pooya-labs-platform/
+          PORTFOLIO_PERF_ARTIFACT_DIR: apps/platform/artifacts/portfolio-browser-qa
+          PORTFOLIO_PERF_REPORT_NAME: performance-local.json
+          PORTFOLIO_PERF_ENVIRONMENT: local-build
+          PORTFOLIO_PERF_ENFORCE: '0'
+        run: npm run qa:portfolio:performance
+      - name: Measure published GitHub Pages performance
+        env:
+          PORTFOLIO_BASE_URL: https://pooya-labs.github.io/pooya-labs-platform/
+          PORTFOLIO_PERF_ARTIFACT_DIR: apps/platform/artifacts/portfolio-browser-qa
+          PORTFOLIO_PERF_REPORT_NAME: performance-github-pages.json
+          PORTFOLIO_PERF_ENVIRONMENT: github-pages-production
+          PORTFOLIO_PERF_ENFORCE: '0'
+        run: npm run qa:portfolio:performance
+      - name: Measure published Cloudflare Pages performance
+        env:
+          PORTFOLIO_BASE_URL: https://pooya-labs-platform.pages.dev/
+          PORTFOLIO_PERF_ARTIFACT_DIR: apps/platform/artifacts/portfolio-browser-qa
+          PORTFOLIO_PERF_REPORT_NAME: performance-cloudflare-pages.json
+          PORTFOLIO_PERF_ENVIRONMENT: cloudflare-pages-production
+          PORTFOLIO_PERF_ENFORCE: '0'
+        run: npm run qa:portfolio:performance
       - name: Upload browser QA report
         if: always()
         uses: actions/upload-artifact@v7

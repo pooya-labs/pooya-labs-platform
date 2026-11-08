@@ -27,9 +27,10 @@ The public portfolio is deployed to GitHub Pages and mirrored on Cloudflare Page
 
 Do not build the production frontend around a cross-origin fetch from GitHub Pages. Deployment execute-as/access settings and the eventual admin authentication model must be decided before any sensitive feature is added.
 
-## Operational runbook
+## Operational runbooks
 
-See [DEPLOYMENT-RUNBOOK.md](DEPLOYMENT-RUNBOOK.md) for the manual source-sync, rollback rehearsal, spreadsheet backup, and restore procedures. The procedures are documented but have not yet been rehearsed with a production data store.
+- See [STATIC-HOST-DEPLOYMENT.md](STATIC-HOST-DEPLOYMENT.md) for independent GitHub Pages and Cloudflare Pages publish, smoke-test, and source-consistent rollback procedures. The exact rollback rehearsal remains open.
+- See [DEPLOYMENT-RUNBOOK.md](DEPLOYMENT-RUNBOOK.md) for the Apps Script proof's manual source-sync, synthetic rollback, spreadsheet backup, and restore procedures. No production data store exists and the procedures have not been rehearsed with production data.
 
 ## Release discipline
 - Separate development and production Apps Script deployments and spreadsheets.

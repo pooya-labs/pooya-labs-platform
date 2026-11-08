@@ -1,6 +1,5 @@
 import { ArrowUpLeft, BookOpen, BookText, ChevronDown, LoaderCircle, Moon, Sun } from 'lucide-react';
 import { useEffect, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
-import './novels.css';
 
 export type NovelLocaleText = { fa: string; en?: string };
 export interface NovelRecord {

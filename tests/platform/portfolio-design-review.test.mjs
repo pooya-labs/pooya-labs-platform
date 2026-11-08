@@ -63,7 +63,7 @@ test('the signal-orbit emerald monogram is used throughout the site identity', (
   assert.match(home, /portfolio-github-mark/);
   assert.match(home, /portfolio-contact-github/);
   assert.match(home, /github\.com\/pooya-labs/);
-  assert.match(favicon, /type="image\/svg\\+xml" href="%BASE_URL%favicon\\.svg"/);
+  assert.match(favicon, /rel="icon"[^>]+href="%BASE_URL%(?:favicon\.svg|brand\/pooya-monogram\.webp)"/);
   assert.doesNotMatch(home, /brand\/pooya-mark\.svg|brand\/pooya-mark-emerald\.webp/);
 });
 
@@ -74,6 +74,9 @@ test('project screenshot scroll regions have unique, project-specific accessible
   assert.match(home, /\$\{project\.name\} — نمای واقعی محیط دسکتاپ/);
   assert.match(home, /\$\{project\.name\} — \$\{item\.caption\.fa\}/);
   assert.match(home, /\$\{project\.name\} — \$\{item\.caption\.en\}/);
+  assert.ok(css.includes('.case-study-media-card.device-mobile .case-study-media-frame'));
+  assert.ok(css.includes('overscroll-behavior-y:auto'));
+  assert.ok(css.includes('touch-action:pan-y'));
 });
 
 
@@ -104,7 +107,7 @@ test('the owner-designed monogram and wordmark replace the generated identity', 
   assert.ok(wordmark.byteLength > 8000);
   assert.match(home, /brand\/pooya-monogram\.webp/);
   assert.match(home, /brand\/pooya-wordmark\.webp/);
-  assert.match(favicon, /brand\/pooya-monogram\.webp/);
+  assert.match(favicon, /rel="icon"[^>]+href="%BASE_URL%(?:favicon\.svg|brand\/pooya-monogram\.webp)"/);
   assert.doesNotMatch(home, /brand\/pooya-mark\.svg|brand\/pooya-mark-emerald\.webp/);
 });
 
@@ -150,9 +153,10 @@ test('each case study and selected-project card receives a product-specific moti
   }
   assert.match(home, /function ProjectMotionScene/);
   assert.doesNotMatch(home, /case-study-art-fallback|case-study-visual-image/);
+  assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} \/>/);
   assert.match(home, /case-study-motion-art scene-\$\{slug\}/);
   assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} \/>/);
-  assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} compact \/>/);
+  assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} \/>/);
   for (const visual of ['flow-sequence','orbit-dashboard','os-desktop','nexus-stage','glass-stage','market-stage','commerce-stage','booking-stage']) {
     assert.ok(home.includes(visual), `Missing product narrative visual: ${visual}`);
   }
@@ -177,7 +181,7 @@ test('homepage Projects content is never hidden behind intersection-based reveal
   assert.doesNotMatch(home, /id="projects" data-reveal="projects"/);
   assert.doesNotMatch(home, /portfolio-section-heading" data-reveal="projects-heading"/);
   assert.doesNotMatch(home, /portfolio-project-card" key=\{project\.name\} data-reveal="project-card"/);
-  assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} compact \/>/);
+  assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} \/>/);
 });
 
 

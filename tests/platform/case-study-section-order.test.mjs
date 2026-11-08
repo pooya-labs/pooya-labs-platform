@@ -15,18 +15,14 @@ function sectionNumbers(source, startMarker, endMarker) {
   return [...fragment.matchAll(/(?:className|class)="eyebrow-index">(\d{2}) \//g)].map((match) => match[1]);
 }
 
-test('interactive and static case studies use the same continuous 01–10 section numbering', () => {
+test('the shared hydratable case-study component uses continuous 01–10 section numbering', () => {
   const interactive = sectionNumbers(
     portfolio,
-    'function ProjectCaseStudy',
-    'export default function PortfolioHome',
-  );
-  const staticPage = sectionNumbers(
-    viteConfig,
-    'function renderStaticCaseStudy',
-    'function replaceTag',
+    'export function ProjectCaseStudy',
+    'export interface HydratedCaseStudyProps',
   );
 
-  assert.deepEqual(interactive, expected, 'Interactive case-study sections must be numbered 01 through 10 exactly once');
-  assert.deepEqual(staticPage, expected, 'Static case-study sections must be numbered 01 through 10 exactly once');
+  assert.deepEqual(interactive, expected, 'Case-study sections must be numbered 01 through 10 exactly once');
+  assert.ok(viteConfig.includes('renderToString(createElement(HydratedCaseStudy'), 'Static pages must server-render the same component that the browser hydrates');
+  assert.ok(portfolio.includes('<ProjectCaseStudy'), 'The hydration wrapper must render the shared case-study component');
 });

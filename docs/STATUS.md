@@ -1,3 +1,13 @@
+## Phase 7 readiness implementation — security and performance baseline (2026-11-08)
+
+- Added a cold-context Chromium performance probe for the Persian/English homepage and all eight English case-study routes at desktop (1440×1000) and mobile (390×844) sizes. It records navigation timing, FCP/LCP, CLS, resource sizes, route errors, and horizontal overflow.
+- Repository CI [42509020236](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020236) passed on PR #13 head `0dd3eca221df8e5b28b796b3db7b8e6462382fc4`: dependency audit reported **0 vulnerabilities**, lint and format checks passed for 49 files, TypeScript passed, all three Pages/Apps Script/Cloudflare builds passed, and **96/96 contract tests** passed.
+- Browser QA [42509020267](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020267) passed **18/18 routes**, **36/36 viewport checks**, and zero failures. Axe reported zero confirmed violations; **36 incomplete color-contrast checks** remain for human review and are not counted as passes.
+- Three-host performance measurements completed: **20 samples per host** for the English/Persian homepages and eight English project routes. The report is retained in [artifact 13628113221](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020267/artifacts/13628113221). Full p75 values and limitations are in [PERFORMANCE-BUDGET.md](PERFORMANCE-BUDGET.md).
+- The measured CLS is not accepted: investigation traced the large desktop case-study shifts to the static HTML case-study markup being inserted into `#root` during the build and then removed when `main.tsx` calls `createRoot` instead of hydrating that markup. This is a confirmed source-level explanation, not a completed fix. Keep performance budgets report-only until a hydration-safe approach is implemented and the three-host baseline is repeated.
+- The new audit and performance checks are tooling/readiness work only. The application UI and deployed build are unchanged; no production deployment is implied by these checks.
+
+
 ## Release sequence decision — 2026-11-08
 
 Pooya requested a strict final-stage order. The roadmap now reserves **Phase 8 for the complete redesign and its two owner approval rounds (penultimate stage)**, then **Phase 9 for full portfolio-level integration of all eight projects (last stage before publication)**, followed by **Phase 10 for V1 release**. Work is currently confined to Phase 7 readiness; final project media/content integration must not be pulled forward.

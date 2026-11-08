@@ -97,6 +97,10 @@ This phase is the work currently in progress. Complete every autonomous engineer
 ### Platform engineering and quality
 - [x] Add dependency-free lint and formatting checks to CI and publish contribution/release conventions.
 - [x] Keep Node 24-compatible GitHub Actions and the passing Repository CI/Browser QA checks.
+- [x] Add a cold-context Chromium performance probe for the homepage and all eight project routes at desktop/mobile sizes; collect navigation timing, FCP/LCP, CLS, and resource-size data.
+- [ ] Review the first performance baseline, calibrate realistic budgets, and enable enforcement only after measured review.
+- [ ] Resolve the confirmed CLS caused by the generated static case-study markup being replaced by `createRoot`; retain crawler-readable direct routes and repeat the three-host baseline.
+- [x] Add a high-severity dependency advisory gate; Repository CI run [42509020236](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020236) reported 0 dependency vulnerabilities.
 - [ ] Complete responsive navigation, keyboard-only operation, visible focus, and screen-reader-flow audit for Persian and English, both themes.
 - [ ] Resolve or document every reproducible accessibility defect. Manually evaluate gradient/pseudo-background contrast cases that axe cannot calculate; incomplete checks are not passes.
 - [ ] Establish measurable performance budgets for initial load, route transitions, largest media, animation cost, and mobile responsiveness; measure the current implementation against them.
@@ -104,6 +108,7 @@ This phase is the work currently in progress. Complete every autonomous engineer
 - [ ] Validate all 17 PNG social preview cards with external crawler/share clients and document which clients/cache refreshes were actually verified.
 - [ ] Confirm GitHub Pages source configuration and verify the canonical site serves the exact latest application build.
 - [ ] Enable and verify repeatable Cloudflare publishing through the private GitHub Actions secret, or document a tested owner-operated manual release path; never publish credentials in chat or source.
+- [x] Document independent GitHub Pages and Cloudflare Pages publish, smoke-test, and source-consistent rollback procedures in [STATIC-HOST-DEPLOYMENT.md](STATIC-HOST-DEPLOYMENT.md).
 - [ ] Rehearse a rollback/recovery for each public host and record exact steps, expected artifacts, and verification.
 - [ ] Run a final source/content audit checkpoint and synchronize STATUS, NEXT, CHANGELOG, and project-state.json.
 

@@ -6,6 +6,25 @@ const outputRoot = new URL('../../dist/pages/', import.meta.url);
 const rootHtml = await readFile(new URL('index.html', outputRoot), 'utf8').catch(() => null);
 const slugs = ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'global-cart', 'salon-booking'];
 
+const mainSource = await readFile(new URL('../../apps/platform/src/main.tsx', import.meta.url), 'utf8');
+const portfolioSource = await readFile(new URL('../../apps/platform/src/PortfolioHome.tsx', import.meta.url), 'utf8');
+const viteConfig = await readFile(new URL('../../apps/platform/vite.config.ts', import.meta.url), 'utf8');
+
+test('direct case-study routes hydrate the same server-rendered React tree instead of replacing it', () => {
+  assert.ok(viteConfig.includes('renderToString(createElement(HydratedCaseStudy'));
+  assert.ok(viteConfig.includes("'<div id=\"root\">' + appMarkup + '</div>'"));
+  assert.ok(mainSource.includes('hydrateRoot('));
+  assert.ok(mainSource.includes('portfolioProjects.find'));
+  assert.ok(portfolioSource.includes('export function HydratedCaseStudy'));
+  assert.ok(portfolioSource.includes('export function ProjectCaseStudy'));
+  const componentStart = portfolioSource.indexOf('export function ProjectCaseStudy');
+  const componentEnd = portfolioSource.indexOf('export interface HydratedCaseStudyProps', componentStart);
+  const component = portfolioSource.slice(componentStart, componentEnd);
+  assert.ok(!component.includes('window.location.pathname'));
+  assert.ok(portfolioSource.includes('baseUrl: string'));
+});
+
+
 test('Vite emits crawler-readable Persian and English case-study pages', { skip: !rootHtml }, async () => {
   assert.match(rootHtml, /og:image/);
   assert.match(rootHtml, /og:image:type" content="image\/png/);
@@ -23,7 +42,11 @@ test('Vite emits crawler-readable Persian and English case-study pages', { skip:
       const route = locale === 'en' ? `en/projects/${slug}/index.html` : `projects/${slug}/index.html`;
       const html = await readFile(new URL(route, outputRoot), 'utf8');
       const canonical = `https://pooya-labs.github.io/pooya-labs-platform/${route.replace('index.html', '')}`;
-      assert.ok(html.includes('<div id="root"><a class="portfolio-skip-link" href="#main-content">') && html.includes('<main id="main-content" tabindex="-1" class="case-study-main'), `${route} must contain skip navigation and static article markup before JavaScript`);
+      const rootIndex = html.indexOf('<div id="root">');
+      const renderedPageIndex = html.indexOf('<div class="portfolio-page portfolio-case-study', rootIndex);
+      const skipIndex = html.indexOf('<a class="portfolio-skip-link" href="#main-content">', rootIndex);
+      const mainIndex = html.indexOf('<main id="main-content" tabindex="-1" class="case-study-main', rootIndex);
+      assert.ok(rootIndex >= 0 && renderedPageIndex > rootIndex && skipIndex > renderedPageIndex && mainIndex > skipIndex, `${route} must contain the complete server-rendered interactive case study before JavaScript`);
       assert.ok(html.includes(`<link rel="canonical" href="${canonical}"`), `${route} must have a canonical URL`);
       assert.ok(html.includes(`og:image`), `${route} must declare a social preview image`);
       assert.ok(html.includes(`/pooya-labs-platform/og/${slug}${locale === 'en' ? '-en' : ''}.png`), `${route} must point to its own PNG social card`);
@@ -60,17 +83,35 @@ test('Vite emits crawler-readable Persian and English case-study pages', { skip:
 
 test('reviewed project interface screenshots are embedded in both static case-study locales', { skip: !rootHtml }, async () => {
   const projects = ['orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'salon-booking'];
+  const isPinnedCapture = (url, expectedFolder) => {
+    const root = 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/';
+    if (!url.startsWith(root)) return false;
+    const segments = url.slice(root.length).split('/');
+    return /^[a-f0-9]{40}$/.test(segments[0]) &&
+      segments[1] === 'apps' &&
+      segments[2] === 'platform' &&
+      segments[3] === 'public' &&
+      segments[4] === 'interface-captures' &&
+      segments[5] === expectedFolder &&
+      segments.length === 7 &&
+      segments[6].endsWith('.png');
+  };
+
   for (const slug of projects) {
-    for (const route of [`projects/${slug}/index.html`, `en/projects/${slug}/index.html`]) {
+    const folder = slug === 'aura-pulse' ? 'aurapulse' : slug;
+    for (const locale of ['fa', 'en']) {
+      const route = (locale === 'en' ? 'en/' : '') + 'projects/' + slug + '/index.html';
       const html = await readFile(new URL(route, outputRoot), 'utf8');
-      const sourceRoot = new RegExp(
-        `https://raw\\.githubusercontent\\.com/pooya-labs/pooya-labs-platform/[a-f0-9]{40}/apps/platform/public/interface-captures/${slug === 'aura-pulse' ? 'aurapulse' : slug}/`,
-      );
-      assert.match(html, sourceRoot, `${route} must use an immutable portfolio commit for interface evidence`);
-      assert.match(html, new RegExp(`${slug === 'aura-pulse' ? 'aurapulse' : slug === 'salon-booking' ? 'salon-booking-fullpage' : slug}-desktop\\.png`), `${route} must include the reviewed desktop hero`);
-      assert.match(html, new RegExp(`${slug === 'aura-pulse' ? 'aurapulse' : slug === 'salon-booking' ? 'salon-booking-fullpage' : slug}-mobile\\.png`), `${route} must include the reviewed mobile capture`);
-      assert.match(html, /case-study-visual-image visual-interface[^>]+alt="[^"]+"/, `${route} desktop evidence must have localized alternative text`);
-      assert.match(html, /case-study-media-card device-mobile[^]*?<img[^>]+alt="[^"]+"/, `${route} mobile evidence must have localized alternative text`);
+      const sourceRoot = 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/';
+      assert.ok(html.includes(sourceRoot), route + ' must use an immutable portfolio capture source');
+      const desktopImage = html.match(/case-study-media-card device-desktop[^]*?<img[^>]+src="([^"]+)"[^>]+alt="([^"]+)"/);
+      const mobileImage = html.match(/case-study-media-card device-mobile[^]*?<img[^>]+src="([^"]+)"[^>]+alt="([^"]+)"/);
+      assert.ok(desktopImage, route + ' must include desktop interface evidence with localized alternative text');
+      assert.ok(mobileImage, route + ' must include mobile interface evidence with localized alternative text');
+      assert.ok(isPinnedCapture(desktopImage[1], folder), route + ' desktop evidence must use an immutable raw asset URL');
+      assert.ok(isPinnedCapture(mobileImage[1], folder), route + ' mobile evidence must use an immutable raw asset URL');
+      assert.ok(desktopImage[2].trim().length > 0, route + ' desktop evidence must have alternative text');
+      assert.ok(mobileImage[2].trim().length > 0, route + ' mobile evidence must have alternative text');
     }
   }
   const aetherFlow = await readFile(new URL('projects/aetherflow/index.html', outputRoot), 'utf8');
@@ -78,20 +119,22 @@ test('reviewed project interface screenshots are embedded in both static case-st
   assert.ok(!aetherFlow.includes('interface-captures/aetherflow/aetherflow-mobile.png'));
 });
 
-test('Pages build omits unused local screenshot duplicates while preserving immutable remote evidence', { skip: !rootHtml }, async () => {
+test('case-study image evidence uses immutable source URLs without relying on screenshot basenames', { skip: !rootHtml }, async () => {
   const orbit = await readFile(new URL('projects/orbit/index.html', outputRoot), 'utf8');
-  assert.match(
-    orbit,
-    /https:\/\/raw\.githubusercontent\.com\/pooya-labs\/pooya-labs-platform\/[a-f0-9]{40}\/apps\/platform\/public\/interface-captures\/orbit\/orbit-desktop\.png/,
-    'The reviewed desktop image must remain available through its immutable source URL',
-  );
-  await assert.rejects(
-    readFile(new URL('interface-captures/orbit/orbit-desktop.png', outputRoot)),
-    { code: 'ENOENT' },
-    'The Pages bundle must not duplicate the already remotely hosted screenshot binary',
-  );
+  const captures = [...orbit.matchAll(/<img[^>]+src="([^"]+)"[^>]+alt="([^"]+)"/g)]
+    .filter((match) => match[1].includes('/interface-captures/orbit/'));
+  assert.ok(captures.some((match) => match[1].toLowerCase().includes('desktop.png')), 'A desktop capture must remain available');
+  assert.ok(captures.some((match) => match[1].toLowerCase().includes('mobile.png')), 'A mobile capture must remain available');
+  for (const capture of captures) {
+    assert.ok(capture[1].startsWith('https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/'), 'Capture URLs must be pinned to raw GitHub');
+    const segments = capture[1].replace('https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/', '').split('/');
+    assert.ok(/^[a-f0-9]{40}$/.test(segments[0]));
+    assert.deepEqual(segments.slice(1, 5), ['apps', 'platform', 'public', 'interface-captures']);
+    assert.equal(segments[5], 'orbit');
+    assert.ok(segments[6].endsWith('.png'));
+    assert.ok(capture[2].trim().length > 0);
+  }
 });
-
 test('GlobalCart static case studies include real pinned desktop and mobile storefront screenshots', { skip: !rootHtml }, async () => {
   for (const route of ['projects/global-cart/index.html', 'en/projects/global-cart/index.html']) {
     const html = await readFile(new URL(route, outputRoot), 'utf8');

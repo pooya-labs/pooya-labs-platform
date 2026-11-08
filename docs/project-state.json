@@ -14,7 +14,7 @@
   "lastCheckpointDate": "2026-11-08",
   "latestVerifiedCodeCommit": "c7a86a2e2f54d157b7e0b806c9c022afd41fd208",
   "tests": {
-    "repositoryCi": "passed-run-42504771438-PR12-quality-conventions;lint;format;TypeScript;Pages-GAS-Cloudflare-build-targets;contract-tests",
+    "repositoryCi": "passed-run-42509020236-PR13-head-0dd3eca;npm-audit-0-vulnerabilities;lint-format-TypeScript-three-build-targets;96-of-96-contract-tests",
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
@@ -39,9 +39,9 @@
     "staticCaseStudySectionOrder": "passed-run-42227942261-and-42230046270",
     "lastVerifiedTestCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
     "skipNavigationContract": "passed-run-42231110043-bilingual-fixed-position-reduced-motion",
-    "portfolioBrowserQa": "passed-run-42504771467-PR12-quality-conventions;Chromium-responsive-route-metadata-keyboard-and-reduced-motion-suite;report-artifact-13627206292",
-    "portfolioBrowserQaArtifact": "13627206292",
-    "portfolioBrowserQaStrictGate": "run-42504771467;full-browser-QA-job-success;see-artifact-13627206292",
+    "portfolioBrowserQa": "passed-run-42509020267;18-of-18-routes;36-of-36-viewports;zero-failures;zero-confirmed-axe-violations;36-incomplete-contrast-checks-still-require-human-review",
+    "portfolioBrowserQaArtifact": "13628113221",
+    "portfolioBrowserQaStrictGate": "passed-run-42509020267;performance-report-only;three-host-baseline-records-open-CLS-0.1713",
     "pagesArtifactAudit": "passed-run-42238363799-artifact-13511808294-17-html-17-png-1200x627-17-sitemap-urls-all-canonical-og-description-jsonld-and-case-study-hreflang",
     "pagesArtifactAuditDetails": {
       "artifactId": "13511808294",
@@ -146,6 +146,7 @@
     }
   },
   "blockers": [
+    "Phase 7 performance blocker: the three-host baseline (run 42509020267, artifact 13628113221) records p75 CLS 0.1713. Direct case-study markup is pre-rendered into #root then cleared by createRoot on first client render; preserve crawler-readable routes while fixing this and remeasure before closing the performance gate.",
     "Phase 7 technical closeout is active: finish measurable performance budgets, security/dependency/secret and public/private asset review, external social-crawler validation, active Pages-source verification, Cloudflare deployment automation/manual runbook, and rollback/recovery rehearsal.",
     "Pooya must review the current baseline on a physical Android device and approve the biography, headline, project-role wording, featured order, project statuses, public contact details, and approved personal assets before Phase 8.",
     "Manual accessibility acceptance remains open: latest Browser QA recorded 36 incomplete color-contrast checks on gradient/pseudo backgrounds and zero confirmed axe violations; complete human contrast, keyboard-only, focus-visibility, and screen-reader checks.",
@@ -158,7 +159,7 @@
     "The novels catalog remains empty pending owner-provided titles, descriptions, covers and manuscripts; do not invent content.",
     "The final redesign is explicitly Phase 8 and the complete integration of all eight projects is explicitly Phase 9. Neither begins until Phase 7 readiness is complete. Phase 10 publication remains blocked."
   ],
-  "nextAction": "Continue Phase 7 autonomous readiness: complete platform security/dependency and asset-boundary audit, establish and measure performance budgets, close repository/Browser QA accessibility-preparation gaps, verify public-host configuration and rollback path, validate social-card crawler behavior, and prepare owner/device acceptance. Do not start Phase 8 redesign or Phase 9 project integration early.",
+  "nextAction": "Fix the confirmed case-study CLS source without losing static crawler-readable direct routes; rerun the three-host baseline. Keep report-only budgets. Continue remaining Phase 7 security/asset, accessibility, SEO/social, host configuration, rollback and owner/device readiness. Do not start Phase 8 redesign or Phase 9 integration early.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -170,9 +171,54 @@
   },
   "performance": {
     "budgetsDocumented": true,
-    "baselineMeasured": false,
-    "targetFile": "docs/PERFORMANCE-BUDGETS.md",
-    "cursorEffectFrameLoop": "requestAnimationFrame-only-while-moving"
+    "baselineMeasured": true,
+    "targetFile": "docs/PERFORMANCE-BUDGET.md",
+    "cursorEffectFrameLoop": "requestAnimationFrame-only-while-moving",
+    "baselineRun": 42509020267,
+    "baselineArtifact": 13628113221,
+    "baselineCommit": "0dd3eca221df8e5b28b796b3db7b8e6462382fc4",
+    "samplesPerHost": 20,
+    "p75": {
+      "localBuild": {
+        "ttfbMs": 4,
+        "domContentLoadedMs": 101,
+        "loadEventMs": 104,
+        "firstContentfulPaintMs": 112,
+        "largestContentfulPaintMs": 300,
+        "cumulativeLayoutShift": 0.1713,
+        "totalResourceBytes": 177671,
+        "javascriptBytes": 128533,
+        "stylesheetBytes": 40577,
+        "imageBytes": 8220
+      },
+      "githubPages": {
+        "ttfbMs": 42,
+        "domContentLoadedMs": 124,
+        "loadEventMs": 174,
+        "firstContentfulPaintMs": 156,
+        "largestContentfulPaintMs": 400,
+        "cumulativeLayoutShift": 0.1713,
+        "totalResourceBytes": 180710,
+        "javascriptBytes": 129920,
+        "stylesheetBytes": 42204,
+        "imageBytes": 8245
+      },
+      "cloudflarePages": {
+        "ttfbMs": 123,
+        "domContentLoadedMs": 258,
+        "loadEventMs": 258,
+        "firstContentfulPaintMs": 340,
+        "largestContentfulPaintMs": 472,
+        "cumulativeLayoutShift": 0.1713,
+        "totalResourceBytes": 178476,
+        "javascriptBytes": 127332,
+        "stylesheetBytes": 42696,
+        "imageBytes": 8158
+      }
+    },
+    "layoutShiftStatus": "confirmed-source-open-remediation",
+    "layoutShiftRootCause": "Static case-study HTML is injected into #root by vite.config.ts; main.tsx createRoot clears the pre-rendered nodes after first paint rather than hydrating them. See docs/PERFORMANCE-BUDGET.md.",
+    "budgetEnforcement": "report-only"
   },
   "operations": {
     "deploymentRollbackDocumented": true,
@@ -341,7 +387,7 @@
     "socialPreviewDimensions": "1200x627 (LinkedIn share preview recommendation)",
     "socialPreviewCardCount": 17
   },
-  "latestVerifiedTestCommit": "5131660b0b3e0156ac350f6a9aafc648556fc814",
+  "latestVerifiedTestCommit": "0dd3eca221df8e5b28b796b3db7b8e6462382fc4",
   "caseStudyDossiers": {
     "bilingual": true,
     "projectCount": 8,
@@ -724,5 +770,19 @@
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-08",
   "latestDocumentationCommit": "d18c61cba951cc13917a5953958ef9e38d3b738b",
-  "latestDocumentationCheckpoint": "Roadmap reordered per owner request: Phase 7 readiness, Phase 8 penultimate full redesign plus two approval rounds, Phase 9 complete all-eight-project integration immediately before Phase 10 V1 release; all eight upstream latest changes inventoried read-only on 2026-11-08."
+  "latestDocumentationCheckpoint": "PR-13 readiness baseline measured on all three hosts; CI and Browser QA passed; confirmed direct-case-study CLS root replacement remains open.",
+  "latestRepositoryCiRun": "42509020236",
+  "latestBrowserQaRun": "42509020267",
+  "latestPerformanceBaseline": {
+    "run": "42509020267",
+    "artifact": "13628113221",
+    "sourceCommit": "0dd3eca221df8e5b28b796b3db7b8e6462382fc4",
+    "samplesPerHost": 20,
+    "hosts": [
+      "local-build",
+      "github-pages",
+      "cloudflare-pages"
+    ],
+    "p75Cls": 0.1713
+  }
 }

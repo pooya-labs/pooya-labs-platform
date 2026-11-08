@@ -1,3 +1,13 @@
+## 2026-11-08 — Phase 7 security and performance baseline
+
+- Added a dependency advisory gate (`npm audit --audit-level=high`) to Repository CI; the current PR run reported **0 vulnerabilities**.
+- Added cold-context Chromium performance measurements for the Persian/English homepages and all eight English case-study routes at desktop/mobile sizes, with JSON reports for local build, GitHub Pages, and Cloudflare Pages.
+- Corrected the report-filename contract test. Repository CI [42509020236](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020236) passed: lint, formatting, TypeScript, all three build targets, and **96/96 contract tests**.
+- Browser QA [42509020267](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020267) passed 18/18 routes and 36/36 viewports with zero failures and zero confirmed axe violations; 36 contrast checks remain incomplete for human review.
+- Measured 20 samples per host. The p75 CLS of 0.1713 exposed a reproducible static-case-study root replacement shift; the confirmed cause and remediation gate are recorded in [PERFORMANCE-BUDGET.md](PERFORMANCE-BUDGET.md). Budgets remain report-only.
+- The work is contained in PR [#13](https://github.com/pooya-labs/pooya-labs-platform/pull/13). It does not change the public application build and does not claim a new deployment.
+
+
 ## 2026-11-08 — Repository quality and release conventions
 
 - Added a zero-dependency repository quality command for JavaScript syntax/debugger checks and consistent source/config formatting.
