@@ -2,7 +2,7 @@
 
 **Task ID:** P7-11  
 **Checkpoint date:** 2026-11-08  
-**Latest verified application commit:** `c7a86a2e2f54d157b7e0b806c9c022afd41fd208` (the subsequent tooling/documentation merge `1746c11ee87f...` does not change public application output; homepage Projects fix remains `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`)  
+**Latest verified application commit:** `c7a86a2e2f54d157b7e0b806c9c022afd41fd208` (the subsequent tooling/documentation merge `1746c11ee87fba4a37ea8fff0f548cb832fe4b22` does not change public application output; homepage Projects fix remains `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`)  
 **Application motion commit:** `714d4ea2ea017189886ddb4e0d2e386e19edcaf3`  
 **Browser QA commit:** `549c6a3c66eade850d175cddad3a7b7dea5466e8`  
 **Homepage Projects visibility fix:** `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`  
