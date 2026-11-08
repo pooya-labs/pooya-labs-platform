@@ -319,6 +319,8 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
     if (!root || !('IntersectionObserver' in window)) return;
     const targets = Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'));
     if (!targets.length) return;
+    // .portfolio-page owns scrolling; reset it on route changes and observe within that viewport.
+    root.scrollTop = 0;
     root.classList.add('motion-ready');
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
@@ -326,7 +328,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
       }
-    }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
+    }, { root, threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
     targets.forEach((target) => observer.observe(target));
     return () => {
       observer.disconnect();

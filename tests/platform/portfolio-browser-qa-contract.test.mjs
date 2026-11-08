@@ -79,3 +79,19 @@ test('browser QA rejects stale middle-of-page scroll restoration on direct route
   assert.match(script, /history\.scrollRestoration/);
   assert.match(script, /direct route did not open at the top of the page/);
 });
+
+
+test('portfolio browser QA verifies vertical scrolling and actual desktop wheel input', () => {
+  assert.match(script, /const scrollMetrics = await page\.evaluate/);
+  assert.match(script, /scroller\.scrollHeight - scroller\.clientHeight/);
+  assert.match(script, /scroller\.scrollTop = Math\.min\(480, maxScrollTop\)/);
+  assert.match(script, /page\.mouse\.wheel\(0, 720\)/);
+  assert.match(script, /Mouse-wheel input did not scroll the public portfolio/);
+  assert.match(portfolioCss, /height:100dvh!important/);
+  assert.match(portfolioCss, /overflow-y:auto!important/);
+});
+
+test('portfolio scroll reveals are observed inside the same scroll container', () => {
+  assert.match(portfolioSource, /root\.scrollTop = 0/);
+  assert.match(portfolioSource, /new IntersectionObserver\([\s\S]*?\}, \{ root, threshold: 0\.12/);
+});

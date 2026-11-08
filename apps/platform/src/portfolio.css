@@ -1829,7 +1829,7 @@
   --pf-control-bg:rgba(13,21,22,.9);--pf-control-surface:rgba(255,255,255,.035);
   --pf-control-border:rgba(197,219,208,.14);--pf-control-text:#edf3ef;
   --pf-control-muted:#a6b4ac;--pf-control-shadow:0 15px 42px rgba(0,0,0,.25);
-  height:auto;min-height:100vh;overflow-x:clip;overflow-y:visible;
+  height:100vh;height:100dvh;min-height:100vh;min-height:100dvh;max-height:100vh;max-height:100dvh;overflow-x:clip;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;scrollbar-gutter:stable;
   background:radial-gradient(ellipse at 78% 4%,rgba(54,123,97,.1),transparent 34%),linear-gradient(180deg,#0b1012 0%,#0d1415 60%,#0a1012 100%);
 }
 .portfolio-page[data-theme="light"] {
@@ -2050,3 +2050,53 @@
   .portfolio-footer-socials { gap:10px; }
 }
 @media (prefers-reduced-motion:reduce) { .proof-ray,.proof-particle,.proof-radial-glow { animation:none!important; } }
+
+
+/* One scroll surface for the public portfolio, independent of the locked workspace shell. */
+.portfolio-page {
+  height:100vh!important;
+  height:100dvh!important;
+  min-height:100vh!important;
+  min-height:100dvh!important;
+  max-height:100vh!important;
+  max-height:100dvh!important;
+  overflow-x:clip!important;
+  overflow-y:auto!important;
+  overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-gutter:stable;
+  touch-action:pan-y;
+}
+
+
+/* Replace every leftover gold treatment so the logo, controls and theme use one emerald identity. */
+.portfolio-page { --pf-gold:#46bf8e; --pf-gold-bright:#8ce9ce; }
+.portfolio-brand-mark {
+  border-color:rgba(84,207,157,.3)!important;
+  background:linear-gradient(145deg,rgba(61,175,125,.16),rgba(255,255,255,.025))!important;
+  box-shadow:0 8px 24px rgba(31,159,111,.12),inset 0 1px rgba(255,255,255,.12)!important;
+}
+.portfolio-brand-mark img { width:90%!important;height:90%!important;filter:drop-shadow(0 2px 8px rgba(31,159,111,.16))!important; }
+.stamp-core img,.portfolio-github-mark,.contact-github-mark { filter:drop-shadow(0 2px 8px rgba(31,159,111,.17))!important; }
+.portfolio-theme svg { color:var(--pf-emerald)!important; }
+.portfolio-workspace {
+  color:#effbf5!important;border-color:rgba(72,191,143,.42)!important;
+  background:linear-gradient(115deg,#267d5e,#36a879)!important;
+  box-shadow:0 5px 18px rgba(39,154,108,.16)!important;
+}
+.portfolio-workspace:hover { background:linear-gradient(115deg,#2b916a,#43bb89)!important; }
+.portfolio-page[data-theme="light"] .portfolio-brand-mark { background:linear-gradient(145deg,#e7f5ec,#fff)!important;border-color:rgba(41,139,99,.27)!important; }
+.portfolio-page[data-theme="light"] .portfolio-workspace { color:#fff!important;background:#267657!important; }
+
+
+/* Keep hover/focus CTA text above WCAG AA contrast on dark and light themes. */
+.portfolio-page .portfolio-primary:hover,
+.portfolio-page .portfolio-primary:focus-visible {
+  color:#f1faf4!important;
+  background:#246e51!important;
+}
+.portfolio-page[data-theme="light"] .portfolio-primary:hover,
+.portfolio-page[data-theme="light"] .portfolio-primary:focus-visible {
+  color:#fff!important;
+  background:#1f6548!important;
+}
