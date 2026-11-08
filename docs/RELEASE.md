@@ -1,6 +1,6 @@
 # Release checklist
 
-This checklist governs public portfolio releases. The current release remains **pre-alpha / portfolio draft** until the owner explicitly approves the complete site and every mandatory gate below is closed.
+This checklist governs public portfolio releases. The current release remains **pre-alpha / portfolio draft** until the owner explicitly approves the complete site and every mandatory gate below is closed. The required order is Phase 7 readiness → Phase 8 full redesign and approval (penultimate) → Phase 9 complete project integration (last implementation stage before publication) → Phase 10 V1 release.
 
 ## Before any public release
 
@@ -25,4 +25,4 @@ This checklist governs public portfolio releases. The current release remains **
 
 ## V1 restrictions
 
-A V1 tag is prohibited while the roadmap's Phase 7 or Phase 8 release gates, required project-content audit entries, owner approvals, physical-device review, or manual accessibility checks remain open. Do not downgrade a blocker to a completed item merely because an automated workflow passed. If a release is blocked, keep the current pre-alpha label and record the remaining work in `docs/NEXT.md`.
+A V1 tag is prohibited while any required Phase 7, Phase 8, Phase 9, or Phase 10 gate remains open. Phase 8 redesign approval must precede Phase 9's complete integration of all eight projects. Phase 9 must be complete before Phase 10 release hardening and publication. Do not downgrade a blocker to a completed item merely because an automated workflow passed. If a release is blocked, keep the current pre-alpha label and record the remaining work in `docs/NEXT.md`.
