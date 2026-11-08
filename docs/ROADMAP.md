@@ -97,6 +97,9 @@ This phase is the work currently in progress. Complete every autonomous engineer
 ### Platform engineering and quality
 - [x] Add dependency-free lint and formatting checks to CI and publish contribution/release conventions.
 - [x] Keep Node 24-compatible GitHub Actions and the passing Repository CI/Browser QA checks.
+- [x] Add a cold-context Chromium performance probe for the homepage and all eight project routes at desktop/mobile sizes; collect navigation timing, FCP/LCP, CLS, and resource-size data.
+- [ ] Review the first performance baseline, calibrate realistic budgets, and enable enforcement only after measured review.
+- [ ] Add a high-severity dependency advisory gate and resolve any current findings before closing Phase 7.
 - [ ] Complete responsive navigation, keyboard-only operation, visible focus, and screen-reader-flow audit for Persian and English, both themes.
 - [ ] Resolve or document every reproducible accessibility defect. Manually evaluate gradient/pseudo-background contrast cases that axe cannot calculate; incomplete checks are not passes.
 - [ ] Establish measurable performance budgets for initial load, route transitions, largest media, animation cost, and mobile responsiveness; measure the current implementation against them.
