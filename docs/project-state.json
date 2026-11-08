@@ -14,7 +14,7 @@
   "lastCheckpointDate": "2026-11-08",
   "latestVerifiedCodeCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
   "tests": {
-    "repositoryCi": "passed-run-42518373614;main-15c2535ad5fe;dependency-audit-zero-vulnerabilities;credential-scan-no-recognized-matches;contract-tests-101-of-101;all-three-builds-success",
+    "repositoryCi": "passed-run-42519574691;main-aca573500192;dependency-audit-zero-vulnerabilities;credential-scan-no-recognized-matches;contract-tests-105-of-105;all-three-builds-success",
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
@@ -39,7 +39,7 @@
     "staticCaseStudySectionOrder": "passed-run-42227942261-and-42230046270",
     "lastVerifiedTestCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
     "skipNavigationContract": "passed-run-42231110043-bilingual-fixed-position-reduced-motion",
-    "portfolioBrowserQa": "passed-run-42518373619;main-15c2535ad5fe;18-of-18-routes;zero-failures;zero-confirmed-axe-violations;36-incomplete-contrast-checks-remain-for-human-review",
+    "portfolioBrowserQa": "passed-run-42519333196;PR-head-22e49995b760;18-of-18-routes;zero-failures;zero-confirmed-axe-violations;36-incomplete-contrast-checks-remain-for-human-review;three-host-perf-CLS-p75-zero;LCP-p75-local-276ms-GitHubPages-380ms-CloudflarePages-396ms",
     "portfolioBrowserQaArtifact": "13631024148",
     "portfolioBrowserQaStrictGate": "passed-run-42514976406;18-of-18-routes;zero-failures;zero-confirmed-axe-violations;36-incomplete-checks-remain-human-review;performance-report-only",
     "pagesArtifactAudit": "passed-run-42238363799-artifact-13511808294-17-html-17-png-1200x627-17-sitemap-urls-all-canonical-og-description-jsonld-and-case-study-hreflang",
@@ -61,10 +61,10 @@
     "documentationCheckpoint": "passed-run-42496528868-on-b429828f0ed8f967317934fffed32daffa7b6a5f;state-roadmap-next-status-and-ADR-synchronized",
     "githubActionsRuntimeWarning": "none-observed-in-latest-successful-run-42502717615",
     "latestVerifiedTestCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
-    "latestDocumentationCheckpoint": "PR-16-owner-review-packet-and-contract-tests;owner-approval-pending;no-project-review-state-upgraded",
+    "latestDocumentationCheckpoint": "merged-PR-16-owner-review-packet;main-aca573500192;CI-105-of-105;Browser-QA-18-of-18",
     "latestDetailedAxeReport": "run-42514976406;zero-confirmed-axe-violations;36-incomplete-axe-checks;artifact-13631024148",
-    "latestRepositoryCiRun": "42518373614",
-    "latestBrowserQaRun": "42518373619",
+    "latestRepositoryCiRun": "42519574691",
+    "latestBrowserQaRun": "42519333196",
     "latestPagesDeploymentRun": "42518373632",
     "latestCloudflareAttempt": "success-deployment-107de2a2-d69c-4b9d-ae2c-38da68c7bad4;main-a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67;all-five-stages-success;includes-41ea1004-asset",
     "latestAppsScriptAttempt": "run-42514976476;configuration-check-passed;actual-publish-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
@@ -86,8 +86,9 @@
     "cloudflareProductionDeployment": "success-deployment-107de2a2-d69c-4b9d-ae2c-38da68c7bad4;main-a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67;queued-initialize-clone-build-deploy-success",
     "appsScriptProductionDeployment": "skipped-run-42514976476;missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID;build-target-passed-no-production-publish",
     "latestAppsScriptAttemptRun": "42514976476;credential-check-passed;actual-publish-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
-    "credentialScan": "passed-run-42518373614;main-15c2535ad5fe;tracked-source-and-dist-pages-dist-cloudflare;no-recognized-matches;values-redacted",
-    "repositoryCiSecurityTask": "passed-run-42517885668;npm-audit-zero-vulnerabilities;credential-scan-no-recognized-matches;contract-tests-101-of-101;all-build-targets-success"
+    "credentialScan": "passed-run-42519574691;main-aca573500192;tracked-source-and-dist-pages-dist-cloudflare;no-recognized-matches;values-redacted",
+    "repositoryCiSecurityTask": "passed-run-42517885668;npm-audit-zero-vulnerabilities;credential-scan-no-recognized-matches;contract-tests-101-of-101;all-build-targets-success",
+    "ownerReviewPacketContract": "passed-run-42519333195;owner-review-packet-contract-included;105-of-105-contract-tests"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -154,7 +155,7 @@
     }
   },
   "blockers": [
-    "Phase 7 technical closeout is active: tracked-source/public-build credential scan is implemented and passed; finish manual public/private asset boundary review, external link safety and deployment-permission review, external social-crawler validation, Pages-source verification, Cloudflare automation, and rollback/recovery rehearsal.",
+    "Phase 7 technical closeout is active: tracked-source/public-build credential scan is implemented and passed; bilingual owner-review packet is prepared but pending approval; finish manual public/private asset boundary review, external link safety and deployment-permission review, external social-crawler validation, Pages-source verification, Cloudflare automation, and rollback/recovery rehearsal.",
     "External LinkedIn/Facebook social crawler rendering and cache-refresh validation for the 17 PNG social cards remains open.",
     "AetherFlow's public M07/M08 mismatch, duplicate Dashboard navigation, live API CORS acceptance, personal role attribution, and license choice remain unresolved; latest dashboard patch now labels Apps Script records synthetic.",
     "ORBIT's Cloudflare Worker is still not connected to a configured origin or secret; CF01-CF05 runtime acceptance remains open and must not be represented as live telemetry.",
@@ -167,7 +168,7 @@
     "Cloudflare GitHub Actions auto-deployment still requires the private CLOUDFLARE_API_TOKEN secret; the current production deployment succeeded through the authorized Cloudflare Pages API.",
     "Apps Script production publishing was skipped in run 42514976476 because CLASPRC_JSON, CLASP_JSON, and GAS_DEPLOYMENT_ID are not configured. The Apps Script build target passed; do not claim the Apps Script Web App was updated."
   ],
-  "nextAction": "Review docs/OWNER-REVIEW-PACKET.md and decide the outstanding biography/headline, AI Engineering positioning, project order, roles/statuses, contact channels, public media permissions, Salon Booking permission, and Novels catalog. Continue the remaining Phase 7 manual accessibility, physical-device, social crawler, Cloudflare automation, and rollback checks. Do not begin Phase 8 until the owner/device exit gate is satisfied.",
+  "nextAction": "Owner reviews docs/OWNER-REVIEW-PACKET.md and decides headline/biography, AI Engineering positioning, project order, roles/statuses, contacts, public media permissions, Salon Booking permission, and Novels content. Complete manual contrast, keyboard/screen-reader and physical Android checks, social crawler validation, Cloudflare automation, and rollback rehearsal. Do not start Phase 8 until the Phase 7 owner/device exit gate is met.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -194,8 +195,8 @@
         "quoted-credential-assignments",
         "credential-bearing-file-paths"
       ],
-      "lastRun": 42517885668,
-      "validatedCommit": "e7b5d2e4a592700ea309ff55f4428947cd7e2816",
+      "lastRun": 42519574691,
+      "validatedCommit": "aca573500192f8581896bde10e68ef82c0ca2256",
       "result": "passed-no-recognized-matches",
       "limitations": [
         "binary-file-contents-not-scanned",
@@ -555,7 +556,7 @@
     "socialPreviewCards": "17 PNG primary images plus 17 SVG source cards",
     "externalSocialPreviewValidation": "pending-authenticated-linkedin-facebook-crawler-and-cache-refresh",
     "actualUiScreenshots": "14 approved full-page desktop/mobile captures across seven projects published; AuraPulse and Salon Booking card assets now connected; GlobalCart full-page capture remains withheld pending storefront-grid repair",
-    "ownerContentApproval": "pending-owner-review-packet-prepared-2026-11-08",
+    "ownerContentApproval": "pending-owner-review-packet-prepared-and-merged-aca573500192",
     "fullSiteRedesign": "three previous implementation/feedback rounds exist; complete new Phase 8 redesign and explicit second-round approval still required",
     "keyboardSkipNavigation": "implemented-bilingual-home-and-case-study-routes-contract-passed-manual-review-pending",
     "novelLibrary": "implemented-with-empty-catalog; final titles, descriptions, manuscripts and covers pending Pooya",
@@ -571,7 +572,7 @@
     ],
     "projectIntegration": "deferred-to-phase-9-after-phase-8-redesign-approval; all-eight-project portfolio integration pending"
   },
-  "latestBranchHeadAtCheckpoint": "a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67",
+  "latestBranchHeadAtCheckpoint": "aca573500192f8581896bde10e68ef82c0ca2256",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -908,10 +909,10 @@
   "latestTask": "P7-12",
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-08",
-  "latestDocumentationCommit": "a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67",
-  "latestDocumentationCheckpoint": "PR #14 head 82dde47fd109cf4cf5d6dcfd0c722ded94406ec3 refreshes eight upstream heads and three-host evidence; docs-only; Browser QA validation pending.",
-  "latestRepositoryCiRun": "42515288490",
-  "latestBrowserQaRun": "42514976406",
+  "latestDocumentationCommit": "aca573500192f8581896bde10e68ef82c0ca2256",
+  "latestDocumentationCheckpoint": "Owner review packet merged in PR #16 at aca573500192f8581896bde10e68ef82c0ca2256; PR CI 42519333195 and Browser QA 42519333196 passed; post-merge main CI 42519574691 passed.",
+  "latestRepositoryCiRun": "42519574691",
+  "latestBrowserQaRun": "42519333196",
   "latestPerformanceBaseline": {
     "run": "42514976406",
     "attempt": 1,
@@ -1025,6 +1026,9 @@
       "Novels-content-or-empty-section-decision"
     ],
     "allProjectReviewStatesRemain": "needs-owner-review",
-    "approvalRecorded": false
+    "approvalRecorded": false,
+    "mergedAtMainCommit": "aca573500192f8581896bde10e68ef82c0ca2256",
+    "contractTestRun": 42519333195,
+    "browserQaRun": 42519333196
   }
 }

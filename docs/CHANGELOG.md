@@ -1,3 +1,10 @@
+## 2026-11-08 — Owner packet merged and post-merge verification
+
+- Merged bilingual [owner review packet](OWNER-REVIEW-PACKET.md) via PR [#16](https://github.com/pooya-labs/pooya-labs-platform/pull/16), main commit [`aca57350`](https://github.com/pooya-labs/pooya-labs-platform/commit/aca573500192f8581896bde10e68ef82c0ca2256).
+- Latest PR CI [42519333195](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42519333195) and main CI [42519574691](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42519574691) passed with **105/105 tests**, zero dependency vulnerabilities, and a clean credential scan.
+- Browser QA [42519333196](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42519333196) passed 18/18 routes, zero failures, and zero confirmed Axe violations; 36 incomplete contrast checks remain for human review.
+- The packet is not owner approval. All eight project review states remain pending; no new public content or media was authorized.
+
 ## 2026-11-08 — Bilingual owner review packet
 
 - Added `docs/OWNER-REVIEW-PACKET.md` to consolidate the current Persian/English homepage copy, presentation defaults, eight-project order, status labels, source-backed role wording, contacts, media inventory, public disclosure boundaries, and the empty Novels decision.
