@@ -320,13 +320,15 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
     const targets = Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'));
     if (!targets.length) return;
     root.classList.add('motion-ready');
+    // The portfolio is a dedicated scroll viewport; keep reveals tied to that viewport.
+    root.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
       }
-    }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
+    }, { root, threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
     targets.forEach((target) => observer.observe(target));
     return () => {
       observer.disconnect();
