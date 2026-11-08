@@ -2,10 +2,11 @@
 
 **Task ID:** P7-11  
 **Checkpoint date:** 2026-11-08  
-**Latest verified `main` HEAD:** `b429828f0ed8f967317934fffed32daffa7b6a5f`  
+**Latest verified `main` HEAD:** `5131660b0b3e0156ac350f6a9aafc648556fc814`  
 **Application motion commit:** `714d4ea2ea017189886ddb4e0d2e386e19edcaf3`  
 **Browser QA commit:** `549c6a3c66eade850d175cddad3a7b7dea5466e8`  
-**Latest documentation commit:** `b429828f0ed8f967317934fffed32daffa7b6a5f` (CI passed)  
+**Homepage Projects visibility fix:** `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`  
+**Browser QA harness:** `5131660b0b3e0156ac350f6a9aafc648556fc814`  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
 
 ## Product direction
@@ -28,6 +29,14 @@ Pooya Labs remains a personal engineering portfolio first. The visitor journey i
 - Mobile screenshot frames use native vertical touch scrolling and scroll chaining. A continuing swipe after the inner image reaches its lower edge can move the outer case-study page.
 - Reduced-motion styles disable decorative project-scene and project-card movement while keeping the visual content visible.
 - A bilingual hint explains the nested screenshot scroll interaction.
+
+## Additional completed bugfix — Android homepage Projects visibility (2026-11-08)
+
+- The Projects section, heading, and all eight project cards no longer use IntersectionObserver opacity gates. This prevents mobile Chromium/WebView scroll-root timing from leaving the entire grid or its first card hidden.
+- The compact project-specific card motion remains active.
+- Verified in Persian and English at desktop and mobile: 18/18 routes and 36/36 viewports passed; all four homepage-language/viewport combinations recorded opacity 1 for the section, heading, and first card. All eight cards showed active animations.
+- CI passed 92/92 tests. GitHub Pages deployment succeeded on the fix.
+- Physical Android browser review remains recommended; automated mobile tests use Chromium emulation.
 
 ## Verified evidence
 

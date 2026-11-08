@@ -9,12 +9,12 @@
   "currentTask": {
     "id": "P7-11",
     "title": "Physical Android review and owner motion approval",
-    "status": "P7-10 is implemented and automated checks passed. Eight dedicated case-study motion scenes and eight compact project-card scenes are active at desktop/mobile. Browser QA verified 16/16 localized mobile gallery routes with Chromium touch scroll chaining and 8/8 project cards animated at both viewports. Physical Android-device confirmation, owner visual acceptance, and manual accessibility checks remain open."
+    "status": "The homepage Projects visibility regression is fixed. Removed reveal/opacity gates from the Projects section, its heading, and all eight cards while preserving the animated card visuals. Browser QA passed 18/18 routes and 36/36 desktop/mobile viewports in Persian and English; the section, heading, and first card measured opacity 1 in all four homepage viewport/language combinations, and all eight cards retained active animations. CI passed 92/92 tests and GitHub Pages deployment succeeded. Physical Android-device confirmation, owner visual acceptance, and remaining manual accessibility checks are still open."
   },
   "lastCheckpointDate": "2026-11-08",
-  "latestVerifiedCodeCommit": "714d4ea2ea017189886ddb4e0d2e386e19edcaf3",
+  "latestVerifiedCodeCommit": "2305f5a68f1148c8293f6e3b55746c01eb52d8f2",
   "tests": {
-    "repositoryCi": "passed-run-42496528868-on-main-b429828f0ed8f967317934fffed32daffa7b6a5f;TypeScript;Pages-GAS-Cloudflare-build-targets;87-of-87-contract-tests",
+    "repositoryCi": "passed-run-42498428514-on-main-5131660b0b3e0156ac350f6a9aafc648556fc814;TypeScript;Pages-GAS-Cloudflare-build-targets;92-of-92-contract-tests",
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
@@ -22,14 +22,14 @@
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
     "githubPagesDeployment": "passed-run-42496014762-on-application-checkpoint-549c6a3c66eade850d175cddad3a7b7dea5466e8",
-    "platformTypecheck": "passed-run-42496113019-on-main-6e6ed8fd16813e2b21e605b84a888d23aaace073",
-    "pagesAndGasBuilds": "passed-run-42496113019;GitHub-Pages-and-Apps-Script-builds;Cloudflare-build",
+    "platformTypecheck": "passed-run-42498428514-on-main-5131660b0b3e0156ac350f6a9aafc648556fc814",
+    "pagesAndGasBuilds": "passed-run-42498428514;GitHub-Pages-and-Apps-Script-builds;Cloudflare-build",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "passed-artifact-13621507487;19-private-screenshots-opened;homepage-desktop-mobile;About-owner-wordmark-and-monogram-after-reveal;8-projects-Persian-and-English-desktop;manual-contrast-keyboard-screen-reader-review-still-pending",
     "vitePagesWorkflow": "passed-build-and-deploy-run-42491842070-on-main-377dbcbc2544976485f04fd1aeeb1b19d09d7bf7",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "GitHub Actions build and deploy succeeded on 2026-11-06 for source fc4d865b8fa4a19a3899f4b72847d39594c201ad; repository Pages source setting still requires owner-side confirmation",
-    "portfolioContractTests": "passed-87-of-87-run-42496528868-on-main-b429828f0ed8f967317934fffed32daffa7b6a5f",
+    "portfolioContractTests": "passed-92-of-92-run-42498428514-on-main-5131660b0b3e0156ac350f6a9aafc648556fc814",
     "latestPreviousPagesDeployment": "passed-run-42043972152",
     "docsCheckpoint": "passed-run-42496528868-on-main-b429828f0ed8f967317934fffed32daffa7b6a5f",
     "staticCaseStudyOutput": "passed-in-run-42072937855-16-pages-16-diagrams-17-png-cards-17-svg-sources-robots-sitemap-and-globalcart-screenshots",
@@ -39,9 +39,9 @@
     "staticCaseStudySectionOrder": "passed-run-42227942261-and-42230046270",
     "lastVerifiedTestCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
     "skipNavigationContract": "passed-run-42231110043-bilingual-fixed-position-reduced-motion",
-    "portfolioBrowserQa": "passed-run-42496014812-on-main-549c6a3c66eade850d175cddad3a7b7dea5466e8;17-routes;34-desktop-mobile-viewports;zero-failures;zero-horizontal-overflow;zero-confirmed-axe-violations;36-incomplete-human-review;8-of-8-project-cards-animated-on-desktop-and-mobile;16-of-16-localized-project-mobile-routes-touch-scroll-chaining-passed;reduced-motion-checked",
-    "portfolioBrowserQaArtifact": "13623776195",
-    "portfolioBrowserQaStrictGate": "run-42496014812;17-routes;34-viewports;zero-failures;zero-overflow;zero-axe-violations;36-incomplete-checks;all-8-project-card-scenes-animated-on-both-viewports;16-16-touch-handoff-passed",
+    "portfolioBrowserQa": "passed-run-42498428681-on-main-5131660b0b3e0156ac350f6a9aafc648556fc814;18-routes;36-desktop-mobile-viewports;zero-failures;zero-horizontal-overflow;zero-confirmed-axe-violations;40-incomplete-human-review;home-fa-en-project-grid-section-heading-first-card-opacity-1-on-desktop-mobile;8-of-8-project-cards-active-animations-on-all-homepage-viewports",
+    "portfolioBrowserQaArtifact": "13624393118",
+    "portfolioBrowserQaStrictGate": "run-42498428681;18-routes;36-viewports;zero-failures;zero-overflow;zero-axe-violations;40-incomplete-checks;projects-grid-heading-and-first-card-visible-in-fa-en-desktop-mobile;all-eight-project-card-scenes-active",
     "pagesArtifactAudit": "passed-run-42238363799-artifact-13511808294-17-html-17-png-1200x627-17-sitemap-urls-all-canonical-og-description-jsonld-and-case-study-hreflang",
     "pagesArtifactAuditDetails": {
       "artifactId": "13511808294",
@@ -63,16 +63,18 @@
     "latestVerifiedTestCommit": "a08de7ec138c8790134a177b20a80ca7af137699",
     "latestDocumentationCheckpoint": "passed-documentation-handoff-PR-8-merge-4df636da5d2662f95c3c6c30df3b7e18cd37f942;follow-up-main-CI-run-42476877083",
     "latestDetailedAxeReport": "run-42491842131-on-a08de7ec;zero-axe-violations;36-incomplete-rule-checks;19-private-visual-evidence-PNGs;About-wordmark-390x142-loaded-and-visually-reviewed",
-    "latestRepositoryCiRun": "42496528868",
-    "latestBrowserQaRun": "42496014812",
-    "latestPagesDeploymentRun": "42496014762",
+    "latestRepositoryCiRun": "42498428514",
+    "latestBrowserQaRun": "42498428681",
+    "latestPagesDeploymentRun": "42498199551",
     "latestCloudflareAttempt": "run-42491842068;CLOUDFLARE_API_TOKEN-not-configured;credential-check-passed;production-deploy-job-skipped",
     "latestAppsScriptAttempt": "run-42491842057;CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID-not-configured;configuration-check-passed;production-publish-job-skipped",
     "pendingProductMotionAndGalleryQa": "passed-run-42496014812",
     "pendingAndroidTouchHandoff": "chromium-mobile-touch-emulation-passed-16-of-16-localized-project-routes;physical-android-device-review-still-required",
-    "projectCardMotionQa": "passed-8-of-8-cards-at-desktop-and-8-of-8-at-mobile;run-42496014812;artifact-13623776195",
+    "projectCardMotionQa": "passed-8-of-8-cards-active-at-desktop-and-mobile-in-fa-and-en;run-42498428681;artifact-13624393118",
     "androidGalleryScrollChaining": "passed-16-of-16-localized-project-mobile-routes-in-chromium-touch-emulation;physical-android-confirmation-required",
-    "latestDocumentationCommit": "b429828f0ed8f967317934fffed32daffa7b6a5f"
+    "latestDocumentationCommit": "b429828f0ed8f967317934fffed32daffa7b6a5f",
+    "projectGridAndroidVisibility": "fixed-on-main-2305f5a68f1148c8293f6e3b55746c01eb52d8f2;projects-section-heading-and-first-card-opacity-1-in-fa-en-desktop-mobile;Browser-QA-run-42498428681;physical-Android-verification-still-recommended",
+    "androidHomepageProjectsQA": "passed-18-of-18-routes;36-of-36-viewports;zero-failures;home-fa-and-home-en-projects-section-heading-first-card-opacity-1;no-reveal-gates-on-section-heading-or-cards"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -132,7 +134,7 @@
     "The novels catalog is intentionally empty pending Pooya-provided titles, descriptions, covers, and manuscripts.",
     "Complete Phase 8 performance/security/accessibility/recovery review and rehearse rollback before requesting V1 approval. The site remains pre-alpha; no V1 tag is authorized."
   ],
-  "nextAction": "Review the updated motion and mobile screenshot scroll handoff on a physical Android device, approve the case-study and project-grid visuals, complete manual accessibility checks, and continue Phase 7 owner acceptance before Phase 8 hardening. No V1 release is approved.",
+  "nextAction": "Review the deployed homepage Projects section on a physical Android device and approve the case-study/project-card motion, then complete manual accessibility checks and proceed with Phase 8 hardening. The automated Chromium checks passed; no V1 release is approved.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -198,7 +200,7 @@
     "latestVerifiedImplementationCommit": "7a2d6c38731ea57e66bcedc5363566905ab5affe",
     "latestBrowserQaRun": "42483757051"
   },
-  "latestVerifiedCommit": "b429828f0ed8f967317934fffed32daffa7b6a5f",
+  "latestVerifiedCommit": "5131660b0b3e0156ac350f6a9aafc648556fc814",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -312,7 +314,7 @@
     "socialPreviewDimensions": "1200x627 (LinkedIn share preview recommendation)",
     "socialPreviewCardCount": 17
   },
-  "latestVerifiedTestCommit": "b429828f0ed8f967317934fffed32daffa7b6a5f",
+  "latestVerifiedTestCommit": "5131660b0b3e0156ac350f6a9aafc648556fc814",
   "caseStudyDossiers": {
     "bilingual": true,
     "projectCount": 8,
@@ -358,7 +360,7 @@
     "manualAccessibility": "36-incomplete-axe-rules-remain-for-human-review;34-color-contrast;2-aria-prohibited-attr;keyboard-and-screen-reader-review-pending",
     "v1Approval": "not-approved"
   },
-  "latestBranchHeadAtCheckpoint": "b429828f0ed8f967317934fffed32daffa7b6a5f",
+  "latestBranchHeadAtCheckpoint": "5131660b0b3e0156ac350f6a9aafc648556fc814",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -677,7 +679,7 @@
   },
   "latestTask": "P7-10",
   "latestTaskBranch": "main",
-  "lastUpdated": "2026-11-08T15:47:15Z",
-  "latestDocumentationCommit": "b429828f0ed8f967317934fffed32daffa7b6a5f",
-  "latestDocumentationCheckpoint": "passed-run-42496528868-on-b429828f0ed8f967317934fffed32daffa7b6a5f;TypeScript;three-build-targets;87-of-87-contract-tests"
+  "lastUpdated": "2026-11-08T16:11:11Z",
+  "latestDocumentationCommit": "5131660b0b3e0156ac350f6a9aafc648556fc814",
+  "latestDocumentationCheckpoint": "documentation handoff to record homepage Projects visibility fix, CI 92/92 and Browser QA 18/18"
 }

@@ -1,3 +1,13 @@
+## 2026-11-08 — Android homepage Projects visibility fix
+
+- Removed the IntersectionObserver reveal gate from the homepage Projects section, its heading, and all eight project cards. A long mobile section can no longer remain transparent because its full height never reaches an observer threshold.
+- Preserved the eight compact project-specific card animations; only the reveal dependency was removed.
+- Extended Browser QA to load the homepage independently in Persian and English and verify that the Projects section, heading, and first card all render at full opacity. It also checks all eight project-card animations at desktop and mobile widths.
+- Repository CI [42498428514](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428514) passed TypeScript, all three build targets, and **92/92 contract tests**.
+- Browser QA [42498428681](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428681) passed **18/18 routes** and **36/36 viewport checks**, with zero failures, zero horizontal overflow, and zero confirmed axe violations. The homepage Projects heading, section, and first card measured opacity 1 in Persian/English at both desktop/mobile widths; 8/8 cards retained active animations.
+- GitHub Pages deployment [42498199551](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498199551) passed for application commit `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`. QA harness and the final DOM-measurement correction are in `5131660b0b3e0156ac350f6a9aafc648556fc814`.
+- The automated mobile check uses Chromium mobile emulation; physical Android-device confirmation is still useful for final owner acceptance. No independent project repository was changed.
+
 ## 2026-11-08 — Product-aligned project motion and Android gallery handoff
 
 - Replaced the repeated abstract case-study hero treatment with eight product-specific compositions: AetherFlow execution stages, ORBIT service health and trace activity, Pooya.OS desktop windows, NexusCanvas service topology, LuminaGlass refraction controls, a clearly simulated AuraPulse market chart, GlobalCart product discovery/compare, and Salon Booking's appointment grid.
