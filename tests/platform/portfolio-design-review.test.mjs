@@ -61,7 +61,7 @@ test('the signal-orbit emerald monogram is used throughout the site identity', (
   assert.match(home, /portfolio-contact-github/);
   assert.match(home, /github\.com\/pooya-labs/);
   assert.match(favicon, /viewBox="0 0 96 96"/);
-  assert.match(favicon, /#30C49A/);
+  assert.match(favicon, /#35C99A/);
   assert.doesNotMatch(mark, /gold|metallic|#d8b36a|#fff3c9/i);
 });
 
@@ -103,7 +103,7 @@ test('the redesigned signal-orbit monogram and matching favicon replace the prev
   assert.match(mark, /linearGradient id="mark-fold"/);
   assert.match(mark, /linearGradient id="mark-orbit"/);
   assert.match(favicon, /viewBox="0 0 96 96"/);
-  assert.match(favicon, /#30C49A/);
+  assert.match(favicon, /#35C99A/);
   assert.doesNotMatch(mark, /#fff3c9|#e9bf76|#d8b36a/i);
 });
 
