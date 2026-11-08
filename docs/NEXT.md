@@ -109,3 +109,11 @@ Start with P3-08A and P3-08B; do not redo completed UI, novel-library, static SE
 - [x] Add checksum, PNG signature, dimensions, and exact artifact-run verification to the screenshot publishing workflow.
 - [ ] Merge the reviewed UI PR, allow the workflow to publish the 14 approved captures, then pin them in the case-study media gallery.
 - [ ] Review the updated live site with Pooya and collect round-two design feedback.
+
+
+## Immediate work — P7-08B
+
+1. Merge the reviewed full-page gallery references after Repository CI and Browser QA pass.
+2. Verify all 14 pinned images load on the live GitHub Pages site, including the AuraPulse simulated dashboard and Salon Booking public booking page.
+3. Check desktop and mobile case-study galleries for image sizing, keyboard scrolling, and caption localization.
+4. Ask Pooya for the second visual feedback round; keep the overall V1 approval gate open.
