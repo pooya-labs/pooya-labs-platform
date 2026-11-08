@@ -1,6 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 180" role="img" aria-label="Pooya Labs folded ribbon P mark">
-<defs><linearGradient id="emerald" x1="18" y1="10" x2="140" y2="165" gradientUnits="userSpaceOnUse"><stop stop-color="#d6fff0"/><stop offset=".24" stop-color="#00d994"/><stop offset=".52" stop-color="#58f0b7"/><stop offset=".78" stop-color="#007b5b"/><stop offset="1" stop-color="#00c88a"/></linearGradient><linearGradient id="fold" x1="35" y1="40" x2="102" y2="150" gradientUnits="userSpaceOnUse"><stop stop-color="#d8fff0" stop-opacity=".92"/><stop offset=".55" stop-color="#00c98c" stop-opacity=".55"/><stop offset="1" stop-color="#00664d" stop-opacity=".72"/></linearGradient></defs>
-<g fill="url(#emerald)" stroke="#70efc0" stroke-opacity=".65" stroke-width=".8" stroke-linejoin="round"><path d="M 15,14 L 14,16 L 15,19 L 14,38 L 15,39 L 27,39 L 28,38 L 34,38 L 35,39 L 40,39 L 41,38 L 46,39 L 82,39 L 83,38 L 112,39 L 119,41 L 126,45 L 136,56 L 135,60 L 130,66 L 113,78 L 98,85 L 63,85 L 62,89 L 62,127 L 65,126 L 81,114 L 106,110 L 124,103 L 132,98 L 141,89 L 145,83 L 151,67 L 151,52 L 148,42 L 141,31 L 128,20 L 115,15 L 110,15 L 109,14 Z"/><path d="M 97,54 L 96,55 L 83,55 L 82,54 L 28,54 L 27,55 L 15,55 L 14,60 L 14,83 L 13,84 L 13,169 L 28,158 L 49,140 L 49,86 L 98,55 Z"/></g>
-<path d="M14 84 28 84 49 86 49 140 28 158 14 169Z" fill="url(#fold)" opacity=".7"/>
-<path d="M28 39H82L112 39Q136 40 145 67Q143 81 124 96Q107 109 81 114L63 127V86H98Q126 77 136 56Q129 39 112 39Z" fill="none" stroke="#d9fff0" stroke-opacity=".24" stroke-width="1.2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="Pooya Labs monogram">
+  <defs>
+    <linearGradient id="gold" x1="22" y1="18" x2="133" y2="145" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff0c7"/><stop offset=".22" stop-color="#e8c77f"/><stop offset=".48" stop-color="#b9863b"/><stop offset=".7" stop-color="#f5dda0"/><stop offset="1" stop-color="#8b5d25"/>
+    </linearGradient>
+    <linearGradient id="fold" x1="45" y1="70" x2="88" y2="143" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff5d8" stop-opacity=".96"/><stop offset=".48" stop-color="#d9ad62" stop-opacity=".68"/><stop offset="1" stop-color="#76501f" stop-opacity=".9"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="30" y1="18" x2="128" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff8e4"/><stop offset=".55" stop-color="#d9b36d"/><stop offset="1" stop-color="#93662d"/>
+    </linearGradient>
+  </defs>
+  <path d="M24 20h69c25 0 43 16 43 39 0 25-21 43-52 43H73v37L24 160V20Zm49 27v30h12c15 0 24-6 24-16 0-9-7-14-19-14H73Z" fill="url(#gold)" stroke="url(#edge)" stroke-width="1.4" stroke-linejoin="round"/>
+  <path d="M24 91h49v48l-49 21V91Z" fill="url(#fold)"/>
+  <path d="M73 47h57c-5 10-13 18-24 24-9 5-20 7-33 7V47Z" fill="#fff1c9" opacity=".22"/>
+  <path d="M24 20h69c25 0 43 16 43 39 0 25-21 43-52 43H73" fill="none" stroke="#fff4d2" stroke-opacity=".42" stroke-width="1.2"/>
 </svg>
