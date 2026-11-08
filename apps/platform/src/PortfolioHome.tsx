@@ -158,7 +158,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
         <div className="portfolio-header-actions">
           <button className="portfolio-theme" type="button" onClick={() => onThemeChange(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? (rtl ? 'فعال‌کردن حالت روشن' : 'Switch to light mode') : (rtl ? 'فعال‌کردن حالت تیره' : 'Switch to dark mode')} title={theme === 'dark' ? (rtl ? 'حالت روشن' : 'Light mode') : (rtl ? 'حالت تیره' : 'Dark mode')}>{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}<span>{theme === 'dark' ? (rtl ? 'روشن' : 'Light') : (rtl ? 'تیره' : 'Dark')}</span></button>
           <button className="portfolio-language" onClick={() => { const nextLanguage = rtl ? 'en' : 'fa'; onLanguageChange(nextLanguage); if (import.meta.env.BASE_URL !== './') { window.history.replaceState({}, '', new URL(getProjectRouteHref(project.slug, nextLanguage), window.location.href)); } }}>{t.language}</button>
-          <button className="portfolio-workspace" onClick={onBack}><span>{t.backProjects}</span><ArrowUpLeft size={15} /></button>
+          <button className="portfolio-workspace" onClick={onBack} aria-label={t.backProjects} title={t.backProjects}><span>{t.backProjects}</span><ArrowUpLeft size={15} /></button>
         </div>
       </header>
       <main id="main-content" tabIndex={-1} className="case-study-main portfolio-container">
@@ -420,7 +420,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         <div className="portfolio-header-actions">
           <button className="portfolio-theme" type="button" onClick={() => onThemeChange(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? t.themeToggle : (rtl ? 'حالت تیره' : 'Switch to dark mode')} title={theme === 'dark' ? t.themeToggle : (rtl ? 'حالت تیره' : 'Dark mode')}>{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}<span>{theme === 'dark' ? (rtl ? 'روشن' : 'Light') : (rtl ? 'تیره' : 'Dark')}</span></button>
           <button className="portfolio-language" onClick={() => onLanguageChange(rtl ? 'en' : 'fa')}>{t.language}</button>
-          <button className="portfolio-workspace" onClick={onOpenWorkspace}><span>{t.workspace}</span><ArrowUpLeft size={15} /></button>
+          <button className="portfolio-workspace" onClick={onOpenWorkspace} aria-label={t.workspace} title={t.workspace}><span>{t.workspace}</span><ArrowUpLeft size={15} /></button>
         </div>
       </header>
 
