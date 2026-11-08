@@ -3,7 +3,10 @@
 - Added a zero-dependency repository quality command for JavaScript syntax/debugger checks and consistent source/config formatting.
 - Added `.editorconfig`, exposed `npm run lint` and `npm run format:check`, and wired both into Repository CI.
 - Added contributor workflow guidance and a release checklist that preserves the pre-alpha/V1 approval gates.
-- CI verification for this change is pending; see the pull request checks before treating the new commands as accepted.
+- Merged as [PR #12](https://github.com/pooya-labs/pooya-labs-platform/pull/12), main commit [`1746c11`](https://github.com/pooya-labs/pooya-labs-platform/commit/1746c11ee87fba4a37ea8fff0f548cb832fe4b22).
+- Repository CI [42504771438](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42504771438) passed the lint, format, TypeScript, all three build targets, and contract-test steps.
+- Browser QA [42504771467](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42504771467) passed; report artifact [13627206292](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42504771467).
+- No public UI or build output changed, so neither Pages host required a new deployment.
 
 ## 2026-11-08 — Accessibility semantics and Cloudflare production refresh
 
