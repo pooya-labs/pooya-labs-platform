@@ -47,6 +47,8 @@ jobs:
         run: npm run build
       - name: Build independent Cloudflare Pages bundle
         run: npm run build:cloudflare
+      - name: Scan tracked files and public build outputs for credentials
+        run: npm run security:secrets
       - name: Upload single-file Apps Script bundle
         uses: actions/upload-artifact@v7
         with:
