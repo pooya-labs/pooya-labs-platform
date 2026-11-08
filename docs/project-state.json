@@ -14,7 +14,7 @@
   "lastCheckpointDate": "2026-11-08",
   "latestVerifiedCodeCommit": "c7a86a2e2f54d157b7e0b806c9c022afd41fd208",
   "tests": {
-    "repositoryCi": "passed-run-42502717615-on-main-c7a86a2e2f54d157b7e0b806c9c022afd41fd208;TypeScript;Pages-GAS-Cloudflare-build-targets;93-of-93-contract-tests;no-Node20-deprecation-warning",
+    "repositoryCi": "passed-run-42504771438-PR12-quality-conventions;lint;format;TypeScript;Pages-GAS-Cloudflare-build-targets;contract-tests",
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
@@ -39,9 +39,9 @@
     "staticCaseStudySectionOrder": "passed-run-42227942261-and-42230046270",
     "lastVerifiedTestCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
     "skipNavigationContract": "passed-run-42231110043-bilingual-fixed-position-reduced-motion",
-    "portfolioBrowserQa": "passed-run-42502717608-on-main-c7a86a2e2f54d157b7e0b806c9c022afd41fd208;18-of-18-routes;36-of-36-viewports;zero-failures;zero-confirmed-axe-violations;36-incomplete-color-contrast;aria-prohibited-attr-fixed",
-    "portfolioBrowserQaArtifact": "13626247200",
-    "portfolioBrowserQaStrictGate": "run-42502717608;18-routes;36-viewports;zero-failures;zero-confirmed-axe-violations;36-incomplete-color-contrast-records;proof-stats-role-group-fixed",
+    "portfolioBrowserQa": "passed-run-42504771467-PR12-quality-conventions;Chromium-responsive-route-metadata-keyboard-and-reduced-motion-suite;report-artifact-13627206292",
+    "portfolioBrowserQaArtifact": "13627206292",
+    "portfolioBrowserQaStrictGate": "run-42504771467;full-browser-QA-job-success;see-artifact-13627206292",
     "pagesArtifactAudit": "passed-run-42238363799-artifact-13511808294-17-html-17-png-1200x627-17-sitemap-urls-all-canonical-og-description-jsonld-and-case-study-hreflang",
     "pagesArtifactAuditDetails": {
       "artifactId": "13511808294",
@@ -61,10 +61,10 @@
     "documentationCheckpoint": "passed-run-42496528868-on-b429828f0ed8f967317934fffed32daffa7b6a5f;state-roadmap-next-status-and-ADR-synchronized",
     "githubActionsRuntimeWarning": "none-observed-in-latest-successful-run-42502717615",
     "latestVerifiedTestCommit": "a08de7ec138c8790134a177b20a80ca7af137699",
-    "latestDocumentationCheckpoint": "passed-documentation-handoff-PR-8-merge-4df636da5d2662f95c3c6c30df3b7e18cd37f942;follow-up-main-CI-run-42476877083",
+    "latestDocumentationCheckpoint": "passed-quality-and-release-conventions-PR-12-merge-1746c11ee87fba4a37ea8fff0f548cb832fe4b22;CI-42504771438;Browser-QA-42504771467",
     "latestDetailedAxeReport": "run-42491842131-on-a08de7ec;zero-axe-violations;36-incomplete-rule-checks;19-private-visual-evidence-PNGs;About-wordmark-390x142-loaded-and-visually-reviewed",
-    "latestRepositoryCiRun": "42502717615",
-    "latestBrowserQaRun": "42502717608",
+    "latestRepositoryCiRun": "42504771438",
+    "latestBrowserQaRun": "42504771467",
     "latestPagesDeploymentRun": "42502717618",
     "latestCloudflareAttempt": "run-42491842068;CLOUDFLARE_API_TOKEN-not-configured;credential-check-passed;production-deploy-job-skipped",
     "latestAppsScriptAttempt": "run-42491842057;CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID-not-configured;configuration-check-passed;production-publish-job-skipped",
@@ -80,6 +80,7 @@
     "cloudflareGitAutoDeploySettings": "source-config-main-and-path-filters-enabled;push-trigger-not-observed;GitHub-Actions-deploy-job-skips-without-CLOUDFLARE_API_TOKEN",
     "githubActionsRuntimeMigration": "all-10-workflow-files-updated;checkout-v7.0.1-node24;setup-node-v7.1.0-node24;upload-artifact-v7.0.2-node24;upload-pages-artifact-v5.0.0;deploy-pages-v5.0.1-node24;CI-93-of-93;no-Node20-deprecation-warning",
     "accessibilitySemanticFix": "portfolio-proof-stats-role-group;aria-prohibited-attr-incomplete-removed-in-run-42502717608",
+    "repositoryQualityConventions": "merged-pr-12-1746c11;zero-dependency-lint-and-format-checks-in-CI;CONTRIBUTING-and-RELEASE-guides;no-application-output-changed",
     "accessibilityContrastReview": "36-incomplete-color-contrast-records-due-to-gradient-or-pseudo-backgrounds;zero-confirmed-axe-violations;human-contrast-review-pending"
   },
   "hosting": {
