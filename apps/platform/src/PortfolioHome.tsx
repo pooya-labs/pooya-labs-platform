@@ -1,4 +1,4 @@
-import { Activity, ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Github, Instagram, Layers3, Monitor, Moon, Send, Sun, TerminalSquare } from 'lucide-react';
+import { Activity, ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Camera, Layers3, Monitor, Moon, Send, Sun, TerminalSquare } from 'lucide-react';
 import { useEffect, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
 import { portfolioProjects as projects, type PortfolioProject } from './content/projects';
 import { coreDossiers } from './content/case-study-dossiers-core';
@@ -287,9 +287,9 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
           <a className="portfolio-brand" href="#top"><span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /></span><span><strong>POOYA LABS</strong><small>INDEPENDENT SOFTWARE BUILDER</small></span></a>
           <p>{t.footer}</p>
           <div className="portfolio-footer-socials">
-            <a href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={17} /> GitHub</a>
+            <a href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Code2 size={17} /> GitHub</a>
             <a href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><Send size={16} /> @pooyayee</a>
-            <a href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><Instagram size={16} /> @_p.ooya</a>
+            <a href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><Camera size={16} /> @_p.ooya</a>
           </div>
           <small>© {new Date().getFullYear()} POOYA LABS</small>
         </div>
@@ -631,9 +631,9 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
           <h2>{t.contactTitle}</h2>
           <p>{t.contactBody}</p>
           <div className="portfolio-contact-actions">
-            <a className="portfolio-primary portfolio-contact-github" href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer"><Github size={18} /><span>{t.contactAction}<small>github.com/pooya-labs</small></span><ArrowUpRight size={16} /></a>
+            <a className="portfolio-primary portfolio-contact-github" href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer"><Code2 size={18} /><span>{t.contactAction}<small>github.com/pooya-labs</small></span><ArrowUpRight size={16} /></a>
             <a className="portfolio-social-button" href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><Send size={17} /><span>{t.contactTelegram}<small>@pooyayee</small></span><ArrowUpRight size={15} /></a>
-            <a className="portfolio-social-button" href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><Instagram size={17} /><span>{t.contactInstagram}<small>@_p.ooya</small></span><ArrowUpRight size={15} /></a>
+            <a className="portfolio-social-button" href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><Camera size={17} /><span>{t.contactInstagram}<small>@_p.ooya</small></span><ArrowUpRight size={15} /></a>
           </div>
         </section>
       </main>
