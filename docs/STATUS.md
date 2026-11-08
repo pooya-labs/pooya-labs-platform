@@ -1,3 +1,11 @@
+## Post-merge verification — GitHub governance audit (2026-11-09)
+
+- PR [#22](https://github.com/pooya-labs/pooya-labs-platform/pull/22) merged to `main` as [`a009b4c`](https://github.com/pooya-labs/pooya-labs-platform/commit/a009b4c65b8ea964b4b43f39ed636f86d56ffe33).
+- PR Repository CI [42524475237](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524475237) passed on PR head `40bd71b5de28f1af6176679e4c64b18772a2730e). Browser QA [42524475250](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524475250) also passed responsive/routes/metadata/keyboard checks and cold-route measurements on the local build, GitHub Pages, and Cloudflare Pages. Report artifact: [13634757460](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524475250/artifacts/13634757460).
+- Post-merge main Repository CI [42524729014](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524729014) passed on the exact merged commit.
+- This was documentation and project-state maintenance only. No application bundle, public deployment, branch setting, ruleset, Actions secret, or independent project repository changed.
+- The governance finding is unchanged: `main` remains unprotected; the three reviewed-capture publishers still push directly to `main`. See [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md).
+
 ## GitHub workflow and repository-governance audit — 2026-11-09
 
 - Audited all ten `.github/workflows/*.yml` files on main revision `659189dd99af59154cbfd88ce5f9dcecb23e1e0e`.

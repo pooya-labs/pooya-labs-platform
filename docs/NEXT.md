@@ -2,8 +2,12 @@
 
 **Task ID:** P7-12  
 **Checkpoint date:** 2026-11-09  
-**Latest verified `main` docs checkpoint:** PR [#19](https://github.com/pooya-labs/pooya-labs-platform/pull/19) merged; current main HEAD is [`659189d`](https://github.com/pooya-labs/pooya-labs-platform/commit/659189dd99af59154cbfd88ce5f9dcecb23e1e0e). Main Repository CI [42523193131](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42523193131) passed; latest observed Browser QA remains PR #18 run [42522600586](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42522600586). See [Project Status](STATUS.md) and [project-state.json](project-state.json)  
+**Latest verified `main` docs checkpoint:** PR [#22](https://github.com/pooya-labs/pooya-labs-platform/pull/22) merged as [`a009b4c`](https://github.com/pooya-labs/pooya-labs-platform/commit/a009b4c65b8ea964b4b43f39ed636f86d56ffe33); merged-main Repository CI [42524729014](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524729014) passed. PR CI [42524475237](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524475237) and Browser QA [42524475250](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524475250) also passed on the PR head. See [Project Status](STATUS.md) and [project-state.json](project-state.json)  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
+
+## Post-merge verification — governance audit (2026-11-09)
+
+PR #22 merged as `a009b4c65b8ea964b4b43f39ed636f86d56ffe33`. PR CI [42524475237](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524475237), Browser QA [42524475250](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524475250), and post-merge main CI [42524729014](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524729014) passed. The browser report artifact is [13634757460](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524475250/artifacts/13634757460). Scope remained docs/state only; no public deployment changed.
 
 ## GitHub governance audit — 2026-11-09
 
