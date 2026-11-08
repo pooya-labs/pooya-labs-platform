@@ -211,13 +211,13 @@ const projectEntries: PortfolioProject[] = [
     slug: 'aura-pulse',
     name: 'AuraPulse',
     caseStudyHeroAsset: {
-      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/b0c538b2523daf96700b731a959d690dd3457f7e/apps/platform/public/interface-captures/aura-pulse/aura-pulse-desktop.png',
+      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/6deb62f48a8350f5ed293ac3dbcd27c9d30113dd/apps/platform/public/interface-captures/aurapulse/aurapulse-desktop.png',
       kind: 'interface',
       alt: { fa: 'تصویر واقعی محیط شبیه‌سازی AuraPulse با پنل Paper Trading و نمودار نمونه', en: 'Actual AuraPulse simulated workspace with a paper-trading panel and illustrative chart' },
     },
     caseStudyMedia: [
       {
-        url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/b0c538b2523daf96700b731a959d690dd3457f7e/apps/platform/public/interface-captures/aura-pulse/aura-pulse-mobile.png',
+        url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/6deb62f48a8350f5ed293ac3dbcd27c9d30113dd/apps/platform/public/interface-captures/aurapulse/aurapulse-mobile.png',
         caption: { fa: 'نمای موبایل داشبورد شبیه‌سازی AuraPulse', en: 'AuraPulse simulated dashboard on mobile' },
         alt: { fa: 'نمای موبایل داشبورد شبیه‌سازی AuraPulse', en: 'AuraPulse simulated dashboard on mobile' },
         device: 'mobile',
