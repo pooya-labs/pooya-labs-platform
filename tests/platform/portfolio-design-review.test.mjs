@@ -185,4 +185,6 @@ test('header contrast remains inspectable without a decorative pseudo-element ov
   assert.doesNotMatch(css, /\.portfolio-header::after/);
   assert.match(css, /\.portfolio-header\s*\{[\s\S]*?background:\s*var\(--pf-control-bg\)/);
   assert.match(css, /\.portfolio-nav\s*\{[\s\S]*?background:\s*var\(--pf-control-surface\)/);
+  assert.match(css, /--pf-control-bg:#0d1516/);
+  assert.match(css, /--pf-control-bg:#fffffc/);
 });

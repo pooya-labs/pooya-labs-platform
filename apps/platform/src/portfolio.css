@@ -1818,7 +1818,7 @@
   --pf-line:rgba(197,219,208,.13);--pf-line-strong:rgba(94,191,151,.3);
   --pf-text:#edf3ef;--pf-muted:#a6b4ac;--pf-dim:#78877f;
   --pf-cyan:#86d7b6;--pf-emerald:#46bf8e;--pf-gold:#46bf8e;
-  --pf-control-bg:rgba(13,21,22,.9);--pf-control-surface:rgba(255,255,255,.035);
+  --pf-control-bg:#0d1516;--pf-control-surface:rgba(255,255,255,.035);
   --pf-control-border:rgba(197,219,208,.14);--pf-control-text:#edf3ef;
   --pf-control-muted:#a6b4ac;--pf-control-shadow:0 15px 42px rgba(0,0,0,.25);
   height:100vh;height:100dvh;min-height:100vh;min-height:100dvh;max-height:100vh;max-height:100dvh;overflow-x:clip;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;scrollbar-gutter:stable;
@@ -1829,7 +1829,7 @@
   --pf-line:rgba(35,55,45,.13);--pf-line-strong:rgba(48,133,97,.24);
   --pf-text:#1b2922;--pf-muted:#52645a;--pf-dim:#728076;
   --pf-cyan:#26775a;--pf-emerald:#2c956d;
-  --pf-control-bg:rgba(255,255,252,.94);--pf-control-surface:rgba(24,48,35,.035);
+  --pf-control-bg:#fffffc;--pf-control-surface:rgba(24,48,35,.035);
   --pf-control-border:rgba(35,55,45,.14);--pf-control-text:#1b2922;
   --pf-control-muted:#58695f;--pf-control-shadow:0 12px 32px rgba(28,48,35,.1);
   background:radial-gradient(ellipse at 82% 5%,rgba(86,158,118,.09),transparent 34%),linear-gradient(180deg,#f5f6f2 0%,#f0f3ee 70%,#f7f7f3 100%);
