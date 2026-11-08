@@ -1,9 +1,9 @@
 # Project Status
 
-**Last updated:** 2026-11-07  
+**Last updated:** 2026-11-08  
 **Repository:** pooya-labs/pooya-labs-platform  
 **Branch:** main  
-**Current phase:** Phase 3 — Portfolio content architecture and case studies  
+**Current phase:** Phase 7 — Owner-led visual redesign and release review  
 **Release:** Pre-alpha / portfolio draft
 
 ## Repository checkpoint — 2026-11-07 18:17 UTC
@@ -162,3 +162,15 @@
 6. **Release design:** full-site redesign with two owner feedback rounds (Phase 7), followed by Phase 8 hardening and explicit V1 approval.
 
 No V1 release is authorized while these mandatory gates remain open.
+
+
+## Owner feedback — 2026-11-08: visual polish round 1
+
+- Pooya requested a more polished, graphic, motion-rich portfolio; the floating utility controls in the header are not accepted and must be replaced by a clearer compact control group.
+- The case-study desktop layout has a reported text containment defect. The implementation adds min-width-safe grids, wrapping, and bounded media frames.
+- The supplied Pooya P mark is the approved brand direction. A warm metallic-gold SVG treatment is selected as the primary mark; verify contrast in both themes.
+- Stripe's “The backbone of global commerce” section was inspected on the live desktop reference. Its hierarchy is a quiet headline/statistics band followed by an animated radial particle burst. A distinct Pooya Labs version uses truthful portfolio metrics (8 projects, 16 localized case-study routes, 2 interface languages, 3 publishing targets), with original CSS artwork.
+- Case-study media now supports paired desktop and mobile captures. Fresh full-page capture candidates are requested for all seven prior public demos plus Salon Booking's public customer journey.
+- Salon Booking admin routes and customer records are explicitly excluded from capture. Capture workflow output remains private artifact-only until visual/privacy review.
+- This feedback round is implemented on branch `feat/portfolio-polish-stripe-motion`; no independent project repository is modified.
+- This task is not final owner approval. Phase 7 remains open until Pooya reviews the revised desktop and mobile result and confirms the complete design.
