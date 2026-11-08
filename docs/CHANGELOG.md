@@ -1,3 +1,10 @@
+## 2026-11-08 — Phase 7 security and performance readiness
+
+- Added a dependency advisory audit gate (`npm audit --audit-level=high`) to Repository CI.
+- Added a cold-context Chromium performance probe for the English/Persian homepages and all eight English case-study routes at desktop and mobile sizes.
+- Added performance report output for TTFB, DOMContentLoaded, load, FCP/LCP, CLS, script/style/image/font bytes, route errors, and overflow; initial run is report-only pending baseline review.
+- Added the initial performance guardrail document and corrected local test/build command order in CONTRIBUTING.md.
+
 ## 2026-11-08 — Repository quality and release conventions
 
 - Added a zero-dependency repository quality command for JavaScript syntax/debugger checks and consistent source/config formatting.
