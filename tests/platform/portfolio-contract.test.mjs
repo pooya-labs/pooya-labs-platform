@@ -119,7 +119,9 @@ test('project artwork and interface screenshots are sourced from pinned commits 
   assert.match(projectData, /Case-study hero assets must be pinned to an immutable source commit/);
   assert.match(projectData, /Project visual asset URL/);
   assert.match(portfolio, /project-art-image/);
-  assert.doesNotMatch(portfolio, /case-study-visual-image/); // Case-study hero motion is the primary visual; full interface screenshots stay in the gallery.
+  assert.match(portfolio, /const heroVisual = project\.caseStudyHeroAsset \?\? project\.visualAsset/);
+  assert.match(portfolio, /case-study-visual-image visual-\$\{heroVisual\.kind\}/);
+  assert.match(portfolio, /heroVisual\.alt\[language\]/);
   assert.match(portfolio, /case-study-media-frame/);
   assert.match(portfolio, /loading="lazy"/);
   assert.match(portfolio, /onError=\{\(event\) => \{ event\.currentTarget\.remove\(\)/);
@@ -133,7 +135,7 @@ test('portfolio includes canonical, social, structured-data, and brand metadata'
   assert.match(metadata, /name="twitter:card"/);
   assert.match(metadata, /rel="canonical"/);
   assert.match(metadata, /application\/ld\+json/);
-  assert.match(metadata, /brand\/pooya-monogram\.webp/);
+  assert.match(metadata, /rel="icon"/);\n  assert.match(portfolio, /brand\\/pooya-monogram\\.webp/);
   assert.match(portfolio, /document\.title = pageTitle/);
   assert.match(portfolio, /og:url/);
   assert.match(portfolio, /link\[rel="canonical"\]/);
