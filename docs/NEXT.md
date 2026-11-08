@@ -2,7 +2,7 @@
 
 **Task ID:** P7-11  
 **Checkpoint date:** 2026-11-08  
-**Latest verified `main` HEAD:** `c7a86a2e2f54d157b7e0b806c9c022afd41fd208` (accessibility maintenance checkpoint; homepage Projects fix remains `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`)  
+**Latest verified application commit:** `c7a86a2e2f54d157b7e0b806c9c022afd41fd208` (the subsequent tooling/documentation merge `1746c11ee87f...` does not change public application output; homepage Projects fix remains `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`)  
 **Application motion commit:** `714d4ea2ea017189886ddb4e0d2e386e19edcaf3`  
 **Browser QA commit:** `549c6a3c66eade850d175cddad3a7b7dea5466e8`  
 **Homepage Projects visibility fix:** `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`  
@@ -48,7 +48,7 @@ Pooya Labs remains a personal engineering portfolio first. The visitor journey i
 | Check | Run / deployment | Result |
 |---|---:|---|
 | Repository CI | [42502717615](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717615) | Passed: TypeScript, all three build targets, 93/93 contract tests |
-| Browser QA | [42502717608](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717608) | Passed: 18/18 routes, 36/36 viewport checks, zero failures, zero confirmed axe violations |
+| Browser QA | [42504771467](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42504771467) | Passed on the quality-conventions PR; report artifact [13627206292](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42504771467) |
 | Accessibility report | Artifact [13626247200](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717608) | Four homepage `aria-prohibited-attr` findings removed; 36 remaining incomplete records are color-contrast checks on gradient/pseudo backgrounds |
 | Project-card motion | [Artifact 13624393118](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428681) | 8/8 project cards retain active motion at desktop and mobile in Persian and English |
 | GitHub Pages | [42502717618](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717618) | Build and deployment passed on `c7a86a2e2f54d157b7e0b806c9c022afd41fd208` |
