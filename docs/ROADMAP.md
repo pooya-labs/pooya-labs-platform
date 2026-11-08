@@ -120,3 +120,12 @@ This phase must not block V1. Source projects remain independent unless Pooya ex
 - [ ] Capture and visually/privacy-review full-page desktop and mobile screenshots for all public projects, including Salon Booking's customer route only.
 - [ ] Review the revised live preview with Pooya and record round-two feedback.
 - [ ] Obtain explicit approval of the complete redesigned site.
+
+
+### Phase 7 — responsive capture evidence (2026-11-08)
+
+- [x] Capture all public project demos at desktop and mobile sizes, including full-page screenshots and selected interactive views.
+- [x] Review the 14 approved full-page captures for visual quality and privacy.
+- [x] Add exact-run artifact verification and SHA-256/PNG dimension checks before publication.
+- [ ] Publish approved captures and connect them to the case-study galleries.
+- [ ] Obtain Pooya's round-two review of the live site before closing Phase 7.
