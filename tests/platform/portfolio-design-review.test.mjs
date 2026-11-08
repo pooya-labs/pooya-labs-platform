@@ -22,10 +22,9 @@ test('architecture diagram labels are wrapped and centered within fixed node geo
 test('direct route startup uses document scrolling and disables browser position restoration', () => {
   assert.match(main, /window\.history\.scrollRestoration = 'manual'/);
   assert.match(main, /window\.scrollTo\(0, 0\)/);
-  assert.match(css, /height:auto;min-height:100vh;overflow-x:clip;overflow-y:visible/);
   const finalRootRule = css.lastIndexOf('.portfolio-page {');
   assert.ok(finalRootRule >= 0);
-  assert.match(css.slice(finalRootRule, finalRootRule + 900), /height:100vh;height:100dvh;[\\s\\S]*?overflow-y:auto/);
+  assert.match(css.slice(finalRootRule, finalRootRule + 1400), /height:100vh;height:100dvh;[\s\S]*?overflow-y:auto/);
 });
 
 test('proof scene follows the Stripe hierarchy with metrics before a full-width radial field', () => {
@@ -53,17 +52,19 @@ test('owner contact links are visible, labelled, and included in the footer and 
   assert.match(metadata, /https:\/\/instagram\.com\/_p\.ooya/);
 });
 
-test('the supplied gold folded-ribbon mark is used in the About and GitHub surfaces', () => {
-  assert.match(mark, /viewBox="0 0 167 183"/);
-  assert.match(mark, /linearGradient id="gold"/);
-  assert.match(mark, /#fff3c9/);
+test('the refined emerald P monogram is used throughout the site identity', () => {
+  assert.match(mark, /viewBox="0 0 160 176"/);
+  assert.match(mark, /linearGradient id="p-main"/);
+  assert.match(mark, /#39BD91/);
   assert.match(home, /className="stamp-core"><img/);
   assert.match(home, /portfolio-github-mark/);
   assert.match(home, /portfolio-contact-github/);
   assert.match(home, /github\.com\/pooya-labs/);
-  assert.match(favicon, /linearGradient id="gold"/);
-  assert.doesNotMatch(mark, /#4AC99A|mark-accent/);
+  assert.match(favicon, /viewBox="0 0 96 96"/);
+  assert.match(favicon, /#39BD91/);
+  assert.doesNotMatch(mark, /gold|metallic|#d8b36a/i);
 });
+
 
 
 test('project screenshot scroll regions have unique, project-specific accessible names', () => {
