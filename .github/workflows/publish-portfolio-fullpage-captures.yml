@@ -37,7 +37,8 @@ jobs:
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
           const manifest = JSON.parse(fs.readFileSync(process.env.MANIFEST, 'utf8'));
-          // GlobalCart's current live collection grid contains blank product placeholders; retain its existing curated captures until that project is repaired.\n          const allowed = new Set(['aetherflow','orbit','pooya-os','nexus-canvas','lumina-glass','aurapulse','salon-booking']);
+          // GlobalCart's current live collection grid contains blank product placeholders; retain its existing curated captures until that project is repaired.
+          const allowed = new Set(['aetherflow','orbit','pooya-os','nexus-canvas','lumina-glass','aurapulse','salon-booking']);
           const expected = new Set([...allowed].flatMap((project) => ['desktop','mobile'].map((device) => project + ':' + device)));
           if (manifest.schemaVersion !== 1 || manifest.scope !== 'portfolio-fullpage-interface-captures') throw new Error('Unsupported approval manifest.');
           if (manifest.review?.outcome !== 'approved-for-portfolio-use') throw new Error('The owner has not approved publication.');
