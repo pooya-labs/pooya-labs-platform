@@ -18,9 +18,9 @@ npm install
 npm run lint
 npm run format:check
 npm run typecheck
-npm test
 npm run build
 npm run build:cloudflare
+npm test
 ```
 
 The lightweight lint and format checks are intentionally dependency-free. Lint checks JavaScript syntax and rejects committed `debugger` statements. Formatting checks enforce UTF-8, LF endings, a final newline, no trailing whitespace, and spaces for indentation across tracked source/config files. TypeScript correctness is checked separately by `typecheck`.
