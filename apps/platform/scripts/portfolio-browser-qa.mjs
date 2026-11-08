@@ -109,6 +109,10 @@ try {
       }
 
       await page.locator('main h1').first().waitFor({ state: 'visible', timeout: 10000 });
+      await page.locator('.portfolio-owner-attribution img').evaluate(async (image) => {
+        if (!(image instanceof HTMLImageElement)) throw new Error('Owner logo is not an image element.');
+        await image.decode();
+      });
       await page.evaluate(() => document.fonts?.ready);
       routeRecord.title = await page.title();
       const semantics = await page.evaluate(() => {
@@ -122,6 +126,12 @@ try {
           mainCount: document.querySelectorAll('main').length,
           canonical: canonical?.href ?? null,
           missingImageAltCount: document.querySelectorAll('img:not([alt])').length,
+          ownerAttributionCount: document.querySelectorAll('.portfolio-owner-attribution').length,
+          ownerAttributionText: document.querySelector('.portfolio-owner-attribution')?.innerText?.replace(/\s+/g, ' ').trim() ?? '',
+          ownerAttributionImage: (() => {
+            const image = document.querySelector('.portfolio-owner-attribution img');
+            return image instanceof HTMLImageElement ? { src: image.getAttribute('src'), loaded: image.complete && image.naturalWidth > 0 && image.naturalHeight > 0 } : null;
+          })(),
           initialWindowScrollY: window.scrollY,
           initialDocumentScrollTop: document.scrollingElement?.scrollTop ?? 0,
           initialPortfolioScrollTop: document.querySelector('.portfolio-page')?.scrollTop ?? 0,
@@ -206,6 +216,10 @@ try {
       routeRecord.headingCount = semantics.headingCount;
       routeRecord.mainId = semantics.mainId;
       routeRecord.missingImageAltCount = semantics.missingImageAltCount;
+      const ownerName = route.locale === 'fa' ? 'پویا مونوگرام' : 'POOYA MONOGRAM';
+      if (semantics.ownerAttributionCount !== 1) addFailure(route, null, 'Expected exactly one Pooya Monogram project-owner signature.');
+      if (!semantics.ownerAttributionText.includes(ownerName)) addFailure(route, null, 'Project-owner signature does not match the route language.');
+      if (!semantics.ownerAttributionImage?.src?.includes('brand/pooya-monogram-tile.svg') || !semantics.ownerAttributionImage.loaded) addFailure(route, null, 'Project-owner monogram tile is missing or failed to load.');
       if (route.label === 'home-en') routeRecord.thoughtfulWordLayout = semantics.thoughtfulWord;
 
       if (routeRecord.title.trim().length === 0) addFailure(route, null, 'Page title is empty.');

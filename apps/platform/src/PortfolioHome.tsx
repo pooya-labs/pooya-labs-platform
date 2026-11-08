@@ -10,6 +10,20 @@ import { NovelLibrarySection, NovelReader, loadNovelCatalog, localizedNovelText,
 type Language = 'fa' | 'en';
 type Theme = 'dark' | 'light';
 
+function OwnerAttribution({ language, assetBase }: { language: Language; assetBase: string }) {
+  const isPersian = language === 'fa';
+  return (
+    <a className="portfolio-owner-attribution" href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer">
+      <img src={`${assetBase}brand/pooya-monogram-tile.svg`} alt="" aria-hidden="true" width={42} height={42} decoding="async" />
+      <span className="portfolio-owner-attribution-copy">
+        <span className="portfolio-owner-attribution-label">{isPersian ? 'مالک پروژه' : 'PROJECT OWNER'}</span>
+        <strong>{isPersian ? 'پویا مونوگرام' : 'POOYA MONOGRAM'}</strong>
+        <span className="portfolio-owner-attribution-byline">{isPersian ? 'ایجاد و نگه‌داری: پویا گودرزی' : 'Created & maintained by Pooya Goodarzi'}</span>
+      </span>
+    </a>
+  );
+}
+
 function getProjectSlugFromLocation(): string | null {
   const querySlug = new URLSearchParams(window.location.search).get('project');
   if (querySlug) return querySlug;
@@ -474,13 +488,14 @@ export function ProjectCaseStudy({ project, language, onLanguageChange, theme, o
       <footer className="portfolio-footer">
         <div className="portfolio-footer-inner portfolio-container">
           <a className="portfolio-brand" href="#top"><span className="portfolio-brand-mark"><img src={`${baseUrl}brand/pooya-monogram.webp`} alt="" aria-hidden="true" /></span><span><strong>POOYA LABS</strong><small>INDEPENDENT SOFTWARE BUILDER</small></span></a>
+          <OwnerAttribution language={language} assetBase={baseUrl} />
           <p>{t.footer}</p>
           <div className="portfolio-footer-socials">
             <a href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Code2 size={17} /> GitHub</a>
             <a href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><Send size={16} /> @pooyayee</a>
             <a href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><img className="instagram-brand-icon" src={`${baseUrl}brand/instagram-glyph.svg`} alt="" aria-hidden="true" /> @_p.ooya</a>
           </div>
-          <small>© {new Date().getFullYear()} POOYA LABS</small>
+          <small>© {new Date().getFullYear()} POOYA MONOGRAM · POOYA LABS</small>
         </div>
       </footer>
     </div>
@@ -1040,9 +1055,10 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
 
       <footer className="portfolio-footer portfolio-container">
         <a className="portfolio-brand" href="#top"><span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-monogram.webp`} alt="" aria-hidden="true" /></span><span><strong>POOYA LABS</strong><small>PERSONAL PORTFOLIO</small></span></a>
+        <OwnerAttribution language={language} assetBase={import.meta.env.BASE_URL} />
         <span>{t.footer}</span>
         <a href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><Code2 size={17} /> GitHub</a>
-        <small>© {new Date().getFullYear()} POOYA LABS</small>
+        <small>© {new Date().getFullYear()} POOYA MONOGRAM · POOYA LABS</small>
       </footer>
     </div>
   );

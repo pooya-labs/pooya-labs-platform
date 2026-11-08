@@ -23,6 +23,10 @@ PR #22 merged as `a009b4c65b8ea964b4b43f39ed636f86d56ffe33`. PR CI [42524475237]
 
 PR [#18](https://github.com/pooya-labs/pooya-labs-platform/pull/18) merged to main as [`23f1689`](https://github.com/pooya-labs/pooya-labs-platform/commit/23f16896624ef391e284d3579a7f7278f5c8cbaf). Repository CI on the merged main commit [42522790018](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42522790018) passed. PR Browser QA [42522600586](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42522600586) passed responsive routes, metadata, keyboard checks, cold-route measurements, and published GitHub Pages/Cloudflare Pages measurements. The merge changed documentation and a contract test only; it did not alter the public app bundle or deploy either host.
 
+## Platform owner identity instruction — 2026-11-09
+
+The platform now uses **Pooya Monogram (پویا مونوگرام)** as its displayed owner identity with the centered black-tile logo on the homepage, bilingual case-study pages, bilingual README blocks, and structured metadata. **Pooya Goodarzi** is credited as creator and maintainer. Browser QA verified the signature and loaded tile on all 18 localized routes with 36/36 viewport checks and zero failures. This is the only newly confirmed public identity item; all eight project review states remain `needs-owner-review`, and the full-site approval and Phase 7–10 gates are unchanged.
+
 ## Release order (owner-requested)
 
 1. Finish Phase 7: all autonomous engineering, facts/source audit, accessibility, performance, security/privacy, SEO/social, deployment/recovery, and owner/device readiness preparation.

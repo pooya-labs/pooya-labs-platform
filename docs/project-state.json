@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P7-12",
     "title": "Complete readiness engineering and owner-input preparation before the penultimate redesign",
-    "status": "The 2026-11-09 GitHub workflow permission and branch-governance audit merged as a009b4c65b8ea964b4b43f39ed636f86d56ffe33 (PR #22). PR CI 42524475237, Browser QA 42524475250, and post-merge main Repository CI 42524729014 all passed. The audit remains a documentation-only checkpoint. Phase 7 is still active because main is unprotected, three reviewed-capture publishers push directly to main, and owner-side ruleset, manual accessibility/device, crawler, Pages-source, deployment-secret, rollback, and content-approval gates remain open."
+    "status": "The 2026-11-09 GitHub workflow permission and branch-governance audit merged as a009b4c65b8ea964b4b43f39ed636f86d56ffe33 (PR #22). PR CI 42524475237, Browser QA 42524475250, and post-merge main Repository CI 42524729014 all passed. The audit remains a documentation-only checkpoint. Phase 7 is still active because main is unprotected, three reviewed-capture publishers push directly to main, and owner-side ruleset, manual accessibility/device, crawler, Pages-source, deployment-secret, rollback, and content-approval gates remain open. The owner explicitly confirmed the platform brand identity as Pooya Monogram (پویا مونوگرام); the centered black-tile mark and bilingual owner attribution are being applied across public pages and project documentation. This narrow identity confirmation does not close Phase 7 or authorize V1."
   },
   "lastCheckpointDate": "2026-11-09",
   "latestVerifiedCodeCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
@@ -89,7 +89,9 @@
     "credentialScan": "passed-run-42519574691;main-aca573500192;tracked-source-and-dist-pages-dist-cloudflare;no-recognized-matches;values-redacted",
     "repositoryCiSecurityTask": "passed-run-42517885668;npm-audit-zero-vulnerabilities;credential-scan-no-recognized-matches;contract-tests-101-of-101;all-build-targets-success",
     "ownerReviewPacketContract": "passed-run-42519333195;owner-review-packet-contract-included;105-of-105-contract-tests",
-    "repositoryGovernanceAudit": "merged-PR-22;main-a009b4c65b8ea964b4b43f39ed636f86d56ffe33;10-workflows-reviewed;main-unprotected;rulesets-empty;three-capture-publishers-direct-push-main"
+    "repositoryGovernanceAudit": "merged-PR-22;main-a009b4c65b8ea964b4b43f39ed636f86d56ffe33;10-workflows-reviewed;main-unprotected;rulesets-empty;three-capture-publishers-direct-push-main",
+    "pooyaMonogramOwnerIdentityContract": "added-in-owner-attribution-change;Repository-CI-pending-final-head",
+    "pooyaMonogramOwnerAttributionBrowserQa": "18-localized-routes;36-viewports;zero-axe-violations;zero-failures;run-42525077051"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -1212,5 +1214,12 @@
     },
     "ownerActionRequired": true,
     "noSettingsOrSecretsChanged": true
+  },
+  "brandOwnership": {
+    "displayName": "Pooya Monogram",
+    "displayNameFa": "پویا مونوگرام",
+    "logo": "apps/platform/public/brand/pooya-monogram-tile.svg",
+    "individualCreatorAndMaintainer": "Pooya Goodarzi",
+    "approvalScope": "Platform brand-owner attribution only; independent project ownership and content approvals remain unchanged."
   }
 }

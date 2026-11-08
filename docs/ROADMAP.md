@@ -92,6 +92,7 @@ This phase is the work currently in progress. Complete every autonomous engineer
 - [ ] Complete the full feature/route, live-link, contribution, logo/media/source, caption, and alt-text acceptance for all eight projects. Final portfolio content/media integration remains Phase 9 work.
 - [ ] Keep every unverified claim, missing contribution statement, and unavailable runtime visibly bounded; never convert a prototype, simulated feed, synthetic demo, or unpublished service into a live/production claim.
 - [ ] Verify all current project links, logos, owner attributions, image sources, captions, and alt text against the newly rechecked upstream repositories.
+- [x] Apply Pooya's 2026-11-09 platform identity instruction: identify Pooya Monogram (پویا مونوگرام) as the platform owner, use the centered black-tile logo in the homepage/case-study footers and bilingual README ownership blocks, and expose the brand in structured metadata. This is a narrow identity confirmation only; it does not approve project-specific claims or media.
 - [x] Prepare the bilingual owner-review packet covering homepage copy, featured-project order, source-backed roles/statuses, contact channels, media, disclosure boundaries, and Novels decision; see [OWNER-REVIEW-PACKET.md](OWNER-REVIEW-PACKET.md). Preparation is complete; owner content/media approvals remain pending.
 - [ ] Confirm whether the empty novels library should stay hidden/empty or receive owner-provided content; do not invent titles, covers, or manuscripts.
 
