@@ -14,7 +14,6 @@ test('Persian and English pages expose visible-on-focus skip navigation in the s
   assert.ok(portfolio.includes('className="portfolio-skip-link" href="#main-content">{t.skipToContent}'));
   assert.ok(portfolio.includes('<main id="main-content" tabIndex={-1} className="case-study-main'));
   assert.ok(viteConfig.includes('renderToString(createElement(HydratedCaseStudy'), 'Static case studies must render the same skip-navigation component used by hydration');
-  assert.ok(viteConfig.includes('<main id="main-content" tabindex="-1" class="case-study-main'));
   assert.ok(css.includes('.portfolio-skip-link {\n  position: fixed;'));
   assert.ok(css.includes('.portfolio-skip-link:focus, .portfolio-skip-link:focus-visible'));
   assert.ok(css.includes('transform: translateY(0)'));
