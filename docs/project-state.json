@@ -330,7 +330,7 @@
     "projectIntegrationPhase": 9,
     "penultimateRedesignOwnerApproval": "pending"
   },
-  "latestVerifiedCommit": "c881275d67cb5a789e430137be9821cfcbacf311",
+  "latestVerifiedCommit": "31a1b8022e61e6b6ba8cc5d9c163bb2c3dbe149f",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -497,7 +497,7 @@
     ],
     "projectIntegration": "deferred-to-phase-9-after-phase-8-redesign-approval; all-eight-project portfolio integration pending"
   },
-  "latestBranchHeadAtCheckpoint": "c881275d67cb5a789e430137be9821cfcbacf311",
+  "latestBranchHeadAtCheckpoint": "31a1b8022e61e6b6ba8cc5d9c163bb2c3dbe149f",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -835,8 +835,8 @@
   "latestTask": "P7-12",
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-08",
-  "latestDocumentationCommit": "pending-documentation-commit",
-  "latestDocumentationCheckpoint": "PR #13 merged at application commit 045bc84526ef823a37599c6790d144d68465d35c; Browser QA 42513404040 attempt 2 and artifact 13630148273 verify p50/p75/maximum CLS 0 across local, GitHub Pages, and Cloudflare; Pages and Cloudflare production deployments verified.",
+  "latestDocumentationCommit": "31a1b8022e61e6b6ba8cc5d9c163bb2c3dbe149f",
+  "latestDocumentationCheckpoint": "Documentation checkpoint 31a1b802 records merged PR #13, post-remediation three-host performance (p50/p75/max CLS zero), current Pages and Cloudflare deployments, manual accessibility/physical-device follow-ups, and missing automation secrets; machine state synchronized in subsequent commit.",
   "latestRepositoryCiRun": "42513404028",
   "latestBrowserQaRun": "42513404040",
   "latestPerformanceBaseline": {
