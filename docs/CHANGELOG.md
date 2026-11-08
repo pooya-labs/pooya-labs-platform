@@ -207,3 +207,15 @@
 - Published 14 approved full-page desktop/mobile screenshots from seven public projects under `apps/platform/public/interface-captures/`.
 - Added immutable commit-pinned gallery references for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and Salon Booking.
 - Kept GlobalCart's existing curated screenshots in place while its current live catalog grid is repaired.
+
+
+## 2026-11-08 — Visual feedback round 3 and accessibility follow-up
+
+- Rebuilt the Pooya Labs visual system around a restrained graphite/ivory/emerald palette, a new minimal P monogram and favicon, a theme-aware header, and a redesigned contact/footer close.
+- Recreated the requested Stripe-inspired section hierarchy with a centered headline, four metric columns, and a full-width original animated SVG fan of rays and particles. The hero screenshot stage now drifts more slowly with reduced travel and respects reduced-motion preferences.
+- Fixed the underlying bilingual architecture SVG generator: node headings, details, and long diagram captions now wrap into bounded lines and use explicit RTL/LTR text direction. Direct project URLs now start at the top instead of restoring a stale scroll position.
+- Added Telegram `@pooyayee` and Instagram `@_p.ooya` contact links to the homepage/footer and profile metadata.
+- Connected the approved AuraPulse dashboard and Shayan Salon public booking captures to their homepage project cards and case-study media. Salon Booking admin/customer data remain excluded.
+- Merged PR [#6](https://github.com/pooya-labs/pooya-labs-platform/pull/6) for visual round 3 and PR [#7](https://github.com/pooya-labs/pooya-labs-platform/pull/7) for unique screenshot-landmark names. The latter removed 32 repeated `landmark-unique` moderate axe findings.
+- Validation on main `fa5d412506387622ca39df792fcaed62eb88cb67`: Repository CI **67/67 tests**, Browser QA **17/17 routes and 34/34 viewports with zero axe violations**, GitHub Pages/Cloudflare Pages/Apps Script deployments all succeeded.
+- Manual review is still required for 36 incomplete axe checks (34 color-contrast, 2 aria-prohibited-attr), keyboard/screen-reader behavior, external social-preview crawlers, and explicit owner V1 approval.
