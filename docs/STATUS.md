@@ -1,3 +1,11 @@
+## Phase 7 readiness implementation — security and performance probes (2026-11-08)
+
+- Added a cold-context Chromium performance probe for the bilingual homepage and all eight English project routes at 1440×1000 and 390×844 viewports.
+- The probe records TTFB, DOMContentLoaded, load, FCP, LCP, CLS, JS/CSS/image/font resource sizes, hidden cross-origin transfer-size entries, HTTP errors, and horizontal overflow. Initial run is report-only; budgets will be enforced after reviewing actual baseline data.
+- Added [PERFORMANCE-BUDGET.md](PERFORMANCE-BUDGET.md) with initial guardrails and explicit limitations; CI now uploads the JSON report as part of the existing private Browser QA artifact.
+- Added an npm audit high-severity gate to Repository CI. Its first result is pending; do not claim dependency security clearance until it passes and any findings are resolved.
+- Browser QA workflow now runs the performance probe after the existing responsive/accessibility/keyboard checks.
+
 ## Release sequence decision — 2026-11-08
 
 Pooya requested a strict final-stage order. The roadmap now reserves **Phase 8 for the complete redesign and its two owner approval rounds (penultimate stage)**, then **Phase 9 for full portfolio-level integration of all eight projects (last stage before publication)**, followed by **Phase 10 for V1 release**. Work is currently confined to Phase 7 readiness; final project media/content integration must not be pulled forward.
