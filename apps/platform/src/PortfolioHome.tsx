@@ -21,9 +21,9 @@ function getNovelSlugFromLocation(): string | null {
   return new URLSearchParams(window.location.search).get('novel');
 }
 
-function getProjectRouteHref(slug: string, language: Language): string {
-  if (import.meta.env.BASE_URL === './') return `?project=${encodeURIComponent(slug)}`;
-  return `${import.meta.env.BASE_URL}${language === 'en' ? 'en/' : ''}projects/${encodeURIComponent(slug)}/`;
+function getProjectRouteHref(slug: string, language: Language, baseUrl = import.meta.env.BASE_URL): string {
+  if (baseUrl === './') return `?project=${encodeURIComponent(slug)}`;
+  return `${baseUrl}${language === 'en' ? 'en/' : ''}projects/${encodeURIComponent(slug)}/`;
 }
 
 const proofRays = Array.from({ length: 112 }, (_, index) => {
@@ -354,12 +354,12 @@ function ProjectMotionScene({ slug, compact = false }: { slug: string; compact?:
   }
 }
 
-function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeChange, onBack }: { project: PortfolioProject; language: Language; onLanguageChange: (language: Language) => void; theme: Theme; onThemeChange: (theme: Theme) => void; onBack: () => void }): ReactNode {
+export function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeChange, onBack, baseUrl }: { project: PortfolioProject; language: Language; onLanguageChange: (language: Language) => void; theme: Theme; onThemeChange: (theme: Theme) => void; onBack: () => void; baseUrl: string }): ReactNode {
   const t = text[language];
   const rtl = language === 'fa';
   const dossier = ((coreDossiers as unknown as Record<string, CaseStudyDossier>)[project.slug] ?? (productDossiers as unknown as Record<string, CaseStudyDossier>)[project.slug])!;
   const architectureDiagram = architectureDiagrams[project.slug];
-  const architectureImage = import.meta.env.BASE_URL === './' ? null : `${import.meta.env.BASE_URL}architecture/${project.slug}${language === 'en' ? '-en' : ''}.svg`;
+  const architectureImage = baseUrl === './' ? null : `${baseUrl}architecture/${project.slug}${language === 'en' ? '-en' : ''}.svg`;
   const desktopCapture = project.caseStudyMedia?.find((item) => item.device === 'desktop') ?? project.caseStudyHeroAsset;
   const mobileCaptures = (project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop');
   return (
@@ -368,18 +368,18 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
       <div className="portfolio-atmosphere atmosphere-a" />
       <div className="portfolio-grid" />
       <header className="portfolio-header">
-        <a className="portfolio-brand" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}>
-          <span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-monogram.webp`} alt="" aria-hidden="true" /></span>
+        <a className="portfolio-brand" href={baseUrl} onClick={(event) => { event.preventDefault(); onBack(); }}>
+          <span className="portfolio-brand-mark"><img src={`${baseUrl}brand/pooya-monogram.webp`} alt="" aria-hidden="true" /></span>
           <span><strong>POOYA LABS</strong><small>PROJECT CASE STUDY</small></span>
         </a>
         <div className="portfolio-header-actions">
           <button className="portfolio-theme" type="button" onClick={() => onThemeChange(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? (rtl ? 'فعال‌کردن حالت روشن' : 'Switch to light mode') : (rtl ? 'فعال‌کردن حالت تیره' : 'Switch to dark mode')} title={theme === 'dark' ? (rtl ? 'حالت روشن' : 'Light mode') : (rtl ? 'حالت تیره' : 'Dark mode')}>{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}<span>{theme === 'dark' ? (rtl ? 'روشن' : 'Light') : (rtl ? 'تیره' : 'Dark')}</span></button>
-          <button className="portfolio-language" onClick={() => { const nextLanguage = rtl ? 'en' : 'fa'; onLanguageChange(nextLanguage); if (import.meta.env.BASE_URL !== './') { window.history.replaceState({}, '', new URL(getProjectRouteHref(project.slug, nextLanguage), window.location.href)); } }}>{t.language}</button>
+          <button className="portfolio-language" onClick={() => { const nextLanguage = rtl ? 'en' : 'fa'; onLanguageChange(nextLanguage); if (baseUrl !== './') { window.history.replaceState({}, '', new URL(getProjectRouteHref(project.slug, nextLanguage, baseUrl), window.location.href)); } }}>{t.language}</button>
           <button className="portfolio-workspace" onClick={onBack} aria-label={t.backProjects} title={t.backProjects}><span>{t.backProjects}</span><ArrowUpLeft size={15} /></button>
         </div>
       </header>
       <main id="main-content" tabIndex={-1} className="case-study-main portfolio-container">
-        <a className="case-study-back" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}><ArrowUpLeft size={15} />{t.backProjects}</a>
+        <a className="case-study-back" href={baseUrl} onClick={(event) => { event.preventDefault(); onBack(); }}><ArrowUpLeft size={15} />{t.backProjects}</a>
         <section className="case-study-hero" data-reveal="case-study-hero">
           <div className="case-study-visual">
             <ProjectMotionScene slug={project.slug} />
@@ -473,17 +473,126 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
       </main>
       <footer className="portfolio-footer">
         <div className="portfolio-footer-inner portfolio-container">
-          <a className="portfolio-brand" href="#top"><span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-monogram.webp`} alt="" aria-hidden="true" /></span><span><strong>POOYA LABS</strong><small>INDEPENDENT SOFTWARE BUILDER</small></span></a>
+          <a className="portfolio-brand" href="#top"><span className="portfolio-brand-mark"><img src={`${baseUrl}brand/pooya-monogram.webp`} alt="" aria-hidden="true" /></span><span><strong>POOYA LABS</strong><small>INDEPENDENT SOFTWARE BUILDER</small></span></a>
           <p>{t.footer}</p>
           <div className="portfolio-footer-socials">
             <a href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Code2 size={17} /> GitHub</a>
             <a href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><Send size={16} /> @pooyayee</a>
-            <a href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><img className="instagram-brand-icon" src={`${import.meta.env.BASE_URL}brand/instagram-glyph.svg`} alt="" aria-hidden="true" /> @_p.ooya</a>
+            <a href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><img className="instagram-brand-icon" src={`${baseUrl}brand/instagram-glyph.svg`} alt="" aria-hidden="true" /> @_p.ooya</a>
           </div>
           <small>© {new Date().getFullYear()} POOYA LABS</small>
         </div>
       </footer>
     </div>
+  );
+}
+
+
+export interface HydratedCaseStudyProps {
+  project: PortfolioProject;
+  language: Language;
+  baseUrl: string;
+}
+
+/**
+ * Server and browser share this exact component tree for direct case-study routes.
+ * Hydration preserves the crawler-readable HTML instead of clearing it on first paint.
+ */
+export function HydratedCaseStudy({ project, language: initialLanguage, baseUrl }: HydratedCaseStudyProps): ReactNode {
+  const [language, setLanguage] = useState<Language>(initialLanguage);
+  const [theme, setTheme] = useState<Theme>('dark');
+  const rtl = language === 'fa';
+
+  const changeLanguage = (nextLanguage: Language) => {
+    setLanguage(nextLanguage);
+    if (baseUrl !== './') {
+      window.history.replaceState({}, '', getProjectRouteHref(project.slug, nextLanguage, baseUrl));
+    }
+  };
+
+  const returnToPortfolio = () => {
+    window.location.href = baseUrl;
+  };
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+    document.documentElement.dir = rtl ? 'rtl' : 'ltr';
+    try {
+      window.localStorage.setItem('pooya-labs:language-v2', language);
+    } catch {
+      // Storage may be unavailable in restricted browsing contexts.
+    }
+    const title = rtl
+      ? `${project.name} | مطالعه پروژه در Pooya Labs`
+      : `${project.name} | Project Study — Pooya Labs`;
+    document.title = title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', project.description[language]);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', project.description[language]);
+    document.querySelector('meta[property="og:locale"]')?.setAttribute('content', language === 'fa' ? 'fa_IR' : 'en_US');
+    const canonicalUrl = new URL(getProjectRouteHref(project.slug, language, baseUrl), window.location.href);
+    canonicalUrl.hash = '';
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl.toString());
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonicalUrl.toString());
+  }, [baseUrl, language, project, rtl]);
+
+  useEffect(() => {
+    try {
+      const savedTheme = window.localStorage.getItem('pooya-labs:theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') setTheme(savedTheme);
+    } catch {
+      // Storage may be unavailable in restricted browsing contexts.
+    }
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    try {
+      window.localStorage.setItem('pooya-labs:theme', theme);
+    } catch {
+      // Storage may be unavailable in restricted browsing contexts.
+    }
+  }, [theme]);
+
+  useEffect(() => {
+    const syncLanguageFromRoute = () => {
+      setLanguage(/\\/en\\/projects\\//.test(window.location.pathname) ? 'en' : 'fa');
+    };
+    window.addEventListener('popstate', syncLanguageFromRoute);
+    return () => window.removeEventListener('popstate', syncLanguageFromRoute);
+  }, []);
+
+  useEffect(() => {
+    const root = document.querySelector<HTMLElement>('.portfolio-case-study');
+    if (!root || !('IntersectionObserver' in window)) return;
+    const targets = Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'));
+    if (!targets.length) return;
+    root.scrollTop = 0;
+    root.classList.add('motion-ready');
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    }, { root, threshold: 0, rootMargin: '0px 0px -3% 0px' });
+    targets.forEach((target) => observer.observe(target));
+    return () => {
+      observer.disconnect();
+      root.classList.remove('motion-ready');
+    };
+  }, [project.slug]);
+
+  return (
+    <ProjectCaseStudy
+      project={project}
+      language={language}
+      onLanguageChange={changeLanguage}
+      theme={theme}
+      onThemeChange={setTheme}
+      onBack={returnToPortfolio}
+      baseUrl={baseUrl}
+    />
   );
 }
 
@@ -613,7 +722,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
     document.documentElement.dir = rtl ? 'rtl' : 'ltr';
   }, [language, rtl]);
 
-  if (selectedProject) return <ProjectCaseStudy project={selectedProject} language={language} onLanguageChange={onLanguageChange} theme={theme} onThemeChange={onThemeChange} onBack={closeCaseStudy} />;
+  if (selectedProject) return <ProjectCaseStudy project={selectedProject} language={language} onLanguageChange={onLanguageChange} theme={theme} onThemeChange={onThemeChange} onBack={closeCaseStudy} baseUrl={import.meta.env.BASE_URL} />;
   if (selectedNovelSlug) return <NovelReader novel={selectedNovel} language={language} theme={theme} onThemeChange={onThemeChange} loading={novelCatalogLoading} error={novelCatalogError} onBack={closeNovel} />;
 
   return (
