@@ -2066,3 +2066,31 @@
   -webkit-overflow-scrolling: touch;
   scrollbar-gutter: stable;
 }
+
+
+/* Final identity correction: remove the old gold treatment from every use of the shared P mark. */
+.portfolio-page { --pf-gold:#46bf8e; --pf-gold-bright:#8ce9ce; }
+.portfolio-brand-mark {
+  border:1px solid rgba(84,207,157,.3)!important;
+  background:linear-gradient(145deg,rgba(61,175,125,.16),rgba(255,255,255,.025))!important;
+  box-shadow:0 8px 24px rgba(31,159,111,.12),inset 0 1px rgba(255,255,255,.12)!important;
+}
+.portfolio-brand-mark img {
+  display:block;width:90%!important;height:90%!important;object-fit:contain;
+  filter:drop-shadow(0 2px 8px rgba(31,159,111,.16))!important;
+}
+.stamp-core img,.portfolio-github-mark,.contact-github-mark {
+  filter:drop-shadow(0 2px 8px rgba(31,159,111,.17))!important;
+}
+.portfolio-theme svg { color:var(--pf-emerald)!important; }
+.portfolio-workspace {
+  color:#effbf5!important;border-color:rgba(72,191,143,.42)!important;
+  background:linear-gradient(115deg,#267d5e,#36a879)!important;
+  box-shadow:0 5px 18px rgba(39,154,108,.16)!important;
+}
+.portfolio-workspace:hover { background:linear-gradient(115deg,#2b916a,#43bb89)!important; }
+.portfolio-page[data-theme="light"] .portfolio-brand-mark {
+  background:linear-gradient(145deg,#e7f5ec,#fff)!important;
+  border-color:rgba(41,139,99,.27)!important;
+}
+.portfolio-page[data-theme="light"] .portfolio-workspace { color:#fff!important;background:#267657!important; }
