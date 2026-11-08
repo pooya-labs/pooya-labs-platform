@@ -1,6 +1,6 @@
 # Project content audit — pre-release source of truth
 
-**Last reviewed:** 2026-11-07  
+**Last reviewed:** 2026-11-08  
 **Purpose:** Separate facts supported by the eight source repositories from information/evidence still required before Pooya Labs V1.  
 **Rule:** Do not fill gaps with assumptions. Keep verified descriptions in the portfolio and keep missing items as release checklist tasks.
 
@@ -45,6 +45,23 @@ This table records branch heads only; it does not substitute for feature-level a
 - Lighthouse [42393731570](https://github.com/pooya-labs/globalcart/actions/runs/42393731570), post-deploy visual QA [42393731697](https://github.com/pooya-labs/globalcart/actions/runs/42393731697), and Shopify Catalog Smoke [42393731548](https://github.com/pooya-labs/globalcart/actions/runs/42393731548) passed on the current main snapshot. Portfolio screenshot publishing [42394145400](https://github.com/pooya-labs/globalcart/actions/runs/42394145400) was skipped.
 - The 1,000-product snapshot/galleries remain part of the M09.6 evidence. M09.8 still needs a real accessible-name fix and green exact-current-SHA Browser E2E, full gallery/PDP interaction acceptance, source-document handoff reconciliation, owner review of the 12 selected products and Persian editorial copy, and human physical-device/screen-reader/RTL-LTR review. Continue labeling generated catalog prices as GlobalCart estimates, not seller quotes. Do not tag 1.0.0.
 - Current GlobalCart has no open pull requests at the time of this recheck. Its independent source repository was not modified during this platform audit.
+
+## Latest upstream source deltas — 2026-11-08 (read-only)
+
+The following are the newest commits surfaced for the eight independent repositories during this readiness pass. Their diffs were inspected. This is a current-change inventory, not final feature acceptance; each exact source revision and its tests must be revalidated again during Phase 9, immediately before final project integration.
+
+| Project | Latest source commit inspected | Observed change |
+|---|---|---|
+| AetherFlow | [b7ee1de](https://github.com/pooya-labs/aetherflow/commit/b7ee1de0c300b6457958eadb04a93558f8cec196) | Apps Script dashboard records are now explicitly labelled synthetic demo data; do not describe this bridge data as live production telemetry. |
+| ORBIT | [161913b](https://github.com/pooya-labs/orbit/commit/161913be3134d8ad89d8cbb535b066c01768fbd1) | Documentation-only correction to Cloudflare D1 implementation gate numbering; the earlier fail-closed gateway/runtime limitations remain. |
+| Pooya.OS | [b3e4ee8](https://github.com/pooya-labs/pooya-os/commit/b3e4ee8f3a6352aa8d17320584570d9b8ec798e7) | Window frames now reserve additional footer/dock space, including mobile safe-area space. |
+| NexusCanvas | [ebcda40](https://github.com/pooya-labs/nexus-canvas/commit/ebcda40e0334822ab75a43093cd923f599bebfb5) | Removed an undefined footer language-variable reference; the new footer strings are fixed English copy and localized parity should be checked during final integration. |
+| LuminaGlass | [9c479da](https://github.com/pooya-labs/lumina-glass/commit/9c479da9c726d044f3482aa10fdc8aa27307d694) | Unified project marks, added missing AetherFlow/ORBIT/Salon Booking live links, and normalized the Salon Booking logo treatment. |
+| AuraPulse | [99f9048](https://github.com/pooya-labs/aurapulse/commit/99f90489f50d349be565640cf60738e181436245) | Footer ownership marks now reference the current Pooya Labs Platform monogram. |
+| GlobalCart | [2101f02](https://github.com/pooya-labs/globalcart/commit/2101f02cf60a0aba9291757a699d843c41455e1f) | Bot commit persists the product catalog snapshot, lockfile, and site imagery; no application-code fix is present in this commit, so the previously recorded accessible-name Browser E2E failures remain unverified/unresolved. |
+| Salon Booking | [fcd7b0f](https://github.com/pooya-labs/salon-booking/commit/fcd7b0fcfedf8f94227e164ef60ce74549fe1731) | The Pooya Labs Platform owner mark is now loaded from a local asset rather than a remote raw-GitHub URL. This does not authorize publication of customer/admin data. |
+
+No independent source repository was modified in this pass. The platform currently has draft case studies for all eight projects, but the final source refresh, feature evidence, owner-approved media, and complete portfolio-level integration are reserved for Phase 9, after Phase 8 redesign approval.
 
 ## Artifact-only project screenshots and motion reels — 2026-11-07
 
@@ -240,11 +257,10 @@ This table records branch heads only; it does not substitute for feature-level a
 
 ## Required order before V1
 
-1. Finish source-backed technical content and verify statuses against each current source repository.
-2. Complete the per-project evidence and owner-review tasks above; record unresolved items as blockers rather than writing around them.
-3. [x] Build crawler-readable Persian/English static case-study pages with canonical/hreflang/JSON-LD, 17 PNG social preview cards (homepage plus eight projects × two languages), and matching SVG sources. [x] Inspect the actual Pages artifact: all 17 generated HTML routes resolve, every sitemap entry has `lastmod` equal to the 2026-11-06 build date, canonical/OG/hreflang/JSON-LD metadata parses, and all 17 PNG cards have valid signatures and 1200×627 dimensions. [x] Confirm the deployed artifact omits the ten unused local screenshot duplicates while retaining immutable raw-GitHub image URLs; its ZIP size is 3,811,158 bytes (51.6% smaller than 7,870,673 bytes). [ ] Validate actual rendering and cache refresh with external LinkedIn/Facebook crawlers; source/artifact validation alone is not platform acceptance.
-4. Complete the full visual redesign with Pooya's first and second feedback rounds.
-5. Complete exact-SHA CI/Pages, accessibility, responsive, browser, performance, link, metadata, and manual acceptance checks.
-6. Obtain explicit owner approval and only then publish V1.
+1. **Phase 7 — readiness first:** complete platform engineering, source/factual audit, accessibility preparation, performance/security/privacy checks, SEO/social-crawler checks, deployment automation or a tested manual release path, rollback/recovery rehearsal, and all owner/device acceptance inputs that can be completed before redesign.
+2. **Phase 8 — penultimate:** perform a complete new visual redesign of the entire site, run two full owner feedback/approval rounds, and freeze the accepted direction.
+3. **Phase 9 — final pre-release integration:** refresh all eight upstream source SHAs again, then complete the portfolio-level integration of AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, GlobalCart, and Salon Booking—final bilingual case studies, source-backed facts, project-specific media, diagrams, demo links, and any justified interactive walkthroughs. Do not copy all independent source code into this repository by default.
+4. **Phase 10 — release:** rerun exact-SHA CI, Browser QA, accessibility, performance, security, SEO, deployment, rollback, and final owner checks against the fully integrated result before creating the V1 tag.
+5. Existing crawler-readable Persian/English static case-study pages, 17 PNG social cards, matching SVG sources, and the previously inspected Pages artifact are useful baseline assets, not proof that the redesigned/finally integrated V1 has passed. Validate final external LinkedIn/Facebook rendering and cache refresh after Phase 9.
 
 **Release rule:** no V1 tag or release while any mandatory checklist item above is unchecked. Do not publish unsupported role, skill, performance, live-service, or production-readiness claims.
