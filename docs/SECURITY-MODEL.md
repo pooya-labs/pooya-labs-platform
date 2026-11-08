@@ -41,6 +41,15 @@ A preventive, dependency-free scanner now runs in Repository CI after the Pages 
 
 **Limitations:** this is a high-confidence pattern scanner, not an exhaustive DLP tool. It does not inspect binary file contents, scan the full Git history, detect every unknown/custom token format, or rotate credentials. It must not be treated as proof that every secret is absent. Continue using private secret stores, review any alert, and manually inspect public/private asset boundaries and deployment permissions before release.
 
+## GitHub repository and Actions permissions — 2026-11-09
+
+The read-only governance audit is recorded in [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md).
+
+- The default `main` branch currently has no branch protection, no required status contexts, and no repository ruleset. This permits changes to reach `main` without an enforced PR/check gate.
+- All ten workflow files declare explicit token permissions. Validation/capture workflows are read-only; Pages has only its Pages/OIDC scopes; three capture publishers have `contents: write` and `actions: read`.
+- The capture publishers directly push reviewed artifacts to `main`. Any require-PR ruleset must account for those bot writes before activation.
+- This audit does not change repository settings or secrets. Main-branch protection is still an owner-side action and must be tested with a real PR.
+
 ## Threat scenarios and baseline controls
 
 | Threat | Baseline control before feature release |

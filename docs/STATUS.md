@@ -1,3 +1,12 @@
+## GitHub workflow and repository-governance audit — 2026-11-09
+
+- Audited all ten `.github/workflows/*.yml` files on main revision `659189dd99af59154cbfd88ce5f9dcecb23e1e0e`.
+- Validation and capture workflows declare `contents: read`; GitHub Pages declares only `contents: read`, `pages: write`, and `id-token: write`; the three reviewed-capture publishers declare `contents: write` and `actions: read`. No `actions: write`, `pull_request_target`, or `workflow_run` permission/trigger was found.
+- GitHub reports `main` as unprotected (`protected: false`, `protection.enabled: false`), with no required status contexts. The repository has no rulesets. This is a governance blocker, not a failed CI result.
+- Main Repository CI [42523193131](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42523193131) passed the exact `659189d` head. The latest observed Browser QA [42522600586](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42522600586) passed on PR #18.
+- The three capture publishers currently push verified assets directly to `main`. A PR-required ruleset would block those pushes unless the publisher design is changed or a GitHub Actions bypass is explicitly accepted. See [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md).
+- No branch setting, secret, application source, public bundle, or deployment was changed in this audit.
+
 ## Post-merge verification — source audit and owner packet (2026-11-09)
 
 - PR [#18](https://github.com/pooya-labs/pooya-labs-platform/pull/18) merged to `main` as commit [`23f1689`](https://github.com/pooya-labs/pooya-labs-platform/commit/23f16896624ef391e284d3579a7f7278f5c8cbaf).
@@ -64,7 +73,7 @@ Pooya requested a strict final-stage order. The roadmap now reserves **Phase 8 f
 
 # Project Status
 
-**Last updated:** 2026-11-08  
+**Last updated:** 2026-11-09  
 **Repository:** pooya-labs/pooya-labs-platform  
 **Branch:** main  
 **Current phase:** Phase 7 — Pre-redesign readiness and engineering closeout  

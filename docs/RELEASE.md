@@ -4,6 +4,7 @@ This checklist governs public portfolio releases. The current release remains **
 
 ## Before any public release
 
+- [ ] Confirm that the default `main` branch has an active governance ruleset and that required CI/Browser QA checks are enforced. Resolve the direct-`main` capture-publisher workflow path first; see [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md). A green Actions run alone does not prove branch protection is active.
 - [ ] Confirm the change is on the intended commit and the working tree/branch contains no unrelated work.
 - [ ] Pass `npm run lint`, `npm run format:check`, `npm run typecheck`, `npm test`, `npm run build`, and `npm run build:cloudflare`.
 - [ ] Pass the portfolio browser QA workflow for the expected Persian/English routes, desktop/mobile viewports, reduced-motion behavior, and gallery scroll chaining.

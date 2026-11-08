@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P7-12",
     "title": "Complete readiness engineering and owner-input preparation before the penultimate redesign",
-    "status": "The 2026-11-09 read-only source/release/PR audit and bilingual owner-packet refresh are merged to main in 23f16896624ef391e284d3579a7f7278f5c8cbaf. PR Browser QA and merged-main Repository CI passed. Phase 7 remains active: platform-specific manual accessibility/device, crawler, source-confirmation, deployment automation, rollback, and owner approval gates are open. Phase 8 redesign and Phase 9 project integration remain gated."
+    "status": "The 2026-11-09 upstream source/owner-packet audit is merged. The GitHub Actions permission audit is complete on main 659189dd99af59154cbfd88ce5f9dcecb23e1e0e; Repository CI 42523193131 passed. Phase 7 remains active because main is unprotected, three approved-capture workflows push directly to main, and owner-side ruleset, manual accessibility/device, crawler, Pages-source, deployment-secret, rollback, and content-approval gates remain open."
   },
   "lastCheckpointDate": "2026-11-09",
   "latestVerifiedCodeCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
@@ -88,7 +88,8 @@
     "latestAppsScriptAttemptRun": "42514976476;credential-check-passed;actual-publish-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
     "credentialScan": "passed-run-42519574691;main-aca573500192;tracked-source-and-dist-pages-dist-cloudflare;no-recognized-matches;values-redacted",
     "repositoryCiSecurityTask": "passed-run-42517885668;npm-audit-zero-vulnerabilities;credential-scan-no-recognized-matches;contract-tests-101-of-101;all-build-targets-success",
-    "ownerReviewPacketContract": "passed-run-42519333195;owner-review-packet-contract-included;105-of-105-contract-tests"
+    "ownerReviewPacketContract": "passed-run-42519333195;owner-review-packet-contract-included;105-of-105-contract-tests",
+    "repositoryGovernanceAudit": "passed-read-only-audit-2026-11-09;10-workflows;explicit-least-privilege-permissions;no-pull_request_target-or-workflow_run;main-unprotected;rulesets-empty;capture-publishers-direct-push-main"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -155,6 +156,7 @@
     }
   },
   "blockers": [
+    "GitHub main branch is unprotected and no rulesets are configured. The three reviewed-capture publisher workflows push directly to main; choose a PR-based GitHub App publisher or explicitly reviewed GitHub Actions bypass before activating a require-PR ruleset.",
     "Phase 7 technical closeout is active: the bilingual owner packet and current read-only upstream source inventory are prepared; manual contrast/keyboard/screen-reader and physical Android acceptance, social-crawler validation, Pages-source confirmation, deployment-permission/public-private asset review, Cloudflare automation, and rollback/recovery rehearsal remain open.",
     "External LinkedIn/Facebook social crawler rendering and cache-refresh validation for the 17 PNG social cards remains open.",
     "AetherFlow M08 remains experimental/in progress. Owner-confirmed live Apps Script private-Sheet persistence and 12-test browser QA are now recorded. The checked-in source correction for pending-only storage semantics still requires manual redeployment to the existing Apps Script Web App; production Rust ingress, PostgreSQL recovery, NATS server controls, SLOs and independent security review remain open.",
@@ -168,7 +170,7 @@
     "Cloudflare GitHub Actions auto-deployment still requires the private CLOUDFLARE_API_TOKEN secret; the current production deployment succeeded through the authorized Cloudflare Pages API.",
     "Apps Script production publishing was skipped in run 42514976476 because CLASPRC_JSON, CLASP_JSON, and GAS_DEPLOYMENT_ID are not configured. The Apps Script build target passed; do not claim the Apps Script Web App was updated."
   ],
-  "nextAction": "Review the refreshed bilingual docs/OWNER-REVIEW-PACKET.md and confirm the Pooya Labs site headline/biography, AI Engineering positioning, featured order, per-project public wording, contact channels, permitted personal assets, Salon Booking permission, and Novels decision. Separately complete the remaining Phase 7 platform-specific human contrast/keyboard/screen-reader and physical Android checks, social-crawler validation, Pages-source confirmation, Cloudflare Actions secret, and rollback rehearsal. Do not begin Phase 8 until Phase 7 exit inputs are explicitly accepted.",
+  "nextAction": "Choose and implement the reviewed-capture publisher governance path, configure/test an active main branch ruleset, then continue the remaining Phase 7 manual and deployment closeout gates.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -986,11 +988,11 @@
     "manualValidation": "Latest Browser QA artifact 13618234167 requires detailed axe review; manual contrast, keyboard-only, screen-reader, real-device, and external social-crawler validation remain open."
   },
   "latestTask": "P7-12",
-  "latestTaskBranch": "main",
+  "latestTaskBranch": "security/main-branch-governance-audit",
   "lastUpdated": "2026-11-09",
-  "latestDocumentationCommit": "23f16896624ef391e284d3579a7f7278f5c8cbaf",
-  "latestDocumentationCheckpoint": "merged-PR-18;main:23f16896624ef391e284d3579a7f7278f5c8cbaf;Repository-CI:42522790018;Browser-QA:42522600586",
-  "latestRepositoryCiRun": "42522790018",
+  "latestDocumentationCommit": "659189dd99af59154cbfd88ce5f9dcecb23e1e0e",
+  "latestDocumentationCheckpoint": "main-659189dd99af59154cbfd88ce5f9dcecb23e1e0e;governance-audit-prepared-on-branch",
+  "latestRepositoryCiRun": "42523193131",
   "latestBrowserQaRun": "42522600586",
   "latestPerformanceBaseline": {
     "run": "42514976406",
@@ -1168,5 +1170,47 @@
     "mergedPullRequest": 18,
     "postMergeRepositoryCiRun": "42522790018",
     "browserQaRun": "42522600586"
+  },
+  "repositoryGovernance": {
+    "auditDate": "2026-11-09",
+    "auditedMainHead": "659189dd99af59154cbfd88ce5f9dcecb23e1e0e",
+    "branchProtection": {
+      "protected": false,
+      "enabled": false,
+      "requiredStatusContexts": [],
+      "repositoryRulesets": 0
+    },
+    "workflowAudit": {
+      "workflowFiles": 10,
+      "readOnlyValidationAndCaptureWorkflows": 6,
+      "pagesWorkflowScopes": [
+        "contents:read",
+        "pages:write",
+        "id-token:write"
+      ],
+      "artifactPublishers": [
+        ".github/workflows/publish-portfolio-fullpage-captures.yml",
+        ".github/workflows/publish-reviewed-captures.yml",
+        ".github/workflows/publish-reviewed-portfolio-captures.yml"
+      ],
+      "artifactPublisherScopes": [
+        "contents:write",
+        "actions:read"
+      ],
+      "pullRequestTargetTriggers": 0,
+      "workflowRunTriggers": 0,
+      "actionsWriteScopes": 0
+    },
+    "currentObservedCheckNames": [
+      "Typecheck, three-target build, and contract tests",
+      "Chromium responsive and keyboard smoke"
+    ],
+    "verification": {
+      "mainRepositoryCiRun": 42523193131,
+      "latestBrowserQaRun": 42522600586,
+      "browserQaCommitIsCurrentMainHead": false
+    },
+    "ownerActionRequired": true,
+    "noSettingsOrSecretsChanged": true
   }
 }
