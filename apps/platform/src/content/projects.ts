@@ -29,7 +29,7 @@ export interface PortfolioProject {
     caption: { fa: string; en: string };
     alt: { fa: string; en: string };
     device: 'desktop' | 'mobile' | 'detail';
-  }>; 
+  }>;
   caseStudy: {
     challenge: { fa: string; en: string };
     approach: { fa: string; en: string };
