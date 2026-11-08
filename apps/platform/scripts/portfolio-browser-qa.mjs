@@ -110,6 +110,12 @@ try {
           initialDocumentScrollTop: document.scrollingElement?.scrollTop ?? 0,
           initialPortfolioScrollTop: document.querySelector('.portfolio-page')?.scrollTop ?? 0,
           scrollRestoration: history.scrollRestoration,
+          systemFieldCount: document.querySelectorAll('.portfolio-system-field').length,
+          systemNodeCount: document.querySelectorAll('.system-field-node').length,
+          craftSectionCount: document.querySelectorAll('.portfolio-craft').length,
+          craftPrincipleCount: document.querySelectorAll('.craft-principle').length,
+          heroTitleRunsIsolated: Array.from(document.querySelectorAll('.portfolio-hero-title .hero-title-line')).every((node) => node.getAttribute('dir') === 'auto'),
+          heroCapabilityTitleIsolated: document.querySelector('.portfolio-capabilities h2')?.getAttribute('dir') === 'auto',
         };
       });
       routeRecord.canonical = semantics.canonical;
@@ -128,6 +134,11 @@ try {
         addFailure(route, null, 'A direct route did not open at the top of the page.');
       }
       if (semantics.scrollRestoration !== 'manual') addFailure(route, null, 'Browser scroll restoration is not disabled for direct entry.');
+      if (route.label === 'home-en') {
+        if (semantics.systemFieldCount !== 1 || semantics.systemNodeCount !== 3) addFailure(route, null, 'The Systems in Motion section is incomplete.');
+        if (semantics.craftSectionCount !== 1 || semantics.craftPrincipleCount !== 4) addFailure(route, null, 'The craft-principles section is incomplete.');
+        if (!semantics.heroTitleRunsIsolated || !semantics.heroCapabilityTitleIsolated) addFailure(route, null, 'A first-page headline is not isolated from mixed bidirectional text.');
+      }
 
       for (const viewport of viewports) {
         await page.setViewportSize({ width: viewport.width, height: viewport.height });
