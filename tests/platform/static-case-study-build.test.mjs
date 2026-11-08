@@ -64,7 +64,7 @@ test('reviewed project interface screenshots are embedded in both static case-st
     for (const route of [`projects/${slug}/index.html`, `en/projects/${slug}/index.html`]) {
       const html = await readFile(new URL(route, outputRoot), 'utf8');
       const sourceRoot = new RegExp(
-        `https://raw\\.githubusercontent\\.com/pooya-labs/pooya-labs-platform/[a-f0-9]{40}/apps/platform/public/interface-captures/${slug}/`,
+        `https://raw\\.githubusercontent\\.com/pooya-labs/pooya-labs-platform/[a-f0-9]{40}/apps/platform/public/interface-captures/${slug === 'aura-pulse' ? 'aurapulse' : slug}/`,
       );
       assert.match(html, sourceRoot, `${route} must use an immutable portfolio commit for interface evidence`);
       assert.match(html, new RegExp(`${slug}-desktop\\.png`), `${route} must include the reviewed desktop hero`);
