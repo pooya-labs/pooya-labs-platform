@@ -107,6 +107,7 @@ This phase is the work currently in progress. Complete every autonomous engineer
 - [ ] Validate all 17 PNG social preview cards with external crawler/share clients and document which clients/cache refreshes were actually verified.
 - [ ] Confirm GitHub Pages source configuration and verify the canonical site serves the exact latest application build.
 - [ ] Enable and verify repeatable Cloudflare publishing through the private GitHub Actions secret, or document a tested owner-operated manual release path; never publish credentials in chat or source.
+- [x] Document independent GitHub Pages and Cloudflare Pages publish, smoke-test, and source-consistent rollback procedures in [STATIC-HOST-DEPLOYMENT.md](STATIC-HOST-DEPLOYMENT.md).
 - [ ] Rehearse a rollback/recovery for each public host and record exact steps, expected artifacts, and verification.
 - [ ] Run a final source/content audit checkpoint and synchronize STATUS, NEXT, CHANGELOG, and project-state.json.
 
