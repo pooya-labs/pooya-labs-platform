@@ -646,9 +646,25 @@
       },
       "salonPrivacy": "public customer journey only; admin and customer records excluded",
       "publication": "manifest and checksum-verified workflow added; publish after PR merge"
+    },
+    "galleryIntegration": {
+      "assetCommit": "eba5e2d02047375ae8a42514f7bbb58c75106ba7",
+      "publishedFullPageCaptures": 14,
+      "projects": [
+        "aetherflow",
+        "orbit",
+        "pooya-os",
+        "nexus-canvas",
+        "lumina-glass",
+        "aurapulse",
+        "salon-booking"
+      ],
+      "globalCart": "existing curated desktop/mobile images retained; full-page capture withheld pending catalog repair",
+      "gallery": "commit-pinned URLs; scrollable keyboard-accessible frames",
+      "review": "pending live-site verification and owner round-two review"
     }
   },
-  "latestTask": "P7-08A",
-  "latestTaskBranch": "feat/portfolio-polish-stripe-motion",
+  "latestTask": "P7-08B",
+  "latestTaskBranch": "feat/portfolio-fullpage-gallery",
   "lastUpdated": "2026-11-08"
 }
