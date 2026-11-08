@@ -60,3 +60,11 @@ test('the same minimal emerald P monogram is used for the brand mark and favicon
   assert.match(favicon, /#4AC99A/);
   assert.doesNotMatch(mark, /gold|metallic|#d8b36a/i);
 });
+
+
+test('project screenshot scroll regions have unique, project-specific accessible names', () => {
+  assert.doesNotMatch(home, /قاب اسکرول‌پذیر تصویر پروژه|Scrollable project screenshot frame/);
+  assert.match(home, /\$\{project\.name\} — نمای واقعی محیط دسکتاپ/);
+  assert.match(home, /\$\{project\.name\} — \$\{item\.caption\.fa\}/);
+  assert.match(home, /\$\{project\.name\} — \$\{item\.caption\.en\}/);
+});
