@@ -53,6 +53,7 @@ const text = {
     selected: 'کارهای منتخب',
     selectedSub: 'پروژه‌ها و آزمایش‌هایی که بخشی از مسیر یادگیری و مهندسی من هستند.',
     allProjects: '۸ پروژه در ویترین',
+    proofEyebrow: 'مقیاس کار', proofTitle: 'از ایده تا محصول، با شواهد واقعی.', proofSub: 'پروژه‌ها، مسیرهای مستند و محیط‌هایی که واقعاً ساخته و منتشر شده‌اند.', proofStat1: 'پروژه مستقل', proofStat2: 'صفحه مطالعه موردی', proofStat3: 'زبان رابط', proofStat4: 'مسیر انتشار',
     aboutEyebrow: 'کمی درباره من',
     aboutTitle: 'از طراحی محصول تا ساخت سیستم‌های نرم‌افزاری.',
     aboutBody: 'در پروژه‌هایم از رابط‌های تعاملی و ابزارهای بصری تا سیستم‌های توزیع‌شده، داشبوردهای داده و محصولات وب کار کرده‌ام. تلاشم این است که هر پروژه با معماری مشخص، مرزهای روشن، تست و توضیح صادقانه از وضعیت واقعی ارائه شود.',
@@ -104,6 +105,7 @@ const text = {
     selected: 'Selected work',
     selectedSub: 'Projects and experiments that are part of my engineering journey.',
     allProjects: '8 projects featured',
+    proofEyebrow: 'THE WORK, IN NUMBERS', proofTitle: 'Built with intent. Shown with evidence.', proofSub: 'Independent projects, documented case studies, and real interfaces across multiple runtimes.', proofStat1: 'Independent projects', proofStat2: 'Case-study routes', proofStat3: 'Interface languages', proofStat4: 'Publishing targets',
     aboutEyebrow: 'A little about me',
     aboutTitle: 'From product design to building software systems.',
     aboutBody: 'My projects span interactive interfaces and visual tools, distributed systems, data dashboards, and web products. I aim to present each one with a clear architecture, honest boundaries, testing, and an accurate account of its current state.',
@@ -145,6 +147,8 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
   const dossier = ((coreDossiers as unknown as Record<string, CaseStudyDossier>)[project.slug] ?? (productDossiers as unknown as Record<string, CaseStudyDossier>)[project.slug])!;
   const architectureDiagram = architectureDiagrams[project.slug];
   const architectureImage = import.meta.env.BASE_URL === './' ? null : `${import.meta.env.BASE_URL}architecture/${project.slug}${language === 'en' ? '-en' : ''}.svg`;
+  const desktopCapture = project.caseStudyMedia?.find((item) => item.device === 'desktop') ?? project.caseStudyHeroAsset;
+  const mobileCaptures = (project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop');
   return (
     <div className={`portfolio-page portfolio-case-study ${rtl ? 'is-rtl' : 'is-ltr'}`} data-theme={theme}>
       <a className="portfolio-skip-link" href="#main-content">{t.skipToContent}</a>
@@ -187,16 +191,15 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
             </div>
           </div>
         </section>
-        {(project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop').length > 0 && (
+        {(desktopCapture || mobileCaptures.length > 0) && (
           <section className="case-study-media-section" data-reveal="case-study-media">
-            <div className="portfolio-eyebrow"><span className="eyebrow-index">UI /</span>{t.interfaceCaptures}</div>
+            <div className="case-study-media-heading">
+              <div className="portfolio-eyebrow"><span className="eyebrow-index">UI /</span>{t.interfaceCaptures}</div>
+              <span className="case-study-media-note">REAL PRODUCT / RESPONSIVE VIEWS</span>
+            </div>
             <div className="case-study-media-grid">
-              {(project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop').map((item) => (
-                <figure className={`case-study-media-card device-${item.device}`} key={item.url}>
-                  <img src={item.url} alt={item.alt[language]} loading="lazy" decoding="async" />
-                  <figcaption>{item.caption[language]}</figcaption>
-                </figure>
-              ))}
+              {desktopCapture && <figure className="case-study-media-card device-desktop"><div className="case-study-media-frame"><img src={desktopCapture.url} alt={desktopCapture.alt[language]} loading="lazy" decoding="async" /></div><figcaption>{language === 'fa' ? 'نمای واقعی محیط دسکتاپ' : 'Actual desktop interface'}</figcaption></figure>}
+              {mobileCaptures.map((item) => <figure className={`case-study-media-card device-${item.device}`} key={item.url}><div className="case-study-media-frame"><img src={item.url} alt={item.alt[language]} loading="lazy" decoding="async" /></div><figcaption>{item.caption[language]}</figcaption></figure>)}
             </div>
           </section>
         )}
@@ -473,6 +476,12 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             ))}
           </div>
         </div>
+
+        <section className="portfolio-proof portfolio-container" aria-labelledby="portfolio-proof-title" data-reveal="portfolio-proof">
+          <div className="portfolio-proof-copy"><div className="portfolio-eyebrow"><span className="eyebrow-pulse" />{t.proofEyebrow}</div><h2 id="portfolio-proof-title">{t.proofTitle}</h2><p>{t.proofSub}</p></div>
+          <div className="portfolio-proof-visual" aria-hidden="true"><div className="proof-burst proof-burst-rays" /><div className="proof-burst proof-burst-core" /><div className="proof-burst proof-burst-particles" /><span className="proof-orbit proof-orbit-one" /><span className="proof-orbit proof-orbit-two" /></div>
+          <div className="portfolio-proof-stats"><article><strong>08<span>+</span></strong><small>{t.proofStat1}</small></article><article><strong>16</strong><small>{t.proofStat2}</small></article><article><strong>02</strong><small>{t.proofStat3}</small></article><article><strong>03</strong><small>{t.proofStat4}</small></article></div>
+        </section>
 
         <section className="portfolio-capabilities portfolio-container" aria-labelledby="capabilities-title" data-reveal="capabilities">
           <div className="portfolio-section-heading"><div><div className="portfolio-eyebrow"><span className="eyebrow-index">01 /</span>{t.capabilityEyebrow}</div><h2 id="capabilities-title">{t.capabilityTitle}</h2><p>{t.capabilitySub}</p></div><span className="portfolio-section-meta">DESIGN / SYSTEMS / TOOLS</span></div>
