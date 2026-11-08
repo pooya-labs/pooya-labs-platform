@@ -141,3 +141,13 @@ test('the English headline avoids a gradient-clipped inline wrapper for thoughtf
   assert.match(portfolioCss, /-webkit-text-fill-color:#79e5c5!important/);
   assert.match(portfolioCss, /white-space:nowrap!important/);
 });
+
+
+test('Browser QA captures and verifies the supplied horizontal wordmark in the About section', () => {
+  assert.match(script, /\.portfolio-about \.pooya-wordmark/);
+  assert.match(script, /image\.decode\(\)/);
+  assert.match(script, /ownerWordmark/);
+  assert.match(script, /home-en-about-desktop\.png/);
+  assert.match(script, /owner-designed POOYA — LABS wordmark did not load/);
+  assert.match(portfolioSource, /brand\/pooya-wordmark\.webp/);
+});

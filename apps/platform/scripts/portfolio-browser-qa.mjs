@@ -224,6 +224,33 @@ try {
           routeRecord.visualEvidence ??= [];
           routeRecord.visualEvidence.push(fileName);
         }
+        if (route.label === 'home-en' && viewport.name === 'desktop') {
+          const about = page.locator('.portfolio-about');
+          const wordmark = page.locator('.portfolio-about .pooya-wordmark');
+          await about.scrollIntoViewIfNeeded();
+          const wordmarkImage = await wordmark.evaluate(async (image) => {
+            if (image instanceof HTMLImageElement) await image.decode().catch(() => undefined);
+            return {
+              loaded: image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0,
+              naturalWidth: image instanceof HTMLImageElement ? image.naturalWidth : 0,
+              naturalHeight: image instanceof HTMLImageElement ? image.naturalHeight : 0,
+            };
+          });
+          routeRecord.ownerWordmark = wordmarkImage;
+          if (!wordmarkImage.loaded) addFailure(route, viewport.name, 'The owner-designed POOYA — LABS wordmark did not load in the About section.');
+          const aboutFile = 'home-en-about-desktop.png';
+          await about.screenshot({ path: path.join(artifactDir, aboutFile), animations: 'allow' });
+          routeRecord.visualEvidence.push(aboutFile);
+          await page.locator('.portfolio-page').evaluate((scroller) => {
+            if (scroller instanceof HTMLElement) {
+              const previousBehavior = scroller.style.scrollBehavior;
+              scroller.style.scrollBehavior = 'auto';
+              scroller.scrollTop = 0;
+              scroller.style.scrollBehavior = previousBehavior;
+            }
+          });
+          await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+        }
         const motionState = await page.evaluate(() => {
           const art = document.querySelector('.case-study-motion-art');
           if (!art) return { activeAnimationCount: 0, animationNames: [], opacity: null };
