@@ -2,11 +2,12 @@
 
 **Task ID:** P7-11  
 **Checkpoint date:** 2026-11-08  
-**Latest verified `main` HEAD:** `5131660b0b3e0156ac350f6a9aafc648556fc814`  
+**Latest verified `main` HEAD:** `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746` (documentation-only checkpoint; application fix remains `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`)  
 **Application motion commit:** `714d4ea2ea017189886ddb4e0d2e386e19edcaf3`  
 **Browser QA commit:** `549c6a3c66eade850d175cddad3a7b7dea5466e8`  
 **Homepage Projects visibility fix:** `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`  
 **Browser QA harness:** `5131660b0b3e0156ac350f6a9aafc648556fc814`  
+**Cloudflare production deployment:** `efa5ecb4-356d-4112-be60-31401506d940` from `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746` (build and deploy succeeded)  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
 
 ## Product direction
@@ -40,19 +41,20 @@ Pooya Labs remains a personal engineering portfolio first. The visitor journey i
 
 ## Verified evidence
 
-| Check | Run | Result |
+| Check | Run / deployment | Result |
 |---|---:|---|
-| Repository CI | [42496113019](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496113019) | Passed: TypeScript, three build targets, 87/87 tests |
-| Browser QA | [42496014812](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496014812) | Passed: 17/17 routes, 34/34 viewport checks, zero failures |
-| Project-card motion | Browser QA artifact [13623776195](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496014812) | 8/8 cards animated at desktop and 8/8 at mobile |
-| Gallery touch chaining | Browser QA artifact [13623776195](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496014812) | 16/16 localized project mobile routes passed |
-| GitHub Pages | [42496014762](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496014762) | Build and deployment passed |
+| Repository CI | [42498895229](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498895229) | Passed on latest main docs checkpoint; TypeScript, all three build targets, and contract suite |
+| Browser QA | [42498428681](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428681) | Passed: 18/18 routes, 36/36 desktop/mobile viewports, zero failures or horizontal overflow |
+| Project-card motion | [Artifact 13624393118](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428681) | 8/8 project cards retain active motion at desktop and mobile in Persian and English |
+| GitHub Pages | [42498199551](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498199551) | Build and deployment passed on the homepage visibility fix |
+| Cloudflare Pages | [Production deployment `efa5ecb4`](https://efa5ecb4.pooya-labs-platform.pages.dev/) | Build and deploy succeeded from main commit `a0bac438`; canonical alias is `pooya-labs-platform.pages.dev` |
+| Cloudflare Git integration | Cloudflare Pages project settings | Production auto-deploy enabled for `main` and app paths; preview deployments remain disabled |
 
-The Browser QA report recorded zero axe violations, but 36 axe checks are incomplete rather than passed; they still require a human contrast/ARIA review. The automated touch gesture ran in desktop Chromium's mobile emulation and is not a physical Android-device test.
+The latest Browser QA report recorded zero confirmed axe violations, but **40 axe checks are incomplete rather than passed**; they still require a human contrast/ARIA review. Automated mobile testing uses Chromium emulation, not a physical Android phone.
 
 ## Immediate next steps
 
-1. Review the live preview on a physical Android phone using Chrome (and Samsung Internet if available). Swipe within a long mobile screenshot to its bottom, then continue the same gesture and confirm the page advances.
+1. Review both live hosts on a physical Android phone using Chrome (and Samsung Internet if available): [GitHub Pages](https://pooya-labs.github.io/pooya-labs-platform/) and [Cloudflare Pages](https://pooya-labs-platform.pages.dev/). Swipe within a long mobile screenshot to its bottom, then continue the same gesture and confirm the page advances.
 2. Check that each of the eight case-study animations feels relevant and remains legible on the actual device; verify reduced-motion and battery/performance behavior.
 3. Review the two homepage project-grid captures and approve the visual scale/timing of all eight card animations.
 4. Complete manual contrast, focus visibility, keyboard-only, and screen-reader checks in both languages and themes.
@@ -68,4 +70,4 @@ The Browser QA report recorded zero axe violations, but 36 axe checks are incomp
 
 ## Release gate
 
-P7-10's implementation and automated regression checks are complete. P7-11 still requires physical Android review and owner acceptance. The portfolio remains **pre-alpha / portfolio draft**; no V1 tag is authorized.
+P7-10's implementation and automated regression checks are complete. P7-11 still requires physical Android review and owner acceptance. Both public static hosts now have the current application revision. The portfolio remains **pre-alpha / portfolio draft**; no V1 tag is authorized until physical-device review, owner approval, content sign-off, and manual accessibility/release checks are complete.

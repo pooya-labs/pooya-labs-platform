@@ -1,3 +1,12 @@
+## 2026-11-08 — Cloudflare production parity restored
+
+- Published the current `main` application to the existing Cloudflare Pages project `pooya-labs-platform`, replacing the stale 2026-11-06 production build.
+- Cloudflare deployment [`efa5ecb4`](https://efa5ecb4.pooya-labs-platform.pages.dev/) (ID `efa5ecb4-356d-4112-be60-31401506d940`) was created from commit `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746`; the API reported successful `build` and `deploy` stages.
+- Enabled the connected GitHub production deployment for `pooya-labs/pooya-labs-platform` on `main`. App changes under `apps/platform/**` and root `package.json` now trigger Cloudflare production deployments automatically; preview-branch deployments remain disabled.
+- The deploy also contains the Android homepage Projects visibility fix and the current product-specific motion/case-study redesign. The canonical Cloudflare host is [pooya-labs-platform.pages.dev](https://pooya-labs-platform.pages.dev/).
+- Repository CI [42498895229](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498895229) passed on the documentation checkpoint `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746`. The runtime fix's Browser QA [42498428681](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428681) passed 18/18 routes and 36/36 viewports; 40 axe checks remain incomplete for human review.
+- Physical Android review, motion approval, owner content approval, and manual accessibility checks remain open. No V1 release is claimed.
+
 ## 2026-11-08 — Android homepage Projects visibility fix
 
 - Removed the IntersectionObserver reveal gate from the homepage Projects section, its heading, and all eight project cards. A long mobile section can no longer remain transparent because its full height never reaches an observer threshold.

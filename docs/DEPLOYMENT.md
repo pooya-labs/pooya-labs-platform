@@ -1,6 +1,6 @@
 # Deployment Plan — independent Pages hosts and HtmlService proof
 
-No production deployment has been configured. The owner's current Apps Script deployment is a Phase 0 proof only.
+The public portfolio is deployed to GitHub Pages and mirrored on Cloudflare Pages. Cloudflare Pages now auto-deploys production changes from the connected GitHub `main` branch; the latest verified Cloudflare production build is deployment `efa5ecb4` from commit `a0bac438`. The owner's Apps Script deployment remains a separate Phase 0 HtmlService/RPC proof, not a production backend.
 
 ## Hosting roles
 1. **GitHub Pages:** existing public static portfolio host, with canonical subpath `/pooya-labs-platform/`.

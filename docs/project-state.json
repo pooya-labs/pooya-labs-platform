@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P7-11",
     "title": "Physical Android review and owner motion approval",
-    "status": "The homepage Projects visibility regression is fixed. Removed reveal/opacity gates from the Projects section, its heading, and all eight cards while preserving the animated card visuals. Browser QA passed 18/18 routes and 36/36 desktop/mobile viewports in Persian and English; the section, heading, and first card measured opacity 1 in all four homepage viewport/language combinations, and all eight cards retained active animations. CI passed 92/92 tests and GitHub Pages deployment succeeded. Physical Android-device confirmation, owner visual acceptance, and remaining manual accessibility checks are still open."
+    "status": "The Android homepage Projects visibility regression is fixed; Browser QA passed 18/18 routes and 36/36 desktop/mobile viewports in Persian and English, with all eight project-card animations active. CI passed 92/92 tests. Cloudflare Pages production was brought up to the current main application tree in deployment efa5ecb4 (build and deploy stages successful), and native GitHub main-branch production auto-deployment is enabled for apps/platform/** and package.json; preview deployments remain disabled. Physical Android-device confirmation, owner visual/content acceptance, and manual accessibility checks are still open."
   },
   "lastCheckpointDate": "2026-11-08",
   "latestVerifiedCodeCommit": "2305f5a68f1148c8293f6e3b55746c01eb52d8f2",
@@ -74,7 +74,10 @@
     "androidGalleryScrollChaining": "passed-16-of-16-localized-project-mobile-routes-in-chromium-touch-emulation;physical-android-confirmation-required",
     "latestDocumentationCommit": "b429828f0ed8f967317934fffed32daffa7b6a5f",
     "projectGridAndroidVisibility": "fixed-on-main-2305f5a68f1148c8293f6e3b55746c01eb52d8f2;projects-section-heading-and-first-card-opacity-1-in-fa-en-desktop-mobile;Browser-QA-run-42498428681;physical-Android-verification-still-recommended",
-    "androidHomepageProjectsQA": "passed-18-of-18-routes;36-of-36-viewports;zero-failures;home-fa-and-home-en-projects-section-heading-first-card-opacity-1;no-reveal-gates-on-section-heading-or-cards"
+    "androidHomepageProjectsQA": "passed-18-of-18-routes;36-of-36-viewports;zero-failures;home-fa-and-home-en-projects-section-heading-first-card-opacity-1;no-reveal-gates-on-section-heading-or-cards",
+    "repositoryCiOnCurrentMain": "passed-run-42498895229-on-main-a0bac438d377571d0a2c2a6a7c46bee8bd7cf746;documentation-only-checkpoint",
+    "cloudflarePagesProductionDeploy": "success-deployment-efa5ecb4-356d-4112-be60-31401506d940;commit-a0bac438d377571d0a2c2a6a7c46bee8bd7cf746;build-success;deploy-success",
+    "cloudflareGitAutoDeploySettings": "verified-enabled-production-main-paths-apps-platform-and-package-json;preview-deployments-disabled"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -99,9 +102,9 @@
     "portfolioPagesPublished": true,
     "portfolioPagesRun": "42483757053",
     "latestPortfolioCodeCommit": "7a2d6c38731ea57e66bcedc5363566905ab5affe",
-    "cloudflareProductionDeployment": "0bba4323-359d-4fb6-8d5e-aa833e36b22c",
-    "cloudflareProductionCommit": "f9011ec5a3f9eb2faffdac222596b37444184191",
-    "cloudflareWorkflow": "actual-production-deploy-success-run-42476478409-on-fa5d412506387622ca39df792fcaed62eb88cb67",
+    "cloudflareProductionDeployment": "efa5ecb4-356d-4112-be60-31401506d940",
+    "cloudflareProductionCommit": "a0bac438d377571d0a2c2a6a7c46bee8bd7cf746",
+    "cloudflareWorkflow": "direct-cloudflare-pages-api-deploy-success-efa5ecb4-356d-4112-be60-31401506d940;connected-github-auto-deploy-enabled",
     "appsScriptWorkflow": "actual-production-deploy-success-run-42476478245-on-fa5d412506387622ca39df792fcaed62eb88cb67",
     "latestPagesAttemptRun": "42483757053",
     "latestPagesAttemptCodeCommit": "7a2d6c38731ea57e66bcedc5363566905ab5affe",
@@ -112,8 +115,12 @@
     "portfolioBrowserQaRun": "42483757051",
     "cloudflareLatestAttemptRun": "42399972690; configuration-check-passed; actual-production-deploy-job-skipped-missing-CLOUDFLARE_API_TOKEN",
     "appsScriptLatestAttemptRun": "42399972770; configuration-check-passed; actual-production-deploy-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
-    "latestCloudflareAttemptRun": "42483757077;actual-deploy-skipped-missing-secret",
-    "latestAppsScriptAttemptRun": "42483757133;actual-publish-skipped-missing-secrets"
+    "latestCloudflareAttemptRun": "GitHub workflow 42498428486 was green but token-gated deploy step was skipped; direct Cloudflare deployment efa5ecb4 then succeeded through connected account API",
+    "latestAppsScriptAttemptRun": "42483757133;actual-publish-skipped-missing-secrets",
+    "cloudflareDeploymentUrl": "https://efa5ecb4.pooya-labs-platform.pages.dev/",
+    "cloudflareCanonicalUrl": "https://pooya-labs-platform.pages.dev/",
+    "cloudflareProductionStage": "build-success;deploy-success",
+    "cloudflareAutoDeploy": "enabled-connected-github-production-main-paths-apps-platform-and-package-json;preview-none"
   },
   "previousProjects": {
     "inspected": true,
@@ -134,7 +141,7 @@
     "The novels catalog is intentionally empty pending Pooya-provided titles, descriptions, covers, and manuscripts.",
     "Complete Phase 8 performance/security/accessibility/recovery review and rehearse rollback before requesting V1 approval. The site remains pre-alpha; no V1 tag is authorized."
   ],
-  "nextAction": "Review the deployed homepage Projects section on a physical Android device and approve the case-study/project-card motion, then complete manual accessibility checks and proceed with Phase 8 hardening. The automated Chromium checks passed; no V1 release is approved.",
+  "nextAction": "Review the current redesign on physical Android hardware on both GitHub Pages and Cloudflare Pages; approve motion/design/content, complete the 40 outstanding manual axe checks plus keyboard/screen-reader review, then proceed with Phase 8 hardening. No V1 release is approved.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -644,7 +651,7 @@
       "salonBookingCi": "42394326231 failed in Linux and Windows owner-dashboard date-range QA; Pages workflow 42394326440 passed",
       "orbitOpenPRs": "137, 138, 140 draft, 142 draft; none merged into main"
     },
-    "latestMainHead": "7a2d6c38731ea57e66bcedc5363566905ab5affe",
+    "latestMainHead": "a0bac438d377571d0a2c2a6a7c46bee8bd7cf746",
     "latestRepositoryCi": "42483757067;TypeScript;all-three-build-targets;contract-test-step-passed;main-7a2d6c",
     "latestBrowserQa": "42483757051;17-routes;34-viewports;workflow-passed;report-artifact-13618234167",
     "latestPagesDeployment": "42483757053;build-and-deploy-passed;main-7a2d6c",
@@ -681,5 +688,5 @@
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-08T16:11:11Z",
   "latestDocumentationCommit": "5131660b0b3e0156ac350f6a9aafc648556fc814",
-  "latestDocumentationCheckpoint": "documentation handoff to record homepage Projects visibility fix, CI 92/92 and Browser QA 18/18"
+  "latestDocumentationCheckpoint": "Cloudflare production parity verified: deployment efa5ecb4-356d-4112-be60-31401506d940 from a0bac438d377571d0a2c2a6a7c46bee8bd7cf746; GitHub production auto-deploy enabled; documentation checkpoint CI 42498895229 passed."
 }

@@ -146,3 +146,14 @@ This phase must not block V1. Source projects remain independent unless Pooya ex
 - [x] Allow native vertical touch scroll chaining from the end of a full-page mobile screenshot into the remaining case-study page on Android.
 - [x] Extend Chromium Browser QA to inspect every localized project route at desktop/mobile sizes, verify reduced-motion behavior, and exercise a touch swipe at the gallery boundary.
 - [ ] Review the updated motion and gesture behavior on a physical Android device before owner acceptance. Chromium touch emulation passed; physical-device verification is still open.
+
+
+### Phase 7 — Cloudflare production parity and automatic publishing (2026-11-08)
+
+- [x] Publish the current application tree from main commit `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746` to the Cloudflare Pages production project. Deployment `efa5ecb4-356d-4112-be60-31401506d940` completed with successful build and deploy stages.
+- [x] Confirm the Pages canonical host `https://pooya-labs-platform.pages.dev/` points to the new production release.
+- [x] Enable the connected GitHub production deployment for the `main` branch and limit automatic publishing to `apps/platform/**` and root `package.json`.
+- [x] Keep preview-branch publishing disabled; the GitHub Pages and Cloudflare Pages build outputs remain independent.
+- [ ] Check the refreshed Cloudflare host on a physical Android device and compare its visual rendering against GitHub Pages.
+- [ ] Continue P7-11 owner review: approve the full design/motion, content, project order, and personal contribution wording before Phase 8.
+

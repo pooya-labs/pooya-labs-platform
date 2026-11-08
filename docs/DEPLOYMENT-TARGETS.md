@@ -7,7 +7,7 @@ The repository is the shared source of truth, but each host has its own build ou
 | Target | Purpose | Build output | Release mechanism | Current state |
 |---|---|---|---|---|
 | GitHub Pages | Public static portfolio | `dist/pages` | `.github/workflows/pages-platform.yml` | Existing host; build/deploy workflow |
-| Cloudflare Pages | Independent public-host mirror | `dist/cloudflare` | `.github/workflows/deploy-cloudflare.yml` → Pages API, production branch `main` | Latest production deployment verified; workflow gated on Pages API token |
+| Cloudflare Pages | Independent public-host mirror | `dist/cloudflare` | Connected GitHub production deploy on `main`; optional Pages API workflow | Live; latest deployment `efa5ecb4`; main-branch auto-deploy enabled; previews disabled |
 | Google Apps Script | HtmlService application/runtime | `dist/gas/index.html` plus `Code.gs` and manifest | `.github/workflows/deploy-gas.yml` using `clasp` | Build/artifact verified; automatic deployment is gated on private repository secrets |
 
 ## GitHub Pages
@@ -28,9 +28,11 @@ The repository is the shared source of truth, but each host has its own build ou
 - Site base: `/`
 - Hosting mode: static Pages assets; this deployment does not reuse or modify the unrelated `globalcart-catalog`, `orbit-runtime`, or `salon-booking` Workers.
 
-The first production deployment completed successfully on 2026-11-06 from commit `6bd645896c5a51cccf1f764c210896d652191d4e`. The latest verified production deployment is `0bba4323-359d-4fb6-8d5e-aa833e36b22c`, published from main commit `f9011ec5a3f9eb2faffdac222596b37444184191`. Cloudflare's deployment record reports all 83 files present and the latest stage `deploy` as `success`. The actual built artifact was inspected: homepage canonical/Open Graph/Person JSON-LD, Persian and English case-study canonical links, sitemap, and robots.txt all use the Cloudflare origin; none point to the GitHub Pages hostname. The GitHub repository remains recorded as the source, but native Git push deployments are disabled. A push probe did not create a new deployment even after the API configuration showed production deployments enabled, so native integration is not treated as verified. `.github/workflows/deploy-cloudflare.yml` is the single authoritative release path: it validates the build and tests, sends the exact pushed commit to the Pages deployment API, then waits for its production stage to report success.
+The latest verified production deployment is `efa5ecb4-356d-4112-be60-31401506d940`, created on 2026-11-08 from the exact main commit `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746`. Cloudflare's deployment record reports successful `build` and `deploy` stages. Its unique deployment URL is [`https://efa5ecb4.pooya-labs-platform.pages.dev/`](https://efa5ecb4.pooya-labs-platform.pages.dev/); the canonical production alias is [`https://pooya-labs-platform.pages.dev/`](https://pooya-labs-platform.pages.dev/).
 
-The workflow is intentionally gated until the repository Actions secret `CLOUDFLARE_API_TOKEN` is configured. Create a Cloudflare API token with **Account → Cloudflare Pages → Edit**, then add it under **GitHub repository → Settings → Secrets and variables → Actions**. Never commit the token or paste it into chat. The first deployment above was triggered through the Cloudflare account connector; the workflow becomes the repeatable push-based path once the secret exists.
+The Pages project is connected to GitHub repository `pooya-labs/pooya-labs-platform`. Production auto-deploy is enabled for branch `main`, with path filters `apps/platform/**` and `package.json`. Preview-branch deployments remain disabled. This is the active continuous-deployment path; new application changes on the watched paths do not depend on a GitHub Actions Cloudflare token.
+
+The repository workflow `.github/workflows/deploy-cloudflare.yml` remains an optional explicit Pages API deployment path. It still validates the TypeScript/build/test targets and uses `CLOUDFLARE_API_TOKEN` when available; if that secret is absent, its explicit API deployment job is skipped, but the connected Cloudflare Git integration remains active. Keep all Cloudflare credentials out of the repository and chat.
 
 ## Google Apps Script
 

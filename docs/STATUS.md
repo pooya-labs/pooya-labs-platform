@@ -6,16 +6,26 @@
 **Current phase:** Phase 7 — Owner-led visual redesign and release review  
 **Release:** Pre-alpha / portfolio draft
 
+## Latest verified checkpoint — Cloudflare production parity (2026-11-08)
+
+- Corrected the stale Cloudflare Pages production host by publishing main commit `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746` to deployment [`efa5ecb4-356d-4112-be60-31401506d940`](https://efa5ecb4.pooya-labs-platform.pages.dev/). Cloudflare confirmed successful `build` and `deploy` stages.
+- The canonical Cloudflare alias is [https://pooya-labs-platform.pages.dev/](https://pooya-labs-platform.pages.dev/).
+- Enabled Cloudflare's connected GitHub production deployment on `main`, with app-source path filters `apps/platform/**` and `package.json`; preview deployments remain disabled.
+- The direct Pages deploy used the connected Cloudflare account integration. The GitHub Actions `CLOUDFLARE_API_TOKEN` secret is still optional for the workflow's explicit API path and is not required for the native Git integration.
+- Documentation-checkpoint CI [42498895229](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498895229) passed on `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746`. The latest runtime Browser QA is [42498428681](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428681), with 18/18 routes and 36/36 viewport checks passed.
+- A direct visual browser fetch of the public pages.dev host could not be verified by the available page inspector. Cloudflare's deployment API does confirm the production publish stages succeeded.
+
+
 ## Latest verified checkpoint — homepage Projects Android visibility (2026-11-08)
 
-- Latest verified `main` HEAD at this checkpoint: `5131660b0b3e0156ac350f6a9aafc648556fc814`.
+- Latest verified `main` HEAD: `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746` (documentation-only checkpoint); the current application fix is `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`.
 - Application fix commit: `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`; final Browser QA harness/DOM-measurement commit: `5131660b0b3e0156ac350f6a9aafc648556fc814`.
 - Root cause: the homepage Projects section, its heading, and its long list of project cards were hidden behind separate IntersectionObserver reveal gates. On mobile, the reveal conditions could leave the content at opacity zero. All three reveal gates were removed. The card visuals and their own animations remain intact.
 - Browser QA now checks both default Persian and English homepage routes. It confirmed the Projects section, heading, and first card at opacity 1 on desktop and mobile in both languages, with all eight project-card animations active.
-- Repository CI [42498428514](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428514) passed TypeScript, three build targets, and 92/92 contract tests.
+- Repository CI [42498428514](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428514) passed TypeScript, three build targets, and 92/92 contract tests. The subsequent documentation-only main checkpoint passed CI in [42498895229](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498895229).
 - Browser QA [42498428681](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428681) passed 18/18 routes / 36/36 viewports: zero failures, zero horizontal overflow, zero confirmed axe violations. Forty axe checks remain incomplete for manual review.
 - GitHub Pages deployment [42498199551](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498199551) passed on the application fix. Public site: https://pooya-labs.github.io/pooya-labs-platform/.
-- Automated mobile checks use Chromium mobile emulation. Physical Android confirmation remains part of owner acceptance.
+- Automated mobile checks use Chromium mobile emulation. Physical Android confirmation remains part of owner acceptance on both [GitHub Pages](https://pooya-labs.github.io/pooya-labs-platform/) and [Cloudflare Pages](https://pooya-labs-platform.pages.dev/).
 
 ## Latest verified checkpoint — product motion and mobile gallery (2026-11-08)
 
