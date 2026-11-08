@@ -480,7 +480,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         <section className="portfolio-proof portfolio-container" aria-labelledby="portfolio-proof-title" data-reveal="portfolio-proof">
           <div className="portfolio-proof-copy"><div className="portfolio-eyebrow"><span className="eyebrow-pulse" />{t.proofEyebrow}</div><h2 id="portfolio-proof-title">{t.proofTitle}</h2><p>{t.proofSub}</p></div>
           <div className="portfolio-proof-visual" aria-hidden="true"><div className="proof-burst proof-burst-rays" /><div className="proof-burst proof-burst-core" /><div className="proof-burst proof-burst-particles" /><span className="proof-orbit proof-orbit-one" /><span className="proof-orbit proof-orbit-two" /></div>
-          <div className="portfolio-proof-stats"><article><strong>08<span>+</span></strong><small>{t.proofStat1}</small></article><article><strong>16</strong><small>{t.proofStat2}</small></article><article><strong>02</strong><small>{t.proofStat3}</small></article><article><strong>03</strong><small>{t.proofStat4}</small></article></div>
+          <div className="portfolio-proof-stats"><article><strong>08</strong><small>{t.proofStat1}</small></article><article><strong>16</strong><small>{t.proofStat2}</small></article><article><strong>02</strong><small>{t.proofStat3}</small></article><article><strong>03</strong><small>{t.proofStat4}</small></article></div>
         </section>
 
         <section className="portfolio-capabilities portfolio-container" aria-labelledby="capabilities-title" data-reveal="capabilities">
