@@ -25,11 +25,14 @@ npm test
 
 The lightweight lint and format checks are intentionally dependency-free. Lint checks JavaScript syntax and rejects committed `debugger` statements. Formatting checks enforce UTF-8, LF endings, a final newline, no trailing whitespace, and spaces for indentation across tracked source/config files. TypeScript correctness is checked separately by `typecheck`.
 
-For browser-level verification, run:
+For browser-level and cold-route performance verification, run:
 
 ```sh
 npm run qa:portfolio:browser --workspace @pooya-labs/platform
+npm run qa:portfolio:performance --workspace @pooya-labs/platform
 ```
+
+The performance probe records baseline metrics without enforcing thresholds until the first measurements are reviewed. See [PERFORMANCE-BUDGET.md](docs/PERFORMANCE-BUDGET.md).
 
 Treat automated mobile emulation as regression evidence, not proof of behavior on a physical phone. Record incomplete accessibility checks honestly; a tool's inability to calculate a contrast ratio is neither a pass nor a confirmed violation.
 
