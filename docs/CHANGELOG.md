@@ -1,3 +1,13 @@
+## 2026-11-08 — Main-branch motion, identity, and release checkpoint
+
+- Reconciled this handoff against the actual `main` HEAD `7a2d6c38731ea57e66bcedc5363566905ab5affe`; it is eight commits ahead of the prior application checkpoint `fa5d412506387622ca39df792fcaed62eb88cb67`.
+- The current homepage includes the Systems in Motion signal map (three nodes) and a four-card craft-principles motion gallery. The headline uses isolated bidirectional text runs; the supplied emerald Pooya mark is used in About and the main SVG/favicon identity is aligned to emerald. The scroll-container and direct-entry fixes remain in place.
+- Exact-HEAD Repository CI [42483757067](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42483757067) passed TypeScript, the three build targets, and the repository contract-test step.
+- Exact-HEAD Browser QA [42483757051](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42483757051) passed the 17-route / 34-viewport matrix. Its report is retained as artifact [13618234167](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42483757051); its detailed axe output still needs human inspection.
+- GitHub Pages [42483757053](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42483757053) passed build and deploy on the same HEAD.
+- Cloudflare Pages [42483757077](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42483757077) and Apps Script [42483757133](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42483757133) passed their credential/configuration checks, but both actual deployment jobs were skipped because the required repository secrets were unavailable. Do not describe either target as updated to this HEAD.
+- Rewrote the continuation handoff and reconciled the project-state ledger. The approved 14 full-page captures across seven projects are complete; the roadmap now marks their review/publication steps as done. Owner review, manual accessibility, external social-preview validation, Phase 8 hardening, and V1 approval remain open.
+
 ## 2026-11-07 — Repository checkpoint reconciliation and continuation handoff
 
 - Reconciled the project handoff against `main` at `74b19508e77cf20efe414009bb71ca69f91eb700`. The latest application styling change is `e66f4b42562fb6a164117e2b8a3f9905634a1b9e`, the capture-runner update is `d74c12952be73233f551034d08b5fd212d260d0e`, the final capture-contract correction is `061176326e13ba0ba4239416acd6e1f4db5f7580`, and the latest commit at this audit checkpoint is documentation-only.

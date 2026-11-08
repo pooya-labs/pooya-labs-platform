@@ -18,7 +18,7 @@ This is a portfolio first—not a generic SaaS dashboard or customer-account pro
 - **Private owner workspace (secondary):** the retained Spatial OS shell and possible owner-only content tools.
 - **Customer dashboard:** not part of the portfolio by default. A separate product can add one later only if there is a real customer workflow.
 
-The current public design is an early working draft. A full redesign based on Pooya's feedback is a mandatory pre-release roadmap gate.
+The portfolio has completed three implementation and feedback cycles, including its motion-led identity, radial proof scene, Systems in Motion and craft sections, bilingual layout fixes, and responsive project evidence. Final owner review and the Phase 8 release gates remain open.
 
 ## Technology and hosting
 
