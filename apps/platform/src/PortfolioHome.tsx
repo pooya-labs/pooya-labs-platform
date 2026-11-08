@@ -152,7 +152,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
       <div className="portfolio-grid" />
       <header className="portfolio-header">
         <a className="portfolio-brand" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}>
-          <span className="portfolio-brand-mark">P<span>.</span></span>
+          <span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /></span>
           <span><strong>POOYA</strong><small>PROJECT CASE STUDY</small></span>
         </a>
         <div className="portfolio-header-actions">
@@ -262,7 +262,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
         </section>
       </main>
       <footer className="portfolio-footer portfolio-container">
-        <a className="portfolio-brand" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}><span className="portfolio-brand-mark">P<span>.</span></span><span><strong>POOYA LABS</strong><small>PERSONAL PORTFOLIO</small></span></a>
+        <a className="portfolio-brand" href={window.location.pathname} onClick={(event) => { event.preventDefault(); onBack(); }}><span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /></span><span><strong>POOYA LABS</strong><small>PERSONAL PORTFOLIO</small></span></a>
         <span>{project.name} · {project.status[language]}</span>
         <a href={project.repositoryUrl} target="_blank" rel="noreferrer"><Code2 size={16} /> {t.source}</a>
         <small>© {new Date().getFullYear()} POOYA LABS</small>
@@ -407,7 +407,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
 
       <header className="portfolio-header">
         <a className="portfolio-brand" href="#top">
-          <span className="portfolio-brand-mark">P<span>.</span></span>
+          <span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /></span>
           <span><strong>POOYA</strong><small>INDEPENDENT BUILDER</small></span>
         </a>
         <nav className="portfolio-nav" aria-label={rtl ? 'ناوبری اصلی' : 'Main navigation'}>
@@ -582,7 +582,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
       </main>
 
       <footer className="portfolio-footer portfolio-container">
-        <a className="portfolio-brand" href="#top"><span className="portfolio-brand-mark">P<span>.</span></span><span><strong>POOYA LABS</strong><small>PERSONAL PORTFOLIO</small></span></a>
+        <a className="portfolio-brand" href="#top"><span className="portfolio-brand-mark"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /></span><span><strong>POOYA LABS</strong><small>PERSONAL PORTFOLIO</small></span></a>
         <span>{t.footer}</span>
         <a href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><Code2 size={17} /> GitHub</a>
         <small>© {new Date().getFullYear()} POOYA LABS</small>
