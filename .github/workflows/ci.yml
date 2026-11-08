@@ -21,9 +21,9 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 22
       - name: Install workspace dependencies
@@ -35,14 +35,14 @@ jobs:
       - name: Build independent Cloudflare Pages bundle
         run: npm run build:cloudflare
       - name: Upload single-file Apps Script bundle
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pooya-labs-gas-htmlservice-bundle
           path: dist/gas/index.html
           if-no-files-found: error
           retention-days: 14
       - name: Upload Cloudflare Pages bundle
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pooya-labs-cloudflare-pages-bundle
           path: dist/cloudflare
