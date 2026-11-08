@@ -16,7 +16,7 @@ const projectSlugs = [
 
 const routes = [
   { label: 'home-fa', path: '?qa-locale=fa', locale: 'fa', direction: 'rtl', mainId: 'top' },
-  { label: 'home-en', path: '', locale: 'en', direction: 'ltr', mainId: 'top' },
+  { label: 'home-en', path: '?qa-locale=en', locale: 'en', direction: 'ltr', mainId: 'top' },
   ...projectSlugs.flatMap((slug) => [
     { label: slug + '-fa', path: 'projects/' + slug + '/', locale: 'fa', direction: 'rtl', mainId: 'main-content' },
     { label: slug + '-en', path: 'en/projects/' + slug + '/', locale: 'en', direction: 'ltr', mainId: 'main-content' },

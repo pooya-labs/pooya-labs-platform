@@ -205,6 +205,7 @@ test('homepage Browser QA captures and checks all eight animated project cards a
 
 test('homepage browser QA checks both default Persian and English project grids for visibility', () => {
   assert.match(script, /label: 'home-fa', path: '\?qa-locale=fa', locale: 'fa', direction: 'rtl'/);
+  assert.match(script, /label: 'home-en', path: '\\?qa-locale=en', locale: 'en', direction: 'ltr'/);
   assert.match(script, /route\.label\.startsWith\('home-'\)/);
   assert.match(script, /sectionOpacity/);
   assert.match(script, /sectionHasRevealGate/);
