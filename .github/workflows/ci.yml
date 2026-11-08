@@ -28,6 +28,13 @@ jobs:
           node-version: 22
       - name: Install workspace dependencies
         run: npm install --no-audit --no-fund
+      - name: Upload generated npm resolution lockfile for review
+        uses: actions/upload-artifact@v7
+        with:
+          name: generated-npm-lockfile
+          path: package-lock.json
+          if-no-files-found: error
+          retention-days: 7
       - name: Audit dependency security advisories
         run: npm audit --audit-level=high
       - name: Lint JavaScript scripts
