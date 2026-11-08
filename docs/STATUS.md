@@ -6,7 +6,7 @@
 **Current phase:** Phase 7 — Owner-led visual redesign and release review  
 **Release:** Pre-alpha / portfolio draft
 
-## Repository checkpoint — 2026-11-07 18:17 UTC
+## Historical repository checkpoint — 2026-11-07 18:17 UTC (superseded by the latest checkpoint below)
 
 - Current `main` HEAD at this audit: `74b19508e77cf20efe414009bb71ca69f91eb700`. The latest commit is documentation-only; the latest application styling change is `e66f4b42562fb6a164117e2b8a3f9905634a1b9e`, and the capture-runner update is `d74c12952be73233f551034d08b5fd212d260d0e`.
 - Repository CI [42400540542](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42400540542) passed on the exact current `main` HEAD: TypeScript, Pages/GAS/Cloudflare builds, bundle assembly, and **54/54 contract tests** (0 failures, 0 skipped).
@@ -192,3 +192,20 @@ No V1 release is authorized while these mandatory gates remain open.
 - A follow-up review branch adds immutable, commit-pinned image references to seven case studies: AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and Salon Booking.
 - The full-page frames are keyboard-focusable, labelled, and internally scrollable so the complete pages remain readable.
 - GlobalCart keeps its existing curated desktop/mobile screenshots; its full-page capture remains excluded until the public collection grid is fixed.
+
+
+## Latest verified checkpoint — 2026-11-08 11:37 UTC
+
+- **Current `main` HEAD:** `fa5d412506387622ca39df792fcaed62eb88cb67`. Phase 7's third visual feedback cycle and the screenshot-landmark accessibility follow-up are merged. Pull requests [#6](https://github.com/pooya-labs/pooya-labs-platform/pull/6) and [#7](https://github.com/pooya-labs/pooya-labs-platform/pull/7) are closed and merged.
+- **Design round 3:** replaced the old gold folded logo with a compact ivory/emerald P monogram and matching favicon; rebuilt the header and theme-aware controls; unified the graphite/ivory/emerald palette; redesigned the footer; slowed the homepage screenshot stage; and made the radial proof section full-width with a centered headline, four metrics, and an original animated vector ray/particle field inspired by Stripe's visual hierarchy (no Stripe code or assets are reused).
+- **Case-study diagrams:** the SVG generator now wraps bilingual node titles, details, and diagram captions into bounded text lines with explicit RTL/LTR direction and centered alignment. This addresses the overflow visible in the ORBIT monitor photo across all eight project diagrams.
+- **Direct navigation:** browser scroll restoration is manual and direct page visits are reset to the top of the document.
+- **Contact links:** Telegram `@pooyayee` and Instagram `@_p.ooya` are now first-class buttons in the contact section and footer, with both profiles added to Person metadata.
+- **Project media:** reviewed AuraPulse dashboard and Shayan Salon public customer-booking captures are wired to the project cards and case-study pages. Salon Booking admin routes and customer records remain excluded.
+- **Accessibility follow-up:** project screenshot scroll regions have unique project-specific accessible names. This removed the 32 repeated `landmark-unique` moderate axe findings. The latest Browser QA now reports zero axe violations.
+- **Validation on exact `main` SHA `fa5d412506387622ca39df792fcaed62eb88cb67`:**
+  - Repository CI [42476478338](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42476478338): TypeScript, three-target builds, and **67/67 contract tests** passed.
+  - Portfolio Browser QA [42476478346](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42476478346): **17/17 routes**, **34/34 desktop/mobile viewports**, zero axe violations, zero workflow failures.
+  - GitHub Pages [42476478354](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42476478354), Cloudflare Pages [42476478409](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42476478409), and Apps Script [42476478245](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42476478245): deployments all completed successfully on the same main SHA.
+- **Manual accessibility is not closed:** 36 axe checks remain incomplete (34 color-contrast checks and 2 `aria-prohibited-attr` checks). These are inconclusive checks, not reported violations; verify them manually on representative light/dark, Persian/English, desktop/mobile surfaces. Keyboard-only and screen-reader sessions still need human review.
+- **Release remains pre-alpha:** the redesign is implemented and deployed, but Pooya has not yet approved the complete visual result or the outstanding biography, project ordering, attribution, manual accessibility, external social-preview, and release/rollback checks. Do not tag V1 until those owner/release gates are completed.
