@@ -41,7 +41,7 @@ jobs:
           if (manifest.schemaVersion !== 1 || manifest.scope !== 'portfolio-fullpage-interface-captures') throw new Error('Unsupported approval manifest.');
           if (manifest.review?.outcome !== 'approved-for-portfolio-use') throw new Error('The owner has not approved publication.');
           if (!manifest.review?.privacyReviewed || !manifest.review?.visualReviewed) throw new Error('Visual and privacy review must both be recorded.');
-          if (!Number.isInteger(manifest.artifact?.workflowRunId) || !/^[a-f0-9]{40}$/.test(manifest.artifact.captureSha)) throw new Error('Invalid source workflow run or capture SHA.');
+          if (!Number.isInteger(manifest.artifact?.workflowRunId) || !/^[a-f0-9]{40}$/.test(manifest.artifact.captureSha) || manifest.artifact.name !== 'project-interface-captures') throw new Error('Invalid source workflow run, artifact name, or capture SHA.');
           if (manifest.files?.length !== expected.size) throw new Error('Exactly fourteen desktop/mobile full-page captures are required.');
           const seen = new Set();
           for (const file of manifest.files) {
@@ -56,8 +56,20 @@ jobs:
             seen.add(key);
           }
           if (seen.size !== expected.size) throw new Error('Missing one or more approved captures.');
-          fs.appendFileSync(process.env.GITHUB_OUTPUT, `run_id=${manifest.artifact.workflowRunId}\nartifact_name=${manifest.artifact.name}\n`);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `run_id=${manifest.artifact.workflowRunId}\nartifact_name=${manifest.artifact.name}\ncapture_sha=${manifest.artifact.captureSha}\n`);
           NODE
+
+      - name: Verify source capture run identity
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_RUN_ID: ${{ steps.approval.outputs.run_id }}
+          EXPECTED_CAPTURE_SHA: ${{ steps.approval.outputs.capture_sha }}
+        run: |
+          ACTUAL_CAPTURE_SHA=$(gh run view "$ARTIFACT_RUN_ID" --repo "$GITHUB_REPOSITORY" --json headSha --jq .headSha)
+          if [ "$ACTUAL_CAPTURE_SHA" != "$EXPECTED_CAPTURE_SHA" ]; then
+            echo "Capture run SHA does not match the reviewed manifest." >&2
+            exit 1
+          fi
 
       - name: Download exact reviewed screenshot artifact
         env:
