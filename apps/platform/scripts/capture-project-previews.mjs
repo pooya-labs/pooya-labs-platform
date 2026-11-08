@@ -111,6 +111,17 @@ try {
             hasHorizontalOverflow: document.documentElement.scrollWidth > window.innerWidth + 1,
           }));
           const suffix = scenario === 'overview' ? '' : '-' + scenario;
+          if (fullPage) {
+            const pageHeight = await page.evaluate(() => document.documentElement.scrollHeight);
+            const step = Math.max(420, Math.floor(window.innerHeight * 0.72));
+            for (let top = 0; top < pageHeight; top += step) {
+              await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), top);
+              await page.waitForTimeout(180);
+            }
+            await page.waitForTimeout(700);
+            await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+            await page.waitForTimeout(350);
+          }
           const screenshotPath = path.join(outputDir, target.slug + suffix + '-' + viewport.name + '.png');
           await page.screenshot({ path: screenshotPath, type: 'png', fullPage, animations: 'disabled', caret: 'hide', timeout: 20000 });
           const screenshotBytes = await readFile(screenshotPath);
