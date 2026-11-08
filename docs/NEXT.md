@@ -14,14 +14,14 @@
 
 ## Latest read-only source recheck — 2026-11-09
 
-The exact current `main` heads, latest commits, release status, and open PR states for all eight independent projects were rechecked read-only and recorded in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md). The key changes since the previous checkpoint are:
+The exact current `main` heads, latest commits, release status, and material open-PR states for all eight independent projects are recorded in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 
-- AetherFlow: `9aa543d60abf`; M08 remains in progress and experimental. Storage-only Apps Script submission/refresh/read-back passed against a persistent fixture, but the owner-deployed Sheet still needs the live write/reload/read check. Latest Rust CI was still in progress when checked.
-- GlobalCart: current main `36a7bb70aabb`; stable portfolio/demo release v1.0.0 is published. Browser E2E passed on UI-code commit `905c6cf91bef`; later main commits in this range are generated data/media/documentation updates. Physical-device, human screen-reader, and field CWV claims remain unverified. PR #23 is open and unmerged.
-- ORBIT: PR #138 is open and unmerged; the Keycloak candidate is not production, and the SQLite FTS5/Guava production-image gate remains open.
-- Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and Salon Booking retain the previously recorded main heads at this checkpoint.
+- **AetherFlow:** current main `dc1edea3946e`; M08 remains experimental/in progress. The owner completed one live Apps Script private-Sheet write/reload/read check and Browser QA passed 12 tests. A follow-up source correction keeps new storage-only rows in `pending`, but the live Apps Script deployment still needs a manual new-version redeploy. Latest Rust CI and supply-chain checks were still running at inspection.
+- **GlobalCart:** current main `220b216fbad4`; stable portfolio/demo release v1.0.0 is complete. Merged-main Browser E2E passed **163 / 9 intentional skips / 0 failed**. Current-main documentation records owner-confirmed physical desktop/mobile, actual platform screen-reader, and full human RTL/LTR review on 2026-11-08; exact device/browser matrix was not recorded. Physical tablet and field Core Web Vitals remain unverified/optional. PR #23 was closed without merge.
+- **ORBIT:** main unchanged; PR #138 remains open. Its candidate Keycloak build is CI-only, and the strict production-image scan still fails on unresolved findings.
+- **Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and Salon Booking:** main heads remain the same as in the prior checkpoint; no open PRs were observed at the recheck.
 
-The bilingual [OWNER-REVIEW-PACKET.md](OWNER-REVIEW-PACKET.md) now reflects GlobalCart's published v1.0.0 status and links back to the source audit. This refresh is factual preparation only: it does not approve content/media, change any project review state, or begin Phase 8/9. No upstream project repository was modified.
+The bilingual [OWNER-REVIEW-PACKET.md](OWNER-REVIEW-PACKET.md) now reflects the current GlobalCart release and the new source-backed AetherFlow/GlobalCart acceptance facts. The source facts do not imply approval of the Pooya Labs portfolio copy/media. No upstream repository was modified.
 
 ## Post-remediation verification checkpoint — 2026-11-08
 
