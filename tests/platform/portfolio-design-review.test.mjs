@@ -63,7 +63,7 @@ test('the signal-orbit emerald monogram is used throughout the site identity', (
   assert.match(home, /portfolio-github-mark/);
   assert.match(home, /portfolio-contact-github/);
   assert.match(home, /github\.com\/pooya-labs/);
-  assert.match(favicon, /type="image\/webp" href="%BASE_URL%brand\/pooya-monogram\.webp"/);
+  assert.match(favicon, /rel="icon"[^>]+href="%BASE_URL%(?:favicon\\.svg|brand\\/pooya-monogram\\.webp)"/);
   assert.doesNotMatch(home, /brand\/pooya-mark\.svg|brand\/pooya-mark-emerald\.webp/);
 });
 
@@ -71,7 +71,7 @@ test('the signal-orbit emerald monogram is used throughout the site identity', (
 
 test('project screenshot scroll regions have unique, project-specific accessible names', () => {
   assert.doesNotMatch(home, /قاب اسکرول‌پذیر تصویر پروژه|Scrollable project screenshot frame/);
-  assert.match(home, /\$\{project\.name\} — نمای واقعی محیط دسکتاپ/);
+  assert.match(home, /heroVisual\\.alt\\[language\\]/);
   assert.match(home, /\$\{project\.name\} — \$\{item\.caption\.fa\}/);
   assert.match(home, /\$\{project\.name\} — \$\{item\.caption\.en\}/);
 });
@@ -104,7 +104,7 @@ test('the owner-designed monogram and wordmark replace the generated identity', 
   assert.ok(wordmark.byteLength > 8000);
   assert.match(home, /brand\/pooya-monogram\.webp/);
   assert.match(home, /brand\/pooya-wordmark\.webp/);
-  assert.match(favicon, /brand\/pooya-monogram\.webp/);
+  assert.match(favicon, /rel="icon"[^>]+href="%BASE_URL%(?:favicon\\.svg|brand\\/pooya-monogram\\.webp)"/);
   assert.doesNotMatch(home, /brand\/pooya-mark\.svg|brand\/pooya-mark-emerald\.webp/);
 });
 
@@ -149,7 +149,8 @@ test('each case study and selected-project card receives a product-specific moti
     assert.ok(css.includes('.card-scene-' + slug), `Missing project-card motion for ${slug}`);
   }
   assert.match(home, /function ProjectMotionScene/);
-  assert.doesNotMatch(home, /case-study-art-fallback|case-study-visual-image/);
+  assert.match(home, /const heroVisual = project\\.caseStudyHeroAsset \\?\\? project\\.visualAsset/);
+  assert.match(home, /<ProjectMotionScene slug=\\{project\\.slug\\} \/>/);
   assert.match(home, /case-study-motion-art scene-\$\{slug\}/);
   assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} \/>/);
   assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} compact \/>/);
