@@ -23,7 +23,7 @@ test('Vite emits crawler-readable Persian and English case-study pages', { skip:
       const route = locale === 'en' ? `en/projects/${slug}/index.html` : `projects/${slug}/index.html`;
       const html = await readFile(new URL(route, outputRoot), 'utf8');
       const canonical = `https://pooya-labs.github.io/pooya-labs-platform/${route.replace('index.html', '')}`;
-      assert.ok(html.includes('<div id="root"><a class="portfolio-skip-link" href="#main-content">') && html.includes('<main id="main-content" tabindex="-1" class="case-study-main'), `${route} must contain skip navigation and static article markup before JavaScript`);
+      assert.ok(html.includes('<div id="root"><div class="portfolio-page portfolio-case-study') && html.includes('<a class="portfolio-skip-link" href="#main-content">') && html.includes('<main id="main-content" tabindex="-1" class="case-study-main'), `${route} must contain the server-rendered interactive case study before JavaScript`);
       assert.ok(html.includes(`<link rel="canonical" href="${canonical}"`), `${route} must have a canonical URL`);
       assert.ok(html.includes(`og:image`), `${route} must declare a social preview image`);
       assert.ok(html.includes(`/pooya-labs-platform/og/${slug}${locale === 'en' ? '-en' : ''}.png`), `${route} must point to its own PNG social card`);
@@ -69,7 +69,7 @@ test('reviewed project interface screenshots are embedded in both static case-st
       assert.match(html, sourceRoot, `${route} must use an immutable portfolio commit for interface evidence`);
       assert.match(html, new RegExp(`${slug === 'aura-pulse' ? 'aurapulse' : slug === 'salon-booking' ? 'salon-booking-fullpage' : slug}-desktop\\.png`), `${route} must include the reviewed desktop hero`);
       assert.match(html, new RegExp(`${slug === 'aura-pulse' ? 'aurapulse' : slug === 'salon-booking' ? 'salon-booking-fullpage' : slug}-mobile\\.png`), `${route} must include the reviewed mobile capture`);
-      assert.match(html, /case-study-visual-image visual-interface[^>]+alt="[^"]+"/, `${route} desktop evidence must have localized alternative text`);
+      assert.match(html, /case-study-media-card device-desktop[^]*?<img[^>]+alt="[^"]+"/, `${route} desktop evidence must have localized alternative text`);
       assert.match(html, /case-study-media-card device-mobile[^]*?<img[^>]+alt="[^"]+"/, `${route} mobile evidence must have localized alternative text`);
     }
   }
