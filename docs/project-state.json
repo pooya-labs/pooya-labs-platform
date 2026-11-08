@@ -5,11 +5,11 @@
   "defaultBranch": "main",
   "release": "pre-alpha",
   "phase": 7,
-  "phaseName": "Owner-led visual redesign and release review",
+  "phaseName": "Pre-redesign readiness and engineering closeout",
   "currentTask": {
-    "id": "P7-11",
-    "title": "Physical Android review and owner motion approval",
-    "status": "The Android homepage Projects visibility regression is fixed. The proof-statistics aria label now sits on a valid group, and the header's obsolete pseudo-element is removed with a theme-aware opaque base surface. CI passed 93/93 tests; Browser QA passed 18/18 routes and 36/36 viewports with zero failures and zero confirmed axe violations. The four aria-prohibited-attr findings are gone; 36 color-contrast checks remain incomplete because the hero and other decorative backgrounds use gradients/pseudo-elements. GitHub Pages is deployed. Cloudflare production deployment a1a69456 from this exact commit succeeded via the authorized Pages API. GitHub Actions' Cloudflare deployment job skipped because CLOUDFLARE_API_TOKEN is missing; native Git push deployment is configured but not yet verified. Physical Android review, owner visual/content acceptance, and human accessibility checks remain open."
+    "id": "P7-12",
+    "title": "Complete readiness engineering and owner-input preparation before the penultimate redesign",
+    "status": "The roadmap has been reordered at Pooya's request: Phase 7 readiness first; Phase 8 is the penultimate full-site redesign and two-round owner approval; Phase 9 is the final pre-release integration of all eight independent projects; Phase 10 is V1 release. Phases 4-6 were explicitly scoped for V1: no public account/CMS, direct contact links instead of a form backend, and no heavy embedded demos before Phase 9. Latest upstream source commits for all eight projects were inspected read-only and recorded. Continue Phase 7 technical closeout; do not begin final visual redesign or project integration early."
   },
   "lastCheckpointDate": "2026-11-08",
   "latestVerifiedCodeCommit": "c7a86a2e2f54d157b7e0b806c9c022afd41fd208",
@@ -131,21 +131,34 @@
     "imported": [],
     "modified": [],
     "integrationPhase": 9,
-    "ownerRequestedDeferral": true
+    "ownerRequestedDeferral": true,
+    "finalPortfolioIntegrationStage": "Phase 9 — immediately before Phase 10 release",
+    "lastReadOnlyRecheckDate": "2026-11-08",
+    "latestObservedCommits": {
+      "aetherflow": "b7ee1de0c300b6457958eadb04a93558f8cec196",
+      "orbit": "161913be3134d8ad89d8cbb535b066c01768fbd1",
+      "pooyaOs": "b3e4ee8f3a6352aa8d17320584570d9b8ec798e7",
+      "nexusCanvas": "ebcda40e0334822ab75a43093cd923f599bebfb5",
+      "luminaGlass": "9c479da9c726d044f3482aa10fdc8aa27307d694",
+      "auraPulse": "99f90489f50d349be565640cf60738e181436245",
+      "globalcart": "2101f02cf60a0aba9291757a699d843c41455e1f",
+      "salonBooking": "fcd7b0fcfedf8f94227e164ef60ce74549fe1731"
+    }
   },
   "blockers": [
-    "Pooya must review the complete deployed portfolio on real desktop and mobile devices and approve the current emerald mark, header/theme controls, hero motion, radial proof scene, Systems in Motion, craft gallery, architecture diagrams, screenshot galleries, contact actions, and footer.",
-    "Owner content approval remains open for biography/positioning, first three featured projects, project ordering, personal role/contribution statements, public project statuses, and contact details.",
-    "Manual accessibility acceptance remains open. Latest Browser QA run 42502717608 found zero confirmed axe violations; the four aria-prohibited-attr findings are fixed. Thirty-six incomplete color-contrast records remain because gradient/pseudo backgrounds prevent automated contrast calculation. Complete the human contrast, keyboard-only, and screen-reader review.",
-    "External LinkedIn/Facebook crawler rendering and cache-refresh validation for the 17 PNG social cards remains open.",
-    "AetherFlow still has the M07/M08 and duplicate Dashboard mismatch; do not imply live API acceptance that has not been verified.",
-    "ORBIT Cloudflare edge gateway remains non-live until its origin, secret, route, and CF01–CF05 acceptance are completed; do not claim live telemetry.",
-    "GlobalCart's full-page capture remains withheld while the public catalog grid shows blank product placeholders; retain the existing curated screenshots.",
-    "Salon Booking public case-study imagery must remain limited to owner-approved customer-facing screens; never capture admin routes or customer records.",
-    "The novels catalog is intentionally empty pending Pooya-provided titles, descriptions, covers, and manuscripts.",
-    "Complete Phase 8 performance/security/accessibility/recovery review and rehearse rollback before requesting V1 approval. The site remains pre-alpha; no V1 tag is authorized."
+    "Phase 7 technical closeout is active: finish measurable performance budgets, security/dependency/secret and public/private asset review, external social-crawler validation, active Pages-source verification, Cloudflare deployment automation/manual runbook, and rollback/recovery rehearsal.",
+    "Pooya must review the current baseline on a physical Android device and approve the biography, headline, project-role wording, featured order, project statuses, public contact details, and approved personal assets before Phase 8.",
+    "Manual accessibility acceptance remains open: latest Browser QA recorded 36 incomplete color-contrast checks on gradient/pseudo backgrounds and zero confirmed axe violations; complete human contrast, keyboard-only, focus-visibility, and screen-reader checks.",
+    "Cloudflare GitHub Actions production deploy remains skipped until CLOUDFLARE_API_TOKEN is added privately; native Git push deployment was not observed. GitHub Pages source configuration also needs owner-side confirmation.",
+    "External LinkedIn/Facebook social crawler rendering and cache-refresh validation for the 17 PNG social cards remains open.",
+    "AetherFlow's public M07/M08 mismatch, duplicate Dashboard navigation, live API CORS acceptance, personal role attribution, and license choice remain unresolved; latest dashboard patch now labels Apps Script records synthetic.",
+    "ORBIT's Cloudflare Worker is still not connected to a configured origin or secret; CF01-CF05 runtime acceptance remains open and must not be represented as live telemetry.",
+    "GlobalCart's latest bot commit persisted catalog assets only; previous mobile hero-product-tile accessible-name Browser E2E failures require exact-current-SHA rerun and resolution before final integration.",
+    "Salon Booking portfolio permission and privacy-reviewed synthetic/redacted customer-facing imagery remain pending; no admin/customer records may be published.",
+    "The novels catalog remains empty pending owner-provided titles, descriptions, covers and manuscripts; do not invent content.",
+    "The final redesign is explicitly Phase 8 and the complete integration of all eight projects is explicitly Phase 9. Neither begins until Phase 7 readiness is complete. Phase 10 publication remains blocked."
   ],
-  "nextAction": "Review both published hosts on a physical Android device, complete the 36 pending human color-contrast checks plus keyboard/screen-reader checks, approve motion/design/content, and add CLOUDFLARE_API_TOKEN privately in GitHub Actions before relying on automatic Cloudflare deployments. No V1 release is approved.",
+  "nextAction": "Continue Phase 7 autonomous readiness: complete platform security/dependency and asset-boundary audit, establish and measure performance budgets, close repository/Browser QA accessibility-preparation gaps, verify public-host configuration and rollback path, validate social-card crawler behavior, and prepare owner/device acceptance. Do not start Phase 8 redesign or Phase 9 project integration early.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -176,13 +189,13 @@
     "cursorRefractionField": false,
     "touchDisabled": true,
     "reducedMotionDisabled": true,
-    "languageDefault": "fa-RTL",
+    "languageDefault": "en-LTR",
     "themeDefault": "dark",
     "reviewPending": true,
-    "finalRedesignRequired": false,
+    "finalRedesignRequired": true,
     "ownerFeedbackRounds": 3,
     "designDocument": "docs/DESIGN-DIRECTION.md",
-    "decision": "docs/decisions/ADR-0006-portfolio-first-product-and-hosting.md",
+    "decision": "Full second redesign is Phase 8, after Phase 7 readiness. Two complete owner review/approval rounds are required.",
     "reference": "Framer homepage interaction language; no pixel-copy or proprietary assets",
     "firstPrototypeCommit": "a24cbfcb1bc8ccbad348e119922d084cb3062ece",
     "capturePipelineCommit": "d74c12952be73233f551034d08b5fd212d260d0e",
@@ -209,7 +222,10 @@
     "secondOwnerFeedbackRound": "implemented",
     "thirdOwnerFeedbackRound": "implemented;owner-visual-approval-pending",
     "latestVerifiedImplementationCommit": "7a2d6c38731ea57e66bcedc5363566905ab5affe",
-    "latestBrowserQaRun": "42483757051"
+    "latestBrowserQaRun": "42483757051",
+    "finalRedesignPhase": 8,
+    "projectIntegrationPhase": 9,
+    "penultimateRedesignOwnerApproval": "pending"
   },
   "latestVerifiedCommit": "5131660b0b3e0156ac350f6a9aafc648556fc814",
   "projectMedia": {
@@ -363,13 +379,20 @@
     "externalSocialPreviewValidation": "pending-authenticated-linkedin-facebook-crawler-and-cache-refresh",
     "actualUiScreenshots": "14 approved full-page desktop/mobile captures across seven projects published; AuraPulse and Salon Booking card assets now connected; GlobalCart full-page capture remains withheld pending storefront-grid repair",
     "ownerContentApproval": "pending",
-    "fullSiteRedesign": "round-3-implemented-and-deployed;owner-visual-approval-pending",
+    "fullSiteRedesign": "three previous implementation/feedback rounds exist; complete new Phase 8 redesign and explicit second-round approval still required",
     "keyboardSkipNavigation": "implemented-bilingual-home-and-case-study-routes-contract-passed-manual-review-pending",
     "novelLibrary": "implemented-with-empty-catalog; final titles, descriptions, manuscripts and covers pending Pooya",
     "orbit": "v1.0.0 stable portfolio-demo; Cloudflare edge architecture merged but Worker route disabled, origin and gateway secret unset; CF01-CF05 live acceptance pending",
     "globalCart": "v0.2.3-dev M09.8; Pages deploy and six Lighthouse lab budgets passed; current-SHA full Browser E2E and manual review pending",
-    "manualAccessibility": "36-incomplete-axe-rules-remain-for-human-review;34-color-contrast;2-aria-prohibited-attr;keyboard-and-screen-reader-review-pending",
-    "v1Approval": "not-approved"
+    "manualAccessibility": "36-incomplete-color-contrast-records-remain-from-axe; zero-confirmed-axe-violations-in-latest-report; manual contrast, keyboard and screen-reader acceptance pending",
+    "v1Approval": "not-approved",
+    "phaseOrder": [
+      "Phase 7 readiness and engineering closeout",
+      "Phase 8 complete redesign and two owner approval rounds (penultimate)",
+      "Phase 9 full portfolio-level integration of all eight projects (last implementation stage before publication)",
+      "Phase 10 V1 release hardening and publication"
+    ],
+    "projectIntegration": "deferred-to-phase-9-after-phase-8-redesign-approval; all-eight-project portfolio integration pending"
   },
   "latestBranchHeadAtCheckpoint": "5131660b0b3e0156ac350f6a9aafc648556fc814",
   "accessibility": {
@@ -397,16 +420,17 @@
     "aetherflow": {
       "repository": "pooya-labs/aetherflow",
       "branch": "main",
-      "inspectedHead": "c7cb553f0751514df0d916e69c29807636e66c67",
-      "latestCommitAt": "2026-11-06T15:03:10Z",
+      "inspectedHead": "b7ee1de0c300b6457958eadb04a93558f8cec196",
+      "latestCommitAt": "2026-11-08T17:39:03Z",
       "readmeMilestone": "M00-M07 complete; M08 in progress",
       "inspectionMode": "read-only",
-      "upstreamRepositoryModified": false
+      "upstreamRepositoryModified": false,
+      "latestObservedChange": "Apps Script dashboard now labels bridge records as synthetic demo data; M07/M08 public badge mismatch and live API CORS acceptance remain open."
     },
     "orbit": {
       "repository": "pooya-labs/orbit",
       "branch": "main",
-      "inspectedHead": "268017365cd22f7db9dd8895fb59fbccc76c9b8f",
+      "inspectedHead": "161913be3134d8ad89d8cbb535b066c01768fbd1",
       "pr136Merged": true,
       "stableRelease": "v1.0.0",
       "ci": "passed-run-42223939950",
@@ -457,12 +481,14 @@
           "merged": false
         }
       ],
-      "pullRequestCheckpointAt": "2026-11-07T17:14:39Z"
+      "pullRequestCheckpointAt": "2026-11-07T17:14:39Z",
+      "latestCommitAt": "2026-11-07T21:59:24Z",
+      "latestObservedChange": "Documentation-only correction to D1 implementation gate numbering; gateway remains disabled/fail-closed pending origin, secret, bindings, and CF01-CF05."
     },
     "globalcart": {
       "repository": "pooya-labs/globalcart",
       "branch": "main",
-      "inspectedHead": "9afa4f5d726df51ae4f9b95b30982fb5ecd3482a",
+      "inspectedHead": "2101f02cf60a0aba9291757a699d843c41455e1f",
       "release": "0.2.3-dev",
       "stage": "M09.8",
       "currentAppSourceSha": "6192f8eccdbf8092c31e06a0f37a53485c3e3589",
@@ -499,46 +525,51 @@
       ],
       "projectContextHandoffStaleAt": "8a89f0d612cdf69d619b64049304eaa789b4785c",
       "upstreamRepositoryModified": false,
-      "latestCommitAt": "2026-11-07T16:54:10Z",
-      "portfolioScreenshotPublish": "42394145400-skipped"
+      "latestCommitAt": "2026-11-08T17:33:09Z",
+      "portfolioScreenshotPublish": "42394145400-skipped",
+      "latestObservedChange": "Catalog snapshot, lockfile, and site imagery persisted by CI; no application fix was included in this bot commit. Previous hero-product-tile accessible-name Browser E2E failures still need fresh exact-SHA verification."
     },
     "pooyaOs": {
       "repository": "pooya-labs/pooya-os",
       "branch": "main",
-      "inspectedHead": "1d408c0881d480db8f1c1a7a9f94272a93d4e617",
-      "latestCommitAt": "2026-11-01T00:13:11Z",
+      "inspectedHead": "b3e4ee8f3a6352aa8d17320584570d9b8ec798e7",
+      "latestCommitAt": "2026-11-08T16:14:29Z",
       "inspectionMode": "read-only",
-      "upstreamRepositoryModified": false
+      "upstreamRepositoryModified": false,
+      "latestObservedChange": "Window frames reserve additional footer/dock space and mobile safe-area space."
     },
     "nexusCanvas": {
       "repository": "pooya-labs/nexus-canvas",
       "branch": "main",
-      "inspectedHead": "df05f90b0463e5681324efec9083c9fe20c2cc7c",
-      "latestCommitAt": "2026-11-01T00:13:24Z",
+      "inspectedHead": "ebcda40e0334822ab75a43093cd923f599bebfb5",
+      "latestCommitAt": "2026-11-08T16:34:35Z",
       "inspectionMode": "read-only",
-      "upstreamRepositoryModified": false
+      "upstreamRepositoryModified": false,
+      "latestObservedChange": "Removed undefined footer language variable; replacement creator/ecosystem strings are hardcoded English and require localized-parity review before final integration."
     },
     "luminaGlass": {
       "repository": "pooya-labs/lumina-glass",
       "branch": "main",
-      "inspectedHead": "06fa93428a00442e5ec53d5486c3615048f66842",
-      "latestCommitAt": "2026-11-01T00:13:29Z",
+      "inspectedHead": "9c479da9c726d044f3482aa10fdc8aa27307d694",
+      "latestCommitAt": "2026-11-08T16:56:19Z",
       "inspectionMode": "read-only",
-      "upstreamRepositoryModified": false
+      "upstreamRepositoryModified": false,
+      "latestObservedChange": "Unified ecosystem project marks, added missing AetherFlow/ORBIT/Salon Booking live links, and normalized Salon Booking logo treatment."
     },
     "auraPulse": {
       "repository": "pooya-labs/aurapulse",
       "branch": "main",
-      "inspectedHead": "7f3611cae0d74e06b6b01af534a5f84a79e5901c",
-      "latestCommitAt": "2026-11-01T00:13:18Z",
+      "inspectedHead": "99f90489f50d349be565640cf60738e181436245",
+      "latestCommitAt": "2026-11-08T16:29:43Z",
       "inspectionMode": "read-only",
-      "upstreamRepositoryModified": false
+      "upstreamRepositoryModified": false,
+      "latestObservedChange": "Footer owner marks now reference the latest Pooya Labs Platform monogram; Binance ticker remains subject to CORS and simulated fallback disclosures."
     },
     "salonBooking": {
       "repository": "pooya-labs/salon-booking",
       "branch": "main",
-      "inspectedHead": "4c4840c639da099379e8f65b387b1589685c6afd",
-      "latestCommitAt": "2026-11-07T17:02:46Z",
+      "inspectedHead": "fcd7b0fcfedf8f94227e164ef60ce74549fe1731",
+      "latestCommitAt": "2026-11-08T17:36:21Z",
       "release": "v1.0.0",
       "inspectionMode": "read-only",
       "upstreamRepositoryModified": false,
@@ -565,7 +596,8 @@
       "latestPagesWorkflow": {
         "run": "42394326440",
         "conclusion": "success"
-      }
+      },
+      "latestObservedChange": "Pooya Labs Platform ownership mark now loads from a local asset; customer/admin privacy restrictions remain unchanged."
     }
   },
   "novelLibrary": {
@@ -688,9 +720,9 @@
     "automatedValidation": "Repository CI 42483757067 passed; Browser QA 42483757051 passed on 17 routes and 34 desktop/mobile viewport checks; GitHub Pages deploy 42483757053 passed.",
     "manualValidation": "Latest Browser QA artifact 13618234167 requires detailed axe review; manual contrast, keyboard-only, screen-reader, real-device, and external social-crawler validation remain open."
   },
-  "latestTask": "P7-10",
+  "latestTask": "P7-12",
   "latestTaskBranch": "main",
-  "lastUpdated": "2026-11-08T16:11:11Z",
-  "latestDocumentationCommit": "5131660b0b3e0156ac350f6a9aafc648556fc814",
-  "latestDocumentationCheckpoint": "Cloudflare production deployment efa5ecb4-356d-4112-be60-31401506d940 and GitHub production auto-deploy are verified; Node 24 Actions migration and CI run 42501048926 passed; Browser QA 42501048917 passed."
+  "lastUpdated": "2026-11-08",
+  "latestDocumentationCommit": "d18c61cba951cc13917a5953958ef9e38d3b738b",
+  "latestDocumentationCheckpoint": "Roadmap reordered per owner request: Phase 7 readiness, Phase 8 penultimate full redesign plus two approval rounds, Phase 9 complete all-eight-project integration immediately before Phase 10 V1 release; all eight upstream latest changes inventoried read-only on 2026-11-08."
 }
