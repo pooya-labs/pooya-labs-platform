@@ -1,6 +1,7 @@
 # Owner review packet — Pooya Labs Platform
 
 **Prepared:** 2026-11-08  
+**Source status refreshed:** 2026-11-09 (read-only upstream recheck; owner approval remains pending)  
 **Review state:** Prepared; owner approval is still pending.  
 **Purpose:** Give Pooya one place to review public biography, project order, role attribution, status labels, contact channels, and media boundaries before Phase 8.  
 **Important:** This document is a review snapshot, not approval to publish new claims or media. All eight project registry entries currently remain marked as needs-owner-review.
@@ -47,7 +48,7 @@ The table records the current portfolio order and the wording already grounded i
 | 04 | [NexusCanvas](https://github.com/pooya-labs/nexus-canvas) | Public demo / دموی عمومی | README identifies Pooya as author. / README پویا را نویسنده معرفی می‌کند. |
 | 05 | [LuminaGlass](https://github.com/pooya-labs/lumina-glass) | Public demo / دموی عمومی | README identifies Pooya as author. / README پویا را نویسنده معرفی می‌کند. |
 | 06 | [AuraPulse](https://github.com/pooya-labs/aurapulse) | Public demo / دموی عمومی | README identifies Pooya as author. / README پویا را نویسنده معرفی می‌کند. |
-| 07 | [GlobalCart](https://github.com/pooya-labs/globalcart) | In development · v0.2.3-dev / M09.8 / در حال توسعه | README identifies Pooya as owner and product engineer. / README پویا را مالک و مهندس محصول معرفی می‌کند. |
+| 07 | [GlobalCart](https://github.com/pooya-labs/globalcart) | Stable portfolio/demo release · v1.0.0 / انتشار پایدار نسخهٔ نمایشی ۱.۰.۰ | README identifies Pooya as owner and product engineer. / README پویا را مالک و مهندس محصول معرفی می‌کند. |
 | 08 | [Salon Booking](https://github.com/pooya-labs/salon-booking) | Released · v1.0.0 / منتشرشده | README identifies Pooya as engineer/creator and the salon owner as product owner. / README پویا را مهندس و سازنده و مالک سالن را صاحب محصول معرفی می‌کند. |
 
 **Attribution notes**
@@ -60,13 +61,13 @@ The table records the current portfolio order and the wording already grounded i
 
 These are important accuracy constraints, not optional marketing language.
 
-- **AetherFlow:** M08 remains in progress. Its documented delivery guarantee is at-least-once, not universal exactly-once. The Cloudflare/runtime or screenshot evidence must not imply an accepted production-hosted service. A previously captured dashboard view still has an M07/M08 label mismatch and duplicate Dashboard navigation; keep that candidate withheld until the source UI is reconciled.
-- **ORBIT:** v1.0.0 covers the portfolio-demo scope. The Apps Script dashboard uses synthetic demo records. The Cloudflare Worker route is disabled and its origin/secret are not configured; Metrics, Logs, and Traces connection-required states are not live telemetry.
+- **AetherFlow:** M08 remains in progress and the project is experimental, not production-ready. The owner confirmed one real write/reload/read round-trip through the private Apps Script Sheet; the stored item is a bounded synthetic control-plane record, not an executed workflow. The checked-in Apps Script correction now keeps new storage-only records in `pending`, but the live Web App still needs a manual new-version redeploy before that correction is active. Keep the separate Rust/PostgreSQL/NATS production gates open. Its documented delivery guarantee is at-least-once, not universal exactly-once.
+- **ORBIT:** v1.0.0 covers the portfolio-demo scope. The Apps Script dashboard uses synthetic demo records. The Cloudflare Worker route is not a live runtime and Metrics, Logs, and Traces connection-required states are not live telemetry. Open PR #138 contains a CI-only Keycloak candidate; its strict production-image security gate still fails on unresolved SQLite FTS5 and upstream Guava findings. Do not describe the candidate as deployed or production-ready.
 - **Pooya.OS:** Public demo only. Review the profile portrait and X-Ray figures as personal/public-facing assets before treating any new recapture as approved.
 - **NexusCanvas:** Keep modelled metrics and illustrative telemetry labelled as such. Review the recently corrected footer strings for Persian/English parity.
 - **LuminaGlass:** Audio Lab and task-board data are local to the browser; there is no cloud sync. Microphone access requires browser permission, and no audio is sent to a server. Some candidate overview captures remain visually blurred and should not be substituted for clearer evidence.
 - **AuraPulse:** Binance ticker requests have failed in recorded browser captures due to CORS/network access. The fallback must remain labelled simulated; paper-trading does not send real orders and must not be described as live market execution.
-- **GlobalCart:** This is a marketplace simulation, not a live retailer. Cart/checkout, payment, order, inventory reservation, and fulfilment are not real. Catalog prices remain estimates where applicable. A prior exact-source Browser E2E run reported empty accessible names for hero product links; the latest source tree still needs a fresh full Browser E2E acceptance before its release claims are upgraded.
+- **GlobalCart:** Stable portfolio/demo release v1.0.0 is published at [GitHub Releases](https://github.com/pooya-labs/globalcart/releases/tag/v1.0.0). This is still a marketplace simulation, not a live retailer: no real goods are sold, and payment, inventory reservation, order fulfilment, seller payouts, and refunds are not real. Catalog amounts are estimates, not seller quotes. Merged-main Browser E2E [42516946135](https://github.com/pooya-labs/globalcart/actions/runs/42516946135) passed 163 tests / 9 intentional skips / 0 failures. Current-main project docs record owner-confirmed real desktop/mobile review, actual platform screen-reader review, and full human RTL/LTR review on 2026-11-08; the exact device/browser matrix was not recorded. Physical tablet review and eligible field Core Web Vitals remain unverified/optional. PR [#23](https://github.com/pooya-labs/globalcart/pull/23) was closed without merge; the v1.0.0 closeout is documented directly on current main commit `220b216fbad4`.
 - **Salon Booking:** Public evidence must be limited to the customer booking journey. Do not publish admin views, customer records, phone numbers, or private appointment data. Obtain the salon owner's permission and use synthetic/redacted evidence only.
 
 ## 4. Public contact channels currently shown
@@ -110,5 +111,7 @@ Please review and confirm or correct these items before Phase 8 begins:
 - [ ] Personal portraits, project marks, case-study screenshots, and social-card imagery permitted for public use.
 - [ ] Salon owner's separate permission for case-study attribution and privacy-reviewed imagery.
 - [ ] Whether the Novels section stays empty or receives owner-supplied material.
+
+**Source freshness note:** The project-head, release, and open-PR inventory was refreshed read-only on 2026-11-09; see [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md). AetherFlow's live Sheet write/reload/read check and GlobalCart's separate owner-confirmed manual review are recorded in their current source docs; neither changes Pooya Labs portfolio approval. A current source status does not imply owner approval of the portfolio wording or media.
 
 **Approval rule:** No item is considered approved by the existence of this document. Keep all eight project review states as needs-owner-review until the owner explicitly confirms the relevant content and media. Phase 8 redesign, Phase 9 project integration, and Phase 10 release remain gated by the existing roadmap.

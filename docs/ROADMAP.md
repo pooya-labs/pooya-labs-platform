@@ -88,7 +88,8 @@ The release target is a credible, distinctive personal portfolio that introduces
 This phase is the work currently in progress. Complete every autonomous engineering, source-verification, documentation, deployment, performance, and accessibility-preparation task before starting the penultimate redesign. Do not begin the full redesign while known platform defects or unresolved technical uncertainty can still change its requirements.
 
 ### Product and content readiness
-- [ ] Reconcile the source-of-truth project facts, current main SHAs, versions, live links, capabilities, and release states for all eight projects. Record the current evidence in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md); do not yet perform the final content/media integration.
+- [x] Record a fresh read-only checkpoint of all eight current upstream `main` SHAs, latest commits, current release states, and observed open PRs in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md) (2026-11-09). No upstream repository was modified.
+- [ ] Complete the full feature/route, live-link, contribution, logo/media/source, caption, and alt-text acceptance for all eight projects. Final portfolio content/media integration remains Phase 9 work.
 - [ ] Keep every unverified claim, missing contribution statement, and unavailable runtime visibly bounded; never convert a prototype, simulated feed, synthetic demo, or unpublished service into a live/production claim.
 - [ ] Verify all current project links, logos, owner attributions, image sources, captions, and alt text against the newly rechecked upstream repositories.
 - [x] Prepare the bilingual owner-review packet covering homepage copy, featured-project order, source-backed roles/statuses, contact channels, media, disclosure boundaries, and Novels decision; see [OWNER-REVIEW-PACKET.md](OWNER-REVIEW-PACKET.md). Preparation is complete; owner content/media approvals remain pending.
