@@ -46,6 +46,16 @@ The data model must distinguish a draft entry from a published entry. Never rend
 
 The current Spatial OS shell is retained as a secondary owner workspace / experiment. Do not expose private workspace data in the public portfolio. Any future admin surface must use server-side authorization; a hidden link, localStorage flag, or browser-supplied role is not an authorization boundary.
 
+## Final integration boundary
+
+All eight independent projects remain separately versioned repositories. The final sequence is explicit:
+- Phase 7 completes platform readiness and verifies upstream source facts without importing the final project media/content package.
+- Phase 8 (penultimate) redesigns the complete portfolio and obtains owner approval.
+- Phase 9 (last implementation stage before release) integrates the complete, current, owner-approved project presentation into the approved design: bilingual case studies, source facts, media, diagrams, links, and justified interactive walkthroughs.
+- Phase 10 validates and publishes V1.
+
+A portfolio-level integration does not imply merging the eight source repositories into this repository. Any source-code reuse requires its own approval, license review, architecture boundary, tests, and rollback plan.
+
 ## Deferred
 
 - Apps Script data sync and deployment.
