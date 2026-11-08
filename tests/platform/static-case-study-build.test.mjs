@@ -11,17 +11,17 @@ const portfolioSource = await readFile(new URL('../../apps/platform/src/Portfoli
 const viteConfig = await readFile(new URL('../../apps/platform/vite.config.ts', import.meta.url), 'utf8');
 
 test('direct case-study routes hydrate the same server-rendered React tree instead of replacing it', () => {
-  assert.match(viteConfig, /renderToString\\(createElement\\(HydratedCaseStudy/);
-  assert.match(viteConfig, /'<div id="root">' \\+ appMarkup \\+ '<\\/div>'/);
-  assert.match(mainSource, /hydrateRoot\\(/);
-  assert.match(mainSource, /portfolioProjects\\.find/);
-  assert.match(portfolioSource, /export function HydratedCaseStudy/);
-  assert.match(portfolioSource, /export function ProjectCaseStudy/);
+  assert.ok(viteConfig.includes('renderToString(createElement(HydratedCaseStudy'));
+  assert.ok(viteConfig.includes("'<div id=\"root\">' + appMarkup + '</div>'"));
+  assert.ok(mainSource.includes('hydrateRoot('));
+  assert.ok(mainSource.includes('portfolioProjects.find'));
+  assert.ok(portfolioSource.includes('export function HydratedCaseStudy'));
+  assert.ok(portfolioSource.includes('export function ProjectCaseStudy'));
   const componentStart = portfolioSource.indexOf('export function ProjectCaseStudy');
   const componentEnd = portfolioSource.indexOf('export interface HydratedCaseStudyProps', componentStart);
   const component = portfolioSource.slice(componentStart, componentEnd);
-  assert.doesNotMatch(component, /window\\.location\\.pathname/);
-  assert.match(portfolioSource, /baseUrl: string/);
+  assert.ok(!component.includes('window.location.pathname'));
+  assert.ok(portfolioSource.includes('baseUrl: string'));
 });
 
 
