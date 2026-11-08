@@ -6,20 +6,22 @@ const script = await readFile(new URL('../../apps/platform/scripts/capture-proje
 const workflow = await readFile(new URL('../../.github/workflows/project-interface-captures.yml', import.meta.url), 'utf8');
 const packageJson = JSON.parse(await readFile(new URL('../../apps/platform/package.json', import.meta.url), 'utf8'));
 
-test('preview capture covers seven public project demos with two responsive viewports', () => {
-  const slugs = ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aurapulse', 'global-cart'];
+test('preview capture covers eight public project demos with two responsive viewports and full-page evidence', () => {
+  const slugs = ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aurapulse', 'global-cart', 'salon-booking'];
   for (const slug of slugs) assert.ok(script.includes(`slug: '${slug}'`), 'Missing preview target ' + slug);
-  assert.equal((script.match(/slug: '[a-z-]+'/g) ?? []).length, 7);
+  assert.equal((script.match(/slug: '[a-z-]+'/g) ?? []).length, 8);
   assert.match(script, /width: 1440, height: 1000/);
   assert.match(script, /width: 390, height: 844/);
-  assert.match(script, /fullPage: false/);
+  assert.match(script, /fullPage, animations: 'disabled'/);
   assert.match(script, /waitUntil: 'domcontentloaded'/);
   assert.match(script, /timeout: 30000/);
   assert.match(script, /capture-report\.json/);
   assert.match(script, /excluded: \['salon-booking/);
-  assert.doesNotMatch(script, /slug: 'salon-booking'/);
+  assert.match(script, /slug: 'salon-booking'/);
   assert.match(script, /const defaultView = target\.slug === 'nexus-canvas' && viewport\.name === 'mobile' \? 'Mobile Rack' : 'Overview'/);
   assert.match(script, /captureScenario\('overview', defaultView\)/);
+  assert.match(script, /captureScenario\('fullpage', 'Full page \/ all sections', true\)/);
+  assert.match(script, /[Pp]ublic customer booking journey only/);
   assert.ok(script.includes("captureScenario('incidents', 'Incidents · API authentication required')"));
   assert.ok(script.includes("captureScenario(view.toLowerCase() + '-connection'"));
   assert.match(script, /Metrics/);
@@ -36,7 +38,7 @@ test('preview capture covers seven public project demos with two responsive view
   assert.match(script, /real incident actions until an authenticated API is connected/);
   assert.match(script, /NexusCanvas Mobile Rack, desktop only/);
   assert.match(script, /viewport\.name !== 'mobile'/);
-  assert.ok(script.includes('requiredCaptureCount = targets.length * viewports.length'));
+  assert.ok(script.includes('requiredCaptureCount = targets.length * viewports.length * 2'));
   assert.match(script, /recordVideo/);
   assert.ok(script.includes('motionVideo.saveAs'));
   assert.match(script, /page\.locator\('\.sidebar \.nav-item'\)/);
