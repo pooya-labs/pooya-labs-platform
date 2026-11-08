@@ -2284,3 +2284,7 @@
   .system-wire-flow,.system-wire-orbit,.system-node-mark i,.craft-principle-visual i,.craft-principle-visual b { animation:none!important; }
   .system-field-node,.craft-principle { transition:none!important; }
 }
+
+
+/* Signal wires are visual connectors only; node cards remain the interactive surface. */
+.system-field-wires,.system-wire-flow { pointer-events:none; }
