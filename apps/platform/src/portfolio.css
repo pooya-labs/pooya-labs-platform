@@ -1644,3 +1644,5 @@
   .portfolio-proof-stats { grid-row:2; }
   .portfolio-proof-visual { grid-row:3; min-height:210px; }
 }
+
+.case-study-media-frame:focus-visible { outline:2px solid var(--pf-gold); outline-offset:3px; }
