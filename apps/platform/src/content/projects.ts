@@ -207,7 +207,6 @@ const projectEntries: PortfolioProject[] = [
   },
   {
     number: '06',
-        visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/aurapulse/7f3611cae0d74e06b6b01af534a5f84a79e5901c/public/assets/quant-core.webp', kind: 'illustration', alt: { fa: 'تصویر هسته داده AuraPulse', en: 'AuraPulse quantitative core artwork' } },
     slug: 'aura-pulse',
     name: 'AuraPulse',
     visualAsset: {
@@ -286,12 +285,6 @@ const projectEntries: PortfolioProject[] = [
   },
   {
     number: '08',
-        visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/salon-booking/787160782f82929fa0d8395f8f5d067f2f028257/public/images/shayan-barber-logo.webp', kind: 'brand', alt: { fa: 'نشان برند شایان برای پروژه سامانه رزرو نوبت', en: 'Shayan Barber Studio brand mark used by the booking project' } },
-    caseStudyHeroAsset: {
-      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/6deb62f48a8350f5ed293ac3dbcd27c9d30113dd/apps/platform/public/interface-captures/salon-booking/salon-booking-fullpage-desktop.png',
-      kind: 'interface',
-      alt: { fa: 'تصویر واقعی مسیر رزرو مشتری در شایان سالن', en: 'Actual Shayan Salon public customer booking journey' },
-    },
     slug: 'salon-booking',
     name: 'Salon Booking',
     visualAsset: {
