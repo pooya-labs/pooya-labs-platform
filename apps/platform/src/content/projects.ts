@@ -283,7 +283,7 @@ const projectEntries: PortfolioProject[] = [
     number: '08',
         visualAsset: { url: 'https://raw.githubusercontent.com/pooya-labs/salon-booking/787160782f82929fa0d8395f8f5d067f2f028257/public/images/shayan-barber-logo.webp', kind: 'brand', alt: { fa: 'نشان برند شایان برای پروژه سامانه رزرو نوبت', en: 'Shayan Barber Studio brand mark used by the booking project' } },
     caseStudyHeroAsset: {
-      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/6deb62f4f4e0c1f1a2e6f4c7f8d9a0b1c2d3e4f5/apps/platform/public/interface-captures/salon-booking/salon-booking-fullpage-desktop.png',
+      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/6deb62f48a8350f5ed293ac3dbcd27c9d30113dd/apps/platform/public/interface-captures/salon-booking/salon-booking-fullpage-desktop.png',
       kind: 'interface',
       alt: { fa: 'تصویر واقعی مسیر رزرو مشتری در شایان سالن', en: 'Actual Shayan Salon public customer booking journey' },
     },
