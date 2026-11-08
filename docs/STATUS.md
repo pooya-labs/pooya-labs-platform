@@ -3,7 +3,9 @@
 - Added dependency-free JavaScript syntax/debugger checks and source/config formatting checks; these do not add runtime or development dependencies.
 - Added `.editorconfig`, root npm commands `lint` and `format:check`, and required both checks in Repository CI.
 - Added [CONTRIBUTING.md](../CONTRIBUTING.md) and [RELEASE.md](RELEASE.md) to standardize local validation, commit/PR expectations, deployment evidence, and V1 restrictions.
-- The main-branch CI result is pending review/merge. The live site and release state are unchanged; pre-alpha remains the accurate label.
+- Merged as [PR #12](https://github.com/pooya-labs/pooya-labs-platform/pull/12), commit [`1746c11`](https://github.com/pooya-labs/pooya-labs-platform/commit/1746c11ee87fba4a37ea8fff0f548cb832fe4b22).
+- Repository CI [42504771438](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42504771438) passed both new quality checks, TypeScript, all three build targets, and the contract suite. Browser QA [42504771467](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42504771467) also passed (report artifact [13627206292](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42504771467)).
+- This is tooling/documentation-only; the public UI and deployed application revision are unchanged. Pre-alpha remains the accurate release label.
 - Physical Android review, owner design/content approval, and human accessibility acceptance remain open.
 
 # Project Status
