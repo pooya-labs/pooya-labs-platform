@@ -1,3 +1,11 @@
+## Latest verified checkpoint — tracked-source and public-bundle credential scan (2026-11-08)
+
+- Added `scripts/secret-scan.mjs` and the root command `npm run security:secrets`; Repository CI runs it after both static hosting bundles are built.
+- The scanner inspects tracked UTF-8 text, `dist/pages`, and `dist/cloudflare`; it checks high-confidence private-key/provider-token patterns, quoted credential assignments, and sensitive credential filenames. Matched values are never printed.
+- Repository CI [42517885668](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42517885668) passed on PR #15 head `e7b5d2e4a592700ea309ff55f4428947cd7e2816`: `npm audit` reported **0 vulnerabilities**, all builds passed, the scan reported **no recognized matches**, and **101/101** repository contract tests passed.
+- Scanner limitations are recorded in [SECURITY-MODEL.md](SECURITY-MODEL.md): no binary-content or Git-history scan, and only recognized high-confidence patterns are detected. Broader security review and manual public/private asset checks remain open.
+- PR [#15](https://github.com/pooya-labs/pooya-labs-platform/pull/15) contains the implementation and tests; browser QA is being run independently. No application runtime, deployment, or project repository was changed by this security task.
+
 ## Latest verified checkpoint — monogram asset, current source audit, and host-specific QA (2026-11-08)
 
 - Latest application asset revision: [`41ea1004433196aa81e4e50b17a1620f110ecea8`](https://github.com/pooya-labs/pooya-labs-platform/commit/41ea1004433196aa81e4e50b17a1620f110ecea8), which adds the centered rounded black-tile Pooya Labs monogram asset. GitHub Pages workflow [42514976384](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976384) passed build and deployment for this revision.
