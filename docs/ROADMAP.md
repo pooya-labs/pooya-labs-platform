@@ -55,65 +55,111 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [x] Generate crawler-readable static Persian and English case-study pages for all eight projects, with canonical URLs, hreflang, JSON-LD, source links, 17 raster PNG social preview cards (homepage plus eight projects × two languages), and matching SVG source cards.
 - [ ] Validate the 1200×627 PNG Open Graph previews in external crawler/share clients; confirm the platforms refresh their cached cards and add alternate formats only if an actual client requires them.
 
-## Phase 4 — Secondary private workspace and owner tools
-- [ ] Decide which existing Spatial OS tools are useful enough to retain after the public portfolio is complete.
-- [ ] Keep private workspace tools separate from the public project catalogue and visitor experience.
-- [ ] Define the minimum owner console scope: edit profile, curate projects, update case studies, and control draft/publication state.
-- [ ] Enforce owner authorization server-side before any protected operation.
-- [ ] Do not build a generic customer login/dashboard into the portfolio. A separate future product may require its own customer surface.
+## Phase 4 — Secondary workspace boundary (closed for V1 scope)
 
-## Phase 5 — Backend and contact capabilities (only where needed)
-- [ ] Decide whether the contact section needs a real submission endpoint or direct contact links are sufficient.
-- [ ] If a form is approved, define consent, validation, spam/abuse controls, retention, deletion, and server-confirmed receipt semantics.
-- [ ] Choose the smallest appropriate backend after requirements are known.
-- [ ] Keep Apps Script as an optional deferred adapter; it is not required to publish the static portfolio.
-- [ ] Never expose privileged credentials or treat browser-supplied identity as authorization.
+- [x] Keep the public portfolio as the primary visitor experience; the existing Spatial OS shell remains a separate, secondary experience.
+- [x] Do not add public visitor accounts, a generic SaaS dashboard, or an owner CMS to the portfolio V1.
+- [x] Keep private owner functionality out of public routes unless a real server-side authorization boundary is designed and tested.
+- [x] Defer new owner-console tools until there is a concrete content-management need and a separate security design.
 
-## Phase 6 — Interactive project showcases
-- [ ] Add only interactive demos that help explain a featured project's engineering value.
-- [ ] Define per-demo performance and accessibility budgets.
-- [ ] Lazy-load heavy interactive experiences and provide static fallbacks.
-- [ ] Keep experiments clearly labeled; do not let them overwhelm core portfolio content.
+**Scope decision:** a new owner console is not required to launch this static portfolio. This phase is closed by an explicit scope boundary, not by claiming that a private CMS was built. Reopen it only for a separate, approved product requirement.
 
-## Phase 7 — Full pre-release redesign with Pooya's feedback (release blocker)
+## Phase 5 — Contact and backend boundary (closed for V1 scope)
 
-Before starting the visual redesign, close the factual/content gate in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md): the source-backed dossiers are populated, and every remaining owner input, screenshot/diagram, current-SHA test result, runtime acceptance, and manual QA item must either be completed or remain a visible release blocker.
+- [x] Use the already configured direct contact destinations: GitHub, Telegram, and Instagram.
+- [x] Do not add a submission form, database, or Apps Script dependency while direct contact links satisfy the visitor journey.
+- [x] Keep the static GitHub Pages and Cloudflare Pages portfolio independent of the historical Apps Script transport proof.
+- [x] Preserve privacy/security requirements if a future form is approved: explicit consent, validation, abuse controls, retention/deletion policy, and server-confirmed receipt.
 
-This phase is mandatory. The current portfolio layout is an initial working draft, not the final visual identity.
+**Scope decision:** direct contact links are sufficient for V1. A contact backend is not a release blocker and must not be built without an explicit need.
 
-- [ ] Run a complete review of the site with Pooya on desktop and mobile.
-- [ ] Collect and record his feedback on identity, biography, visual references, page hierarchy, project order, case-study format, imagery, color, typography, motion, and navigation.
-- [ ] Compare alternative design directions and agree on the final visual language before polishing.
-- [ ] Redesign the entire public website using the accepted direction, not merely patch individual sections.
-- [ ] Present the revised version for a second feedback round; record changes and unresolved decisions.
-- [ ] Verify that the final design gives the strongest projects enough context and evidence.
-- [ ] Obtain explicit owner approval before marking this phase complete.
+## Phase 6 — Focused project showcases (closed for current scope)
 
-**Exit gate:** Pooya has reviewed and explicitly approved the complete final portfolio design. No V1 release is allowed before this gate passes.
+- [x] Build eight project-specific case-study hero scenes that explain each project's actual workflow or interface.
+- [x] Add a distinct motion signature to the eight selected-project cards.
+- [x] Respect reduced-motion preferences and keep static fallbacks available.
+- [x] Keep screenshot evidence separate from decorative hero motion and lazy-load lower-page media.
+- [x] Avoid embedding heavy standalone project applications into the portfolio before the final project-integration stage.
 
-## Phase 8 — Release hardening and V1 launch
-- [ ] Complete accessibility, keyboard, RTL/LTR, responsive, browser, and reduced-motion checks.
-- [ ] Measure loading performance on representative desktop and mobile conditions.
-- [ ] Verify every public statement, skill, project status, image, and external link against [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md); close every mandatory per-project item.
-- [ ] Validate SEO metadata and social previews in external crawler/share clients, custom-domain readiness if desired, and analytics/privacy decisions.
-- [ ] Complete CI, Pages publishing, rollback, and recovery rehearsal.
-- [ ] Confirm all owner approvals (biography, project order/roles, assets, contact channel, redesigned UI) and all mandatory audit checkboxes are complete.
-- [ ] Publish a versioned V1 and document the release. No V1 tag is permitted while any required audit/release checkbox remains open.
+**Scope decision:** the existing motion-led case-study and card experiences are the approved baseline for the next review. New interactive demos, embedded applications, and project-specific deep integrations are deliberately deferred to Phase 9, after the complete redesign is approved.
 
-## Phase 9 — Previous-project integration (after the standalone portfolio)
-This phase must not block V1. Source projects remain independent unless Pooya explicitly approves an integration.
+## Phase 7 — Pre-redesign readiness and engineering closeout
 
-- [ ] Reassess AetherFlow and select verified milestones and presentable case-study evidence.
-- [ ] Reassess ORBIT and select verified milestones and presentable case-study evidence.
-- [ ] Reassess Pooya.OS, LuminaGlass, NexusCanvas, AuraPulse, GlobalCart, and Salon Booking.
-- [ ] Add project-specific case studies and links before considering source-code reuse.
-- [ ] Integrate reusable modules only behind clear boundaries, with attribution, tests, and rollback.
-- [ ] Verify licenses, dependency compatibility, security boundaries, and avoid duplicate implementations.
+This phase is the work currently in progress. Complete every autonomous engineering, source-verification, documentation, deployment, performance, and accessibility-preparation task before starting the penultimate redesign. Do not begin the full redesign while known platform defects or unresolved technical uncertainty can still change its requirements.
 
-**Integration rule:** the portfolio may showcase independent projects without importing their code. Any source integration is separate work performed only after explicit approval.
+### Product and content readiness
+- [ ] Reconcile the source-of-truth project facts, current main SHAs, versions, live links, capabilities, and release states for all eight projects. Record the current evidence in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md); do not yet perform the final content/media integration.
+- [ ] Keep every unverified claim, missing contribution statement, and unavailable runtime visibly bounded; never convert a prototype, simulated feed, synthetic demo, or unpublished service into a live/production claim.
+- [ ] Verify all current project links, logos, owner attributions, image sources, captions, and alt text against the newly rechecked upstream repositories.
+- [ ] Prepare a compact owner-review packet containing biography/headline, featured-project order, per-project role wording, project statuses, contact channels, and assets that require approval.
+- [ ] Confirm whether the empty novels library should stay hidden/empty or receive owner-provided content; do not invent titles, covers, or manuscripts.
 
+### Platform engineering and quality
+- [x] Add dependency-free lint and formatting checks to CI and publish contribution/release conventions.
+- [x] Keep Node 24-compatible GitHub Actions and the passing Repository CI/Browser QA checks.
+- [ ] Complete responsive navigation, keyboard-only operation, visible focus, and screen-reader-flow audit for Persian and English, both themes.
+- [ ] Resolve or document every reproducible accessibility defect. Manually evaluate gradient/pseudo-background contrast cases that axe cannot calculate; incomplete checks are not passes.
+- [ ] Establish measurable performance budgets for initial load, route transitions, largest media, animation cost, and mobile responsiveness; measure the current implementation against them.
+- [ ] Review dependency/security posture, secret exposure, public/private asset boundaries, external link safety, and deployment permissions.
+- [ ] Validate all 17 PNG social preview cards with external crawler/share clients and document which clients/cache refreshes were actually verified.
+- [ ] Confirm GitHub Pages source configuration and verify the canonical site serves the exact latest application build.
+- [ ] Enable and verify repeatable Cloudflare publishing through the private GitHub Actions secret, or document a tested owner-operated manual release path; never publish credentials in chat or source.
+- [ ] Rehearse a rollback/recovery for each public host and record exact steps, expected artifacts, and verification.
+- [ ] Run a final source/content audit checkpoint and synchronize STATUS, NEXT, CHANGELOG, and project-state.json.
 
-### Phase 7 — owner feedback checkpoint (2026-11-08)
+### Owner/device acceptance inputs required to exit Phase 7
+- [ ] Pooya reviews the current baseline on desktop and a physical Android device; Chromium emulation alone is not physical-device acceptance.
+- [ ] Pooya confirms the biography, headline, role/contribution wording, featured order, public contact details, and permitted personal assets.
+- [ ] Pooya/salon owner approves any public Salon Booking case-study attribution and privacy-reviewed synthetic/redacted imagery.
+- [ ] Complete the remaining human accessibility review with keyboard and assistive technology; record the exact browser/device/screen-reader combinations.
+
+**Exit gate:** autonomous readiness work is complete, all known defects are fixed or explicitly bounded, and the owner-review packet is ready. Only then begin Phase 8. Phase 7 does not include the final project-by-project media/content integration; that is intentionally reserved for Phase 9.
+
+## Phase 8 — Complete redesign and owner approval (penultimate stage)
+
+This is the second-to-last stage before V1. The full public site is redesigned again only after Phase 7 readiness is satisfied. The current site remains a review baseline, not the final approved design.
+
+- [ ] Revisit the full visual direction with Pooya, including identity, logo usage, typography, color system, hierarchy, spacing, page flow, responsive behavior, navigation, motion, and project-storytelling approach.
+- [ ] Compare at least two coherent design directions and agree on one before implementation.
+- [ ] Redesign the entire portfolio consistently—not as isolated section patches—including homepage, navigation, project cards, case-study templates, media galleries, About, novels, contact, and footer.
+- [ ] Preserve correct content boundaries, verified links, RTL/LTR behavior, reduced motion, accessibility, and performance budgets throughout the redesign.
+- [ ] Publish a review preview and complete owner review round one on desktop and mobile.
+- [ ] Record all requested revisions and apply the approved changes.
+- [ ] Publish the revised preview and complete owner review round two, including physical-device confirmation.
+- [ ] Obtain explicit written owner approval of the complete redesigned site and freeze the design direction.
+
+**Exit gate:** Pooya explicitly approves the complete redesigned portfolio after the second review. Do not begin final project integration until this approval is recorded.
+
+## Phase 9 — Full project integration (final stage before V1 publication)
+
+This is the last implementation stage before release. Integrate all eight independent projects into the approved portfolio design only after Phase 8 approval. "Integration" here means complete portfolio-level presentation—verified product facts, case studies, project-specific evidence, links, media, and only the interactive demonstrations that genuinely improve understanding. It does not mean blindly copying all source code into one repository.
+
+- [ ] Recheck exact upstream main SHAs, releases, current CI, open PRs, hosted routes, and project acceptance state for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, GlobalCart, and Salon Booking.
+- [ ] Complete and approve each project's full bilingual case study, challenge, role/contribution, architecture, decisions, feature walkthrough, validation evidence, limitations, and current status.
+- [ ] Add the final owner-approved desktop/mobile screenshots, feature-specific captures, diagrams, logos, captions, and alt text. Promote capture artifacts only through the existing checksum/approval workflow.
+- [ ] Finish missing project-specific evidence: AetherFlow's reconciled milestone/UI and API boundary; ORBIT's focused synthetic/demo states and explicit unconnected runtime boundary; Pooya.OS's current browser evidence; NexusCanvas rack/analysis/snapshot evidence; LuminaGlass export/Audio Lab/task-board evidence; AuraPulse feed/fallback and paper-trading evidence with simulation labels; GlobalCart current catalog/PDP/gallery evidence; Salon Booking only approved synthetic/redacted customer-facing evidence.
+- [ ] Resolve any upstream test or runtime blockers that materially affect a public claim, or keep that feature explicitly marked unavailable/deferred. Do not modify an independent repository merely to make the portfolio look complete.
+- [ ] Add or refine interactive demos only where the approved redesign and evidence show clear value; enforce their performance, security, privacy, and accessibility budgets.
+- [ ] Re-verify every public claim, source link, live/demo URL, image URL, status, external attribution, and repository release boundary against its exact source SHA.
+- [ ] Run exact-SHA per-project and portfolio CI/browser/accessibility/performance checks; freeze the integrated content and record the evidence.
+
+**Exit gate:** all eight projects are fully represented with owner-approved and source-backed content/evidence, with no fabricated live capability or production claim. The platform is then ready for Phase 10 release hardening and V1 publication.
+
+## Phase 10 — Final release hardening and V1 publication
+
+- [ ] Run the final exact-SHA lint, formatting, typecheck, contract, build, Browser QA, accessibility, performance, security, SEO, and link checks.
+- [ ] Verify the approved redesign and all eight final project integrations on desktop, mobile, and physical Android hardware.
+- [ ] Complete owner/content/privacy approvals and confirm all mandatory audit items are closed.
+- [ ] Rehearse GitHub Pages and Cloudflare Pages deployment, smoke tests, rollback, and recovery on the final release commit.
+- [ ] Confirm canonical URLs, metadata, sitemap, social cards, and cache behavior on the published hosts.
+- [ ] Create a versioned V1 tag and publish release notes only after every preceding gate passes.
+- [ ] Update STATUS, NEXT, CHANGELOG, RELEASE, and project-state.json with exact source, CI, artifact, and deployment identifiers.
+
+**Release rule:** no V1 tag while any required Phase 7, 8, 9, or 10 gate is open. Project integration is deliberately the final stage before release; redesign and its owner approvals are deliberately the penultimate stage.
+
+## Historical implementation checkpoints
+
+### Phase 8 history — owner feedback checkpoint (2026-11-08)
 
 - [x] Record Pooya's first visual feedback round: header redesign, desktop case-study text containment, richer motion/graphics, supplied P logo, and responsive project imagery.
 - [x] Implement first-pass header, logo, case-study containment, and original Stripe-inspired radial statistics artwork on the review branch.
@@ -122,7 +168,7 @@ This phase must not block V1. Source projects remain independent unless Pooya ex
 - [ ] Obtain explicit approval of the complete redesigned site.
 
 
-### Phase 7 — responsive capture evidence (2026-11-08)
+### Phase 8 history — responsive capture evidence (2026-11-08)
 
 - [x] Capture all public project demos at desktop and mobile sizes, including full-page screenshots and selected interactive views.
 - [x] Review the 14 approved full-page captures for visual quality and privacy.
@@ -131,7 +177,7 @@ This phase must not block V1. Source projects remain independent unless Pooya ex
 - [ ] Obtain Pooya's round-two review of the live site before closing Phase 7.
 
 
-### Phase 7 — full-page gallery integration (2026-11-08)
+### Phase 8 history — full-page gallery integration (2026-11-08)
 
 - [x] Publish the 14 visually and privacy reviewed full-page screenshots to the repository.
 - [x] Add immutable, commit-pinned desktop/mobile screenshot references to seven project case studies.
@@ -139,7 +185,7 @@ This phase must not block V1. Source projects remain independent unless Pooya ex
 - [ ] Verify all gallery assets on the live site and collect Pooya's second feedback round.
 
 
-### Phase 7 — product-aligned motion and Android gallery behavior (2026-11-08)
+### Phase 8 history — product-aligned motion and Android gallery behavior (2026-11-08)
 
 - [x] Replace the shared abstract hero treatment with eight motion scenes that explain each project's actual workflow or interface.
 - [x] Add a compact, project-specific motion signature to every project card in the selected-work grid.
@@ -148,7 +194,7 @@ This phase must not block V1. Source projects remain independent unless Pooya ex
 - [ ] Review the updated motion and gesture behavior on a physical Android device before owner acceptance. Chromium touch emulation passed; physical-device verification is still open.
 
 
-### Phase 7 — Cloudflare production parity and deployment handoff (2026-11-08)
+### Phase 7 readiness history — Cloudflare production parity and deployment handoff (2026-11-08)
 
 - [x] Publish the latest CI-verified application commit `c7a86a2e2f54d157b7e0b806c9c022afd41fd208` to Cloudflare Pages. Deployment `a1a69456-fc5a-4ac3-917b-f5cb0cb909a5` completed with successful build and deploy stages.
 - [x] Confirm the canonical Pages host `https://pooya-labs-platform.pages.dev/` points to the current release.
@@ -159,7 +205,7 @@ This phase must not block V1. Source projects remain independent unless Pooya ex
 - [ ] Check the refreshed Cloudflare host on a physical Android device and compare it with GitHub Pages.
 - [ ] Continue P7-11 owner review: approve the full design/motion, content, project order, and personal contribution wording before Phase 8.
 
-### Phase 7 — accessibility semantics and contrast audit (2026-11-08)
+### Phase 7 readiness history — accessibility semantics and contrast audit (2026-11-08)
 
 - [x] Give the proof statistics container a valid `group` role for its descriptive label; remove the repeated `aria-prohibited-attr` axe incomplete finding.
 - [x] Remove the obsolete sticky-header pseudo-element and preserve the glass treatment with an opaque theme-aware base surface.
