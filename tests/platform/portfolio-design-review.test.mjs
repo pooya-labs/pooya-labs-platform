@@ -106,3 +106,48 @@ test('the redesigned signal-orbit monogram and matching favicon replace the prev
   assert.match(favicon, /#30C49A/);
   assert.doesNotMatch(mark, /#fff3c9|#e9bf76|#d8b36a/i);
 });
+
+
+test('the English hero keeps thoughtful as an isolated, unbroken LTR word', () => {
+  assert.ok(home.includes("headlineB: 'into',") && home.includes("headlineWord: 'thoughtful'"));
+  assert.ok(home.includes('<bdi dir="ltr" className="hero-title-word">{t.headlineWord}</bdi>'));
+  assert.ok(css.includes('.portfolio-hero-title .hero-title-word'));
+  assert.ok(css.includes('white-space:nowrap'));
+  assert.ok(css.includes('padding-inline-end:.13em'));
+  const browserQa = readFile(new URL('../../apps/platform/scripts/portfolio-browser-qa.mjs', import.meta.url), 'utf8');
+  return browserQa.then((source) => assert.ok(source.includes('thoughtful headline word is missing, split, or clipped')));
+});
+
+test('the header mark has no square badge and uses a reduced-motion-safe reveal', () => {
+  assert.doesNotMatch(mark, /<rect/);
+  const latestMarkRule = css.slice(css.lastIndexOf('.portfolio-brand-mark {'));
+  assert.ok(latestMarkRule.includes('border:0!important'));
+  assert.ok(latestMarkRule.includes('background:transparent!important'));
+  assert.ok(css.includes('@keyframes pooya-mark-arrive'));
+  assert.ok(css.includes('@media (prefers-reduced-motion:reduce)'));
+  assert.ok(css.includes('.portfolio-brand-mark img { opacity:1!important;'));
+  assert.ok(favicon.includes('#35C99A'));
+});
+
+test('Instagram contact uses a dedicated brand glyph instead of a camera icon', async () => {
+  const instagram = await readFile(new URL('../../apps/platform/public/brand/instagram-glyph.svg', import.meta.url), 'utf8');
+  assert.ok(home.includes('instagram-glyph.svg'));
+  assert.ok(home.includes('className="instagram-brand-icon"'));
+  assert.doesNotMatch(home, /Camera/);
+  assert.ok(instagram.includes('aria-label="Instagram"'));
+  assert.ok(instagram.includes('instagram-gradient'));
+});
+
+test('each product case study receives its own decorative motion language', () => {
+  const projects = readFile(new URL('../../apps/platform/src/content/projects.ts', import.meta.url), 'utf8');
+  return projects.then((source) => {
+    for (const slug of ['aetherflow','orbit','pooya-os','nexus-canvas','lumina-glass','aura-pulse','global-cart','salon-booking']) {
+      assert.ok(source.includes("slug: '" + slug + "'"));
+      assert.ok(css.includes('.scene-' + slug + ' {'));
+    }
+    assert.ok(home.includes('case-study-motion-art scene-${project.slug}'));
+    assert.ok(home.includes('motion-calendar'));
+    assert.ok(home.includes('motion-bars'));
+    assert.ok(css.includes('.case-study-motion-art::before'));
+  });
+});

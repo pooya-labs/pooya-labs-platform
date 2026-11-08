@@ -1,4 +1,4 @@
-import { Activity, ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Camera, Layers3, Monitor, Moon, Send, Sun, TerminalSquare } from 'lucide-react';
+import { Activity, ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Layers3, Monitor, Moon, Send, Sun, TerminalSquare } from 'lucide-react';
 import { useEffect, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
 import { portfolioProjects as projects, type PortfolioProject } from './content/projects';
 import { coreDossiers } from './content/case-study-dossiers-core';
@@ -63,6 +63,7 @@ const text = {
     eyebrow: 'مهندسی کامپیوتر · ساخت نرم‌افزار',
     headlineA: 'ایده‌ها را',
     headlineB: 'به تجربه‌های دیجیتال',
+    headlineWord: '',
     headlineC: 'تبدیل می‌کنم.',
     intro: 'من پویا هستم؛ دانشجوی مهندسی کامپیوتر با تمرکز بر طراحی محصول، مهندسی فرانت‌اند و تفکر سیستمی. اینجا پروژه‌هایی را می‌بینی که می‌سازم، همراه با مسیر فنی، تصمیم‌ها و وضعیت واقعی هرکدام.',
     explore: 'دیدن پروژه‌ها',
@@ -141,7 +142,8 @@ const text = {
     navContact: 'Contact',
     eyebrow: 'Computer engineering · Software builder',
     headlineA: 'Turning ideas',
-    headlineB: 'into thoughtful',
+    headlineB: 'into',
+    headlineWord: 'thoughtful',
     headlineC: 'digital experiences.',
     intro: 'I’m Pooya, a computer engineering student focused on product design, frontend engineering, and systems thinking. Here I share the projects I build, along with their technical journey, decisions, and honest current status.',
     explore: 'Explore projects',
@@ -244,6 +246,20 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
             {(project.caseStudyHeroAsset ?? project.visualAsset) && <img className={'case-study-visual-image visual-' + (project.caseStudyHeroAsset ?? project.visualAsset)!.kind}
               src={(project.caseStudyHeroAsset ?? project.visualAsset)!.url} alt={(project.caseStudyHeroAsset ?? project.visualAsset)!.alt[language]} loading="eager" decoding="async"
               onError={(event) => { event.currentTarget.remove(); event.currentTarget.parentElement?.classList.remove('has-visual'); }} />}
+            <div className={`case-study-motion-art scene-${project.slug}`} aria-hidden="true">
+              <span className="motion-orbit motion-orbit-a" />
+              <span className="motion-orbit motion-orbit-b" />
+              <span className="motion-track motion-track-a" />
+              <span className="motion-track motion-track-b" />
+              <span className="motion-core" />
+              <span className="motion-node motion-node-a" />
+              <span className="motion-node motion-node-b" />
+              <span className="motion-node motion-node-c" />
+              <span className="motion-panel motion-panel-a"><i /><i /><i /></span>
+              <span className="motion-panel motion-panel-b"><i /><i /><i /></span>
+              <span className="motion-bars">{Array.from({ length: 7 }, (_, index) => <i key={index} />)}</span>
+              <span className="motion-calendar">{Array.from({ length: 12 }, (_, index) => <i key={index} />)}</span>
+            </div>
             <div className="case-study-art-fallback" aria-hidden="true">
               <div className="art-orbit orbit-outer" /><div className="art-orbit orbit-inner" />
               <div className="art-monogram"><span>{project.name.slice(0,1)}</span><i /></div>
@@ -343,7 +359,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
           <div className="portfolio-footer-socials">
             <a href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Code2 size={17} /> GitHub</a>
             <a href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><Send size={16} /> @pooyayee</a>
-            <a href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><Camera size={16} /> @_p.ooya</a>
+            <a href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><img className="instagram-brand-icon" src={`${import.meta.env.BASE_URL}brand/instagram-glyph.svg`} alt="" aria-hidden="true" /> @_p.ooya</a>
           </div>
           <small>© {new Date().getFullYear()} POOYA LABS</small>
         </div>
@@ -511,7 +527,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         <section className="portfolio-hero portfolio-container">
           <div className="portfolio-hero-copy" data-reveal="hero-copy">
             <div className="portfolio-eyebrow"><span className="eyebrow-pulse" />{t.eyebrow}</div>
-            <h1 className="portfolio-hero-title" dir="auto"><span dir="auto" className="hero-title-line">{t.headlineA}</span><span dir="auto" className="hero-title-line hero-gradient">{t.headlineB}</span><span dir="auto" className="hero-title-line">{t.headlineC}</span></h1>
+            <h1 className="portfolio-hero-title" dir="auto"><span dir="auto" className="hero-title-line">{t.headlineA}</span><span dir="auto" className="hero-title-line hero-gradient">{t.headlineWord ? <><bdi dir="ltr" className="hero-title-prefix">{t.headlineB}</bdi>{' '}<bdi dir="ltr" className="hero-title-word">{t.headlineWord}</bdi></> : t.headlineB}</span><span dir="auto" className="hero-title-line">{t.headlineC}</span></h1>
             <p className="portfolio-intro" dir="auto">{t.intro}</p>
             <div className="portfolio-hero-actions">
               <a className="portfolio-primary" href="#projects">{t.explore}<ArrowDown size={16} /></a>
@@ -784,7 +800,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
           <div className="portfolio-contact-actions">
             <a className="portfolio-primary portfolio-contact-github" href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer"><Code2 size={18} /><span>{t.contactAction}<small>github.com/pooya-labs</small></span><ArrowUpRight size={16} /></a>
             <a className="portfolio-social-button" href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><Send size={17} /><span>{t.contactTelegram}<small>@pooyayee</small></span><ArrowUpRight size={15} /></a>
-            <a className="portfolio-social-button" href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><Camera size={17} /><span>{t.contactInstagram}<small>@_p.ooya</small></span><ArrowUpRight size={15} /></a>
+            <a className="portfolio-social-button" href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><img className="instagram-brand-icon" src={`${import.meta.env.BASE_URL}brand/instagram-glyph.svg`} alt="" aria-hidden="true" /><span>{t.contactInstagram}<small>@_p.ooya</small></span><ArrowUpRight size={15} /></a>
           </div>
         </section>
       </main>

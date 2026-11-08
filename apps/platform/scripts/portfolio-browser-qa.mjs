@@ -115,6 +115,19 @@ try {
           craftSectionCount: document.querySelectorAll('.portfolio-craft').length,
           craftPrincipleCount: document.querySelectorAll('.craft-principle').length,
           heroTitleRunsIsolated: Array.from(document.querySelectorAll('.portfolio-hero-title .hero-title-line')).every((node) => node.getAttribute('dir') === 'auto'),
+          thoughtfulWord: (() => {
+            const word = document.querySelector('.portfolio-hero-title .hero-title-word');
+            if (!(word instanceof HTMLElement)) return null;
+            const wordRect = word.getBoundingClientRect();
+            const lineRect = word.parentElement?.getBoundingClientRect();
+            return {
+              text: word.textContent?.trim() ?? '',
+              width: wordRect.width,
+              scrollWidth: word.scrollWidth,
+              fullyContained: Boolean(lineRect && wordRect.width > 0 && wordRect.left >= lineRect.left - 1 && wordRect.right <= lineRect.right + 1 && word.scrollWidth <= word.clientWidth + 1),
+            };
+          })(),
+          caseStudyMotionScene: document.querySelector('.case-study-motion-art')?.className ?? null,
           heroCapabilityTitleIsolated: document.querySelector('.portfolio-capabilities h2')?.getAttribute('dir') === 'auto',
         };
       });
@@ -138,19 +151,28 @@ try {
         if (semantics.systemFieldCount !== 1 || semantics.systemNodeCount !== 3) addFailure(route, null, 'The Systems in Motion section is incomplete.');
         if (semantics.craftSectionCount !== 1 || semantics.craftPrincipleCount !== 4) addFailure(route, null, 'The craft-principles section is incomplete.');
         if (!semantics.heroTitleRunsIsolated || !semantics.heroCapabilityTitleIsolated) addFailure(route, null, 'A first-page headline is not isolated from mixed bidirectional text.');
+        if (!semantics.thoughtfulWord || semantics.thoughtfulWord.text !== 'thoughtful' || !semantics.thoughtfulWord.fullyContained) {
+          addFailure(route, null, 'The English thoughtful headline word is missing, split, or clipped.');
+        }
       }
 
       for (const viewport of viewports) {
         await page.setViewportSize({ width: viewport.width, height: viewport.height });
         await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
-        const metrics = await page.evaluate(() => ({
+        const metrics = await page.evaluate(() => {
+          const word = document.querySelector('.portfolio-hero-title .hero-title-word');
+          const lineRect = word?.parentElement?.getBoundingClientRect();
+          const wordRect = word?.getBoundingClientRect();
+          return ({
+          headlineWordContained: !word || Boolean(lineRect && wordRect && wordRect.width > 0 && wordRect.left >= lineRect.left - 1 && wordRect.right <= lineRect.right + 1 && word.scrollWidth <= word.clientWidth + 1),
           viewportWidth: window.innerWidth,
           documentWidth: document.documentElement.scrollWidth,
           bodyWidth: document.body.scrollWidth,
           horizontalOverflow:
             document.documentElement.scrollWidth > window.innerWidth + 1 ||
             document.body.scrollWidth > window.innerWidth + 1,
-        }));
+          });
+        });
         const scrollMetrics = await page.evaluate(() => {
           const scroller = document.querySelector('.portfolio-page');
           if (!(scroller instanceof HTMLElement)) {
@@ -237,6 +259,15 @@ try {
         }
         if (metrics.horizontalOverflow) {
           addFailure(route, viewport.name, 'Horizontal overflow detected at this viewport.');
+        }
+        if (route.label === 'home-en' && !metrics.headlineWordContained) {
+          addFailure(route, viewport.name, 'The thoughtful headline word is clipped or escapes its own line bounds.');
+        }
+        if (route.label !== 'home-en' && route.label !== 'home-fa') {
+          const slug = route.label.replace(/-(fa|en)$/, '');
+          if (!semantics.caseStudyMotionScene?.split(' ').includes('scene-' + slug)) {
+            addFailure(route, viewport.name, 'The case-study hero is missing its project-specific motion scene.');
+          }
         }
       }
 
