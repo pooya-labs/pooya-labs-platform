@@ -119,9 +119,10 @@ test('project artwork and interface screenshots are sourced from pinned commits 
   assert.match(projectData, /Case-study hero assets must be pinned to an immutable source commit/);
   assert.match(projectData, /Project visual asset URL/);
   assert.match(portfolio, /project-art-image/);
-  assert.match(portfolio, /const heroVisual = project\.caseStudyHeroAsset \?\? project\.visualAsset/);
-  assert.match(portfolio, /case-study-visual-image visual-\$\{heroVisual\.kind\}/);
-  assert.match(portfolio, /heroVisual\.alt\[language\]/);
+  assert.doesNotMatch(portfolio, /case-study-visual-image/);
+  assert.match(portfolio, /const desktopCapture = project\.caseStudyMedia/);
+  assert.match(portfolio, /device-desktop/);
+  assert.match(portfolio, /<ProjectMotionScene slug=\{project\.slug\} \/>/);
   assert.match(portfolio, /case-study-media-frame/);
   assert.match(portfolio, /loading="lazy"/);
   assert.match(portfolio, /onError=\{\(event\) => \{ event\.currentTarget\.remove\(\)/);
