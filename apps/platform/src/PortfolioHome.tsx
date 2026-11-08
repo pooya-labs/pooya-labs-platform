@@ -501,6 +501,7 @@ export interface HydratedCaseStudyProps {
 export function HydratedCaseStudy({ project, language: initialLanguage, baseUrl }: HydratedCaseStudyProps): ReactNode {
   const [language, setLanguage] = useState<Language>(initialLanguage);
   const [theme, setTheme] = useState<Theme>('dark');
+  const [preferencesReady, setPreferencesReady] = useState(false);
   const rtl = language === 'fa';
 
   const changeLanguage = (nextLanguage: Language) => {
@@ -543,20 +544,22 @@ export function HydratedCaseStudy({ project, language: initialLanguage, baseUrl 
     } catch {
       // Storage may be unavailable in restricted browsing contexts.
     }
+    setPreferencesReady(true);
   }, []);
 
   useEffect(() => {
+    if (!preferencesReady) return;
     document.documentElement.dataset.theme = theme;
     try {
       window.localStorage.setItem('pooya-labs:theme', theme);
     } catch {
       // Storage may be unavailable in restricted browsing contexts.
     }
-  }, [theme]);
+  }, [preferencesReady, theme]);
 
   useEffect(() => {
     const syncLanguageFromRoute = () => {
-      setLanguage(/\\/en\\/projects\\//.test(window.location.pathname) ? 'en' : 'fa');
+      setLanguage(window.location.pathname.includes('/en/projects/') ? 'en' : 'fa');
     };
     window.addEventListener('popstate', syncLanguageFromRoute);
     return () => window.removeEventListener('popstate', syncLanguageFromRoute);
