@@ -377,4 +377,37 @@ export function validatePortfolioProjects(entries: readonly PortfolioProject[]):
   return [...entries];
 }
 
-export const portfolioProjects = validatePortfolioProjects(projectEntries);
+const FULL_PAGE_CAPTURE_COMMIT = 'eba5e2d02047375ae8a42514f7bbb58c75106ba7';
+const projectsWithFullPageCaptures = projectEntries.map((project) => {
+  // GlobalCart's latest full-page catalog capture is intentionally held back until its empty collection grid is repaired.
+  if (project.slug === 'global-cart') return project;
+  const assetSlug = project.slug === 'aura-pulse' ? 'aurapulse' : project.slug;
+  const projectLabelFa = project.slug === 'salon-booking'
+    ? 'صفحه عمومی رزرو سالن'
+    : project.slug === 'aura-pulse'
+      ? 'داشبورد شبیه‌سازی‌شده AuraPulse'
+      : `محیط پروژه ${project.name}`;
+  const projectLabelEn = project.slug === 'salon-booking'
+    ? 'public Salon Booking flow'
+    : project.slug === 'aura-pulse'
+      ? 'AuraPulse simulated dashboard'
+      : `${project.name} interface`;
+  const capture = (device: 'desktop' | 'mobile') => ({
+    url: `https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/${FULL_PAGE_CAPTURE_COMMIT}/apps/platform/public/interface-captures/${assetSlug}/${assetSlug}-fullpage-${device}.png`,
+    caption: {
+      fa: `نمای کامل ${projectLabelFa} در ${device === 'desktop' ? 'دسکتاپ' : 'موبایل'}`,
+      en: `Full-page ${projectLabelEn} — ${device}`,
+    },
+    alt: {
+      fa: `تصویر کامل ${projectLabelFa} در اندازه ${device === 'desktop' ? 'دسکتاپ' : 'موبایل'}`,
+      en: `Full-page screenshot of the ${projectLabelEn} on ${device}`,
+    },
+    device,
+  });
+  return {
+    ...project,
+    caseStudyMedia: [capture('desktop'), capture('mobile'), ...(project.caseStudyMedia ?? [])],
+  };
+});
+
+export const portfolioProjects = validatePortfolioProjects(projectsWithFullPageCaptures);
