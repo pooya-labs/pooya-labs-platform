@@ -148,14 +148,25 @@ This phase must not block V1. Source projects remain independent unless Pooya ex
 - [ ] Review the updated motion and gesture behavior on a physical Android device before owner acceptance. Chromium touch emulation passed; physical-device verification is still open.
 
 
-### Phase 7 — Cloudflare production parity and automatic publishing (2026-11-08)
+### Phase 7 — Cloudflare production parity and deployment handoff (2026-11-08)
 
-- [x] Publish the current application tree from main commit `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746` to the Cloudflare Pages production project. Deployment `efa5ecb4-356d-4112-be60-31401506d940` completed with successful build and deploy stages.
-- [x] Confirm the Pages canonical host `https://pooya-labs-platform.pages.dev/` points to the new production release.
-- [x] Enable the connected GitHub production deployment for the `main` branch and limit automatic publishing to `apps/platform/**` and root `package.json`.
-- [x] Keep preview-branch publishing disabled; the GitHub Pages and Cloudflare Pages build outputs remain independent.
-- [ ] Check the refreshed Cloudflare host on a physical Android device and compare its visual rendering against GitHub Pages.
+- [x] Publish the latest CI-verified application commit `c7a86a2e2f54d157b7e0b806c9c022afd41fd208` to Cloudflare Pages. Deployment `a1a69456-fc5a-4ac3-917b-f5cb0cb909a5` completed with successful build and deploy stages.
+- [x] Confirm the canonical Pages host `https://pooya-labs-platform.pages.dev/` points to the current release.
+- [x] Set the Pages production branch to `main`, enable production deployment in project settings, and restrict watched paths to `apps/platform/**` and root `package.json`.
+- [x] Keep preview-branch publishing disabled; GitHub Pages and Cloudflare Pages build outputs remain independent.
+- [ ] Verify that a real GitHub push triggers a Cloudflare production deployment; the settings are enabled but the latest push did not create a deployment.
+- [ ] Add `CLOUDFLARE_API_TOKEN` as a private GitHub Actions secret so `.github/workflows/deploy-cloudflare.yml` can perform its Pages API deployment rather than skipping.
+- [ ] Check the refreshed Cloudflare host on a physical Android device and compare it with GitHub Pages.
 - [ ] Continue P7-11 owner review: approve the full design/motion, content, project order, and personal contribution wording before Phase 8.
+
+### Phase 7 — accessibility semantics and contrast audit (2026-11-08)
+
+- [x] Give the proof statistics container a valid `group` role for its descriptive label; remove the repeated `aria-prohibited-attr` axe incomplete finding.
+- [x] Remove the obsolete sticky-header pseudo-element and preserve the glass treatment with an opaque theme-aware base surface.
+- [x] Add contract coverage for the proof-statistics accessible group and header surface behavior.
+- [x] Pass CI [42502717615](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717615): 93/93 tests and all three build targets.
+- [x] Pass Browser QA [42502717608](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717608): 18/18 routes, 36/36 viewport checks, zero failures, zero confirmed axe violations.
+- [ ] Complete human contrast review for the 36 incomplete color-contrast records caused by gradient/pseudo backgrounds; also finish keyboard-only and screen-reader checks.
 
 
 

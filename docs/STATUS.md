@@ -6,6 +6,19 @@
 **Current phase:** Phase 7 — Owner-led visual redesign and release review  
 **Release:** Pre-alpha / portfolio draft
 
+## Latest verified checkpoint — accessibility semantics, theme contrast, and Cloudflare production (2026-11-08)
+
+- Added a valid `role="group"` to the homepage proof statistics container, preserving its descriptive label. The latest axe report no longer contains the four repeated `aria-prohibited-attr` incomplete findings.
+- Removed an obsolete header pseudo-element and made the header base color opaque in both themes while preserving its frosted blur. Gradient-backed hero text still prevents axe from calculating definite contrast values.
+- Repository CI [42502717615](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717615) passed TypeScript, all three builds, and 93/93 contract tests.
+- Browser QA [42502717608](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717608) passed 18/18 routes and 36/36 viewport checks, with zero failures and zero confirmed axe violations. All 36 incomplete records are color-contrast checks on gradient/pseudo backgrounds; manual review remains open.
+- GitHub Pages deployment [42502717618](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717618) passed.
+- Cloudflare deployment [`a1a69456`](https://a1a69456.pooya-labs-platform.pages.dev/) (ID `a1a69456-fc5a-4ac3-917b-f5cb0cb909a5`) from main commit `c7a86a2e2f54d157b7e0b806c9c022afd41fd208` completed with successful `build` and `deploy` stages.
+- The GitHub Cloudflare deployment workflow [42502717616](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717616) passed its credential-check job but skipped production publishing because `CLOUDFLARE_API_TOKEN` is absent. Cloudflare's source settings show the GitHub `main` branch configured, but automatic push-to-production was not observed. The latest deployment was published explicitly through the authorized Pages API; automatic publishing is not yet verified.
+- Physical Android review, owner motion/content approval, and human accessibility acceptance remain open. The project remains pre-alpha.
+
+
+
 ## Latest verified checkpoint — Node 24 Actions runtime migration (2026-11-08)
 
 - Updated all 10 repository workflows to current maintained action majors: checkout v7, setup-node v7, upload-artifact v7, upload-pages-artifact v5, and deploy-pages v5. The exact current minor releases are recorded in CHANGELOG.md.
@@ -19,20 +32,20 @@
 
 - Corrected the stale Cloudflare Pages production host by publishing main commit `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746` to deployment [`efa5ecb4-356d-4112-be60-31401506d940`](https://efa5ecb4.pooya-labs-platform.pages.dev/). Cloudflare confirmed successful `build` and `deploy` stages.
 - The canonical Cloudflare alias is [https://pooya-labs-platform.pages.dev/](https://pooya-labs-platform.pages.dev/).
-- Enabled Cloudflare's connected GitHub production deployment on `main`, with app-source path filters `apps/platform/**` and `package.json`; preview deployments remain disabled.
-- The direct Pages deploy used the connected Cloudflare account integration. The GitHub Actions `CLOUDFLARE_API_TOKEN` secret is still optional for the workflow's explicit API path and is not required for the native Git integration.
+- Cloudflare's project settings show GitHub source, `main` as the production branch, and app-source path filters `apps/platform/**` and `package.json`, with preview deployments disabled. However, automatic deployment on a push was not observed.
+- The GitHub Actions `CLOUDFLARE_API_TOKEN` secret is not configured; the explicit deploy job skipped in run 42502717616. Use the direct authorized Pages API until the secret is added and a push-triggered deployment is verified.
 - Documentation-checkpoint CI [42498895229](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498895229) passed on `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746`. The latest runtime Browser QA is [42498428681](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428681), with 18/18 routes and 36/36 viewport checks passed.
 - A direct visual browser fetch of the public pages.dev host could not be verified by the available page inspector. Cloudflare's deployment API does confirm the production publish stages succeeded.
 
 
 ## Latest verified checkpoint — homepage Projects Android visibility (2026-11-08)
 
-- Latest verified `main` HEAD: `66c08923be9b814494d17af7ffb9877c5f7c73b1` (workflow/test maintenance checkpoint); the current application fix is `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`.
+- Latest verified `main` HEAD: `c7a86a2e2f54d157b7e0b806c9c022afd41fd208`; the current homepage Projects visibility fix is `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`.
 - Application fix commit: `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`; final Browser QA harness/DOM-measurement commit: `5131660b0b3e0156ac350f6a9aafc648556fc814`.
 - Root cause: the homepage Projects section, its heading, and its long list of project cards were hidden behind separate IntersectionObserver reveal gates. On mobile, the reveal conditions could leave the content at opacity zero. All three reveal gates were removed. The card visuals and their own animations remain intact.
 - Browser QA now checks both default Persian and English homepage routes. It confirmed the Projects section, heading, and first card at opacity 1 on desktop and mobile in both languages, with all eight project-card animations active.
-- Repository CI [42498428514](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428514) passed TypeScript, three build targets, and 92/92 contract tests. The subsequent documentation-only main checkpoint passed CI in [42498895229](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498895229).
-- Browser QA [42498428681](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428681) passed 18/18 routes / 36/36 viewports: zero failures, zero horizontal overflow, zero confirmed axe violations. Forty axe checks remain incomplete for manual review.
+- Repository CI [42498428514](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428514) passed TypeScript, three build targets, and 92/92 contract tests. The current main checkpoint passed CI in [42502717615](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717615), with 93/93 tests.
+- Browser QA [42498428681](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428681) passed 18/18 routes / 36/36 viewports: zero failures, zero horizontal overflow, zero confirmed axe violations. Thirty-six axe contrast checks remain incomplete for manual review.
 - GitHub Pages deployment [42498199551](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498199551) passed on the application fix. Public site: https://pooya-labs.github.io/pooya-labs-platform/.
 - Automated mobile checks use Chromium mobile emulation. Physical Android confirmation remains part of owner acceptance on both [GitHub Pages](https://pooya-labs.github.io/pooya-labs-platform/) and [Cloudflare Pages](https://pooya-labs-platform.pages.dev/).
 

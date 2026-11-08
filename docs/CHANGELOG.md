@@ -1,3 +1,14 @@
+## 2026-11-08 — Accessibility semantics and Cloudflare production refresh
+
+- Fixed the homepage proof-statistics container by assigning a valid `group` role to its descriptive `aria-label`; the four repeated `aria-prohibited-attr` incomplete findings are no longer present in the latest axe report.
+- Removed the obsolete decorative pseudo-element from the sticky header and made the header base color opaque in both themes while preserving its frosted blur. A contract test protects the accessible group semantics and header color-surface rules.
+- Repository CI [42502717615](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717615) passed TypeScript, all three build targets, and **93/93 contract tests**.
+- Browser QA [42502717608](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717608) passed **18/18 routes** and **36/36 viewport checks**, with zero failures and zero confirmed axe violations. The remaining **36 incomplete checks are all color-contrast assessments** where gradient/pseudo backgrounds prevent axe from calculating a definite backdrop; they still require human visual contrast review.
+- GitHub Pages deployment [42502717618](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717618) passed for application commit `c7a86a2e2f54d157b7e0b806c9c022afd41fd208`.
+- Cloudflare production deployment [`a1a69456`](https://a1a69456.pooya-labs-platform.pages.dev/) (ID `a1a69456-fc5a-4ac3-917b-f5cb0cb909a5`) completed successfully from the same commit; Cloudflare confirmed both `build` and `deploy` stages.
+- The GitHub Actions Cloudflare workflow [42502717616](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717616) passed its credential-check job but **skipped its production deployment job** because repository secret `CLOUDFLARE_API_TOKEN` is not configured. Cloudflare project settings show the GitHub `main` source enabled, but a push-triggered production deploy was not observed; the latest release was therefore published explicitly through the authorized Cloudflare Pages API. Do not treat native auto-deployment as verified.
+- Physical Android review, owner motion/content approval, and the remaining manual accessibility review are still open. No V1 release is claimed.
+
 ## 2026-11-08 — GitHub Actions Node 24 runtime migration
 
 - Updated all 10 workflows to current maintained action majors: [checkout v7.0.1](https://github.com/actions/checkout/releases/tag/v7.0.1), [setup-node v7.1.0](https://github.com/actions/setup-node/releases/tag/v7.1.0), [upload-artifact v7.0.2](https://github.com/actions/upload-artifact/releases/tag/v7.0.2), [upload-pages-artifact v5.0.0](https://github.com/actions/upload-pages-artifact/releases/tag/v5.0.0), and [deploy-pages v5.0.1](https://github.com/actions/deploy-pages/releases/tag/v5.0.1). The updated action metadata uses the Node 24 runtime.

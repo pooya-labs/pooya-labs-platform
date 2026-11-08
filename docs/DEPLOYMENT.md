@@ -1,6 +1,6 @@
 # Deployment Plan — independent Pages hosts and HtmlService proof
 
-The public portfolio is deployed to GitHub Pages and mirrored on Cloudflare Pages. Cloudflare Pages now auto-deploys production changes from the connected GitHub `main` branch; the latest verified Cloudflare production build is deployment `efa5ecb4` from commit `a0bac438`. The owner's Apps Script deployment remains a separate Phase 0 HtmlService/RPC proof, not a production backend.
+The public portfolio is deployed to GitHub Pages and mirrored on Cloudflare Pages. The latest verified Cloudflare production deployment is `a1a69456` from main commit `c7a86a2e`; it was published through the authorized Pages API. GitHub push-based Cloudflare deployment is configured but not yet verified: the repository Actions deploy job currently skips because `CLOUDFLARE_API_TOKEN` is missing. See [DEPLOYMENT-TARGETS.md](DEPLOYMENT-TARGETS.md) for the safe setup. The owner's Apps Script deployment remains a separate Phase 0 HtmlService/RPC proof, not a production backend.
 
 ## Hosting roles
 1. **GitHub Pages:** existing public static portfolio host, with canonical subpath `/pooya-labs-platform/`.

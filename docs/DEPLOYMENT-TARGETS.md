@@ -7,7 +7,7 @@ The repository is the shared source of truth, but each host has its own build ou
 | Target | Purpose | Build output | Release mechanism | Current state |
 |---|---|---|---|---|
 | GitHub Pages | Public static portfolio | `dist/pages` | `.github/workflows/pages-platform.yml` | Existing host; build/deploy workflow |
-| Cloudflare Pages | Independent public-host mirror | `dist/cloudflare` | Connected GitHub production deploy on `main`; optional Pages API workflow | Live; latest deployment `efa5ecb4`; main-branch auto-deploy enabled; previews disabled |
+| Cloudflare Pages | Independent public-host mirror | `dist/cloudflare` | `.github/workflows/deploy-cloudflare.yml` → Pages API, or authorized direct Pages API deployment | Live; latest deployment `a1a69456`; Git push auto-deploy not yet verified |
 | Google Apps Script | HtmlService application/runtime | `dist/gas/index.html` plus `Code.gs` and manifest | `.github/workflows/deploy-gas.yml` using `clasp` | Build/artifact verified; automatic deployment is gated on private repository secrets |
 
 ## GitHub Pages
@@ -28,11 +28,13 @@ The repository is the shared source of truth, but each host has its own build ou
 - Site base: `/`
 - Hosting mode: static Pages assets; this deployment does not reuse or modify the unrelated `globalcart-catalog`, `orbit-runtime`, or `salon-booking` Workers.
 
-The latest verified production deployment is `efa5ecb4-356d-4112-be60-31401506d940`, created on 2026-11-08 from the exact main commit `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746`. Cloudflare's deployment record reports successful `build` and `deploy` stages. Its unique deployment URL is [`https://efa5ecb4.pooya-labs-platform.pages.dev/`](https://efa5ecb4.pooya-labs-platform.pages.dev/); the canonical production alias is [`https://pooya-labs-platform.pages.dev/`](https://pooya-labs-platform.pages.dev/).
+The latest verified production deployment is `a1a69456-fc5a-4ac3-917b-f5cb0cb909a5`, published from main commit `c7a86a2e2f54d157b7e0b806c9c022afd41fd208`. Cloudflare confirmed successful `build` and `deploy` stages. Its unique deployment URL is [`https://a1a69456.pooya-labs-platform.pages.dev/`](https://a1a69456.pooya-labs-platform.pages.dev/); the canonical production alias is [`https://pooya-labs-platform.pages.dev/`](https://pooya-labs-platform.pages.dev/).
 
-The Pages project is connected to GitHub repository `pooya-labs/pooya-labs-platform`. Production auto-deploy is enabled for branch `main`, with path filters `apps/platform/**` and `package.json`. Preview-branch deployments remain disabled. This is the active continuous-deployment path; new application changes on the watched paths do not depend on a GitHub Actions Cloudflare token.
+The Pages project records GitHub as its source, with production branch `main`, `production_deployments_enabled=true`, and path filters `apps/platform/**` and `package.json`. Preview deployments remain disabled. However, the subsequent application push did **not** produce a new Cloudflare deployment automatically. The settings alone are not sufficient evidence that the GitHub push integration is operating; do not claim automatic deployment until a push-triggered production deployment is observed.
 
-The repository workflow `.github/workflows/deploy-cloudflare.yml` remains an optional explicit Pages API deployment path. It still validates the TypeScript/build/test targets and uses `CLOUDFLARE_API_TOKEN` when available; if that secret is absent, its explicit API deployment job is skipped, but the connected Cloudflare Git integration remains active. Keep all Cloudflare credentials out of the repository and chat.
+The repository workflow `.github/workflows/deploy-cloudflare.yml` is configured to build, test, request a Pages deployment for the exact commit, and wait for the deployment to succeed. Its latest run [42502717616](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717616) passed the credential-check job but skipped the deploy job because the repository secret `CLOUDFLARE_API_TOKEN` is absent. To enable this repeatable push-based path, create a Cloudflare API token with **Account → Cloudflare Pages → Edit**, then add it under **GitHub repository → Settings → Secrets and variables → Actions**. Set its name to `CLOUDFLARE_API_TOKEN`. Never commit or paste the token. After adding it, make a small application commit and verify that the workflow's build/deploy job completes instead of skipping.
+
+Until that secret is configured and a push-triggered run is verified, publish Cloudflare releases explicitly through the authorized Cloudflare Pages API using the exact, CI-verified main commit. The deployments above were performed this way; they are not proof of native Git auto-deployment.
 
 ## Google Apps Script
 

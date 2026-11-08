@@ -2,12 +2,14 @@
 
 **Task ID:** P7-11  
 **Checkpoint date:** 2026-11-08  
-**Latest verified `main` HEAD:** `66c08923be9b814494d17af7ffb9877c5f7c73b1` (workflow/test maintenance checkpoint; application fix remains `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`)  
+**Latest verified `main` HEAD:** `c7a86a2e2f54d157b7e0b806c9c022afd41fd208` (accessibility maintenance checkpoint; homepage Projects fix remains `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`)  
 **Application motion commit:** `714d4ea2ea017189886ddb4e0d2e386e19edcaf3`  
 **Browser QA commit:** `549c6a3c66eade850d175cddad3a7b7dea5466e8`  
 **Homepage Projects visibility fix:** `2305f5a68f1148c8293f6e3b55746c01eb52d8f2`  
 **Browser QA harness:** `5131660b0b3e0156ac350f6a9aafc648556fc814`  
-**Cloudflare production deployment:** `efa5ecb4-356d-4112-be60-31401506d940` from `a0bac438d377571d0a2c2a6a7c46bee8bd7cf746` (build and deploy succeeded)  
+**Cloudflare production deployment:** `a1a69456-fc5a-4ac3-917b-f5cb0cb909a5` from `c7a86a2e2f54d157b7e0b806c9c022afd41fd208` (build and deploy succeeded)  
+**Accessibility semantics and header contrast fix:** `41b7e734098db0bf0ecf8b687517516a75e2a707`  
+**Opaque theme control surface adjustment:** `c7a86a2e2f54d157b7e0b806c9c022afd41fd208`  
 **Node 24 workflow migration:** `7cd984a09f2d4e96528fbf10acca44dfcddeec9f`  
 **Workflow test-contract update:** `66c08923be9b814494d17af7ffb9877c5f7c73b1`  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
@@ -45,22 +47,28 @@ Pooya Labs remains a personal engineering portfolio first. The visitor journey i
 
 | Check | Run / deployment | Result |
 |---|---:|---|
-| Repository CI | [42501048926](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42501048926) | Passed: TypeScript, three build targets, 92/92 contract tests; no Node.js 20 deprecation warning |
-| Browser QA | [42501048917](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42501048917) | Passed: 18/18 routes, 36/36 viewports, zero failures or horizontal overflow |
+| Repository CI | [42502717615](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717615) | Passed: TypeScript, all three build targets, 93/93 contract tests |
+| Browser QA | [42502717608](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717608) | Passed: 18/18 routes, 36/36 viewport checks, zero failures, zero confirmed axe violations |
+| Accessibility report | Artifact [13626247200](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717608) | Four homepage `aria-prohibited-attr` findings removed; 36 remaining incomplete records are color-contrast checks on gradient/pseudo backgrounds |
 | Project-card motion | [Artifact 13624393118](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42498428681) | 8/8 project cards retain active motion at desktop and mobile in Persian and English |
-| GitHub Pages | [42500830187](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42500830187) | Build and deployment passed with Node 24-compatible Pages actions |
-| Cloudflare Pages | [Production deployment `efa5ecb4`](https://efa5ecb4.pooya-labs-platform.pages.dev/) | Build and deploy succeeded from main application commit `a0bac438`; canonical alias is `pooya-labs-platform.pages.dev` |
-| Cloudflare Git integration | Cloudflare Pages project settings | Production auto-deploy enabled for `main` and app paths; preview deployments remain disabled |
+| GitHub Pages | [42502717618](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717618) | Build and deployment passed on `c7a86a2e2f54d157b7e0b806c9c022afd41fd208` |
+| Cloudflare Pages | [Deployment `a1a69456`](https://a1a69456.pooya-labs-platform.pages.dev/) | Build and deploy succeeded from `c7a86a2e2f54d157b7e0b806c9c022afd41fd208`; canonical alias is `pooya-labs-platform.pages.dev` |
+| Cloudflare GitHub Actions deploy | [42502717616](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42502717616) | Credential check passed; actual deploy job skipped because `CLOUDFLARE_API_TOKEN` is not configured |
+| Cloudflare Git integration | Pages project settings | `main` and app path filters are configured, but automatic deployment on push is not yet verified |
 
-The latest Browser QA report recorded zero confirmed axe violations, but **40 axe checks are incomplete rather than passed**; they still require a human contrast/ARIA review. Automated mobile testing uses Chromium emulation, not a physical Android phone.
+The remaining 36 axe records are **incomplete checks, not violations and not passes**. They are all color-contrast assessments where gradient/pseudo backgrounds prevent axe from calculating a definite backdrop; human visual contrast review remains required. Automated mobile testing uses Chromium emulation, not a physical Android phone.
 
 ## Immediate next steps
 
-1. Review both live hosts on a physical Android phone using Chrome (and Samsung Internet if available): [GitHub Pages](https://pooya-labs.github.io/pooya-labs-platform/) and [Cloudflare Pages](https://pooya-labs-platform.pages.dev/). Swipe within a long mobile screenshot to its bottom, then continue the same gesture and confirm the page advances.
+1. Review both live hosts on a physical Android phone using Chrome (and Samsung Internet if available): [GitHub Pages](https://pooya-labs.github.io/pooya-labs-platform/) and [Cloudflare Pages](https://pooya-labs-platform.pages.dev/). The latest Cloudflare deployment is pinned to `c7a86a2e`. Swipe within a long mobile screenshot to its bottom, then continue the same gesture and confirm the page advances.
 2. Check that each of the eight case-study animations feels relevant and remains legible on the actual device; verify reduced-motion and battery/performance behavior.
 3. Review the two homepage project-grid captures and approve the visual scale/timing of all eight card animations.
-4. Complete manual contrast, focus visibility, keyboard-only, and screen-reader checks in both languages and themes.
+4. Complete manual color-contrast review for the 36 incomplete gradient-background checks, then verify focus visibility, keyboard-only operation, and screen-reader flow in both languages and themes.
 5. Continue the owner review of the biography, project ordering, role wording, statuses, contact details, and full-site redesign. Then proceed to Phase 8 release hardening.
+
+## Cloudflare automation handoff
+
+Cloudflare's project settings report the GitHub source and the `main` production branch as enabled, but the latest pushes did not create a production deployment. The GitHub Actions deploy job is currently skipped because `CLOUDFLARE_API_TOKEN` is missing. Add that secret privately under repository Actions settings to enable the workflow's verified API path; do not paste the token into source or chat. Until then, each Cloudflare application release must be explicitly published through the authorized Cloudflare Pages API and verified by deployment ID.
 
 ## Evidence boundaries
 
