@@ -37,34 +37,36 @@ The initial baseline was collected by Browser QA run [42507165883](https://githu
 
 **Interpretation:** these local-runner numbers are fast because the HTML/CSS/JS are served from the CI machine, not because a visitor's network will match them. Resource Timing reported hidden transfer sizes for 1–5 cross-origin assets per route; those assets are not included reliably in the byte totals. Font bytes were zero in this measurement and must not be interpreted as proof that every font request has zero cost.
 
-## Three-host baseline and CLS investigation — 2026-11-08
+## Pre-remediation three-host baseline and confirmed CLS source (historical) — 2026-11-08
 
-Browser QA run [42509020267](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020267), artifact [13628113221](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020267/artifacts/13628113221), collected **20 cold-context measurements per host** (the English/Persian homepage and all eight English project routes, each at desktop and mobile sizes).
+Browser QA run [42509020267](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020267), artifact [13628113221](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020267/artifacts/13628113221), collected 20 cold-context measurements per host before the hydration fix. It recorded p75 CLS 0.1713 on local build, GitHub Pages, and Cloudflare Pages. This is retained as the regression that motivated the remediation; it is not the current baseline.
+
+The confirmed root cause was the Vite build inserting crawler-readable case-study markup inside `#root`, followed by `createRoot(rootElement).render(...)` clearing and rebuilding the DOM after first paint. PR [#13](https://github.com/pooya-labs/pooya-labs-platform/pull/13) fixed this by server-rendering a shared case-study React component and using `hydrateRoot` on direct routes.
+
+## Post-remediation three-host verification — 2026-11-08
+
+Browser QA run [42513404040, attempt 2](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42513404040), artifact [13630148273](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42513404040/artifacts/13630148273), measured the merged application commit [`045bc845`](https://github.com/pooya-labs/pooya-labs-platform/commit/045bc84526ef823a37599c6790d144d68465d35c). Each host received 20 cold-context measurements across the Persian/English homepage and eight English case-study routes at desktop and mobile sizes.
 
 | Metric (p75) | Local build | GitHub Pages | Cloudflare Pages |
 |---|---:|---:|---:|
-| TTFB | 4 ms | 42 ms | 123 ms |
-| DOM content loaded | 101 ms | 124 ms | 258 ms |
-| Load event | 104 ms | 174 ms | 258 ms |
-| First Contentful Paint | 112 ms | 156 ms | 340 ms |
-| Largest Contentful Paint | 300 ms | 400 ms | 472 ms |
-| Cumulative Layout Shift | **0.1713** | **0.1713** | **0.1713** |
-| Observed total resource bytes | 177,671 | 180,710 | 178,476 |
-| JavaScript bytes | 128,533 | 129,920 | 127,332 |
-| CSS bytes | 40,577 | 42,204 | 42,696 |
-| Image bytes with visible timing sizes | 8,220 | 8,245 | 8,158 |
+| Time to first byte | 4 ms | 43 ms | 185 ms |
+| DOM content loaded | 106 ms | 149 ms | 416 ms |
+| Load event | 108 ms | 151 ms | 504 ms |
+| First Contentful Paint | 228 ms | 256 ms | 576 ms |
+| Largest Contentful Paint | 272 ms | 304 ms | 584 ms |
+| Cumulative Layout Shift | **0.0000** | **0.0000** | **0.0000** |
+| Observed total resource bytes | 178,276 | 181,290 | 178,866 |
+| JavaScript bytes | 129,364 | 130,735 | 127,971 |
+| CSS bytes | 40,692 | 42,310 | 42,726 |
+| Image bytes with visible timing sizes | 8,220 | 8,245 | 8,193 |
 
-All 60 route/viewport/host measurements completed with zero HTTP, uncaught-page-error, or horizontal-overflow failures. These are CI Chromium samples, not a substitute for real-device and representative-network measurements. Resource Timing cannot expose all cross-origin transfer sizes; zero font-byte reports and hidden cross-origin sizes are not evidence of zero download cost.
+CLS p50, p75, and maximum were **0.0000 in all three environments** (20/20 samples per host). No route in the post-remediation report recorded a non-zero CLS. Cloudflare's FCP/LCP summaries contain 19 timing samples because one navigation did not produce a reportable paint entry; navigation timing and CLS retained 20 samples.
 
-### Confirmed layout-shift source
+The same Browser QA run passed **18/18 routes** and **36/36 viewport checks**, with zero failures and zero horizontal overflow. Axe recorded zero confirmed violations across all impact levels. **36 incomplete `color-contrast` checks remain** because Axe could not determine some gradient/pseudo-element backdrops; these are not passes and require human review.
 
-The high CLS is reproducible on desktop direct-entry case-study routes. The build plugin in `apps/platform/vite.config.ts` inserts crawler-readable static case-study markup inside `<div id="root">`. The browser entry point in `apps/platform/src/main.tsx` then calls `createRoot(rootElement).render(...)` rather than hydrating the existing markup. React therefore clears the pre-rendered nodes after the initial paint and replaces them with the interactive case-study component. The performance observer records the corresponding large node removals around the interface-capture section.
+GitHub Pages deployment [42513404002](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42513404002) succeeded. Cloudflare production deployment [`592357af`](https://592357af.pooya-labs-platform.pages.dev/) (ID `592357af-e235-4d3f-9912-bbca7edbfc51`) completed successful build and deploy stages for the same main commit.
 
-This is a confirmed source-level explanation, not a completed remediation. Preserve direct-route SEO and accessible content while choosing a hydration-safe rendering strategy, then repeat all three host baselines. Do not hide the static content or raise budgets to make CLS appear green.
-
-The dependency audit and browser workflows are green, but the performance gate remains open. Keep `PORTFOLIO_PERF_ENFORCE=0` until the root cause is corrected and the new baseline is reviewed.
-
-
+**Remaining measurement limits:** this is repeatable Chromium CI evidence, not physical-device acceptance. Resource Timing can omit cross-origin transfer sizes when Timing-Allow-Origin is unavailable; font byte values of zero do not prove that font downloads are free. Keep `PORTFOLIO_PERF_ENFORCE=0` until representative physical-device/network checks and owner review are complete.
 
 ## Measurement limitations
 
