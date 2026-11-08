@@ -52,17 +52,17 @@ test('owner contact links are visible, labelled, and included in the footer and 
   assert.match(metadata, /https:\/\/instagram\.com\/_p\.ooya/);
 });
 
-test('the refined emerald P monogram is used throughout the site identity', () => {
-  assert.match(mark, /viewBox="0 0 160 176"/);
-  assert.match(mark, /linearGradient id="p-main"/);
-  assert.match(mark, /#39BD91/);
+test('the signal-orbit emerald monogram is used throughout the site identity', () => {
+  assert.match(mark, /viewBox="0 0 128 128"/);
+  assert.match(mark, /linearGradient id="mark-main"/);
+  assert.match(mark, /linearGradient id="mark-fold"/);
   assert.match(home, /className="stamp-core"><img/);
   assert.match(home, /portfolio-github-mark/);
   assert.match(home, /portfolio-contact-github/);
   assert.match(home, /github\.com\/pooya-labs/);
   assert.match(favicon, /viewBox="0 0 96 96"/);
-  assert.match(favicon, /#39BD91/);
-  assert.doesNotMatch(mark, /gold|metallic|#d8b36a/i);
+  assert.match(favicon, /#30C49A/);
+  assert.doesNotMatch(mark, /gold|metallic|#d8b36a|#fff3c9/i);
 });
 
 
