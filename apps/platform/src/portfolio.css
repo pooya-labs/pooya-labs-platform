@@ -1624,3 +1624,9 @@
 .motion-ready [data-reveal="portfolio-proof"].is-visible .portfolio-proof-copy,.motion-ready [data-reveal="portfolio-proof"].is-visible .portfolio-proof-stats{opacity:1;transform:none}
 .motion-ready [data-reveal="portfolio-proof"] .portfolio-proof-visual{opacity:0;transform:translateY(18px) scale(.96);transition:opacity 1s ease .12s,transform 1.2s cubic-bezier(.2,.75,.25,1) .12s}
 .motion-ready [data-reveal="portfolio-proof"].is-visible .portfolio-proof-visual{opacity:1;transform:none}
+
+/* Full-page product captures are scrollable frames, not squeezed into thumbnail aspect ratios. */
+.case-study-media-frame { display:block; max-height:760px; overflow:auto; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:rgba(205,165,96,.38) transparent; }
+.case-study-media-frame img { width:100%; height:auto; max-height:none; object-fit:initial; }
+.case-study-media-card.device-mobile .case-study-media-frame { max-height:640px; }
+.case-study-media-card.device-mobile .case-study-media-frame img { width:100%; height:auto; max-width:100%; max-height:none; }
