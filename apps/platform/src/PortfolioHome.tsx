@@ -195,7 +195,7 @@ function ProjectCaseStudy({ project, language, onLanguageChange, theme, onThemeC
           <section className="case-study-media-section" data-reveal="case-study-media">
             <div className="case-study-media-heading">
               <div className="portfolio-eyebrow"><span className="eyebrow-index">UI /</span>{t.interfaceCaptures}</div>
-              <span className="case-study-media-note">REAL PRODUCT / RESPONSIVE VIEWS</span>
+              <span className="case-study-media-note">{language === 'fa' ? 'نمای کامل محیط / دسکتاپ و موبایل' : 'FULL-PAGE PRODUCT / RESPONSIVE VIEWS'}</span>
             </div>
             <div className="case-study-media-grid">
               {desktopCapture && <figure className="case-study-media-card device-desktop"><div className="case-study-media-frame"><img src={desktopCapture.url} alt={desktopCapture.alt[language]} loading="lazy" decoding="async" /></div><figcaption>{language === 'fa' ? 'نمای واقعی محیط دسکتاپ' : 'Actual desktop interface'}</figcaption></figure>}
