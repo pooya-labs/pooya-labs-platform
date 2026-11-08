@@ -4,6 +4,16 @@ Pooya Labs is Pooya's personal engineering portfolio and project showcase. Its m
 
 This is a portfolio first—not a generic SaaS dashboard or customer-account product.
 
+## Latest project update — 8 November 2026
+
+The latest case-study pass now server-renders the same component that the browser hydrates, preserving crawler-readable Persian/English routes while fixing the hydration and layout-stability mismatch. Accessible interface galleries were restored with native mobile scroll chaining. A three-host performance baseline was recorded; budget enforcement remains report-only until the measurements are reviewed. The browser favicon now uses the centered Pooya Monogram on a rounded black tile. The portfolio remains a pre-release draft: owner review and Phase 8 release gates are still open.
+
+## Project ownership
+
+<p align="center"><a href="https://pooya-labs.github.io/pooya-labs-platform/"><img src="https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/main/apps/platform/public/brand/pooya-monogram.webp" alt="Pooya Labs Platform monogram" width="64" /></a></p>
+
+**Created, owned and maintained by [Pooya Labs Platform](https://pooya-labs.github.io/pooya-labs-platform/).** Founder and product engineer: **Pooya Goodarzi**.
+
 ## The visitor journey
 
 1. Meet Pooya and understand his current engineering focus.
@@ -109,3 +119,15 @@ npm run build:gas
 ```
 
 برای ادامهٔ کار، فایل‌های `docs/ROADMAP.md`، `docs/STATUS.md`، `docs/NEXT.md`، `docs/ARCHITECTURE.md` و `docs/NOVELS-GUIDE.md` مرجع وضعیت و تصمیم‌های پروژه هستند.
+
+### آخرین تغییرات — ۸ نوامبر ۲۰۲۶
+
+در آخرین اصلاحات مطالعه‌های موردی، همان کامپوننتی که در مرورگر hydrate می‌شود اکنون در سمت سرور نیز رندر می‌شود؛ در نتیجه مسیرهای ایندکس‌پذیر فارسی و انگلیسی حفظ شده‌اند و ناهماهنگی hydration و پایداری چیدمان برطرف شده است. گالری تصاویر رابط با دسترس‌پذیری بهتر و رفتار طبیعی زنجیرهٔ اسکرول موبایل بازگردانده شد. خط مبنای کارایی روی سه میزبان ثبت شده، اما اعمال محدودیت‌های بودجهٔ کارایی تا زمان بررسی اندازه‌گیری‌ها صرفاً در حالت گزارش‌گیری است. آیکون تب مرورگر نیز از مونوگرام پویا در مرکز یک زمینهٔ مشکی با گوشه‌های گرد استفاده می‌کند.
+
+پلتفرم همچنان در وضعیت پیش‌انتشار قرار دارد؛ بازبینی نهایی مالک و دروازه‌های انتشار مرحلهٔ ۸ هنوز باز هستند.
+
+### مالکیت و نگه‌داری
+
+<p align="center"><a href="https://pooya-labs.github.io/pooya-labs-platform/"><img src="https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/main/apps/platform/public/brand/pooya-monogram.webp" alt="نشان مونوگرام پویا لبز" width="64" /></a></p>
+
+**ایجاد، مالکیت و نگه‌داری: [پلتفرم پویا لبز](https://pooya-labs.github.io/pooya-labs-platform/)** · بنیان‌گذار و مهندس محصول: **پویا گودرزی**.
