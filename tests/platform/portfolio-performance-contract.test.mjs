@@ -14,6 +14,9 @@ test('portfolio performance QA measures the homepage and all eight project route
   assert.match(script, /width: 390, height: 844/);
   assert.match(script, /largest-contentful-paint/);
   assert.match(script, /cumulativeLayoutShift/);
+  assert.match(script, /layoutShiftEvents/);
+  assert.match(script, /previousRect/);
+  assert.match(script, /currentRect/);
   assert.match(script, /javascriptBytes/);
   assert.match(script, /totalResourceBytes/);
 });
