@@ -113,7 +113,7 @@ try {
           const suffix = scenario === 'overview' ? '' : '-' + scenario;
           if (fullPage) {
             const pageHeight = await page.evaluate(() => document.documentElement.scrollHeight);
-            const step = Math.max(420, Math.floor(window.innerHeight * 0.72));
+            const step = Math.max(420, Math.floor(viewport.height * 0.72));
             for (let top = 0; top < pageHeight; top += step) {
               await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), top);
               await page.waitForTimeout(180);
