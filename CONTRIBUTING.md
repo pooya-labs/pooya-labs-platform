@@ -30,7 +30,7 @@ For browser-level and cold-route performance verification, run:
 
 ```sh
 npm run qa:portfolio:browser --workspace @pooya-labs/platform
-npm run qa:portfolio:performance --workspace @pooya-labs/platform
+npm run qa:portfolio:performance
 ```
 
 The performance probe records baseline metrics without enforcing thresholds until the first measurements are reviewed. See [PERFORMANCE-BUDGET.md](docs/PERFORMANCE-BUDGET.md).
