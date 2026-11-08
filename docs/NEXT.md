@@ -2,8 +2,12 @@
 
 **Task ID:** P7-12  
 **Checkpoint date:** 2026-11-09  
-**Latest verified `main` docs checkpoint:** see [Project Status](STATUS.md) and [project-state.json](project-state.json)  
+**Latest verified `main` docs checkpoint:** PR [#18](https://github.com/pooya-labs/pooya-labs-platform/pull/18) merged as [`23f1689`](https://github.com/pooya-labs/pooya-labs-platform/commit/23f16896624ef391e284d3579a7f7278f5c8cbaf); post-merge Repository CI [42522790018](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42522790018) and Browser QA [42522600586](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42522600586) passed. See [Project Status](STATUS.md) and [project-state.json](project-state.json)  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
+
+## Post-merge verification — 2026-11-09
+
+PR [#18](https://github.com/pooya-labs/pooya-labs-platform/pull/18) merged to main as [`23f1689`](https://github.com/pooya-labs/pooya-labs-platform/commit/23f16896624ef391e284d3579a7f7278f5c8cbaf). Repository CI on the merged main commit [42522790018](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42522790018) passed. PR Browser QA [42522600586](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42522600586) passed responsive routes, metadata, keyboard checks, cold-route measurements, and published GitHub Pages/Cloudflare Pages measurements. The merge changed documentation and a contract test only; it did not alter the public app bundle or deploy either host.
 
 ## Release order (owner-requested)
 
