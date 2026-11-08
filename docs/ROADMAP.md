@@ -91,7 +91,7 @@ This phase is the work currently in progress. Complete every autonomous engineer
 - [ ] Reconcile the source-of-truth project facts, current main SHAs, versions, live links, capabilities, and release states for all eight projects. Record the current evidence in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md); do not yet perform the final content/media integration.
 - [ ] Keep every unverified claim, missing contribution statement, and unavailable runtime visibly bounded; never convert a prototype, simulated feed, synthetic demo, or unpublished service into a live/production claim.
 - [ ] Verify all current project links, logos, owner attributions, image sources, captions, and alt text against the newly rechecked upstream repositories.
-- [ ] Prepare a compact owner-review packet containing biography/headline, featured-project order, per-project role wording, project statuses, contact channels, and assets that require approval.
+- [x] Prepare the bilingual owner-review packet covering homepage copy, featured-project order, source-backed roles/statuses, contact channels, media, disclosure boundaries, and Novels decision; see [OWNER-REVIEW-PACKET.md](OWNER-REVIEW-PACKET.md). Preparation is complete; owner content/media approvals remain pending.
 - [ ] Confirm whether the empty novels library should stay hidden/empty or receive owner-provided content; do not invent titles, covers, or manuscripts.
 
 ### Platform engineering and quality
