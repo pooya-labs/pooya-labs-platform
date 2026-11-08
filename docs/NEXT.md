@@ -99,3 +99,13 @@ Start with P3-08A and P3-08B; do not redo completed UI, novel-library, static SE
 - Visual review of desktop/mobile screenshot candidates and approval of any newly published captures.
 - Manual keyboard, screen-reader, and incomplete contrast checks.
 - External social-preview validation and a release/rollback rehearsal.
+
+
+## Capture evidence checkpoint — P7-08A
+
+- [x] Capture 8 public projects in desktop and mobile sizes, including full-page screenshots for every public section (47 screenshots total including scenario views).
+- [x] Visually inspect the new full-page captures and review the public Salon Booking page for exposed customer data.
+- [x] Approve 14 captures across 7 projects for publication; keep GlobalCart's new full-page capture out because the live catalog grid currently shows blank placeholders.
+- [x] Add checksum, PNG signature, dimensions, and exact artifact-run verification to the screenshot publishing workflow.
+- [ ] Merge the reviewed UI PR, allow the workflow to publish the 14 approved captures, then pin them in the case-study media gallery.
+- [ ] Review the updated live site with Pooya and collect round-two design feedback.
