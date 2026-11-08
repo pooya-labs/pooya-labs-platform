@@ -150,6 +150,7 @@
 .stamp-orbit::after { inset: -14px 28px; transform: rotate(-50deg); }
 .stamp-core { width: 112px; height: 112px; display: grid; place-items: center; border: 1px solid rgba(145, 227, 222, .3); border-radius: 32px; color: #e9ffff; background: linear-gradient(145deg, rgba(43, 100, 105, .53), rgba(12, 34, 45, .9)); box-shadow: 0 0 60px rgba(56, 192, 180, .13), inset 0 1px rgba(255,255,255,.14); font-size: 60px; font-weight: 750; }
 .stamp-core span { color: var(--pf-emerald); }
+.stamp-core img { display: block; width: 78px; height: 86px; object-fit: contain; filter: drop-shadow(0 8px 18px rgba(0, 221, 151, .2)); }
 .about-stamp > span { position: absolute; bottom: 0; color: var(--pf-dim); font: 8px ui-monospace, monospace; letter-spacing: .19em; }
 .about-content h2 { max-width: 590px; }
 .about-content > p { margin: 14px 0 25px; color: var(--pf-muted); font-size: 12px; line-height: 2.15; }
