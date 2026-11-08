@@ -5,7 +5,7 @@ import { pathToFileURL } from 'node:url';
 
 const secretRules = [
   { id: 'private-key-block', pattern: /-----BEGIN (?:[A-Z0-9]+ )*PRIVATE KEY-----/i },
-  { id: 'pgp-private-key', pattern: /-----BEGIN PGP PRIVATE KEY BLOCK-----/i },
+  { id: 'pgp-private-key', pattern: /-----BEGIN PGP (?:PUBLIC )?PRIVATE KEY BLOCK-----/i },
   { id: 'aws-access-key-id', pattern: /\b(?:AKIA|ASIA)[A-Z0-9]{16}\b/ },
   { id: 'github-token', pattern: /\b(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{50,})\b/ },
   { id: 'google-api-key', pattern: /\bAIza[0-9A-Za-z_-]{35}\b/ },

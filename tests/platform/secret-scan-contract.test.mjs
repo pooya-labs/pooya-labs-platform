@@ -4,7 +4,7 @@ import { isSensitivePath, scanText } from '../../scripts/secret-scan.mjs';
 
 test('detects high-confidence provider credential formats without returning secret values', () => {
   const samples = [
-    ['private-key-block', '-----BEGIN PRIVATE KEY-----'],
+    ['private-key-block', ['-----BEGIN ', 'PRIVATE KEY-----'].join('')],
     ['aws-access-key-id', ['AK', 'IA', 'A'.repeat(16)].join('')],
     ['github-token', ['ghp_', 'a'.repeat(36)].join('')],
     ['google-api-key', ['AIza', 'A'.repeat(35)].join('')],
