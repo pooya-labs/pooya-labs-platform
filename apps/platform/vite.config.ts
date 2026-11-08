@@ -1,4 +1,6 @@
 import { defineConfig, type Plugin, type OutputBundle } from 'vite';
+import { createElement } from 'react';
+import { renderToString } from 'react-dom/server';
 import react from '@vitejs/plugin-react';
 import { viteSingleFile } from 'vite-plugin-singlefile';
 import { fileURLToPath } from 'node:url';
@@ -6,10 +8,8 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { Resvg } from '@resvg/resvg-js';
 import { portfolioProjects, type PortfolioProject } from './src/content/projects';
-import { coreDossiers } from './src/content/case-study-dossiers-core';
-import { productDossiers } from './src/content/case-study-dossiers-products';
-import type { CaseStudyDossier } from './src/content/case-study-dossiers-types';
 import { architectureDiagrams } from './src/content/architecture-diagrams';
+import { HydratedCaseStudy } from './src/PortfolioHome';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
 // Keep each host's build isolated: Cloudflare is root-based, GitHub Pages uses a project subpath, and GAS emits one HtmlService file.
@@ -72,97 +72,6 @@ function escapeXml(value: string): string {
   return escapeHtml(value);
 }
 
-function dossierFor(project: PortfolioProject): CaseStudyDossier {
-  const dossiers = {
-    ...coreDossiers,
-    ...productDossiers
-  } as unknown as Record<string, CaseStudyDossier>;
-  const dossier = dossiers[project.slug];
-  if (!dossier) throw new Error('Missing case-study dossier for ' + project.slug);
-  return dossier;
-}
-
-function renderList(items: readonly string[]): string {
-  return items.map((item, index) =>
-    `<li><span>${String(index + 1).padStart(2, '0')}</span>${escapeHtml(item)}</li>`
-  ).join('');
-}
-
-function renderStaticCaseStudy(project: PortfolioProject, locale: Locale): string {
-  const t = pageCopy[locale];
-  const dossier = dossierFor(project);
-  const diagram = architectureDiagrams[project.slug];
-  if (!diagram) throw new Error('Missing architecture diagram for ' + project.slug);
-  const diagramPath = `${SITE_BASE}architecture/${project.slug}${locale === 'en' ? '-en' : ''}.svg`;
-  const heroVisual = project.caseStudyHeroAsset ?? project.visualAsset;
-  const visual = heroVisual
-    ? `<img class="case-study-visual-image visual-${heroVisual.kind}" src="${escapeHtml(heroVisual.url)}" alt="${escapeHtml(heroVisual.alt[locale])}" loading="eager" decoding="async">`
-    : '';
-  const tags = project.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('');
-  const references = dossier.references.map((reference) =>
-    `<a href="${escapeHtml(reference.url)}" target="_blank" rel="noopener noreferrer"><span>${escapeHtml(reference.label[locale])}</span><span aria-hidden="true">↗</span></a>`
-  ).join('');
-  const media = (project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop');
-  const mediaSection = media.length
-    ? `<section class="case-study-media-section">
-        <div class="portfolio-eyebrow"><span class="eyebrow-index">UI /</span>${t.interfaceCaptures}</div>
-        <div class="case-study-media-grid">${media.map((item) => `<figure class="case-study-media-card device-${item.device}">
-          <img src="${escapeHtml(item.url)}" alt="${escapeHtml(item.alt[locale])}" loading="lazy" decoding="async">
-          <figcaption>${escapeHtml(item.caption[locale])}</figcaption>
-        </figure>`).join('')}</div>
-      </section>`
-    : '';
-
-  return `<a class="portfolio-skip-link" href="#main-content">${t.skipToContent}</a>
-  <main id="main-content" tabindex="-1" class="case-study-main portfolio-container">
-    <a class="case-study-back" href="${SITE_BASE}#projects">← ${t.back}</a>
-    <article>
-      <header class="case-study-hero">
-        <div class="case-study-visual${visual ? ' has-visual' : ''}">
-          ${visual}
-          <div class="case-study-art-fallback" aria-hidden="true"><div class="art-orbit orbit-outer"></div><div class="art-orbit orbit-inner"></div><div class="art-monogram"><span>${escapeHtml(project.name.slice(0, 1))}</span><i></i></div></div>
-          <span class="case-study-index">${project.number} / POOYA LABS</span>
-        </div>
-        <div class="case-study-heading">
-          <div class="portfolio-eyebrow"><span class="eyebrow-index">PROJECT / ${project.number}</span>${escapeHtml(project.category[locale])}</div>
-          <h1>${escapeHtml(project.name)}</h1>
-          <span class="case-study-status"><i></i>${escapeHtml(project.status[locale])}</span>
-          <p>${escapeHtml(project.description[locale])}</p>
-          <div class="project-tags">${tags}</div>
-          <div class="case-study-actions">
-            <a class="portfolio-primary" href="${escapeHtml(project.previewUrl)}" target="_blank" rel="noopener noreferrer">${t.demo} ↗</a>
-            <a class="portfolio-secondary" href="${escapeHtml(project.repositoryUrl)}" target="_blank" rel="noopener noreferrer">${t.source} ↗</a>
-          </div>
-        </div>
-      </header>
-      ${mediaSection}
-      <section class="case-study-section-grid">
-        <article class="case-study-panel"><div class="portfolio-eyebrow"><span class="eyebrow-index">01 /</span>${t.challenge}</div><p>${escapeHtml(project.caseStudy.challenge[locale])}</p></article>
-        <article class="case-study-panel"><div class="portfolio-eyebrow"><span class="eyebrow-index">02 /</span>${t.approach}</div><p>${escapeHtml(project.caseStudy.approach[locale])}</p></article>
-      </section>
-      <section class="case-study-dossier-grid">
-        <article class="case-study-panel"><div class="portfolio-eyebrow"><span class="eyebrow-index">03 /</span>${t.role}</div><p>${escapeHtml(dossier.role[locale])}</p></article>
-        <article class="case-study-panel"><div class="portfolio-eyebrow"><span class="eyebrow-index">04 /</span>${t.architecture}</div><p>${escapeHtml(dossier.architecture[locale])}</p></article>
-      </section>
-      <figure class="case-study-architecture-figure">
-        <img src="${diagramPath}" alt="${escapeHtml(diagram.title[locale])}" width="1600" height="900" loading="lazy" decoding="async">
-        <figcaption>${escapeHtml(diagram.caption[locale])}</figcaption>
-      </figure>
-      <section class="case-study-detail-grid">
-        <article class="case-study-highlights"><div class="portfolio-eyebrow"><span class="eyebrow-index">05 /</span>${t.implementation}</div><ul>${renderList(dossier.implementation[locale])}</ul></article>
-        <article class="case-study-highlights"><div class="portfolio-eyebrow"><span class="eyebrow-index">06 /</span>${t.decisions}</div><ul>${renderList(dossier.decisions[locale])}</ul></article>
-      </section>
-      <section class="case-study-detail-grid">
-        <article class="case-study-highlights"><div class="portfolio-eyebrow"><span class="eyebrow-index">07 /</span>${t.validation}</div><ul>${renderList(dossier.verification[locale])}</ul></article>
-        <article class="case-study-panel case-study-source-panel"><div class="portfolio-eyebrow"><span class="eyebrow-index">08 /</span>${t.sources}</div><div class="case-study-source-list">${references}</div></article>
-      </section>
-      <section class="case-study-highlights"><div class="portfolio-eyebrow"><span class="eyebrow-index">09 /</span>${t.highlights}</div><ul>${renderList(project.caseStudy.highlights[locale])}</ul></section>
-      <section class="case-study-boundaries"><div class="portfolio-eyebrow"><span class="eyebrow-index">10 /</span>${t.boundaries}</div><p>${escapeHtml(project.caseStudy.boundaries[locale])}</p></section>
-    </article>
-    <noscript><p>${escapeHtml(t.portfolio)} · ${escapeHtml(t.back)}</p></noscript>
-  </main>`;
-}
-
 function replaceTag(html: string, pattern: RegExp, replacement: string, label: string): string {
   if (!pattern.test(html)) throw new Error('Cannot generate static case-study page; missing ' + label);
   return html.replace(pattern, replacement);
@@ -216,7 +125,8 @@ function staticPageHtml(template: string, project: PortfolioProject, locale: Loc
     isPartOf: { '@type': 'CollectionPage', name: SITE_NAME, url: SITE_ORIGIN + SITE_BASE }
   };
   html = replaceTag(html, /<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">${JSON.stringify(structuredData)}</script>`, 'JSON-LD');
-  html = replaceTag(html, /<div id="root"><\/div>/, `<div id="root">${renderStaticCaseStudy(project, locale)}</div>`, 'root mount');
+  const appMarkup = renderToString(createElement(HydratedCaseStudy, { project, language: locale, baseUrl: SITE_BASE }));
+  html = replaceTag(html, /<div id="root"><\\/div>/, `<div id="root">${appMarkup}</div>`, 'root mount');
   return html;
 }
 
