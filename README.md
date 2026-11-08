@@ -10,7 +10,7 @@ The latest case-study pass now server-renders the same component that the browse
 
 ## Project ownership
 
-<p align="center"><a href="https://pooya-labs.github.io/pooya-labs-platform/"><img src="https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/main/apps/platform/public/brand/pooya-monogram.webp" alt="Pooya Labs Platform monogram" width="64" /></a></p>
+<p align="center"><a href="https://pooya-labs.github.io/pooya-labs-platform/"><img src="https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/main/apps/platform/public/brand/pooya-monogram-tile.svg" alt="Pooya Labs Platform monogram" width="96" /></a></p>
 
 **Created, owned and maintained by [Pooya Labs Platform](https://pooya-labs.github.io/pooya-labs-platform/).** Founder and product engineer: **Pooya Goodarzi**.
 
@@ -128,6 +128,6 @@ npm run build:gas
 
 ### مالکیت و نگه‌داری
 
-<p align="center"><a href="https://pooya-labs.github.io/pooya-labs-platform/"><img src="https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/main/apps/platform/public/brand/pooya-monogram.webp" alt="نشان مونوگرام پویا لبز" width="64" /></a></p>
+<p align="center"><a href="https://pooya-labs.github.io/pooya-labs-platform/"><img src="https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/main/apps/platform/public/brand/pooya-monogram-tile.svg" alt="نشان مونوگرام پویا لبز" width="96" /></a></p>
 
 **ایجاد، مالکیت و نگه‌داری: [پلتفرم پویا لبز](https://pooya-labs.github.io/pooya-labs-platform/)** · بنیان‌گذار و مهندس محصول: **پویا گودرزی**.
