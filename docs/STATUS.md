@@ -1,3 +1,12 @@
+## Release sequence decision — 2026-11-08
+
+Pooya requested a strict final-stage order. The roadmap now reserves **Phase 8 for the complete redesign and its two owner approval rounds (penultimate stage)**, then **Phase 9 for full portfolio-level integration of all eight projects (last stage before publication)**, followed by **Phase 10 for V1 release**. Work is currently confined to Phase 7 readiness; final project media/content integration must not be pulled forward.
+
+- Phases 4–6 are closed for current V1 scope by explicit decisions: no owner CMS/customer accounts, direct contact links instead of a backend form, and no heavy embedded demos until Phase 9.
+- All eight independent repositories have newer source commits since the previous audit. Their latest observed changes and SHAs are recorded in PROJECT-CONTENT-AUDIT.md; this is an evidence baseline, not final acceptance. No upstream repo was modified.
+- Phase 7 will close remaining autonomous engineering, source verification, accessibility, performance, security, crawler, deployment, recovery, and owner/device-readiness tasks before the redesign starts.
+- The site remains pre-alpha. Neither the redesign nor final project integration is approved or completed.
+
 ## Latest implementation checkpoint — repository quality conventions (2026-11-08)
 
 - Added dependency-free JavaScript syntax/debugger checks and source/config formatting checks; these do not add runtime or development dependencies.
@@ -13,7 +22,7 @@
 **Last updated:** 2026-11-08  
 **Repository:** pooya-labs/pooya-labs-platform  
 **Branch:** main  
-**Current phase:** Phase 7 — Owner-led visual redesign and release review  
+**Current phase:** Phase 7 — Pre-redesign readiness and engineering closeout  
 **Release:** Pre-alpha / portfolio draft
 
 ## Latest verified checkpoint — accessibility semantics, theme contrast, and Cloudflare production (2026-11-08)
