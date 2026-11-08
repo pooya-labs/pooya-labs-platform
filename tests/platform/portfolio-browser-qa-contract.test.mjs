@@ -79,3 +79,13 @@ test('browser QA rejects stale middle-of-page scroll restoration on direct route
   assert.match(script, /history\.scrollRestoration/);
   assert.match(script, /direct route did not open at the top of the page/);
 });
+
+
+test('browser QA exercises the portfolio scroll container and mouse-wheel scrolling', () => {
+  assert.match(script, /\.portfolio-page/);
+  assert.match(script, /scrollHeight - scroller\.clientHeight/);
+  assert.match(script, /scroller\.scrollTop = Math\.min\(480, maxScrollTop\)/);
+  assert.match(script, /page\.mouse\.wheel\(0, 720\)/);
+  assert.match(script, /Mouse-wheel scrolling did not move the portfolio page/);
+  assert.match(portfolioCss, /height: 100dvh;[\s\S]*?overflow-y: auto;[\s\S]*?overscroll-behavior-y: contain/);
+});
