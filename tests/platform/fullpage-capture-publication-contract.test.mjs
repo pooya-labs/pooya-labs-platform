@@ -38,5 +38,5 @@ test('publication workflow downloads the exact artifact and verifies each PNG be
   assert.match(workflow, /SHA-256 mismatch/);
   assert.match(workflow, /PNG dimensions mismatch/);
   assert.match(workflow, /git push origin HEAD:main/);
-  assert.match(JSON.stringify(manifest.review), /Salon Booking capture is restricted to the customer-facing page only/);
+  assert.match(JSON.stringify(manifest.review), /Salon Booking customer-facing page only/);
 });
