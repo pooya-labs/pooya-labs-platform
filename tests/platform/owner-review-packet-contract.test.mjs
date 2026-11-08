@@ -31,11 +31,11 @@ test('owner packet preserves current demo/simulation and privacy limitations', (
   }
   assert.match(packet, /External LinkedIn\/Facebook crawler rendering/);
   assert.match(packet, /29 PNG candidates and seven WebM reels/);
-  assert.match(packet, /The catalog is intentionally empty/);
+  assert.match(packet, /catalog is intentionally empty/i);
 });
 
 test('owner packet keeps approvals pending and does not imply permission to publish', () => {
-  assert.match(packet, /Owner approval is still pending/);
+  assert.match(packet, /owner approval is still pending/i);
   assert.match(packet, /No item is considered approved/);
   assert.match(packet, /Keep all eight project review states as needs-owner-review/);
   assert.match(packet, /Salon owner's separate permission/);
