@@ -158,7 +158,6 @@ try {
           scroller.scrollTop = 0;
           return result;
         });
-        routeRecord.viewportChecks.push({ ...viewport, scrollMetrics });
         if (!scrollMetrics.canScroll) {
           addFailure(route, viewport.name, 'The portfolio scroll container cannot move through the page content.');
         }
@@ -190,6 +189,7 @@ try {
         routeRecord.viewportChecks.push({
           ...viewport,
           ...metrics,
+          scrollMetrics,
           axeViolationCount: axeFindings.length,
           axeIncompleteRuleCount: axeResults.incomplete.length,
         });
