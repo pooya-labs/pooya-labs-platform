@@ -1,8 +1,8 @@
-# Next Task — Close Phase 3 evidence and owner-review gates
+# Next Task — Complete visual polish round 1 and capture review
 
-**Task ID:** P3-08  
+**Task ID:** P7-08A  
 **Priority:** Finish factual/content acceptance before Phase 7 redesign.  
-**Checkpoint date:** 2026-11-07  
+**Checkpoint date:** 2026-11-08  
 **Latest verified repository CI checkpoint:** `74b19508e77cf20efe414009bb71ca69f91eb700` on `main`; the latest commit is documentation-only. The current application styling is from `e66f4b42562fb6a164117e2b8a3f9905634a1b9e`, and the capture-runner/test source tree was last updated by `d74c12952be73233f551034d08b5fd212d260d0e` and `061176326e13ba0ba4239416acd6e1f4db5f7580`.
 
 ## Current verified baseline
@@ -83,3 +83,29 @@
 ## Resume instruction
 
 Start with P3-08A and P3-08B; do not redo completed UI, novel-library, static SEO, screenshot-pipeline, or automated QA work. Update STATUS.md, project-state.json, CHANGELOG.md, and this file together after each coherent milestone.
+
+
+## Immediate work — P7-08A
+
+1. Complete the first visual polish implementation on `feat/portfolio-polish-stripe-motion`: gold Pooya mark, simplified utility header, overflow-safe case-study cards, desktop/mobile capture pairing, and an original animated radial proof section inspired by Stripe's motion language.
+2. Capture the public projects at 1440×1000 and 390×844, including full-page screenshots for all sections. Salon Booking capture is restricted to its public customer journey; never visit `?admin=1` or expose customer records.
+3. Review screenshot artifacts for completeness, broken states, and personal data before publishing any new capture.
+4. Run current-branch Repository CI, Portfolio Browser QA, and Pages preview deployment. Keep Cloudflare and Apps Script deploy claims separate; their credentials are not assumed to exist.
+5. Present the preview to Pooya for the second feedback round. Do not mark Phase 7 complete or release V1 without explicit full-site approval.
+
+## Known release blockers
+
+- Owner-approved biography, final project order, and contact preferences.
+- Visual review of desktop/mobile screenshot candidates and approval of any newly published captures.
+- Manual keyboard, screen-reader, and incomplete contrast checks.
+- External social-preview validation and a release/rollback rehearsal.
+
+
+## Capture evidence checkpoint — P7-08A
+
+- [x] Capture 8 public projects in desktop and mobile sizes, including full-page screenshots for every public section (47 screenshots total including scenario views).
+- [x] Visually inspect the new full-page captures and review the public Salon Booking page for exposed customer data.
+- [x] Approve 14 captures across 7 projects for publication; keep GlobalCart's new full-page capture out because the live catalog grid currently shows blank placeholders.
+- [x] Add checksum, PNG signature, dimensions, and exact artifact-run verification to the screenshot publishing workflow.
+- [ ] Merge the reviewed UI PR, allow the workflow to publish the 14 approved captures, then pin them in the case-study media gallery.
+- [ ] Review the updated live site with Pooya and collect round-two design feedback.

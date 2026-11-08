@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "scope": "portfolio-fullpage-interface-captures",
+  "review": {
+    "outcome": "approved-for-portfolio-use",
+    "reviewer": "Pooya Labs owner request",
+    "reviewedAt": "2026-11-08",
+    "visualReviewed": true,
+    "privacyReviewed": true,
+    "notes": "Captured from public project routes only. Salon Booking customer-facing page only; no admin route or customer records. AuraPulse is explicitly a simulated trading interface; its third-party Binance ticker request is blocked in the capture environment and no live market values are claimed. GlobalCart full-page capture is excluded because the current public collection grid visibly renders blank product placeholders; existing curated GlobalCart screenshots remain in use until that project is repaired."
+  },
+  "artifact": {
+    "workflowRunId": 42468215117,
+    "name": "project-interface-captures",
+    "captureSha": "5be65fe27066ec30a61d252a5b0013a666285a76"
+  },
+  "files": [
+    {
+      "project": "aetherflow",
+      "device": "desktop",
+      "source": "aetherflow-fullpage-desktop.png",
+      "destination": "apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png",
+      "sha256": "850fdf6c49cc77b2e3250760cfe0e391de212e1039ca0db1169ccdf10324ed51",
+      "bytes": 1075414,
+      "viewport": {
+        "width": 1440,
+        "height": 3241
+      }
+    },
+    {
+      "project": "aetherflow",
+      "device": "mobile",
+      "source": "aetherflow-fullpage-mobile.png",
+      "destination": "apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-mobile.png",
+      "sha256": "bf99db821ee2deaf5b3ddf5fa509c5c0240f571b93aae754418fd553f8b09690",
+      "bytes": 1073822,
+      "viewport": {
+        "width": 390,
+        "height": 5747
+      }
+    },
+    {
+      "project": "orbit",
+      "device": "desktop",
+      "source": "orbit-fullpage-desktop.png",
+      "destination": "apps/platform/public/interface-captures/orbit/orbit-fullpage-desktop.png",
+      "sha256": "f38eb764493f94fc26199c812e7f4ba48411ada393f6eefe3a6cdad140e4ce97",
+      "bytes": 209740,
+      "viewport": {
+        "width": 1440,
+        "height": 1288
+      }
+    },
+    {
+      "project": "orbit",
+      "device": "mobile",
+      "source": "orbit-fullpage-mobile.png",
+      "destination": "apps/platform/public/interface-captures/orbit/orbit-fullpage-mobile.png",
+      "sha256": "19894a40a0c3a5411f0e8cac11134cf5ede84536965cf77102eb0b8f3b0ab17c",
+      "bytes": 135957,
+      "viewport": {
+        "width": 390,
+        "height": 1841
+      }
+    },
+    {
+      "project": "pooya-os",
+      "device": "desktop",
+      "source": "pooya-os-fullpage-desktop.png",
+      "destination": "apps/platform/public/interface-captures/pooya-os/pooya-os-fullpage-desktop.png",
+      "sha256": "a7ac9a544920bf6ddd493c99614989e9478f21570bc2431cf826b89acd8512c3",
+      "bytes": 935101,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "project": "pooya-os",
+      "device": "mobile",
+      "source": "pooya-os-fullpage-mobile.png",
+      "destination": "apps/platform/public/interface-captures/pooya-os/pooya-os-fullpage-mobile.png",
+      "sha256": "90c00a0ed191a8d41542ec938dfbd8229362f397edf40ed2216081f3042da2f6",
+      "bytes": 187228,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "project": "nexus-canvas",
+      "device": "desktop",
+      "source": "nexus-canvas-fullpage-desktop.png",
+      "destination": "apps/platform/public/interface-captures/nexus-canvas/nexus-canvas-fullpage-desktop.png",
+      "sha256": "ae0d6d89b340bbab99a0c19c27013ef65becabcbb52383a1d2ab99ec4e3cbcc6",
+      "bytes": 547337,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "project": "nexus-canvas",
+      "device": "mobile",
+      "source": "nexus-canvas-fullpage-mobile.png",
+      "destination": "apps/platform/public/interface-captures/nexus-canvas/nexus-canvas-fullpage-mobile.png",
+      "sha256": "13d6f2d4dadaa4a845d2653ea12b816822d4160557566bdff2549d9d95e236e1",
+      "bytes": 479716,
+      "viewport": {
+        "width": 390,
+        "height": 2617
+      }
+    },
+    {
+      "project": "lumina-glass",
+      "device": "desktop",
+      "source": "lumina-glass-fullpage-desktop.png",
+      "destination": "apps/platform/public/interface-captures/lumina-glass/lumina-glass-fullpage-desktop.png",
+      "sha256": "e30d6cfccca351d95ae1e5d978680051e76d3c8c58183ae09795b6328ef30bf6",
+      "bytes": 1015674,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "project": "lumina-glass",
+      "device": "mobile",
+      "source": "lumina-glass-fullpage-mobile.png",
+      "destination": "apps/platform/public/interface-captures/lumina-glass/lumina-glass-fullpage-mobile.png",
+      "sha256": "a955325008545adf3515b5ff43cbbdd56e65fdaf800f922047abd445688d1808",
+      "bytes": 463874,
+      "viewport": {
+        "width": 390,
+        "height": 1497
+      }
+    },
+    {
+      "project": "aurapulse",
+      "device": "desktop",
+      "source": "aurapulse-fullpage-desktop.png",
+      "destination": "apps/platform/public/interface-captures/aurapulse/aurapulse-fullpage-desktop.png",
+      "sha256": "45f1e861b864ffb1f559445901dd3e1c20adb8b5cbc635c62a8de6522dbfb368",
+      "bytes": 598313,
+      "viewport": {
+        "width": 1440,
+        "height": 1348
+      }
+    },
+    {
+      "project": "aurapulse",
+      "device": "mobile",
+      "source": "aurapulse-fullpage-mobile.png",
+      "destination": "apps/platform/public/interface-captures/aurapulse/aurapulse-fullpage-mobile.png",
+      "sha256": "60d249bb100d933849468af517f7601cb6e52117b74236c666698586d157bc1b",
+      "bytes": 481323,
+      "viewport": {
+        "width": 390,
+        "height": 3196
+      }
+    },
+    {
+      "project": "salon-booking",
+      "device": "desktop",
+      "source": "salon-booking-fullpage-desktop.png",
+      "destination": "apps/platform/public/interface-captures/salon-booking/salon-booking-fullpage-desktop.png",
+      "sha256": "8df2ead18e660ff40f9a5bb0617f716ca61ac2b8a9088941f9ed8743de2f2390",
+      "bytes": 1567026,
+      "viewport": {
+        "width": 1440,
+        "height": 3390
+      }
+    },
+    {
+      "project": "salon-booking",
+      "device": "mobile",
+      "source": "salon-booking-fullpage-mobile.png",
+      "destination": "apps/platform/public/interface-captures/salon-booking/salon-booking-fullpage-mobile.png",
+      "sha256": "d31253081f5984dd090c2cdbb88140899b406bb799a6543cac686caf950dd054",
+      "bytes": 1424327,
+      "viewport": {
+        "width": 390,
+        "height": 5038
+      }
+    }
+  ]
+}

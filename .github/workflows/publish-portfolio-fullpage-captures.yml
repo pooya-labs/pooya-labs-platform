@@ -1,0 +1,118 @@
+name: Publish Reviewed Full-page Portfolio Captures
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/approved-interface-captures/portfolio-2026-11-08.json'
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: publish-portfolio-fullpage-captures
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Verify and publish approved responsive project captures
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate approval manifest
+        id: approval
+        env:
+          MANIFEST: docs/approved-interface-captures/portfolio-2026-11-08.json
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const manifest = JSON.parse(fs.readFileSync(process.env.MANIFEST, 'utf8'));
+          // GlobalCart's current live collection grid contains blank product placeholders; retain its existing curated captures until that project is repaired.\n          const allowed = new Set(['aetherflow','orbit','pooya-os','nexus-canvas','lumina-glass','aurapulse','salon-booking']);
+          const expected = new Set([...allowed].flatMap((project) => ['desktop','mobile'].map((device) => project + ':' + device)));
+          if (manifest.schemaVersion !== 1 || manifest.scope !== 'portfolio-fullpage-interface-captures') throw new Error('Unsupported approval manifest.');
+          if (manifest.review?.outcome !== 'approved-for-portfolio-use') throw new Error('The owner has not approved publication.');
+          if (!manifest.review?.privacyReviewed || !manifest.review?.visualReviewed) throw new Error('Visual and privacy review must both be recorded.');
+          if (!Number.isInteger(manifest.artifact?.workflowRunId) || !/^[a-f0-9]{40}$/.test(manifest.artifact.captureSha) || manifest.artifact.name !== 'project-interface-captures') throw new Error('Invalid source workflow run, artifact name, or capture SHA.');
+          if (manifest.files?.length !== expected.size) throw new Error('Exactly fourteen desktop/mobile full-page captures are required.');
+          const seen = new Set();
+          for (const file of manifest.files) {
+            const key = file.project + ':' + file.device;
+            if (!expected.has(key) || seen.has(key)) throw new Error('Unexpected or duplicate project/device: ' + key);
+            if (file.source !== file.project + '-fullpage-' + file.device + '.png') throw new Error('Unexpected source filename: ' + key);
+            if (file.destination !== 'apps/platform/public/interface-captures/' + file.project + '/' + file.source) throw new Error('Destination outside approved capture directory: ' + key);
+            if (!/^[a-f0-9]{64}$/.test(file.sha256) || !Number.isInteger(file.bytes) || file.bytes <= 8) throw new Error('Invalid SHA-256 or byte-size metadata: ' + key);
+            const expectedWidth = file.device === 'desktop' ? 1440 : 390;
+            const minHeight = file.device === 'desktop' ? 1000 : 844;
+            if (file.viewport?.width !== expectedWidth || file.viewport?.height < minHeight || file.viewport?.height > 20000) throw new Error('Unexpected full-page dimensions: ' + key);
+            seen.add(key);
+          }
+          if (seen.size !== expected.size) throw new Error('Missing one or more approved captures.');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `run_id=${manifest.artifact.workflowRunId}\nartifact_name=${manifest.artifact.name}\ncapture_sha=${manifest.artifact.captureSha}\n`);
+          NODE
+
+      - name: Verify source capture run identity
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_RUN_ID: ${{ steps.approval.outputs.run_id }}
+          EXPECTED_CAPTURE_SHA: ${{ steps.approval.outputs.capture_sha }}
+        run: |
+          ACTUAL_CAPTURE_SHA=$(gh run view "$ARTIFACT_RUN_ID" --repo "$GITHUB_REPOSITORY" --json headSha --jq .headSha)
+          if [ "$ACTUAL_CAPTURE_SHA" != "$EXPECTED_CAPTURE_SHA" ]; then
+            echo "Capture run SHA does not match the reviewed manifest." >&2
+            exit 1
+          fi
+
+      - name: Download exact reviewed screenshot artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_RUN_ID: ${{ steps.approval.outputs.run_id }}
+          ARTIFACT_NAME: ${{ steps.approval.outputs.artifact_name }}
+        run: gh run download "$ARTIFACT_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "$ARTIFACT_NAME" --dir "$RUNNER_TEMP/interface-captures"
+
+      - name: Verify PNG signature, dimensions, byte size, and SHA-256
+        env:
+          MANIFEST: docs/approved-interface-captures/portfolio-2026-11-08.json
+          CAPTURE_DIR: ${{ runner.temp }}/interface-captures
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import { createHash } from 'node:crypto';
+          const manifest = JSON.parse(fs.readFileSync(process.env.MANIFEST, 'utf8'));
+          const signature = Buffer.from([0x89,0x50,0x4e,0x47,0x0d,0x0a,0x1a,0x0a]);
+          for (const file of manifest.files) {
+            const source = path.join(process.env.CAPTURE_DIR, file.source);
+            const bytes = fs.readFileSync(source);
+            if (bytes.length !== file.bytes) throw new Error('Byte-size mismatch: ' + file.source);
+            if (!bytes.subarray(0,8).equals(signature)) throw new Error('Invalid PNG signature: ' + file.source);
+            if (createHash('sha256').update(bytes).digest('hex') !== file.sha256) throw new Error('SHA-256 mismatch: ' + file.source);
+            const width = bytes.readUInt32BE(16), height = bytes.readUInt32BE(20);
+            if (width !== file.viewport.width || height !== file.viewport.height) throw new Error('PNG dimensions mismatch: ' + file.source);
+            const destination = path.resolve(file.destination);
+            if (!destination.startsWith(path.resolve('apps/platform/public/interface-captures') + path.sep)) throw new Error('Unsafe destination path.');
+            fs.mkdirSync(path.dirname(destination), {recursive:true});
+            fs.copyFileSync(source,destination);
+          }
+          NODE
+
+      - name: Commit only verified full-page captures
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/platform/public/interface-captures/
+          if git diff --cached --quiet; then
+            echo "Approved full-page captures are already present."
+            exit 0
+          fi
+          git commit -m "docs(portfolio): publish reviewed full-page project captures"
+          echo "Published capture asset commit: $(git rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+          git push origin HEAD:main

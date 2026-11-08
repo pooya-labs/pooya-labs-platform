@@ -11,6 +11,8 @@ const targets = [
   { slug: 'lumina-glass', url: 'https://pooya-labs.github.io/lumina-glass/' },
   { slug: 'aurapulse', url: 'https://pooya-labs.github.io/aurapulse/' },
   { slug: 'global-cart', url: 'https://pooya-labs.github.io/globalcart/' },
+  // Public customer booking journey only; never capture the owner/admin route or customer records.
+  { slug: 'salon-booking', url: 'https://pooya-labs.github.io/salon-booking/' },
 ];
 
 const viewports = [
@@ -100,7 +102,7 @@ try {
           ].join('\n'),
         }).catch(() => undefined);
 
-        const captureScenario = async (scenario, activeView) => {
+        const captureScenario = async (scenario, activeView, fullPage = false) => {
           const viewportDiagnostics = await page.evaluate(() => ({
             viewportWidth: window.innerWidth,
             viewportHeight: window.innerHeight,
@@ -109,8 +111,19 @@ try {
             hasHorizontalOverflow: document.documentElement.scrollWidth > window.innerWidth + 1,
           }));
           const suffix = scenario === 'overview' ? '' : '-' + scenario;
+          if (fullPage) {
+            const pageHeight = await page.evaluate(() => document.documentElement.scrollHeight);
+            const step = Math.max(420, Math.floor(viewport.height * 0.72));
+            for (let top = 0; top < pageHeight; top += step) {
+              await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), top);
+              await page.waitForTimeout(180);
+            }
+            await page.waitForTimeout(700);
+            await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+            await page.waitForTimeout(350);
+          }
           const screenshotPath = path.join(outputDir, target.slug + suffix + '-' + viewport.name + '.png');
-          await page.screenshot({ path: screenshotPath, type: 'png', fullPage: false, animations: 'disabled', caret: 'hide', timeout: 20000 });
+          await page.screenshot({ path: screenshotPath, type: 'png', fullPage, animations: 'disabled', caret: 'hide', timeout: 20000 });
           const screenshotBytes = await readFile(screenshotPath);
           records.push({
             slug: target.slug, scenario, activeView, requestedUrl: target.url, finalUrl, title: pageTitle,
@@ -133,6 +146,8 @@ try {
         }
         const defaultView = target.slug === 'nexus-canvas' && viewport.name === 'mobile' ? 'Mobile Rack' : 'Overview';
         await captureScenario('overview', defaultView);
+        // One complete page capture per device preserves the real page rhythm and every section.
+        await captureScenario('fullpage', 'Full page / all sections', true);
 
         // Demo mode has seeded incidents, but its incident-management panel intentionally withholds
         // real incident actions until an authenticated API is connected. Metrics/Logs/Traces are also
@@ -236,8 +251,8 @@ try {
     path.join(outputDir, 'capture-report.json'),
     JSON.stringify({
       generatedAt: new Date().toISOString(),
-      note: 'Screenshots and WebM motion reels are unreviewed evidence candidates. They remain private workflow artifacts and are not automatically published or committed. ORBIT includes Overview, Incidents and Metrics/Logs/Traces connection-required states; none is represented as live telemetry. NexusCanvas includes Mobile Rack and export/import modal states. LuminaGlass includes Audio EQ and local task-board states. No audio is started, no file is imported, and no task is modified. Each screenshot and motion reel includes byte-size and SHA-256 integrity metadata. Salon Booking remains excluded until owner-approved privacy-reviewed synthetic/redacted capture is supplied.',
-      excluded: ['salon-booking (requires salon product-owner approval and privacy-reviewed synthetic/redacted capture)'],
+      note: 'Screenshots and WebM motion reels are unreviewed evidence candidates. They remain private workflow artifacts and are not automatically published or committed. ORBIT includes Overview, Incidents and Metrics/Logs/Traces connection-required states; none is represented as live telemetry. NexusCanvas includes Mobile Rack and export/import modal states. LuminaGlass includes Audio EQ and local task-board states. No audio is started, no file is imported, and no task is modified. Each screenshot and motion reel includes byte-size and SHA-256 integrity metadata. Salon Booking is limited to the public customer booking journey; the admin route and customer records are never captured. Full-page captures are evidence candidates pending visual/privacy review.',
+      excluded: ['salon-booking admin/owner workspace and all customer records'],
       captures: records,
     }, null, 2) + '\n',
   );
@@ -246,7 +261,7 @@ try {
 }
 
 const captured = records.filter((record) => record.result === 'captured-pending-human-review').length;
-const requiredCaptureCount = targets.length * viewports.length
+const requiredCaptureCount = targets.length * viewports.length * 2
   + viewports.length * 4 // ORBIT Incidents, Metrics, Logs, and Traces connection states
   + 1 // NexusCanvas Mobile Rack, desktop only; mobile uses it as the base view
   + viewports.length // NexusCanvas Export / Import modal, desktop and mobile

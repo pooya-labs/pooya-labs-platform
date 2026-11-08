@@ -607,5 +607,48 @@
     "latestMotionCaptureRun": "42399972697-success;29-png-candidates;7-webm-reels;artifact-13584314344;contact-sheet-scan-complete;unpublished-owner-approval-pending",
     "ownerDesignFeedbackRound1": "pending",
     "ownerDesignFeedbackRound2": "pending"
-  }
+  },
+  "latestOwnerFeedback": {
+    "date": "2026-11-08",
+    "task": "P7-08A",
+    "branch": "feat/portfolio-polish-stripe-motion",
+    "requests": [
+      "polish header utility controls",
+      "fix desktop case-study text overflow",
+      "increase motion and graphic depth",
+      "use supplied Pooya P logo",
+      "add original Stripe-inspired radial statistics section",
+      "show real desktop and mobile project screenshots"
+    ],
+    "implementation": "first visual polish round committed for CI review",
+    "salonCaptureScope": "public customer booking route only; admin route and customer records excluded",
+    "capturePublication": "new full-page screenshots remain private artifact candidates until visual and privacy review",
+    "ownerApproval": "pending-second-feedback-round",
+    "captureReview": {
+      "workflowRunId": 42468215117,
+      "artifact": "project-interface-captures",
+      "captureSha": "5be65fe27066ec30a61d252a5b0013a666285a76",
+      "totalScreenshots": 47,
+      "motionReels": 8,
+      "approvedFullPageCaptures": 14,
+      "approvedProjects": [
+        "aetherflow",
+        "orbit",
+        "pooya-os",
+        "nexus-canvas",
+        "lumina-glass",
+        "aurapulse",
+        "salon-booking"
+      ],
+      "excludedProject": {
+        "slug": "global-cart",
+        "reason": "Current live collection grid renders blank product placeholders; existing curated captures retained"
+      },
+      "salonPrivacy": "public customer journey only; admin and customer records excluded",
+      "publication": "manifest and checksum-verified workflow added; publish after PR merge"
+    }
+  },
+  "latestTask": "P7-08A",
+  "latestTaskBranch": "feat/portfolio-polish-stripe-motion",
+  "lastUpdated": "2026-11-08"
 }
