@@ -7,29 +7,29 @@
   "phase": 7,
   "phaseName": "Owner-led visual redesign and release review",
   "currentTask": {
-    "id": "P7-10",
-    "title": "Product-aligned case-study motion and Android gallery scroll handoff",
-    "status": "Implementation committed with validation pending: eight product-specific case-study scenes and eight compact project-card scenes replace the repeated abstract motif. Full-page mobile gallery frames now use native vertical scroll chaining; the Browser QA harness captures project pages at both viewport sizes and emulates a touch swipe at the inner gallery boundary. Awaiting exact-main TypeScript/build/contract CI, mobile gesture QA, reduced-motion validation, and GitHub Pages deployment. Physical Android confirmation remains required."
+    "id": "P7-11",
+    "title": "Physical Android review and owner motion approval",
+    "status": "P7-10 is implemented and automated checks passed. Eight dedicated case-study motion scenes and eight compact project-card scenes are active at desktop/mobile. Browser QA verified 16/16 localized mobile gallery routes with Chromium touch scroll chaining and 8/8 project cards animated at both viewports. Physical Android-device confirmation, owner visual acceptance, and manual accessibility checks remain open."
   },
   "lastCheckpointDate": "2026-11-08",
-  "latestVerifiedCodeCommit": "70813af81c459664f23f676ef3a85f8682aafe70",
+  "latestVerifiedCodeCommit": "714d4ea2ea017189886ddb4e0d2e386e19edcaf3",
   "tests": {
-    "repositoryCi": "passed-run-42491842095-on-main-a08de7ec138c8790134a177b20a80ca7af137699;TypeScript;Pages-GAS-Cloudflare-build-targets;repository-contract-tests",
+    "repositoryCi": "passed-run-42496113019-on-main-6e6ed8fd16813e2b21e605b84a888d23aaace073;TypeScript;Pages-GAS-Cloudflare-build-targets;87-of-87-contract-tests",
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
-    "githubPagesDeployment": "passed-run-42491842070-on-main-377dbcbc2544976485f04fd1aeeb1b19d09d7bf7",
-    "platformTypecheck": "passed-run-42491842095-on-main-a08de7ec138c8790134a177b20a80ca7af137699",
-    "pagesAndGasBuilds": "passed-run-42491842095;Pages-GAS-and-Cloudflare-build-targets",
+    "githubPagesDeployment": "passed-run-42496014762-on-application-checkpoint-549c6a3c66eade850d175cddad3a7b7dea5466e8",
+    "platformTypecheck": "passed-run-42496113019-on-main-6e6ed8fd16813e2b21e605b84a888d23aaace073",
+    "pagesAndGasBuilds": "passed-run-42496113019;GitHub-Pages-and-Apps-Script-builds;Cloudflare-build",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
     "visualBrowserReview": "passed-artifact-13621507487;19-private-screenshots-opened;homepage-desktop-mobile;About-owner-wordmark-and-monogram-after-reveal;8-projects-Persian-and-English-desktop;manual-contrast-keyboard-screen-reader-review-still-pending",
     "vitePagesWorkflow": "passed-build-and-deploy-run-42491842070-on-main-377dbcbc2544976485f04fd1aeeb1b19d09d7bf7",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "GitHub Actions build and deploy succeeded on 2026-11-06 for source fc4d865b8fa4a19a3899f4b72847d39594c201ad; repository Pages source setting still requires owner-side confirmation",
-    "portfolioContractTests": "passed-in-run-42491842095-on-main-a08de7ec138c8790134a177b20a80ca7af137699",
+    "portfolioContractTests": "passed-87-of-87-run-42496113019-on-main-6e6ed8fd16813e2b21e605b84a888d23aaace073",
     "latestPreviousPagesDeployment": "passed-run-42043972152",
     "docsCheckpoint": "passed-run-42060558950",
     "staticCaseStudyOutput": "passed-in-run-42072937855-16-pages-16-diagrams-17-png-cards-17-svg-sources-robots-sitemap-and-globalcart-screenshots",
@@ -39,9 +39,9 @@
     "staticCaseStudySectionOrder": "passed-run-42227942261-and-42230046270",
     "lastVerifiedTestCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
     "skipNavigationContract": "passed-run-42231110043-bilingual-fixed-position-reduced-motion",
-    "portfolioBrowserQa": "passed-run-42491842131-on-main-a08de7ec138c8790134a177b20a80ca7af137699;17-routes;34-desktop-mobile-viewports;zero-failures;zero-horizontal-overflow;zero-axe-violations;36-incomplete-axe-checks;19-private-visual-PNGs;owner-wordmark-loaded-390x142;thoughtful-range-contained;visible-project-motion-and-reduced-motion-pass",
-    "portfolioBrowserQaArtifact": "13621507487",
-    "portfolioBrowserQaStrictGate": "run-42491842131;all-axe-violation-impact-counts-zero;36-incomplete-rules-require-manual-review;project-motion-active-count-at-least-three-and-opacity-at-least-0.7;reduced-motion-fallback-passes",
+    "portfolioBrowserQa": "passed-run-42496014812-on-main-549c6a3c66eade850d175cddad3a7b7dea5466e8;17-routes;34-desktop-mobile-viewports;zero-failures;zero-horizontal-overflow;zero-confirmed-axe-violations;36-incomplete-human-review;8-of-8-project-cards-animated-on-desktop-and-mobile;16-of-16-localized-project-mobile-routes-touch-scroll-chaining-passed;reduced-motion-checked",
+    "portfolioBrowserQaArtifact": "13623776195",
+    "portfolioBrowserQaStrictGate": "run-42496014812;17-routes;34-viewports;zero-failures;zero-overflow;zero-axe-violations;36-incomplete-checks;all-8-project-card-scenes-animated-on-both-viewports;16-16-touch-handoff-passed",
     "pagesArtifactAudit": "passed-run-42238363799-artifact-13511808294-17-html-17-png-1200x627-17-sitemap-urls-all-canonical-og-description-jsonld-and-case-study-hreflang",
     "pagesArtifactAuditDetails": {
       "artifactId": "13511808294",
@@ -63,13 +63,15 @@
     "latestVerifiedTestCommit": "a08de7ec138c8790134a177b20a80ca7af137699",
     "latestDocumentationCheckpoint": "passed-documentation-handoff-PR-8-merge-4df636da5d2662f95c3c6c30df3b7e18cd37f942;follow-up-main-CI-run-42476877083",
     "latestDetailedAxeReport": "run-42491842131-on-a08de7ec;zero-axe-violations;36-incomplete-rule-checks;19-private-visual-evidence-PNGs;About-wordmark-390x142-loaded-and-visually-reviewed",
-    "latestRepositoryCiRun": "42491842095",
-    "latestBrowserQaRun": "42491842131",
-    "latestPagesDeploymentRun": "42491842070",
+    "latestRepositoryCiRun": "42496113019",
+    "latestBrowserQaRun": "42496014812",
+    "latestPagesDeploymentRun": "42496014762",
     "latestCloudflareAttempt": "run-42491842068;CLOUDFLARE_API_TOKEN-not-configured;credential-check-passed;production-deploy-job-skipped",
     "latestAppsScriptAttempt": "run-42491842057;CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID-not-configured;configuration-check-passed;production-publish-job-skipped",
-    "pendingProductMotionAndGalleryQa": "pending-exact-main-commit",
-    "pendingAndroidTouchHandoff": "pending-chromium-mobile-touch-test-and-physical-android-review"
+    "pendingProductMotionAndGalleryQa": "passed-run-42496014812",
+    "pendingAndroidTouchHandoff": "chromium-mobile-touch-emulation-passed-16-of-16-localized-project-routes;physical-android-device-review-still-required",
+    "projectCardMotionQa": "passed-8-of-8-cards-at-desktop-and-8-of-8-at-mobile;run-42496014812;artifact-13623776195",
+    "androidGalleryScrollChaining": "passed-16-of-16-localized-project-mobile-routes-in-chromium-touch-emulation;physical-android-confirmation-required"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -129,7 +131,7 @@
     "The novels catalog is intentionally empty pending Pooya-provided titles, descriptions, covers, and manuscripts.",
     "Complete Phase 8 performance/security/accessibility/recovery review and rehearse rollback before requesting V1 approval. The site remains pre-alpha; no V1 tag is authorized."
   ],
-  "nextAction": "Validate the P7-10 commit on exact main: TypeScript/build/contracts, 17-route desktop/mobile Browser QA, inner-gallery touch scroll handoff, reduced-motion, and GitHub Pages deployment. Then review on a physical Android device and continue Phase 7 owner acceptance. No V1 release is approved.",
+  "nextAction": "Review the updated motion and mobile screenshot scroll handoff on a physical Android device, approve the case-study and project-grid visuals, complete manual accessibility checks, and continue Phase 7 owner acceptance before Phase 8 hardening. No V1 release is approved.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -195,7 +197,7 @@
     "latestVerifiedImplementationCommit": "7a2d6c38731ea57e66bcedc5363566905ab5affe",
     "latestBrowserQaRun": "42483757051"
   },
-  "latestVerifiedCommit": "a08de7ec138c8790134a177b20a80ca7af137699",
+  "latestVerifiedCommit": "6e6ed8fd16813e2b21e605b84a888d23aaace073",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -309,7 +311,7 @@
     "socialPreviewDimensions": "1200x627 (LinkedIn share preview recommendation)",
     "socialPreviewCardCount": 17
   },
-  "latestVerifiedTestCommit": "a08de7ec138c8790134a177b20a80ca7af137699",
+  "latestVerifiedTestCommit": "6e6ed8fd16813e2b21e605b84a888d23aaace073",
   "caseStudyDossiers": {
     "bilingual": true,
     "projectCount": 8,
@@ -355,7 +357,7 @@
     "manualAccessibility": "36-incomplete-axe-rules-remain-for-human-review;34-color-contrast;2-aria-prohibited-attr;keyboard-and-screen-reader-review-pending",
     "v1Approval": "not-approved"
   },
-  "latestBranchHeadAtCheckpoint": "a08de7ec138c8790134a177b20a80ca7af137699",
+  "latestBranchHeadAtCheckpoint": "6e6ed8fd16813e2b21e605b84a888d23aaace073",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -672,9 +674,9 @@
     "automatedValidation": "Repository CI 42483757067 passed; Browser QA 42483757051 passed on 17 routes and 34 desktop/mobile viewport checks; GitHub Pages deploy 42483757053 passed.",
     "manualValidation": "Latest Browser QA artifact 13618234167 requires detailed axe review; manual contrast, keyboard-only, screen-reader, real-device, and external social-crawler validation remain open."
   },
-  "latestTask": "P7-09",
+  "latestTask": "P7-10",
   "latestTaskBranch": "main",
-  "lastUpdated": "2026-11-08T14:52:51Z",
+  "lastUpdated": "2026-11-08T15:42:00Z",
   "latestDocumentationCommit": "4a879275f4a468c14eec4096a80e5e96929af098",
   "latestDocumentationCheckpoint": "handoff/state/roadmap/changelog reconciled in documentation checkpoint 4a879275f4a468c14eec4096a80e5e96929af098; CI run 42484893908 is validating this checkpoint",
   "pendingImplementationCommit": "P7-10 changes in commit following 70813af81c459664f23f676ef3a85f8682aafe70; automated verification pending"

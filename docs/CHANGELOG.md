@@ -1,10 +1,14 @@
 ## 2026-11-08 — Product-aligned project motion and Android gallery handoff
 
-- Replaced the single abstract motif used across case-study pages with eight distinct product narratives: durable workflow execution, observability signals, a spatial desktop workspace, service topology editing, optical glass controls, a simulated market chart, product discovery/compare, and appointment scheduling.
-- Added a matching compact animated signature to each card in the selected-project grid. The scenes are presentation-only; they do not claim live telemetry, real-time trading data, or production status. AuraPulse remains explicitly labelled as simulated.
-- Changed full-page mobile screenshot frames to use native vertical touch scrolling and scroll chaining. When the inner image reaches its end, a continuing swipe can move the outer case-study page. Added a bilingual hint below mobile captures.
-- Extended the private Chromium Browser QA to retain desktop/mobile project captures, verify the replacement scene animations and reduced-motion fallback, and emulate a touch swipe at the mobile gallery boundary.
-- Validation and GitHub Pages publication are pending for this checkpoint. No independent project repository was changed.
+- Replaced the repeated abstract case-study hero treatment with eight product-specific compositions: AetherFlow execution stages, ORBIT service health and trace activity, Pooya.OS desktop windows, NexusCanvas service topology, LuminaGlass refraction controls, a clearly simulated AuraPulse market chart, GlobalCart product discovery/compare, and Salon Booking's appointment grid.
+- Removed the old monogram/static screenshot layer from the case-study hero. The motion scene now has a clean, dedicated stage; real interface screenshots remain in the evidence gallery below it.
+- Added a compact, product-specific animated signature to all eight selected-project cards. Browser QA checks every card at desktop and mobile sizes and records active animation names/counts.
+- Changed long mobile screenshot frames to native vertical scrolling with scroll chaining. At the lower edge of the image, an ongoing touch gesture can continue the outer case-study page. Added bilingual guidance below mobile captures.
+- **Repository CI:** run [42496113019](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496113019) passed on `main` at `6e6ed8fd16813e2b21e605b84a888d23aaace073`: TypeScript, all three build targets, and **87/87 contract tests**.
+- **Browser QA:** run [42496014812](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496014812) passed **17/17 localized routes** and **34/34 desktop/mobile viewport checks**, with zero failures, zero horizontal overflow, and zero confirmed axe violations. Thirty-six axe checks remain incomplete for manual human review.
+- All eight project cards reported active motion at both viewports. All **16/16** localized project mobile routes passed the Chromium touch test: the inner screenshot reached its lower boundary and the outer portfolio page continued scrolling.
+- **GitHub Pages:** run [42496014762](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496014762) passed build and deployment for this application checkpoint. Private visual evidence is in artifact [13623776195](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496014812).
+- A physical Android phone/browser check remains open. Chromium touch emulation is regression evidence, not proof across every Android device/browser. No independent project repository was changed.
 
 ## 2026-11-08 — Owner-designed Pooya identity and final visual verification
 

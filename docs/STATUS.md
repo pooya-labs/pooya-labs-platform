@@ -6,25 +6,28 @@
 **Current phase:** Phase 7 — Owner-led visual redesign and release review  
 **Release:** Pre-alpha / portfolio draft
 
-## In-progress checkpoint — product motion and Android gallery handoff
+## Latest verified checkpoint — product motion and mobile gallery (2026-11-08)
 
-- Starting `main` HEAD: `70813af81c459664f23f676ef3a85f8682aafe70`.
-- Replaced the repeated case-study hero motif with eight product-aligned scenes and added a compact motion identity to every project card.
-- Changed the inner full-page mobile screenshot scroll container from contained overscroll to native vertical scroll chaining. The intended behavior is that reaching the screenshot's lower edge hands the next swipe to the outer case-study page.
-- Browser QA now captures project pages at both mobile and desktop sizes and includes a Chromium touch-input check at the nested gallery boundary.
-- New TypeScript/build/contract checks, touch-handoff Browser QA, reduced-motion checks, and GitHub Pages deployment are pending for this commit. Do not treat them as passed until the exact main-branch workflow results are inspected.
-- A physical Android check remains necessary: automated desktop Chromium touch emulation cannot prove every Android browser/device combination.
+- Latest verified `main` HEAD: `6e6ed8fd16813e2b21e605b84a888d23aaace073`.
+- Application motion and clean case-study hero commit: `714d4ea2ea017189886ddb4e0d2e386e19edcaf3`; browser QA harness update: `549c6a3c66eade850d175cddad3a7b7dea5466e8`.
+- Eight case-study hero visuals are product-specific; the old generic orbit composition and static screenshot/monogram overlay were removed from the hero. Screenshots remain in the lower evidence gallery.
+- The eight selected-project cards each have their own compact animated scene. Browser QA recorded running animations for all 8 cards at desktop and all 8 at mobile.
+- Full-page mobile screenshot frames now allow native vertical touch scroll chaining. Chromium emulation passed on 16/16 localized project routes by verifying that the outer case-study page scroll position advances after the inner image reaches its lower edge.
+- Repository CI [42496113019](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496113019) passed TypeScript, all three build targets, and 87/87 contract tests.
+- Browser QA [42496014812](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496014812) passed 17/17 localized routes and 34/34 desktop/mobile viewport checks: zero failures, zero horizontal overflow, and zero confirmed axe violations. Thirty-six axe rule checks remain incomplete and need manual review.
+- Private visual QA artifact: [13623776195](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496014812). It includes desktop/mobile route captures and homepage project-grid captures at both viewport sizes.
+- GitHub Pages [42496014762](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496014762) passed build and deployment for the final application checkpoint. Public site: https://pooya-labs.github.io/pooya-labs-platform/.
+- Physical Android confirmation is still pending. Desktop Chromium touch emulation is useful regression evidence but is not a substitute for checking an actual Android device/browser.
 - No independent project repository was modified.
 
-## Latest previously verified checkpoint — 2026-11-08 14:52 UTC
+## Remaining Phase 7 / Phase 8 blockers
 
-- The two owner-provided logo files are used directly. The portrait monogram WebP in the header, About stamp, and favicon is byte-for-byte the converted upload (blob 2bca324f5e6ab012a396705196e85d3a808b48a5); the horizontal wordmark in About is byte-for-byte the clean converted upload (blob 12609dd18bbf8af7bb4ffa875b5265eb65a62640). The previous generated SVG mark is no longer referenced in app markup. The About mark has no frame or badge.
-- Verified application asset commit: 377dbcbc2544976485f04fd1aeeb1b19d09d7bf7. QA harness checkpoint: a08de7ec138c8790134a177b20a80ca7af137699.
-- The English into thoughtful phrase is a single plain-color, unbroken LTR row without gradient text clipping. Browser QA measures the actual Range bounds after fonts load: one text rectangle, no clipping ancestors, and the final glyph fully inside the title line on desktop and mobile.
-- Eight earlier product-specific case-study motion scenes were visible foreground visuals. Browser QA run 42491842131 verified at least three active animations and a high-visibility motion layer per project hero on both viewport sizes; the new replacement scenes are awaiting their own verification.
-- Repository CI [42491842095](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842095) passed TypeScript, all three build targets, and repository contract tests on the previous source.
-- Browser QA [42491842131](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842131) passed 17 localized routes / 34 desktop-mobile checks with zero failures, zero horizontal overflow, zero missing-alt findings, and zero axe violations. There are still 36 incomplete axe checks, which are not confirmed violations and need manual review.
-- Private artifact [13621507487](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842131) contains 19 PNGs. Its home-en-about-desktop.png capture waits until the About reveal and wordmark entrance animation finish; the report confirms the owner wordmark loaded at 390×142. The prior captures were visually inspected.
-- GitHub Pages [42491842070](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842070) passed build and deployment on the previous verified source. Public site: https://pooya-labs.github.io/pooya-labs-platform/.
-- Cloudflare [42491842068](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842068) and Apps Script [42491842057](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42491842057) completed configuration checks but skipped production jobs because deployment secrets were unavailable.
-- Release remains pre-alpha / portfolio draft. Owner visual/content approval, external social-preview validation, manual accessibility review, and Phase 8 hardening remain release gates.
+- Pooya must review the latest deployed portfolio on real desktop, mobile, and Android hardware, then approve the full visual redesign and project-card/case-study motion.
+- Owner content approval remains open for biography/positioning, featured-project order, personal contribution statements, public project statuses, and contact details.
+- Manual accessibility acceptance remains open: inspect the 36 incomplete axe checks and manually verify color contrast, focus visibility, keyboard-only operation, and screen-reader flow in both languages and themes.
+- External LinkedIn/Facebook social-crawler rendering and cache-refresh validation for the 17 PNG social cards remains open.
+- Phase 8 performance/security/privacy/recovery checks and deployment rollback rehearsal remain open.
+- No V1 tag or production-readiness claim is authorized.
+
+## Previous verified checkpoints
+

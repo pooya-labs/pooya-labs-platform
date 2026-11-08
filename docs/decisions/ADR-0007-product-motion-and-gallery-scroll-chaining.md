@@ -1,7 +1,7 @@
 # ADR-0007: Product-aligned motion and native gallery scroll chaining
 
 **Date:** 2026-11-08  
-**Status:** Implemented; automated verification pending
+**Status:** Implemented; Chromium regression checks passed; physical Android review remains
 
 ## Context
 

@@ -1,52 +1,61 @@
-# Next Task — Android gallery handoff and product-motion acceptance
+# Next Task — Physical Android review and owner acceptance
 
-**Task ID:** P7-10  
+**Task ID:** P7-11  
 **Checkpoint date:** 2026-11-08  
-**Starting `main` SHA:** `70813af81c459664f23f676ef3a85f8682aafe70`  
+**Latest verified `main` HEAD:** `6e6ed8fd16813e2b21e605b84a888d23aaace073`  
+**Application motion commit:** `714d4ea2ea017189886ddb4e0d2e386e19edcaf3`  
+**Browser QA commit:** `549c6a3c66eade850d175cddad3a7b7dea5466e8`  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
 
 ## Product direction
 
-Pooya Labs remains a personal engineering portfolio first. Its visitor journey is to meet Pooya, explore selected work, inspect evidence-backed case studies, and connect. The Spatial OS workspace is secondary. Independent project repositories remain separate; do not import or modify their source code.
+Pooya Labs remains a personal engineering portfolio first. The visitor journey is to meet Pooya, explore selected work, inspect evidence-backed case studies, and connect. The Spatial OS workspace is secondary. Independent project repositories remain separate; do not import or modify their source code.
 
-## Implemented in this checkpoint
+## Completed in P7-10
 
-- Eight dedicated case-study hero scenes replace the previous repeated orbit/line treatment:
+- Eight dedicated case-study hero scenes replace the repeated abstract orbit/line treatment:
   - **AetherFlow:** trigger → leased worker → durable commit, with moving execution packets.
-  - **ORBIT:** service-health and incident cards, illustrative metrics/logs/traces, and a trace curve.
-  - **Pooya.OS:** overlapping desktop windows, profile surface, local terminal cursor, and dock.
+  - **ORBIT:** service health, incident state, illustrative metrics/logs/traces, and a trace curve.
+  - **Pooya.OS:** layered desktop windows, profile surface, local terminal cursor, and dock.
   - **NexusCanvas:** gateway/service/worker/database topology with animated graph edges.
-  - **LuminaGlass:** glass prism, refraction rings, moving light, and optical control panel.
-  - **AuraPulse:** candle/price chart labelled SIMULATED; no live-market claim.
-  - **GlobalCart:** product-discovery tiles flowing into a compare/cart action.
-  - **Salon Booking:** appointment grid, selected time slot, and confirmation card.
-- The selected-work grid receives a compact motion signature for each of the same eight products.
-- Full-page mobile screenshot frames use native vertical touch scrolling and scroll chaining. A swipe that reaches the inner frame's lower edge should continue through the remaining case-study page instead of being trapped by the image.
-- A bilingual hint explains the nested image-scroll interaction.
-- Browser QA now captures all localized project routes at desktop and mobile sizes, checks reduced-motion, and uses Chromium touch input to test scroll handoff from the gallery to the outer page.
-- Reduced-motion preferences disable the new project-scene and project-card animations while leaving the content visible.
+  - **LuminaGlass:** glass prism, refraction rings, moving light, and optical controls.
+  - **AuraPulse:** chart/candlestick motion explicitly labelled SIMULATED.
+  - **GlobalCart:** product discovery panels moving toward compare/cart.
+  - **Salon Booking:** weekly appointment grid, selected time slot, and confirmation.
+- Every selected-project card has its own compact product-specific motion signature. Browser QA verifies all 8 cards at desktop and mobile sizes.
+- The case-study hero is now a clean motion stage; actual desktop/mobile interface screenshots remain in the lower evidence gallery instead of covering the animation.
+- Mobile screenshot frames use native vertical touch scrolling and scroll chaining. A continuing swipe after the inner image reaches its lower edge can move the outer case-study page.
+- Reduced-motion styles disable decorative project-scene and project-card movement while keeping the visual content visible.
+- A bilingual hint explains the nested screenshot scroll interaction.
 
-## Validation state
+## Verified evidence
 
-The changes are committed with this handoff, but the new CI, Browser QA, physical Android behavior, and Pages deployment are not yet confirmed. Do not mark the roadmap items complete until the exact main-branch workflows pass. A desktop Chromium touch emulation is useful regression evidence, but it is not a substitute for checking a physical Android device.
+| Check | Run | Result |
+|---|---:|---|
+| Repository CI | [42496113019](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496113019) | Passed: TypeScript, three build targets, 87/87 tests |
+| Browser QA | [42496014812](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496014812) | Passed: 17/17 routes, 34/34 viewport checks, zero failures |
+| Project-card motion | Browser QA artifact [13623776195](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496014812) | 8/8 cards animated at desktop and 8/8 at mobile |
+| Gallery touch chaining | Browser QA artifact [13623776195](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496014812) | 16/16 localized project mobile routes passed |
+| GitHub Pages | [42496014762](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42496014762) | Build and deployment passed |
+
+The Browser QA report recorded zero axe violations, but 36 axe checks are incomplete rather than passed; they still require a human contrast/ARIA review. The automated touch gesture ran in desktop Chromium's mobile emulation and is not a physical Android-device test.
 
 ## Immediate next steps
 
-1. Verify TypeScript, all build targets, and repository contract tests.
-2. Run the 17 localized-route / desktop-mobile Browser QA matrix; inspect the mobile gallery scroll-handoff records and any failures.
-3. Check the private screenshots for all eight redesigned motion scenes at 390px and desktop widths.
-4. Verify that reduced-motion disables all new scene animations without hiding content.
-5. Review the published GitHub Pages version on Android Chrome and confirm that a swipe after reaching the bottom of a mobile screenshot continues into the next case-study section.
-6. Continue the owner visual/content review, manual accessibility checks, social-preview validation, and Phase 8 hardening. The release remains pre-alpha; no V1 tag is authorized.
+1. Review the live preview on a physical Android phone using Chrome (and Samsung Internet if available). Swipe within a long mobile screenshot to its bottom, then continue the same gesture and confirm the page advances.
+2. Check that each of the eight case-study animations feels relevant and remains legible on the actual device; verify reduced-motion and battery/performance behavior.
+3. Review the two homepage project-grid captures and approve the visual scale/timing of all eight card animations.
+4. Complete manual contrast, focus visibility, keyboard-only, and screen-reader checks in both languages and themes.
+5. Continue the owner review of the biography, project ordering, role wording, statuses, contact details, and full-site redesign. Then proceed to Phase 8 release hardening.
 
 ## Evidence boundaries
 
-- AetherFlow's M07/M08 badge/navigation mismatch remains upstream; this animation does not claim API acceptance.
+- AetherFlow's M07/M08 badge/navigation mismatch remains upstream; animation does not imply API acceptance.
 - ORBIT's Cloudflare gateway is not live-connected until its origin, secret, route, and CF01–CF05 acceptance are complete.
-- AuraPulse's market visual is a simulation, not live Binance data.
+- AuraPulse's market visual is simulated, not live Binance data.
 - GlobalCart's full-page capture remains withheld while the product grid has blank placeholders.
 - Salon Booking visuals remain restricted to approved public customer-facing screens; never capture admin routes or customer records.
 
 ## Release gate
 
-The current milestone improves motion and mobile behavior; it does not close the full Phase 7 owner review or Phase 8 release gates. Keep the site labelled **pre-alpha / portfolio draft** until owner approval, manual accessibility, performance/security review, deployment recovery rehearsal, and explicit V1 sign-off are complete.
+P7-10's implementation and automated regression checks are complete. P7-11 still requires physical Android review and owner acceptance. The portfolio remains **pre-alpha / portfolio draft**; no V1 tag is authorized.
