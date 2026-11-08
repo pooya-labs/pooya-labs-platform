@@ -191,3 +191,13 @@ test('reduced-motion QA checks the replacement product-specific scene animations
   assert.match(script, /reducedMotionAnimationName/);
   assert.match(portfolioCss, /\.case-study-motion-art \.scene-animated[\s\S]*?animation:none!important/);
 });
+
+
+test('homepage Browser QA captures and checks all eight animated project cards at desktop and mobile sizes', () => {
+  assert.match(script, /#projects \.portfolio-project-card/);
+  assert.match(script, /\.project-card-motion/);
+  assert.match(script, /projectGridMotion/);
+  assert.match(script, /allCardsAnimated/);
+  assert.match(script, /home-en-projects-/);
+  assert.match(script, /activeAnimationCount > 0/);
+});

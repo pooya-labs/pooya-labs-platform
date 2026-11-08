@@ -263,6 +263,31 @@ try {
           });
           await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
         }
+
+        let projectGridMotion = { available: false, passed: true, skippedReason: 'Not the homepage route.' };
+        if (route.label === 'home-en') {
+          await page.locator('#projects .portfolio-project-card').first().scrollIntoViewIfNeeded();
+          await page.waitForTimeout(550);
+          const cardStates = await page.locator('#projects .portfolio-project-card').evaluateAll((cards) => cards.map((card) => {
+            const motion = card.querySelector('.project-card-motion');
+            const active = motion?.getAnimations({ subtree: true }).filter((animation) => animation.playState === 'running' || animation.playState === 'pending') ?? [];
+            return {
+              title: card.querySelector('.project-card-content h3')?.textContent?.trim() ?? '',
+              motionClass: motion?.className ?? null,
+              activeAnimationCount: active.length,
+              animationNames: [...new Set(active.map((animation) => animation.animationName).filter(Boolean))],
+            };
+          }));
+          const allCardsAnimated = cardStates.length === 8 && cardStates.every((card) => card.motionClass && card.activeAnimationCount > 0);
+          projectGridMotion = { available: true, passed: allCardsAnimated, cardCount: cardStates.length, cards: cardStates };
+          routeRecord.projectGridMotion ??= [];
+          routeRecord.projectGridMotion.push({ viewport: viewport.name, ...projectGridMotion });
+          if (!allCardsAnimated) addFailure(route, viewport.name, 'One or more selected-project cards is missing its product-specific animated signature.');
+          const projectGridFile = 'home-en-projects-' + viewport.name + '.png';
+          await page.screenshot({ path: path.join(artifactDir, projectGridFile), fullPage: false, animations: 'allow' });
+          routeRecord.visualEvidence ??= [];
+          routeRecord.visualEvidence.push(projectGridFile);
+        }
         const motionState = await page.evaluate(() => {
           const art = document.querySelector('.case-study-motion-art');
           if (!art) return { activeAnimationCount: 0, animationNames: [], opacity: null };
