@@ -1,3 +1,14 @@
+## 2026-11-08 — Borderless mark, stable hero typography, Instagram glyph, and project motion
+
+- Rebuilt the Pooya monogram as a sharper emerald folded-ribbon mark with more negative space. Removed the square badge treatment from the header and About mark; the favicon remains visually aligned.
+- Fixed the persistent English headline defect: `into` and `thoughtful` are separate LTR-isolated runs, with extra terminal-glyph breathing room. Browser QA waits for fonts, measures the text range and final glyph, and checks containment at desktop and mobile widths.
+- Replaced the generic Camera icon in Instagram contact links with a dedicated Instagram glyph asset.
+- Added eight project-specific case-study motion scenes: AetherFlow worker graph, ORBIT telemetry orbits, Pooya.OS floating windows, NexusCanvas topology, LuminaGlass refractive rings, AuraPulse chart bars, GlobalCart catalog panels, and Salon Booking calendar cells. Reduced-motion fallbacks are preserved.
+- Repository CI [42487890470](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890470) passed. Browser QA [42487890517](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890517) passed 17 routes / 34 viewport checks, with zero failures, zero horizontal overflow, and zero axe violations. The latest report contains 36 incomplete axe checks that still need human review.
+- Browser QA artifact [13620068611](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890517) contains 18 private visual screenshots, including the homepage at desktop/mobile and every localized case-study hero at desktop. The screenshots were visually inspected and remain artifact-only.
+- GitHub Pages [42487890534](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890534) deployed successfully. Cloudflare Pages and Apps Script production deploys were skipped because their deployment secrets are not configured.
+- No independent project repositories were changed. The portfolio is still pre-alpha; owner approval, manual accessibility, social-crawler checks, and Phase 8 remain open.
+
 ## 2026-11-08 — Main-branch motion, identity, and release checkpoint
 
 - Reconciled this handoff against the actual `main` HEAD `7a2d6c38731ea57e66bcedc5363566905ab5affe`; it is eight commits ahead of the prior application checkpoint `fa5d412506387622ca39df792fcaed62eb88cb67`.

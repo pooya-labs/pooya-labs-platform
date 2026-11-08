@@ -2,7 +2,7 @@
 
 **Task ID:** P7-09  
 **Checkpoint date:** 2026-11-08  
-**Verified application `main` SHA:** `7a2d6c38731ea57e66bcedc5363566905ab5affe`  
+**Verified application `main` SHA:** `59a0c5a7179cc96260e50e59c561de44a89520e7`  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
 
 ## Product direction
@@ -14,7 +14,10 @@ Pooya Labs is a personal engineering portfolio first. Its primary visitor journe
 - Public portfolio homepage in Persian/RTL by default, with English/LTR switching and dark/light themes.
 - Eight bilingual project dossiers, eight architecture diagrams, and sixteen crawler-readable localized case-study routes.
 - Seventeen 1200×627 PNG social-preview cards, with matching SVG sources, canonical metadata, sitemap, robots.txt, and Person JSON-LD.
-- Motion-led homepage with the emerald Pooya mark and matching favicon; screenshot-led hero; radial proof scene; three-node Systems in Motion section; four-card craft-principles gallery; and responsive, reduced-motion-aware animations.
+- Motion-led homepage with a refreshed emerald folded-ribbon monogram and matching favicon. The header mark is deliberately borderless (no square badge); its restrained entrance/aura motion respects reduced-motion settings.
+- The English hero separates `into` and `thoughtful` into isolated LTR runs, reserves terminal-glyph space, and is checked using actual text-range geometry after fonts load. Desktop and mobile screenshots confirm the final `g` is fully visible.
+- Eight case-study pages now have product-specific hero motion: distributed worker graph (AetherFlow), telemetry orbits (ORBIT), floating desktop windows (Pooya.OS), service topology (NexusCanvas), refractive rings (LuminaGlass), chart bars (AuraPulse), floating catalog panels (GlobalCart), and an appointment calendar (Salon Booking).
+- Instagram contact actions use a dedicated Instagram glyph rather than the generic camera icon. Browser QA retains private homepage desktop/mobile and bilingual project desktop screenshots as workflow artifacts only; none are published into the website.
 - Bidi-isolated hero text and architecture-diagram labels; direct route entry resets to the top; project screenshots have labelled, keyboard-focusable, internally scrollable frames.
 - About, contact, and footer sections include the approved mark, GitHub, Telegram (`@pooyayee`), and Instagram (`@_p.ooya`) links.
 - Fourteen approved full-page desktop/mobile captures are published for seven projects: AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and Salon Booking. Salon Booking imagery is restricted to its public customer flow. GlobalCart keeps its curated screenshots; its full-page capture remains withheld while the public collection grid has blank product placeholders.
@@ -26,13 +29,13 @@ All results below refer to the same application commit, `7a2d6c38731ea57e66bcedc
 
 | Check | Run | Verified result |
 |---|---:|---|
-| Repository CI | [42483757067](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42483757067) | TypeScript, Pages/GAS/Cloudflare builds, and contract-test step passed |
-| Portfolio Browser QA | [42483757051](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42483757051) | Passed: 17 routes × desktop/mobile (34 viewport checks); report artifact [13618234167](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42483757051) |
-| GitHub Pages | [42483757053](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42483757053) | Build and deployment jobs passed |
-| Cloudflare Pages | [42483757077](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42483757077) | Credential check passed, actual deploy job skipped because the required secret was unavailable |
-| Apps Script | [42483757133](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42483757133) | Configuration check passed, actual publish job skipped because clasp deployment secrets were unavailable |
+| Repository CI | [42487890470](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890470) | Passed on application commit `59a0c5a7`: TypeScript, all three build targets, and repository contract tests |
+| Portfolio Browser QA | [42487890517](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890517) | Passed: 17 routes × desktop/mobile (34 viewport checks), zero failures, zero horizontal overflow, zero axe violations; 36 axe checks remain incomplete for human review. Private visual artifact [13620068611](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890517) contains 18 PNGs |
+| GitHub Pages | [42487890534](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890534) | Build and deployment jobs passed on the same application commit |
+| Cloudflare Pages | [42487890531](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890531) | Credential check ran; deploy job skipped because `CLOUDFLARE_API_TOKEN` is not configured |
+| Apps Script | [42487890498](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890498) | Configuration check ran; publish job skipped because clasp deployment secrets are not configured |
 
-The latest Browser QA artifact has not yet been inspected for its detailed axe counts. The last detailed report (run [42476478346](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42476478346)) recorded zero axe violations and 36 incomplete checks (34 contrast checks and 2 `aria-prohibited-attr` checks). Those incomplete checks are not confirmed violations, but still require human review. Keyboard-only and screen-reader review also remains open.
+The latest Browser QA artifact for run [42487890517](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890517) was inspected. Its 18 private screenshots cover the homepage in desktop/mobile and all eight projects in Persian/English desktop. The report records zero failures, zero horizontal overflow, and zero axe violations across 34 viewports. It retains 36 incomplete axe checks; these are not confirmed violations, but still require manual inspection. Keyboard-only and screen-reader review also remains open.
 
 ## Immediate next steps
 

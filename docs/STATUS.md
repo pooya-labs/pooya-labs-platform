@@ -6,6 +6,18 @@
 **Current phase:** Phase 7 — Owner-led visual redesign and release review  
 **Release:** Pre-alpha / portfolio draft
 
+## Latest verified checkpoint — 2026-11-08 14:04 UTC
+
+- Verified application commit: `59a0c5a7179cc96260e50e59c561de44a89520e7` on `main`. This checkpoint contains the borderless emerald monogram, the split/isolated English `thoughtful` headline with extra terminal-glyph space, the dedicated Instagram glyph, and eight product-specific case-study motion scenes.
+- Repository CI [42487890470](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890470) passed typecheck, Pages/Apps Script/Cloudflare builds, and repository contract tests.
+- Browser QA [42487890517](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890517) passed 17/17 localized routes and 34/34 desktop/mobile viewports. The report recorded zero failures, zero horizontal overflow, zero missing-image-alt findings, and zero axe violations across all severities. The range-based hero diagnostic confirms the word `thoughtful` and its final glyph are inside the gradient/title bounds on desktop and mobile.
+- Browser QA artifact [13620068611](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890517) contains 18 private visual evidence images: homepage desktop/mobile plus desktop captures of all eight projects in Persian and English. These screenshots are workflow artifacts only and are not copied into the public website. The captures were opened and visually reviewed.
+- Axe retained 36 incomplete rule checks, not confirmed violations; manual contrast/focus/keyboard/screen-reader review remains open.
+- GitHub Pages [42487890534](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890534) passed build and deployment on this application commit. The current public URL is https://pooya-labs.github.io/pooya-labs-platform/.
+- Cloudflare deployment [42487890531](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890531) and Apps Script deployment [42487890498](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42487890498) completed their credential/configuration checks but skipped the actual production jobs because `CLOUDFLARE_API_TOKEN` and `CLASPRC_JSON`/`CLASP_JSON`/`GAS_DEPLOYMENT_ID` are not configured.
+- Release remains pre-alpha / portfolio draft. Owner visual/content approval, social-crawler validation, manual accessibility review, and Phase 8 hardening are still release gates.
+
+
 ## Historical repository checkpoint — 2026-11-07 18:17 UTC (superseded by the latest checkpoint below)
 
 - Current `main` HEAD at this audit: `74b19508e77cf20efe414009bb71ca69f91eb700`. The latest commit is documentation-only; the latest application styling change is `e66f4b42562fb6a164117e2b8a3f9905634a1b9e`, and the capture-runner update is `d74c12952be73233f551034d08b5fd212d260d0e`.

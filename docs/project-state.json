@@ -9,27 +9,27 @@
   "currentTask": {
     "id": "P7-09",
     "title": "Owner visual review and pre-V1 release readiness",
-    "status": "Three visual implementation/feedback cycles and the approved project screenshot galleries are merged on main 7a2d6c38731ea57e66bcedc5363566905ab5affe. Exact-HEAD Repository CI, Browser QA, and GitHub Pages deployment passed. Owner visual/content approval, detailed manual accessibility review, external social-preview validation, and Phase 8 hardening remain open."
+    "status": "The borderless emerald monogram, corrected thoughtful headline geometry, dedicated Instagram glyph, and eight product-specific case-study motion scenes are merged on main 59a0c5a7179cc96260e50e59c561de44a89520e7. Exact-commit Repository CI, 17-route/34-viewport Browser QA, and GitHub Pages deployment passed. The Browser QA artifact was inspected: 18 private screenshots; zero QA failures, zero overflow, and zero axe violations, with 36 incomplete axe checks still needing human review. Owner visual/content approval, social-crawler validation, manual accessibility review, and Phase 8 hardening remain open."
   },
   "lastCheckpointDate": "2026-11-08",
-  "latestVerifiedCodeCommit": "7a2d6c38731ea57e66bcedc5363566905ab5affe",
+  "latestVerifiedCodeCommit": "59a0c5a7179cc96260e50e59c561de44a89520e7",
   "tests": {
-    "repositoryCi": "passed-run-42483757067-on-main-7a2d6c38731ea57e66bcedc5363566905ab5affe;TypeScript;Pages-GAS-Cloudflare-build-targets;repository-contract-test-step",
+    "repositoryCi": "passed-run-42487890470-on-main-59a0c5a7179cc96260e50e59c561de44a89520e7;TypeScript;Pages-GAS-Cloudflare-build-targets;repository-contract-tests",
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
     "externalBrowserTransport": "blocked-by-cors-missing-access-control-allow-origin-chromium-run-42028842302",
     "externalBrowserResponseReadable": false,
     "externalBrowserDiagnostic": "repeatable-classification-success-run-42028842302",
-    "githubPagesDeployment": "passed-run-42483757053-on-main-7a2d6c38731ea57e66bcedc5363566905ab5affe",
-    "platformTypecheck": "passed-run-42483757067-on-main-7a2d6c38731ea57e66bcedc5363566905ab5affe",
-    "pagesAndGasBuilds": "passed-run-42483757067;Pages-GAS-and-Cloudflare-build-targets",
+    "githubPagesDeployment": "passed-run-42487890534-on-main-59a0c5a7179cc96260e50e59c561de44a89520e7",
+    "platformTypecheck": "passed-run-42487890470-on-main-59a0c5a7179cc96260e50e59c561de44a89520e7",
+    "pagesAndGasBuilds": "passed-run-42487890470;Pages-GAS-and-Cloudflare-build-targets",
     "cursorFieldContract": "passed-in-22-test-suite-run-42044256942",
-    "visualBrowserReview": "browser-qa-run-42483757051-passed;latest-report-artifact-13618234167;manual-contrast-keyboard-and-screen-reader-review-still-pending",
-    "vitePagesWorkflow": "passed-build-and-deploy-run-42483757053-on-main-7a2d6c38731ea57e66bcedc5363566905ab5affe",
+    "visualBrowserReview": "passed-artifact-13620068611;18-private-screenshots-opened-and-reviewed;homepage-desktop-mobile;8-projects-in-Persian-and-English-desktop;Instagram-glyph-and-borderless-mark-visible;manual-keyboard-screen-reader-contrast-review-still-pending",
+    "vitePagesWorkflow": "passed-build-and-deploy-run-42487890534-on-main-59a0c5a7179cc96260e50e59c561de44a89520e7",
     "legacyBranchPagesDeployment": "completed-run-42036881076",
     "activePagesSource": "GitHub Actions build and deploy succeeded on 2026-11-06 for source fc4d865b8fa4a19a3899f4b72847d39594c201ad; repository Pages source setting still requires owner-side confirmation",
-    "portfolioContractTests": "passed-54-of-54-run-42402277427-on-main-5295333aa36947e592b58790cb1e88fc83f4d30c",
+    "portfolioContractTests": "passed-in-run-42487890470-on-main-59a0c5a7179cc96260e50e59c561de44a89520e7",
     "latestPreviousPagesDeployment": "passed-run-42043972152",
     "docsCheckpoint": "passed-run-42060558950",
     "staticCaseStudyOutput": "passed-in-run-42072937855-16-pages-16-diagrams-17-png-cards-17-svg-sources-robots-sitemap-and-globalcart-screenshots",
@@ -39,9 +39,9 @@
     "staticCaseStudySectionOrder": "passed-run-42227942261-and-42230046270",
     "lastVerifiedTestCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
     "skipNavigationContract": "passed-run-42231110043-bilingual-fixed-position-reduced-motion",
-    "portfolioBrowserQa": "passed-run-42483757051-on-main-7a2d6c38731ea57e66bcedc5363566905ab5affe;17-routes;34-desktop-mobile-viewport-checks;workflow-success;latest-report-artifact-13618234167;detailed-axe-report-review-pending",
-    "portfolioBrowserQaArtifact": "13618234167",
-    "portfolioBrowserQaStrictGate": "critical-and-serious-findings-fail-browser-qa;all-axe-violations-zero-on-latest-main;36-incomplete-rule-details-retained",
+    "portfolioBrowserQa": "passed-run-42487890517-on-main-59a0c5a7179cc96260e50e59c561de44a89520e7;17-routes;34-desktop-mobile-viewport-checks;zero-failures;zero-horizontal-overflow;zero-axe-violations;36-incomplete-rule-checks-require-human-review;18-private-visual-evidence-PNGs",
+    "portfolioBrowserQaArtifact": "13620068611",
+    "portfolioBrowserQaStrictGate": "run-42487890517;critical-serious-moderate-minor-axe-violation-counts-all-zero;36-incomplete-rule-details-retained-for-manual-review;headline-terminal-glyph-range-geometry-passes-desktop-and-mobile",
     "pagesArtifactAudit": "passed-run-42238363799-artifact-13511808294-17-html-17-png-1200x627-17-sitemap-urls-all-canonical-og-description-jsonld-and-case-study-hreflang",
     "pagesArtifactAuditDetails": {
       "artifactId": "13511808294",
@@ -60,14 +60,14 @@
     "novelLibrary": "implemented-and-covered-by-six-new-contract-tests",
     "documentationCheckpoint": "passed-run-42402277427-on-5295333; documentation state, changelog, roadmap and handoff updates validated",
     "githubActionsRuntimeWarning": "Node.js 20 deprecation warning emitted for checkout/setup-node/upload-artifact actions; upgrade to maintained Node 24-compatible releases.",
-    "latestVerifiedTestCommit": "7a2d6c38731ea57e66bcedc5363566905ab5affe",
+    "latestVerifiedTestCommit": "59a0c5a7179cc96260e50e59c561de44a89520e7",
     "latestDocumentationCheckpoint": "passed-documentation-handoff-PR-8-merge-4df636da5d2662f95c3c6c30df3b7e18cd37f942;follow-up-main-CI-run-42476877083",
-    "latestDetailedAxeReport": "run-42476478346-on-fa5d412;zero-violations;36-incomplete-checks-34-contrast-2-aria-prohibited-attr;latest-artifact-13618234167-not-yet-inspected",
-    "latestRepositoryCiRun": "42483757067",
-    "latestBrowserQaRun": "42483757051",
-    "latestPagesDeploymentRun": "42483757053",
-    "latestCloudflareAttempt": "run-42483757077;credential-check-passed;actual-production-deploy-skipped-missing-CLOUDFLARE_API_TOKEN",
-    "latestAppsScriptAttempt": "run-42483757133;configuration-check-passed;actual-publish-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID"
+    "latestDetailedAxeReport": "run-42487890517-on-59a0c5a7179cc96260e50e59c561de44a89520e7;zero-axe-violations;36-incomplete-rule-checks;18-private-visual-evidence-PNGs-inspected;manual-review-still-required",
+    "latestRepositoryCiRun": "42487890470",
+    "latestBrowserQaRun": "42487890517",
+    "latestPagesDeploymentRun": "42487890534",
+    "latestCloudflareAttempt": "run-42487890531;CLOUDFLARE_API_TOKEN-not-configured;credential-detection-passed;production-deploy-job-skipped",
+    "latestAppsScriptAttempt": "run-42487890498;CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID-not-configured;configuration-check-passed;production-publish-job-skipped"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -193,7 +193,7 @@
     "latestVerifiedImplementationCommit": "7a2d6c38731ea57e66bcedc5363566905ab5affe",
     "latestBrowserQaRun": "42483757051"
   },
-  "latestVerifiedCommit": "7a2d6c38731ea57e66bcedc5363566905ab5affe",
+  "latestVerifiedCommit": "59a0c5a7179cc96260e50e59c561de44a89520e7",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -307,7 +307,7 @@
     "socialPreviewDimensions": "1200x627 (LinkedIn share preview recommendation)",
     "socialPreviewCardCount": 17
   },
-  "latestVerifiedTestCommit": "7a2d6c38731ea57e66bcedc5363566905ab5affe",
+  "latestVerifiedTestCommit": "59a0c5a7179cc96260e50e59c561de44a89520e7",
   "caseStudyDossiers": {
     "bilingual": true,
     "projectCount": 8,
@@ -353,7 +353,7 @@
     "manualAccessibility": "36-incomplete-axe-rules-remain-for-human-review;34-color-contrast;2-aria-prohibited-attr;keyboard-and-screen-reader-review-pending",
     "v1Approval": "not-approved"
   },
-  "latestBranchHeadAtCheckpoint": "7a2d6c38731ea57e66bcedc5363566905ab5affe",
+  "latestBranchHeadAtCheckpoint": "59a0c5a7179cc96260e50e59c561de44a89520e7",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -672,7 +672,7 @@
   },
   "latestTask": "P7-09",
   "latestTaskBranch": "main",
-  "lastUpdated": "2026-11-08T13:11:25Z",
+  "lastUpdated": "2026-11-08T14:04:00Z",
   "latestDocumentationCommit": "4a879275f4a468c14eec4096a80e5e96929af098",
   "latestDocumentationCheckpoint": "handoff/state/roadmap/changelog reconciled in documentation checkpoint 4a879275f4a468c14eec4096a80e5e96929af098; CI run 42484893908 is validating this checkpoint"
 }
