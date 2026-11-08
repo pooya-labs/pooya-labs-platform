@@ -111,3 +111,12 @@ This phase must not block V1. Source projects remain independent unless Pooya ex
 - [ ] Verify licenses, dependency compatibility, security boundaries, and avoid duplicate implementations.
 
 **Integration rule:** the portfolio may showcase independent projects without importing their code. Any source integration is separate work performed only after explicit approval.
+
+
+### Phase 7 — owner feedback checkpoint (2026-11-08)
+
+- [x] Record Pooya's first visual feedback round: header redesign, desktop case-study text containment, richer motion/graphics, supplied P logo, and responsive project imagery.
+- [x] Implement first-pass header, logo, case-study containment, and original Stripe-inspired radial statistics artwork on the review branch.
+- [ ] Capture and visually/privacy-review full-page desktop and mobile screenshots for all public projects, including Salon Booking's customer route only.
+- [ ] Review the revised live preview with Pooya and record round-two feedback.
+- [ ] Obtain explicit approval of the complete redesigned site.
