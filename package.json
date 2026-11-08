@@ -13,6 +13,7 @@
     "dev": "npm run dev --workspace @pooya-labs/platform",
     "lint": "node scripts/repo-quality.mjs lint",
     "format:check": "node scripts/repo-quality.mjs format",
+    "qa:portfolio:performance": "node apps/platform/scripts/portfolio-performance-qa.mjs",
     "typecheck": "npm run typecheck --workspace @pooya-labs/platform",
     "build": "npm run build:pages && npm run build:gas",
     "build:pages": "vite build --config apps/platform/vite.config.ts --mode pages && node apps/platform/scripts/prune-pages-capture-copies.mjs",
