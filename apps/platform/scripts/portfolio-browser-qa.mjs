@@ -282,16 +282,21 @@ try {
             return { scrollContainerFound: false, scrollHeight: 0, clientHeight: 0, maxScrollTop: 0, canScroll: false };
           }
           const maxScrollTop = Math.max(0, scroller.scrollHeight - scroller.clientHeight);
+          const previousScrollBehavior = scroller.style.scrollBehavior;
+          scroller.style.scrollBehavior = 'auto';
           scroller.scrollTop = 0;
           scroller.scrollTop = Math.min(480, maxScrollTop);
+          const measuredScrollTop = scroller.scrollTop;
           const result = {
             scrollContainerFound: true,
             scrollHeight: scroller.scrollHeight,
             clientHeight: scroller.clientHeight,
             maxScrollTop,
-            canScroll: maxScrollTop > 100 && scroller.scrollTop > 100,
+            canScroll: maxScrollTop > 100 && measuredScrollTop > 100,
+            measuredScrollTop,
           };
           scroller.scrollTop = 0;
+          scroller.style.scrollBehavior = previousScrollBehavior;
           return result;
         });
         if (!scrollMetrics.canScroll) {
