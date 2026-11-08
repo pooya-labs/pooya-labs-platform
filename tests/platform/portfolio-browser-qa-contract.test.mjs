@@ -198,6 +198,22 @@ test('homepage Browser QA captures and checks all eight animated project cards a
   assert.match(script, /\.project-card-motion/);
   assert.match(script, /projectGridMotion/);
   assert.match(script, /allCardsAnimated/);
-  assert.match(script, /home-en-projects-/);
+  assert.match(script, /route\.label \+ '-projects-'/);
   assert.match(script, /activeAnimationCount > 0/);
+});
+
+
+test('homepage browser QA checks both default Persian and English project grids for visibility', () => {
+  assert.match(script, /label: 'home-fa', path: '\?qa-locale=fa', locale: 'fa', direction: 'rtl'/);
+  assert.match(script, /route\.label\.startsWith\('home-'\)/);
+  assert.match(script, /sectionOpacity/);
+  assert.match(script, /sectionHasRevealGate/);
+  assert.match(script, /firstCardVisible/);
+  assert.match(script, /Projects section or its first card remained hidden/);
+});
+
+test('mobile project grid QA captures the full localized homepage without a tall-section reveal gate', () => {
+  assert.match(script, /home-fa-projects-mobile\.png/);
+  assert.match(portfolioSource, /className="portfolio-projects portfolio-container" id="projects"/);
+  assert.doesNotMatch(portfolioSource, /className="portfolio-projects portfolio-container" id="projects" data-reveal="projects"/);
 });

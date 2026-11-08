@@ -163,3 +163,10 @@ test('each case study and selected-project card receives a product-specific moti
   assert.match(home, /SIMULATED/);
   assert.match(css, /@media \(prefers-reduced-motion:reduce\)[\s\S]*?\.case-study-motion-art \.scene-animated[\s\S]*?animation:none!important/);
 });
+
+
+test('progressive reveal triggers as soon as a section intersects a mobile scroll root', () => {
+  assert.match(home, /threshold: 0, rootMargin: '0px 0px -3% 0px'/);
+  assert.match(home, /if \(!entry\.isIntersecting\) continue/);
+  assert.match(home, /observer\.unobserve\(entry\.target\)/);
+});

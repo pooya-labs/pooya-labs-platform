@@ -15,6 +15,7 @@ const projectSlugs = [
 ];
 
 const routes = [
+  { label: 'home-fa', path: '?qa-locale=fa', locale: 'fa', direction: 'rtl', mainId: 'top' },
   { label: 'home-en', path: '', locale: 'en', direction: 'ltr', mainId: 'top' },
   ...projectSlugs.flatMap((slug) => [
     { label: slug + '-fa', path: 'projects/' + slug + '/', locale: 'fa', direction: 'rtl', mainId: 'main-content' },
@@ -58,6 +59,19 @@ try {
     viewport: { width: 1440, height: 1000 },
     deviceScaleFactor: 1,
     reducedMotion: 'no-preference',
+  });
+  await context.addInitScript(() => {
+    const url = new URL(window.location.href);
+    const requestedLocale = url.searchParams.get('qa-locale');
+    if (requestedLocale === 'fa' || requestedLocale === 'en') {
+      try {
+        window.localStorage.setItem('pooya-labs:language-v2', requestedLocale);
+      } catch {
+        // The route-level document language still gets checked below.
+      }
+      url.searchParams.delete('qa-locale');
+      window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+    }
   });
   const page = await context.newPage();
   const pageErrors = [];
@@ -217,7 +231,7 @@ try {
       for (const viewport of viewports) {
         await page.setViewportSize({ width: viewport.width, height: viewport.height });
         await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
-        const shouldCaptureVisual = route.label === 'home-en' || (route.label !== 'home-fa' && route.label !== 'home-en');
+        const shouldCaptureVisual = route.label.startsWith('home-') || (route.label !== 'home-fa' && route.label !== 'home-en');
         if (shouldCaptureVisual) {
           const fileName = route.label + '-' + viewport.name + '.png';
           await page.screenshot({ path: path.join(artifactDir, fileName), fullPage: false, animations: 'allow' });
@@ -265,9 +279,20 @@ try {
         }
 
         let projectGridMotion = { available: false, passed: true, skippedReason: 'Not the homepage route.' };
-        if (route.label === 'home-en') {
+        if (route.label.startsWith('home-')) {
           await page.locator('#projects .portfolio-project-card').first().scrollIntoViewIfNeeded();
           await page.waitForTimeout(550);
+          const gridState = await page.locator('#projects').evaluate((section) => {
+            const cards = Array.from(section.querySelectorAll<HTMLElement>('.portfolio-project-card'));
+            const firstCard = cards[0];
+            const firstOpacity = firstCard ? Number.parseFloat(getComputedStyle(firstCard).opacity) : 0;
+            return {
+              sectionOpacity: Number.parseFloat(getComputedStyle(section).opacity),
+              sectionHasRevealGate: section.hasAttribute('data-reveal'),
+              firstCardOpacity: firstOpacity,
+              firstCardVisible: firstOpacity >= .99,
+            };
+          });
           const cardStates = await page.locator('#projects .portfolio-project-card').evaluateAll((cards) => cards.map((card) => {
             const motion = card.querySelector('.project-card-motion');
             const active = motion?.getAnimations({ subtree: true }).filter((animation) => animation.playState === 'running' || animation.playState === 'pending') ?? [];
@@ -279,11 +304,13 @@ try {
             };
           }));
           const allCardsAnimated = cardStates.length === 8 && cardStates.every((card) => card.motionClass && card.activeAnimationCount > 0);
-          projectGridMotion = { available: true, passed: allCardsAnimated, cardCount: cardStates.length, cards: cardStates };
+          const gridVisible = gridState.sectionOpacity >= .99 && !gridState.sectionHasRevealGate && gridState.firstCardVisible;
+          projectGridMotion = { available: true, passed: allCardsAnimated && gridVisible, ...gridState, cardCount: cardStates.length, cards: cardStates };
           routeRecord.projectGridMotion ??= [];
           routeRecord.projectGridMotion.push({ viewport: viewport.name, ...projectGridMotion });
           if (!allCardsAnimated) addFailure(route, viewport.name, 'One or more selected-project cards is missing its product-specific animated signature.');
-          const projectGridFile = 'home-en-projects-' + viewport.name + '.png';
+          if (!gridVisible) addFailure(route, viewport.name, 'The homepage Projects section or its first card remained hidden after scrolling into view.');
+          const projectGridFile = route.label + '-projects-' + viewport.name + '.png';
           await page.screenshot({ path: path.join(artifactDir, projectGridFile), fullPage: false, animations: 'allow' });
           routeRecord.visualEvidence ??= [];
           routeRecord.visualEvidence.push(projectGridFile);

@@ -517,7 +517,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
       }
-    }, { root, threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
+    }, { root, threshold: 0, rootMargin: '0px 0px -3% 0px' });
     targets.forEach((target) => observer.observe(target));
     return () => {
       observer.disconnect();
@@ -801,7 +801,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
           </div>
         </section>
 
-        <section className="portfolio-projects portfolio-container" id="projects" data-reveal="projects">
+        <section className="portfolio-projects portfolio-container" id="projects">
           <div className="portfolio-section-heading" data-reveal="projects-heading">
             <div><div className="portfolio-eyebrow"><span className="eyebrow-index">01 /</span>{t.selected}</div><h2>{t.selected}</h2><p>{t.selectedSub}</p></div>
             <span className="portfolio-section-meta">{t.allProjects}</span>
