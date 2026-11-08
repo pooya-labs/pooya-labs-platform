@@ -12,7 +12,7 @@ test('detects high-confidence provider credential formats without returning secr
     ['stripe-live-secret', ['sk_live_', 'a'.repeat(28)].join('')],
   ];
   for (const [expectedRule, value] of samples) {
-    const findings = scanText('safe header\\n' + value);
+    const findings = scanText('safe header\n' + value);
     assert.ok(findings.some((finding) => finding.rule === expectedRule), 'Expected ' + expectedRule);
     assert.ok(findings.every((finding) => !('value' in finding)), 'Secret values must never be returned');
     assert.ok(findings.every((finding) => !('match' in finding)), 'Raw matches must never be returned');
@@ -27,7 +27,7 @@ test('detects long quoted credential assignments while allowing documented place
   assert.equal(finding.length, 1);
   assert.equal(finding[0].rule, 'credential-assignment');
   assert.deepEqual(scanText(key + ' = "your_api_token_goes_here"'), []);
-  assert.deepEqual(scanText(key + ' = "${{ secrets.CLOUDFLARE_API_TOKEN }}"'), []);
+  assert.deepEqual(scanText(key + ' = "$' + '{{ secrets.CLOUDFLARE_API_TOKEN }}"'), []);
 });
 
 test('flags common credential and private-key files but permits safe templates and public keys', () => {
@@ -44,7 +44,7 @@ test('does not classify ordinary project links, commit identifiers, or owner con
     'https://github.com/pooya-labs/pooya-labs-platform',
     'https://t.me/pooyayee',
     'commit_sha = "95e2726849a2793a126ea8a4d9755ab214df327e"',
-    'GAS_DEPLOYMENT_ID: ${{ secrets.GAS_DEPLOYMENT_ID }}',
-  ].join('\\n');
+    'GAS_DEPLOYMENT_ID: $' + '{{ secrets.GAS_DEPLOYMENT_ID }}',
+  ].join('\n');
   assert.deepEqual(scanText(source), []);
 });

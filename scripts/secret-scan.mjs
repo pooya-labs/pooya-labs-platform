@@ -6,42 +6,42 @@ import { pathToFileURL } from 'node:url';
 const secretRules = [
   { id: 'private-key-block', pattern: /-----BEGIN (?:[A-Z0-9]+ )*PRIVATE KEY-----/i },
   { id: 'pgp-private-key', pattern: /-----BEGIN PGP PRIVATE KEY BLOCK-----/i },
-  { id: 'aws-access-key-id', pattern: /\\b(?:AKIA|ASIA)[A-Z0-9]{16}\\b/ },
-  { id: 'github-token', pattern: /\\b(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{50,})\\b/ },
-  { id: 'google-api-key', pattern: /\\bAIza[0-9A-Za-z_-]{35}\\b/ },
-  { id: 'slack-token', pattern: /\\bxox[baprs]-[0-9A-Za-z-]{20,}\\b/ },
-  { id: 'stripe-live-secret', pattern: /\\bsk_live_[0-9A-Za-z]{24,}\\b/ },
+  { id: 'aws-access-key-id', pattern: /\b(?:AKIA|ASIA)[A-Z0-9]{16}\b/ },
+  { id: 'github-token', pattern: /\b(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{50,})\b/ },
+  { id: 'google-api-key', pattern: /\bAIza[0-9A-Za-z_-]{35}\b/ },
+  { id: 'slack-token', pattern: /\bxox[baprs]-[0-9A-Za-z-]{20,}\b/ },
+  { id: 'stripe-live-secret', pattern: /\bsk_live_[0-9A-Za-z]{24,}\b/ },
   {
     id: 'credential-assignment',
-    pattern: /\\b[A-Z0-9_]*(?:API[_-]?KEY|CLIENT[_-]?SECRET|ACCESS[_-]?TOKEN|REFRESH[_-]?TOKEN|PRIVATE[_-]?KEY|TOKEN|PASSWORD|PASSWD)[A-Z0-9_]*\\b\\s*[:=]\\s*["'`]([^"'`\\r\\n]{24,})["'`]/i,
+    pattern: /\b[A-Z0-9_]*(?:API[_-]?KEY|CLIENT[_-]?SECRET|ACCESS[_-]?TOKEN|REFRESH[_-]?TOKEN|PRIVATE[_-]?KEY|TOKEN|PASSWORD|PASSWD)[A-Z0-9_]*\b\s*[:=]\s*["']([^"'\r\n]{24,})["']/i,
   },
 ];
 
 const sensitiveFileNames = [
-  /^\\.env(?:\\..+)?$/i,
-  /^\\.clasp\\.json$/i,
-  /^\\.clasprc\\.json$/i,
-  /^id_(?:rsa|dsa|ecdsa|ed25519)(?:\\..*)?$/i,
-  /^(?:credentials|service-account|client-secret|oauth-token|token)(?:[._-].*)?\\.json$/i,
-  /\\.(?:pem|p12|pfx|p8|jks|keystore|key)$/i,
-  /\\.tfstate(?:\\.backup)?$/i,
+  /^\.env(?:\..+)?$/i,
+  /^\.clasp\.json$/i,
+  /^\.clasprc\.json$/i,
+  /^id_(?:rsa|dsa|ecdsa|ed25519)(?:\..*)?$/i,
+  /^(?:credentials|service-account|client-secret|oauth-token|token)(?:[._-].*)?\.json$/i,
+  /\.(?:pem|p12|pfx|p8|jks|keystore|key)$/i,
+  /\.tfstate(?:\.backup)?$/i,
 ];
 
 function isPlaceholder(value) {
-  return /^(?:\\$\\{|<|your(?:[_ -]|$)|replace(?:[_ -]|$)|example(?:[_ -]|$)|sample(?:[_ -]|$)|dummy(?:[_ -]|$)|placeholder(?:[_ -]|$)|changeme|redacted|not-a-real|x{24,}|\\*{8,})/i.test(value.trim());
+  return /^(?:\$\{|<|your(?:[_ -]|$)|replace(?:[_ -]|$)|example(?:[_ -]|$)|sample(?:[_ -]|$)|dummy(?:[_ -]|$)|placeholder(?:[_ -]|$)|changeme|redacted|not-a-real|x{24,}|\*{8,})/i.test(value.trim());
 }
 
 export function isSensitivePath(filePath) {
-  const normalized = filePath.replaceAll('\\\\', '/');
+  const normalized = filePath.replaceAll('\\', '/');
   const fileName = normalized.split('/').at(-1) ?? '';
   if (fileName.toLowerCase() === '.env.example') return false;
-  if (/^id_(?:rsa|dsa|ecdsa|ed25519)\\.pub$/i.test(fileName)) return false;
+  if (/^id_(?:rsa|dsa|ecdsa|ed25519)\.pub$/i.test(fileName)) return false;
   return sensitiveFileNames.some((pattern) => pattern.test(fileName));
 }
 
 export function scanText(source) {
   const findings = [];
-  const lines = source.split(/\\r?\\n/);
+  const lines = source.split(/\r?\n/);
   for (let index = 0; index < lines.length; index += 1) {
     for (const rule of secretRules) {
       const match = lines[index].match(rule.pattern);
@@ -75,7 +75,7 @@ async function readTextFile(filePath) {
 
 export async function scanRepository() {
   const tracked = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' })
-    .split('\\0')
+    .split('\0')
     .filter(Boolean);
   const buildRoots = ['dist/pages', 'dist/cloudflare'];
   const buildFiles = [];
@@ -93,7 +93,7 @@ export async function scanRepository() {
 
   const findings = [];
   for (const filePath of [...tracked, ...buildFiles]) {
-    const displayPath = relative(process.cwd(), filePath).replaceAll('\\\\', '/');
+    const displayPath = relative(process.cwd(), filePath).replaceAll('\\', '/');
     if (isSensitivePath(displayPath)) {
       findings.push({ path: displayPath, rule: 'sensitive-file-path', line: 1 });
       continue;
