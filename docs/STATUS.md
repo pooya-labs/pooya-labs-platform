@@ -1,12 +1,14 @@
-## Phase 7 readiness implementation — security and performance baseline (2026-11-08)
+## Latest verified checkpoint — CLS remediation and three-host production parity (2026-11-08)
 
-- Added a cold-context Chromium performance probe for the Persian/English homepage and all eight English case-study routes at desktop (1440×1000) and mobile (390×844) sizes. It records navigation timing, FCP/LCP, CLS, resource sizes, route errors, and horizontal overflow.
-- Repository CI [42509020236](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020236) passed on PR #13 head `0dd3eca221df8e5b28b796b3db7b8e6462382fc4`: dependency audit reported **0 vulnerabilities**, lint and format checks passed for 49 files, TypeScript passed, all three Pages/Apps Script/Cloudflare builds passed, and **96/96 contract tests** passed.
-- Browser QA [42509020267](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020267) passed **18/18 routes**, **36/36 viewport checks**, and zero failures. Axe reported zero confirmed violations; **36 incomplete color-contrast checks** remain for human review and are not counted as passes.
-- Three-host performance measurements completed: **20 samples per host** for the English/Persian homepages and eight English project routes. The report is retained in [artifact 13628113221](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42509020267/artifacts/13628113221). Full p75 values and limitations are in [PERFORMANCE-BUDGET.md](PERFORMANCE-BUDGET.md).
-- The measured CLS is not accepted: investigation traced the large desktop case-study shifts to the static HTML case-study markup being inserted into `#root` during the build and then removed when `main.tsx` calls `createRoot` instead of hydrating that markup. This is a confirmed source-level explanation, not a completed fix. Keep performance budgets report-only until a hydration-safe approach is implemented and the three-host baseline is repeated.
-- The new audit and performance checks are tooling/readiness work only. The application UI and deployed build are unchanged; no production deployment is implied by these checks.
-
+- Merged PR [#13](https://github.com/pooya-labs/pooya-labs-platform/pull/13) at application commit [`045bc845`](https://github.com/pooya-labs/pooya-labs-platform/commit/045bc84526ef823a37599c6790d144d68465d35c). Direct case-study routes now server-render a shared React component and hydrate it in place; crawler-readable markup is no longer cleared and rebuilt after first paint.
+- Repository CI [42513404028](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42513404028) passed dependency audit (0 reported vulnerabilities), lint, formatting, TypeScript, all three build targets, and repository contract tests.
+- Browser QA [42513404040](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42513404040) attempt 2 passed **18/18 routes** and **36/36 viewport checks**, with zero failures and zero horizontal overflow. Axe recorded zero confirmed violations; **36 incomplete color-contrast checks** remain for human review.
+- Post-remediation performance artifact [13630148273](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42513404040/artifacts/13630148273) collected 20 cold-context samples per host. p50, p75, and maximum CLS are **0.0000** on local build, GitHub Pages, and Cloudflare Pages. Full p75 timing/resource figures are in [PERFORMANCE-BUDGET.md](PERFORMANCE-BUDGET.md).
+- GitHub Pages deployment [42513404002](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42513404002) succeeded on application commit `045bc84526ef823a37599c6790d144d68465d35c`.
+- Cloudflare production deployment [`592357af`](https://592357af.pooya-labs-platform.pages.dev/) (ID `592357af-e235-4d3f-9912-bbca7edbfc51`) was published through the authorized Cloudflare Pages API and completed successful build/deploy stages on the same commit. Canonical host: [pooya-labs-platform.pages.dev](https://pooya-labs-platform.pages.dev/).
+- GitHub Actions Cloudflare auto-deployment still skips because private repository secret `CLOUDFLARE_API_TOKEN` is absent. The direct production deployment is verified; automatic push-triggered deployment is not yet enabled.
+- Apps Script production publishing was **not** completed in this checkpoint. Workflow [42513404009](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42513404009) passed its configuration check but skipped the deploy job because `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` are absent. The static portfolio does not depend on that deployment.
+- The project remains **pre-alpha**. Keep performance enforcement report-only. Physical Android review, manual contrast/keyboard/screen-reader acceptance, external social-crawler validation, rollback rehearsal, and owner visual/content approval remain open.
 
 ## Release sequence decision — 2026-11-08
 
@@ -35,7 +37,7 @@ Pooya requested a strict final-stage order. The roadmap now reserves **Phase 8 f
 **Current phase:** Phase 7 — Pre-redesign readiness and engineering closeout  
 **Release:** Pre-alpha / portfolio draft
 
-## Latest verified checkpoint — accessibility semantics, theme contrast, and Cloudflare production (2026-11-08)
+## Previous checkpoint — accessibility semantics and Cloudflare production before PR #13 (2026-11-08)
 
 - Added a valid `role="group"` to the homepage proof statistics container, preserving its descriptive label. The latest axe report no longer contains the four repeated `aria-prohibited-attr` incomplete findings.
 - Removed an obsolete header pseudo-element and made the header base color opaque in both themes while preserving its frosted blur. Gradient-backed hero text still prevents axe from calculating definite contrast values.
