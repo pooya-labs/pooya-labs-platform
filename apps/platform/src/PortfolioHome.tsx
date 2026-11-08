@@ -432,7 +432,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             <p className="portfolio-intro">{t.intro}</p>
             <div className="portfolio-hero-actions">
               <a className="portfolio-primary" href="#projects">{t.explore}<ArrowDown size={16} /></a>
-              <a className="portfolio-secondary" href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><Code2 size={17} />{t.github}<ExternalLink size={13} /></a>
+              <a className="portfolio-secondary portfolio-github-link" href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><img className="portfolio-github-mark" src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" />{t.github}<ExternalLink size={13} /></a>
             </div>
             <div className="portfolio-social-proof"><span className="proof-line" /><span>POOYA LABS</span><span className="proof-dot">·</span><span>BUILDING IN PUBLIC</span></div>
           </div>
@@ -548,7 +548,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         <NovelLibrarySection language={language} novels={novelCatalog.filter((novel) => novel.published)} loading={novelCatalogLoading} error={novelCatalogError} onOpen={openNovel} />
 
         <section className="portfolio-about portfolio-container" id="about" data-reveal="about">
-          <div className="about-stamp"><div className="stamp-orbit" /><div className="stamp-core">P<span>.</span></div><span>ABOUT / POOYA</span></div>
+          <div className="about-stamp"><div className="stamp-orbit" /><div className="stamp-core"><img src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="Pooya Labs" /></div><span>ABOUT / POOYA</span></div>
           <div className="about-content">
             <div className="portfolio-eyebrow"><span className="eyebrow-index">03 /</span>{t.aboutEyebrow}</div>
             <h2>{t.aboutTitle}</h2>
@@ -577,7 +577,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
           <div className="portfolio-eyebrow"><span className="eyebrow-index">05 /</span>{t.contactEyebrow}</div>
           <h2>{t.contactTitle}</h2>
           <p>{t.contactBody}</p>
-          <a className="portfolio-primary" href="https://github.com/pooya-labs" target="_blank" rel="noreferrer">{t.contactAction}<ArrowUpRight size={16} /></a>
+          <a className="portfolio-primary portfolio-contact-github" href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><img className="contact-github-mark" src={`${import.meta.env.BASE_URL}brand/pooya-mark.svg`} alt="" aria-hidden="true" /><span>{t.contactAction}<small>github.com/pooya-labs</small></span><ArrowUpRight size={16} /></a>
         </section>
       </main>
 
