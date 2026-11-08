@@ -183,7 +183,7 @@ for (const key of ['ttfbMs', 'domContentLoadedMs', 'loadEventMs', 'firstContentf
   const values = numeric(key);
   report.summary[key] = { p50: percentile(values, .5), p75: percentile(values, .75), max: values.length ? values.at(-1) : null, samples: values.length };
 }
-await writeFile(path.join(artifactDir, 'performance-report.json'), JSON.stringify(report, null, 2) + '\n');
+await writeFile(path.join(artifactDir, reportName), JSON.stringify(report, null, 2) + '\n');
 console.log('Portfolio performance baseline: ' + report.routes.length + '/' + (routes.length * viewports.length) + ' measurements collected.');
 console.log('p75 summary: ' + JSON.stringify(Object.fromEntries(Object.entries(report.summary).map(([key, value]) => [key, value.p75]))));
 console.log('Failures: ' + report.failures.length + '.');
