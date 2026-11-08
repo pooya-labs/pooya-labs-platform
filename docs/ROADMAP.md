@@ -129,3 +129,11 @@ This phase must not block V1. Source projects remain independent unless Pooya ex
 - [x] Add exact-run artifact verification and SHA-256/PNG dimension checks before publication.
 - [ ] Publish approved captures and connect them to the case-study galleries.
 - [ ] Obtain Pooya's round-two review of the live site before closing Phase 7.
+
+
+### Phase 7 — full-page gallery integration (2026-11-08)
+
+- [x] Publish the 14 visually and privacy reviewed full-page screenshots to the repository.
+- [x] Add immutable, commit-pinned desktop/mobile screenshot references to seven project case studies.
+- [x] Make screenshot frames keyboard-focusable, labelled, and scrollable.
+- [ ] Verify all gallery assets on the live site and collect Pooya's second feedback round.

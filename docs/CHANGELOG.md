@@ -200,3 +200,10 @@
 - Approved 14 full-page desktop/mobile screenshots for seven projects after visual and privacy review; Salon Booking capture is restricted to the customer-facing page.
 - Added a publishing workflow that verifies the exact artifact, PNG signatures, dimensions, byte sizes, and SHA-256 checksums before committing screenshots.
 - GlobalCart's new full-page capture is held back because the live product collection currently displays blank placeholders; its existing curated screenshots remain active.
+
+
+## 2026-11-08 — Full-page case-study gallery integration
+
+- Published 14 approved full-page desktop/mobile screenshots from seven public projects under `apps/platform/public/interface-captures/`.
+- Added immutable commit-pinned gallery references for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and Salon Booking.
+- Kept GlobalCart's existing curated screenshots in place while its current live catalog grid is repaired.
