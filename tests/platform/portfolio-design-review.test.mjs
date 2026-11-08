@@ -71,9 +71,10 @@ test('the signal-orbit emerald monogram is used throughout the site identity', (
 
 test('project screenshot scroll regions have unique, project-specific accessible names', () => {
   assert.doesNotMatch(home, /قاب اسکرول‌پذیر تصویر پروژه|Scrollable project screenshot frame/);
-  assert.match(home, /heroVisual\.alt\[language\]/);
+  assert.match(home, /\$\{project\.name\} — نمای واقعی محیط دسکتاپ/);
   assert.match(home, /\$\{project\.name\} — \$\{item\.caption\.fa\}/);
   assert.match(home, /\$\{project\.name\} — \$\{item\.caption\.en\}/);
+  assert.match(css, /\.case-study-media-card\.device-mobile \.case-study-media-frame[\\s\\S]*?overscroll-behavior-y:auto[\\s\\S]*?touch-action:pan-y/);
 });
 
 
@@ -149,7 +150,7 @@ test('each case study and selected-project card receives a product-specific moti
     assert.ok(css.includes('.card-scene-' + slug), `Missing project-card motion for ${slug}`);
   }
   assert.match(home, /function ProjectMotionScene/);
-  assert.match(home, /const heroVisual = project\.caseStudyHeroAsset \?\? project\.visualAsset/);
+  assert.doesNotMatch(home, /case-study-art-fallback|case-study-visual-image/);
   assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} \/>/);
   assert.match(home, /case-study-motion-art scene-\$\{slug\}/);
   assert.match(home, /<ProjectMotionScene slug=\{project\.slug\} \/>/);
