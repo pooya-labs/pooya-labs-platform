@@ -9,12 +9,12 @@
   "currentTask": {
     "id": "P7-12",
     "title": "Complete readiness engineering and owner-input preparation before the penultimate redesign",
-    "status": "The 2026-11-09 upstream source/owner-packet audit is merged. The GitHub Actions permission audit is complete on main 659189dd99af59154cbfd88ce5f9dcecb23e1e0e; Repository CI 42523193131 passed. Phase 7 remains active because main is unprotected, three approved-capture workflows push directly to main, and owner-side ruleset, manual accessibility/device, crawler, Pages-source, deployment-secret, rollback, and content-approval gates remain open."
+    "status": "The 2026-11-09 GitHub workflow permission and branch-governance audit merged as a009b4c65b8ea964b4b43f39ed636f86d56ffe33 (PR #22). PR CI 42524475237, Browser QA 42524475250, and post-merge main Repository CI 42524729014 all passed. The audit remains a documentation-only checkpoint. Phase 7 is still active because main is unprotected, three reviewed-capture publishers push directly to main, and owner-side ruleset, manual accessibility/device, crawler, Pages-source, deployment-secret, rollback, and content-approval gates remain open."
   },
   "lastCheckpointDate": "2026-11-09",
   "latestVerifiedCodeCommit": "41ea1004433196aa81e4e50b17a1620f110ecea8",
   "tests": {
-    "repositoryCi": "passed-run-42519574691;main-aca573500192;dependency-audit-zero-vulnerabilities;credential-scan-no-recognized-matches;contract-tests-105-of-105;all-three-builds-success",
+    "repositoryCi": "passed-run-42524729014;main-a009b4c65b8ea964b4b43f39ed636f86d56ffe33;all-repository-validation-steps-success",
     "transportHarnessContract": "passed",
     "gasRpcSourceContract": "passed",
     "gasHtmlServiceTransport": "passed-owner-confirmed-revised-rpcCall-2026-11-05T12:49:53Z",
@@ -39,7 +39,7 @@
     "staticCaseStudySectionOrder": "passed-run-42227942261-and-42230046270",
     "lastVerifiedTestCommit": "328de1fc838cb4a5b9af9c3515a7c261cb3e47ec",
     "skipNavigationContract": "passed-run-42231110043-bilingual-fixed-position-reduced-motion",
-    "portfolioBrowserQa": "passed-run-42519333196;PR-head-22e49995b760;18-of-18-routes;zero-failures;zero-confirmed-axe-violations;36-incomplete-contrast-checks-remain-for-human-review;three-host-perf-CLS-p75-zero;LCP-p75-local-276ms-GitHubPages-380ms-CloudflarePages-396ms",
+    "portfolioBrowserQa": "passed-run-42524475250;PR-head-40bd71b5de28f1af6176679e4c64b18772a2730e;responsive-routes-metadata-keyboard;three-host-cold-route-measurements;artifact-13634757460",
     "portfolioBrowserQaArtifact": "13631024148",
     "portfolioBrowserQaStrictGate": "passed-run-42514976406;18-of-18-routes;zero-failures;zero-confirmed-axe-violations;36-incomplete-checks-remain-human-review;performance-report-only",
     "pagesArtifactAudit": "passed-run-42238363799-artifact-13511808294-17-html-17-png-1200x627-17-sitemap-urls-all-canonical-og-description-jsonld-and-case-study-hreflang",
@@ -89,7 +89,7 @@
     "credentialScan": "passed-run-42519574691;main-aca573500192;tracked-source-and-dist-pages-dist-cloudflare;no-recognized-matches;values-redacted",
     "repositoryCiSecurityTask": "passed-run-42517885668;npm-audit-zero-vulnerabilities;credential-scan-no-recognized-matches;contract-tests-101-of-101;all-build-targets-success",
     "ownerReviewPacketContract": "passed-run-42519333195;owner-review-packet-contract-included;105-of-105-contract-tests",
-    "repositoryGovernanceAudit": "passed-read-only-audit-2026-11-09;10-workflows;explicit-least-privilege-permissions;no-pull_request_target-or-workflow_run;main-unprotected;rulesets-empty;capture-publishers-direct-push-main"
+    "repositoryGovernanceAudit": "merged-PR-22;main-a009b4c65b8ea964b4b43f39ed636f86d56ffe33;10-workflows-reviewed;main-unprotected;rulesets-empty;three-capture-publishers-direct-push-main"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -170,7 +170,7 @@
     "Cloudflare GitHub Actions auto-deployment still requires the private CLOUDFLARE_API_TOKEN secret; the current production deployment succeeded through the authorized Cloudflare Pages API.",
     "Apps Script production publishing was skipped in run 42514976476 because CLASPRC_JSON, CLASP_JSON, and GAS_DEPLOYMENT_ID are not configured. The Apps Script build target passed; do not claim the Apps Script Web App was updated."
   ],
-  "nextAction": "Choose and implement the reviewed-capture publisher governance path, configure/test an active main branch ruleset, then continue the remaining Phase 7 manual and deployment closeout gates.",
+  "nextAction": "Choose and implement the reviewed-capture publisher governance path (prefer GitHub App PR creation), then configure and test an active main branch ruleset; continue the remaining Phase 7 manual accessibility/device, crawler, Pages-source, deployment-secret, and rollback closeout gates.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -988,12 +988,12 @@
     "manualValidation": "Latest Browser QA artifact 13618234167 requires detailed axe review; manual contrast, keyboard-only, screen-reader, real-device, and external social-crawler validation remain open."
   },
   "latestTask": "P7-12",
-  "latestTaskBranch": "security/main-branch-governance-audit",
+  "latestTaskBranch": "main",
   "lastUpdated": "2026-11-09",
-  "latestDocumentationCommit": "659189dd99af59154cbfd88ce5f9dcecb23e1e0e",
-  "latestDocumentationCheckpoint": "main-659189dd99af59154cbfd88ce5f9dcecb23e1e0e;governance-audit-prepared-on-branch",
-  "latestRepositoryCiRun": "42523193131",
-  "latestBrowserQaRun": "42522600586",
+  "latestDocumentationCommit": "a009b4c65b8ea964b4b43f39ed636f86d56ffe33",
+  "latestDocumentationCheckpoint": "merged-PR-22;main-a009b4c65b8ea964b4b43f39ed636f86d56ffe33;PR-CI-42524475237;Browser-QA-42524475250;post-merge-main-CI-42524729014",
+  "latestRepositoryCiRun": "42524729014",
+  "latestBrowserQaRun": "42524475250",
   "latestPerformanceBaseline": {
     "run": "42514976406",
     "attempt": 1,

@@ -1,3 +1,10 @@
+## 2026-11-09 — GitHub governance audit merged and verified
+
+- Merged [PR #22](https://github.com/pooya-labs/pooya-labs-platform/pull/22) as [`a009b4c`](https://github.com/pooya-labs/pooya-labs-platform/commit/a009b4c65b8ea964b4b43f39ed636f86d56ffe33).
+- PR Repository CI [42524475237](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524475237) and Browser QA [42524475250](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524475250) passed; the latter includes responsive/routes/metadata/keyboard checks and three-host cold-route measurements (artifact [13634757460](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524475250/artifacts/13634757460)).
+- Post-merge main CI [42524729014](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42524729014) passed on the merged commit.
+- The merge was documentation/state only. Main branch protection, the three direct-to-main capture publishers, deployment secrets, and all owner/device release gates remain unchanged.
+
 ## 2026-11-09 — GitHub Actions permission and branch-governance audit
 
 - Added [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md) with the observed unprotected-main state, the ten-workflow permission inventory, current check names, and the safe ruleset setup sequence.
