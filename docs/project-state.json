@@ -405,7 +405,7 @@
     "projectIntegrationPhase": 9,
     "penultimateRedesignOwnerApproval": "pending"
   },
-  "latestVerifiedCommit": "23f16896624ef391e284d3579a7f7278f5c8cbaf",
+  "latestVerifiedCommit": "659189dd99af59154cbfd88ce5f9dcecb23e1e0e",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -572,7 +572,7 @@
     ],
     "projectIntegration": "deferred-to-phase-9-after-phase-8-redesign-approval; all-eight-project portfolio integration pending"
   },
-  "latestBranchHeadAtCheckpoint": "23f16896624ef391e284d3579a7f7278f5c8cbaf",
+  "latestBranchHeadAtCheckpoint": "659189dd99af59154cbfd88ce5f9dcecb23e1e0e",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -999,9 +999,9 @@
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-09",
   "latestDocumentationCommit": "659189dd99af59154cbfd88ce5f9dcecb23e1e0e",
-  "latestDocumentationCheckpoint": "phase7-postrelease-read-only-recheck-2026-11-09;GlobalCart:75ed390;ORBIT-PR138:f25c9f3",
-  "latestRepositoryCiRun": "42522790018",
-  "latestBrowserQaRun": "42522600586",
+  "latestDocumentationCheckpoint": "phase7-postrelease-read-only-recheck-2026-11-09;GlobalCart:75ed390;ORBIT-PR138:f25c9f3;platform-main:659189d",
+  "latestRepositoryCiRun": "42523193131",
+  "latestBrowserQaRun": "42523017840",
   "latestPerformanceBaseline": {
     "run": "42514976406",
     "attempt": 1,
@@ -1174,7 +1174,7 @@
     "globalcartPr23": "closed-without-merge",
     "orbitPr138": "open-unmerged; production-image-security-scan-failing",
     "allUpstreamRepositoriesModified": false,
-    "platformMainCommit": "23f16896624ef391e284d3579a7f7278f5c8cbaf",
+    "platformMainCommit": "659189dd99af59154cbfd88ce5f9dcecb23e1e0e",
     "mergedPullRequest": 18,
     "postMergeRepositoryCiRun": "42522790018",
     "browserQaRun": "42522600586",
@@ -1182,6 +1182,8 @@
     "globalcartCaseStudyMerge": "e70c129661adf027f7cef4b42395b16bd9dc4694",
     "globalcartLastPagesDeployment": "42523072179-on-e70c129; no later Pages run identified after 75ed390 catalog snapshot",
     "orbitPR138Head": "f25c9f33f63d2ce147480e771e07ed95b8689451",
-    "orbitLatestProductionImageScan": "42523790800-failure"
+    "orbitLatestProductionImageScan": "42523790800-failure",
+    "platformMainRepositoryCi": "42523193131-success",
+    "platformMainBrowserQa": "42523017840-success"
   }
 }
