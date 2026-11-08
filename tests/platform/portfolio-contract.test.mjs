@@ -105,7 +105,7 @@ test('project cards and shareable query routes expose in-site case studies', () 
 
 test('project artwork and interface screenshots are sourced from pinned commits with localized alt text', () => {
   assert.equal((projectData.match(/visualAsset: \{/g) ?? []).length, 7);
-  assert.equal((projectData.match(/caseStudyHeroAsset: \{/g) ?? []).length, 5);
+  assert.equal((projectData.match(/caseStudyHeroAsset: \{/g) ?? []).length, 6);
   assert.equal((projectData.match(/caseStudyMedia: \[/g) ?? []).length, 7);
   assert.equal((projectData.match(/^\s+device: '(?:desktop|mobile|detail)',?$/gm) ?? []).length, 7);
   assert.ok((projectData.match(/raw\.githubusercontent\.com\/pooya-labs\//g) ?? []).length >= 19);
