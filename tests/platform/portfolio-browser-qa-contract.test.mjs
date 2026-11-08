@@ -151,3 +151,11 @@ test('Browser QA captures and verifies the supplied horizontal wordmark in the A
   assert.match(script, /owner-designed POOYA — LABS wordmark did not load/);
   assert.match(portfolioSource, /brand\/pooya-wordmark\.webp/);
 });
+
+
+test('About visual evidence waits for the reveal transition and the supplied wordmark animation to finish', () => {
+  assert.match(script, /section\.classList\.contains\('is-visible'\)/);
+  assert.match(script, /getComputedStyle\(section\)\.opacity\) >= \.99/);
+  assert.match(script, /wordmark\.getAnimations\(\)\.every\(\(animation\) => animation\.playState === 'finished'\)/);
+  assert.match(script, /home-en-about-desktop\.png/);
+});

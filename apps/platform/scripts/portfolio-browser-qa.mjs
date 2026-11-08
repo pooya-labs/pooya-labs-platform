@@ -238,6 +238,18 @@ try {
           });
           routeRecord.ownerWordmark = wordmarkImage;
           if (!wordmarkImage.loaded) addFailure(route, viewport.name, 'The owner-designed POOYA — LABS wordmark did not load in the About section.');
+          await page.waitForFunction(() => {
+            const section = document.querySelector('.portfolio-about');
+            const wordmark = section?.querySelector('.pooya-wordmark');
+            const imageSettled = wordmark instanceof HTMLImageElement &&
+              wordmark.complete &&
+              wordmark.naturalWidth > 0 &&
+              wordmark.getAnimations().every((animation) => animation.playState === 'finished');
+            return section instanceof HTMLElement &&
+              section.classList.contains('is-visible') &&
+              Number.parseFloat(getComputedStyle(section).opacity) >= .99 &&
+              imageSettled;
+          }, undefined, { timeout: 5000 });
           const aboutFile = 'home-en-about-desktop.png';
           await about.screenshot({ path: path.join(artifactDir, aboutFile), animations: 'allow' });
           routeRecord.visualEvidence.push(aboutFile);
