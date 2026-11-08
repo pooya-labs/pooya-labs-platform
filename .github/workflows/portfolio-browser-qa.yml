@@ -3,18 +3,20 @@ name: Portfolio Browser QA
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, 'feat/**']
     paths:
       - 'apps/platform/**'
       - 'package.json'
       - '.github/workflows/portfolio-browser-qa.yml'
       - 'tests/platform/portfolio-browser-qa-contract.test.mjs'
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: read
 
 concurrency:
-  group: portfolio-browser-qa
+  group: portfolio-browser-qa-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
