@@ -184,3 +184,11 @@ No V1 release is authorized while these mandatory gates remain open.
 - AuraPulse screenshots show its simulated trading dashboard. The capture environment cannot access its Binance ticker endpoint due to CORS, so no live-market claim is made.
 - GlobalCart full-page captures are deliberately not approved: its currently published collection grid shows blank product placeholders. Existing curated GlobalCart screenshots remain in the portfolio until that separate project is repaired.
 - A checksum-verified publishing workflow and approval manifest are included in the review branch. Images will be committed to the public asset directory only after this PR is merged.
+
+
+## Full-page gallery integration — 2026-11-08
+
+- The 14 approved full-page desktop/mobile screenshots have been published in `apps/platform/public/interface-captures/` at asset commit `eba5e2d02047375ae8a42514f7bbb58c75106ba7`.
+- A follow-up review branch adds immutable, commit-pinned image references to seven case studies: AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and Salon Booking.
+- The full-page frames are keyboard-focusable, labelled, and internally scrollable so the complete pages remain readable.
+- GlobalCart keeps its existing curated desktop/mobile screenshots; its full-page capture remains excluded until the public collection grid is fixed.
