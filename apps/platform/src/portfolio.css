@@ -2087,3 +2087,16 @@
 .portfolio-workspace:hover { background:linear-gradient(115deg,#2b916a,#43bb89)!important; }
 .portfolio-page[data-theme="light"] .portfolio-brand-mark { background:linear-gradient(145deg,#e7f5ec,#fff)!important;border-color:rgba(41,139,99,.27)!important; }
 .portfolio-page[data-theme="light"] .portfolio-workspace { color:#fff!important;background:#267657!important; }
+
+
+/* Keep hover/focus CTA text above WCAG AA contrast on dark and light themes. */
+.portfolio-page .portfolio-primary:hover,
+.portfolio-page .portfolio-primary:focus-visible {
+  color:#f1faf4!important;
+  background:#246e51!important;
+}
+.portfolio-page[data-theme="light"] .portfolio-primary:hover,
+.portfolio-page[data-theme="light"] .portfolio-primary:focus-visible {
+  color:#fff!important;
+  background:#1f6548!important;
+}
