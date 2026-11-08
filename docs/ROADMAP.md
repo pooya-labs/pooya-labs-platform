@@ -17,7 +17,7 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [x] Configure React, TypeScript, Vite, npm workspaces, and Node contract tests.
 - [x] Add GitHub Actions CI for type-check, builds, tests, and Pages deployment.
 - [x] Add bilingual and RTL/LTR foundations.
-- [ ] Add linting, formatting, contribution, and release conventions.
+- [x] Add dependency-free lint/format checks, editor defaults, contribution guidance, and release conventions.
 - [x] Update GitHub Actions to maintained Node 24-compatible action releases and confirm the Node.js 20 deprecation warning is gone.
 - [ ] Verify the active GitHub Pages source is GitHub Actions and that the canonical public site tracks the latest successful build.
 
