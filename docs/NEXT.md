@@ -1,7 +1,7 @@
 # Next Task — Phase 7 pre-redesign readiness closeout
 
 **Task ID:** P7-12  
-**Checkpoint date:** 2026-11-08  
+**Checkpoint date:** 2026-11-09  
 **Latest verified `main` docs checkpoint:** see [Project Status](STATUS.md) and [project-state.json](project-state.json)  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
 
@@ -12,9 +12,16 @@
 3. Phase 9 is the final implementation stage before publication: recheck and fully integrate all eight independent projects into the approved portfolio. Do not copy source code wholesale; retain repo boundaries unless a separate architecture decision is approved.
 4. Phase 10: final V1 hardening and publication.
 
-## Read-only source recheck — 2026-11-08
+## Latest read-only source recheck — 2026-11-09
 
-Latest read-only `main` heads inspected on 2026-11-08 19:30 UTC: AetherFlow `2ce6c7450186`, ORBIT `970d9723ee44`, Pooya.OS `f4b93d7f95a1`, NexusCanvas `9f2756b18466`, LuminaGlass `f8e6c958d33d`, AuraPulse `b4a83648025d`, GlobalCart `fed6f59f62c9`, and Salon Booking `ca745a46c863`. The full SHA/date inventory and inspected deltas are recorded in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md). Seven commits changed bilingual README ownership artwork only; GlobalCart added two storefront screenshots. These checks do not constitute final Phase 9 source/feature acceptance.
+The exact current `main` heads, latest commits, release status, and open PR states for all eight independent projects were rechecked read-only and recorded in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md). The key changes since the previous checkpoint are:
+
+- AetherFlow: `9aa543d60abf`; M08 remains in progress and experimental. Storage-only Apps Script submission/refresh/read-back passed against a persistent fixture, but the owner-deployed Sheet still needs the live write/reload/read check. Latest Rust CI was still in progress when checked.
+- GlobalCart: current main `36a7bb70aabb`; stable portfolio/demo release v1.0.0 is published. Browser E2E passed on UI-code commit `905c6cf91bef`; later main commits in this range are generated data/media/documentation updates. Physical-device, human screen-reader, and field CWV claims remain unverified. PR #23 is open and unmerged.
+- ORBIT: PR #138 is open and unmerged; the Keycloak candidate is not production, and the SQLite FTS5/Guava production-image gate remains open.
+- Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and Salon Booking retain the previously recorded main heads at this checkpoint.
+
+The bilingual [OWNER-REVIEW-PACKET.md](OWNER-REVIEW-PACKET.md) now reflects GlobalCart's published v1.0.0 status and links back to the source audit. This refresh is factual preparation only: it does not approve content/media, change any project review state, or begin Phase 8/9. No upstream project repository was modified.
 
 ## Post-remediation verification checkpoint — 2026-11-08
 
