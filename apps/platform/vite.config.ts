@@ -222,7 +222,7 @@ function staticPageHtml(template: string, project: PortfolioProject, locale: Loc
 
 
 function wrapDiagramLabel(value: string, maxChars: number, maxLines = 2): string[] {
-  const words = value.trim().split(/\\s+/).filter(Boolean);
+  const words = value.trim().split(/\s+/).filter(Boolean);
   const lines: string[] = [];
   let line = '';
 
