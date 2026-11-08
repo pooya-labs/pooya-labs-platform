@@ -92,7 +92,7 @@ test('reviewed project interface screenshots are embedded in both static case-st
       assert.match(html, sourceRoot, `${route} must use an immutable portfolio commit for interface evidence`);
       assert.match(html, new RegExp(`${slug === 'aura-pulse' ? 'aurapulse' : slug === 'salon-booking' ? 'salon-booking-fullpage' : slug}-desktop\\.png`), `${route} must include the reviewed desktop hero`);
       assert.match(html, new RegExp(`${slug === 'aura-pulse' ? 'aurapulse' : slug === 'salon-booking' ? 'salon-booking-fullpage' : slug}-mobile\\.png`), `${route} must include the reviewed mobile capture`);
-      assert.match(html, /case-study-media-card device-desktop[^]*?<img[^>]+alt="[^"]+"/, `${route} desktop evidence must have localized alternative text`);
+      assert.match(html, /case-study-visual-image visual-interface[^>]+alt="[^"]+"/, `${route} desktop hero evidence must have localized alternative text`);
       assert.match(html, /case-study-media-card device-mobile[^]*?<img[^>]+alt="[^"]+"/, `${route} mobile evidence must have localized alternative text`);
     }
   }
