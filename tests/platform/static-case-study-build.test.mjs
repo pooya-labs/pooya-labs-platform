@@ -6,6 +6,25 @@ const outputRoot = new URL('../../dist/pages/', import.meta.url);
 const rootHtml = await readFile(new URL('index.html', outputRoot), 'utf8').catch(() => null);
 const slugs = ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'global-cart', 'salon-booking'];
 
+const mainSource = await readFile(new URL('../../apps/platform/src/main.tsx', import.meta.url), 'utf8');
+const portfolioSource = await readFile(new URL('../../apps/platform/src/PortfolioHome.tsx', import.meta.url), 'utf8');
+const viteConfig = await readFile(new URL('../../apps/platform/vite.config.ts', import.meta.url), 'utf8');
+
+test('direct case-study routes hydrate the same server-rendered React tree instead of replacing it', () => {
+  assert.match(viteConfig, /renderToString\\(createElement\\(HydratedCaseStudy/);
+  assert.match(viteConfig, /'<div id="root">' \\+ appMarkup \\+ '<\\/div>'/);
+  assert.match(mainSource, /hydrateRoot\\(/);
+  assert.match(mainSource, /portfolioProjects\\.find/);
+  assert.match(portfolioSource, /export function HydratedCaseStudy/);
+  assert.match(portfolioSource, /export function ProjectCaseStudy/);
+  const componentStart = portfolioSource.indexOf('export function ProjectCaseStudy');
+  const componentEnd = portfolioSource.indexOf('export interface HydratedCaseStudyProps', componentStart);
+  const component = portfolioSource.slice(componentStart, componentEnd);
+  assert.doesNotMatch(component, /window\\.location\\.pathname/);
+  assert.match(portfolioSource, /baseUrl: string/);
+});
+
+
 test('Vite emits crawler-readable Persian and English case-study pages', { skip: !rootHtml }, async () => {
   assert.match(rootHtml, /og:image/);
   assert.match(rootHtml, /og:image:type" content="image\/png/);
