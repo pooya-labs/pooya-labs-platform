@@ -1,5 +1,7 @@
 ## Latest checkpoint — PR #26 publisher hardening verified (2026-11-09)
 
+**Validation boundary:** the code-and-test checkpoint at `8037631` passed both CI and Browser QA. This handoff documentation was added afterward; re-run both checks on the final PR head before merging.
+
 PR [#26](https://github.com/pooya-labs/pooya-labs-platform/pull/26) is open with latest head [`8037631`](https://github.com/pooya-labs/pooya-labs-platform/commit/8037631274fd1d086d1f90c1d68f42015116e8c7). The proposed migration changes all three reviewed screenshot publishers from direct-to-`main` pushes to GitHub App-authenticated PR creation on stable automation branches. The Actions job token stays read-only; the short-lived App token is restricted to this repository and contents/PR writes.
 
 **Verified on the current PR head:**
