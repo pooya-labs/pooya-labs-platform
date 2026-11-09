@@ -3,15 +3,19 @@
 **Audit date:** 9 November 2026  
 **Repository:** `pooya-labs/pooya-labs-platform`  
 **Audited default branch:** `main`  
-**Audited main HEAD:** [`01749d717f6e`](https://github.com/pooya-labs/pooya-labs-platform/commit/01749d717f6e31a1096cde91ff7773a9b58e1626)
+**Audited main HEAD:** [`7e2e5a2ff0e4`](https://github.com/pooya-labs/pooya-labs-platform/commit/7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c)
 
 ## Executive findings
 
 - GitHub reports `main` as **unprotected**: `protected: false`, branch protection disabled, and no required status checks.
 - The repository rulesets API returned **zero rulesets**. This was rechecked against the current main after PR #28 merged.
-- Post-merge Repository CI [42625390685](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390685) passed on exact main `01749d7`.
-- The current published application bundle is still the earlier GitHub Pages app commit `558970f`; PR #28 only changed workflow and test files. No new application deployment is claimed.
+- Post-merge Repository CI [42635961927](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635961927) passed on exact main `7e2e5a2`.
+- The current published application bundle is still the earlier GitHub Pages app commit `558970f`; PRs #28 and #32 changed workflows/tests only. No new application deployment is claimed.
 - No repository settings or secrets were changed as part of this work.
+
+## Workflow inventory update — 11 workflows
+
+The repository now contains eleven workflow files. In addition to the original ten-workflow audit, the newly added `.github/workflows/app-publisher-smoke.yml` was reviewed: it is manual-only, keeps the default Actions token read-only (`contents: read`, `actions: read`), and grants the installation token only `contents: write` and `pull-requests: write` for the single repository. Its only staged path is the non-product marker `.github/app-publisher-smoke/latest-run.md`. No `pull_request_target`, `workflow_run`, or `actions: write` permission was added.
 
 ## Reviewed-capture publisher hardening — PR #28
 
@@ -69,13 +73,22 @@ For every run, the approval manifest, source artifact, PNG signature, dimensions
 
 The action logs show `pull-request-operation = none` and `No publication diff was required; approved captures already match main.` Consequently, no automation branch was pushed and no publisher-generated PR was opened. No image files were changed or published. This proves the App credentials and installation-token flow, but the write path for a real PR remains unexercised because GitHub had no diff to publish.
 
-### Remaining publisher proof
+### Controlled GitHub App PR-write smoke harness — PR #32
 
-Use the next genuine owner-approved capture update to exercise one publisher's changed-file path. Confirm that the App pushes its automation branch, opens a PR, and that Repository CI plus Portfolio Browser QA pass on that exact PR. Do not fabricate or alter screenshot assets only to create a test diff. Repeat for the other publisher families when their approved artifacts genuinely change.
+PR [#32](https://github.com/pooya-labs/pooya-labs-platform/pull/32) merged as [`7e2e5a2`](https://github.com/pooya-labs/pooya-labs-platform/commit/7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c). It adds a manual-only workflow at `.github/workflows/app-publisher-smoke.yml` to exercise the App's actual branch-push and PR-creation permissions without creating a fake screenshot diff.
+
+- The workflow must be dispatched from `main`; it checks for both private App secrets.
+- Default Actions token remains read-only; the installation token is scoped to this repository with `contents: write` and `pull-requests: write`.
+- It creates/updates only `.github/app-publisher-smoke/latest-run.md` and opens a reviewable PR from `automation/app-publisher-permission-smoke`.
+- It does not touch application source, screenshot/public assets, customer data, credentials, independent project repositories, or deployments.
+- PR CI [42635400246](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400246) passed 112/112 tests. PR Browser QA [42635400130](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400130) passed 18/18 routes and 36/36 viewports, zero failures and zero confirmed axe violations; 36 incomplete contrast checks remain manual. Performance recorded 20 samples per host with no failures; report [13683600592](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400130/artifacts/13683600592).
+- Main CI [42635961927](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635961927) passed after merge on `7e2e5a2`.
+
+**Owner dispatch is still pending.** Run the workflow manually from `main`, then confirm that it opens a PR titled `test(platform): verify GitHub App PR creation`. Wait for Repository CI and Portfolio Browser QA on that generated PR, review the marker-only diff, and merge it after both checks pass. The automation branch is configured for deletion on merge.
 
 ## Recommended `main` ruleset — do not activate before App proof
 
-After all three App-generated PRs have been tested:
+After the marker-only App permission smoke PR has been created, passed Repository CI and Browser QA, and been merged:
 
 - Target only `main` and set enforcement to **Active**.
 - Require a pull request for changes to `main`.
@@ -87,7 +100,7 @@ After all three App-generated PRs have been tested:
 - With a single maintainer, zero mandatory approvals may be used only if Pooya personally reviews and merges every PR; increase approval requirements when an independent reviewer is available.
 - Test that pending or failed checks block merge and that passing checks permit the normal merge path.
 
-The current main remains unprotected and the rulesets endpoint still returns zero active rulesets. Do not mark the governance gate complete until the real App PR flow and enforcement behavior have both been demonstrated.
+The current main remains unprotected and the rulesets endpoint still returns zero active rulesets. The smoke harness is merged but its manual dispatch and App-created marker PR remain pending. Do not activate the ruleset until the marker PR has passed both required checks; then test that pending/failed checks block merges.
 
 ## Separate deployment-secret status
 
@@ -98,6 +111,4 @@ The current main remains unprotected and the rulesets endpoint still returns zer
 
 در ۹ نوامبر ۲۰۲۶، شاخهٔ `main` همچنان بدون محافظت است و هیچ Ruleset فعالی برای مخزن ثبت نشده است. PR شمارهٔ ۲۸ سه گردش‌کار انتشار تصویر را از نوشتن مستقیم روی `main` به ساخت PR با GitHub App محدود به همین مخزن منتقل کرد. توکن پیش‌فرض Actions فقط‌خواندنی است و در نبود Secretهای لازم، ناشرها بدون انتشار تصویر متوقف می‌شوند.
 
-پس از نصب App اختصاصی و ثبت دو Secret خصوصی، هر سه اجرای دستی موفق شدند و توکن موقت GitHub App ساختند. بااین‌حال، تصاویر تأییدشده از قبل با فایل‌های موجود در `main` یکسان بودند؛ بنابراین هیچ شاخهٔ خودکاری یا PR تازه‌ای ساخته نشد. این نتیجه احراز هویت و ساخت توکن را تأیید می‌کند، نه مسیر واقعی نوشتن شاخه و ایجاد PR را.
-
-برای اثبات نهایی، باید یک تغییر واقعی در تصاویر تأییدشده و مورد تأیید مالک وجود داشته باشد تا ناشر بتواند PR بسازد و CI و Browser QA روی همان PR اجرا شوند. تا آن زمان Ruleset شاخهٔ `main` نباید فعال شود و وضعیت پلتفرم همچنان **Pre-alpha / Phase 7** است.
+پس از نصب App و ثبت دو Secret، هر سه ناشر تصویر توکن موقت ساختند؛ اما چون تصاویر تأییدشده با فایل‌های موجود برابر بودند، هیچ PR تصویری ایجاد نشد. برای آزمودن امن مجوز نوشتن، PR شمارهٔ ۳۲ یک گردش‌کار دستی اضافه کرده که فقط فایل نشانگر غیرمحصولی را تغییر می‌دهد. این گردش‌کار هنوز باید از شاخهٔ `main` اجرا شود و PR حاصل، CI و Browser QA را بگذراند. تا آن زمان Ruleset شاخهٔ `main` فعال نمی‌شود و وضعیت پلتفرم همچنان **Pre-alpha / Phase 7** است.

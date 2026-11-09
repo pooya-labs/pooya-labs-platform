@@ -1,3 +1,11 @@
+## Latest verified main checkpoint — App permission smoke harness merged (2026-11-09)
+
+PR [#32](https://github.com/pooya-labs/pooya-labs-platform/pull/32) merged as [`7e2e5a2`](https://github.com/pooya-labs/pooya-labs-platform/commit/7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c). It adds the manual-only workflow [GitHub App Publisher Permission Smoke](https://github.com/pooya-labs/pooya-labs-platform/actions/workflows/app-publisher-smoke.yml), which uses the dedicated App to create a PR containing only `.github/app-publisher-smoke/latest-run.md`. No application code, public/product screenshots, or deployment is changed.
+
+PR Repository CI [42635400246](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400246) passed 112/112 tests. PR Browser QA [42635400130](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400130) passed 18/18 routes and 36/36 viewport checks, with zero failures and zero confirmed axe violations; 36 incomplete contrast checks remain manual. It collected 20 performance samples per host with zero failures; report artifact [13683600592](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400130/artifacts/13683600592). Main CI [42635961927](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635961927) passed on exact main `7e2e5a2`.
+
+**Next owner action:** open the workflow link above, click **Run workflow**, keep branch `main`, and click the green **Run workflow** button. The workflow should create a PR titled `test(platform): verify GitHub App PR creation`. Then check that Repository CI and Portfolio Browser QA pass on that App-created PR. Do not merge it until both checks pass. Once merged, enable and test the `main` ruleset with those required checks. The workflow inventory now contains 11 files. The platform remains **pre-alpha / Phase 7**; no V1 tag or release.
+
 ## Latest verified main checkpoint — App activation and publisher smoke runs (2026-11-09)
 
 The owner confirmed the dedicated GitHub App is installed only on `pooya-labs/pooya-labs-platform` and both private Actions secrets are configured. The three manual dispatches completed successfully: reviewed ORBIT interface [42631761203](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42631761203), portfolio captures [42632714049](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42632714049), and full-page captures [42632732364](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42632732364).
@@ -18,7 +26,7 @@ PR #24 changed documentation/state only. The latest verified application deploym
 
 **Task ID:** P7-13  
 **Checkpoint date:** 2026-11-09  
-The latest verified `main` checkpoint is PR #28 at `01749d7` (see the new checkpoint above). The latest confirmed public application bundle remains GitHub Pages commit `558970f`; PR #28 changed workflows/tests only and did not alter or deploy the app bundle.  
+The latest verified `main` checkpoint is PR #32 at `7e2e5a2` (see the new checkpoint above). The latest confirmed public application bundle remains GitHub Pages commit `558970f`; PR #28 changed workflows/tests only and did not alter or deploy the app bundle.  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
 
 ## Owner App activation and smoke verification — 2026-11-09
@@ -37,7 +45,7 @@ PR #22 merged as `a009b4c65b8ea964b4b43f39ed636f86d56ffe33`. PR CI [42524475237]
 - PR #28 removed direct-to-`main` publisher writes. The owner has since configured the dedicated App and secrets; all three manual dispatches succeeded and created App installation tokens, but no PR was needed because there was no image diff.
 - See [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md) for evidence, observed check names, and the owner-side setup procedure.
 
-**Next atomic task:** use the next genuine owner-approved capture change to exercise a publisher's changed-file path; verify an App-created automation branch/PR and passing Repository CI plus Portfolio Browser QA on that exact PR. Do not fabricate a diff. Only after this real PR proof should the `main` ruleset be activated and tested against pending/failed checks. Keep Phase 7 open for manual contrast, device, content, crawler, and rollback gates.
+**Next atomic task:** dispatch the merged GitHub App Publisher Permission Smoke workflow from `main`; verify its marker-only App-created PR and passing Repository CI plus Portfolio Browser QA, then merge it and configure/test the `main` ruleset against pending/failed checks. Do not fabricate a screenshot diff; the next genuine owner-approved capture change will separately exercise a real image-publisher PR. Keep Phase 7 open for manual contrast, device, content, crawler, and rollback gates.
 
 ## Post-merge verification — 2026-11-09
 

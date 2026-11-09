@@ -1,3 +1,12 @@
+## GitHub App permission smoke harness merged — owner dispatch pending (2026-11-09)
+
+- PR [#32](https://github.com/pooya-labs/pooya-labs-platform/pull/32) merged as [`7e2e5a2`](https://github.com/pooya-labs/pooya-labs-platform/commit/7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c).
+- Added [GitHub App Publisher Permission Smoke](https://github.com/pooya-labs/pooya-labs-platform/actions/workflows/app-publisher-smoke.yml). It is manual-only, requires dispatch from `main`, uses the dedicated repository-scoped App token, and stages only `.github/app-publisher-smoke/latest-run.md`. It does not touch app source, product screenshots, public assets, customer data, credentials, or deployment.
+- PR CI [42635400246](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400246) passed **112/112 tests**; Browser QA [42635400130](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400130) passed 18/18 routes and 36/36 viewports, zero failures and zero confirmed axe violations; 36 contrast checks remain manual. Twenty performance samples per host completed with no failures; artifact [13683600592](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400130/artifacts/13683600592).
+- Post-merge main CI [42635961927](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635961927) passed on exact main `7e2e5a2`.
+- **Owner action pending:** manually run the workflow from `main`, verify that it opens the marker-only PR, and wait for Repository CI plus Browser QA on that PR. Merge only after both checks pass; then configure and test the main ruleset.
+- The repository workflow inventory now contains 11 files. The main branch remains unprotected with zero rulesets; the platform remains **pre-alpha / Phase 7**, with no V1 tag or public app deployment claimed.
+
 ## Dedicated GitHub App activation and publisher smoke verification (2026-11-09)
 
 - The owner confirmed the dedicated `Pooya Labs Capture Publisher` App is installed only on `pooya-labs/pooya-labs-platform` and both private Actions secrets are configured.
