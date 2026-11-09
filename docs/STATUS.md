@@ -1,3 +1,13 @@
+## Latest verified governance checkpoint — active main ruleset (2026-11-09)
+
+- The active repository ruleset [Protect main — PR + CI](https://github.com/pooya-labs/pooya-labs-platform/rules/26861856) targets only `refs/heads/main`. It requires a PR and the exact GitHub Actions checks `Typecheck, three-target build, and contract tests` and `Chromium responsive and keyboard smoke`; strict status checks are enabled.
+- Deletion and non-fast-forward updates are blocked; required approvals are zero for the single-maintainer workflow; the bypass list is empty and the API reports `current_user_can_bypass: never`.
+- GitHub reports `main` as protected under the ruleset. Classic branch-protection `protection.enabled` remains false because this is a repository ruleset, not classic branch protection.
+- The current repository connection successfully created a new topic branch after ruleset activation. The in-progress docs-only PR verifies branch writes, PR creation, both required checks, and the standard merge path. No direct push to `main` is attempted.
+- The dedicated GitHub App proof remains complete: PR #34 was created by `pooya-labs-capture-publisher[bot]`, passed Repository CI and Browser QA, and merged as `42d12a1`. The capture publishers still have no changed-image PR because approved files were already current; no screenshot publication is claimed.
+- Post-merge Repository CI [42639648418](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42639648418) passed on `c65fb4d`.
+- The platform remains **pre-alpha / Phase 7**, with no V1 release. Manual accessibility, device, owner content/media, external social-crawler, deployment/rollback, and Phase 8–10 gates remain open.
+
 ## GitHub App PR creation verified — smoke PR merged (2026-11-09)
 
 - The dedicated `Pooya Labs Capture Publisher` GitHub App completed the manual permission smoke run [42637851827](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637851827) successfully. Token creation, marker preparation, App-authenticated branch push, PR creation, and the final PR URL assertion all passed.
