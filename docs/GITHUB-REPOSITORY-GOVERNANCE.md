@@ -3,22 +3,54 @@
 **Audit date:** 9 November 2026  
 **Repository:** `pooya-labs/pooya-labs-platform`  
 **Audited default branch:** `main`  
-**Audited main HEAD:** [`42d12a16354b`](https://github.com/pooya-labs/pooya-labs-platform/commit/42d12a16354b4fae2d88258c523401fd091ce532)
+**Audited main HEAD before this documentation PR:** [`c65fb4d68143`](https://github.com/pooya-labs/pooya-labs-platform/commit/c65fb4d68143bf65930c766e7149749dc6d01df7)
 
 ## Executive findings
 
-- GitHub reports `main` as **unprotected**: `protected: false`, branch protection disabled, and no required status checks.
-- The repository rulesets API returned **zero rulesets**. This was rechecked against the current main after PR #28 merged.
-- App-created smoke PR [#34](https://github.com/pooya-labs/pooya-labs-platform/pull/34) was authored by `pooya-labs-capture-publisher[bot]`, changed only the non-product marker file, passed Repository CI [42637894225](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894225) and Browser QA [42637894236](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894236), and merged as `42d12a1`.
-- The current published application bundle is still the earlier GitHub Pages app commit `558970f`; PRs #28 and #32 changed workflows/tests only. No new application deployment is claimed.
-- No repository settings or secrets were changed as part of this work.
+- The active repository ruleset **Protect main — PR + CI** (ID `26861856`) targets only `refs/heads/main` and has enforcement set to `active`.
+- The ruleset requires a pull request and both observed GitHub Actions checks: `Typecheck, three-target build, and contract tests` and `Chromium responsive and keyboard smoke`. Strict status-check policy is enabled, so the branch must be up to date with its base.
+- The ruleset blocks branch deletion and non-fast-forward updates. Its bypass-actor list is empty; the API reports `current_user_can_bypass: never`. Required approvals are set to zero for this single-maintainer repository; Pooya must personally review each PR before merging.
+- GitHub's rulesets endpoint confirms the rule is active. The `main` branch endpoint reports `protected: true`; its classic branch-protection `protection.enabled` field remains false because this protection is implemented as a repository ruleset, not classic branch protection.
+- The same repository connection still reads repository files and can create working branches and PRs. A new docs-only working branch was successfully created after the ruleset became active; no App installation, Actions secret, or repository integration permission was changed.
+- The dedicated GitHub App's PR-writing path remains proven by App-created [PR #34](https://github.com/pooya-labs/pooya-labs-platform/pull/34), merged as `42d12a1`. This App proof and the active ruleset are separate from the current connector's branch/PR path; both should remain available.
+- Latest post-merge Repository CI on `main` passed as [run 42639648418](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42639648418) on `c65fb4d`.
+- The public application bundle has not changed in the governance/docs-only merges. The latest confirmed deployed app revision remains the earlier GitHub Pages build `558970f`; do not claim that a documentation merge redeployed the application.
+- The platform remains **pre-alpha / Phase 7**. Manual contrast, screen-reader, keyboard, physical-device, owner content/media, external social-crawler, rollback, and later phase gates remain open. No V1 tag or production-release claim is made.
+
+## Active main ruleset — verified 2026-11-09
+
+The repository Rulesets API returned the following effective configuration for ruleset [`26861856`](https://github.com/pooya-labs/pooya-labs-platform/rules/26861856):
+
+| Setting | Verified value |
+|---|---|
+| Name / enforcement | `Protect main — PR + CI` / `active` |
+| Target | `refs/heads/main` only |
+| Pull request | Required |
+| Required approvals | 0 |
+| Required status checks | The two exact contexts listed above |
+| Strict status checks | Enabled |
+| Deletion / non-fast-forward | Blocked |
+| Bypass actors | Empty |
+| Current user bypass | `never` |
+
+The ruleset also contains a branch-creation restriction scoped to the `main` ref. It does not target other branch names. A normal working branch was successfully created after activation; the current PR will additionally verify branch updates, PR creation, CI checks, and the regular merge path.
+
+**What is and is not tested:** ruleset configuration and its exact required contexts are verified from the API. The normal passing-check merge path will be considered proven only after the current docs PR completes both required checks and is merged. We are not creating an intentionally failing PR to test a blocked merge; pending/failed-check enforcement remains an unexercised negative test.
+
+## Current connector and GitHub App boundaries
+
+- Work on `main` only through a topic branch and a pull request. Never attempt a direct push to `main`.
+- Keep the App installation limited to `pooya-labs/pooya-labs-platform`; its permissions remain `contents: write` and `pull-requests: write` only for the dedicated capture workflow.
+- Keep App credentials in Actions secrets. Never copy the private key into repository files, issues, logs, or chat.
+- Do not add the ChatGPT connection or capture App to a bypass list. Neither needs to bypass the PR and check requirements.
+- Review each proposed diff, wait for all required checks to pass, and merge through the normal PR path.
 
 ## GitHub App branch-push and PR-creation proof — PR #34
 
-- Manual smoke run [42637851827](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637851827) completed successfully, including App installation-token creation, branch push, PR creation, and the required PR URL assertion.
+- Manual smoke run [42637851827](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637851827) completed successfully, including App installation-token creation, branch push, PR creation, and the final PR URL assertion.
 - The App bot `pooya-labs-capture-publisher[bot]` created [PR #34](https://github.com/pooya-labs/pooya-labs-platform/pull/34) from `automation/app-publisher-permission-smoke`. The only changed file was `.github/app-publisher-smoke/latest-run.md`; 8 additions and 0 deletions.
-- Repository CI [42637894225](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894225) and Browser QA [42637894236](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894236) both passed on PR head `e4611d8`. Browser QA uploaded artifact [13682859892](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894236/artifacts/13682859892).
-- PR #34 was squash-merged as [`42d12a1`](https://github.com/pooya-labs/pooya-labs-platform/commit/42d12a16354b4fae2d88258c523401fd091ce532). The marker is now present on `main`.
+- Repository CI [42637894225](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894225) and Browser QA [42637894236](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894236) both passed on PR head `e4611d8`. Browser QA artifact: [13682859892](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894236/artifacts/13682859892).
+- PR #34 was squash-merged as [`42d12a1`](https://github.com/pooya-labs/pooya-labs-platform/commit/42d12a16354b4fae2d88258c523401fd091ce532).
 - This proves App-authenticated branch push and PR creation. It does not prove that a reviewed-capture workflow has a new screenshot diff to publish; all three real publishers previously found their approved images already current.
 
 ## Workflow inventory update — 11 workflows
@@ -92,11 +124,11 @@ PR [#32](https://github.com/pooya-labs/pooya-labs-platform/pull/32) merged as [`
 - PR CI [42635400246](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400246) passed 112/112 tests. PR Browser QA [42635400130](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400130) passed 18/18 routes and 36/36 viewports, zero failures and zero confirmed axe violations; 36 incomplete contrast checks remain manual. Performance recorded 20 samples per host with no failures; report [13683600592](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400130/artifacts/13683600592).
 - Main CI [42635961927](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635961927) passed after merge on `7e2e5a2`.
 
-**Owner dispatch is still pending.** Run the workflow manually from `main`, then confirm that it opens a PR titled `test(platform): verify GitHub App PR creation`. Wait for Repository CI and Portfolio Browser QA on that generated PR, review the marker-only diff, and merge it after both checks pass. The automation branch is configured for deletion on merge.
+**Historical owner dispatch instructions — completed by PR #34.** The workflow was dispatched from `main`; the App created the marker-only PR, both Repository CI and Portfolio Browser QA passed, and the PR was merged as `42d12a1`. See the verified evidence near the top of this document.
 
-## Recommended `main` ruleset — App proof complete; owner activation pending
+## Historical recommendation — ruleset activation completed
 
-The marker-only App permission smoke PR has now been created, passed Repository CI and Browser QA, and been merged. The remaining step is owner activation and verification:
+This section records the earlier owner-side recommendation. It is superseded by the active ruleset verified at the top of this document.
 
 - Target only `main` and set enforcement to **Active**.
 - Require a pull request for changes to `main`.
@@ -108,7 +140,7 @@ The marker-only App permission smoke PR has now been created, passed Repository 
 - With a single maintainer, zero mandatory approvals may be used only if Pooya personally reviews and merges every PR; increase approval requirements when an independent reviewer is available.
 - Test that pending or failed checks block merge and that passing checks permit the normal merge path.
 
-The current main remains unprotected (`protected: false`, protection disabled, no required contexts) and the rulesets endpoint returns zero rulesets. PR #34 and both required checks have passed; therefore the App proof gate is complete. Ruleset activation and the pending/failed-check enforcement test remain owner actions.
+The main ruleset is now active and its exact configuration is recorded above. Pending/failed-check enforcement remains an unexercised negative test; do not create a deliberately failing PR merely to test it.
 
 ## Separate deployment-secret status
 

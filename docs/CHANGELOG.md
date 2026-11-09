@@ -1,3 +1,11 @@
+## 2026-11-09 — Active main PR + CI ruleset verified; connector branch path under test
+
+- The owner activated repository ruleset [Protect main — PR + CI](https://github.com/pooya-labs/pooya-labs-platform/rules/26861856). Its API configuration targets only `refs/heads/main`, requires a pull request and the two observed CI/Browser QA contexts, enforces up-to-date checks, blocks deletion and non-fast-forward updates, and has no bypass actors.
+- The connector successfully created a new topic branch after activation. A docs-only PR is being used to verify branch writes, PR creation, both required checks, and the regular merge path without touching application code or deployment settings.
+- The repository connection, the dedicated GitHub App installation, and its private Actions secrets were not changed. No direct push to `main`, App bypass, or secret change was used.
+- The active ruleset configuration is verified from the GitHub API. A deliberately failing PR has not been created; negative pending/failed-check enforcement remains unexercised.
+- The platform remains pre-alpha / Phase 7; no V1 release or public application deployment is claimed.
+
 ## 2026-11-09 — GitHub App branch-push and PR creation verified
 
 - Dispatched [GitHub App Publisher Permission Smoke](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637851827) from `main`. The run completed successfully through installation-token creation, marker preparation, App-authenticated branch push, PR creation, and final PR URL assertion.
