@@ -1,3 +1,11 @@
+## 2026-11-09 update — reviewed screenshot publisher migration (PR #28)
+
+The Phase 7 source audit from PR #25 remains preserved below. Current main `3a083aa` still contains the old direct-write publishers until PR #28 merges. PR [#28](https://github.com/pooya-labs/pooya-labs-platform/pull/26) migrates the three publisher workflows to scoped GitHub App-backed pull requests.
+
+The code/test checkpoint `7421479` passed Repository CI [42624753678](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42623349335) with 111/111 tests and no failures; lint, format, typecheck, all three builds, dependency audit and credential scan also passed. Browser QA [42624753816](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42623349393) passed 18/18 routes, 36/36 viewports, zero confirmed axe violations and zero failures. Axe still has 36 incomplete checks that require manual contrast/accessibility review. Performance checks passed 20/20 samples on local, GitHub Pages and Cloudflare Pages; report [artifact 13678551079](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42623349393/artifacts/13676544569).
+
+A documentation-only commit followed that tested code checkpoint. Revalidate CI and Browser QA on the final rebased PR head before merging. App installation, private repository secrets, first live publisher PRs and the active `main` ruleset remain owner-side gates. No settings or secrets have been changed.
+
 # GitHub Repository Governance — Phase 7
 
 **Audit date:** 2026-11-09  
