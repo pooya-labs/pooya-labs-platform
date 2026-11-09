@@ -1,3 +1,14 @@
+## PR #28 merged — reviewed-capture publisher hardening and runtime proof (2026-11-09)
+
+- PR [#28](https://github.com/pooya-labs/pooya-labs-platform/pull/28) merged to `main` as [`01749d7`](https://github.com/pooya-labs/pooya-labs-platform/commit/01749d717f6e31a1096cde91ff7773a9b58e1626).
+- All three reviewed-capture publishers now use a single-repository, least-privilege GitHub App token to open/update PRs; default Actions token is read-only and checkout credentials are not persisted. No direct-push fallback remains.
+- PR Repository CI [42624753678](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753678) passed. PR Browser QA [42624753816](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753816) passed 18/18 routes, 36/36 viewport checks, zero failures and zero confirmed axe violations. 36 color-contrast records remain incomplete for human review, not passed. Performance checks completed 20 samples each on local build, GitHub Pages and Cloudflare Pages with zero failures.
+- Post-merge publisher runs all completed successfully in fail-closed mode: portfolio [42625390767](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390767), full-page [42625390703](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390703), reviewed interface [42625390732](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390732). All three skipped token creation and PR creation because the App secrets are not configured and confirmed no images were published or pushed to main.
+- The App is not yet installed, the two repository secrets are absent, and the main ruleset is still not active. Do not claim real App-authenticated publishing until all three manual runs have created reviewable PRs and their required checks have been validated.
+- Post-merge Repository CI [42625390685](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390685) was queued at the time of this checkpoint; update this record with its final conclusion before closing Phase 7.
+- The public app bundle remains the prior GitHub Pages app commit `558970f`; this workflow-only merge did not deploy an application update.
+- Platform remains **pre-alpha / Phase 7**. No V1 tag or production-release claim.
+
 ## Phase 7 source refresh and PR #24 merge — 2026-11-09
 
 - PR [#24](https://github.com/pooya-labs/pooya-labs-platform/pull/24) merged to `main` as [`4482c96`](https://github.com/pooya-labs/pooya-labs-platform/commit/4482c96c6a6a8ec2548c8f37210c2f4674f617b2). Merged-main Repository CI [42621840105](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42621840105) passed the typecheck, GitHub Pages and Apps Script builds, Cloudflare build, dependency audit, credential scan, and repository contract tests.
