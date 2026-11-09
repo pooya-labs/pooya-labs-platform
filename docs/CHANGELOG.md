@@ -1,3 +1,12 @@
+## 2026-11-09 — GitHub App branch-push and PR creation verified
+
+- Dispatched [GitHub App Publisher Permission Smoke](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637851827) from `main`. The run completed successfully through installation-token creation, marker preparation, App-authenticated branch push, PR creation, and final PR URL assertion.
+- The dedicated bot `pooya-labs-capture-publisher[bot]` created [PR #34](https://github.com/pooya-labs/pooya-labs-platform/pull/34). The PR changed only `.github/app-publisher-smoke/latest-run.md` (8 additions, 0 deletions); no product source, screenshots, public assets, independent repositories, credentials, or deployments changed.
+- Repository CI [42637894225](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894225) and Portfolio Browser QA [42637894236](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894236) both passed on the exact PR head. Browser QA artifact: [13682859892](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894236/artifacts/13682859892).
+- PR #34 was squash-merged as [`42d12a1`](https://github.com/pooya-labs/pooya-labs-platform/commit/42d12a16354b4fae2d88258c523401fd091ce532); its harmless marker is present on `main`.
+- The App's branch-push and PR-creation permissions are now verified. The three real image publishers still have not published a changed capture because all approved image files were already current.
+- `main` remains unprotected and the repository has zero rulesets. Owner must activate and test the PR-required `main` ruleset with both required check contexts. Platform remains pre-alpha / Phase 7; no V1 or production-release claim is made.
+
 ## 2026-11-09 — Safe GitHub App permission smoke harness merged
 
 - Merged [PR #32](https://github.com/pooya-labs/pooya-labs-platform/pull/32) as [`7e2e5a2`](https://github.com/pooya-labs/pooya-labs-platform/commit/7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c). Added the manual-only `.github/workflows/app-publisher-smoke.yml` workflow and its contract test.
