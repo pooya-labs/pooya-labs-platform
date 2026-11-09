@@ -1,3 +1,20 @@
+## 2026-11-09 — Live robots and sitemap responses verified on both static hosts
+
+- Used Cloudflare Browser Rendering to fetch the live GitHub Pages and Cloudflare Pages `robots.txt` and `sitemap.xml` responses.
+- Both robots files returned HTTP 200 with `text/plain; charset=utf-8`, allow `/`, and point to the correct host-specific sitemap URL.
+- Both sitemaps returned HTTP 200 with `application/xml`, parsed as valid `urlset` documents with zero parser errors, contained exactly 17 `loc` entries each, and all URLs matched their respective host origin.
+- The live response-body SEO gate is now closed. Authenticated external social crawler/cache validation remains open.
+- Cloudflare Git-push deployment still lacks a matching `github:push` trigger despite the configured repository, production branch, and path filters; GitHub App remediation remains pending owner approval.
+
+## 2026-11-09 — P7-18 ownership boundary merged and post-merge CI verified
+
+- PR [#41](https://github.com/pooya-labs/pooya-labs-platform/pull/41) squash-merged as [`b1c0ee7`](https://github.com/pooya-labs/pooya-labs-platform/commit/b1c0ee7d49b7977d86d7d6029c3f0d44737642fc). Superseded PR #29 closed.
+- Exact-head Repository CI [42656627537](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42656627537), Browser QA [42656627378](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42656627378), and post-merge main Repository CI [42657496037](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42657496037) all passed.
+- Bilingual exclusive platform ownership intent and ten-repository rights register are now on main. The policy is limited to original platform work and does not transfer third-party, contributor, upstream, or client rights.
+- Read-only Cloudflare API review confirms the expected GitHub source, main production branch, enabled production deployments, and matching paths; native Git-push deployment remains unverified. Official troubleshooting may require checking or reinstalling the Cloudflare GitHub App; no installation or setting was changed.
+- Direct live robots/sitemap response bodies remain unverified because external fetch attempts could not access either host. Apps Script publish run [42651297282](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297282) skipped its publish job.
+- Remaining Phase 7 owner/external gates are recorded in STATUS and NEXT. Static host artifacts still serve app-source revision `97094ed0`; no app source or deployment changed in this docs-only merge.
+
 ## 2026-11-09 — Owner-exclusive platform boundary and Phase 7 evidence refresh
 
 - Record Pooya Goodarzi's explicit instruction that Pooya Labs Platform is the sole project in this portfolio set intended to remain under his exclusive ownership, control, product direction, and use. The statement is intentionally limited to original platform work and does not override third-party, upstream, contributor, or client rights.

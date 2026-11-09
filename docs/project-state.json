@@ -7,9 +7,9 @@
   "phase": 7,
   "phaseName": "Pre-redesign readiness and engineering closeout",
   "currentTask": {
-    "id": "P7-18",
-    "title": "Record owner-confirmed exclusive ownership/use boundary for Pooya Labs Platform and keep Phase 7 evidence current",
-    "status": "Bilingual ownership/IP policy, ten-repository register, README, owner-review packet, STATUS, NEXT, ROADMAP, CHANGELOG, and machine-readable state are prepared on a fresh docs-only branch from main dcc9ec6d. Await required Repository CI and Browser QA checks and owner review before merge. Platform remains pre-alpha / Phase 7. Remaining gates: direct live robots/sitemap response bodies, authenticated social crawler/cache review, human accessibility and physical-device acceptance, final owner content/media approval, Salon Booking privacy permission, native Cloudflare Git-push reliability, Apps Script production publish configuration, and rollback rehearsal."
+    "id": "P7-20",
+    "title": "Close social crawler, manual accessibility/device, owner approval, Git integration, Apps Script, and rollback gates",
+    "status": "P7-18 ownership boundary merged as main b1c0ee7. PR #41 checks and post-merge main CI 42657496037 passed. Live GitHub Pages and Cloudflare Pages robots.txt and sitemap.xml were fetched through Cloudflare Browser Rendering: all four endpoints returned HTTP 200; both robots files point to their own same-host sitemap; both sitemaps parse as urlset with 17 same-origin locations and zero parser errors. Remaining gates: authenticated social crawler/cache validation; human contrast/keyboard/screen-reader and physical Android acceptance; owner content/media and Novels approval; Salon Booking privacy permission; Cloudflare Git integration remediation approval; Apps Script production publish; and controlled rollback. Current app deployment source remains 97094ed0. Release stays pre-alpha / Phase 7."
   },
   "lastCheckpointDate": "2026-11-09",
   "latestVerifiedCodeCommit": "97094ed0cb79f65b0e93bf36d52a2520846e6f1b",
@@ -61,10 +61,10 @@
     "documentationCheckpoint": "passed-run-42496528868-on-b429828f0ed8f967317934fffed32daffa7b6a5f;state-roadmap-next-status-and-ADR-synchronized",
     "githubActionsRuntimeWarning": "none-observed-in-latest-successful-run-42502717615",
     "latestVerifiedTestCommit": "558970fefad25fa16632a8d740eb1a7a32c8f3bd",
-    "latestDocumentationCheckpoint": "main-dcc9ec6d;PR40-merged;Repository-CI-42653901311-passed;owner-exclusive-platform-boundary-documented-in-P7-18-branch-pending-required-checks-and-review",
+    "latestDocumentationCheckpoint": "PR41-merged-b1c0ee7;PR-CI-and-Browser-QA-pass;post-merge-main-CI-42657496037-pass;live-robots-and-sitemap-responses-verified-on-both-hosts",
     "latestDetailedAxeReport": "run-42514976406;zero-confirmed-axe-violations;36-incomplete-axe-checks;artifact-13631024148",
-    "latestRepositoryCiRun": "42653901311;success;main-dcc9ec6d445cc51b2dbe5c543c113ad16db1cbe8",
-    "latestBrowserQaRun": "42653273680;success;PR40-head-6a79750d25bacfbb73914b5f938a677e20d1ff90;18-of-18-routes;36-of-36-viewports;zero-failures;zero-confirmed-axe-violations",
+    "latestRepositoryCiRun": "42657496037;success;main-b1c0ee7d49b7977d86d7d6029c3f0d44737642fc",
+    "latestBrowserQaRun": "42656627378;success;PR41-head-3b82aee866d3667df65adc0dadf53e730a4edad8;responsive-route-metadata-keyboard-and-three-host-performance-steps-passed;artifact-13692501705",
     "latestPagesDeploymentRun": "42651297113",
     "latestCloudflareAttempt": "success-deployment-a075e139-20d1-4587-91a9-b73904499065;main-97094ed0cb79f65b0e93bf36d52a2520846e6f1b;all-five-stages-success;trigger-ad_hoc;production",
     "latestAppsScriptAttempt": "run-42651297282;configuration-check-passed;actual-publish-job-skipped;deployment-remains-unverified",
@@ -96,7 +96,7 @@
     "capturePublisherAppSmoke": "three-manual-dispatches-success;App-installation-token-created-in-all-three;all-approved-artifact-checks-passed;no-diff-so-no-automation-branch-or-PR;no-image-files-published",
     "appPublisherPermissionSmokeContract": "passed-run-42635400246;112-of-112-tests;workflow-manual-only;main-only;marker-file-only",
     "appPublisherPermissionSmokeBrowserQa": "passed-run-42635400130;18-of-18-routes;36-of-36-viewports;zero-confirmed-axe-violations;36-incomplete-contrast-checks-manual;20-performance-samples-per-host;zero-failures;artifact-13683600592",
-    "latestMainRepositoryCi": "passed-run-42653901311;exact-main-dcc9ec6d445cc51b2dbe5c543c113ad16db1cbe8;documentation-only-current-main",
+    "latestMainRepositoryCi": "passed-run-42657496037;exact-main-b1c0ee7d49b7977d86d7d6029c3f0d44737642fc;docs-only",
     "appPublisherPermissionSmokeMainCi": "passed-run-42635961927;exact-main-7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c",
     "mainRuleset": "active-ruleset-26861856;target-refs/heads/main;require-pull-request;strict-required-checks;contexts-Typecheck-three-target-build-and-contract-tests,Chromium-responsive-and-keyboard-smoke;deletion-and-non-fast-forward-blocked;no-bypass-actors;branch-created-after-activation",
     "latestBrowserQaArtifact": "13690630887",
@@ -109,7 +109,45 @@
     "cloudflareGitPushTriggerTest": "matching-path-PR39-merge-did-not-create-github:push-deployment;native-trigger-unverified;ad_hoc-API-fallback-a075e139-success",
     "cloudflareGithubActionsDeploy": "run-42651297288;credential-check-success;deploy-job-skipped;missing-private-CLOUDFLARE_API_TOKEN;no-secret-changed",
     "latestBrowserQaPerformance": "run-42651297251;p75-LCP-local-228ms-github-pages-284ms-cloudflare-384ms;p75-CLS-0-all-three;zero-failures",
-    "liveRobotsSitemapResponseBodies": "pending;direct-fetch-not-available-in-current-runtime;build-contract-verifies-17-canonical-sitemap-locations-and-host-specific-robots-targets"
+    "liveRobotsSitemapResponseBodies": "passed-live-via-Cloudflare-Browser-Rendering-2026-11-09;GitHub-Pages-robots-200-text-plain-correct-sitemap-pointer;Cloudflare-Pages-robots-200-text-plain-correct-sitemap-pointer;both-sitemaps-200-application/xml-valid-urlset-no-parser-errors-17-loc-each-all-same-origin",
+    "cloudflareGitIntegrationReadOnlyAudit": "project-pooya-labs-platform;source-github-pooya-labs/pooya-labs-platform;production-branch-main;production-deployments-enabled;path-includes-apps/platform/**,package.json;matched-source-PR39-no-github:push-deployment;Cloudflare-App-reinstall-remediation-pending-owner-approval",
+    "ownershipPolicyPR": "PR41-merged-b1c0ee7;old-PR29-closed-as-superseded;no-root-LICENSE;no-reuse-license-added",
+    "liveSitemapDetails": {
+      "checkedAt": "2026-11-09T16:47:59Z",
+      "githubPages": {
+        "robots": {
+          "status": 200,
+          "contentType": "text/plain; charset=utf-8",
+          "allowsRoot": true,
+          "pointsToOwnSitemap": true
+        },
+        "sitemap": {
+          "status": 200,
+          "contentType": "application/xml",
+          "xmlRoot": "urlset",
+          "parseError": false,
+          "locationCount": 17,
+          "allLocationsOnExpectedOrigin": true
+        }
+      },
+      "cloudflarePages": {
+        "robots": {
+          "status": 200,
+          "contentType": "text/plain; charset=utf-8",
+          "allowsRoot": true,
+          "pointsToOwnSitemap": true
+        },
+        "sitemap": {
+          "status": 200,
+          "contentType": "application/xml",
+          "xmlRoot": "urlset",
+          "parseError": false,
+          "locationCount": 17,
+          "allLocationsOnExpectedOrigin": true
+        }
+      },
+      "method": "Cloudflare Browser Rendering content endpoint; actual public host responses"
+    }
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
