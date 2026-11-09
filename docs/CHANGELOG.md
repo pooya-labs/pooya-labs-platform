@@ -1,3 +1,11 @@
+## 2026-11-09 — Live robots and sitemap responses verified on both static hosts
+
+- Used Cloudflare Browser Rendering to fetch the live GitHub Pages and Cloudflare Pages `robots.txt` and `sitemap.xml` responses.
+- Both robots files returned HTTP 200 with `text/plain; charset=utf-8`, allow `/`, and point to the correct host-specific sitemap URL.
+- Both sitemaps returned HTTP 200 with `application/xml`, parsed as valid `urlset` documents with zero parser errors, contained exactly 17 `loc` entries each, and all URLs matched their respective host origin.
+- The live response-body SEO gate is now closed. Authenticated external social crawler/cache validation remains open.
+- Cloudflare Git-push deployment still lacks a matching `github:push` trigger despite the configured repository, production branch, and path filters; GitHub App remediation remains pending owner approval.
+
 ## 2026-11-09 — P7-18 ownership boundary merged and post-merge CI verified
 
 - PR [#41](https://github.com/pooya-labs/pooya-labs-platform/pull/41) squash-merged as [`b1c0ee7`](https://github.com/pooya-labs/pooya-labs-platform/commit/b1c0ee7d49b7977d86d7d6029c3f0d44737642fc). Superseded PR #29 closed.
