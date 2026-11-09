@@ -41,7 +41,7 @@
 - Validation and capture workflows declare `contents: read`; GitHub Pages declares only `contents: read`, `pages: write`, and `id-token: write`; the three reviewed-capture publishers declare `contents: write` and `actions: read`. No `actions: write`, `pull_request_target`, or `workflow_run` permission/trigger was found.
 - GitHub reports `main` as unprotected (`protected: false`, `protection.enabled: false`), with no required status contexts. The repository has no rulesets. This is a governance blocker, not a failed CI result.
 - Main Repository CI [42523193131](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42523193131) passed the exact `659189d` head. The latest observed Browser QA [42522600586](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42522600586) passed on PR #18.
-- The three capture publishers currently push verified assets directly to `main`. A PR-required ruleset would block those pushes unless the publisher design is changed or a GitHub Actions bypass is explicitly accepted. See [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md).
+- At this historical audit checkpoint, the three capture publishers still pushed verified assets directly to `main`. PR #28 has since replaced that design with repository-scoped GitHub App PR creation and a fail-closed pause when App secrets are absent. The real App installation and `main` ruleset remain open owner-side gates. See [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md).
 - No branch setting, secret, application source, public bundle, or deployment was changed in this audit.
 
 ## Owner identity and monogram attribution — 2026-11-09
