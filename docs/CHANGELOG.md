@@ -1,3 +1,12 @@
+## 2026-11-09 — Current static-host application parity verified
+
+- GitHub Pages workflow [42526088212](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088212) passed Build and Deploy, publishing Pages artifact `13635093909` for application commit `558970f`.
+- Cloudflare production deployment [`76da3cc2`](https://76da3cc2.pooya-labs-platform.pages.dev/) (ID `76da3cc2-d231-444e-aaaa-d4d4be96f546`) passed all five stages from exact current main `15203f14`.
+- Git comparison confirms that no application source, package, or Pages workflow files changed between the GitHub Pages application commit and current main; both hosts therefore serve the same application source despite different full commit IDs.
+- Cloudflare Browser Rendering verified the homepage and Persian/English ORBIT routes, including localized title/description, canonical, locale, hreflang, 1200×627 OG image, and Pooya Monogram attribution.
+- Browser QA [42644621916](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42644621916) passed 18/18 routes and 36/36 viewports, zero failures, and three-host performance measurements; post-merge main Repository CI [42645102359](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42645102359) passed.
+- Live robots/sitemap bodies, authenticated external social crawlers, native Cloudflare Git push trigger, and production rollback rehearsal remain unverified. No secrets or deployment settings were changed.
+
 ## 2026-11-09 — P7-13 governance verified; eight-project source audit refreshed
 
 - PR [#36](https://github.com/pooya-labs/pooya-labs-platform/pull/36) passed both required checks under the active main ruleset and squash-merged as [`82f975a`](https://github.com/pooya-labs/pooya-labs-platform/commit/82f975a81e352354bbab1995721ae7ba101d4c02). Repository CI [42642712582](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42642712582) and Browser QA [42642712314](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42642712314) passed on PR head `2b56ce1`; post-merge Repository CI [42643318377](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42643318377) passed on the exact main commit.
