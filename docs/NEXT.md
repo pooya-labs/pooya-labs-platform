@@ -1,3 +1,18 @@
+## Latest checkpoint — P7-18 merged; next work is external and owner-gated (2026-11-09 16:43 UTC)
+
+PR [#41](https://github.com/pooya-labs/pooya-labs-platform/pull/41) merged as main `b1c0ee7d49b7977d86d7d6029c3f0d44737642fc`. Its Repository CI [42656627537](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42656627537) and Browser QA [42656627378](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42656627378) passed on the exact PR head; post-merge Repository CI [42657496037](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42657496037) passed on exact current main. PR #29 was closed as superseded. Owner-exclusive Pooya Labs Platform scope is now in the bilingual policy, ownership register, README, roadmap, and machine-readable state.
+
+**Next actions, ordered by dependency:**
+1. Obtain owner permission for the Cloudflare GitHub App integration remediation. Read-only API confirms the expected source repository, `main` production branch, enabled production deployment, and `apps/platform/**` path filter. The matching-path PR #39 still did not trigger deployment. Cloudflare's documented troubleshooting route is **Workers & Pages → project → Settings → Builds → Manage under Git Repository**; reinstalling the Cloudflare Workers and Pages GitHub App may disrupt the integration, so do not uninstall/reinstall without explicit approval. See [Cloudflare Git integration troubleshooting](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/).
+2. Re-attempt direct GET response-body verification for live `robots.txt` and `sitemap.xml` on GitHub Pages and Cloudflare Pages. Previous external fetch attempts were inaccessible; do not mark these endpoints verified from build contracts alone.
+3. Validate representative social cards using authenticated LinkedIn/Facebook crawler tools and refresh caches where necessary.
+4. Complete human contrast, keyboard-only, and screen-reader review in Persian/English and both themes; confirm on a physical Android device.
+5. Obtain owner sign-off for biography, featured-project order, project roles/contributions, images/media, and whether the Novels library remains empty. Obtain Salon Booking owner's permission for any sensitive/client-owned public case-study media.
+6. Resolve the Apps Script production publish configuration. Current run [42651297282](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297282) passed its configuration check but skipped the publish job; do not claim a new deployment or alter deployment secrets without owner action.
+7. Rehearse the documented Pages/Cloudflare rollback only in an explicitly owner-approved controlled window.
+
+Current application artifacts on both static hosts are based on app-source revision `97094ed0`; documentation-only merges do not require redeployment. Do not start Phase 8 or tag V1 until mandatory Phase 7 gates close. Current status: **pre-alpha / Phase 7**.
+
 ## Latest checkpoint — Phase 7 remains open; owner-exclusive boundary captured (2026-11-09 16:22 UTC)
 
 Current `main` is `dcc9ec6d445cc51b2dbe5c543c113ad16db1cbe8`; exact-main Repository CI [42653901311](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42653901311) passed. The previous merged docs PR's Browser QA [42653273680](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42653273680) passed on PR #40 head `6a79750d`. Both public static hosts continue to serve application source revision `97094ed0`; subsequent main changes are documentation-only.
