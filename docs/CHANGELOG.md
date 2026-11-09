@@ -1,3 +1,12 @@
+## 2026-11-09 — Dedicated GitHub App activated; three publisher dispatches verified
+
+- The owner confirmed the dedicated `Pooya Labs Capture Publisher` App was installed for `pooya-labs/pooya-labs-platform` only and added the private Actions secrets `CAPTURE_PUBLISHER_APP_ID` and `CAPTURE_PUBLISHER_APP_PRIVATE_KEY`. The workflows themselves request an installation token restricted to this repository.
+- All three manual publisher dispatches completed successfully: reviewed ORBIT interface captures [42631761203](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42631761203), portfolio captures [42632714049](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42632714049), and full-page portfolio captures [42632732364](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42632732364).
+- Each run validated its approval manifest and PNG integrity, detected both App secrets, and successfully generated a short-lived GitHub App installation token. The token-creation step completed successfully in all three runs.
+- The PR action also completed successfully, but all three runs reported `pull-request-operation = none`: each approved image already matched the committed destination, so there was no diff, no automation branch was pushed, and no new PR was opened. No image files were changed or published.
+- This verifies App credential pairing, installation-token generation, and the no-diff path. It does **not** yet prove a real App-authenticated branch push/PR creation or downstream CI/Browser QA on a publisher-generated PR. Do not modify or fabricate approved images merely to force a diff; use the next genuine owner-approved capture change for that proof.
+- The `main` ruleset remains inactive until a real changed-capture PR has passed Repository CI and Portfolio Browser QA. The platform remains **pre-alpha / Phase 7**; no V1 tag or release is claimed.
+
 ## 2026-11-09 — App-backed capture publishers merged and fail-closed runtime verified
 
 - Merged [PR #28](https://github.com/pooya-labs/pooya-labs-platform/pull/28) as [`01749d7`](https://github.com/pooya-labs/pooya-labs-platform/commit/01749d717f6e31a1096cde91ff7773a9b58e1626). The three reviewed image publishers now use repository-scoped GitHub App PR creation instead of direct pushes to `main`.
