@@ -41,35 +41,37 @@ The code/test PR head was [`7421479`](https://github.com/pooya-labs/pooya-labs-p
 - Thirty-six axe color-contrast checks remain incomplete because layered gradients, pseudo-elements, overlays, and non-text-only elements prevent automated contrast calculation. They are not recorded as passes and still require visual review.
 - Performance QA measured 20 samples each on local build, GitHub Pages, and Cloudflare Pages, with no failed samples. Report artifact: [13678551079](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753816/artifacts/13678551079).
 
-### Post-merge fail-closed runtime verification
+### Post-merge fail-closed runtime verification — before App setup
 
-All three publisher workflows were triggered automatically by the PR #28 merge and completed successfully:
+Immediately after PR #28 merged, all three publishers ran and paused safely because the owner had not yet configured the App secrets:
 
 | Publisher | Run | Result |
 |---|---|---|
-| Portfolio captures | [42625390767](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390767) | App configuration missing; token and PR steps skipped; no image files published |
-| Full-page captures | [42625390703](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390703) | App configuration missing; token and PR steps skipped; no image files published |
-| Reviewed interface captures | [42625390732](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390732) | App configuration missing; token and PR steps skipped; no image files published |
+| Portfolio captures | [42625390767](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390767) | App secrets absent; token and PR steps skipped; no image files published |
+| Full-page captures | [42625390703](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390703) | App secrets absent; token and PR steps skipped; no image files published |
+| Reviewed interface captures | [42625390732](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390732) | App secrets absent; token and PR steps skipped; no image files published |
 
-The workflow logs explicitly recorded the pause and confirmed that no files were published or pushed to `main`. This proves the safe failure path; it does **not** prove a live App installation or real App-authenticated PR creation. No images were published by these runs.
+These are historical pre-activation runs and are retained as evidence of the fail-closed path.
 
-## Owner-side GitHub App activation
+### Owner App setup and manual publisher dispatches — 9 November 2026
 
-The following private repository secrets are required:
+The owner confirmed that the dedicated `Pooya Labs Capture Publisher` installation is limited to `pooya-labs/pooya-labs-platform` and that both private Actions secrets are configured. Each workflow requests a short-lived installation token for this repository only, with `contents: write` and `pull-requests: write`.
 
-- `CAPTURE_PUBLISHER_APP_ID`: the GitHub App ID.
-- `CAPTURE_PUBLISHER_APP_PRIVATE_KEY`: the generated PEM private key, preserving line breaks.
+All three manual dispatches completed successfully:
 
-Recommended App setup:
+| Publisher | Manual run | App token | PR action result |
+|---|---|---|---|
+| Reviewed ORBIT interface captures | [42631761203](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42631761203) | Created successfully | No diff; no PR needed |
+| Portfolio captures | [42632714049](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42632714049) | Created successfully | No diff; no PR needed |
+| Full-page portfolio captures | [42632732364](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42632732364) | Created successfully | No diff; no PR needed |
 
-1. Create a dedicated GitHub App and install it only on `pooya-labs/pooya-labs-platform`.
-2. Grant only repository **Contents: Read and write** and **Pull requests: Read and write**; keep Metadata at its default read-only permission.
-3. Add the two values as private Actions secrets under **Settings → Secrets and variables → Actions**. Never put the private key in a repository file, issue, pull request, or workflow log.
-4. Manually dispatch each of the three publisher workflows.
-5. Confirm that each run opens or updates its dedicated `automation/...` PR branch.
-6. Verify Repository CI and Portfolio Browser QA run successfully on each generated PR. Review the exact image diff before merging.
+For every run, the approval manifest, source artifact, PNG signature, dimensions (where specified), byte size, destination containment, and SHA-256 checks passed. Both secret values were detected, the GitHub App installation-token action succeeded, and the pull-request action completed without error.
 
-Until these steps pass, the real App-backed publisher is not considered live and the publisher jobs will pause safely.
+The action logs show `pull-request-operation = none` and `No publication diff was required; approved captures already match main.` Consequently, no automation branch was pushed and no publisher-generated PR was opened. No image files were changed or published. This proves the App credentials and installation-token flow, but the write path for a real PR remains unexercised because GitHub had no diff to publish.
+
+### Remaining publisher proof
+
+Use the next genuine owner-approved capture update to exercise one publisher's changed-file path. Confirm that the App pushes its automation branch, opens a PR, and that Repository CI plus Portfolio Browser QA pass on that exact PR. Do not fabricate or alter screenshot assets only to create a test diff. Repeat for the other publisher families when their approved artifacts genuinely change.
 
 ## Recommended `main` ruleset — do not activate before App proof
 
@@ -96,6 +98,6 @@ The current main remains unprotected and the rulesets endpoint still returns zer
 
 در ۹ نوامبر ۲۰۲۶، شاخهٔ `main` همچنان بدون محافظت است و هیچ Ruleset فعالی برای مخزن ثبت نشده است. PR شمارهٔ ۲۸ سه گردش‌کار انتشار تصویر را از نوشتن مستقیم روی `main` به ساخت PR با GitHub App محدود به همین مخزن منتقل کرد. توکن پیش‌فرض Actions فقط‌خواندنی است و در نبود Secretهای لازم، ناشرها بدون انتشار تصویر متوقف می‌شوند.
 
-پس از ادغام، هر سه ناشر با موفقیت اجرا شدند و به‌دلیل نبود تنظیمات App، ساخت توکن و PR را رد کردند؛ گزارش اجراها تأیید می‌کند هیچ تصویری روی `main` نوشته نشد. برای فعال‌شدن انتشار واقعی، باید App اختصاصی فقط روی همین مخزن نصب و دو Secret خصوصی `CAPTURE_PUBLISHER_APP_ID` و `CAPTURE_PUBLISHER_APP_PRIVATE_KEY` ثبت شوند. سپس هر سه گردش‌کار باید دستی اجرا شوند و PRهای ساخته‌شده، CI و Browser QA را با موفقیت بگذرانند.
+پس از نصب App اختصاصی و ثبت دو Secret خصوصی، هر سه اجرای دستی موفق شدند و توکن موقت GitHub App ساختند. بااین‌حال، تصاویر تأییدشده از قبل با فایل‌های موجود در `main` یکسان بودند؛ بنابراین هیچ شاخهٔ خودکاری یا PR تازه‌ای ساخته نشد. این نتیجه احراز هویت و ساخت توکن را تأیید می‌کند، نه مسیر واقعی نوشتن شاخه و ایجاد PR را.
 
-پس از اثبات مسیر واقعی App، می‌توان Ruleset شاخهٔ `main` را با الزام PR و دو check مشاهده‌شده فعال و آزمایش کرد. تا آن زمان، دروازهٔ حاکمیت باز می‌ماند و وضعیت پلتفرم همچنان **Pre-alpha / Phase 7** است.
+برای اثبات نهایی، باید یک تغییر واقعی در تصاویر تأییدشده و مورد تأیید مالک وجود داشته باشد تا ناشر بتواند PR بسازد و CI و Browser QA روی همان PR اجرا شوند. تا آن زمان Ruleset شاخهٔ `main` نباید فعال شود و وضعیت پلتفرم همچنان **Pre-alpha / Phase 7** است.
