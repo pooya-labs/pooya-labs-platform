@@ -1,36 +1,37 @@
-## Latest verified host parity — 2026-11-09 17:16 UTC
+## Latest verified host state — PR #46 main QA passed; Cloudflare and Apps Script publish jobs remain skipped (2026-11-09)
 
-**Current repository main:** [`d4402211cc6fcca59f143018574bd3cd9cf64aab`](https://github.com/pooya-labs/pooya-labs-platform/commit/d4402211cc6fcca59f143018574bd3cd9cf64aab), a documentation-only merge from PR #44. Exact-head Repository CI [42661281955](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42661281955) and Browser QA [42661281908](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42661281908) passed; post-merge main CI [42661735358](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42661735358) passed. The latest **application source deployed to both hosts** remains `e5ef638917d3204025d062af939cf01a28689d3a`; PR #44 did not change app code.
+**Repository main:** [`5321d3f44298a9d81d3fbc8f0712d4bc9acb8962`](https://github.com/pooya-labs/pooya-labs-platform/commit/5321d3f44298a9d81d3fbc8f0712d4bc9acb8962), merged from PR [#46](https://github.com/pooya-labs/pooya-labs-platform/pull/46). The PR adds crawler-specific Browser QA and docs only; no React/UI source file changed.
 
-### GitHub Pages
+### Exact-main verification
 
-- Workflow [42659840309](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840309) passed Build and Deploy on app source `e5ef6389`; artifact `13693239378`. Canonical URL: [https://pooya-labs.github.io/pooya-labs-platform/](https://pooya-labs.github.io/pooya-labs-platform/).
+- Repository CI [42666914377](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42666914377): passed on exact main `5321d3f`.
+- Portfolio Browser QA [42666914164](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42666914164): passed on exact main `5321d3f`; artifact [13697461514](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42666914164/artifacts/13697461514). It passed 18/18 routes, 36/36 desktop/mobile viewports and 34/34 social-crawler checks; zero failures and zero confirmed Axe violations. There are still 36 incomplete Axe contrast checks for human review. Local, GitHub Pages and Cloudflare Pages performance steps also completed successfully.
+- GitHub Pages workflow [42666914116](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42666914116) passed Build and Deploy on exact main `5321d3f`; artifact [13696229308](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42666914116/artifacts/13696229308). Canonical URL: [https://pooya-labs.github.io/pooya-labs-platform/](https://pooya-labs.github.io/pooya-labs-platform/).
 
-### Cloudflare Pages
+### Application-source and host parity
 
-- Production deployment [`ed73cc8e`](https://ed73cc8e.pooya-labs-platform.pages.dev/) (ID `ed73cc8e-7fcb-42b7-8ca0-b6e591f9f160`) passed queue, initialize, clone, build and deploy on the same application source `e5ef6389`. Canonical alias: [https://pooya-labs-platform.pages.dev/](https://pooya-labs-platform.pages.dev/). Trigger is `ad_hoc` through the authorized Cloudflare Pages API.
-- Native Git-push remains unverified: matching-path PR #39 did not create a `github:push` deployment. The Actions deploy workflow skipped due to absent `CLOUDFLARE_API_TOKEN`; the direct API fallback succeeded without changing secrets, installation, or project settings.
+The PR changes only the Browser QA script, its contract test, and documentation. The React/UI application source remains `e5ef638917d3204025d062af939cf01a28689d3a`; the successful GitHub Pages build on `5321d3f` contains the same end-user application source plus the new QA tooling is not shipped as site runtime code.
 
-### Live social metadata and robots/sitemap verification
+- GitHub Pages has a successful fresh build/deploy on main `5321d3f`.
+- Cloudflare workflow [42666914099](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42666914099) passed credential checking but skipped the actual production deploy because the private `CLOUDFLARE_API_TOKEN` secret is absent. No new Cloudflare deployment was created by this workflow.
+- The latest separately verified Cloudflare production deployment remains [`ed73cc8e`](https://ed73cc8e.pooya-labs-platform.pages.dev/) (deployment ID `ed73cc8e-7fcb-42b7-8ca0-b6e591f9f160`), created through the authorized API from application source `e5ef6389`. Canonical alias: [https://pooya-labs-platform.pages.dev/](https://pooya-labs-platform.pages.dev/).
+- Native Cloudflare Git-push deployment remains unverified. The matching-path PR #39 did not create a `github:push` deployment. Do not describe native automatic deployment as operational; remediation/reinstallation remains owner-approval-only.
 
-- Browser-rendered all 17 public routes on both hosts under `LinkedInBot/1.0`: 34 route/host checks, zero failures.
-- Repeated all 17 routes on both hosts under `facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)`: 34 route/host checks, zero failures.
-- Every route returned HTTP 200 HTML with OG title/description, correct canonical host/base path, matching `og:url`, and a same-origin OG image. Every referenced PNG returned HTTP 200 and decoded to 1200×627.
-- This is a Cloudflare Browser Rendering User-Agent simulation, not an authenticated LinkedIn Post Inspector or Meta Sharing Debugger result and not evidence that either platform refreshed cached cards.
-- Both hosts' live `robots.txt` and `sitemap.xml` response bodies remain verified: four HTTP 200 responses; each robots file points to its own sitemap; each valid `urlset` contains 17 same-origin locations.
+### Apps Script boundary
 
-### Host parity and accessibility
+Apps Script production workflow [42666914071](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42666914071) passed its configuration-check job but skipped the stable Web App publish because `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` are not configured. No new Apps Script production version was published or verified. The static portfolio does not depend on Apps Script.
 
-- Both production hosts serve application source `e5ef6389`; the current repository head `d4402211` is docs-only and requires no new deployment.
-- Both live CSS assets contain `--pf-dim:#58675e`, not `#728076`; calculated secondary-text ratios remain 5.50:1, 5.08:1 and 5.96:1 across the page, soft-surface and near-white control backgrounds.
-- Full manual contrast/focus/keyboard/screen-reader review and physical-device acceptance remain open.
+### Social metadata and crawler checks
+
+- The repeatable local Browser QA reads raw HTML under `LinkedInBot/1.0` and Facebook externalhit User-Agents for all 17 public routes (homepage plus eight bilingual project pages): **34/34 checks passed**. It verifies title/description, canonical and `og:url` equality, same-host/base-path OG image URL, and locally built PNG HTTP 200, PNG signature and 1200×627 dimensions.
+- The production-host Cloudflare Browser Rendering audit previously passed all 17 routes on both GitHub Pages and Cloudflare Pages under each User-Agent, with zero failures. The live robots/sitemap response bodies also remain verified on both hosts: four HTTP 200 responses, host-specific sitemap pointers and 17 same-origin sitemap URLs per host.
+- These User-Agent simulations do not prove that LinkedIn or Meta accepted a URL, refreshed a cached card, or displayed it in an authenticated sharing composer. Authenticated LinkedIn Post Inspector and Meta Sharing Debugger checks remain open.
 
 ### Remaining release gates
 
-Apps Script publishing, native Cloudflare Git-push triggering, authenticated share-debugger/cache checks, owner content/media decisions, Salon Booking privacy approval and rollback rehearsal remain open. No destructive rollback was attempted; this runbook is not proof that it was exercised. The platform remains **pre-alpha / Phase 7**.
+Manual contrast/focus/keyboard/screen-reader review; physical Android and representative browser acceptance; owner approval of biography, featured order, role wording and media; Salon Booking privacy permission; authenticated social cache inspection; Cloudflare Git integration remediation; Apps Script production configuration; and controlled rollback rehearsal remain open. The 36 incomplete Axe contrast checks are not passes. No rollback has been executed.
 
-**Scope:** public portfolio on GitHub Pages and Cloudflare Pages. This runbook is separate from the Apps Script proof and does not authorize deployment of independent Workers/D1 projects.
-
+The platform remains **pre-alpha / Phase 7**. This runbook records a completed verification; it does not authorize Phase 8, Phase 9, V1 publication, secret changes, or an unapproved rollback.
 ## Source and current deployment baseline
 
 - Repository: `pooya-labs/pooya-labs-platform`; production source branch: `main`.
