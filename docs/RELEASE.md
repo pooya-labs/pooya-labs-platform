@@ -20,6 +20,8 @@ This checklist governs public portfolio releases. The current release remains **
 
 ## Publishing
 
+- [x] Publish GitHub Pages and Cloudflare Pages independently for exact current main `97094ed0`; Pages run 42651297113 / artifact 13690386196, Cloudflare deployment `a075e139` / API trigger `ad_hoc`.
+
 1. Confirm the main-branch commit has passing required checks.
 2. Publish GitHub Pages and Cloudflare Pages independently; verify each host against the same intended application revision.
 3. Record workflow run IDs, artifact IDs where relevant, and Cloudflare deployment IDs/URLs. A skipped deployment job is not a successful deployment.
