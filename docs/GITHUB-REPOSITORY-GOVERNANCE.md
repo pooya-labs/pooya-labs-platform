@@ -3,75 +3,91 @@
 **Audit date:** 2026-11-09  
 **Repository:** `pooya-labs/pooya-labs-platform`  
 **Audited default branch:** `main`  
-**Observed main HEAD:** [`659189dd99af59154cbfd88ce5f9dcecb23e1e0e`](https://github.com/pooya-labs/pooya-labs-platform/commit/659189dd99af59154cbfd88ce5f9dcecb23e1e0e)
+**Audited main HEAD:** [`4482c96`](https://github.com/pooya-labs/pooya-labs-platform/commit/4482c96c6a6a8ec2548c8f37210c2f4674f617b2)
 
-## Executive findings
+## Current findings
 
-- **Main is not protected.** GitHub's branch endpoint reported `protected: false`, `protection.enabled: false`, and no required status-check contexts.
-- **No repository rulesets were present.** The repository rulesets endpoint returned an empty list.
-- The exact main commit above had a successful Repository CI check: [run 42523193131](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42523193131), job **Typecheck, three-target build, and contract tests**.
-- The latest observed Browser QA passed on PR #18: [run 42522600586](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42522600586), job **Chromium responsive and keyboard smoke**. That run belongs to the PR head, not to main HEAD `659189d`.
-- This audit changed no repository settings, secrets, deployment configuration, application files, or public deployment.
+- GitHub reports `main` as unprotected: `protected: false`, with branch protection disabled.
+- The repository rulesets endpoint returns an empty list.
+- Main Repository CI [42621840105](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42621840105) passed on exact main `4482c96`.
+- Current platform application deployment on GitHub Pages remains the app bundle from `558970f`; PR #24 was documentation/state only.
+- No branch setting, ruleset, repository secret, Cloudflare credential, or Apps Script credential was changed during this work.
 
-The absence of branch protection is a release-governance blocker: successful Actions runs exist, but GitHub is not configured to require those checks before changes reach `main`.
+The missing active `main` ruleset remains a governance blocker: CI checks run, but GitHub does not enforce them before changes reach `main`.
 
-## GitHub Actions permission audit
+## Reviewed-capture publisher hardening — PR #26
 
-All ten workflow files under `.github/workflows/` were inspected on the audited main revision.
+PR [#26](https://github.com/pooya-labs/pooya-labs-platform/pull/26) implements the preferred PR-based path on branch `chore/capture-publishers-app-prs-2026-11-09`.
 
-| Workflow | Declared token permissions | Assessment |
-|---|---|---|
-| `ci.yml` | `contents: read` | Read-only validation |
-| `deploy-cloudflare.yml` | `contents: read` | Read-only checkout; Cloudflare uses a private deployment secret |
-| `deploy-gas.yml` | `contents: read` | Read-only checkout; clasp uses private deployment secrets |
-| `external-gas-browser.yml` | `contents: read` | Read-only browser diagnostic |
-| `portfolio-browser-qa.yml` | `contents: read` | Read-only browser and performance QA |
-| `project-interface-captures.yml` | `contents: read` | Read-only screenshot capture |
-| `pages-platform.yml` | `contents: read`, `pages: write`, `id-token: write` | Deployment-specific Pages/OIDC permissions |
-| `publish-portfolio-fullpage-captures.yml` | `contents: write`, `actions: read` | Downloads and publishes owner-approved capture artifacts |
-| `publish-reviewed-captures.yml` | `contents: write`, `actions: read` | Downloads and publishes owner-approved capture artifacts |
-| `publish-reviewed-portfolio-captures.yml` | `contents: write`, `actions: read` | Downloads and publishes owner-approved capture artifacts |
+- All three reviewed-capture publisher workflows now keep the default Actions token at `contents: read` and `actions: read`.
+- The checkout disables persisted Git credentials.
+- A short-lived GitHub App installation token is scoped to this single repository and only `contents: write` plus `pull-requests: write`.
+- `peter-evans/create-pull-request@v8` opens or updates one stable automation branch per publisher.
+- Original approval-manifest, source-run identity, PNG signature/dimension, path containment, byte-size, and SHA-256 checks remain before PR creation.
+- Each publisher has a manual `workflow_dispatch` trigger.
+- If App secrets are absent, the workflow records that publishing is paused and does not fall back to direct pushes.
 
-The reviewed files declare explicit workflow-level token permissions. The validation/capture workflows remain read-only; the Pages workflow receives only its deployment permissions; and only the three artifact publishers receive repository write access. No `actions: write` permission was found. No `pull_request_target` or `workflow_run` trigger was found in the ten inspected files.
+### Verified checks on the PR head
 
-### Important interaction with branch protection
+The final tested PR head is [`8037631`](https://github.com/pooya-labs/pooya-labs-platform/commit/8037631274fd1d086d1f90c1d68f42015116e8c7).
 
-The three capture-publisher workflows currently commit their checksum-verified assets directly to `main` using `git push origin HEAD:main`. A ruleset that requires every change to arrive through a pull request will block these bot pushes unless a bypass is granted.
+- Repository CI [42623349335](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42623349335) passed: 111/111 contract tests, zero failures, dependency audit, lint/format, typecheck, all three build targets, and credential scan.
+- Portfolio Browser QA [42623349393](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42623349393) passed: 18/18 localized routes, 36/36 viewport checks, zero confirmed axe violations, and zero failures. There are still 36 incomplete axe checks; they are not passes and remain in manual contrast/accessibility review.
+- Cold-route performance checks completed 20/20 measurements each on local build, GitHub Pages, and Cloudflare Pages with zero test failures. Browser report artifact: [13676544569](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42623349393/artifacts/13676544569).
 
-Do not activate a strict PR-required ruleset without first choosing and testing one of these paths:
+The code and tests are green, but the actual App-backed publishing path is **not yet live** because private App credentials have not been configured. PR #26 remains unmerged until final documentation checkpoint and review are complete.
 
-1. **Preferred hardening:** change the publishers to create a reviewable branch/PR using a dedicated GitHub App installation token, and verify that CI and Browser QA run on that PR.
-2. **Compatibility path:** grant the GitHub Actions app a narrowly reviewed ruleset bypass for these publisher writes. This is an application-wide bypass, not a per-workflow exception, so it is broader and should be treated as a security trade-off.
+## Owner-side GitHub App setup
 
-The current workflows have not been changed in this audit. The direct-push behavior remains functional while the main branch is unprotected.
+Create a dedicated GitHub App for the `pooya-labs` owner and install it only on `pooya-labs/pooya-labs-platform`.
 
-## Required owner-side governance setup
+Grant only these repository permissions:
 
-After the publisher path above is resolved, configure a branch ruleset for `main` in **Repository Settings → Rules → Rulesets**.
+| Permission | Access |
+|---|---|
+| Contents | Read and write |
+| Pull requests | Read and write |
+| Metadata | Read-only (GitHub default) |
 
-Recommended baseline:
+No webhook subscription is required for these publisher workflows. Add these repository Actions secrets under **Settings → Secrets and variables → Actions**:
 
-- Target only the `main` branch and set enforcement to **Active**.
-- Require pull requests for normal human changes. For a single-maintainer workflow, zero required approvals is acceptable only if the owner continues to review each PR personally; increase it when an independent reviewer is available.
-- Require these exact check names after confirming they are available in the ruleset picker:
+- `CAPTURE_PUBLISHER_APP_ID`: the App ID.
+- `CAPTURE_PUBLISHER_APP_PRIVATE_KEY`: the generated PEM private key, preserving line breaks.
+
+Never add the private key to a repository file, issue, PR, or workflow log.
+
+After PR #26 is merged and the secrets are saved:
+
+1. Open **Actions** and manually dispatch each of the three publisher workflows.
+2. Confirm each run opens/updates a PR on its dedicated `automation/...` branch.
+3. Confirm Repository CI and Portfolio Browser QA both run on each generated PR.
+4. Review the exact image diff and merge only after both checks pass.
+5. Confirm the merge updates the expected public gallery assets.
+
+Until these steps pass once, keep the governance gate open.
+
+## Recommended `main` ruleset
+
+Activate a ruleset only after the App-backed PR flow has been proven:
+
+- Target only `main`; set enforcement to **Active**.
+- Require pull requests for changes to `main`.
+- Require these exact checks:
   - `Typecheck, three-target build, and contract tests`
   - `Chromium responsive and keyboard smoke`
 - Block force pushes and branch deletion.
-- Keep bypass actors empty where possible. If the artifact-publisher compatibility path is selected, document the GitHub Actions bypass explicitly and recheck which workflows possess `contents: write`.
-- Do not mark the governance gate complete until a test PR demonstrates that required checks block merge when pending/failing and allow merge only after both pass.
+- Keep bypass actors empty. The App writes only to PR branches and does not need to bypass the `main` ruleset.
+- With a single maintainer, zero mandatory approvals may be used if Pooya reviews and merges every PR personally; add independent review requirements when available.
 
-The names above are the observed job/check names, not assumptions about workflow display titles.
+Do not mark this governance gate complete until a test PR proves that pending/failing checks block merge and passing checks permit the normal merge path. The available GitHub connection cannot change repository Settings or create private App credentials on the owner's behalf.
 
-## Separate deployment-secret status
+## Other deployment credentials
 
-The static portfolio does not require Apps Script publishing. The latest recorded Apps Script production workflow skipped its publish job because `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` were not configured. Configure them only if the Apps Script Web App is still an intended release target.
+- Cloudflare Actions publishing requires `CLOUDFLARE_API_TOKEN`. The latest main workflow publish job was skipped because this secret was absent; a previous production deployment was verified separately through the authorized Pages API.
+- Apps Script publishing requires `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID`. The latest publish job was skipped because they were not configured. Apps Script is not required for static portfolio V1 unless that target is explicitly retained.
 
-GitHub Actions Cloudflare publishing also remains credential-gated by the private `CLOUDFLARE_API_TOKEN`; a previous Cloudflare production deployment was completed separately through the authorized Pages API. Do not paste any secret into a PR, issue, or repository file.
+## فارسی — جمع‌بندی
 
-## فارسی — جمع‌بندی ممیزی
+سه ناشر تصاویر تأییدشده از push مستقیم به `main` خارج شده‌اند و در PR شمارهٔ ۲۶ مسیر ساخت درخواست ادغام با GitHub App را جایگزین کرده‌اند. CI و Browser QA روی commit فعلی PR موفق شدند: ۱۱۱ تست از ۱۱۱ تست، ۱۸ مسیر از ۱۸ مسیر، ۳۶ viewport از ۳۶ viewport و بدون خطای تأییدشدهٔ axe.
 
-در بررسی ۹ نوامبر ۲۰۲۶ مشخص شد شاخهٔ `main` محافظت نشده و هیچ Ruleset فعالی برای مخزن وجود ندارد؛ بنابراین با وجود موفقیت CI، گیت‌ها هنوز در تنظیمات GitHub اجباری نشده‌اند.
-
-از میان ۱۰ گردش‌کار Actions، دسترسی‌ها صریح و عمدتاً فقط‌خواندنی هستند. تنها سه گردش‌کار انتشار تصویر مجوز نوشتن محتوا دارند و هر سه فایل‌های تأییدشده را مستقیماً روی `main` ثبت می‌کنند. به همین دلیل، پیش از فعال‌کردن الزام PR باید مسیر انتشار آن‌ها به PR مبتنی بر GitHub App تبدیل شود یا استثنای ربات با آگاهی از دامنهٔ اثر آن انتخاب شود.
-
-این ممیزی صرفاً مستندات را تغییر می‌دهد؛ هیچ تنظیم GitHub، Secret، کد اجرایی یا انتشار عمومی تغییر نکرده است. محافظت شاخه و آزمایش واقعی قواعد همچنان نیازمند اقدام مالک مخزن است.
+برای فعال‌شدن انتشار واقعی تصاویر، باید GitHub App اختصاصی فقط روی همین مخزن نصب و دو Secret خصوصی آن اضافه شوند. پس از اجرای موفق هر سه ناشر و اثبات اجرای checkها، می‌توان Ruleset شاخهٔ `main` را فعال کرد. تا آن زمان شاخه محافظت‌نشده باقی می‌ماند و انتشار تصویر در صورت نبود Secretها متوقف می‌شود.

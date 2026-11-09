@@ -1,3 +1,20 @@
+## Latest checkpoint — capture publisher PR migration verified (2026-11-09)
+
+- PR [#26](https://github.com/pooya-labs/pooya-labs-platform/pull/26) remains open at head [`8037631`](https://github.com/pooya-labs/pooya-labs-platform/commit/8037631274fd1d086d1f90c1d68f42015116e8c7).
+- Repository CI [42623349335](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42623349335) passed: 111/111 contract tests, no dependency advisories at the high threshold, and all lint/format/typecheck/build/security checks successful.
+- Portfolio Browser QA [42623349393](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42623349393) passed: 18/18 routes, 36/36 viewports, zero confirmed axe violations, and zero failures. 36 incomplete axe checks still need human review.
+- Cold-route performance checks passed 20/20 measurements each on local build, GitHub Pages and Cloudflare Pages. Report artifact: [13676544569](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42623349393/artifacts/13676544569).
+- All three reviewed capture publishers now propose GitHub App-backed pull requests rather than pushing directly to main. Their implementation is tested on this branch but not merged or yet exercised against a real App installation.
+- The App secrets and main ruleset are not configured; branch protection remains off. Release stays **pre-alpha / Phase 7**.
+
+## Phase 7 source refresh and PR #24 merge — 2026-11-09
+
+- PR [#24](https://github.com/pooya-labs/pooya-labs-platform/pull/24) merged to `main` as [`4482c96`](https://github.com/pooya-labs/pooya-labs-platform/commit/4482c96c6a6a8ec2548c8f37210c2f4674f617b2). Merged-main Repository CI [42621840105](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42621840105) passed the typecheck, GitHub Pages and Apps Script builds, Cloudflare build, dependency audit, credential scan, and repository contract tests.
+- PR Browser QA [42526817146](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526817146) passed 18/18 routes and 36/36 viewports with zero failures and zero confirmed axe violations. Its 36 incomplete records are all color-contrast reviews that axe could not compute because of pseudo-elements, gradients, overlays, or non-text-only content. They remain manual review items, not passes. The run is on PR head `9f91535`, not on the merged main SHA; no merged-main Browser QA rerun was observed.
+- PR #24 was documentation/state-only. It did not change application bundles or public deployments. The last confirmed GitHub Pages deployment remains run [42526088212](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088212) on application commit `558970f`. Cloudflare publishing remains skipped without `CLOUDFLARE_API_TOKEN`; Apps Script publishing remains skipped without `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID`.
+- The latest read-only upstream source recheck is recorded in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md). AetherFlow main advanced to `cc56560`; GlobalCart main advanced to `ffc51c7` with a catalog-only change not yet observed in a Pages deployment; ORBIT PR #138 advanced to `37ec149`, with its patched candidate matrix passing both architectures but the upstream image scan still failing on Guava 33.6.0-jre / CVE-2026-102554.
+- The platform remains **pre-alpha / Phase 7**. Main governance, human contrast/device acceptance, source/deployment parity, owner content approvals, Phase 8 redesign, Phase 9 integration, and Phase 10 V1 gates remain open. No V1 tag or release was created.
+
 ## Post-merge verification — Pooya Monogram owner identity (2026-11-09)
 
 - PR [#20](https://github.com/pooya-labs/pooya-labs-platform/pull/20) merged as [`558970f`](https://github.com/pooya-labs/pooya-labs-platform/commit/558970fefad25fa16632a8d740eb1a7a32c8f3bd).
