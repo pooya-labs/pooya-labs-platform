@@ -17,7 +17,7 @@ test('manual App permission smoke creates a PR using only a non-product marker f
   assert.match(workflow, /uses: peter-evans\/create-pull-request@v8/);
   assert.match(workflow, /branch: automation\/app-publisher-permission-smoke/);
   assert.match(workflow, /base: main/);
-  assert.match(workflow, /add-paths:\n\s+\.github\/app-publisher-smoke\/latest-run\.md/);
+  assert.match(workflow, /add-paths:\s*\|\n\s+\.github\/app-publisher-smoke\/latest-run\.md/);
   assert.match(workflow, /does not contain application code, screenshots, customer data, or credentials/);
   assert.match(workflow, /Dispatch this smoke test from main only/);
   assert.doesNotMatch(workflow, /apps\/platform\/public\/interface-captures|git push origin HEAD:main|pull_request_target|workflow_run/);
