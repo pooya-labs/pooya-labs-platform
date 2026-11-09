@@ -1,3 +1,11 @@
+## 2026-11-09 — Safe GitHub App permission smoke harness merged
+
+- Merged [PR #32](https://github.com/pooya-labs/pooya-labs-platform/pull/32) as [`7e2e5a2`](https://github.com/pooya-labs/pooya-labs-platform/commit/7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c). Added the manual-only `.github/workflows/app-publisher-smoke.yml` workflow and its contract test.
+- The harness reuses the dedicated App token and PR-creation actions, but writes only `.github/app-publisher-smoke/latest-run.md`. It refuses dispatches from any ref other than `main`; no application source, product screenshots, public assets, customer data, credentials, or deployments are touched.
+- PR Repository CI [42635400246](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400246) passed **112/112 tests**, builds, lint/format, dependency audit, and credential scan. Browser QA [42635400130](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400130) passed 18/18 routes and 36/36 viewports, with zero failures and zero confirmed axe violations; 36 incomplete contrast checks remain manual. Twenty performance samples per host completed without failed samples; report artifact [13683600592](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400130/artifacts/13683600592).
+- Post-merge main Repository CI [42635961927](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635961927) passed on exact main `7e2e5a2`.
+- The smoke workflow is merged but has **not yet been manually dispatched**. After dispatch, verify that the GitHub App creates the marker-only PR and that Repository CI plus Browser QA pass on that PR. Keep `main` unprotected until this is proven; no V1 or production-release claim is made.
+
 ## 2026-11-09 — Dedicated GitHub App activated; three publisher dispatches verified
 
 - The owner confirmed the dedicated `Pooya Labs Capture Publisher` App was installed for `pooya-labs/pooya-labs-platform` only and added the private Actions secrets `CAPTURE_PUBLISHER_APP_ID` and `CAPTURE_PUBLISHER_APP_PRIVATE_KEY`. The workflows themselves request an installation token restricted to this repository.
