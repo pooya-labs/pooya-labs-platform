@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P7-12",
     "title": "Complete readiness engineering and owner-input preparation before the penultimate redesign",
-    "status": "PR #20 merged as 558970fefad25fa16632a8d740eb1a7a32c8f3bd on 2026-11-09. Pooya Monogram (پویا مونوگرام) owner identity and the centered black-tile monogram are live on the GitHub Pages primary site, bilingual case-study footers, README ownership sections, and structured metadata. Main Repository CI run 42526088297 passed 110 tests and all build/security steps; main Browser QA run 42526088326 passed 18/18 routes and 36/36 viewports with zero confirmed axe violations and zero failures, while 36 incomplete axe checks still need manual review. GitHub Pages deployment 42526088212 succeeded on this exact commit. Cloudflare publish 42526088253 and Apps Script publish 42526088224 were skipped because required credentials/configuration are absent. Phase 7 remains active, all eight project review approvals and later redesign/integration/release gates remain open, and V1 remains blocked."
+    "status": "PR #24 merged as 4482c96c6a6a8ec2548c8f37210c2f4674f617b2 on 2026-11-09. Merged-main Repository CI 42621840105 passed all validation/build/security/contract-test jobs. PR Browser QA 42526817146 passed 18/18 routes and 36/36 viewports with zero failures and zero confirmed axe violations; 36 axe color-contrast records remain incomplete because backgrounds include pseudo-elements, gradients, overlays, or non-text-only content. That browser run is on PR head 9f91535, not the merged main SHA. A new read-only upstream audit records AetherFlow main cc56560 (Pages passed on exact head; latest Rust CI was still running on prior eaf72e4), GlobalCart main ffc51c7 (catalog-only snapshot; last Pages deploy 42606321024 is on prior aeb0e20), and ORBIT PR #138 head 37ec149 (candidate matrix passed both architectures on its recorded revision; published upstream image scan still fails on Guava 33.6.0-jre / CVE-2026-102554). No independent project repository was modified. Phase 7 remains active; owner/manual accessibility/device/governance/deployment gates remain open; no V1 release/tag."
   },
   "lastCheckpointDate": "2026-11-09",
   "latestVerifiedCodeCommit": "558970fefad25fa16632a8d740eb1a7a32c8f3bd",
@@ -171,9 +171,12 @@
     "Performance budgets remain report-only until representative physical Android/device and network review is complete; post-remediation Chromium CI shows p50/p75/maximum CLS 0 on all three hosts but is not physical-device acceptance.",
     "Manual accessibility acceptance remains open: 36 incomplete axe color-contrast checks are not passes; complete visual contrast, keyboard-only, focus visibility, and screen-reader review.",
     "Cloudflare GitHub Actions auto-deployment still requires the private CLOUDFLARE_API_TOKEN secret; the current production deployment succeeded through the authorized Cloudflare Pages API.",
-    "Apps Script production publishing was skipped in run 42514976476 because CLASPRC_JSON, CLASP_JSON, and GAS_DEPLOYMENT_ID are not configured. The Apps Script build target passed; do not claim the Apps Script Web App was updated."
+    "Apps Script production publishing was skipped in run 42514976476 because CLASPRC_JSON, CLASP_JSON, and GAS_DEPLOYMENT_ID are not configured. The Apps Script build target passed; do not claim the Apps Script Web App was updated.",
+    "GlobalCart main advanced to ffc51c7116ea with a catalog-only data/catalog.json snapshot; the latest observed Pages deployment 42606321024 is on the preceding aeb0e209 commit. Verify/redeploy the exact current catalog before Phase 9 portfolio integration.",
+    "ORBIT PR #138 remains open and unmerged. The patched Keycloak candidate matrix passed both architectures on its recorded revision, but the separate scan of the published upstream Keycloak 26.8.2 image still fails on Guava 33.6.0-jre / CVE-2026-102554; the patched candidate is not published.",
+    "AetherFlow main advanced to cc5656068a45 with a Cargo.lock-only regeneration. Pages deployed successfully on that exact SHA; the latest observed Rust CI remained in progress on the preceding eaf72e4 commit, and three dependency PRs (#5–#7) remain open."
   ],
-  "nextAction": "Choose and implement the reviewed-capture publisher governance path (prefer GitHub App PR creation), then configure and test an active main branch ruleset; continue the remaining Phase 7 manual accessibility/device, crawler, Pages-source, deployment-secret, and rollback closeout gates.",
+  "nextAction": "Resolve the reviewed-capture publisher path with an owner decision (preferred: GitHub App PR creation, which requires private App credentials; alternative: explicitly accept the broader GitHub Actions ruleset bypass). Then configure and test an active main ruleset. Continue Phase 7 manual contrast/keyboard/screen-reader and physical Android acceptance, external social-crawler validation, host/source parity, deployment automation and rollback rehearsal. Recheck GlobalCart Pages against current catalog main before Phase 9; do not begin Phase 8/9 or V1 publication until the formal gates are accepted.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -410,7 +413,7 @@
     "projectIntegrationPhase": 9,
     "penultimateRedesignOwnerApproval": "pending"
   },
-  "latestVerifiedCommit": "23f16896624ef391e284d3579a7f7278f5c8cbaf",
+  "latestVerifiedCommit": "4482c96c6a6a8ec2548c8f37210c2f4674f617b2",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -577,7 +580,7 @@
     ],
     "projectIntegration": "deferred-to-phase-9-after-phase-8-redesign-approval; all-eight-project portfolio integration pending"
   },
-  "latestBranchHeadAtCheckpoint": "23f16896624ef391e284d3579a7f7278f5c8cbaf",
+  "latestBranchHeadAtCheckpoint": "4482c96c6a6a8ec2548c8f37210c2f4674f617b2",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -993,10 +996,10 @@
   "latestTask": "P7-12",
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-09",
-  "latestDocumentationCommit": "a009b4c65b8ea964b4b43f39ed636f86d56ffe33",
-  "latestDocumentationCheckpoint": "merged-PR-22;main-a009b4c65b8ea964b4b43f39ed636f86d56ffe33;PR-CI-42524475237;Browser-QA-42524475250;post-merge-main-CI-42524729014",
-  "latestRepositoryCiRun": "42524729014",
-  "latestBrowserQaRun": "42524475250",
+  "latestDocumentationCommit": "4482c96c6a6a8ec2548c8f37210c2f4674f617b2",
+  "latestDocumentationCheckpoint": "merged-PR-24;main-4482c96c6a6a8ec2548c8f37210c2f4674f617b2;Repository-CI-42621840105-success;PR-Browser-QA-42526817146-18-of-18-routes-36-of-36-viewports-zero-violations-36-incomplete-contrast-checks-manual;upstream-audit-AetherFlow-cc56560-GlobalCart-ffc51c7-ORBIT-PR138-37ec149",
+  "latestRepositoryCiRun": "42621840105",
+  "latestBrowserQaRun": "42526817146",
   "latestPerformanceBaseline": {
     "run": "42514976406",
     "attempt": 1,
@@ -1051,8 +1054,8 @@
   },
   "upstreamMainHeads": {
     "AetherFlow": {
-      "sha": "dc1edea3946e89e8ca0dd1430552487401080eaa",
-      "observedAtUtc": "2026-11-08 20:50:04 UTC"
+      "sha": "cc5656068a45b753560558fe796775075ece7cec",
+      "observedAtUtc": "2026-11-09 13:03:32 UTC"
     },
     "ORBIT": {
       "sha": "970d9723ee4419df82979a5e232f4fed3c8ab5a2",
@@ -1075,11 +1078,11 @@
       "observedAtUtc": "2026-11-08 19:25:41 UTC"
     },
     "GlobalCart": {
-      "sha": "220b216fbad421ab2a5e40ad52bcb331eb315d57",
-      "observedAtUtc": "2026-11-08 20:40:28 UTC"
+      "sha": "ffc51c7116ea7d15dd45ba679457aa71caea82be",
+      "observedAtUtc": "2026-11-09 13:07:22 UTC"
     },
     "Salon Booking": {
-      "sha": "ca745a46c863010f2d7133356a0209abf928a12",
+      "sha": "ca745a46c863010f2d7133356a0209abf928a12c",
       "observedAtUtc": "2026-11-08 19:25:52 UTC"
     }
   },
@@ -1129,8 +1132,8 @@
     "mode": "read-only",
     "upstreamMainHeads": {
       "AetherFlow": {
-        "sha": "dc1edea3946e89e8ca0dd1430552487401080eaa",
-        "observedAtUtc": "2026-11-08 20:50:04 UTC"
+        "sha": "cc5656068a45b753560558fe796775075ece7cec",
+        "observedAtUtc": "2026-11-09 13:03:32 UTC"
       },
       "ORBIT": {
         "sha": "970d9723ee4419df82979a5e232f4fed3c8ab5a2",
@@ -1153,26 +1156,38 @@
         "observedAtUtc": "2026-11-08 19:25:41 UTC"
       },
       "GlobalCart": {
-        "sha": "220b216fbad421ab2a5e40ad52bcb331eb315d57",
-        "observedAtUtc": "2026-11-08 20:40:28 UTC"
+        "sha": "ffc51c7116ea7d15dd45ba679457aa71caea82be",
+        "observedAtUtc": "2026-11-09 13:07:22 UTC"
       },
       "Salon Booking": {
-        "sha": "ca745a46c863010f2d7133356a0209abf928a12",
+        "sha": "ca745a46c863010f2d7133356a0209abf928a12c",
         "observedAtUtc": "2026-11-08 19:25:52 UTC"
       }
     },
     "aetherflowLiveSheetAcceptance": "owner-confirmed",
-    "aetherflowLatestRustCi": "in_progress-at-last-inspection",
-    "aetherflowLatestSupplyChain": "in_progress-at-last-inspection",
+    "aetherflowLatestRustCi": "run-42622091133;in_progress-at-last-inspection;head-eaf72e4-not-current-main-cc56560",
+    "aetherflowLatestSupplyChain": "run-42622091166;success-on-eaf72e4-not-current-main-cc56560",
     "globalcartOwnerManualQa": "owner-confirmed-2026-11-08; device-browser-matrix-not-recorded",
     "globalcartFieldCwv": "unmeasured-optional",
     "globalcartPr23": "closed-without-merge",
-    "orbitPr138": "open-unmerged; production-image-security-scan-failing",
+    "orbitPr138": "open-unmerged;head-37ec1499f56389d48ec48412b73e7868c0dcaf46;candidate-matrix-run-42537493841-success-amd64-arm64-on-recorded-revision;upstream-image-scan-42538506884-failure-Guava-33.6.0-jre-CVE-2026-102554;candidate-not-published",
     "allUpstreamRepositoriesModified": false,
-    "platformMainCommit": "23f16896624ef391e284d3579a7f7278f5c8cbaf",
-    "mergedPullRequest": 18,
-    "postMergeRepositoryCiRun": "42522790018",
-    "browserQaRun": "42522600586"
+    "platformMainCommit": "4482c96c6a6a8ec2548c8f37210c2f4674f617b2",
+    "mergedPullRequest": 24,
+    "postMergeRepositoryCiRun": "42621840105",
+    "browserQaRun": "42526817146",
+    "aetherflowLatestPages": "run-42622137557;success-on-current-main-cc56560",
+    "aetherflowOpenDependencyPrs": [
+      5,
+      6,
+      7
+    ],
+    "globalcartLatestMain": "ffc51c7116ea7d15dd45ba679457aa71caea82be",
+    "globalcartLatestMainDelta": "data/catalog.json-only;1001 additions;1001 deletions;[skip ci]",
+    "globalcartLatestPages": "run-42606321024;success-on-aeb0e20963b8f0ba00e28d14a5fac54c236e15c7;not-latest-catalog-main",
+    "orbitRepositorySecurity": "run-42538507204-success",
+    "browserQaCommit": "9f91535e1854813150fec3b201d4f99034e2dfb5",
+    "browserQaOnMain": false
   },
   "repositoryGovernance": {
     "auditDate": "2026-11-09",
@@ -1209,9 +1224,10 @@
       "Chromium responsive and keyboard smoke"
     ],
     "verification": {
-      "mainRepositoryCiRun": 42523193131,
-      "latestBrowserQaRun": 42522600586,
-      "browserQaCommitIsCurrentMainHead": false
+      "mainRepositoryCiRun": 42621840105,
+      "latestBrowserQaRun": 42526817146,
+      "browserQaCommitIsCurrentMainHead": false,
+      "latestMainCommit": "4482c96c6a6a8ec2548c8f37210c2f4674f617b2"
     },
     "ownerActionRequired": true,
     "noSettingsOrSecretsChanged": true

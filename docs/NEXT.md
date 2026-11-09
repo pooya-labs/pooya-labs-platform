@@ -1,16 +1,16 @@
-## Latest merged-main checkpoint — Pooya Monogram ownership (2026-11-09)
+## Latest verified main checkpoint — PR #24 (2026-11-09)
 
-PR [#20](https://github.com/pooya-labs/pooya-labs-platform/pull/20) merged as [`558970f`](https://github.com/pooya-labs/pooya-labs-platform/commit/558970fefad25fa16632a8d740eb1a7a32c8f3bd). Main Repository CI [42526088297](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088297) passed 110 contract tests and all build/security checks. Browser QA [42526088326](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088326) passed 18/18 localized routes, 36/36 viewports, zero confirmed axe violations, and zero failures; 36 incomplete axe checks remain manual review.
+PR [#24](https://github.com/pooya-labs/pooya-labs-platform/pull/24) merged as [`4482c96`](https://github.com/pooya-labs/pooya-labs-platform/commit/4482c96c6a6a8ec2548c8f37210c2f4674f617b2). Merged-main Repository CI [42621840105](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42621840105) passed typecheck, all three build targets, dependency audit, credential scan, and repository contract tests.
 
-GitHub Pages deployment [42526088212](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088212) succeeded on this exact commit. Cloudflare publish [42526088253](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088253) and Apps Script publish [42526088224](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088224) were skipped because their required deployment secrets/configuration are absent; do not treat them as deployed.
+PR-head Browser QA [42526817146](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526817146) passed 18/18 routes and 36/36 viewport checks with zero failures and zero confirmed axe violations. Its 36 incomplete axe records are all color-contrast reviews that axe could not resolve because of pseudo-elements, gradients, overlays, or non-text-only elements; they remain manual review items and are not recorded as passes. This Browser QA run belongs to PR head `9f91535`, not the merged main SHA; no new merged-main Browser QA run was observed.
 
-Pooya Monogram (پویا مونوگرام) is now the platform owner identity, with the existing centered black-tile monogram on the homepage and case-study footers, the bilingual README, and structured metadata. Pooya Goodarzi is named as creator and maintainer. This identity confirmation does not approve project content or close release gates. The platform remains pre-alpha / Phase 7, with no V1 tag.
+PR #24 changed documentation/state only. The latest verified application deployment remains GitHub Pages run [42526088212](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088212) on application commit `558970f`; no new public app deployment is claimed for the docs-only merge. The Cloudflare and Apps Script production jobs remain gated by missing private configuration. Pooya Monogram remains the platform owner mark; the platform is still **pre-alpha / Phase 7**, with no V1 tag.
 
 # Next Task — Phase 7 pre-redesign readiness closeout
 
 **Task ID:** P7-12  
 **Checkpoint date:** 2026-11-09  
-**Latest verified `main` checkpoint:** PR [#20](https://github.com/pooya-labs/pooya-labs-platform/pull/20) merged as [`558970f`](https://github.com/pooya-labs/pooya-labs-platform/commit/558970fefad25fa16632a8d740eb1a7a32c8f3bd); merged-main Repository CI [42526088297](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088297), Browser QA [42526088326](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088326), and GitHub Pages deployment [42526088212](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088212) passed. See [Project Status](STATUS.md) and [project-state.json](project-state.json) See [Project Status](STATUS.md) and [project-state.json](project-state.json)  
+**Latest verified `main` checkpoint:** PR [#24](https://github.com/pooya-labs/pooya-labs-platform/pull/24) merged as [`4482c96`](https://github.com/pooya-labs/pooya-labs-platform/commit/4482c96c6a6a8ec2548c8f37210c2f4674f617b2); merged-main Repository CI [42621840105](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42621840105) passed. PR Browser QA [42526817146](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526817146) passed on PR head `9f91535` (18/18 routes, 36/36 viewports, zero confirmed violations; 36 incomplete contrast checks remain manual). The latest verified app deployment remains GitHub Pages run [42526088212](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088212) on app commit `558970f`; PR #24 was docs-only. See [Project Status](STATUS.md) and [project-state.json](project-state.json).  
 **Canonical repository:** `pooya-labs/pooya-labs-platform`
 
 ## Post-merge verification — governance audit (2026-11-09)
@@ -42,16 +42,9 @@ The platform now uses **Pooya Monogram (پویا مونوگرام)** as its disp
 3. Phase 9 is the final implementation stage before publication: recheck and fully integrate all eight independent projects into the approved portfolio. Do not copy source code wholesale; retain repo boundaries unless a separate architecture decision is approved.
 4. Phase 10: final V1 hardening and publication.
 
-## Latest read-only source recheck — 2026-11-09
+## Latest read-only source recheck — 2026-11-09 13:07 UTC
 
-The exact current `main` heads, latest commits, release status, and material open-PR states for all eight independent projects are recorded in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
-
-- **AetherFlow:** current main `dc1edea3946e`; M08 remains experimental/in progress. The owner completed one live Apps Script private-Sheet write/reload/read check and Browser QA passed 12 tests. A follow-up source correction keeps new storage-only rows in `pending`, but the live Apps Script deployment still needs a manual new-version redeploy. Latest Rust CI and supply-chain checks were still running at inspection.
-- **GlobalCart:** current main `220b216fbad4`; stable portfolio/demo release v1.0.0 is complete. Merged-main Browser E2E passed **163 / 9 intentional skips / 0 failed**. Current-main documentation records owner-confirmed physical desktop/mobile, actual platform screen-reader, and full human RTL/LTR review on 2026-11-08; exact device/browser matrix was not recorded. Physical tablet and field Core Web Vitals remain unverified/optional. PR #23 was closed without merge.
-- **ORBIT:** main unchanged; PR #138 remains open. Its candidate Keycloak build is CI-only, and the strict production-image scan still fails on unresolved findings.
-- **Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, and Salon Booking:** main heads remain the same as in the prior checkpoint; no open PRs were observed at the recheck.
-
-The bilingual [OWNER-REVIEW-PACKET.md](OWNER-REVIEW-PACKET.md) now reflects the current GlobalCart release and the new source-backed AetherFlow/GlobalCart acceptance facts. The source facts do not imply approval of the Pooya Labs portfolio copy/media. No upstream repository was modified.
+The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md). Material deltas: AetherFlow main advanced to `cc56560` with Pages deployed on that exact SHA, while the newest Rust CI was still in progress on its preceding commit and three dependency PRs remain open; ORBIT PR #138 advanced to `37ec149`, its patched candidate matrix has passed both architectures, but the published upstream Keycloak image still fails the strict Guava 33.6.0-jre / CVE-2026-102554 scan and no patched image is published; GlobalCart main advanced to `ffc51c7` with a catalog-only snapshot, while the latest observed Pages deployment is on the preceding `aeb0e20` commit. The other five project main heads showed no newer changes in this inspection. No independent project repository was modified.
 
 ## Post-remediation verification checkpoint — 2026-11-08
 
