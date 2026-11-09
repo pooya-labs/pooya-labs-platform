@@ -1,4 +1,13 @@
-## PR #28 merged — reviewed-capture publisher hardening and runtime proof (2026-11-09)
+## Dedicated GitHub App activation and publisher smoke verification (2026-11-09)
+
+- The owner confirmed the dedicated `Pooya Labs Capture Publisher` App is installed only on `pooya-labs/pooya-labs-platform` and both private Actions secrets are configured.
+- All three manual dispatches completed successfully: ORBIT interface captures [42631761203](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42631761203), portfolio captures [42632714049](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42632714049), and full-page captures [42632732364](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42632732364).
+- All three passed approval-manifest and image-integrity checks, detected both secrets, and successfully created a short-lived GitHub App installation token scoped by the workflow to this repository.
+- Each PR action completed with `pull-request-operation = none` because the approved images already matched their committed destinations. No automation branch or PR was created, and no images were changed or published.
+- App credentials and token generation are verified. Actual App-authenticated branch push/PR creation and CI/Browser QA on such a generated PR remain unverified until a genuine owner-approved capture changes.
+- Do not fabricate or modify image assets solely to force a PR. Keep the `main` ruleset inactive until a genuine changed-capture PR passes the required checks. The platform remains **pre-alpha / Phase 7**; no V1 tag or public app deployment is claimed.
+
+## PR #28 merge checkpoint — publisher hardening before owner App activation (2026-11-09)
 
 - PR [#28](https://github.com/pooya-labs/pooya-labs-platform/pull/28) merged to `main` as [`01749d7`](https://github.com/pooya-labs/pooya-labs-platform/commit/01749d717f6e31a1096cde91ff7773a9b58e1626).
 - All three reviewed-capture publishers now use a single-repository, least-privilege GitHub App token to open/update PRs; default Actions token is read-only and checkout credentials are not persisted. No direct-push fallback remains.
