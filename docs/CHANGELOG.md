@@ -1,3 +1,12 @@
+
+## 2026-11-10 — refreshed read-only upstream source audit
+
+- Rechecked the current `main` commit history for all eight independent portfolio projects; no upstream repository was modified.
+- Corrected AetherFlow's checkpoint for merged PR #19 (2 MiB bounded streamed CLI response handling) and PR #20 (handoff/readiness sync). M08 and the matching-runner benchmark remain open.
+- Corrected ORBIT's checkpoint for merged PR #138: patched Keycloak 26.8.2 / Guava 33.7.2-jre was published and strict-scanned on AMD64 and ARM64. Production Compose remains on Keycloak 26.8.1; no production promotion is claimed.
+- Recorded GlobalCart's FX-only `[skip ci]` commit and the 80-minute backward movement in its embedded source timestamp. No deployment of that snapshot is verified.
+- Kept the pre-alpha / Phase 7 label and all human, owner, privacy, deployment and rollback gates unchanged.
+
 ## 2026-11-09 — LinkedIn/Facebook bot-user-agent social-preview audit passed
 
 - With Cloudflare Browser Rendering, fetched all 17 published routes on both GitHub Pages and Cloudflare Pages under `LinkedInBot/1.0` and `facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)`.
