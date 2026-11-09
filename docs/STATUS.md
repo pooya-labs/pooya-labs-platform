@@ -1,5 +1,6 @@
 ## Latest merged-main checkpoint — publisher governance hardening (2026-11-09)
 
+- Post-merge main Repository CI [42625390685](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390685) passed on exact merge commit `01749d7`: 111/111 tests, zero failures, all builds and security checks successful.
 PR [#28](https://github.com/pooya-labs/pooya-labs-platform/pull/28) merged the three reviewed-capture publisher migrations as [`01749d7`](https://github.com/pooya-labs/pooya-labs-platform/commit/01749d717f6e31a1096cde91ff7773a9b58e1626), based on the current main checkpoint [`3a083aa`](https://github.com/pooya-labs/pooya-labs-platform/commit/3a083aa83135364a25098887bb52306e6efd215a). The updated eight-project source audit from PR #25 remains intact.
 
 **Verified on PR #28 head `7421479`:**

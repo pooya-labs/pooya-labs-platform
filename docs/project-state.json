@@ -176,7 +176,7 @@
     "ORBIT PR #138 remains open and unmerged. The patched Keycloak candidate matrix passed both architectures on its recorded revision, but the separate scan of the published upstream Keycloak 26.8.2 image still fails on Guava 33.6.0-jre / CVE-2026-102554; the patched candidate is not published.",
     "AetherFlow main advanced to cc5656068a45 with a Cargo.lock-only regeneration. Pages deployed successfully on that exact SHA; the latest observed Rust CI remained in progress on the preceding eaf72e4 commit, and three dependency PRs (#5–#7) remain open."
   ],
-  "nextAction": "Owner: install a dedicated GitHub App only on pooya-labs/pooya-labs-platform, add CAPTURE_PUBLISHER_APP_ID and CAPTURE_PUBLISHER_APP_PRIVATE_KEY as private Actions secrets, manually dispatch all three reviewed-capture publisher workflows and verify each opens a PR with passing Repository CI and Browser QA. Then activate/test the main ruleset. Main push CI run 42625390685 was in progress at the last checkpoint; recheck it. Keep Phase 7 open for manual contrast/accessibility, physical-device, content/media, external crawler, Pages-source and rollback acceptance.",
+  "nextAction": "Owner: install a dedicated GitHub App only on pooya-labs/pooya-labs-platform, add CAPTURE_PUBLISHER_APP_ID and CAPTURE_PUBLISHER_APP_PRIVATE_KEY as private Actions secrets, manually dispatch all three reviewed-capture publisher workflows and verify each opens a PR with passing Repository CI and Browser Browser QA. Then activate/test the main ruleset. Keep Phase 7 open for manual contrast/accessibility, physical-device, content/media, external crawler, Pages-source and rollback acceptance.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -996,9 +996,9 @@
   "latestTask": "P7-14",
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-09",
-  "latestDocumentationCommit": "01749d717f6e31a1096cde91ff7773a9b58e1626",
-  "latestDocumentationCheckpoint": "PR-28-merged;main:01749d717f6e31a1096cde91ff7773a9b58e1626;PR-CI:42624753678;PR-BrowserQA:42624753816;publishers:42625390767,42625390732,42625390703-safe-pause-missing-App-secrets;main-CI:42625390685-in-progress",
-  "latestRepositoryCiRun": 42624753678,
+  "latestDocumentationCommit": "659776b9c5199fc381cf0f403e1ffa343201d0d6",
+  "latestDocumentationCheckpoint": "PR-28-merged;main:01749d717f6e31a1096cde91ff7773a9b58e1626;PR-CI:42624753678;PR-BrowserQA:42624753816;main-CI:42625390685-success-111-of-111;publishers:42625390767,42625390732,42625390703-safe-pause-missing-App-secrets",
+  "latestRepositoryCiRun": 42625390685,
   "latestBrowserQaRun": 42624753816,
   "latestPerformanceBaseline": {
     "run": "42514976406",
@@ -1240,7 +1240,8 @@
         "orbit": 42625390732,
         "fullpage": 42625390703
       },
-      "allPublisherRunsPassedWithAppCreationSkipped": true
+      "allPublisherRunsPassedWithAppCreationSkipped": true,
+      "mainRepositoryCiPassed": true
     },
     "ownerActionRequired": true,
     "noSettingsOrSecretsChanged": true,
@@ -1300,7 +1301,9 @@
         "portfolio": 42625390767,
         "orbit": 42625390732,
         "fullpage": 42625390703
-      }
+      },
+      "mainRepositoryCiRun": 42625390685,
+      "mainRepositoryCiPassed": true
     }
   },
   "brandOwnership": {

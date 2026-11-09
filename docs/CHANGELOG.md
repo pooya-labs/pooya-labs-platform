@@ -4,7 +4,7 @@
 - The default Actions token is read-only; checkout credentials are not persisted. Existing owner-approval, source-run, PNG signature/dimension, path containment, size, and SHA-256 checks remain.
 - Repository CI [42624753678](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753678) passed 111/111 tests; Browser QA [42624753816](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753816) passed 18/18 routes and 36/36 viewports, zero failures and zero confirmed axe violations. 36 incomplete contrast checks remain for manual review.
 - All three post-merge publishers completed their validation and paused because the GitHub App secrets are not configured: [42625390767], [42625390732], [42625390703]. No images were published or pushed. The real App-backed path remains owner-activation-pending.
-- Main is still unprotected; the active ruleset and required-check enforcement test remain open. No public app deployment or V1 release was created by this workflow migration.
+- Main push Repository CI [42625390685](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390685) passed on the exact merge commit `01749d7` with 111/111 tests and zero failures. Main is still unprotected; the active ruleset and required-check enforcement test remain open. No public app deployment or V1 release was created by this workflow migration.
 
 ## 2026-11-09 — Phase 7 source refresh and PR #24 main verification
 

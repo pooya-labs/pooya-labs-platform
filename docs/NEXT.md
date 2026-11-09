@@ -9,7 +9,7 @@ PR [#28](https://github.com/pooya-labs/pooya-labs-platform/pull/28) merged the t
 
 After merge, all three publisher workflows completed successfully and safely skipped App token/PR creation because `CAPTURE_PUBLISHER_APP_ID` and `CAPTURE_PUBLISHER_APP_PRIVATE_KEY` are absent. Their summaries confirm no image files were pushed or published: [42625390767] (portfolio), [42625390732] (ORBIT), [42625390703] (full-page).
 
-Main Repository CI run [42625390685](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390685) was still in progress when this checkpoint was recorded; do not treat it as passed. Main remains unprotected, no ruleset is active, no public app deployment or V1 release was produced by PR #28, and Phase 7 remains active.
+Post-merge main Repository CI [42625390685](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390685) subsequently passed on `01749d7` with 111/111 tests and zero failures. Main remains unprotected, no ruleset is active, no public app deployment or V1 release was produced by PR #28, and Phase 7 remains active.
 
 # Next Task — P7-14 owner-side activation and governance proof
 

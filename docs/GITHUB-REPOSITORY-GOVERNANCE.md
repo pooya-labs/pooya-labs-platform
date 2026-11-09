@@ -12,7 +12,7 @@
 - PR [#28](https://github.com/pooya-labs/pooya-labs-platform/pull/28) merged the reviewed-capture publisher hardening as [`01749d7`](https://github.com/pooya-labs/pooya-labs-platform/commit/01749d717f6e31a1096cde91ff7773a9b58e1626).
 - Repository CI [42624753678](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753678) and Portfolio Browser QA [42624753816](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753816) both passed on PR head [`7421479`](https://github.com/pooya-labs/pooya-labs-platform/commit/7421479def8bf397fe3470561087cda383edd5a1) before merge.
 - The merge changed only the three publisher workflows and two contract tests. It did not change application source, the public site bundle, or a deployment.
-- Main push-triggered Repository CI [42625390685](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390685) was still running at the time of this checkpoint; it is not recorded as passed here.
+- Main push-triggered Repository CI [42625390685](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390685) subsequently passed on the exact merged main commit `01749d7`: 111/111 tests, zero failures, all three builds, dependency audit, lint/format, typecheck, and credential scan.
 
 Branch protection remains a release-governance blocker: the relevant checks pass when run, but GitHub is not configured to require them before changes reach `main`.
 
