@@ -1,0 +1,101 @@
+name: GitHub App Publisher Permission Smoke
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: app-publisher-permission-smoke
+  cancel-in-progress: false
+
+jobs:
+  smoke:
+    name: Create a harmless App-authenticated test PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Require dispatch from main and configured App secrets
+        env:
+          APP_ID: ${{ secrets.CAPTURE_PUBLISHER_APP_ID }}
+          APP_PRIVATE_KEY: ${{ secrets.CAPTURE_PUBLISHER_APP_PRIVATE_KEY }}
+        run: |
+          if [ "$GITHUB_REF" != "refs/heads/main" ]; then
+            echo "::error::Dispatch this smoke test from main only."
+            exit 1
+          fi
+          if [ -z "$APP_ID" ] || [ -z "$APP_PRIVATE_KEY" ]; then
+            echo "::error::The dedicated capture-publisher App secrets are not configured."
+            exit 1
+          fi
+
+      - name: Create least-privilege GitHub App installation token
+        id: app_token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.CAPTURE_PUBLISHER_APP_ID }}
+          private-key: ${{ secrets.CAPTURE_PUBLISHER_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: pooya-labs-platform
+          permission-contents: write
+          permission-pull-requests: write
+
+      - name: Prepare a non-product smoke marker
+        env:
+          RUN_ID: ${{ github.run_id }}
+          SOURCE_COMMIT: ${{ github.sha }}
+        run: |
+          mkdir -p .github/app-publisher-smoke
+          cat > .github/app-publisher-smoke/latest-run.md <<EOF
+          # GitHub App publisher permission smoke
+
+          This file is a harmless test marker created by a manual workflow dispatch.
+          It does not contain application code, screenshots, customer data, or credentials.
+
+          - Workflow run: $RUN_ID
+          - Source commit: $SOURCE_COMMIT
+          - Purpose: verify App-authenticated branch push and pull-request creation.
+          EOF
+
+      - name: Create or update a reviewable smoke-test PR
+        id: smoke_pr
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ steps.app_token.outputs.token }}
+          branch: automation/app-publisher-permission-smoke
+          base: main
+          delete-branch: true
+          title: "test(platform): verify GitHub App PR creation"
+          commit-message: "test(platform): verify App-backed branch and PR permissions"
+          body: |
+            This is a controlled GitHub App permission smoke test.
+
+            It changes only `.github/app-publisher-smoke/latest-run.md`. It does not modify application source, public assets, screenshots, project repositories, or deployments.
+
+            Repository CI and Portfolio Browser QA should pass on this PR. After verification, merge this harmless marker PR to retain the audit evidence; the automation branch is configured for deletion on merge.
+          add-paths: |
+            .github/app-publisher-smoke/latest-run.md
+
+      - name: Require an App-created PR and report its URL
+        env:
+          PR_URL: ${{ steps.smoke_pr.outputs.pull-request-url }}
+          PR_OPERATION: ${{ steps.smoke_pr.outputs.pull-request-operation }}
+        run: |
+          if [ -z "$PR_URL" ] || [ "$PR_OPERATION" = "none" ]; then
+            echo "::error::The App did not create or update a smoke-test PR."
+            exit 1
+          fi
+          {
+            echo "## GitHub App permission smoke"
+            echo "- Operation: $PR_OPERATION"
+            echo "- Review PR: $PR_URL"
+            echo "- Changed path: `.github/app-publisher-smoke/latest-run.md`"
+            echo "- Product assets and application source: unchanged"
+          } >> "$GITHUB_STEP_SUMMARY"
