@@ -37,8 +37,8 @@ test('publication workflow downloads the exact artifact and verifies each PNG be
   assert.match(workflow, /gh run download/);
   assert.match(workflow, /SHA-256 mismatch/);
   assert.match(workflow, /PNG dimensions mismatch/);
-  assert.match(workflow, /uses: actions\\/create-github-app-token@v2/);
-  assert.match(workflow, /uses: peter-evans\\/create-pull-request@v8/);
+  assert.match(workflow, /uses: actions\/create-github-app-token@v2/);
+  assert.match(workflow, /uses: peter-evans\/create-pull-request@v8/);
   assert.match(workflow, /CAPTURE_PUBLISHER_APP_ID/);
   assert.match(workflow, /CAPTURE_PUBLISHER_APP_PRIVATE_KEY/);
   assert.match(workflow, /base: main/);
