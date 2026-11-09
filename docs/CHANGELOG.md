@@ -5,7 +5,7 @@
 - Git comparison confirms that no application source, package, or Pages workflow files changed between the GitHub Pages application commit and current main; both hosts therefore serve the same application source despite different full commit IDs.
 - Cloudflare Browser Rendering verified the homepage and Persian/English ORBIT routes, including localized title/description, canonical, locale, hreflang, 1200×627 OG image, and Pooya Monogram attribution.
 - Browser QA [42644621916](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42644621916) passed 18/18 routes and 36/36 viewports, zero failures, and three-host performance measurements; post-merge main Repository CI [42645102359](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42645102359) passed.
-- Live robots/sitemap bodies, authenticated external social crawlers, native Cloudflare Git push trigger, and production rollback rehearsal remain unverified. No secrets or deployment settings were changed.
+- Vite's host-specific robots/sitemap generation and its multi-host build contract are verified (17 canonical sitemap locations per host and matching host-specific robots targets); direct live response-body fetches, authenticated external social crawlers, native Cloudflare Git push trigger, and production rollback rehearsal remain unverified. No secrets or deployment settings were changed.
 
 ## 2026-11-09 — P7-13 governance verified; eight-project source audit refreshed
 
