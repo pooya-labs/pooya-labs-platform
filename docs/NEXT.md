@@ -6,7 +6,7 @@ PR Repository CI [42624753678](https://github.com/pooya-labs/pooya-labs-platform
 
 All three publisher workflows ran on merged `main` and completed successfully in fail-closed mode: [portfolio](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390767), [full-page](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390703), and [reviewed-interface](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390732). Each detected missing GitHub App secrets, skipped App token creation and PR creation, and confirmed no images were published or pushed to `main`. The actual App installation and real App-generated PR test remain pending owner setup.
 
-The post-merge Repository CI run [42625390685](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390685) was queued when this checkpoint was prepared; its final status will be recorded after completion. The platform remains **pre-alpha / Phase 7**, with no V1 tag. See [Project Status](STATUS.md), [Governance Audit](GITHUB-REPOSITORY-GOVERNANCE.md), and [project-state.json](project-state.json).
+Post-merge Repository CI [42625390685](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390685) passed on exact main `01749d7`. The platform remains **pre-alpha / Phase 7**, with no V1 tag. See [Project Status](STATUS.md), [Governance Audit](GITHUB-REPOSITORY-GOVERNANCE.md), and [project-state.json](project-state.json).
 
 ## Latest verified main checkpoint — PR #24 (2026-11-09)
 
@@ -32,7 +32,7 @@ PR #22 merged as `a009b4c65b8ea964b4b43f39ed636f86d56ffe33`. PR CI [42524475237]
 - Main HEAD: `659189dd99af59154cbfd88ce5f9dcecb23e1e0e`; main CI [42523193131](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42523193131) passed.
 - The main branch is currently unprotected and the repository has no rulesets or required status-check contexts.
 - All ten Actions workflows were checked for declared token permissions. Validation/capture jobs are read-only; Pages has deployment-only scopes; three artifact publishers have `contents: write` and `actions: read`.
-- The three publishers no longer push directly to `main`; PR #28 converted them to App-backed PR creation with a fail-closed path. The real App installation and private secrets still require owner setup.
+- PR #28 removed direct-to-`main` publisher writes. All three publisher workflows ran successfully after merge in fail-closed mode because App secrets are absent; the real App installation and private secrets still require owner setup.
 - See [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md) for evidence, observed check names, and the owner-side setup procedure.
 
 **Next atomic task:** install a dedicated GitHub App only on this repository and add the two private Actions secrets; manually dispatch all three publishers and verify each creates a PR with passing Repository CI and Browser QA. Only then activate/test the `main` ruleset and prove failing/pending checks block merges. Keep Phase 7 open for manual contrast, device, content, crawler, and rollback gates.
