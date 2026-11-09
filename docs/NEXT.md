@@ -1,3 +1,20 @@
+## Latest checkpoint — Phase 7 remains open; owner-exclusive boundary captured (2026-11-09 16:22 UTC)
+
+Current `main` is `dcc9ec6d445cc51b2dbe5c543c113ad16db1cbe8`; exact-main Repository CI [42653901311](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42653901311) passed. The previous merged docs PR's Browser QA [42653273680](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42653273680) passed on PR #40 head `6a79750d`. Both public static hosts continue to serve application source revision `97094ed0`; subsequent main changes are documentation-only.
+
+The ownership/IP policy and register explicitly record the owner's scope instruction: Pooya Labs Platform is the sole project in this portfolio group intended for Pooya Goodarzi's exclusive ownership, control, direction, and use. This is an owner-intent record, not a legal opinion or a transfer of rights. No reuse license is granted; third-party, upstream, contributor, and client-owned assets remain separately protected. The old PR #29 is stale/unmergeable and will be replaced by a fresh docs-only PR based on current main.
+
+**Next actions, in order:**
+1. Complete required CI and Browser QA on the fresh ownership/documentation PR; review the exact diff before any merge.
+2. Close the live-host SEO gate with direct response-body checks for `robots.txt` and `sitemap.xml` on both hosts, then validate representative OG cards through authenticated social crawlers and cache refresh.
+3. Complete the human gates: contrast, keyboard-only and screen-reader review in Persian/English and both themes; physical Android/browser acceptance; biography, featured-project order, roles/contributions, images and novel-library decision.
+4. Obtain explicit Salon Booking owner permission for any public case-study media or attribution beyond already approved material.
+5. Rehearse the documented rollback path only with an owner-approved controlled window. No destructive rollback has been run.
+6. Resolve the Cloudflare native Git-push trigger without changing credentials/settings until explicitly authorized. The current API fallback is verified; native auto-deploy is not.
+7. Treat Apps Script production publishing as unverified: workflow run [42651297282](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297282) skipped the actual publish job. Do not claim a new production version or change private deployment secrets.
+
+Do not start Phase 8 or publish V1 while mandatory Phase 7 exit gates remain open. Current release label: **pre-alpha**.
+
 ## Latest checkpoint — both hosts deployed on current main; native Cloudflare push still unverified (2026-11-09 16:12 UTC)
 
 Current `main` is [`97094ed0`](https://github.com/pooya-labs/pooya-labs-platform/commit/97094ed0cb79f65b0e93bf36d52a2520846e6f1b). PR [#39](https://github.com/pooya-labs/pooya-labs-platform/pull/39) merged normally; its only source change is a clarifying comment at Vite's host-specific robots generator. Main Repository CI [42651297246](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297246) passed.
