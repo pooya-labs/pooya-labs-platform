@@ -216,6 +216,7 @@ test('header contrast remains inspectable without a decorative pseudo-element ov
 });
 
 
+
 test('final light-theme secondary text meets WCAG AA contrast on the page and raised surfaces', () => {
   const selector = '.portfolio-page[data-theme="light"] {';
   const lightThemeStart = css.lastIndexOf(selector);
@@ -228,7 +229,7 @@ test('final light-theme secondary text meets WCAG AA contrast on the page and ra
 
   for (const background of ['#f5f6f2', '#e9eee9', '#fffffc']) {
     const ratio = contrastRatio(foreground, background);
-    assert.ok(ratio >= 4.5, \`Secondary text contrast against \${background} is \${ratio.toFixed(2)}:1; expected at least 4.5:1\`);
+    assert.ok(ratio >= 4.5, 'Secondary text contrast against ' + background + ' is ' + ratio.toFixed(2) + ':1; expected at least 4.5:1');
   }
 });
 
