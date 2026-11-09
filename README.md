@@ -4,15 +4,17 @@ Pooya Labs is Pooya's personal engineering portfolio and project showcase. Its m
 
 This is a portfolio first—not a generic SaaS dashboard or customer-account product.
 
-## Latest project update — 8 November 2026
+## Latest project update — 9 November 2026
 
-The latest case-study pass now server-renders the same component that the browser hydrates, preserving crawler-readable Persian/English routes while fixing the hydration and layout-stability mismatch. Accessible interface galleries were restored with native mobile scroll chaining. A three-host performance baseline was recorded; budget enforcement remains report-only until the measurements are reviewed. The browser favicon now uses the centered Pooya Monogram on a rounded black tile. The portfolio remains a pre-release draft: owner review and Phase 8 release gates are still open.
+Phase 7 host verification is current: the public GitHub Pages and Cloudflare Pages builds both use application source revision `97094ed0`; the later `main` checkpoint `dcc9ec6d` contains documentation-only changes. Repository CI passed on that exact `main` head (run [42653901311](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42653901311)), and the latest merged documentation PR's Browser QA passed (run [42653273680](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42653273680)). Native Cloudflare Git-push deployment remains unverified; its successful production deployment used the authorized API fallback. The platform remains pre-alpha while manual accessibility, physical-device, owner-content, privacy, external crawler, and rollback gates remain open.
 
 ## Project ownership
 
 <p align="center"><a href="https://pooya-labs.github.io/pooya-labs-platform/"><img src="https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/main/apps/platform/public/brand/pooya-monogram-tile.svg" alt="Pooya Monogram — project owner mark" width="96" /></a></p>
 
 **Project owner identity:** [Pooya Monogram (پویا مونوگرام)](https://github.com/pooya-labs). **Created and maintained by:** **Pooya Goodarzi**, through Pooya Labs Platform.
+
+**Exclusive project boundary:** Pooya Labs Platform is the sole project in this portfolio set that Pooya has designated for his exclusive ownership, control, direction, and use. This public repository does not grant a general reuse license; third-party and upstream rights remain separate. See the bilingual [ownership/IP policy](docs/OWNERSHIP-AND-IP-POLICY.md) and [repository ownership register](docs/REPOSITORY-OWNERSHIP-REGISTER.md).
 
 ## The visitor journey
 
@@ -61,7 +63,7 @@ All project content is still marked for Pooya's review. The eight source-grounde
 
 ## Development
 
-Start with the [contribution guide](CONTRIBUTING.md), [release checklist](docs/RELEASE.md), and [static-host deployment/rollback runbook](docs/STATIC-HOST-DEPLOYMENT.md), and the project handoff docs: docs/ROADMAP.md, docs/STATUS.md, docs/NEXT.md, docs/DEPLOYMENT-TARGETS.md, docs/PROJECT-CONTENT-AUDIT.md, docs/NOVELS-GUIDE.md, docs/PRODUCT-SURFACES.md, docs/DESIGN-DIRECTION.md, docs/ARCHITECTURE.md, and docs/RECOVERY.md.
+Start with the [contribution guide](CONTRIBUTING.md), [ownership/IP policy](docs/OWNERSHIP-AND-IP-POLICY.md), [repository ownership register](docs/REPOSITORY-OWNERSHIP-REGISTER.md), [release checklist](docs/RELEASE.md), and [static-host deployment/rollback runbook](docs/STATIC-HOST-DEPLOYMENT.md), and the project handoff docs: docs/ROADMAP.md, docs/STATUS.md, docs/NEXT.md, docs/DEPLOYMENT-TARGETS.md, docs/PROJECT-CONTENT-AUDIT.md, docs/NOVELS-GUIDE.md, docs/PRODUCT-SURFACES.md, docs/DESIGN-DIRECTION.md, docs/ARCHITECTURE.md, and docs/RECOVERY.md.
 
 Commands: npm install · npm run lint · npm run format:check · npm run typecheck · npm test · npm run build · npm run build:cloudflare · npm run build:gas
 
@@ -120,7 +122,7 @@ npm run build:gas
 
 برای ادامهٔ کار، فایل‌های `docs/ROADMAP.md`، `docs/STATUS.md`، `docs/NEXT.md`، `docs/ARCHITECTURE.md` و `docs/NOVELS-GUIDE.md` مرجع وضعیت و تصمیم‌های پروژه هستند.
 
-### آخرین تغییرات — ۸ نوامبر ۲۰۲۶
+### آخرین تغییرات — ۹ نوامبر ۲۰۲۶
 
 در آخرین اصلاحات مطالعه‌های موردی، همان کامپوننتی که در مرورگر hydrate می‌شود اکنون در سمت سرور نیز رندر می‌شود؛ در نتیجه مسیرهای ایندکس‌پذیر فارسی و انگلیسی حفظ شده‌اند و ناهماهنگی hydration و پایداری چیدمان برطرف شده است. گالری تصاویر رابط با دسترس‌پذیری بهتر و رفتار طبیعی زنجیرهٔ اسکرول موبایل بازگردانده شد. خط مبنای کارایی روی سه میزبان ثبت شده، اما اعمال محدودیت‌های بودجهٔ کارایی تا زمان بررسی اندازه‌گیری‌ها صرفاً در حالت گزارش‌گیری است. آیکون تب مرورگر نیز از مونوگرام پویا در مرکز یک زمینهٔ مشکی با گوشه‌های گرد استفاده می‌کند.
 
@@ -131,3 +133,5 @@ npm run build:gas
 <p align="center"><a href="https://pooya-labs.github.io/pooya-labs-platform/"><img src="https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/main/apps/platform/public/brand/pooya-monogram-tile.svg" alt="نشان مالک پروژه، پویا مونوگرام" width="96" /></a></p>
 
 **هویت مالک پروژه:** [پویا مونوگرام (Pooya Monogram)](https://github.com/pooya-labs). **سازنده و نگه‌دارنده:** **پویا گودرزی**، در چارچوب پلتفرم پویا لبز.
+
+**مرز انحصاری پروژه:** پلتفرم پویا لبز تنها پروژه در این مجموعه است که پویا مالکیت، کنترل، جهت‌دهی و استفادهٔ انحصاری از آن را تعیین کرده است. این مخزن مجوز عمومی استفادهٔ مجدد صادر نمی‌کند و حقوق وابستگی‌ها و دارایی‌های اشخاص ثالث جداگانه باقی می‌ماند. جزئیات در [سیاست دوزبانهٔ مالکیت و حقوق فکری](docs/OWNERSHIP-AND-IP-POLICY.md) و [دفتر ثبت مالکیت مخزن‌ها](docs/REPOSITORY-OWNERSHIP-REGISTER.md) آمده است.

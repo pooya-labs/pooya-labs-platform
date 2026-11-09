@@ -7,9 +7,9 @@
   "phase": 7,
   "phaseName": "Pre-redesign readiness and engineering closeout",
   "currentTask": {
-    "id": "P7-17",
-    "title": "Close remaining external crawler, accessibility, physical-device, owner and recovery gates before Phase 8",
-    "status": "PR #39 merged as main commit 97094ed0cb79f65b0e93bf36d52a2520846e6f1b; it adds one non-functional explanatory comment to apps/platform/vite.config.ts. Repository CI 42651297246 passed. Browser QA 42651297251 passed 18/18 routes, 36/36 viewports, zero failures and zero confirmed axe violations; artifact 13690630887. p75 LCP: 228 ms local, 284 ms GitHub Pages, 384 ms Cloudflare Pages; CLS 0.000 for all three. GitHub Pages production workflow 42651297113 passed Build and Deploy on exact main 97094ed0; artifact 13690386196; canonical URL https://pooya-labs.github.io/pooya-labs-platform/. Cloudflare production deployment a075e139-20d1-4587-91a9-b73904499065 passed all five stages on exact main 97094ed0; unique URL https://a075e139.pooya-labs-platform.pages.dev and canonical alias https://pooya-labs-platform.pages.dev. Cloudflare trigger is ad_hoc (authorized API fallback). A matching-path Git push via PR #39 did not create a github:push Cloudflare deployment despite current GitHub/main/path-filter settings; GitHub Cloudflare workflow 42651297288 credential check passed but deploy job skipped due absent CLOUDFLARE_API_TOKEN. Do not change secrets/settings without explicit permission. Remaining gates: direct live robots/sitemap GET and authenticated external crawler/cache validation (build contract already verifies host-specific outputs); manual contrast/keyboard/screen-reader; physical Android; owner biography/project order/contribution/media approvals; Salon Booking privacy; production rollback rehearsal. Platform remains pre-alpha Phase 7; no Phase 8/V1 until exit gates close."
+    "id": "P7-18",
+    "title": "Record owner-confirmed exclusive ownership/use boundary for Pooya Labs Platform and keep Phase 7 evidence current",
+    "status": "Bilingual ownership/IP policy, ten-repository register, README, owner-review packet, STATUS, NEXT, ROADMAP, CHANGELOG, and machine-readable state are prepared on a fresh docs-only branch from main dcc9ec6d. Await required Repository CI and Browser QA checks and owner review before merge. Platform remains pre-alpha / Phase 7. Remaining gates: direct live robots/sitemap response bodies, authenticated social crawler/cache review, human accessibility and physical-device acceptance, final owner content/media approval, Salon Booking privacy permission, native Cloudflare Git-push reliability, Apps Script production publish configuration, and rollback rehearsal."
   },
   "lastCheckpointDate": "2026-11-09",
   "latestVerifiedCodeCommit": "97094ed0cb79f65b0e93bf36d52a2520846e6f1b",
@@ -61,13 +61,13 @@
     "documentationCheckpoint": "passed-run-42496528868-on-b429828f0ed8f967317934fffed32daffa7b6a5f;state-roadmap-next-status-and-ADR-synchronized",
     "githubActionsRuntimeWarning": "none-observed-in-latest-successful-run-42502717615",
     "latestVerifiedTestCommit": "558970fefad25fa16632a8d740eb1a7a32c8f3bd",
-    "latestDocumentationCheckpoint": "owner-identity-merge-PR-20;main-558970f;CI-110-of-110;Browser-QA-18-of-18;GitHub-Pages-deploy-success",
+    "latestDocumentationCheckpoint": "main-dcc9ec6d;PR40-merged;Repository-CI-42653901311-passed;owner-exclusive-platform-boundary-documented-in-P7-18-branch-pending-required-checks-and-review",
     "latestDetailedAxeReport": "run-42514976406;zero-confirmed-axe-violations;36-incomplete-axe-checks;artifact-13631024148",
-    "latestRepositoryCiRun": "42651297246;success;main-97094ed0cb79f65b0e93bf36d52a2520846e6f1b",
-    "latestBrowserQaRun": "42651297251;success;main-97094ed0cb79f65b0e93bf36d52a2520846e6f1b;18-of-18-routes;36-of-36-viewports;zero-axe-violations;zero-failures;local-pages-cloudflare-performance",
+    "latestRepositoryCiRun": "42653901311;success;main-dcc9ec6d445cc51b2dbe5c543c113ad16db1cbe8",
+    "latestBrowserQaRun": "42653273680;success;PR40-head-6a79750d25bacfbb73914b5f938a677e20d1ff90;18-of-18-routes;36-of-36-viewports;zero-failures;zero-confirmed-axe-violations",
     "latestPagesDeploymentRun": "42651297113",
     "latestCloudflareAttempt": "success-deployment-a075e139-20d1-4587-91a9-b73904499065;main-97094ed0cb79f65b0e93bf36d52a2520846e6f1b;all-five-stages-success;trigger-ad_hoc;production",
-    "latestAppsScriptAttempt": "run-42514976476;configuration-check-passed;actual-publish-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
+    "latestAppsScriptAttempt": "run-42651297282;configuration-check-passed;actual-publish-job-skipped;deployment-remains-unverified",
     "pendingProductMotionAndGalleryQa": "passed-run-42496014812",
     "pendingAndroidTouchHandoff": "chromium-mobile-touch-emulation-passed-16-of-16-localized-project-routes;physical-android-device-review-still-required",
     "projectCardMotionQa": "passed-8-of-8-cards-active-at-desktop-and-mobile-in-fa-and-en;run-42498428681;artifact-13624393118",
@@ -84,8 +84,8 @@
     "accessibilityContrastReview": "main-browser-run-42526088326;zero-confirmed-axe-violations;36-incomplete-axe-checks-still-require-manual-contrast-review",
     "portfolioPerformance": "passed-run-42514976406;20-samples-per-host;local-p75-ttfb4-dcl96-load97-fcp220-lcp316-cls0;github-pages-p75-ttfb109-dcl266-load293-fcp332-lcp400-cls0;cloudflare-pages-p75-ttfb83-dcl282-load300-fcp328-lcp0;36-incomplete-contrast-checks-human-review",
     "cloudflareProductionDeployment": "success-deployment-a075e139;main-97094ed0;authorized-Cloudflare-API-fallback;trigger-ad_hoc;all-stages-success",
-    "appsScriptProductionDeployment": "latest-run-42526088224;actual-publish-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
-    "latestAppsScriptAttemptRun": "42514976476;credential-check-passed;actual-publish-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
+    "appsScriptProductionDeployment": "run-42651297282;configuration-check-passed;stable-Web-App-publish-job-skipped;no-new-production-version-verified",
+    "latestAppsScriptAttemptRun": "42651297282;configuration-check-success;publish-job-skipped",
     "credentialScan": "passed-run-42519574691;main-aca573500192;tracked-source-and-dist-pages-dist-cloudflare;no-recognized-matches;values-redacted",
     "repositoryCiSecurityTask": "passed-run-42517885668;npm-audit-zero-vulnerabilities;credential-scan-no-recognized-matches;contract-tests-101-of-101;all-build-targets-success",
     "ownerReviewPacketContract": "passed-run-42519333195;owner-review-packet-contract-included;105-of-105-contract-tests",
@@ -96,7 +96,7 @@
     "capturePublisherAppSmoke": "three-manual-dispatches-success;App-installation-token-created-in-all-three;all-approved-artifact-checks-passed;no-diff-so-no-automation-branch-or-PR;no-image-files-published",
     "appPublisherPermissionSmokeContract": "passed-run-42635400246;112-of-112-tests;workflow-manual-only;main-only;marker-file-only",
     "appPublisherPermissionSmokeBrowserQa": "passed-run-42635400130;18-of-18-routes;36-of-36-viewports;zero-confirmed-axe-violations;36-incomplete-contrast-checks-manual;20-performance-samples-per-host;zero-failures;artifact-13683600592",
-    "latestMainRepositoryCi": "passed-run-42635961927;exact-main-7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c",
+    "latestMainRepositoryCi": "passed-run-42653901311;exact-main-dcc9ec6d445cc51b2dbe5c543c113ad16db1cbe8;documentation-only-current-main",
     "appPublisherPermissionSmokeMainCi": "passed-run-42635961927;exact-main-7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c",
     "mainRuleset": "active-ruleset-26861856;target-refs/heads/main;require-pull-request;strict-required-checks;contexts-Typecheck-three-target-build-and-contract-tests,Chromium-responsive-and-keyboard-smoke;deletion-and-non-fast-forward-blocked;no-bypass-actors;branch-created-after-activation",
     "latestBrowserQaArtifact": "13690630887",
@@ -106,9 +106,10 @@
     "cloudflareRenderedSeoSmoke": "homepage-and-orbit-fa-en;localized-title-description-canonical-og-locale-hreflang;1200x627-png-og;owner-monogram-present;Browser-Rendering",
     "robotsSitemapValidation": "passed-multi-host-build-contract;both-pages-and-cloudflare-output-directories;17-canonical-sitemap-locations-per-host;robots-sitemap-origin-matches-host;live-response-body-and-authenticated-crawler-pending",
     "deploymentRollbackRehearsal": "not-performed;procedure-documented;no-destructive-production-action-without-owner-approval",
-    "cloudflareGitPushTriggerTest": "not-observed-after-PR39-matching-apps/platform-vite-config-push;latest-before-fallback-76da3cc2-ad_hoc;manual-api-fallback-a075e139-success",
+    "cloudflareGitPushTriggerTest": "matching-path-PR39-merge-did-not-create-github:push-deployment;native-trigger-unverified;ad_hoc-API-fallback-a075e139-success",
     "cloudflareGithubActionsDeploy": "run-42651297288;credential-check-success;deploy-job-skipped;missing-private-CLOUDFLARE_API_TOKEN;no-secret-changed",
-    "latestBrowserQaPerformance": "run-42651297251;p75-LCP-local-228ms-github-pages-284ms-cloudflare-384ms;p75-CLS-0-all-three;zero-failures"
+    "latestBrowserQaPerformance": "run-42651297251;p75-LCP-local-228ms-github-pages-284ms-cloudflare-384ms;p75-CLS-0-all-three;zero-failures",
+    "liveRobotsSitemapResponseBodies": "pending;direct-fetch-not-available-in-current-runtime;build-contract-verifies-17-canonical-sitemap-locations-and-host-specific-robots-targets"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -1363,5 +1364,13 @@
     "individualCreatorAndMaintainer": "Pooya Goodarzi",
     "approvalScope": "Platform brand-owner attribution only; independent project ownership and content approvals remain unchanged."
   },
-  "latestVerifiedMainCommit": "97094ed0cb79f65b0e93bf36d52a2520846e6f1b"
+  "latestVerifiedMainCommit": "97094ed0cb79f65b0e93bf36d52a2520846e6f1b",
+  "ownerConfirmedScope": {
+    "exclusiveProject": "pooya-labs/pooya-labs-platform",
+    "owner": "Pooya Goodarzi",
+    "intent": "Exclusive ownership, control, product direction, identity, and use of original platform work",
+    "confirmedDate": "2026-11-09",
+    "license": "No explicit repository reuse license; no root LICENSE file",
+    "limitations": "Does not override third-party dependencies, upstream code, contributor rights, client-controlled assets, separate agreements, or applicable law"
+  }
 }

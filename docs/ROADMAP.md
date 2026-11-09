@@ -85,6 +85,12 @@ The release target is a credible, distinctive personal portfolio that introduces
 
 ## Phase 7 — Pre-redesign readiness and engineering closeout
 
+### Ownership and portfolio boundaries
+- [x] Record the owner's explicit project boundary: Pooya Labs Platform is the sole project in this portfolio set intended for his exclusive ownership, control, product direction, and use. Keep the statement limited to original platform work; do not extend it to independent projects, client assets, contributors, upstream code, or dependencies.
+- [x] Add a bilingual ownership/IP policy and a ten-repository ownership/license register. Preserve AetherFlow's Apache-2.0 license, ORBIT's existing no-license/all-rights-reserved position, and Salon Booking's client-controlled assets. Do not add a root LICENSE or general reuse grant to the platform without a separate owner decision.
+- [ ] Complete a project-specific legal/title and third-party asset review before making any formal copyright/rights assignment claim.
+
+
 This phase is the work currently in progress. Complete every autonomous engineering, source-verification, documentation, deployment, performance, and accessibility-preparation task before starting the penultimate redesign. Do not begin the full redesign while known platform defects or unresolved technical uncertainty can still change its requirements.
 
 ### Product and content readiness

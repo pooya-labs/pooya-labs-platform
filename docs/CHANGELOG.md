@@ -1,3 +1,11 @@
+## 2026-11-09 — Owner-exclusive platform boundary and Phase 7 evidence refresh
+
+- Record Pooya Goodarzi's explicit instruction that Pooya Labs Platform is the sole project in this portfolio set intended to remain under his exclusive ownership, control, product direction, and use. The statement is intentionally limited to original platform work and does not override third-party, upstream, contributor, or client rights.
+- Add the bilingual ownership/IP policy and repository ownership/license register. Preserve AetherFlow's Apache-2.0 license, ORBIT's no-license/all-rights-reserved position, and client-controlled Salon Booking boundaries. No root LICENSE or open-source reuse grant is added to the platform.
+- Refresh README, Owner Review Packet, STATUS, NEXT, ROADMAP, and machine-readable project state.
+- Reconfirm current main `dcc9ec6d`: Repository CI [42653901311](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42653901311) passed; PR #40 Browser QA [42653273680](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42653273680) passed on its exact head.
+- The public hosts remain on app source revision `97094ed0`; Cloudflare native Git-push, live sitemap/robots response bodies, social crawler/cache, manual accessibility/device/content/privacy review, and rollback gates remain open. Apps Script publish run [42651297282](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297282) skipped the actual deployment job.
+
 ## 2026-11-09 — Current main published to both hosts; Cloudflare Git trigger still unverified
 
 - PR [#39](https://github.com/pooya-labs/pooya-labs-platform/pull/39) merged as [`97094ed0`](https://github.com/pooya-labs/pooya-labs-platform/commit/97094ed0cb79f65b0e93bf36d52a2520846e6f1b). The only app-source change is one explanatory comment documenting the host-specific robots output.

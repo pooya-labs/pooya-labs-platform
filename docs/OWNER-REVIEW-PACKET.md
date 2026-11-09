@@ -7,6 +7,8 @@
 **Important:** This document is a review snapshot, not approval to publish new claims or media. All eight project registry entries currently remain marked as needs-owner-review.
 **Owner-confirmed platform identity (2026-11-09):** Use **Pooya Monogram (پویا مونوگرام)** and the centered black-tile monogram as the Pooya Labs Platform owner identity in the homepage footer, case-study footers, bilingual README ownership blocks, and structured metadata. Credit **Pooya Goodarzi** as creator and maintainer. This narrow confirmation applies to the platform brand only; it does not approve the eight independent project dossiers/media or close any Phase 7–10 release gate.
 
+**Owner-confirmed exclusive project boundary (2026-11-09):** Pooya Labs Platform is the only project in this current portfolio set intended to remain under Pooya Goodarzi's exclusive ownership, control, product direction, and use. This owner instruction is recorded in [OWNERSHIP-AND-IP-POLICY.md](OWNERSHIP-AND-IP-POLICY.md) and [REPOSITORY-OWNERSHIP-REGISTER.md](REPOSITORY-OWNERSHIP-REGISTER.md). It does not extend to independent project repositories, client-controlled Salon Booking assets, contributor material, or third-party dependencies; it is not a substitute for legal title/contract review. No open-source reuse license is granted by the platform repository.
+
 ## 1. Homepage identity and copy currently in the repository
 
 ### Headline / شعار
