@@ -1,3 +1,12 @@
+## 2026-11-09 — GitHub App-backed screenshot publishers (PR #26)
+
+- Rebased the publisher hardening on the latest main so PR #25's refreshed eight-project source audit remains intact.
+- PR [#26](https://github.com/pooya-labs/pooya-labs-platform/pull/26) replaces direct-to-main screenshot writes in all three publisher workflows with GitHub App-authenticated PR creation on stable automation branches.
+- The default Actions token remains read-only; the App token is scoped to this repository with only contents and pull-request write access.
+- Owner approval manifests and PNG-integrity validations remain in place. Missing App secrets pause publication; there is no direct-push fallback.
+- Code/test checkpoint [`8037631`](https://github.com/pooya-labs/pooya-labs-platform/commit/8037631274fd1d086d1f90c1d68f42015116e8c7) passed CI [42623349335](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42623349335) and Browser QA [42623349393](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42623349393). The final rebased PR head must be checked again.
+- App installation, private Actions secrets, first live publisher PRs and the active `main` ruleset remain pending.
+
 ## 2026-11-09 — Phase 7 source refresh and PR #24 main verification
 
 - Merged [PR #24](https://github.com/pooya-labs/pooya-labs-platform/pull/24) as [`4482c96`](https://github.com/pooya-labs/pooya-labs-platform/commit/4482c96c6a6a8ec2548c8f37210c2f4674f617b2); merged-main Repository CI [42621840105](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42621840105) passed.

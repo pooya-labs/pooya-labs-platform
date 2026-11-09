@@ -176,7 +176,7 @@
     "ORBIT PR #138 remains open and unmerged. The patched Keycloak candidate matrix passed both architectures on its recorded revision, but the separate scan of the published upstream Keycloak 26.8.2 image still fails on Guava 33.6.0-jre / CVE-2026-102554; the patched candidate is not published.",
     "AetherFlow main advanced to cc5656068a45 with a Cargo.lock-only regeneration. Pages deployed successfully on that exact SHA; the latest observed Rust CI remained in progress on the preceding eaf72e4 commit, and three dependency PRs (#5–#7) remain open."
   ],
-  "nextAction": "Resolve the reviewed-capture publisher path with an owner decision (preferred: GitHub App PR creation, which requires private App credentials; alternative: explicitly accept the broader GitHub Actions ruleset bypass). Then configure and test an active main ruleset. Continue Phase 7 manual contrast/keyboard/screen-reader and physical Android acceptance, external social-crawler validation, host/source parity, deployment automation and rollback rehearsal. Recheck GlobalCart Pages against current catalog main before Phase 9; do not begin Phase 8/9 or V1 publication until the formal gates are accepted.",
+  "nextAction": "Validate the rebased final PR #26 head with Repository CI and Browser QA, then merge. Install a dedicated GitHub App on this repo, add CAPTURE_PUBLISHER_APP_ID and CAPTURE_PUBLISHER_APP_PRIVATE_KEY as private Actions secrets, manually dispatch all three publishers and confirm they create PRs with passing checks. Only then activate/test the main ruleset. Keep Phase 7 open for manual contrast/device/content, external crawler and rollback gates.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -413,7 +413,7 @@
     "projectIntegrationPhase": 9,
     "penultimateRedesignOwnerApproval": "pending"
   },
-  "latestVerifiedCommit": "4482c96c6a6a8ec2548c8f37210c2f4674f617b2",
+  "latestVerifiedCommit": "8037631274fd1d086d1f90c1d68f42015116e8c7",
   "projectMedia": {
     "sourceAssetsCount": 7,
     "assetsPinnedToImmutableCommits": true,
@@ -580,7 +580,7 @@
     ],
     "projectIntegration": "deferred-to-phase-9-after-phase-8-redesign-approval; all-eight-project portfolio integration pending"
   },
-  "latestBranchHeadAtCheckpoint": "4482c96c6a6a8ec2548c8f37210c2f4674f617b2",
+  "latestBranchHeadAtCheckpoint": "8037631274fd1d086d1f90c1d68f42015116e8c7",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -993,13 +993,13 @@
     "automatedValidation": "Repository CI 42483757067 passed; Browser QA 42483757051 passed on 17 routes and 34 desktop/mobile viewport checks; GitHub Pages deploy 42483757053 passed.",
     "manualValidation": "Latest Browser QA artifact 13618234167 requires detailed axe review; manual contrast, keyboard-only, screen-reader, real-device, and external social-crawler validation remain open."
   },
-  "latestTask": "P7-12",
-  "latestTaskBranch": "main",
+  "latestTask": "P7-13",
+  "latestTaskBranch": "chore/capture-publishers-app-prs-2026-11-09",
   "lastUpdated": "2026-11-09",
-  "latestDocumentationCommit": "4482c96c6a6a8ec2548c8f37210c2f4674f617b2",
-  "latestDocumentationCheckpoint": "merged-PR-24;main-4482c96c6a6a8ec2548c8f37210c2f4674f617b2;Repository-CI-42621840105-success;PR-Browser-QA-42526817146-18-of-18-routes-36-of-36-viewports-zero-violations-36-incomplete-contrast-checks-manual;upstream-audit-AetherFlow-cc56560-GlobalCart-ffc51c7-ORBIT-PR138-37ec149",
-  "latestRepositoryCiRun": "42621840105",
-  "latestBrowserQaRun": "42526817146",
+  "latestDocumentationCommit": "3a083aa83135364a25098887bb52306e6efd215a",
+  "latestDocumentationCheckpoint": "P7-13-capture-publisher-hardening-rebased-on-3a083aa83135364a25098887bb52306e6efd215a;PR:26;previous-tested-code-head:8037631274fd1d086d1f90c1d68f42015116e8c7;final-rebased-head-validation-pending",
+  "latestRepositoryCiRun": "42623349335",
+  "latestBrowserQaRun": "42623349393",
   "latestPerformanceBaseline": {
     "run": "42514976406",
     "attempt": 1,
@@ -1172,7 +1172,7 @@
     "globalcartPr23": "closed-without-merge",
     "orbitPr138": "open-unmerged;head-37ec1499f56389d48ec48412b73e7868c0dcaf46;candidate-matrix-run-42537493841-success-amd64-arm64-on-recorded-revision;upstream-image-scan-42538506884-failure-Guava-33.6.0-jre-CVE-2026-102554;candidate-not-published",
     "allUpstreamRepositoriesModified": false,
-    "platformMainCommit": "4482c96c6a6a8ec2548c8f37210c2f4674f617b2",
+    "platformMainCommit": "3a083aa83135364a25098887bb52306e6efd215a",
     "mergedPullRequest": 24,
     "postMergeRepositoryCiRun": "42621840105",
     "browserQaRun": "42526817146",
@@ -1191,7 +1191,7 @@
   },
   "repositoryGovernance": {
     "auditDate": "2026-11-09",
-    "auditedMainHead": "659189dd99af59154cbfd88ce5f9dcecb23e1e0e",
+    "auditedMainHead": "3a083aa83135364a25098887bb52306e6efd215a",
     "branchProtection": {
       "protected": false,
       "enabled": false,
@@ -1227,10 +1227,65 @@
       "mainRepositoryCiRun": 42621840105,
       "latestBrowserQaRun": 42526817146,
       "browserQaCommitIsCurrentMainHead": false,
-      "latestMainCommit": "4482c96c6a6a8ec2548c8f37210c2f4674f617b2"
+      "latestMainCommit": "3a083aa83135364a25098887bb52306e6efd215a",
+      "codeRepositoryCiRun": "42623349335",
+      "codeBrowserQaRun": "42623349393"
     },
     "ownerActionRequired": true,
-    "noSettingsOrSecretsChanged": true
+    "noSettingsOrSecretsChanged": true,
+    "publisherHardening": {
+      "implementationBranch": "chore/capture-publishers-app-prs-2026-11-09",
+      "pullRequest": 26,
+      "baseMain": "3a083aa83135364a25098887bb52306e6efd215a",
+      "previousTestedCodeHead": "8037631274fd1d086d1f90c1d68f42015116e8c7",
+      "status": "rebased-on-current-main;awaiting-final-head-CI-and-Browser-QA",
+      "publisherWorkflows": [
+        ".github/workflows/publish-reviewed-captures.yml",
+        ".github/workflows/publish-reviewed-portfolio-captures.yml",
+        ".github/workflows/publish-portfolio-fullpage-captures.yml"
+      ],
+      "githubAppTokenAction": "actions/create-github-app-token@v2",
+      "pullRequestAction": "peter-evans/create-pull-request@v8",
+      "githubTokenScopes": [
+        "contents:read",
+        "actions:read"
+      ],
+      "appTokenScopes": [
+        "contents:write",
+        "pull-requests:write"
+      ],
+      "appTokenRepositories": [
+        "pooya-labs/pooya-labs-platform"
+      ],
+      "requiredRepositorySecrets": [
+        "CAPTURE_PUBLISHER_APP_ID",
+        "CAPTURE_PUBLISHER_APP_PRIVATE_KEY"
+      ],
+      "realAppRunVerified": false,
+      "mainRulesetEnabled": false,
+      "ownerActionRequired": true,
+      "codeRepositoryCiRun": "42623349335",
+      "codeBrowserQaRun": "42623349393",
+      "browserQaArtifact": "13676544569",
+      "browserQa": {
+        "routesPassed": 18,
+        "routeTotal": 18,
+        "viewportsPassed": 36,
+        "viewportTotal": 36,
+        "confirmedAxeViolations": 0,
+        "incompleteAxeChecks": 36,
+        "failures": 0
+      },
+      "performanceMeasurements": {
+        "samplesPerHost": 20,
+        "hosts": [
+          "local-build",
+          "github-pages",
+          "cloudflare-pages"
+        ],
+        "failures": 0
+      }
+    }
   },
   "brandOwnership": {
     "displayName": "Pooya Monogram",
