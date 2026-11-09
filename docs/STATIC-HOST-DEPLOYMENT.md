@@ -27,7 +27,7 @@
 
 Both public hosts now serve builds from the exact same main commit `97094ed0`. The Pages output and Cloudflare output were built separately for their own canonical origins and base paths; Cloudflare deployment source and the Pages deploy log both record the same commit.
 
-The current Vite generator and `tests/platform/multi-host-build-contract.test.mjs` verify 17 canonical sitemap locations per host and a matching host-specific Sitemap target in each built `robots.txt`. Direct public GETs of the live `robots.txt` and `sitemap.xml` response bodies, and authenticated external share-crawler/cache validation, remain unverified. A production rollback rehearsal has not been performed; the documented procedure is not proof that it has been executed.
+The current Vite generator and `tests/platform/multi-host-build-contract.test.mjs` verify 17 canonical sitemap locations per host and a matching host-specific Sitemap target in each built `robots.txt`. Direct public GETs of the live `robots.txt` and `sitemap.xml` response bodies, and authenticated external share-crawler/cache validation, remain unverified. A production rollback rehearsal has not been performed. The documented steps are not proof that the procedure has been executed.
 
 Phase 7 remains open for manual contrast/keyboard/screen-reader review, physical Android/browser acceptance, owner biography/project-order/contribution/media approval, Salon Booking privacy permission, external crawler review, and rollback rehearsal. The platform remains **pre-alpha**; no V1 tag or release is claimed.
 
