@@ -1,3 +1,13 @@
+## 2026-11-09 — Light-theme contrast fix published to both static hosts
+
+- PR [#43](https://github.com/pooya-labs/pooya-labs-platform/pull/43) merged as [`e5ef6389`](https://github.com/pooya-labs/pooya-labs-platform/commit/e5ef638917d3204025d062af939cf01a28689d3a). The final light-theme `--pf-dim` token changed from `#728076` to `#58675e`; a numeric contract test now checks WCAG AA 4.5:1 against page, soft-surface and near-white control backgrounds.
+- Calculated contrast ratios are 5.50:1 (`#f5f6f2`), 5.08:1 (`#e9eee9`), and 5.96:1 (`#fffffc`). Full manual contrast review remains open.
+- PR CI [42659360542](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659360542), PR Browser QA [42659360713](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659360713), post-merge main CI [42659840758](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840758), and post-merge Browser QA [42659839780](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659839780) all passed; Browser QA artifact `13692549570`.
+- GitHub Pages [42659840309](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840309) deployed exact main `e5ef6389`; artifact `13693239378`.
+- Cloudflare deployment [`ed73cc8e`](https://ed73cc8e.pooya-labs-platform.pages.dev/) (ID `ed73cc8e-7fcb-42b7-8ca0-b6e591f9f160`) completed all five stages on the same exact main SHA via authorized API, trigger `ad_hoc`.
+- Live CSS verification returned HTTP 200 from both hosts; both assets contain `#58675e` and not `#728076`.
+- GitHub Cloudflare workflow [42659840434](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840434) skipped the deployment job because `CLOUDFLARE_API_TOKEN` is absent; the API deployment succeeded. Apps Script run [42659840240](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840240) skipped its publish job after configuration check. No secrets or project settings changed.
+
 ## 2026-11-09 — Live robots and sitemap responses verified on both static hosts
 
 - Used Cloudflare Browser Rendering to fetch the live GitHub Pages and Cloudflare Pages `robots.txt` and `sitemap.xml` responses.
