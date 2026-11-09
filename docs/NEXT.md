@@ -1,3 +1,20 @@
+## Latest checkpoint — contrast fix is live; remaining gates are external and owner-reviewed (2026-11-09 16:58 UTC)
+
+PR [#43](https://github.com/pooya-labs/pooya-labs-platform/pull/43) merged as current main `e5ef638917d3204025d062af939cf01a28689d3a`. It improves the final light-theme `--pf-dim` token from `#728076` to `#58675e` and adds a numeric contrast test. PR CI [42659360542](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659360542) and Browser QA [42659360713](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659360713) passed. Post-merge main CI [42659840758](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840758) and Browser QA [42659839780](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659839780) passed.
+
+Both public static hosts now serve the same application source revision `e5ef6389`: GitHub Pages deployment [42659840309](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840309), artifact `13693239378`; Cloudflare deployment [`ed73cc8e`](https://ed73cc8e.pooya-labs-platform.pages.dev/) (ID `ed73cc8e-7fcb-42b7-8ca0-b6e591f9f160`), all five stages successful. Live CSS checks on both hosts returned HTTP 200 and confirmed the updated token with the prior value absent. Tested contrast ratios are 5.08–5.96:1. This closes the specific secondary-text token defect, not the complete human contrast/accessibility gate.
+
+**Next actions:**
+1. Validate representative Open Graph cards with authenticated LinkedIn/Facebook sharing debuggers and refresh caches where possible.
+2. Complete human contrast, visible focus, keyboard-only and screen-reader review in Persian/English and both themes. Review every incomplete Axe contrast item; the new numeric test covers only the final secondary-text token.
+3. Confirm on a physical Android device and representative browser.
+4. Obtain owner approval for biography, featured-project order, role/contribution wording, images/media, and whether Novels remains empty. Obtain Salon Booking owner's permission for client-owned or sensitive case-study media.
+5. Resolve Cloudflare native Git-push triggering. The API deployment works, but no `github:push` deployment has been observed. Reinstalling the Cloudflare Workers and Pages GitHub App may interrupt the integration and still requires explicit owner approval.
+6. Restore Apps Script production publishing. Run [42659840240](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840240) passed configuration checking but skipped the publish job; no new stable Web App version is verified.
+7. Rehearse static-host rollback only in an explicitly owner-approved controlled window.
+
+Do not start Phase 8 or tag V1 until mandatory Phase 7 gates close. Current release: **pre-alpha / Phase 7**.
+
 ## Latest checkpoint — live SEO endpoints verified; remaining work is external and owner-gated (2026-11-09 16:48 UTC)
 
 The GitHub Pages and Cloudflare Pages `robots.txt` and `sitemap.xml` response bodies have now been read from the live hosts through Cloudflare Browser Rendering. All four returned HTTP 200. Both robots files are plain text, allow `/`, and point to their corresponding same-host sitemap. Both sitemaps return `application/xml`, parse as a valid `urlset`, have no parser errors, contain exactly 17 `loc` entries, and keep every URL on their own canonical host. The live response-body SEO gate is closed; external LinkedIn/Facebook crawler and cache validation is still separate and open.

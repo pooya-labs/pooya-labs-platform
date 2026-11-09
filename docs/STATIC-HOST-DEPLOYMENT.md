@@ -1,36 +1,27 @@
-# Static host deployment and rollback runbook
+## Latest verified host parity — 2026-11-09 16:58 UTC
 
-## Latest verified host parity — 2026-11-09 16:12 UTC
-
-**Current main:** [`97094ed0cb79f65b0e93bf36d52a2520846e6f1b`](https://github.com/pooya-labs/pooya-labs-platform/commit/97094ed0cb79f65b0e93bf36d52a2520846e6f1b). The only code change since the last host checkpoint is one explanatory comment in `apps/platform/vite.config.ts`; no runtime behavior or generated content changed.
+**Current main:** [`e5ef638917d3204025d062af939cf01a28689d3a`](https://github.com/pooya-labs/pooya-labs-platform/commit/e5ef638917d3204025d062af939cf01a28689d3a). PR #43 changes one final light-theme token and adds a numeric contrast contract test. PR CI and Browser QA passed; post-merge main CI [42659840758](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840758) and Browser QA [42659839780](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659839780) passed.
 
 ### GitHub Pages
 
-- The latest GitHub Pages workflow [42651297113](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297113) passed both Build and Deploy on exact main `97094ed0`. Pages artifact: `13690386196`. The deploy log records a Pages deployment for the exact commit and the canonical environment URL [`https://pooya-labs.github.io/pooya-labs-platform/`](https://pooya-labs.github.io/pooya-labs-platform/).
-- Browser QA [42651297251](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297251) independently measured this published GitHub Pages host with zero measurement failures.
+- Workflow [42659840309](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840309) passed Build and Deploy on exact main `e5ef6389`; artifact `13693239378`. Canonical URL: [https://pooya-labs.github.io/pooya-labs-platform/](https://pooya-labs.github.io/pooya-labs-platform/).
 
 ### Cloudflare Pages
 
-- Latest production deployment: [`a075e139`](https://a075e139.pooya-labs-platform.pages.dev/) (ID `a075e139-20d1-4587-91a9-b73904499065`), from exact main `97094ed0`. Cloudflare reports all five stages — queue, initialize, clone, build, and deploy — as successful. Its manifest contains 106 files including the bilingual routes, `robots.txt`, `sitemap.xml`, 17 social PNG cards, and the Pooya Monogram tile.
-- Unique deployment URL: [`https://a075e139.pooya-labs-platform.pages.dev/`](https://a075e139.pooya-labs-platform.pages.dev/). Canonical production alias: [`https://pooya-labs-platform.pages.dev/`](https://pooya-labs-platform.pages.dev/).
-- The deployment is recorded as `deployment_trigger.type=ad_hoc`: it was started through the authorized Cloudflare Pages API with the connected Git repository and exact main SHA.
-- **Native Git-push trigger test:** PR [#39](https://github.com/pooya-labs/pooya-labs-platform/pull/39) changed `apps/platform/vite.config.ts`, which matches the Pages project's configured `apps/platform/**` path filter. After its normal PR merge, Cloudflare did not create a new `github:push` production deployment; the latest deployment was still the earlier `76da3cc2` ad-hoc deployment. The Cloudflare project still reports GitHub source, production branch `main`, and production deployments enabled. The current exact-main deployment was therefore made manually through the API. The test demonstrates that automatic Git deployment is **not currently verified/reliable**; it does not identify the root cause.
-- GitHub Actions Cloudflare workflow [42651297288](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297288) passed its credential-check job, but its actual deploy job was skipped because the private `CLOUDFLARE_API_TOKEN` secret is absent. No secret, integration permission, or Cloudflare project setting was changed.
+- Production deployment [`ed73cc8e`](https://ed73cc8e.pooya-labs-platform.pages.dev/) (ID `ed73cc8e-7fcb-42b7-8ca0-b6e591f9f160`) passed queue, initialize, clone, build, and deploy from exact main `e5ef638917d3204025d062af939cf01a28689d3a`. Canonical alias: [https://pooya-labs-platform.pages.dev/](https://pooya-labs-platform.pages.dev/). Trigger is `ad_hoc` through the authorized Cloudflare Pages API.
+- Native Git-push remains unverified: matching-path PR #39 did not create a `github:push` deployment. GitHub Actions Cloudflare workflow [42659840434](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840434) passed credential checking but skipped deploy because `CLOUDFLARE_API_TOKEN` is absent. The API fallback succeeded without changing secrets, installation, or project settings.
 
-### CI, browser QA, and performance
+### Host parity, CSS asset, and accessibility verification
 
-- Repository CI [42651297246](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297246) passed on exact main `97094ed0`.
-- Browser QA [42651297251](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297251) passed 18/18 routes and 36/36 viewports, with zero failures and zero confirmed Axe violations. Report artifact: [`13690630887`](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297251/artifacts/13690630887).
-- p75 LCP: 228 ms local, 284 ms GitHub Pages, 384 ms Cloudflare Pages. p75 CLS: 0.000 on all three. All three performance measurements reported zero failures.
+- Both hosts serve the same main application revision `e5ef6389`.
+- Live page and CSS requests returned HTTP 200 on both hosts; each CSS asset is 208,405 bytes.
+- Both live CSS assets contain `--pf-dim:#58675e` and do not contain `--pf-dim:#728076`.
+- Automated contrast ratios: 5.50:1 on `#f5f6f2`, 5.08:1 on `#e9eee9`, and 5.96:1 on `#fffffc`. Full manual contrast review remains separate.
+- Live `robots.txt` and `sitemap.xml` response-body verification remains passed on both hosts: HTTP 200, host-specific Sitemap pointer, valid XML with 17 same-origin `loc` entries.
 
-### Host parity and remaining limits
+### Remaining release gates
 
-Both public hosts now serve builds from the exact same main commit `97094ed0`. The Pages output and Cloudflare output were built separately for their own canonical origins and base paths; Cloudflare deployment source and the Pages deploy log both record the same commit.
-
-The current Vite generator and `tests/platform/multi-host-build-contract.test.mjs` verify 17 canonical sitemap locations per host and a matching host-specific Sitemap target in each built `robots.txt`. Direct public GETs of the live `robots.txt` and `sitemap.xml` response bodies, and authenticated external share-crawler/cache validation, remain unverified. A production rollback rehearsal has not been performed. The documented steps are not proof that the procedure has been executed.
-
-Phase 7 remains open for manual contrast/keyboard/screen-reader review, physical Android/browser acceptance, owner biography/project-order/contribution/media approval, Salon Booking privacy permission, external crawler review, and rollback rehearsal. The platform remains **pre-alpha**; no V1 tag or release is claimed.
-
+Apps Script run [42659840240](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840240) passed configuration checking but skipped its actual publish job. No new Apps Script version is verified. External social-crawler/cache validation, manual accessibility/screen-reader, physical-device, owner content/media, Salon Booking privacy, and rollback gates remain open. The platform remains **pre-alpha / Phase 7**.
 
 **Scope:** public portfolio on GitHub Pages and Cloudflare Pages. This runbook is separate from the Apps Script proof and does not authorize deployment of independent Workers/D1 projects.
 
@@ -96,9 +87,10 @@ Each release/rollback checkpoint must record the source SHA, CI run, Browser QA 
 
 ## Current rehearsal state
 
-- GitHub Pages build and production deployment both passed on app SHA `558970f`; current main's later changes do not touch application files. The canonical host was also measured by Browser QA with zero failures.
-- Cloudflare production deployment `76da3cc2` passed all stages on exact main SHA `15203f14`; rendered homepage and Persian/English ORBIT metadata were verified. Native Git push-trigger behavior and the Actions-secret-based deploy job remain unproven.
-- A real production rollback rehearsal remains open. This document is the procedure, not proof that it has been executed; no production rollback was attempted.
+- GitHub Pages production deployment [42659840309](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840309) passed Build and Deploy on exact app SHA `e5ef6389`; artifact `13693239378`.
+- Cloudflare production deployment `ed73cc8e` (ID `ed73cc8e-7fcb-42b7-8ca0-b6e591f9f160`) passed all five stages on the same exact app SHA through the authorized Pages API, trigger `ad_hoc`.
+- Browser QA [42659839780](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659839780) passed on the same main revision; artifact `13692549570`. Live homepage and CSS assets returned HTTP 200 on both hosts.
+- The documented rollback has **not** been rehearsed. This runbook is the procedure, not proof that the procedure has been executed; no production rollback was attempted.
 
 ## Security boundary
 
