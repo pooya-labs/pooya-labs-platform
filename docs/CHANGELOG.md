@@ -1,3 +1,11 @@
+## 2026-11-09 — App-backed capture publishers merged and fail-closed runtime verified
+
+- Merged [PR #28](https://github.com/pooya-labs/pooya-labs-platform/pull/28) as [`01749d7`](https://github.com/pooya-labs/pooya-labs-platform/commit/01749d717f6e31a1096cde91ff7773a9b58e1626). The three reviewed image publishers now use repository-scoped GitHub App PR creation instead of direct pushes to `main`.
+- PR Repository CI [42624753678](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753678) passed; PR Browser QA [42624753816](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753816) passed 18/18 routes, 36/36 viewport checks, zero failures and zero confirmed axe violations. 36 incomplete color-contrast checks remain manual review. Performance QA completed 20 samples each for local, GitHub Pages and Cloudflare Pages with zero failed samples; report artifact [13678551079](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753816/artifacts/13678551079).
+- All three publisher workflows were triggered on merged main and completed successfully in fail-closed mode: [42625390767](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390767), [42625390703](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390703), and [42625390732](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390732). They detected missing App secrets, skipped token/PR creation, and confirmed no image files were published or written to `main`.
+- The GitHub App is **not** installed/configured yet; the two private Actions secrets and active `main` ruleset remain owner-side gates. Do not claim real App-backed PR creation until the three manual dispatches have been tested after setup.
+- The platform stays **pre-alpha / Phase 7**. No V1 tag, production-release claim, or public application deployment was made by this workflow-only merge.
+
 ## 2026-11-09 — Phase 7 source refresh and PR #24 main verification
 
 - Merged [PR #24](https://github.com/pooya-labs/pooya-labs-platform/pull/24) as [`4482c96`](https://github.com/pooya-labs/pooya-labs-platform/commit/4482c96c6a6a8ec2548c8f37210c2f4674f617b2); merged-main Repository CI [42621840105](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42621840105) passed.
