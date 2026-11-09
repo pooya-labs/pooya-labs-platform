@@ -215,17 +215,20 @@ test('header contrast remains inspectable without a decorative pseudo-element ov
   assert.match(css, /--pf-control-bg:#fffffc/);
 });
 
-test('final light-theme secondary text meets WCAG AA contrast on the page and raised surfaces', () => {
-  const lightThemeBlocks = [...css.matchAll(/\\.portfolio-page\\[data-theme="light"\\]\\s*\\{([^}]*)\\}/g)];
-  const finalLightTheme = lightThemeBlocks.findLast((match) => match[1].includes('--pf-bg:#f5f6f2'));
-  assert.ok(finalLightTheme, 'The final graphite/ivory light-theme token block must exist');
 
-  const foreground = finalLightTheme[1].match(/--pf-dim:\\s*(#[0-9a-f]{6})/i)?.[1];
+test('final light-theme secondary text meets WCAG AA contrast on the page and raised surfaces', () => {
+  const selector = '.portfolio-page[data-theme="light"] {';
+  const lightThemeStart = css.lastIndexOf(selector);
+  assert.ok(lightThemeStart >= 0, 'The final graphite/ivory light-theme token block must exist');
+  const lightThemeEnd = css.indexOf('}', lightThemeStart);
+  const finalLightTheme = css.slice(lightThemeStart, lightThemeEnd);
+
+  const foreground = finalLightTheme.match(/--pf-dim:\s*(#[0-9a-f]{6})/i)?.[1];
   assert.ok(foreground, 'The final light-theme secondary text token must be a six-digit hex color');
 
   for (const background of ['#f5f6f2', '#e9eee9', '#fffffc']) {
     const ratio = contrastRatio(foreground, background);
-    assert.ok(ratio >= 4.5, `Secondary text contrast against ${background} is ${ratio.toFixed(2)}:1; expected at least 4.5:1`);
+    assert.ok(ratio >= 4.5, \`Secondary text contrast against \${background} is \${ratio.toFixed(2)}:1; expected at least 4.5:1\`);
   }
 });
 
