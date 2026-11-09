@@ -238,7 +238,7 @@ test('Browser QA audits raw HTML social metadata and locally built preview image
   assert.match(script, /expectedChecks: socialCrawlerRoutes\.length \* socialCrawlerAgents\.length/);
   assert.match(script, /userAgent: crawler\.userAgent/);
   assert.match(script, /const rawHtml = response \? await response\.text\(\) : ''/);
-  assert.match(script, /new DOMParser\(\)\.parseFromString\(html, 'text\\/html'\)/);
+  assert.ok(script.includes("new DOMParser().parseFromString(html, 'text/html')"));
   assert.match(script, /meta\('meta\[name="description"\]'\)/);
   assert.match(script, /meta\('meta\[property="og:title"\]'\)/);
   assert.match(script, /meta\('meta\[property="og:description"\]'\)/);
