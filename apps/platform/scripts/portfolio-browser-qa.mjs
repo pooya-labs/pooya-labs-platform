@@ -23,6 +23,19 @@ const routes = [
   ]),
 ];
 
+const socialCrawlerAgents = [
+  { label: 'linkedin', userAgent: 'LinkedInBot/1.0' },
+  { label: 'facebook', userAgent: 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)' },
+];
+
+const socialCrawlerRoutes = [
+  { label: 'home', path: '' },
+  ...projectSlugs.flatMap((slug) => [
+    { label: slug + '-fa', path: 'projects/' + slug + '/' },
+    { label: slug + '-en', path: 'en/projects/' + slug + '/' },
+  ]),
+];
+
 const viewports = [
   { name: 'desktop', width: 1440, height: 1000 },
   { name: 'mobile', width: 390, height: 844 },
@@ -39,6 +52,12 @@ const report = {
   viewportCount: viewports.length,
   checks: [],
   failures: [],
+  socialCrawlerAudit: {
+    routeCount: socialCrawlerRoutes.length,
+    agents: socialCrawlerAgents.map((crawler) => ({ label: crawler.label, userAgent: crawler.userAgent })),
+    expectedChecks: socialCrawlerRoutes.length * socialCrawlerAgents.length,
+    checks: [],
+  },
   accessibility: {
     tags: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'],
     impactCounts: { critical: 0, serious: 0, moderate: 0, minor: 0, unknown: 0 },
@@ -643,6 +662,145 @@ try {
     report.checks.push(routeRecord);
   }
 
+  for (const crawler of socialCrawlerAgents) {
+    const crawlerContext = await browser.newContext({
+      userAgent: crawler.userAgent,
+      viewport: { width: 1280, height: 800 },
+      deviceScaleFactor: 1,
+    });
+    try {
+      for (const route of socialCrawlerRoutes) {
+        const targetUrl = new URL(route.path, baseUrl);
+        const crawlerRecord = {
+          crawler: crawler.label,
+          userAgent: crawler.userAgent,
+          route: route.label,
+          url: targetUrl.href,
+          httpStatus: null,
+          canonical: null,
+          ogUrl: null,
+          ogImage: null,
+          imageStatus: null,
+          imageContentType: null,
+          imageDimensions: null,
+          failures: [],
+          passed: false,
+        };
+        const fail = (message) => crawlerRecord.failures.push(message);
+        const crawlerPage = await crawlerContext.newPage();
+        try {
+          const response = await crawlerPage.goto(targetUrl.href, {
+            waitUntil: 'domcontentloaded',
+            timeout: 30000,
+          });
+          crawlerRecord.httpStatus = response?.status() ?? null;
+          const rawHtml = response ? await response.text() : '';
+          const metadata = await crawlerPage.evaluate((html) => {
+            const parsed = new DOMParser().parseFromString(html, 'text/html');
+            const meta = (selector) => parsed.querySelector(selector)?.getAttribute('content')?.trim() ?? '';
+            return {
+              documentTitle: parsed.title?.trim() ?? '',
+              description: meta('meta[name="description"]'),
+              ogTitle: meta('meta[property="og:title"]'),
+              ogDescription: meta('meta[property="og:description"]'),
+              canonical: parsed.querySelector('link[rel="canonical"]')?.getAttribute('href')?.trim() ?? '',
+              ogUrl: meta('meta[property="og:url"]'),
+              ogImage: meta('meta[property="og:image"]'),
+            };
+          }, rawHtml);
+
+          if (!response || !response.ok()) fail('Crawler document response was not successful.');
+          if (!metadata.documentTitle || !metadata.description || !metadata.ogTitle || !metadata.ogDescription) {
+            fail('Raw HTML is missing a document title, description, or Open Graph title/description.');
+          }
+
+          let canonicalUrl = null;
+          try {
+            if (!metadata.canonical) throw new Error('Canonical link is missing.');
+            canonicalUrl = new URL(metadata.canonical, targetUrl);
+            crawlerRecord.canonical = canonicalUrl.href;
+          } catch {
+            fail('Raw HTML has no valid canonical URL.');
+          }
+          if (canonicalUrl && (
+            canonicalUrl.pathname !== targetUrl.pathname ||
+            canonicalUrl.protocol !== 'https:'
+          )) {
+            fail('Canonical URL does not use HTTPS or does not match the requested static route.');
+          }
+
+          let declaredOgUrl = null;
+          try {
+            if (!metadata.ogUrl) throw new Error('og:url is missing.');
+            declaredOgUrl = new URL(metadata.ogUrl, targetUrl);
+            crawlerRecord.ogUrl = declaredOgUrl.href;
+          } catch {
+            fail('Raw HTML has no valid og:url.');
+          }
+          if (canonicalUrl && declaredOgUrl && declaredOgUrl.href !== canonicalUrl.href) {
+            fail('og:url does not exactly match the canonical URL.');
+          }
+
+          let ogImageUrl = null;
+          try {
+            if (!metadata.ogImage) throw new Error('og:image is missing.');
+            ogImageUrl = new URL(metadata.ogImage, targetUrl);
+            crawlerRecord.ogImage = ogImageUrl.href;
+          } catch {
+            fail('Raw HTML has no valid og:image URL.');
+          }
+          if (ogImageUrl && canonicalUrl && (
+            ogImageUrl.origin !== canonicalUrl.origin ||
+            !ogImageUrl.pathname.startsWith(baseUrl.pathname)
+          )) {
+            fail('og:image is not on the canonical host and Pages base path.');
+            ogImageUrl = null;
+          }
+
+          if (ogImageUrl) {
+            const localAssetUrl = new URL(ogImageUrl.pathname + ogImageUrl.search, baseUrl.origin);
+            const imageResponse = await crawlerContext.request.get(localAssetUrl.href, { timeout: 20000 });
+            crawlerRecord.imageStatus = imageResponse.status();
+            crawlerRecord.imageContentType = imageResponse.headers()['content-type']?.split(';')[0] ?? '';
+            const imageBytes = await imageResponse.body();
+            const pngSignature = imageBytes.length >= 24 && imageBytes.subarray(0, 8).equals(
+              Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
+            );
+            if (pngSignature) {
+              crawlerRecord.imageDimensions = {
+                width: imageBytes.readUInt32BE(16),
+                height: imageBytes.readUInt32BE(20),
+              };
+            }
+            if (!imageResponse.ok()) fail('The locally built Open Graph image did not return HTTP 200.');
+            if (crawlerRecord.imageContentType !== 'image/png') fail('The Open Graph image is not served as image/png.');
+            if (!pngSignature) fail('The Open Graph image response is not a valid PNG file.');
+            if (crawlerRecord.imageDimensions?.width !== 1200 || crawlerRecord.imageDimensions?.height !== 627) {
+              fail('The Open Graph PNG dimensions are not 1200×627.');
+            }
+          }
+        } catch (error) {
+          fail(error instanceof Error ? error.message : String(error));
+        } finally {
+          await crawlerPage.close();
+        }
+
+        crawlerRecord.passed = crawlerRecord.failures.length === 0;
+        for (const message of crawlerRecord.failures) {
+          addFailure(
+            { label: route.label },
+            'crawler:' + crawler.label,
+            crawler.label + ' social-preview audit: ' + message,
+          );
+        }
+        report.socialCrawlerAudit.checks.push(crawlerRecord);
+      }
+    } finally {
+      await crawlerContext.close();
+    }
+  }
+  report.socialCrawlerAudit.passedChecks = report.socialCrawlerAudit.checks.filter((item) => item.passed).length;
+
   await context.close();
 } finally {
   await browser.close();
@@ -660,9 +818,17 @@ console.log('Portfolio browser QA: ' + passedRoutes + '/' + routes.length + ' ro
 console.log('Viewport checks: ' + report.checks.reduce((sum, item) => sum + item.viewportChecks.length, 0) + '/' + (routes.length * viewports.length) + '.');
 console.log('Axe violations by impact: ' + JSON.stringify(report.accessibility.impactCounts) + '.');
 console.log('Axe incomplete rule checks: ' + report.accessibility.incompleteRuleChecks + ' (' + report.accessibility.incompleteRules.length + ' records).');
+console.log(
+  'Social crawler checks: ' + report.socialCrawlerAudit.passedChecks + '/' +
+  report.socialCrawlerAudit.expectedChecks + ' (' + report.socialCrawlerAudit.agents.length + ' User-Agents).',
+);
 console.log('Failures: ' + report.failures.length + '.');
 console.log('Report: ' + path.join(artifactDir, 'qa-report.json'));
 
-if (report.failures.length > 0 || passedRoutes !== routes.length) {
+if (
+  report.failures.length > 0 ||
+  passedRoutes !== routes.length ||
+  report.socialCrawlerAudit.passedChecks !== report.socialCrawlerAudit.expectedChecks
+) {
   process.exitCode = 1;
 }

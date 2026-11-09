@@ -227,3 +227,29 @@ test('Browser QA uses plain JavaScript DOM selectors in its visibility measureme
   assert.match(script, /const heading = section\.querySelector\('\.portfolio-section-heading'\)/);
   assert.match(script, /const cards = Array\.from\(section\.querySelectorAll\('\.portfolio-project-card'\)\)/);
 });
+
+
+test('Browser QA audits raw HTML social metadata and locally built preview images under LinkedIn and Facebook crawler User-Agents', () => {
+  assert.match(script, /const socialCrawlerAgents = \[/);
+  assert.match(script, /LinkedInBot\\/1\\.0/);
+  assert.match(script, /facebookexternalhit\\/1\\.1/);
+  assert.match(script, /const socialCrawlerRoutes = \[/);
+  assert.match(script, /routeCount: socialCrawlerRoutes\.length/);
+  assert.match(script, /expectedChecks: socialCrawlerRoutes\.length \* socialCrawlerAgents\.length/);
+  assert.match(script, /userAgent: crawler\.userAgent/);
+  assert.match(script, /const rawHtml = response \? await response\.text\(\) : ''/);
+  assert.match(script, /new DOMParser\(\)\.parseFromString\(html, 'text\\/html'\)/);
+  assert.match(script, /meta\('meta\[name="description"\]'\)/);
+  assert.match(script, /meta\('meta\[property="og:title"\]'\)/);
+  assert.match(script, /meta\('meta\[property="og:description"\]'\)/);
+  assert.match(script, /link\[rel="canonical"\]/);
+  assert.match(script, /meta\('meta\[property="og:url"\]'\)/);
+  assert.match(script, /meta\('meta\[property="og:image"\]'\)/);
+  assert.match(script, /declaredOgUrl\.href !== canonicalUrl\.href/);
+  assert.match(script, /imageResponse\.headers\(\)\['content-type'\]/);
+  assert.match(script, /readUInt32BE\(16\)/);
+  assert.match(script, /readUInt32BE\(20\)/);
+  assert.match(script, /width !== 1200 \|\| crawlerRecord\.imageDimensions\?\.height !== 627/);
+  assert.match(script, /socialCrawlerAudit\.passedChecks/);
+  assert.match(script, /socialCrawlerAudit\.expectedChecks/);
+});
