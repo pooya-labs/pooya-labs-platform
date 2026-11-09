@@ -1,4 +1,21 @@
 
+## Latest checkpoint — PR #48 merged; P7-25 complete (2026-11-10)
+
+PR [#48](https://github.com/pooya-labs/pooya-labs-platform/pull/48) merged as [`b3e548e`](https://github.com/pooya-labs/pooya-labs-platform/commit/b3e548ead98103535e7524bf550b7d6689d30720). Exact PR-head checks passed: Repository CI [42723838058](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42723838058) and Portfolio Browser QA [42723837697](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42723837697), on `1c2f11e`. The PR is documentation/state-only; no new app deployment is claimed.
+
+The eight-project source-of-truth audit is current as of 2026-11-10. No upstream project repository was modified. Key carry-forward facts: AetherFlow M08 and its matched-runner benchmark remain open; ORBIT's patched Keycloak digest is published and scanned but not promoted into production Compose; GlobalCart's latest FX snapshot is not freshness-verified and has no verified deployment.
+
+**Next actions remain the Phase 7 exit gates:**
+1. Finish manual contrast, visible-focus, keyboard-only and screen-reader review in Persian/English and both themes; the 36 incomplete Axe contrast checks are not passes.
+2. Complete the physical Android/browser review.
+3. Obtain owner approval for biography, featured order, role/contribution wording, contacts, public media and the Novels decision.
+4. Obtain Salon Booking owner's explicit permission for any customer-facing case-study media.
+5. Validate social cards with authenticated LinkedIn/Meta sharing tools and record actual cache refreshes.
+6. Keep Cloudflare Git-integration changes, Apps Script production credentials and rollback rehearsal owner-gated.
+7. After Phase 7 exits, complete Phase 8 redesign/approval, Phase 9 project integration, then Phase 10 V1 hardening.
+
+**Current release:** pre-alpha / Phase 7. No V1 tag or public release is claimed.
+
 ## Latest checkpoint — P7-25 read-only source refresh (2026-11-10)
 
 The platform's latest main checkpoint before this docs-only refresh is [`b1db0ccc`](https://github.com/pooya-labs/pooya-labs-platform/commit/b1db0ccc0b0d2f554338ef0553af342f8c72fd48). The eight independent upstream repositories were rechecked read-only; none was modified. The current source-of-truth inventory is [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
