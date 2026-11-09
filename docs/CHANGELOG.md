@@ -1,3 +1,12 @@
+## 2026-11-09 — LinkedIn/Facebook bot-user-agent social-preview audit passed
+
+- With Cloudflare Browser Rendering, fetched all 17 published routes on both GitHub Pages and Cloudflare Pages under `LinkedInBot/1.0` and `facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)`.
+- Each User-Agent pass covered 34 route/host combinations and had zero failures. All HTML returned HTTP 200 and contained OG title, description, same-host/base-path canonical URL, matching `og:url`, and same-origin OG image.
+- All 34 referenced image assets per User-Agent returned HTTP 200, `image/png`, and decoded to 1200×627. This is a browser-rendered User-Agent simulation; authenticated official share-debugger inspections and cache refresh remain pending.
+- PR #44 merged as current docs-only main `d4402211`; its Repository CI [42661281955](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42661281955) and Browser QA [42661281908](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42661281908) passed; post-merge main CI [42661735358](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42661735358) passed.
+- The production app bundle on both hosts remains `e5ef6389`; GitHub Pages run [42659840309](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840309) / artifact `13693239378` and Cloudflare deployment `ed73cc8e` remain the exact matching app deployments.
+- Live robots and sitemap bodies remain verified on both hosts: four HTTP 200 responses, correct same-host sitemap pointers, and 17 canonical same-origin URLs per sitemap.
+
 ## 2026-11-09 — Light-theme contrast fix published to both static hosts
 
 - PR [#43](https://github.com/pooya-labs/pooya-labs-platform/pull/43) merged as [`e5ef6389`](https://github.com/pooya-labs/pooya-labs-platform/commit/e5ef638917d3204025d062af939cf01a28689d3a). The final light-theme `--pf-dim` token changed from `#728076` to `#58675e`; a numeric contract test now checks WCAG AA 4.5:1 against page, soft-surface and near-white control backgrounds.

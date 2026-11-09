@@ -1,3 +1,24 @@
+## Latest checkpoint — social bot-user-agent validation passed; authenticated cache review remains (2026-11-09 17:16 UTC)
+
+Current repository main is documentation-only commit `d4402211cc6fcca59f143018574bd3cd9cf64aab`, merged as PR #44. Exact-head Repository CI [42661281955](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42661281955) and Browser QA [42661281908](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42661281908) passed; Browser QA artifact `13694606656`. Post-merge main CI [42661735358](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42661735358) passed.
+
+The current application bundle on both production static hosts remains source commit `e5ef638917d3204025d062af939cf01a28689d3a` (PR #44 changed docs only). GitHub Pages run [42659840309](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840309) / artifact `13693239378` and Cloudflare deployment [`ed73cc8e`](https://ed73cc8e.pooya-labs-platform.pages.dev/) both serve that app revision.
+
+**Completed automated public checks:** Cloudflare Browser Rendering fetched all 17 routes per host under `LinkedInBot/1.0` and `facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)`. For each User-Agent: 34 route/host checks, 0 failures. All HTML returned HTTP 200; each page had OG title/description, same-host/base-path canonical and matching `og:url`; each same-origin OG PNG returned HTTP 200 and decoded as 1200×627. This validates static HTML and assets under those User-Agent strings, but it does not exercise authenticated LinkedIn/Facebook sharing debuggers or prove cache refresh.
+
+The live robots/sitemap response-body gate is also closed: all four endpoints (two files × two hosts) returned HTTP 200; both robots files point to their own host-specific sitemap; both valid sitemaps contain 17 same-origin `loc` entries.
+
+**Next actions:**
+1. Use authenticated LinkedIn Post Inspector and Meta Sharing Debugger to inspect cached examples, request refresh where available, and record their actual results. Keep this distinct from the completed User-Agent simulation.
+2. Complete human contrast, visible focus, keyboard-only and screen-reader review in Persian/English and both themes; review incomplete Axe contrast checks.
+3. Confirm on a physical Android device and representative browser.
+4. Obtain owner approval for biography, featured-project order, role/contribution wording, images/media, and whether Novels remains empty. Obtain Salon Booking owner's permission for client-owned or sensitive case-study media.
+5. Resolve Cloudflare native Git-push triggering. API deployment works, but no `github:push` deployment has been observed. App reinstall may interrupt integration and still requires explicit owner approval.
+6. Restore Apps Script production publishing; the latest production workflow's configuration check passed but the publish job remains skipped because private deployment configuration is absent.
+7. Rehearse static-host rollback only in an explicitly owner-approved controlled window.
+
+Do not start Phase 8 or tag V1 until mandatory Phase 7 gates close. Current release: **pre-alpha / Phase 7**.
+
 ## Latest checkpoint — contrast fix is live; remaining gates are external and owner-reviewed (2026-11-09 16:58 UTC)
 
 PR [#43](https://github.com/pooya-labs/pooya-labs-platform/pull/43) merged as current main `e5ef638917d3204025d062af939cf01a28689d3a`. It improves the final light-theme `--pf-dim` token from `#728076` to `#58675e` and adds a numeric contrast test. PR CI [42659360542](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659360542) and Browser QA [42659360713](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659360713) passed. Post-merge main CI [42659840758](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840758) and Browser QA [42659839780](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659839780) passed.

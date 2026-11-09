@@ -13,15 +13,16 @@ This checklist governs public portfolio releases. The current release remains **
 - [ ] Verify public biography, project order, project descriptions, contribution/role statements, statuses, contact details, repository links, demo links, and all published media with the owner.
 - [ ] Verify the Pooya Monogram owner signature and black-tile logo on the homepage and every bilingual case-study route, plus both README ownership blocks and structured metadata on the deployed hosts.
 - [ ] Complete physical-device review on representative mobile hardware and browsers. Browser emulation does not satisfy this gate.
-- [ ] Verify SEO/canonical/hreflang/sitemap/social-card output and test representative external sharing clients.
-- [x] Confirm GitHub Pages and Cloudflare Pages publish the exact same current main application revision `e5ef6389`. Pages run 42659840309 deployed artifact `13693239378`; Cloudflare deployment `ed73cc8e` completed all five stages from the exact same SHA via the authorized API fallback. Live CSS assets on both hosts contain the light-theme contrast fix. Native Git-push triggering remains unverified; external crawler/cache and manual SEO review remain open.
+- [x] Validate all 17 routes on both hosts under LinkedInBot and Facebook externalhit User-Agent simulations: 34 route/host checks per User-Agent, zero failures, valid OG metadata/canonical URLs, and same-origin 1200×627 PNG assets. This does not prove authenticated share-debugger success or cache refresh.
+- [ ] Validate cached cards through authenticated LinkedIn Post Inspector and Meta Sharing Debugger; request refresh where available and record actual platform results.
+- [x] Confirm GitHub Pages and Cloudflare Pages publish the same application source revision `e5ef6389` (current repository main `d4402211` is docs-only). Pages run 42659840309 deployed artifact `13693239378`; Cloudflare deployment `ed73cc8e` completed all five stages from the exact same SHA via the authorized API fallback. Live CSS assets on both hosts contain the light-theme contrast fix. Native Git-push triggering remains unverified; external crawler/cache and manual SEO review remain open.
 - [ ] Review privacy, security, performance, and dependency changes. Never publish private customer or admin data.
 - [ ] Rehearse the documented deployment and rollback path for each public host that is part of the release.
 - [ ] Update `docs/STATUS.md`, `docs/NEXT.md`, `docs/CHANGELOG.md`, and the relevant roadmap items with evidence and exact commit/run/deployment identifiers.
 
 ## Publishing
 
-- [x] Publish GitHub Pages and Cloudflare Pages independently for exact current main `e5ef6389`; Pages run 42659840309 / artifact 13693239378, Cloudflare deployment `ed73cc8e` / API trigger `ad_hoc`.
+- [x] Publish GitHub Pages and Cloudflare Pages independently for application source `e5ef6389`; current repository main `d4402211` is documentation-only; Pages run 42659840309 / artifact 13693239378, Cloudflare deployment `ed73cc8e` / API trigger `ad_hoc`.
 
 1. Confirm the main-branch commit has passing required checks.
 2. Publish GitHub Pages and Cloudflare Pages independently; verify each host against the same intended application revision.
