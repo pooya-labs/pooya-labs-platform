@@ -1832,7 +1832,7 @@
 .portfolio-page[data-theme="light"] {
   --pf-bg:#f5f6f2;--pf-bg-soft:#e9eee9;--pf-surface:rgba(255,255,255,.88);
   --pf-line:rgba(35,55,45,.13);--pf-line-strong:rgba(48,133,97,.24);
-  --pf-text:#1b2922;--pf-muted:#52645a;--pf-dim:#728076;
+  --pf-text:#1b2922;--pf-muted:#52645a;--pf-dim:#58675e;
   --pf-cyan:#26775a;--pf-emerald:#2c956d;
   --pf-control-bg:#fffffc;--pf-control-surface:rgba(24,48,35,.035);
   --pf-control-border:rgba(35,55,45,.14);--pf-control-text:#1b2922;
