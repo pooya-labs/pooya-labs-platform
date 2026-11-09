@@ -18,7 +18,7 @@ The repository is the shared source of truth, but each host has its own build ou
 - The GitHub compare between Pages app SHA `558970f` and current main `15203f14` lists only docs/workflow/test changes and no `apps/platform/**` or root package changes. The two hosts therefore serve the same app source tree despite different complete commit IDs.
 - Cloudflare rendered HTML was checked for the homepage and Persian/English ORBIT routes. Canonicals and language alternates resolve on the Cloudflare canonical host; the language-specific title, description, locale, OG image URL, 1200×627 dimensions, and owner monogram were present.
 - GitHub Actions Cloudflare deploy path still needs `CLOUDFLARE_API_TOKEN`; native Cloudflare Git-integration push trigger remains unproven. Do not conflate a direct API-triggered deployment with a Git push deployment.
-- Current Cloudflare deployment manifest contains `robots.txt` and `sitemap.xml`, but their response bodies and external crawler/cache behavior are not yet verified. Rollback is documented, not rehearsed.
+- Current Cloudflare deployment manifest contains `robots.txt` and `sitemap.xml`. The multi-host build contract test also verifies both built files: 17 sitemap `<loc>` entries per host, correct fa/en ORBIT routes, and a `robots.txt` Sitemap target matching each host's canonical origin/base. Direct public GETs and external crawler/cache behavior are still pending. Rollback is documented, not rehearsed.
 
 ## GitHub Pages
 
