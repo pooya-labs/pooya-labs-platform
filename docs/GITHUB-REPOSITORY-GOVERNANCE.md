@@ -3,15 +3,23 @@
 **Audit date:** 9 November 2026  
 **Repository:** `pooya-labs/pooya-labs-platform`  
 **Audited default branch:** `main`  
-**Audited main HEAD:** [`7e2e5a2ff0e4`](https://github.com/pooya-labs/pooya-labs-platform/commit/7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c)
+**Audited main HEAD:** [`42d12a16354b`](https://github.com/pooya-labs/pooya-labs-platform/commit/42d12a16354b4fae2d88258c523401fd091ce532)
 
 ## Executive findings
 
 - GitHub reports `main` as **unprotected**: `protected: false`, branch protection disabled, and no required status checks.
 - The repository rulesets API returned **zero rulesets**. This was rechecked against the current main after PR #28 merged.
-- Post-merge Repository CI [42635961927](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635961927) passed on exact main `7e2e5a2`.
+- App-created smoke PR [#34](https://github.com/pooya-labs/pooya-labs-platform/pull/34) was authored by `pooya-labs-capture-publisher[bot]`, changed only the non-product marker file, passed Repository CI [42637894225](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894225) and Browser QA [42637894236](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894236), and merged as `42d12a1`.
 - The current published application bundle is still the earlier GitHub Pages app commit `558970f`; PRs #28 and #32 changed workflows/tests only. No new application deployment is claimed.
 - No repository settings or secrets were changed as part of this work.
+
+## GitHub App branch-push and PR-creation proof — PR #34
+
+- Manual smoke run [42637851827](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637851827) completed successfully, including App installation-token creation, branch push, PR creation, and the required PR URL assertion.
+- The App bot `pooya-labs-capture-publisher[bot]` created [PR #34](https://github.com/pooya-labs/pooya-labs-platform/pull/34) from `automation/app-publisher-permission-smoke`. The only changed file was `.github/app-publisher-smoke/latest-run.md`; 8 additions and 0 deletions.
+- Repository CI [42637894225](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894225) and Browser QA [42637894236](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894236) both passed on PR head `e4611d8`. Browser QA uploaded artifact [13682859892](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42637894236/artifacts/13682859892).
+- PR #34 was squash-merged as [`42d12a1`](https://github.com/pooya-labs/pooya-labs-platform/commit/42d12a16354b4fae2d88258c523401fd091ce532). The marker is now present on `main`.
+- This proves App-authenticated branch push and PR creation. It does not prove that a reviewed-capture workflow has a new screenshot diff to publish; all three real publishers previously found their approved images already current.
 
 ## Workflow inventory update — 11 workflows
 
@@ -86,9 +94,9 @@ PR [#32](https://github.com/pooya-labs/pooya-labs-platform/pull/32) merged as [`
 
 **Owner dispatch is still pending.** Run the workflow manually from `main`, then confirm that it opens a PR titled `test(platform): verify GitHub App PR creation`. Wait for Repository CI and Portfolio Browser QA on that generated PR, review the marker-only diff, and merge it after both checks pass. The automation branch is configured for deletion on merge.
 
-## Recommended `main` ruleset — do not activate before App proof
+## Recommended `main` ruleset — App proof complete; owner activation pending
 
-After the marker-only App permission smoke PR has been created, passed Repository CI and Browser QA, and been merged:
+The marker-only App permission smoke PR has now been created, passed Repository CI and Browser QA, and been merged. The remaining step is owner activation and verification:
 
 - Target only `main` and set enforcement to **Active**.
 - Require a pull request for changes to `main`.
@@ -100,7 +108,7 @@ After the marker-only App permission smoke PR has been created, passed Repositor
 - With a single maintainer, zero mandatory approvals may be used only if Pooya personally reviews and merges every PR; increase approval requirements when an independent reviewer is available.
 - Test that pending or failed checks block merge and that passing checks permit the normal merge path.
 
-The current main remains unprotected and the rulesets endpoint still returns zero active rulesets. The smoke harness is merged but its manual dispatch and App-created marker PR remain pending. Do not activate the ruleset until the marker PR has passed both required checks; then test that pending/failed checks block merges.
+The current main remains unprotected (`protected: false`, protection disabled, no required contexts) and the rulesets endpoint returns zero rulesets. PR #34 and both required checks have passed; therefore the App proof gate is complete. Ruleset activation and the pending/failed-check enforcement test remain owner actions.
 
 ## Separate deployment-secret status
 
@@ -109,6 +117,6 @@ The current main remains unprotected and the rulesets endpoint still returns zer
 
 ## فارسی — جمع‌بندی ممیزی
 
-در ۹ نوامبر ۲۰۲۶، شاخهٔ `main` همچنان بدون محافظت است و هیچ Ruleset فعالی برای مخزن ثبت نشده است. PR شمارهٔ ۲۸ سه گردش‌کار انتشار تصویر را از نوشتن مستقیم روی `main` به ساخت PR با GitHub App محدود به همین مخزن منتقل کرد. توکن پیش‌فرض Actions فقط‌خواندنی است و در نبود Secretهای لازم، ناشرها بدون انتشار تصویر متوقف می‌شوند.
+در ۹ نوامبر ۲۰۲۶، PR شمارهٔ ۳۴ توسط ربات اختصاصی `pooya-labs-capture-publisher[bot]` ساخته شد، فقط فایل نشانگر غیرمحصولی را تغییر داد، بررسی‌های Repository CI و Browser QA را با موفقیت گذراند و با Commit `42d12a1` ادغام شد. بنابراین مسیر احراز هویت، نوشتن شاخه و ساخت PR با GitHub App اختصاصی اثبات شده است. با این حال، سه ناشر تصویر هنوز PR تصویری واقعی نساخته‌اند، چون تصاویر تأییدشده از قبل با نسخهٔ مخزن برابر بودند.
 
-پس از نصب App و ثبت دو Secret، هر سه ناشر تصویر توکن موقت ساختند؛ اما چون تصاویر تأییدشده با فایل‌های موجود برابر بودند، هیچ PR تصویری ایجاد نشد. برای آزمودن امن مجوز نوشتن، PR شمارهٔ ۳۲ یک گردش‌کار دستی اضافه کرده که فقط فایل نشانگر غیرمحصولی را تغییر می‌دهد. این گردش‌کار هنوز باید از شاخهٔ `main` اجرا شود و PR حاصل، CI و Browser QA را بگذراند. تا آن زمان Ruleset شاخهٔ `main` فعال نمی‌شود و وضعیت پلتفرم همچنان **Pre-alpha / Phase 7** است.
+شاخهٔ `main` هنوز محافظت نشده و API شاخه مقدار `protected: false` را گزارش می‌کند؛ همچنین هیچ Ruleset فعالی وجود ندارد. گام بعدی مالک، ساخت Ruleset برای الزام PR و دو بررسی `Typecheck, three-target build, and contract tests` و `Chromium responsive and keyboard smoke` و سپس آزمون جلوگیری از ادغام هنگام شکست یا انتظار بررسی‌هاست. وضعیت پلتفرم همچنان **Pre-alpha / Phase 7** است.

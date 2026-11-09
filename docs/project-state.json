@@ -1005,9 +1005,9 @@
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-09",
   "latestDocumentationCommit": "7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c",
-  "latestDocumentationCheckpoint": "PR-32-merged;main-7e2e5a;safe-manual-App-permission-smoke-workflow-added;PR-CI-42635400246-112-of-112;Browser-QA-42635400130-18-routes-36-viewports-zero-confirmed-axe-violations;main-CI-42635961927-success;owner-dispatch-pending;main-ruleset-inactive",
-  "latestRepositoryCiRun": "42624753678",
-  "latestBrowserQaRun": "42624753816",
+  "latestDocumentationCheckpoint": "PR-34-merged;main-42d12a1;GitHub-App-token-branch-push-and-PR-creation-verified;PR-CI-42637894225-success;Browser-QA-42637894236-success;main-protected-false;rulesets-zero;owner-ruleset-activation-pending",
+  "latestRepositoryCiRun": "42637894225",
+  "latestBrowserQaRun": "42637894236",
   "latestPerformanceBaseline": {
     "run": "42624753816",
     "artifact": "13678551079",
@@ -1166,7 +1166,7 @@
   },
   "repositoryGovernance": {
     "auditDate": "2026-11-09",
-    "auditedMainHead": "7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c",
+    "auditedMainHead": "42d12a16354b4fae2d88258c523401fd091ce532",
     "branchProtection": {
       "protected": false,
       "enabled": false,
@@ -1213,7 +1213,14 @@
         ],
         "onlyStagedPath": ".github/app-publisher-smoke/latest-run.md",
         "purpose": "verify App-authenticated branch push and PR creation without changing product assets",
-        "ownerDispatchPending": true
+        "ownerDispatchPending": false,
+        "dispatchRun": 42637851827,
+        "createdPullRequest": 34,
+        "createdBy": "pooya-labs-capture-publisher[bot]",
+        "changedFiles": [
+          ".github/app-publisher-smoke/latest-run.md"
+        ],
+        "result": "success;App-token-branch-push-PR-create-and-URL-assertion-passed"
       }
     },
     "currentObservedCheckNames": [
@@ -1221,11 +1228,11 @@
       "Chromium responsive and keyboard smoke"
     ],
     "verification": {
-      "mainRepositoryCiRun": 42635961927,
-      "latestBrowserQaRun": 42624753816,
+      "mainRepositoryCiRun": null,
+      "latestBrowserQaRun": 42637894236,
       "browserQaCommitIsCurrentMainHead": false,
-      "latestMainCommit": "7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c",
-      "postMergeMainCiStatus": "success"
+      "latestMainCommit": "42d12a16354b4fae2d88258c523401fd091ce532",
+      "postMergeMainCiStatus": "not-run-after-42d12a1;PR-head-CI-and-Browser-QA-passed"
     },
     "ownerActionRequired": true,
     "noSettingsOrSecretsChanged": true,
@@ -1233,7 +1240,7 @@
       "implementationPr": 28,
       "implementationHead": "7421479def8bf397fe3470561087cda383edd5a1",
       "mergeCommit": "01749d717f6e31a1096cde91ff7773a9b58e1626",
-      "status": "owner-confirmed-app-installed-and-secrets-configured;three-publisher-dispatches-created-app-tokens-no-diff;safe-marker-only-permission-smoke-harness-merged;owner-dispatch-pending",
+      "status": "owner-confirmed-app-installed-and-secrets-configured;three-publishers-created-tokens-no-image-diff;App-branch-push-and-PR-creation-proven-by-marker-PR-34;PR-CI-and-Browser-QA-passed;main-ruleset-owner-activation-pending",
       "publisherWorkflows": [
         ".github/workflows/publish-reviewed-captures.yml",
         ".github/workflows/publish-reviewed-portfolio-captures.yml",
@@ -1284,7 +1291,7 @@
       ],
       "postMergePublisherRunsSucceeded": true,
       "postMergePublishedFiles": 0,
-      "realAppPullRequestCreationVerified": false,
+      "realAppPullRequestCreationVerified": true,
       "manualDispatchRuns": {
         "reviewedInterface": "42631761203;success;manifest-and-png-integrity-passed;app-token-created;no-diff;no-pr-created",
         "portfolio": "42632714049;success;manifest-and-png-integrity-passed;app-token-created;no-diff;no-pr-created",
@@ -1293,7 +1300,7 @@
       "manualDispatchesSucceeded": true,
       "ownerConfirmedInstallationScope": "pooya-labs/pooya-labs-platform-only",
       "privateActionsSecretsOwnerConfirmed": true,
-      "actualPullRequestWriteAttempted": false,
+      "actualPullRequestWriteAttempted": true,
       "noDiffInAllManualDispatches": true,
       "manualDispatchPublishedFiles": 0,
       "permissionSmokeHarness": {
@@ -1316,8 +1323,25 @@
         "performanceSamplesPerHost": 20,
         "performanceFailures": 0,
         "browserArtifact": "13683600592",
-        "ownerDispatchPending": true,
-        "appCreatedSmokePrVerified": false
+        "ownerDispatchPending": false,
+        "appCreatedSmokePrVerified": true,
+        "actualAppRun": {
+          "run": 42637851827,
+          "pullRequest": 34,
+          "pullRequestUrl": "https://github.com/pooya-labs/pooya-labs-platform/pull/34",
+          "bot": "pooya-labs-capture-publisher[bot]",
+          "headCommit": "e4611d83790be419c03d6b3149bfbeb666144ff5",
+          "changedPaths": [
+            ".github/app-publisher-smoke/latest-run.md"
+          ],
+          "additions": 8,
+          "deletions": 0,
+          "repositoryCiRun": 42637894225,
+          "browserQaRun": 42637894236,
+          "browserQaArtifact": 13682859892,
+          "mergeCommit": "42d12a16354b4fae2d88258c523401fd091ce532",
+          "merged": true
+        }
       }
     }
   },
