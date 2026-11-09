@@ -231,8 +231,8 @@ test('Browser QA uses plain JavaScript DOM selectors in its visibility measureme
 
 test('Browser QA audits raw HTML social metadata and locally built preview images under LinkedIn and Facebook crawler User-Agents', () => {
   assert.match(script, /const socialCrawlerAgents = \[/);
-  assert.match(script, /LinkedInBot\\/1\\.0/);
-  assert.match(script, /facebookexternalhit\\/1\\.1/);
+  assert.ok(script.includes('LinkedInBot/1.0'));
+  assert.ok(script.includes('facebookexternalhit/1.1'));
   assert.match(script, /const socialCrawlerRoutes = \[/);
   assert.match(script, /routeCount: socialCrawlerRoutes\.length/);
   assert.match(script, /expectedChecks: socialCrawlerRoutes\.length \* socialCrawlerAgents\.length/);
