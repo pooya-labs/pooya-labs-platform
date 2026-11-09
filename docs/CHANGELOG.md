@@ -1,3 +1,13 @@
+## 2026-11-09 — Current main published to both hosts; Cloudflare Git trigger still unverified
+
+- PR [#39](https://github.com/pooya-labs/pooya-labs-platform/pull/39) merged as [`97094ed0`](https://github.com/pooya-labs/pooya-labs-platform/commit/97094ed0cb79f65b0e93bf36d52a2520846e6f1b). The only app-source change is one explanatory comment documenting the host-specific robots output.
+- Repository CI [42651297246](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297246) passed on exact main.
+- GitHub Pages workflow [42651297113](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297113) passed Build and Deploy on exact main; Pages artifact `13690386196`; canonical URL [https://pooya-labs.github.io/pooya-labs-platform/](https://pooya-labs.github.io/pooya-labs-platform/).
+- Cloudflare Pages deployment [`a075e139`](https://a075e139.pooya-labs-platform.pages.dev/) (ID `a075e139-20d1-4587-91a9-b73904499065`) passed all five stages from exact same main SHA. Trigger is `ad_hoc`; deployment was created via authorized API fallback.
+- Native Git integration test: after the matching-path PR #39 push, Cloudflare did not create a `github:push` deployment; latest remained `76da3cc2`. Project config says GitHub/main/path filter active, but automatic trigger is not operationally proven. GitHub Cloudflare workflow [42651297288](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297288) credential check passed; actual deployment job skipped because `CLOUDFLARE_API_TOKEN` is missing. No secrets or settings were changed.
+- Browser QA [42651297251](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297251) passed 18/18 routes, 36/36 viewports, zero failures and zero confirmed axe violations; artifact [13690630887](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297251/artifacts/13690630887). p75 LCP was 228 ms local, 284 ms Pages, 384 ms Cloudflare; CLS 0.000 in all three contexts.
+- Both production hosts now serve exact main `97094ed0`. No user content, secrets, external repository, GitHub App, or Cloudflare settings were changed by this release.
+
 ## 2026-11-09 — Current static-host application parity verified
 
 - GitHub Pages workflow [42526088212](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088212) passed Build and Deploy, publishing Pages artifact `13635093909` for application commit `558970f`.
