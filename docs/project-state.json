@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P7-13",
     "title": "Owner-side activation and governance proof for App-backed reviewed-capture publishers",
-    "status": "PR #28 merged to main as 01749d717f6e31a1096cde91ff7773a9b58e1626. Its PR Repository CI 42624753678 and Browser QA 42624753816 passed on exact PR head 7421479def8bf397fe3470561087cda383edd5a. Browser QA checked 18 routes and 36 viewports, zero failures and zero confirmed axe violations; 36 color-contrast checks remain incomplete for manual review. Performance measured 20 samples each on local build, GitHub Pages and Cloudflare Pages with no failures. After merge, all three publishers ran successfully in fail-closed mode: 42625390767, 42625390703 and 42625390732. They skipped App-token and PR creation because private App secrets are absent and confirmed no image was written to main. Main remains unprotected; real App install/secret setup, actual publisher PR tests, ruleset enforcement and manual Phase 7 exit gates remain open. The post-merge main Repository CI 42625390685 was queued at last inspection. Platform remains pre-alpha; no V1 release/tag."
+    "status": "PR #28 merged to main as 01749d717f6e31a1096cde91ff7773a9b58e1626. Its PR Repository CI 42624753678 and Browser QA 42624753816 passed on exact PR head 7421479def8bf397fe3470561087cda383edd5a. Browser QA checked 18 routes and 36 viewports, zero failures and zero confirmed axe violations; 36 color-contrast checks remain incomplete for manual review. Performance measured 20 samples each on local build, GitHub Pages and Cloudflare Pages with no failures. After merge, all three publishers ran successfully in fail-closed mode: 42625390767, 42625390703 and 42625390732. They skipped App-token and PR creation because private App secrets are absent and confirmed no image was written to main. Main remains unprotected; real App install/secret setup, actual publisher PR tests, ruleset enforcement and manual Phase 7 exit gates remain open. The post-merge main Repository CI 42625390685 passed on exact main 01749d7. Platform remains pre-alpha; no V1 release/tag."
   },
   "lastCheckpointDate": "2026-11-09",
   "latestVerifiedCodeCommit": "558970fefad25fa16632a8d740eb1a7a32c8f3bd",
@@ -91,7 +91,8 @@
     "ownerReviewPacketContract": "passed-run-42519333195;owner-review-packet-contract-included;105-of-105-contract-tests",
     "repositoryGovernanceAudit": "merged-PR-22;main-a009b4c65b8ea964b4b43f39ed636f86d56ffe33;10-workflows-reviewed;main-unprotected;rulesets-empty;three-capture-publishers-direct-push-main;latest-main-558970fefad25fa16632a8d740eb1a7a32c8f3bd;unprotected-main-and-direct-publishers-remain-open",
     "pooyaMonogramOwnerIdentityContract": "passed-run-42526088297;included-in-110-contract-tests;zero-failures",
-    "pooyaMonogramOwnerAttributionBrowserQa": "passed-main-run-42526088326;18-of-18-routes;36-of-36-viewports;zero-confirmed-axe-violations;zero-failures;36-incomplete-axe-checks-remain-manual"
+    "pooyaMonogramOwnerAttributionBrowserQa": "passed-main-run-42526088326;18-of-18-routes;36-of-36-viewports;zero-confirmed-axe-violations;zero-failures;36-incomplete-axe-checks-remain-manual",
+    "postMergeRepositoryCi": "passed-run-42625390685;main-01749d717f6e31a1096cde91ff7773a9b58e1626"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -999,7 +1000,7 @@
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-09",
   "latestDocumentationCommit": "4482c96c6a6a8ec2548c8f37210c2f4674f617b2",
-  "latestDocumentationCheckpoint": "PR-28-merged;main-01749d717f6e31a1096cde91ff7773a9b58e1626;PR-CI-42624753678-success;PR-Browser-QA-42624753816-success;post-merge-publishers-42625390767-42625390703-42625390732-safe-paused-no-direct-push;App-credentials-owner-pending",
+  "latestDocumentationCheckpoint": "PR-28-merged;main-01749d717f6e31a1096cde91ff7773a9b58e1626;PR-CI-42624753678-success;PR-Browser-QA-42624753816-success;post-merge-publishers-42625390767-42625390703-42625390732-safe-paused-no-direct-push;App-credentials-owner-pending;post-merge-main-CI-42625390685-success",
   "latestRepositoryCiRun": "42624753678",
   "latestBrowserQaRun": "42624753816",
   "latestPerformanceBaseline": {
@@ -1136,7 +1137,7 @@
     "allUpstreamRepositoriesModified": false,
     "platformMainCommit": "01749d717f6e31a1096cde91ff7773a9b58e1626",
     "mergedPullRequest": 28,
-    "postMergeRepositoryCiRun": "42625390685;queued-at-last-inspection",
+    "postMergeRepositoryCiRun": "42625390685;success-on-main-01749d717f6e31a1096cde91ff7773a9b58e1626",
     "browserQaRun": "42526817146",
     "aetherflowLatestPages": "run-42622137557;success-on-current-main-cc56560",
     "aetherflowOpenDependencyPrs": [
@@ -1201,7 +1202,7 @@
       "latestBrowserQaRun": 42624753816,
       "browserQaCommitIsCurrentMainHead": false,
       "latestMainCommit": "01749d717f6e31a1096cde91ff7773a9b58e1626",
-      "postMergeMainCiStatus": "queued-at-last-inspection"
+      "postMergeMainCiStatus": "success"
     },
     "ownerActionRequired": true,
     "noSettingsOrSecretsChanged": true,
