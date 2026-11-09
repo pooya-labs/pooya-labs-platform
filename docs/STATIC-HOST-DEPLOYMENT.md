@@ -1,5 +1,30 @@
 # Static host deployment and rollback runbook
 
+## Latest verified host parity — 2026-11-09 15:46 UTC
+
+**Current main:** [`15203f14eab12b5c7258a97ecd1b1b4dadd61879`](https://github.com/pooya-labs/pooya-labs-platform/commit/15203f14eab12b5c7258a97ecd1b1b4dadd61879). Post-merge Repository CI [42645102359](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42645102359) passed on this exact main SHA.
+
+### GitHub Pages
+
+- The latest successful GitHub Pages deployment is [workflow run 42526088212](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088212). Both the Pages build and Deploy jobs passed. The deploy log confirms artifact `13635093909`, Pages build version `558970fefad25fa16632a8d740eb1a7a32c8f3bd`, and canonical URL [`https://pooya-labs.github.io/pooya-labs-platform/`](https://pooya-labs.github.io/pooya-labs-platform/).
+- The last application-source revision actually published to Pages is `558970f`, which includes the Pooya Monogram owner identity and the current application bundle. The current main `15203f14` is newer, but the GitHub compare endpoint reports only documentation, workflow, and test paths between those two commits; no `apps/platform/**`, root `package.json`, or Pages workflow file changed. Therefore the published application bundle has not gone stale even though the full Git commit IDs differ.
+- The current Browser QA PR run [42644621916](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42644621916) also measured the published GitHub Pages host successfully, with zero measurement failures.
+
+### Cloudflare Pages
+
+- Latest production deployment: [`76da3cc2`](https://76da3cc2.pooya-labs-platform.pages.dev/) (deployment ID `76da3cc2-d231-444e-aaaa-d4d4be96f546`), created 2026-11-09 at 15:31 UTC from exact main commit `15203f14`.
+- Cloudflare API reports every stage — `queued`, `initialize`, `clone_repo`, `build`, and `deploy` — as successful. Its source remains `pooya-labs/pooya-labs-platform`, production branch `main`, build command `npm run build:cloudflare`, output `dist/cloudflare`. The deployment manifest includes the bilingual project routes, `sitemap.xml`, `robots.txt`, 17 PNG Open Graph cards, and the Pooya Monogram tile.
+- The canonical production alias is [`https://pooya-labs-platform.pages.dev/`](https://pooya-labs-platform.pages.dev/). Unique deployment URL: [`https://76da3cc2.pooya-labs-platform.pages.dev/`](https://76da3cc2.pooya-labs-platform.pages.dev/).
+- An actual rendered-HTML check via Cloudflare Browser Rendering verified the production homepage and both Persian and English ORBIT case-study routes. The cases returned language-correct titles/descriptions, canonical URLs on the Cloudflare canonical host, `og:locale` (`fa_IR` / `en_US`), matching Open Graph images (`og/orbit.png` / `og/orbit-en.png`) at 1200×627, and `hreflang` alternates for `fa`, `en`, and `x-default`. The Pooya Monogram attribution was present in the rendered HTML.
+- This deployment was requested through the authorized Cloudflare Pages API against the already-connected Git repository and is recorded as `ad_hoc` with the exact main SHA. It does **not** prove that a native Git push independently triggered Cloudflare's Git integration. The GitHub Actions `deploy-cloudflare.yml` path remains gated by the absent private `CLOUDFLARE_API_TOKEN` secret.
+
+### Host parity conclusion
+
+The two production hosts now contain the same application source revision: GitHub Pages published `558970f`; Cloudflare was rebuilt from `15203f14`, with no application files changed between them. Do not require the documentation commit IDs to match. The current app bundle, bilingual routes, owner identity, and case-study assets are aligned.
+
+**Limits of this verification:** the generic web fetcher could not retrieve the public `github.io` / `pages.dev` URLs. Browser QA independently measured both published hosts, while Browser Rendering verified the current Cloudflare HTML. Attempts to read `robots.txt` and `sitemap.xml` through Browser Rendering hit its API rate limit; their presence in the production deployment file manifest is verified, but their live response bodies and representative external crawler/share-cache behavior remain unverified. A production rollback rehearsal has not been run; no rollback or destructive deployment action was performed. The documented steps are not proof that the procedure has been executed.
+
+
 **Scope:** public portfolio on GitHub Pages and Cloudflare Pages. This runbook is separate from the Apps Script proof and does not authorize deployment of independent Workers/D1 projects.
 
 ## Source and current deployment baseline
@@ -7,10 +32,10 @@
 - Repository: `pooya-labs/pooya-labs-platform`; production source branch: `main`.
 - GitHub Pages output: `dist/pages`; canonical host: https://pooya-labs.github.io/pooya-labs-platform/.
 - Cloudflare Pages output: `dist/cloudflare`; canonical host: https://pooya-labs-platform.pages.dev/.
-- Latest application asset revision published to GitHub Pages: [`41ea1004433196aa81e4e50b17a1620f110ecea8`](https://github.com/pooya-labs/pooya-labs-platform/commit/41ea1004433196aa81e4e50b17a1620f110ecea8). Platform GitHub Pages workflow [42514976384](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976384) completed build and deployment successfully on that revision.
+- Latest application asset revision published to GitHub Pages: [`558970fefad25fa16632a8d740eb1a7a32c8f3bd`](https://github.com/pooya-labs/pooya-labs-platform/commit/558970fefad25fa16632a8d740eb1a7a32c8f3bd). The Pages workflow [42526088212](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088212) completed build and deployment successfully; artifact 13635093909 was deployed to the canonical Pages URL.
 - Browser QA [42514976406](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976406) passed 18/18 routes with zero failures and zero confirmed Axe violations; 36 incomplete color-contrast checks remain for human review. The run measured 20 cold-context samples per host with p75 CLS 0.0000 on local, GitHub Pages, and Cloudflare Pages.
 - Latest Repository CI [42515288490](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42515288490) passed on main docs head `a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67`.
-- Cloudflare production deployment [`107de2a2`](https://107de2a2.pooya-labs-platform.pages.dev/) (ID `107de2a2-d69c-4b9d-ae2c-38da68c7bad4`) was created on 2026-11-08 from main commit `a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67`. Cloudflare confirmed successful `queued`, `initialize`, `clone_repo`, `build`, and `deploy` stages. Because this commit includes application asset revision `41ea1004`, the latest GitHub Pages and Cloudflare Pages outputs contain the same application assets.
+- Latest Cloudflare production deployment [`76da3cc2`](https://76da3cc2.pooya-labs-platform.pages.dev/) (ID `76da3cc2-d231-444e-aaaa-d4d4be96f546`) was created on 2026-11-09 from main commit `15203f14eab12b5c7258a97ecd1b1b4dadd61879`. All five Cloudflare stages succeeded. This is newer than the prior `107de2a2` deployment and includes the same application files as GitHub Pages commit `558970f`.
 - The GitHub Actions Cloudflare deployment workflow remains credential-gated: the private `CLOUDFLARE_API_TOKEN` secret is still absent. The latest production deployment was nevertheless verified through the authorized Cloudflare API; do not describe automatic push-triggered GitHub Actions publishing as enabled.
 - Apps Script workflow [42514976476](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42514976476) passed its credential-check job but skipped the actual publish job because `CLASPRC_JSON`, `CLASP_JSON`, and `GAS_DEPLOYMENT_ID` are absent. The static portfolio does not depend on Apps Script deployment.
 
@@ -64,9 +89,9 @@ Each release/rollback checkpoint must record the source SHA, CI run, Browser QA 
 
 ## Current rehearsal state
 
-- GitHub Pages publication has succeeded for previous application commits; a full rollback rehearsal on the current redesigned portfolio has not been recorded here.
-- Cloudflare's last verified production deployment succeeded through the authorized API. Automated GitHub Actions publishing is still blocked by the missing private token.
-- A real rollback rehearsal remains open in Phase 7. This document is the procedure, not proof that the procedure has been executed.
+- GitHub Pages build and production deployment both passed on app SHA `558970f`; current main's later changes do not touch application files. The canonical host was also measured by Browser QA with zero failures.
+- Cloudflare production deployment `76da3cc2` passed all stages on exact main SHA `15203f14`; rendered homepage and Persian/English ORBIT metadata were verified. Native Git push-trigger behavior and the Actions-secret-based deploy job remain unproven.
+- A real production rollback rehearsal remains open. This document is the procedure, not proof that it has been executed; no production rollback was attempted.
 
 ## Security boundary
 

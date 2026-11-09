@@ -1,4 +1,19 @@
-## Latest verified main checkpoint — P7-13 governance complete; upstream audit refreshed (2026-11-09)
+## Latest checkpoint — production hosts aligned; remaining Phase 7 gates isolated (2026-11-09 15:46 UTC)
+
+Current `main` is [`15203f14`](https://github.com/pooya-labs/pooya-labs-platform/commit/15203f14eab12b5c7258a97ecd1b1b4dadd61879); post-merge Repository CI [42645102359](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42645102359) passed.
+
+**Both public static hosts have the current application bundle:**
+- GitHub Pages deployment [42526088212](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42526088212) passed its build and deploy jobs, deploying Pages artifact `13635093909` for app commit `558970f` to [pooya-labs.github.io/pooya-labs-platform](https://pooya-labs.github.io/pooya-labs-platform/).
+- Cloudflare Pages production deployment [`76da3cc2`](https://76da3cc2.pooya-labs-platform.pages.dev/) (ID `76da3cc2-d231-444e-aaaa-d4d4be96f546`) passed all five stages on exact main commit `15203f14`; canonical alias is [pooya-labs-platform.pages.dev](https://pooya-labs-platform.pages.dev/).
+- Commit comparison confirms that changes between `558970f` and `15203f14` are documentation/workflow/test-only; no application source, package, or public app asset changed. The two full Git SHAs need not be identical for the application bundles to be equivalent.
+- Cloudflare Browser Rendering confirmed rendered home and Persian/English ORBIT HTML: correct localized titles/descriptions, canonical host, `og:locale`, `hreflang` fa/en/x-default, 1200×627 social images, and Pooya Monogram attribution.
+- The current Browser QA [42644621916](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42644621916) passed 18/18 routes and 36/36 viewports with zero failures; it measured local, GitHub Pages, and Cloudflare Pages. Post-merge main Repository CI [42645102359](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42645102359) passed.
+
+**Next atomic task:** request direct public GETs of `robots.txt` and `sitemap.xml` after Browser Rendering rate limits clear, and validate representative cards through authenticated external sharing crawlers when those owner accounts are available. The current Vite generator and `multi-host-build-contract.test.mjs` already verify both built outputs: host-specific Sitemap origins and 17 canonical URLs per host. Complete the remaining public file/privacy/external-link review. Keep a true production rollback rehearsal explicitly pending rather than taking an unapproved live rollback risk.
+
+**Owner-side Phase 7 gates remain open:** manual contrast, keyboard and screen-reader acceptance; physical Android/browser review; biography/project ordering/contribution/media approval; Salon Booking privacy permission. The site remains **pre-alpha / Phase 7**. Do not start Phase 8 or claim V1 until the Phase 7 exit gate is closed.
+
+## Previous checkpoint — PR #36 governance and upstream source audit (2026-11-09)
 
 The active `main` ruleset [Protect main — PR + CI](https://github.com/pooya-labs/pooya-labs-platform/rules/26861856) was exercised through the normal connector path. PR [#36](https://github.com/pooya-labs/pooya-labs-platform/pull/36) was created from a working branch after ruleset activation; both exact required checks passed on PR head `2b56ce1`: Repository CI [42642712582](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42642712582) and Browser QA [42642712314](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42642712314). Browser QA passed 18/18 routes and 36/36 viewports with zero failures and zero confirmed axe violations; 36 incomplete contrast checks remain for human review. The report artifact is [13685757493](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42642712314/artifacts/13685757493). The PR squash-merged as [`82f975a`](https://github.com/pooya-labs/pooya-labs-platform/commit/82f975a81e352354bbab1995721ae7ba101d4c02), and post-merge Repository CI [42643318377](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42643318377) passed on that exact main commit.
 
