@@ -11,6 +11,28 @@ const monogram = await readFile(new URL('../../apps/platform/public/brand/pooya-
 const wordmark = await readFile(new URL('../../apps/platform/public/brand/pooya-wordmark.webp', import.meta.url));
 const favicon = await readFile(new URL('../../apps/platform/index.html', import.meta.url), 'utf8');
 
+function srgbChannelToLinear(value) {
+  const channel = value / 255;
+  return channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+}
+
+function relativeLuminance(hex) {
+  const normalized = hex.replace('#', '');
+  const value = normalized.length === 3 ? [...normalized].map((part) => part + part).join('') : normalized;
+  const red = srgbChannelToLinear(Number.parseInt(value.slice(0, 2), 16));
+  const green = srgbChannelToLinear(Number.parseInt(value.slice(2, 4), 16));
+  const blue = srgbChannelToLinear(Number.parseInt(value.slice(4, 6), 16));
+  return 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+}
+
+function contrastRatio(foreground, background) {
+  const foregroundLuminance = relativeLuminance(foreground);
+  const backgroundLuminance = relativeLuminance(background);
+  return (Math.max(foregroundLuminance, backgroundLuminance) + 0.05)
+    / (Math.min(foregroundLuminance, backgroundLuminance) + 0.05);
+}
+
+
 test('architecture diagram labels are wrapped and centered within fixed node geometry', () => {
   assert.match(vite, /function wrapDiagramLabel/);
   assert.match(vite, /function renderDiagramTextLines/);
@@ -192,3 +214,22 @@ test('header contrast remains inspectable without a decorative pseudo-element ov
   assert.match(css, /--pf-control-bg:#0d1516/);
   assert.match(css, /--pf-control-bg:#fffffc/);
 });
+
+
+
+test('final light-theme secondary text meets WCAG AA contrast on the page and raised surfaces', () => {
+  const selector = '.portfolio-page[data-theme="light"] {';
+  const lightThemeStart = css.lastIndexOf(selector);
+  assert.ok(lightThemeStart >= 0, 'The final graphite/ivory light-theme token block must exist');
+  const lightThemeEnd = css.indexOf('}', lightThemeStart);
+  const finalLightTheme = css.slice(lightThemeStart, lightThemeEnd);
+
+  const foreground = finalLightTheme.match(/--pf-dim:\s*(#[0-9a-f]{6})/i)?.[1];
+  assert.ok(foreground, 'The final light-theme secondary text token must be a six-digit hex color');
+
+  for (const background of ['#f5f6f2', '#e9eee9', '#fffffc']) {
+    const ratio = contrastRatio(foreground, background);
+    assert.ok(ratio >= 4.5, 'Secondary text contrast against ' + background + ' is ' + ratio.toFixed(2) + ':1; expected at least 4.5:1');
+  }
+});
+
