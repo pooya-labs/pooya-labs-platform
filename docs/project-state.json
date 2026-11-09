@@ -8,11 +8,11 @@
   "phaseName": "Pre-redesign readiness and engineering closeout",
   "currentTask": {
     "id": "P7-13",
-    "title": "Prove GitHub App branch and pull-request creation, then enable main governance",
-    "status": "PR #28 merged the three reviewed-capture publishers to App-backed PR creation. The owner confirmed the dedicated App is installed only on pooya-labs/pooya-labs-platform and both private Actions secrets are configured. The three real publisher dispatches (42631761203, 42632714049, 42632732364) all validated their approved artifacts and generated App installation tokens, but no PR was opened because all destinations already matched main. PR #32 then added a safe manual App permission smoke workflow that changes only .github/app-publisher-smoke/latest-run.md; it merged as 7e2e5a2. PR CI 42635400246 passed 112/112 tests; Browser QA 42635400130 passed 18/18 routes and 36/36 viewports, zero failures and zero confirmed axe violations, 36 contrast checks remain manual; 20 performance samples per host had zero failures. Main CI 42635961927 passed on 7e2e5a2. The smoke workflow is merged but owner dispatch is pending; its App-created marker PR and checks must pass before the main ruleset is configured. Platform remains pre-alpha / Phase 7; no V1 release/tag."
+    "title": "Verify active main ruleset and connector PR workflow",
+    "status": "The dedicated App permission proof is complete: PR #34 was created by the repository-scoped App, passed Repository CI and Browser QA, and merged as 42d12a1. The owner activated ruleset 26861856, targeting only refs/heads/main with required PR, strict required checks (Typecheck, three-target build, and contract tests; Chromium responsive and keyboard smoke), deletion/non-fast-forward restrictions, zero approvals, and no bypass actors. The connector successfully created a working branch after activation; a docs-only PR is in progress to verify branch writes, PR creation, both required checks, and normal merge. No direct main push, App bypass, or new image diff was used. Platform remains pre-alpha / Phase 7; no V1 release."
   },
   "lastCheckpointDate": "2026-11-09",
-  "latestVerifiedCodeCommit": "558970fefad25fa16632a8d740eb1a7a32c8f3bd",
+  "latestVerifiedCodeCommit": "c65fb4d68143bf65930c766e7149749dc6d01df7",
   "tests": {
     "repositoryCi": "passed-run-42526088297;main-558970fefad25fa16632a8d740eb1a7a32c8f3bd;110-contract-tests;all-three-build-targets;typecheck;dependency-audit;credential-scan",
     "transportHarnessContract": "passed",
@@ -63,7 +63,7 @@
     "latestVerifiedTestCommit": "558970fefad25fa16632a8d740eb1a7a32c8f3bd",
     "latestDocumentationCheckpoint": "owner-identity-merge-PR-20;main-558970f;CI-110-of-110;Browser-QA-18-of-18;GitHub-Pages-deploy-success",
     "latestDetailedAxeReport": "run-42514976406;zero-confirmed-axe-violations;36-incomplete-axe-checks;artifact-13631024148",
-    "latestRepositoryCiRun": "42526088297",
+    "latestRepositoryCiRun": "42639648418;success;main-c65fb4d68143bf65930c766e7149749dc6d01df7",
     "latestBrowserQaRun": "42526088326",
     "latestPagesDeploymentRun": "42526088212",
     "latestCloudflareAttempt": "success-deployment-107de2a2-d69c-4b9d-ae2c-38da68c7bad4;main-a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67;all-five-stages-success;includes-41ea1004-asset",
@@ -97,7 +97,8 @@
     "appPublisherPermissionSmokeContract": "passed-run-42635400246;112-of-112-tests;workflow-manual-only;main-only;marker-file-only",
     "appPublisherPermissionSmokeBrowserQa": "passed-run-42635400130;18-of-18-routes;36-of-36-viewports;zero-confirmed-axe-violations;36-incomplete-contrast-checks-manual;20-performance-samples-per-host;zero-failures;artifact-13683600592",
     "latestMainRepositoryCi": "passed-run-42635961927;exact-main-7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c",
-    "appPublisherPermissionSmokeMainCi": "passed-run-42635961927;exact-main-7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c"
+    "appPublisherPermissionSmokeMainCi": "passed-run-42635961927;exact-main-7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c",
+    "mainRuleset": "active-ruleset-26861856;target-refs/heads/main;require-pull-request;strict-required-checks;contexts-Typecheck-three-target-build-and-contract-tests,Chromium-responsive-and-keyboard-smoke;deletion-and-non-fast-forward-blocked;no-bypass-actors;branch-created-after-activation"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
