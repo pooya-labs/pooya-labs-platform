@@ -1,3 +1,24 @@
+
+## Latest checkpoint — P7-25 read-only source refresh (2026-11-10)
+
+The platform's latest main checkpoint before this docs-only refresh is [`b1db0ccc`](https://github.com/pooya-labs/pooya-labs-platform/commit/b1db0ccc0b0d2f554338ef0553af342f8c72fd48). The eight independent upstream repositories were rechecked read-only; none was modified. The current source-of-truth inventory is [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
+
+**Corrections to carry into future portfolio work:**
+- AetherFlow PR #19/#20 are merged; latest application code is `5cc44c1`, including bounded 2 MiB streamed CLI responses. M08 and the matched-runner benchmark remain open.
+- ORBIT PR #138 is merged and its patched Keycloak 26.8.2 digest passed strict AMD64/ARM64 scans. Production Compose still uses Keycloak 26.8.1; do not describe the patched digest as deployed.
+- GlobalCart's latest FX-only commit `2ef95fa` has an older embedded source timestamp than the preceding snapshot and skipped CI. Treat the quote as freshness-unverified; no deployment of that snapshot is established.
+- The other five repositories have no newer main commit in this audit. Their portfolio acceptance is still not owner-approved.
+
+**Next work, in dependency order:**
+1. Close the human accessibility review in Persian/English and both themes: inspect the 36 incomplete Axe contrast items, visible focus, keyboard-only operation, and screen-reader flow.
+2. Complete Pooya's physical Android/browser review; emulation is not a substitute.
+3. Obtain explicit owner approval for biography, featured-project order, role/contribution wording, contact choices, public media, and the Novels decision.
+4. Obtain Salon Booking owner's explicit permission before publishing any customer-facing case-study media; use only approved synthetic/redacted material.
+5. Validate representative social cards in authenticated LinkedIn and Meta sharing tools and record actual cache refresh results; User-Agent simulations do not establish this.
+6. Keep Cloudflare Git-integration remediation, Apps Script production settings, and rollback rehearsal owner-gated. Do not change credentials/settings or perform a destructive production action without approval.
+7. Only after Phase 7 exits, proceed to Phase 8 redesign and approval, then Phase 9 project integration, then Phase 10 V1 hardening/publication.
+
+**Current release:** pre-alpha / Phase 7. No V1 tag, redesign start, or new production deployment is claimed by this source-audit refresh.
 ## Latest checkpoint — repeatable social-crawler QA merged and verified on main (2026-11-09)
 
 PR [#46](https://github.com/pooya-labs/pooya-labs-platform/pull/46) adds a repeatable Chromium regression gate for social-preview metadata. It was squash-merged as main commit [`5321d3f44298a9d81d3fbc8f0712d4bc9acb8962`](https://github.com/pooya-labs/pooya-labs-platform/commit/5321d3f44298a9d81d3fbc8f0712d4bc9acb8962). The four changed files are the Browser QA script, its contract test, the Phase 7 roadmap, and the new [SOCIAL-CRAWLER-QA.md](SOCIAL-CRAWLER-QA.md) runbook. No React/UI source, credentials, Cloudflare settings, Apps Script configuration, or independent project repository was changed.
