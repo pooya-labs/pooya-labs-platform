@@ -419,6 +419,7 @@ ${sitemapEntries.map((entry) => `  <url>
 `;
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap });
     },
+    // Vite copies public/robots.txt as a source default; replace it after build with this target's own canonical sitemap URL.
     closeBundle() {
       const robots = `User-agent: *\nAllow: /\nSitemap: ${SITE_ORIGIN + SITE_BASE}sitemap.xml\n`;
       writeFileSync(resolve(outputDirectory, 'robots.txt'), robots, 'utf8');
