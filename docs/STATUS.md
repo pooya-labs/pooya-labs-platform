@@ -1,3 +1,23 @@
+## Latest merged-main checkpoint — publisher governance hardening (2026-11-09)
+
+PR [#28](https://github.com/pooya-labs/pooya-labs-platform/pull/28) merged the three reviewed-capture publisher migrations as [`01749d7`](https://github.com/pooya-labs/pooya-labs-platform/commit/01749d717f6e31a1096cde91ff7773a9b58e1626), based on the current main checkpoint [`3a083aa`](https://github.com/pooya-labs/pooya-labs-platform/commit/3a083aa83135364a25098887bb52306e6efd215a). The updated eight-project source audit from PR #25 remains intact.
+
+**Verified on PR #28 head `7421479`:**
+- Repository CI [42624753678](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753678) passed **111/111 tests**, zero failures, lint/format, typecheck, all three build targets, dependency audit and credential scan.
+- Portfolio Browser QA [42624753816](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753816) passed **18/18 routes**, **36/36 viewports**, zero confirmed axe violations and zero failures. The **36 incomplete axe contrast checks remain manual review items**, not passes.
+- Performance checks collected **20/20 samples** each on local build, GitHub Pages and Cloudflare Pages; report artifact [13678551079](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753816/artifacts/13678551079).
+
+After merge, all three publisher workflows completed successfully and safely skipped App token/PR creation because `CAPTURE_PUBLISHER_APP_ID` and `CAPTURE_PUBLISHER_APP_PRIVATE_KEY` are absent. Their summaries confirm no image files were pushed or published: [42625390767] (portfolio), [42625390732] (ORBIT), [42625390703] (full-page).
+
+Main Repository CI run [42625390685](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390685) was still in progress when this checkpoint was recorded; do not treat it as passed. Main remains unprotected, no ruleset is active, no public app deployment or V1 release was produced by PR #28, and Phase 7 remains active.
+
+# Next Task — P7-14 owner-side activation and governance proof
+
+**Canonical repository:** `pooya-labs/pooya-labs-platform`  
+**Latest merged publisher hardening:** PR [#28](https://github.com/pooya-labs/pooya-labs-platform/pull/28) → `01749d7`
+
+**Next atomic task:** create/install the dedicated GitHub App on this repository, add `CAPTURE_PUBLISHER_APP_ID` and `CAPTURE_PUBLISHER_APP_PRIVATE_KEY` as private Actions secrets, manually dispatch all three capture publishers, and verify each creates a PR with passing Repository CI and Browser QA. Then activate and test the `main` ruleset. Keep Phase 7 open for manual contrast/accessibility, physical-device, owner content/media, external crawler, Pages-source and rollback acceptance. Do not start Phase 8/9 or create a V1 tag while these gates remain open.
+
 ## Phase 7 source refresh and PR #24 merge — 2026-11-09
 
 - PR [#24](https://github.com/pooya-labs/pooya-labs-platform/pull/24) merged to `main` as [`4482c96`](https://github.com/pooya-labs/pooya-labs-platform/commit/4482c96c6a6a8ec2548c8f37210c2f4674f617b2). Merged-main Repository CI [42621840105](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42621840105) passed the typecheck, GitHub Pages and Apps Script builds, Cloudflare build, dependency audit, credential scan, and repository contract tests.

@@ -1,3 +1,11 @@
+## 2026-11-09 — Reviewed capture publishers migrated to App-backed PRs
+
+- Merged [PR #28](https://github.com/pooya-labs/pooya-labs-platform/pull/28) as [`01749d7`](https://github.com/pooya-labs/pooya-labs-platform/commit/01749d717f6e31a1096cde91ff7773a9b58e1626). The three reviewed-capture publisher workflows now open PRs through a repository-scoped GitHub App token instead of pushing assets directly to `main`.
+- The default Actions token is read-only; checkout credentials are not persisted. Existing owner-approval, source-run, PNG signature/dimension, path containment, size, and SHA-256 checks remain.
+- Repository CI [42624753678](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753678) passed 111/111 tests; Browser QA [42624753816](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753816) passed 18/18 routes and 36/36 viewports, zero failures and zero confirmed axe violations. 36 incomplete contrast checks remain for manual review.
+- All three post-merge publishers completed their validation and paused because the GitHub App secrets are not configured: [42625390767], [42625390732], [42625390703]. No images were published or pushed. The real App-backed path remains owner-activation-pending.
+- Main is still unprotected; the active ruleset and required-check enforcement test remain open. No public app deployment or V1 release was created by this workflow migration.
+
 ## 2026-11-09 — Phase 7 source refresh and PR #24 main verification
 
 - Merged [PR #24](https://github.com/pooya-labs/pooya-labs-platform/pull/24) as [`4482c96`](https://github.com/pooya-labs/pooya-labs-platform/commit/4482c96c6a6a8ec2548c8f37210c2f4674f617b2); merged-main Repository CI [42621840105](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42621840105) passed.
