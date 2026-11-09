@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P7-13",
     "title": "Owner-side activation and governance proof for App-backed reviewed-capture publishers",
-    "status": "PR #28 merged to main as 01749d717f6e31a1096cde91ff7773a9b58e1626. Its PR Repository CI 42624753678 and Browser QA 42624753816 passed on exact PR head 7421479def8bf397fe3470561087cda383edd5a. Browser QA checked 18 routes and 36 viewports, zero failures and zero confirmed axe violations; 36 color-contrast checks remain incomplete for manual review. Performance measured 20 samples each on local build, GitHub Pages and Cloudflare Pages with no failures. After merge, all three publishers ran successfully in fail-closed mode: 42625390767, 42625390703 and 42625390732. They skipped App-token and PR creation because private App secrets are absent and confirmed no image was written to main. Main remains unprotected; real App install/secret setup, actual publisher PR tests, ruleset enforcement and manual Phase 7 exit gates remain open. The post-merge main Repository CI 42625390685 passed on exact main 01749d7. Platform remains pre-alpha; no V1 release/tag."
+    "status": "PR #28 merged to main as 01749d717f6e31a1096cde91ff7773a9b58e1626. Its PR Repository CI 42624753678 and Browser QA 42624753816 passed on exact PR head 7421479def8bf397fe3470561087cda383edd5a1; 18/18 routes and 36/36 viewports passed with zero failures and zero confirmed axe violations, while 36 contrast checks remain manual. The owner subsequently confirmed the dedicated App is installed only on pooya-labs/pooya-labs-platform and both Actions secrets are configured. All three manual publisher dispatches (42631761203, 42632714049, 42632732364) completed successfully; each validated its approved artifacts and generated a short-lived App token. All three had no diff because approved images already matched main, so no automation branch or PR was created and no image was published. Actual App-authenticated PR creation, downstream PR checks, and main ruleset enforcement remain open. Main CI 42625390685 passed on exact main 01749d7. Platform remains pre-alpha; no V1 release/tag."
   },
   "lastCheckpointDate": "2026-11-09",
   "latestVerifiedCodeCommit": "558970fefad25fa16632a8d740eb1a7a32c8f3bd",
@@ -92,7 +92,8 @@
     "repositoryGovernanceAudit": "merged-PR-22;main-a009b4c65b8ea964b4b43f39ed636f86d56ffe33;10-workflows-reviewed;main-unprotected;rulesets-empty;three-capture-publishers-direct-push-main;latest-main-558970fefad25fa16632a8d740eb1a7a32c8f3bd;unprotected-main-and-direct-publishers-remain-open",
     "pooyaMonogramOwnerIdentityContract": "passed-run-42526088297;included-in-110-contract-tests;zero-failures",
     "pooyaMonogramOwnerAttributionBrowserQa": "passed-main-run-42526088326;18-of-18-routes;36-of-36-viewports;zero-confirmed-axe-violations;zero-failures;36-incomplete-axe-checks-remain-manual",
-    "postMergeRepositoryCi": "passed-run-42625390685;main-01749d717f6e31a1096cde91ff7773a9b58e1626"
+    "postMergeRepositoryCi": "passed-run-42625390685;main-01749d717f6e31a1096cde91ff7773a9b58e1626",
+    "capturePublisherAppSmoke": "three-manual-dispatches-success;App-installation-token-created-in-all-three;all-approved-artifact-checks-passed;no-diff-so-no-automation-branch-or-PR;no-image-files-published"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -160,7 +161,7 @@
     }
   },
   "blockers": [
-    "GitHub main branch remains unprotected and no rulesets are configured. The three reviewed-capture publishers no longer push directly to main (PR #28); real App-backed PR creation is paused until the owner installs the dedicated App and adds CAPTURE_PUBLISHER_APP_ID plus CAPTURE_PUBLISHER_APP_PRIVATE_KEY.",
+    "GitHub main branch remains unprotected and no rulesets are configured. PR #28 removed direct-to-main publisher writes. App installation and Actions secrets are now owner-confirmed and all three manual runs generated App tokens, but none had a file diff; a genuine App-created publisher PR with passing CI and Browser QA is still required before ruleset activation.",
     "Phase 7 technical closeout is active: the bilingual owner packet and current read-only upstream source inventory are prepared; manual contrast/keyboard/screen-reader and physical Android acceptance, social-crawler validation, Pages-source confirmation, deployment-permission/public-private asset review, Cloudflare automation, and rollback/recovery rehearsal remain open.",
     "External LinkedIn/Facebook social crawler rendering and cache-refresh validation for the 17 PNG social cards remains open.",
     "AetherFlow M08 remains experimental/in progress. Owner-confirmed live Apps Script private-Sheet persistence and 12-test browser QA are now recorded. The checked-in source correction for pending-only storage semantics still requires manual redeployment to the existing Apps Script Web App; production Rust ingress, PostgreSQL recovery, NATS server controls, SLOs and independent security review remain open.",
@@ -176,10 +177,9 @@
     "GlobalCart main advanced to ffc51c7116ea with a catalog-only data/catalog.json snapshot; the latest observed Pages deployment 42606321024 is on the preceding aeb0e209 commit. Verify/redeploy the exact current catalog before Phase 9 portfolio integration.",
     "ORBIT PR #138 remains open and unmerged. The patched Keycloak candidate matrix passed both architectures on its recorded revision, but the separate scan of the published upstream Keycloak 26.8.2 image still fails on Guava 33.6.0-jre / CVE-2026-102554; the patched candidate is not published.",
     "AetherFlow main advanced to cc5656068a45 with a Cargo.lock-only regeneration. Pages deployed successfully on that exact SHA; the latest observed Rust CI remained in progress on the preceding eaf72e4 commit, and three dependency PRs (#5–#7) remain open.",
-    "A dedicated GitHub App must be installed only on pooya-labs/pooya-labs-platform and the private Actions secrets CAPTURE_PUBLISHER_APP_ID and CAPTURE_PUBLISHER_APP_PRIVATE_KEY must be added; real App-generated PR creation has not yet been verified.",
-    "After the App secrets are configured, dispatch all three reviewed-capture publisher workflows; confirm they each open a reviewable PR and that Repository CI plus Browser QA complete successfully before enabling the main ruleset."
+    "Actual App-authenticated publisher PR creation remains unverified: all three post-setup dispatches (42631761203, 42632714049, 42632732364) completed successfully and created installation tokens, but all reported no diff because the approved image files already matched main. Exercise the write path only when a genuine owner-approved capture changes; do not fabricate a screenshot diff."
   ],
-  "nextAction": "Owner action: install a dedicated GitHub App only on pooya-labs/pooya-labs-platform and add CAPTURE_PUBLISHER_APP_ID and CAPTURE_PUBLISHER_APP_PRIVATE_KEY as private Actions secrets. Dispatch all three capture publishers, verify each creates a PR with passing Repository CI and Browser QA, then enable/test a main ruleset that blocks pending/failed checks. Continue manual 36 color-contrast reviews, physical Android/desktop and screen-reader/keyboard acceptance, owner content/media approval, external social crawler validation, Pages source confirmation, deployment permissions and rollback rehearsal. Recheck GlobalCart's latest catalog deployment before Phase 9. Do not start Phase 8/9 or V1 publication until formal gates are accepted.",
+  "nextAction": "Wait for the next genuine owner-approved interface-capture update, dispatch its matching publisher, and verify that the App creates an automation branch and PR. Require Repository CI plus Portfolio Browser QA on that exact PR; do not fabricate a screenshot diff. Only after successful real PR proof configure and test the main ruleset so pending/failed checks block merges. Continue Phase 7 manual contrast/keyboard/screen-reader and physical device acceptance, owner content/media approval, external social crawler validation, Pages-source confirmation, deployment-permission review, Cloudflare automation and rollback/recovery rehearsal. Do not start Phase 8/9 or V1 publication until all formal gates are accepted.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -1000,7 +1000,7 @@
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-09",
   "latestDocumentationCommit": "4482c96c6a6a8ec2548c8f37210c2f4674f617b2",
-  "latestDocumentationCheckpoint": "PR-28-merged;main-01749d717f6e31a1096cde91ff7773a9b58e1626;PR-CI-42624753678-success;PR-Browser-QA-42624753816-success;post-merge-publishers-42625390767-42625390703-42625390732-safe-paused-no-direct-push;App-credentials-owner-pending;post-merge-main-CI-42625390685-success",
+  "latestDocumentationCheckpoint": "PR-28-merged;owner-confirmed-dedicated-App-and-secrets;manual-publisher-runs-42631761203-42632714049-42632732364-success;App-token-created-in-all-three;no-diff-no-PR;real-PR-write-path-still-unverified;main-ruleset-inactive",
   "latestRepositoryCiRun": "42624753678",
   "latestBrowserQaRun": "42624753816",
   "latestPerformanceBaseline": {
@@ -1210,7 +1210,7 @@
       "implementationPr": 28,
       "implementationHead": "7421479def8bf397fe3470561087cda383edd5a1",
       "mergeCommit": "01749d717f6e31a1096cde91ff7773a9b58e1626",
-      "status": "merged-to-main;post-merge-publishers-paused-safely-until-owner-App-config",
+      "status": "owner-confirmed-app-installed-and-secrets-configured;three-manual-dispatches-succeeded;app-token-generation-verified;no-diff-in-all-approved-capture-destinations;actual-pr-write-not-yet-exercised",
       "publisherWorkflows": [
         ".github/workflows/publish-reviewed-captures.yml",
         ".github/workflows/publish-reviewed-portfolio-captures.yml",
@@ -1233,7 +1233,7 @@
       ],
       "directMainPushRemoved": true,
       "manualDispatchAdded": true,
-      "realAppRunVerified": false,
+      "realAppRunVerified": true,
       "mainRulesetEnabled": false,
       "ownerActionRequired": true,
       "prRepositoryCiRun": "42624753678",
@@ -1260,7 +1260,19 @@
         "42625390732"
       ],
       "postMergePublisherRunsSucceeded": true,
-      "postMergePublishedFiles": 0
+      "postMergePublishedFiles": 0,
+      "realAppPullRequestCreationVerified": false,
+      "manualDispatchRuns": {
+        "reviewedInterface": "42631761203;success;manifest-and-png-integrity-passed;app-token-created;no-diff;no-pr-created",
+        "portfolio": "42632714049;success;manifest-and-png-integrity-passed;app-token-created;no-diff;no-pr-created",
+        "fullPage": "42632732364;success;source-run-and-png-integrity-passed;app-token-created;no-diff;no-pr-created"
+      },
+      "manualDispatchesSucceeded": true,
+      "ownerConfirmedInstallationScope": "pooya-labs/pooya-labs-platform-only",
+      "privateActionsSecretsOwnerConfirmed": true,
+      "actualPullRequestWriteAttempted": false,
+      "noDiffInAllManualDispatches": true,
+      "manualDispatchPublishedFiles": 0
     }
   },
   "brandOwnership": {
