@@ -6,9 +6,10 @@ on:
     paths:
       - 'docs/approved-interface-captures/portfolio-*.json'
       - '.github/workflows/publish-reviewed-portfolio-captures.yml'
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   actions: read
 
 concurrency:
@@ -23,6 +24,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Set up Node.js
         uses: actions/setup-node@v7
@@ -113,14 +116,72 @@ jobs:
           }
           NODE
 
-      - name: Commit only verified portfolio captures
+      - name: Check GitHub App publisher configuration
+        id: publisher_config
+        env:
+          APP_ID: ${{ secrets.CAPTURE_PUBLISHER_APP_ID }}
+          APP_PRIVATE_KEY: ${{ secrets.CAPTURE_PUBLISHER_APP_PRIVATE_KEY }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add apps/platform/public/interface-captures/pooya-os/*.png apps/platform/public/interface-captures/nexus-canvas/*.png apps/platform/public/interface-captures/lumina-glass/*.png apps/platform/public/interface-captures/aurapulse/*.png
-          if git diff --cached --quiet; then
-            echo "Approved captures are already present; nothing to publish."
-            exit 0
+          if [ -n "$APP_ID" ] && [ -n "$APP_PRIVATE_KEY" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Capture publisher PR creation is paused until the repository App secrets are configured."
           fi
-          git commit -m "docs(portfolio): publish reviewed project interface captures"
-          git push origin HEAD:main
+
+      - name: Create least-privilege GitHub App installation token
+        if: steps.publisher_config.outputs.configured == 'true'
+        id: app_token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.CAPTURE_PUBLISHER_APP_ID }}
+          private-key: ${{ secrets.CAPTURE_PUBLISHER_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: pooya-labs-platform
+          permission-contents: write
+          permission-pull-requests: write
+
+      - name: Create or update a reviewable publication PR
+        if: steps.publisher_config.outputs.configured == 'true'
+        id: pull_request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ steps.app_token.outputs.token }}
+          branch: automation/publish-reviewed-portfolio-captures
+          base: main
+          delete-branch: true
+          title: "Publish reviewed project interface captures"
+          commit-message: "docs(portfolio): propose reviewed project interface captures"
+          body: |
+            This PR was generated from the checked-in owner-approved capture manifest.
+            The source run, PNG signatures, dimensions (where applicable), byte sizes, and SHA-256 digests were verified before these files were staged.
+            Review the generated diff and require Repository CI plus Portfolio Browser QA before merging. This workflow never pushes directly to main.
+          add-paths: |
+            apps/platform/public/interface-captures/pooya-os/pooya-os-desktop.png
+            apps/platform/public/interface-captures/pooya-os/pooya-os-mobile.png
+            apps/platform/public/interface-captures/nexus-canvas/nexus-canvas-desktop.png
+            apps/platform/public/interface-captures/nexus-canvas/nexus-canvas-mobile.png
+            apps/platform/public/interface-captures/lumina-glass/lumina-glass-desktop.png
+            apps/platform/public/interface-captures/lumina-glass/lumina-glass-mobile.png
+            apps/platform/public/interface-captures/aurapulse/aurapulse-desktop.png
+            apps/platform/public/interface-captures/aurapulse/aurapulse-mobile.png
+
+      - name: Record missing publisher setup
+        if: steps.publisher_config.outputs.configured != 'true'
+        run: |
+          {
+            echo "## Capture publisher paused"
+            echo "The approval and artifact-integrity checks passed, but PR creation requires repository secrets CAPTURE_PUBLISHER_APP_ID and CAPTURE_PUBLISHER_APP_PRIVATE_KEY."
+            echo "No image files were published or pushed to main."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Summarize publication PR
+        if: steps.publisher_config.outputs.configured == 'true'
+        env:
+          PR_URL: ${{ steps.pull_request.outputs.pull-request-url }}
+        run: |
+          if [ -n "$PR_URL" ]; then
+            echo "Review PR: $PR_URL" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No publication diff was required; approved captures already match main." >> "$GITHUB_STEP_SUMMARY"
+          fi
