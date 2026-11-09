@@ -124,7 +124,7 @@ PR [#32](https://github.com/pooya-labs/pooya-labs-platform/pull/32) merged as [`
 - PR CI [42635400246](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400246) passed 112/112 tests. PR Browser QA [42635400130](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400130) passed 18/18 routes and 36/36 viewports, zero failures and zero confirmed axe violations; 36 incomplete contrast checks remain manual. Performance recorded 20 samples per host with no failures; report [13683600592](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635400130/artifacts/13683600592).
 - Main CI [42635961927](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42635961927) passed after merge on `7e2e5a2`.
 
-**Owner dispatch is still pending.** Run the workflow manually from `main`, then confirm that it opens a PR titled `test(platform): verify GitHub App PR creation`. Wait for Repository CI and Portfolio Browser QA on that generated PR, review the marker-only diff, and merge it after both checks pass. The automation branch is configured for deletion on merge.
+**Historical owner dispatch instructions — completed by PR #34.** The workflow was dispatched from `main`; the App created the marker-only PR, both Repository CI and Portfolio Browser QA passed, and the PR was merged as `42d12a1`. See the verified evidence near the top of this document.
 
 ## Historical recommendation — ruleset activation completed
 
