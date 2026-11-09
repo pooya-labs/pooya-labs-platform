@@ -7,12 +7,12 @@
   "phase": 7,
   "phaseName": "Pre-redesign readiness and engineering closeout",
   "currentTask": {
-    "id": "P7-13",
-    "title": "Verify active main ruleset and connector PR workflow",
-    "status": "The dedicated App permission proof is complete: PR #34 was created by the repository-scoped App, passed Repository CI and Browser QA, and merged as 42d12a1. The owner activated ruleset 26861856, targeting only refs/heads/main with required PR, strict required checks (Typecheck, three-target build, and contract tests; Chromium responsive and keyboard smoke), deletion/non-fast-forward restrictions, zero approvals, and no bypass actors. The connector successfully created a working branch after activation; a docs-only PR is in progress to verify branch writes, PR creation, both required checks, and normal merge. No direct main push, App bypass, or new image diff was used. Platform remains pre-alpha / Phase 7; no V1 release."
+    "id": "P7-14",
+    "title": "Close remaining Phase 7 public-site, accessibility, device, and recovery evidence",
+    "status": "P7-13 governance is complete. Active ruleset 26861856 targets only main, requires a PR and the two exact checks, and has no bypass actors. Connector-created PR #36 passed Repository CI 42642712582 and Browser QA 42642712314 (18/18 routes, 36/36 viewports, zero confirmed axe violations, 36 incomplete contrast checks remain human review), merged as 82f975a; post-merge Repository CI 42643318377 passed. The read-only source audit for all eight independent projects is refreshed at 2026-11-09 15:25 UTC in docs/PROJECT-CONTENT-AUDIT.md. Remaining Phase 7 gates: external social crawler/cache validation, manual contrast/keyboard/screen-reader review, physical Android acceptance, owner biography/project order/contribution/media approvals, Salon Booking privacy permission, deployment/rollback rehearsal, and final docs/source sync. Platform remains pre-alpha; no V1 release."
   },
   "lastCheckpointDate": "2026-11-09",
-  "latestVerifiedCodeCommit": "c65fb4d68143bf65930c766e7149749dc6d01df7",
+  "latestVerifiedCodeCommit": "82f975a81e352354bbab1995721ae7ba101d4c02",
   "tests": {
     "repositoryCi": "passed-run-42526088297;main-558970fefad25fa16632a8d740eb1a7a32c8f3bd;110-contract-tests;all-three-build-targets;typecheck;dependency-audit;credential-scan",
     "transportHarnessContract": "passed",
@@ -63,8 +63,8 @@
     "latestVerifiedTestCommit": "558970fefad25fa16632a8d740eb1a7a32c8f3bd",
     "latestDocumentationCheckpoint": "owner-identity-merge-PR-20;main-558970f;CI-110-of-110;Browser-QA-18-of-18;GitHub-Pages-deploy-success",
     "latestDetailedAxeReport": "run-42514976406;zero-confirmed-axe-violations;36-incomplete-axe-checks;artifact-13631024148",
-    "latestRepositoryCiRun": "42639648418;success;main-c65fb4d68143bf65930c766e7149749dc6d01df7",
-    "latestBrowserQaRun": "42526088326",
+    "latestRepositoryCiRun": "42643318377;success;main-82f975a81e352354bbab1995721ae7ba101d4c02",
+    "latestBrowserQaRun": "42642712314;success;PR36-head-2b56ce140a990f4855949e96245f2f15432802ac;18-of-18-routes;36-of-36-viewports;zero-confirmed-axe-violations;36-incomplete-contrast-human-review",
     "latestPagesDeploymentRun": "42526088212",
     "latestCloudflareAttempt": "success-deployment-107de2a2-d69c-4b9d-ae2c-38da68c7bad4;main-a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67;all-five-stages-success;includes-41ea1004-asset",
     "latestAppsScriptAttempt": "run-42514976476;configuration-check-passed;actual-publish-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
@@ -98,7 +98,10 @@
     "appPublisherPermissionSmokeBrowserQa": "passed-run-42635400130;18-of-18-routes;36-of-36-viewports;zero-confirmed-axe-violations;36-incomplete-contrast-checks-manual;20-performance-samples-per-host;zero-failures;artifact-13683600592",
     "latestMainRepositoryCi": "passed-run-42635961927;exact-main-7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c",
     "appPublisherPermissionSmokeMainCi": "passed-run-42635961927;exact-main-7e2e5a2ff0e43f46e125e5c63db2d453e9b6bf0c",
-    "mainRuleset": "active-ruleset-26861856;target-refs/heads/main;require-pull-request;strict-required-checks;contexts-Typecheck-three-target-build-and-contract-tests,Chromium-responsive-and-keyboard-smoke;deletion-and-non-fast-forward-blocked;no-bypass-actors;branch-created-after-activation"
+    "mainRuleset": "active-ruleset-26861856;target-refs/heads/main;require-pull-request;strict-required-checks;contexts-Typecheck-three-target-build-and-contract-tests,Chromium-responsive-and-keyboard-smoke;deletion-and-non-fast-forward-blocked;no-bypass-actors;branch-created-after-activation",
+    "latestBrowserQaArtifact": "13685757493",
+    "mainRulesetEnforcement": "positive-path-verified-PR36;both-required-checks-passed;normal-squash-merge-82f975a;post-merge-CI-42643318377-success;no-bypass",
+    "latestUpstreamSourceAudit": "2026-11-09T15:25Z;read-only-eight-repos;AetherFlow-00dc870;ORBIT-4d02a1;PooyaOS-c3b79f;NexusCanvas-99a95a;LuminaGlass-450067f;AuraPulse-410529e;GlobalCart-1c3d27f-deployed;SalonBooking-4fc21ae"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",

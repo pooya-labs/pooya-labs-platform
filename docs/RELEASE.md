@@ -4,7 +4,7 @@ This checklist governs public portfolio releases. The current release remains **
 
 ## Before any public release
 
-- [ ] Confirm that the active `main` ruleset [Protect main — PR + CI](https://github.com/pooya-labs/pooya-labs-platform/rules/26861856) is exercised by a normal PR whose two required checks pass and whose merge uses the regular path. The ruleset configuration is active and verified; this controlled docs-only PR is the remaining positive-path test. Do not use direct pushes or bypass actors. See [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md).
+- [x] Confirm that the active `main` ruleset [Protect main — PR + CI](https://github.com/pooya-labs/pooya-labs-platform/rules/26861856) is exercised by a normal PR whose two required checks pass and whose merge uses the regular path. Verified by PR #36: both required contexts passed, the PR merged without bypass, and post-merge CI passed. Do not use direct pushes or bypass actors. See [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md).
 - [ ] Confirm the change is on the intended commit and the working tree/branch contains no unrelated work.
 - [ ] Pass `npm run lint`, `npm run format:check`, `npm run typecheck`, `npm test`, `npm run build`, and `npm run build:cloudflare`.
 - [ ] Pass the portfolio browser QA workflow for the expected Persian/English routes, desktop/mobile viewports, reduced-motion behavior, and gallery scroll chaining.

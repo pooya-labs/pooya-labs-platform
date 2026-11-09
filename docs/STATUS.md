@@ -1,3 +1,13 @@
+## Latest verified checkpoint — governance PR path and eight-project source audit (2026-11-09)
+
+- Active ruleset [Protect main — PR + CI](https://github.com/pooya-labs/pooya-labs-platform/rules/26861856) was verified and exercised: PR #36 passed both required contexts and merged normally as `82f975a`; no direct push or bypass actor was used. Post-merge main Repository CI [42643318377](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42643318377) passed.
+- PR #36 head `2b56ce1` passed Repository CI [42642712582](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42642712582) and Browser QA [42642712314](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42642712314). Browser QA: 18/18 routes, 36/36 viewports, zero failures, zero confirmed axe violations; 36 incomplete contrast checks remain human review. Artifact [13685757493](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42642712314/artifacts/13685757493).
+- The eight independent project repositories were rechecked read-only at their current `main` heads; exact SHAs, changed paths, known open blocker, and check/deployment evidence are in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md). No independent repo was modified.
+- GlobalCart's current main `1c3d27f` is deployed on its exact head; live-catalog, live-visual, and Lighthouse checks passed. This supersedes the previous pending-deployment note.
+- AetherFlow PR #14's comparator hardening merged and its exact main-head checks passed; matching-runner benchmark evidence remains open.
+- ORBIT PR #138 remains open. Main CI passed on its PR head, and patched amd64/arm64 candidates built, but the deferred upstream Keycloak scan still fails on HIGH CVE-2026-102554 in Guava 33.6.0-jre. Do not present the candidate as published or production-ready.
+- The platform remains **pre-alpha / Phase 7**. Owner content approval, manual accessibility, physical-device, social crawler, and host rollback gates remain open; no V1 release is claimed.
+
 ## Latest verified governance checkpoint — active main ruleset (2026-11-09)
 
 - The active repository ruleset [Protect main — PR + CI](https://github.com/pooya-labs/pooya-labs-platform/rules/26861856) targets only `refs/heads/main`. It requires a PR and the exact GitHub Actions checks `Typecheck, three-target build, and contract tests` and `Chromium responsive and keyboard smoke`; strict status checks are enabled.
