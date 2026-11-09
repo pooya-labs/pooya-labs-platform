@@ -4,9 +4,9 @@ Pooya Labs is Pooya's personal engineering portfolio and project showcase. Its m
 
 This is a portfolio first—not a generic SaaS dashboard or customer-account product.
 
-## Latest project update — 9 November 2026
+## Latest project update — 10 November 2026
 
-Phase 7 host verification is current: the public GitHub Pages and Cloudflare Pages builds both use application source revision `97094ed0`; the later `main` checkpoint `dcc9ec6d` contains documentation-only changes. Repository CI passed on that exact `main` head (run [42653901311](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42653901311)), and the latest merged documentation PR's Browser QA passed (run [42653273680](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42653273680)). Native Cloudflare Git-push deployment remains unverified; its successful production deployment used the authorized API fallback. The platform remains pre-alpha while manual accessibility, physical-device, owner-content, privacy, external crawler, and rollback gates remain open.
+The latest verified application source revision is `e5ef6389`. GitHub Pages was rebuilt from main checkpoint `5321d3f` (application source unchanged by the social-crawler QA tooling), and Cloudflare Pages' latest verified production deployment is `ed73cc8e` from the same application source. The later platform main checkpoint `b1db0ccc` is documentation/state-only. The latest recorded Repository CI and Browser QA passed on exact main `5321d3f`; Browser QA covered 18/18 routes, 36/36 viewports and 34/34 social-crawler checks, with 36 incomplete Axe contrast checks still reserved for manual review. Cloudflare's native Git-push trigger remains unverified, and the GitHub Actions Cloudflare publish plus Apps Script stable Web App publish jobs remain skipped without their private configuration. A fresh read-only audit of all eight upstream project repositories is recorded in [PROJECT-CONTENT-AUDIT.md](docs/PROJECT-CONTENT-AUDIT.md). The platform remains pre-alpha / Phase 7; human accessibility/device review, owner content/privacy approvals, authenticated social-cache validation and rollback rehearsal remain open.
 
 ## Project ownership
 
