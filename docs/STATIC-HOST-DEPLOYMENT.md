@@ -87,9 +87,10 @@ Each release/rollback checkpoint must record the source SHA, CI run, Browser QA 
 
 ## Current rehearsal state
 
-- GitHub Pages build and production deployment both passed on app SHA `558970f`; current main's later changes do not touch application files. The canonical host was also measured by Browser QA with zero failures.
-- Cloudflare production deployment `76da3cc2` passed all stages on exact main SHA `15203f14`; rendered homepage and Persian/English ORBIT metadata were verified. Native Git push-trigger behavior and the Actions-secret-based deploy job remain unproven.
-- A real production rollback rehearsal remains open. This document is the procedure, not proof that it has been executed; no production rollback was attempted.
+- GitHub Pages production deployment [42659840309](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659840309) passed Build and Deploy on exact app SHA `e5ef6389`; artifact `13693239378`.
+- Cloudflare production deployment `ed73cc8e` (ID `ed73cc8e-7fcb-42b7-8ca0-b6e591f9f160`) passed all five stages on the same exact app SHA through the authorized Pages API, trigger `ad_hoc`.
+- Browser QA [42659839780](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42659839780) passed on the same main revision; artifact `13692549570`. Live homepage and CSS assets returned HTTP 200 on both hosts.
+- The documented rollback has **not** been rehearsed. This runbook is the procedure, not proof that the procedure has been executed; no production rollback was attempted.
 
 ## Security boundary
 
