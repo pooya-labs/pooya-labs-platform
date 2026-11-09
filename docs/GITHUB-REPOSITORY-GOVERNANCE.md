@@ -1,12 +1,10 @@
-## 2026-11-09 update — reviewed screenshot publisher migration merged (PR #28)
+## 2026-11-09 update — reviewed screenshot publisher migration (PR #28)
 
-The Phase 7 source and repository-governance audit from PR #25 remains preserved below. PR [#28](https://github.com/pooya-labs/pooya-labs-platform/pull/28) merged as [`01749d7`](https://github.com/pooya-labs/pooya-labs-platform/commit/01749d717f6e31a1096cde91ff7773a9b58e1626), replacing direct writes in all three reviewed-capture publishers with repository-scoped GitHub App PR creation. The current `main` no longer gives the default Actions token content-write access through those publishers.
+The Phase 7 source audit from PR #25 remains preserved below. Current main `3a083aa` still contains the old direct-write publishers until PR #28 merges. PR [#26](https://github.com/pooya-labs/pooya-labs-platform/pull/28) migrates the three publisher workflows to scoped GitHub App-backed pull requests.
 
-The exact code/test PR head `7421479` passed Repository CI [42624753678](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753678) with 111/111 tests, plus lint, format, typecheck, all three builds, dependency audit and credential scan. Browser QA [42624753816](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753816) passed 18/18 routes and 36/36 viewport checks, with zero failures and zero confirmed axe violations. Thirty-six color-contrast checks remain incomplete for manual review. Performance checks passed 20/20 samples on local build, GitHub Pages and Cloudflare Pages; report [artifact 13678551079](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753816/artifacts/13678551079).
+The code/test checkpoint `7421479` passed Repository CI [42624753678](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753678) with 111/111 tests and no failures; lint, format, typecheck, all three builds, dependency audit and credential scan also passed. Browser QA [42624753816](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753816) passed 18/18 routes, 36/36 viewports, zero confirmed axe violations and zero failures. Axe still has 36 incomplete checks that require manual contrast/accessibility review. Performance checks passed 20/20 samples on local, GitHub Pages and Cloudflare Pages; report [artifact 13678551079](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42624753816/artifacts/13678551079).
 
-After merge, all three publishers ran on exact main `01749d7` and completed successfully in fail-closed mode: [portfolio](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390767), [full-page](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390703), and [reviewed-interface](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390732). Each detected that the App secrets were absent, skipped token creation and PR creation, and confirmed that no images were published or pushed to `main`. This validates the safe pause path, not a live App installation or an App-generated PR.
-
-Post-merge Repository CI [42625390685](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390685) also passed on exact main `01749d7`. GitHub still reports `main` as unprotected with no active rulesets. The private GitHub App installation/secrets, first real publisher PRs, and ruleset enforcement remain owner-side gates. No GitHub settings or secrets were changed in this work.
+A documentation-only commit followed that tested code checkpoint. Revalidate CI and Browser QA on the final rebased PR head before merging. App installation, private repository secrets, first live publisher PRs and the active `main` ruleset remain owner-side gates. No settings or secrets have been changed.
 
 # GitHub Repository Governance — Phase 7
 
@@ -85,3 +83,14 @@ GitHub Actions Cloudflare publishing also remains credential-gated by the privat
 از میان ۱۰ گردش‌کار Actions، دسترسی‌ها صریح و عمدتاً فقط‌خواندنی هستند. تنها سه گردش‌کار انتشار تصویر مجوز نوشتن محتوا دارند و هر سه فایل‌های تأییدشده را مستقیماً روی `main` ثبت می‌کنند. به همین دلیل، پیش از فعال‌کردن الزام PR باید مسیر انتشار آن‌ها به PR مبتنی بر GitHub App تبدیل شود یا استثنای ربات با آگاهی از دامنهٔ اثر آن انتخاب شود.
 
 این ممیزی صرفاً مستندات را تغییر می‌دهد؛ هیچ تنظیم GitHub، Secret، کد اجرایی یا انتشار عمومی تغییر نکرده است. محافظت شاخه و آزمایش واقعی قواعد همچنان نیازمند اقدام مالک مخزن است.
+
+
+## Post-merge publisher runtime verification — main `01749d7`
+
+All three publisher workflows were triggered automatically by the PR #28 merge and completed successfully. Each verified its approval manifest and artifact inputs, detected absent App secrets, skipped token creation and PR creation, and recorded that no images were published or pushed to `main`:
+
+- Portfolio captures: [run 42625390767](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390767)
+- Full-page captures: [run 42625390703](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390703)
+- Reviewed interface captures: [run 42625390732](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390732)
+
+Post-merge Repository CI [42625390685](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42625390685) passed on exact main `01749d7`. The main branch still has no active ruleset; install/configure the App and verify real PR creation before enabling branch enforcement.
