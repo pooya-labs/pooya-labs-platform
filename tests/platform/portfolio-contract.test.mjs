@@ -75,6 +75,10 @@ test('projects live in a typed registry with unique slugs and editorial review s
   assert.match(portfolio, /portfolioProjects as projects/);
   assert.match(portfolio, /project\.previewUrl/);
   assert.match(portfolio, /project\.repositoryUrl/);
+  assert.match(portfolio, /<a href=\{project\.previewUrl\}/);
+  assert.match(portfolio, /href=\{getProjectRouteHref\(project\.slug, language\)\}/);
+  assert.match(portfolio, /href=\{project\.repositoryUrl\}/);
+
   assert.match(portfolio, /project\.caseStudyUrl/);
   assert.match(content, /export function validatePortfolioProjects/);
   assert.match(content, /challenge: \{ fa: string; en: string \}/);
@@ -104,9 +108,14 @@ test('project cards and shareable query routes expose in-site case studies', () 
 });
 
 test('project artwork and interface screenshots are sourced from pinned commits with localized alt text', () => {
-  assert.equal((projectData.match(/visualAsset: \{/g) ?? []).length, 7);
+  assert.equal((projectData.match(/visualAsset: \{/g) ?? []).length, 8);
   assert.equal((projectData.match(/caseStudyHeroAsset: \{/g) ?? []).length, 6);
   assert.equal((projectData.match(/caseStudyMedia: \[/g) ?? []).length, 8);
+  const aetherFlowEntry = projectData.slice(projectData.indexOf("slug: 'aetherflow'"), projectData.indexOf("slug: 'orbit'"));
+  assert.match(aetherFlowEntry, /visualAsset: \{[\s\S]*?kind: 'brand'/);
+  assert.match(aetherFlowEntry, /raw\.githubusercontent\.com\/pooya-labs\/pooya-labs-platform\/[a-f0-9]{40}\/apps\/platform\/public\/project-marks\/aetherflow\.svg/);
+  assert.match(aetherFlowEntry, /alt: \{ fa: '[^']+', en: '[^']+' \}/);
+
   assert.equal((projectData.match(/^\s+device: '(?:desktop|mobile|detail)',?$/gm) ?? []).length, 8);
   assert.ok((projectData.match(/raw\.githubusercontent\.com\/pooya-labs\//g) ?? []).length >= 19);
   assert.ok((projectData.match(/alt: \{ fa: '[^']+', en: '[^']+' \}/g) ?? []).length >= 19);

@@ -43,6 +43,11 @@ const projectEntries: PortfolioProject[] = [
     number: '01',
     slug: 'aetherflow',
     name: 'AetherFlow',
+    visualAsset: {
+      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/99dc3317afa180058def6f0d860e4b654be62ae2/apps/platform/public/project-marks/aetherflow.svg',
+      kind: 'brand',
+      alt: { fa: 'نشان اختصاصی AetherFlow با مسیر جریان فیروزه‌ای روی زمینه تیره', en: 'AetherFlow’s own mint workflow mark on a dark field' },
+    },
     caseStudy: {
       challenge: { fa: "اجرای گردش‌کار توزیع‌شده با شکست فرایندها، قطع ارتباط و تحویل تکراری پیام روبه‌رو است. مسئله اصلی فقط صف‌کردن کارها نیست؛ وضعیت باید قابل بازیابی و تغییرات قابل ممیزی باشند.", en: "Distributed workflows face process crashes, network partitions, and duplicate delivery. The hard problem is not merely queuing work: state must be recoverable and transitions auditable." },
       approach: { fa: "هسته Rust و Tokio را پیرامون وضعیت پایدار، Workerهای بازیابی‌پذیر و semantics صریح اجرا شکل می‌دهد. PostgreSQL برای ذخیره‌سازی پایدار و NATS JetStream برای انتقال رویداد به‌کار رفته‌اند.", en: "The Rust and Tokio core is organized around durable state, recoverable workers, and explicit execution semantics. PostgreSQL provides durable storage and NATS JetStream provides event transport." },

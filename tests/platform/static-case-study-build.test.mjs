@@ -82,7 +82,7 @@ test('Vite emits crawler-readable Persian and English case-study pages', { skip:
 });
 
 test('reviewed project interface screenshots are embedded in both static case-study locales', { skip: !rootHtml }, async () => {
-  const projects = ['orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'salon-booking'];
+  const projects = ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'salon-booking'];
   const isPinnedCapture = (url, expectedFolder) => {
     const root = 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/';
     if (!url.startsWith(root)) return false;
