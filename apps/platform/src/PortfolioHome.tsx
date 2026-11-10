@@ -374,6 +374,7 @@ export function ProjectCaseStudy({ project, language, onLanguageChange, theme, o
   const dossier = ((coreDossiers as unknown as Record<string, CaseStudyDossier>)[project.slug] ?? (productDossiers as unknown as Record<string, CaseStudyDossier>)[project.slug])!;
   const architectureDiagram = architectureDiagrams[project.slug];
   const architectureImage = baseUrl === './' ? null : `${baseUrl}architecture/${project.slug}${language === 'en' ? '-en' : ''}.svg`;
+  const caseStudyPageAsset = project.caseStudyPageAsset;
   const desktopCapture = project.caseStudyMedia?.find((item) => item.device === 'desktop') ?? project.caseStudyHeroAsset;
   const mobileCaptures = (project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop');
   return (
@@ -395,8 +396,10 @@ export function ProjectCaseStudy({ project, language, onLanguageChange, theme, o
       <main id="main-content" tabIndex={-1} className="case-study-main portfolio-container">
         <a className="case-study-back" href={baseUrl} onClick={(event) => { event.preventDefault(); onBack(); }}><ArrowUpLeft size={15} />{t.backProjects}</a>
         <section className="case-study-hero" data-reveal="case-study-hero">
-          <div className="case-study-visual">
-            <ProjectMotionScene slug={project.slug} />
+          <div className={`case-study-visual${caseStudyPageAsset ? ' has-visual' : ''}`}>
+            {caseStudyPageAsset
+              ? <img className="case-study-visual-image visual-interface case-study-page-preview" src={caseStudyPageAsset.url} alt={caseStudyPageAsset.alt[language]} loading="eager" decoding="async" />
+              : <ProjectMotionScene slug={project.slug} />}
             <span className="case-study-index">{project.number} / POOYA LABS</span>
           </div>
           <div className="case-study-heading">
