@@ -1,3 +1,13 @@
+## 2026-11-10 — AetherFlow product-page image added to the bilingual case-study hero
+
+- Merged PR [#55](https://github.com/pooya-labs/pooya-labs-platform/pull/55) as [`463501c`](https://github.com/pooya-labs/pooya-labs-platform/commit/463501cb94d1e36c6062535d6596f876036b87cd).
+- Replaced the abstract AetherFlow case-study hero scene with the approved desktop product-page screenshot in Persian and English; retained the homepage project's own SVG mark and the existing fullpage desktop/mobile gallery.
+- Served the hero image from the same Pages origin; provenance remains pinned to immutable capture commit `eba5e2d02047375ae8a42514f7bbb58c75106ba7`.
+- Updated Pages capture pruning to retain files referenced by the static routes while still removing unused duplicate capture copies.
+- Added static-build, dimensions/provenance, browser image-load, bilingual alt-text, and motion-scope regression checks.
+- PR-head Repository CI/Browser QA and post-merge main Repository CI/Browser QA/GitHub Pages deployment passed (runs 42794855912, 42794856114, 42795404398, 42795404244, and 42795404445).
+- Cloudflare production deployment and Apps Script publishing jobs were skipped in runs 42795404418 and 42795404647; no deployment to those targets is claimed.
+
 ## 2026-11-10 — portfolio-layer connection completed for all eight projects
 
 - Merged PR [#53](https://github.com/pooya-labs/pooya-labs-platform/pull/53) as [`1ba198d`](https://github.com/pooya-labs/pooya-labs-platform/commit/1ba198d1293305c9b0a64c91746989570f952ec2).
