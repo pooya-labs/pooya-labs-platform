@@ -1,3 +1,10 @@
+## 2026-11-10 — P7-33 dual-theme manual contrast matrix refreshed
+
+- Rebuilt [ACCESSIBILITY-MANUAL-REVIEW.md](ACCESSIBILITY-MANUAL-REVIEW.md) from exact-main Browser QA run 42815065767 / artifact 13765540433, after the light-theme corrections and dual-theme scan were merged.
+- Recorded 36 incomplete contrast checks in each theme: dark 228 node occurrences / 74 selectors; light 288 / 56; 87 unique selectors across both themes.
+- Classified unresolved backgrounds as 267 pseudo-element/decorative nodes, 201 gradient nodes, 44 overlaps, and 4 partial overlaps.
+- Axe reported zero confirmed violations in either theme. The refreshed matrix is preparation for human review only; no contrast, WCAG, physical-device, or screen-reader pass is claimed.
+
 ## 2026-11-10 — Light-theme contrast correction and dual-theme accessibility regression coverage
 
 - Merged PR [#62](https://github.com/pooya-labs/pooya-labs-platform/pull/62) and [#64](https://github.com/pooya-labs/pooya-labs-platform/pull/64): darkened light-theme emerald, hero-gradient and LTR headline colors; replaced the legacy low-contrast social-proof/scroll-cue overrides with the audited `--pf-dim` token; darkened navigation hover text. Added numeric WCAG AA contrast contracts for the corrected colors.
