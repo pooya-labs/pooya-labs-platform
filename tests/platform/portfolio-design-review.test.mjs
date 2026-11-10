@@ -221,13 +221,12 @@ test('header contrast remains inspectable without a decorative pseudo-element ov
 
 
 test('final light-theme secondary text meets WCAG AA contrast on the page and raised surfaces', () => {
-  const selector = '.portfolio-page[data-theme="light"] {';
-  const lightThemeStart = css.lastIndexOf(selector);
-  assert.ok(lightThemeStart >= 0, 'The final graphite/ivory light-theme token block must exist');
-  const lightThemeEnd = css.indexOf('}', lightThemeStart);
-  const finalLightTheme = css.slice(lightThemeStart, lightThemeEnd);
+  const lightThemeBlocks = [...css.matchAll(/\\.portfolio-page\\[data-theme="light"\\]\\s*\\{([^}]*)\\}/g)];
+  const finalLightTheme = lightThemeBlocks.map((match) => match[1]).reverse()
+    .find((block) => /--pf-dim:\\s*#[0-9a-f]{6}/i.test(block)) ?? '';
+  assert.ok(finalLightTheme, 'A final light-theme token block with a secondary text color must exist');
 
-  const foreground = finalLightTheme.match(/--pf-dim:\s*(#[0-9a-f]{6})/i)?.[1];
+  const foreground = finalLightTheme.match(/--pf-dim:\\s*(#[0-9a-f]{6})/i)?.[1];
   assert.ok(foreground, 'The final light-theme secondary text token must be a six-digit hex color');
 
   for (const background of ['#f5f6f2', '#e9eee9', '#fffffc']) {
