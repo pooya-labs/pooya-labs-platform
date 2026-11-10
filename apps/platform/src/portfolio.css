@@ -129,7 +129,7 @@
 .project-art { position: relative; height: 172px; display: grid; place-items: center; overflow: hidden; margin-top: 9px; background: radial-gradient(ellipse at 50% 58%, rgba(55, 163, 165, .13), transparent 53%); }
 .project-art::before, .project-art::after { content: ""; position: absolute; width: 185px; height: 110px; border: 1px solid rgba(115, 211, 212, .13); border-radius: 50%; transform: rotate(-25deg); }
 .project-art::after { width: 230px; height: 140px; transform: rotate(25deg); border-color: rgba(101, 214, 184, .1); }
-.project-art-orbit { position: absolute; width: 116px; height: 116px; border: 1px solid rgba(110, 225, 226, .3); border-radius: 50%; transform: rotateX(65deg) rotate(-25deg); box-shadow: 0 0 35px rgba(93, 212, 206, .1); }
+.project-art-orbit-ring { position: absolute; width: 116px; height: 116px; border: 1px solid rgba(110, 225, 226, .3); border-radius: 50%; transform: rotateX(65deg) rotate(-25deg); box-shadow: 0 0 35px rgba(93, 212, 206, .1); }
 .project-art-core { position: relative; z-index: 1; width: 71px; height: 71px; display: grid; place-items: center; border: 1px solid rgba(164, 236, 230, .3); border-radius: 21px; color: #e4ffff; background: linear-gradient(145deg, rgba(74, 157, 166, .45), rgba(14, 43, 52, .9)); box-shadow: 0 14px 35px rgba(0,0,0,.25), inset 0 1px rgba(255,255,255,.16); transform: rotate(-8deg); }
 .project-art-core span { font-size: 39px; font-weight: 720; }
 .project-art-code, .project-art-index { position: absolute; bottom: 15px; color: rgba(157, 201, 205, .48); font: 8px ui-monospace, monospace; letter-spacing: .14em; }
