@@ -738,9 +738,14 @@ try {
         await page.emulateMedia({ reducedMotion: 'no-preference' });
       }
 
-      // The skip link is the first interactive element in the page DOM.
+      // Theme audits leave focus on the theme button; reset it so Tab starts at the first page control.
       await page.setViewportSize({ width: 390, height: 844 });
-      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.evaluate(() => {
+        const active = document.activeElement;
+        if (active instanceof HTMLElement) active.blur();
+        const scroller = document.querySelector('.portfolio-page');
+        if (scroller instanceof HTMLElement) scroller.scrollTop = 0;
+      });
       await page.keyboard.press('Tab');
       await page.waitForFunction(() => {
         const active = document.activeElement;
