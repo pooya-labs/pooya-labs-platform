@@ -119,6 +119,9 @@ test('project artwork and interface screenshots are sourced from pinned commits 
   assert.ok(aetherFlowEntry.includes('caseStudyPageAsset: {'));
   assert.ok(aetherFlowEntry.includes("kind: 'interface'"));
   assert.ok(aetherFlowEntry.includes('eba5e2d02047375ae8a42514f7bbb58c75106ba7/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png'));
+  assert.ok(aetherFlowEntry.includes("path: 'interface-captures/aetherflow/aetherflow-fullpage-desktop.png'"));
+  assert.match(projectData, /Case-study page image sources must be pinned to an immutable platform commit/);
+
 
 
 
