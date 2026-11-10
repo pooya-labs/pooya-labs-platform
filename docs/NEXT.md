@@ -1,3 +1,15 @@
+## Latest checkpoint — P7-26 security and owner packet corrected (2026-11-10)
+
+A targeted review found stale governance and source facts in two documents. [SECURITY-MODEL.md](SECURITY-MODEL.md) now reflects the active main ruleset and App-based screenshot PR workflow. [OWNER-REVIEW-PACKET.md](OWNER-REVIEW-PACKET.md) now reflects the latest read-only AetherFlow, ORBIT and GlobalCart source evidence while explicitly preserving the owner's approval gate.
+
+**Important boundaries preserved:**
+- Main requires a PR plus both strict checks under ruleset 26861856. The negative pending/failed-check path remains untested.
+- Reviewed screenshot publishers create PRs through the repository-scoped GitHub App; no direct-to-main writes remain. Do not fabricate a capture diff.
+- ORBIT's patched Keycloak digest is published and cleanly scanned on both architectures, but production Compose is still 26.8.1.
+- GlobalCart's new FX snapshot timestamp regressed and its commit skipped CI; do not present it as a current quote.
+- All eight project descriptions/media remain awaiting owner review. Salon Booking permission is still pending.
+
+**Next:** continue the remaining public/private binary-asset and external-link safety review; do not mark it complete based only on a pattern-based text secret scan. Preserve the manual accessibility/device and authenticated social-cache gates.
 
 ## Latest checkpoint — PR #48 merged; P7-25 complete (2026-11-10)
 
