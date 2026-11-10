@@ -127,7 +127,9 @@ test('AetherFlow case-study hero loads the approved local desktop screenshot in 
     assert.ok(html.includes(localAsset), route + ' must load the image from the same published site origin');
     assert.ok(html.includes('case-study-visual-image visual-interface case-study-page-preview'), route + ' must use the product-page image treatment');
     assert.ok(!html.includes('case-study-motion-art'), route + ' must replace the abstract logo-like hero scene with the screenshot');
-    assert.ok(html.includes('alt="AetherFlow desktop product page showing workflow preview') || html.includes('alt="نمای واقعی دسکتاپ صفحهٔ اصلی AetherFlow'), route + ' must retain localized image alternative text');
+    assert.ok(html.includes(route.startsWith('en/')
+      ? 'alt="AetherFlow desktop product page showing its workflow preview'
+      : 'alt="نمای واقعی دسکتاپ صفحهٔ اصلی AetherFlow'), route + ' must retain localized image alternative text');
     assert.ok(html.includes(route.startsWith('en/')
       ? 'AetherFlow desktop product page showing its workflow preview'
       : 'نمای واقعی دسکتاپ صفحهٔ اصلی AetherFlow'));
