@@ -1,3 +1,10 @@
+## Latest checkpoint — P7-26 preliminary asset/link preflight (2026-11-10)
+
+The read-only source-tree/link preflight found no sensitive credential-like filenames, verified HTTPS for all 17 project registry destinations and `rel` attributes on all 16 new-tab anchors, and confirmed the Novels catalog remains empty. The only Salon Booking assets in the public capture directory are two customer-facing full-page PNGs; their existing manifest records privacy review, but not the salon owner's separate permission.
+
+The binary PNG payloads were not independently re-opened in this pass. Keep the full public/private asset review open; do not treat filename scanning or manifest metadata as proof that no personal data appears inside an image.
+
+**Next:** continue manual/binary asset review and resolve the Salon Booking owner permission. Then proceed with remaining human accessibility/device, owner-content, authenticated social-cache, deployment, and rollback gates. Phase 8/9 and V1 remain blocked.
 ## Latest checkpoint — P7-26 security and owner packet corrected (2026-11-10)
 
 A targeted review found stale governance and source facts in two documents. [SECURITY-MODEL.md](SECURITY-MODEL.md) now reflects the active main ruleset and App-based screenshot PR workflow. [OWNER-REVIEW-PACKET.md](OWNER-REVIEW-PACKET.md) now reflects the latest read-only AetherFlow, ORBIT and GlobalCart source evidence while explicitly preserving the owner's approval gate.
