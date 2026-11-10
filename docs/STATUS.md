@@ -1,3 +1,14 @@
+## Latest checkpoint — P7-26 security and owner-packet documentation corrected (2026-11-10)
+
+- A targeted documentation audit found two stale statements and corrected them: [SECURITY-MODEL.md](SECURITY-MODEL.md) now records active ruleset 26861856 and the GitHub App PR-based capture publication boundary; [OWNER-REVIEW-PACKET.md](OWNER-REVIEW-PACKET.md) now reflects current AetherFlow, ORBIT and GlobalCart source facts.
+- Main is protected by the active PR + strict-check ruleset; do not confuse the disabled classic branch-protection endpoint with the active repository ruleset. The normal passing-check PR/merge path has been exercised; negative failed/pending-check enforcement remains untested.
+- Capture publishers no longer directly push reviewed assets to main. The App's real changed-image PR path remains unexercised because approved files already matched the committed assets.
+- Owner review state is unchanged: all eight project registry entries remain needs-owner-review. Salon Booking public case-study permission remains a separate pending owner approval; privacy review of selected screenshots does not substitute for product-owner permission.
+- GlobalCart's latest FX snapshot is explicitly freshness-unverified. ORBIT's patched Keycloak digest is published/scanned but not promoted to production. AetherFlow M08 and the matched-runner benchmark remain open.
+- No app source, independent upstream repository, private credential, GitHub setting, or production deployment changed in this documentation task.
+
+**Release status: pre-alpha / Phase 7.** No owner approval or V1 release gate is closed here.
+
 
 ## Latest checkpoint — P7-25 merged; handoff synchronized (2026-11-10)
 
