@@ -236,3 +236,44 @@ test('final light-theme secondary text meets WCAG AA contrast on the page and ra
   }
 });
 
+test('light-theme emerald accents and hero gradient meet WCAG AA contrast on page surfaces', () => {
+  const selector = '.portfolio-page[data-theme="light"] {';
+  const themeStart = css.lastIndexOf(selector);
+  assert.ok(themeStart >= 0, 'The final light-theme token block must exist');
+  const themeEnd = css.indexOf('}', themeStart);
+  const theme = css.slice(themeStart, themeEnd);
+  const emerald = theme.match(/--pf-emerald:\s*(#[0-9a-f]{6})/i)?.[1];
+  assert.ok(emerald, 'The final light-theme emerald token must be a six-digit hex color');
+
+  for (const background of ['#f5f6f2', '#f0f3ee', '#f7f7f3', '#e9eee9', '#fffffc']) {
+    const ratio = contrastRatio(emerald, background);
+    assert.ok(ratio >= 4.5, 'Light emerald contrast against ' + background + ' is ' + ratio.toFixed(2) + ':1; expected at least 4.5:1');
+  }
+
+  const heroSelector = '.portfolio-page[data-theme="light"] .portfolio-hero-title .hero-gradient {';
+  const heroStart = css.lastIndexOf(heroSelector);
+  assert.ok(heroStart >= 0, 'A light-theme hero-gradient override must exist');
+  const heroEnd = css.indexOf('}', heroStart);
+  const heroRule = css.slice(heroStart, heroEnd);
+  const stops = [...heroRule.matchAll(/(#[0-9a-f]{6})\s+\d+%/gi)].map((match) => match[1]);
+  assert.equal(stops.length, 4, 'All four static light-theme gradient stops must be measurable');
+  for (const stop of stops) {
+    for (const background of ['#f5f6f2', '#f0f3ee', '#fffffc']) {
+      const ratio = contrastRatio(stop, background);
+      assert.ok(ratio >= 4.5, 'Hero gradient stop ' + stop + ' against ' + background + ' is ' + ratio.toFixed(2) + ':1; expected at least 4.5:1');
+    }
+  }
+
+  const wordLineSelector = '.portfolio-page[data-theme="light"] .portfolio-hero-copy .hero-title-word-line {';
+  const wordLineStart = css.lastIndexOf(wordLineSelector);
+  assert.ok(wordLineStart >= 0, 'The LTR hero word needs a theme-aware color override');
+  const wordLineEnd = css.indexOf('}', wordLineStart);
+  const wordLine = css.slice(wordLineStart, wordLineEnd);
+  const wordLineColor = wordLine.match(/color:\s*(#[0-9a-f]{6})/i)?.[1];
+  assert.ok(wordLineColor, 'The LTR hero word color must be a measurable hex color');
+  for (const background of ['#f5f6f2', '#f0f3ee', '#fffffc']) {
+    const ratio = contrastRatio(wordLineColor, background);
+    assert.ok(ratio >= 4.5, 'LTR hero word contrast against ' + background + ' is ' + ratio.toFixed(2) + ':1; expected at least 4.5:1');
+  }
+});
+
