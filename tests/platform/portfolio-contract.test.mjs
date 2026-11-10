@@ -113,8 +113,9 @@ test('project artwork and interface screenshots are sourced from pinned commits 
   assert.equal((projectData.match(/caseStudyPageAsset: \{/g) ?? []).length, 1);
   assert.equal((projectData.match(/caseStudyMedia: \[/g) ?? []).length, 8);
   const aetherFlowEntry = projectData.slice(projectData.indexOf("slug: 'aetherflow'"), projectData.indexOf("slug: 'orbit'"));
-  assert.match(aetherFlowEntry, /visualAsset: \{[\s\S]*?kind: 'brand'/);
-  assert.match(aetherFlowEntry, /raw\.githubusercontent\.com\/pooya-labs\/pooya-labs-platform\/[a-f0-9]{40}\/apps\/platform\/public\/project-marks\/aetherflow\.svg/);
+  assert.match(aetherFlowEntry, /visualAsset: \{[\s\S]*?kind: 'interface'/);
+  assert.match(aetherFlowEntry, /eba5e2d02047375ae8a42514f7bbb58c75106ba7\/apps\/platform\/public\/interface-captures\/aetherflow\/aetherflow-fullpage-desktop\.png/);
+  assert.doesNotMatch(aetherFlowEntry, /project-marks\/aetherflow\.svg/);
   assert.match(aetherFlowEntry, /alt: \{ fa: '[^']+', en: '[^']+' \}/);
   assert.ok(aetherFlowEntry.includes('caseStudyPageAsset: {'));
   assert.ok(aetherFlowEntry.includes("kind: 'interface'"));
@@ -136,6 +137,8 @@ test('project artwork and interface screenshots are sourced from pinned commits 
   assert.match(projectData, /Project visual assets must be pinned to an immutable source commit/);
   assert.match(projectData, /Case-study hero assets must be pinned to an immutable source commit/);
   assert.match(projectData, /Project visual asset URL/);
+  assert.match(portfolio, /project-art-' \+ project\.slug/);
+  assert.match(css, /\.project-art-aetherflow \.project-art-image \{\s*object-position: top center;/);
   assert.match(portfolio, /project-art-image/);
   assert.ok(portfolio.includes('<img className="case-study-visual-image visual-interface case-study-page-preview"'));
   assert.ok(portfolio.includes('caseStudyPageAsset.alt[language]'));
