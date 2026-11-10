@@ -5,6 +5,27 @@
 **Purpose:** Separate facts supported by the eight source repositories from information/evidence still required before Pooya Labs V1.  
 **Rule:** Do not fill gaps with assumptions. Keep verified descriptions in the portfolio and keep missing items as release checklist tasks.
 
+## Portfolio-layer integration verified — P7-27, 2026-11-10
+
+PR [#53](https://github.com/pooya-labs/pooya-labs-platform/pull/53) merged as [`1ba198d`](https://github.com/pooya-labs/pooya-labs-platform/commit/1ba198d1293305c9b0a64c91746989570f952ec2). The checks verify the portfolio layer—not embedded or live project backends.
+
+| Project | Source repository | Public demo | Internal case study |
+|---|---|---|---|
+| AetherFlow | [GitHub](https://github.com/pooya-labs/aetherflow) | [Demo](https://pooya-labs.github.io/aetherflow/) | [فارسی](https://pooya-labs.github.io/pooya-labs-platform/projects/aetherflow/) · [English](https://pooya-labs.github.io/pooya-labs-platform/en/projects/aetherflow/) |
+| ORBIT | [GitHub](https://github.com/pooya-labs/orbit) | [Demo](https://pooya-labs.github.io/orbit/) | [فارسی](https://pooya-labs.github.io/pooya-labs-platform/projects/orbit/) · [English](https://pooya-labs.github.io/pooya-labs-platform/en/projects/orbit/) |
+| Pooya.OS | [GitHub](https://github.com/pooya-labs/pooya-os) | [Demo](https://pooya-labs.github.io/pooya-os/) | [فارسی](https://pooya-labs.github.io/pooya-labs-platform/projects/pooya-os/) · [English](https://pooya-labs.github.io/pooya-labs-platform/en/projects/pooya-os/) |
+| NexusCanvas | [GitHub](https://github.com/pooya-labs/nexus-canvas) | [Demo](https://pooya-labs.github.io/nexus-canvas/) | [فارسی](https://pooya-labs.github.io/pooya-labs-platform/projects/nexus-canvas/) · [English](https://pooya-labs.github.io/pooya-labs-platform/en/projects/nexus-canvas/) |
+| LuminaGlass | [GitHub](https://github.com/pooya-labs/lumina-glass) | [Demo](https://pooya-labs.github.io/lumina-glass/) | [فارسی](https://pooya-labs.github.io/pooya-labs-platform/projects/lumina-glass/) · [English](https://pooya-labs.github.io/pooya-labs-platform/en/projects/lumina-glass/) |
+| AuraPulse | [GitHub](https://github.com/pooya-labs/aurapulse) | [Demo](https://pooya-labs.github.io/aurapulse/) | [فارسی](https://pooya-labs.github.io/pooya-labs-platform/projects/aura-pulse/) · [English](https://pooya-labs.github.io/pooya-labs-platform/en/projects/aura-pulse/) |
+| GlobalCart | [GitHub](https://github.com/pooya-labs/globalcart) | [Demo](https://pooya-labs.github.io/globalcart/) | [فارسی](https://pooya-labs.github.io/pooya-labs-platform/projects/global-cart/) · [English](https://pooya-labs.github.io/pooya-labs-platform/en/projects/global-cart/) |
+| Salon Booking | [GitHub](https://github.com/pooya-labs/salon-booking) | [Demo](https://pooya-labs.github.io/salon-booking/) | [فارسی](https://pooya-labs.github.io/pooya-labs-platform/projects/salon-booking/) · [English](https://pooya-labs.github.io/pooya-labs-platform/en/projects/salon-booking/) |
+
+The homepage card layer uses each project's visual, official demo, repository, and in-site case-study route. All eight projects also have bilingual case-study dossiers and localized architecture diagrams. The static-build contract now validates responsive AetherFlow evidence for both locales.
+
+**AetherFlow homepage artwork:** the platform now stores `apps/platform/public/project-marks/aetherflow.svg`, a faithful extraction of the project's own inline favicon mark from [AetherFlow `index.html` at upstream SHA `ad3edc6`](https://github.com/pooya-labs/aetherflow/blob/ad3edc60d0f65922bfeecc94111725fc61cebab3/index.html). The platform asset is pinned to [platform asset commit `99dc331`](https://github.com/pooya-labs/pooya-labs-platform/commit/99dc3317afa180058def6f0d860e4b654be62ae2); the upstream project remains licensed under [Apache-2.0](https://github.com/pooya-labs/aetherflow/blob/ad3edc60d0f65922bfeecc94111725fc61cebab3/LICENSE). The approved full-page AetherFlow desktop/mobile captures remain pinned to platform source commit `eba5e2d02047375ae8a42514f7bbb58c75106ba7` and recorded in [the 2026-11-08 reviewed capture manifest](approved-interface-captures/portfolio-2026-11-06.json).
+
+**Scope and limitations:** this is a portfolio/navigation/media integration only. No independent application source, API, database, identity provider, or live backend was embedded or modified. Deeper integrations remain deferred to Phase 9 under ADR-0001. The project registry's eight `reviewState` values remain `needs-owner-review`; Salon Booking's separate owner permission is still pending. AetherFlow M08, ORBIT production image promotion, and GlobalCart FX freshness gates remain open.
+
 ## Latest read-only upstream recheck — 2026-11-10
 
 **Inspection mode:** read-only. All eight independent project repositories were checked against their current `main` commit history. No independent repository was modified. This refresh updates the source inventory and corrects superseded ORBIT/AetherFlow/GlobalCart statements; it does not approve final case-study content or media.
