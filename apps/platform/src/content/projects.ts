@@ -20,7 +20,8 @@ export interface PortfolioProject {
     alt: { fa: string; en: string };
   };
   caseStudyPageAsset?: {
-    url: string;
+    path: string;
+    sourceUrl: string;
     kind: 'interface';
     alt: { fa: string; en: string };
   };
@@ -54,7 +55,8 @@ const projectEntries: PortfolioProject[] = [
       alt: { fa: 'نشان اختصاصی AetherFlow با مسیر جریان فیروزه‌ای روی زمینه تیره', en: 'AetherFlow’s own mint workflow mark on a dark field' },
     },
     caseStudyPageAsset: {
-      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/eba5e2d02047375ae8a42514f7bbb58c75106ba7/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png',
+      path: 'interface-captures/aetherflow/aetherflow-fullpage-desktop.png',
+      sourceUrl: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/eba5e2d02047375ae8a42514f7bbb58c75106ba7/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png',
       kind: 'interface',
       alt: { fa: 'نمای واقعی دسکتاپ صفحهٔ اصلی AetherFlow با نمونهٔ گردش‌کار، وضعیت Workerها و ذخیره‌سازی پایدار', en: 'AetherFlow desktop product page showing its workflow preview, worker states, and durable-storage overview' },
     },
@@ -385,10 +387,13 @@ export function validatePortfolioProjects(entries: readonly PortfolioProject[]):
       }
     }
     if (project.caseStudyPageAsset) {
-      assertHttpsUrl(project.caseStudyPageAsset.url, ['raw.githubusercontent.com'], 'Case-study page image URL');
-      const pageAssetPath = new URL(project.caseStudyPageAsset.url).pathname;
-      if (!/^\/pooya-labs\/[a-z0-9-]+\/[a-f0-9]{40}\//.test(pageAssetPath)) {
-        throw new Error('Case-study page images must be pinned to an immutable source commit.');
+      if (!/^interface-captures\/[a-z0-9-]+\/[a-z0-9.-]+\.png$/.test(project.caseStudyPageAsset.path)) {
+        throw new Error('Case-study page images must use a safe path inside the platform public assets.');
+      }
+      assertHttpsUrl(project.caseStudyPageAsset.sourceUrl, ['raw.githubusercontent.com'], 'Case-study page image source URL');
+      const sourcePath = new URL(project.caseStudyPageAsset.sourceUrl).pathname;
+      if (!/^\/pooya-labs\/pooya-labs-platform\/[a-f0-9]{40}\/apps\/platform\/public\/interface-captures\/[a-z0-9-]+\/[a-z0-9.-]+\.png$/.test(sourcePath)) {
+        throw new Error('Case-study page image sources must be pinned to an immutable platform commit.');
       }
       if (!project.caseStudyPageAsset.alt.fa.trim() || !project.caseStudyPageAsset.alt.en.trim()) {
         throw new Error('Every case-study page image requires Persian and English alternative text.');
