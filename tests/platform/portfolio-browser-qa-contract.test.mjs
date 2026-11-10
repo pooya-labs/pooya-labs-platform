@@ -303,3 +303,14 @@ test('keyboard skip-link audit starts from a fresh route load after theme audits
   assert.ok(firstTab > skipLinkWait, 'Keyboard-only navigation must start after a fresh document load.');
 });
 
+
+
+test('ORBIT homepage artwork ring class cannot collide with the project-art-orbit slug class', () => {
+  assert.match(portfolioSource, /project-art-orbit-ring art-\$\{project\.number\}/);
+  assert.match(portfolioCss, /\.project-art-orbit-ring \{/);
+  assert.doesNotMatch(portfolioCss, /\.project-art-orbit \{ position: absolute; width: 116px/);
+  assert.match(script, /const orbitCard = cardStates\.find\(\(card\) => card\.title === 'ORBIT'\)/);
+  assert.match(script, /orbitCardImageOk/);
+  assert.match(script, /artworkFrame\?\.position === 'relative'/);
+  assert.match(script, /The ORBIT homepage project card must show the real dashboard screenshot/);
+});
