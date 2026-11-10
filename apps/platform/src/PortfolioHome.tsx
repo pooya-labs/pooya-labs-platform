@@ -398,7 +398,7 @@ export function ProjectCaseStudy({ project, language, onLanguageChange, theme, o
         <section className="case-study-hero" data-reveal="case-study-hero">
           <div className={`case-study-visual${caseStudyPageAsset ? ' has-visual' : ''}`}>
             {caseStudyPageAsset
-              ? <img className="case-study-visual-image visual-interface case-study-page-preview" src={caseStudyPageAsset.url} alt={caseStudyPageAsset.alt[language]} loading="eager" decoding="async" />
+              ? <img className="case-study-visual-image visual-interface case-study-page-preview" src={`${baseUrl}${caseStudyPageAsset.path}`} alt={caseStudyPageAsset.alt[language]} loading="eager" decoding="async" />
               : <ProjectMotionScene slug={project.slug} />}
             <span className="case-study-index">{project.number} / POOYA LABS</span>
           </div>
