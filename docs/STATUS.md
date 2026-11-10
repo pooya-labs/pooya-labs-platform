@@ -1,3 +1,13 @@
+## Latest checkpoint — P7-26 merged; security and owner-review records synchronized (2026-11-10)
+
+- PR [#50](https://github.com/pooya-labs/pooya-labs-platform/pull/50) merged as [a804267](https://github.com/pooya-labs/pooya-labs-platform/commit/a8042675b76e1785865b1956fb8904db788e0b2d). The six changed files are documentation and machine-readable project state only.
+- Exact PR-head Repository CI [42727164323](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164323) and Portfolio Browser QA [42727164249](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164249) both passed on e58f284. Browser QA completed responsive routes, metadata, keyboard, and cold-route/GitHub Pages/Cloudflare Pages performance steps.
+- The Security Model now matches active main ruleset 26861856 and GitHub App PR-based screenshot publishing. The owner-review packet now records AetherFlow PR #18/#19, merged ORBIT PR #138 with patched Keycloak published but not promoted, and the GlobalCart FX freshness anomaly.
+- Preliminary source-tree/link checks: zero sensitive credential-file-name matches, 17/17 project registry destinations use HTTPS, 16/16 new-tab anchors have rel attributes, and the public Novels catalog has no manuscripts/covers. The two Salon Booking public captures are customer-facing full-page images, but Salon-owner permission and independent binary image review remain open.
+- No application code, upstream repository, secret, GitHub setting, or production deployment changed. All eight project registry states remain needs-owner-review.
+
+**Release status: pre-alpha / Phase 7.** Human accessibility/device review, owner content/media approval, Salon Booking permission, authenticated social-cache validation, deployment remediation, and rollback rehearsal remain open.
+
 ## Latest checkpoint — P7-26 public-asset preflight added (2026-11-10)
 
 - Added a read-only source-tree/link preflight to [SECURITY-MODEL.md](SECURITY-MODEL.md): no sensitive credential-file-name matches; 17/17 project registry destinations use HTTPS; 16/16 `target="_blank"` anchors have a `rel` attribute; the public Novels catalog is empty.
