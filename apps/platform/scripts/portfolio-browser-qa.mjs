@@ -335,23 +335,39 @@ try {
               firstCardVisible: firstOpacity >= .99,
             };
           });
-          const cardStates = await page.locator('#projects .portfolio-project-card').evaluateAll((cards) => cards.map((card) => {
+          const cardStates = await page.locator('#projects .portfolio-project-card').evaluateAll(async (cards) => Promise.all(cards.map(async (card) => {
             const motion = card.querySelector('.project-card-motion');
             const active = motion?.getAnimations({ subtree: true }).filter((animation) => animation.playState === 'running' || animation.playState === 'pending') ?? [];
+            const image = card.querySelector('.project-art-aetherflow .project-art-image');
+            if (image instanceof HTMLImageElement) await image.decode().catch(() => undefined);
             return {
               title: card.querySelector('.project-card-content h3')?.textContent?.trim() ?? '',
               motionClass: motion?.className ?? null,
               activeAnimationCount: active.length,
               animationNames: [...new Set(active.map((animation) => animation.animationName).filter(Boolean))],
+              aetherflowImage: image instanceof HTMLImageElement ? {
+                src: image.getAttribute('src') ?? '',
+                alt: image.alt,
+                loaded: image.complete && image.naturalWidth > 0,
+                naturalWidth: image.naturalWidth,
+                objectPosition: getComputedStyle(image).objectPosition,
+              } : null,
             };
-          }));
+          })));
+          const aetherflowCard = cardStates.find((card) => card.title === 'AetherFlow');
+          const aetherflowCardImageOk = Boolean(aetherflowCard?.aetherflowImage?.loaded &&
+            aetherflowCard.aetherflowImage.naturalWidth >= 1000 &&
+            aetherflowCard.aetherflowImage.src.endsWith('/aetherflow-fullpage-desktop.png') &&
+            aetherflowCard.aetherflowImage.objectPosition.includes('top'));
+          routeRecord.aetherflowProjectCardImage = aetherflowCard?.aetherflowImage ?? null;
           const allCardsAnimated = cardStates.length === 8 && cardStates.every((card) => card.motionClass && card.activeAnimationCount > 0);
           const gridVisible = gridState.sectionOpacity >= .99 && !gridState.sectionHasRevealGate && gridState.headingOpacity >= .99 && !gridState.headingHasRevealGate && gridState.firstCardVisible && !gridState.firstCardHasRevealGate;
-          projectGridMotion = { available: true, passed: allCardsAnimated && gridVisible, ...gridState, cardCount: cardStates.length, cards: cardStates };
+          projectGridMotion = { available: true, passed: allCardsAnimated && gridVisible && aetherflowCardImageOk, ...gridState, cardCount: cardStates.length, cards: cardStates };
           routeRecord.projectGridMotion ??= [];
           routeRecord.projectGridMotion.push({ viewport: viewport.name, ...projectGridMotion });
           if (!allCardsAnimated) addFailure(route, viewport.name, 'One or more selected-project cards is missing its product-specific animated signature.');
           if (!gridVisible) addFailure(route, viewport.name, 'The homepage Projects section or its first card remained hidden after scrolling into view.');
+          if (!aetherflowCardImageOk) addFailure(route, viewport.name, 'The AetherFlow homepage project card must load the real desktop product screenshot, not its logo.');
           const projectGridFile = route.label + '-projects-' + viewport.name + '.png';
           await page.screenshot({ path: path.join(artifactDir, projectGridFile), fullPage: false, animations: 'allow' });
           routeRecord.visualEvidence ??= [];
