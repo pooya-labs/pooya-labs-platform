@@ -278,3 +278,19 @@ test('visual evidence waits for the initial reveal, finite entrance animations, 
   assert.ok(script.indexOf('await waitForSettledReveal(page, initialRevealSelector)') < script.indexOf('await page.screenshot('));
 });
 
+test('Browser QA runs axe on every route and viewport in both dark and light themes', () => {
+  assert.match(script, /lightTheme: \{/);
+  assert.match(script, /checks: 0/);
+  assert.match(script, /const lightThemeButton = page\.locator\('\.portfolio-theme'\)/);
+  assert.match(script, /data-theme\) === 'light'/);
+  assert.match(script, /data-theme\) === 'dark'/);
+  assert.match(script, /const lightThemeAxeResults = await new AxeBuilder\(\{ page \}\)/);
+  assert.match(script, /report\.accessibility\.lightTheme\.checks \+= 1/);
+  assert.match(script, /report\.accessibility\.lightTheme\.incompleteRuleChecks \+= lightThemeAxeResults\.incomplete\.length/);
+  assert.match(script, /lightThemeAxeViolationCount/);
+  assert.match(script, /lightThemeAxeIncompleteRuleCount/);
+  assert.match(script, /High-impact axe accessibility violation in the light theme/);
+  assert.ok(script.indexOf('await lightThemeButton.click()') < script.indexOf('const lightThemeAxeResults'));
+  assert.ok(script.indexOf('const lightThemeAxeResults') < script.indexOf("await lightThemeButton.click();\n          await page.waitForFunction(() => document.querySelector('.portfolio-page')?.getAttribute('data-theme') === 'dark')"));
+});
+
