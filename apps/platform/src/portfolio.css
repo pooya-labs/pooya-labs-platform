@@ -3050,3 +3050,16 @@
 .portfolio-owner-attribution-byline { color:var(--pf-muted); font-size:8px; }
 .portfolio-footer-inner .portfolio-owner-attribution { justify-self:start; max-width:100%; }
 @media (max-width:680px) { .portfolio-footer .portfolio-owner-attribution { flex:0 1 100%; width:100%; } .portfolio-footer-inner .portfolio-owner-attribution { width:fit-content; max-width:100%; } .portfolio-owner-attribution { max-width:100%; } }
+
+/* Light-theme accent copy must remain legible on the ivory page and raised surfaces. */
+.portfolio-page[data-theme="light"] {
+  --pf-emerald:#205f49;
+}
+.portfolio-page[data-theme="light"] .portfolio-hero-title .hero-gradient {
+  background-image:linear-gradient(100deg,#1d526e 2%,#205f49 47%,#146c4d 82%,#625ca6 100%)!important;
+}
+.portfolio-page[data-theme="light"] .portfolio-hero-copy .hero-title-word-line {
+  color:#205f49!important;
+  -webkit-text-fill-color:#205f49!important;
+  text-shadow:none;
+}
