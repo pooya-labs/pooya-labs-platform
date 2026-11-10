@@ -358,7 +358,7 @@ try {
           const aetherflowCardImageOk = Boolean(aetherflowCard?.aetherflowImage?.loaded &&
             aetherflowCard.aetherflowImage.naturalWidth >= 1000 &&
             aetherflowCard.aetherflowImage.src.endsWith('/aetherflow-fullpage-desktop.png') &&
-            aetherflowCard.aetherflowImage.objectPosition.includes('top'));
+            /(?:^|\\s)(?:0%|top)$/.test(aetherflowCard.aetherflowImage.objectPosition));
           routeRecord.aetherflowProjectCardImage = aetherflowCard?.aetherflowImage ?? null;
           const allCardsAnimated = cardStates.length === 8 && cardStates.every((card) => card.motionClass && card.activeAnimationCount > 0);
           const gridVisible = gridState.sectionOpacity >= .99 && !gridState.sectionHasRevealGate && gridState.headingOpacity >= .99 && !gridState.headingHasRevealGate && gridState.firstCardVisible && !gridState.firstCardHasRevealGate;
