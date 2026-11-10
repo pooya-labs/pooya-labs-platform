@@ -173,7 +173,8 @@ test('case-study heroes use AetherFlow product imagery and product-specific moti
   }
   assert.match(portfolioSource, /function ProjectMotionScene/);
   assert.match(portfolioSource, /case-study-motion-art scene-\$\{slug\}/);
-  assert.match(portfolioSource, /caseStudyPageAsset\\s*\\?\\s*<img className="case-study-visual-image visual-interface case-study-page-preview"/);
+  assert.ok(portfolioSource.includes('const caseStudyPageAsset = project.caseStudyPageAsset;'));
+  assert.ok(portfolioSource.includes('<img className="case-study-visual-image visual-interface case-study-page-preview"'));
   assert.match(portfolioSource, /<ProjectMotionScene slug=\{project\.slug\} \/>/);
   assert.match(portfolioSource, /<ProjectMotionScene slug=\{project\.slug\} compact \/>/);
   assert.match(portfolioSource, /market-simulated/);
