@@ -50,9 +50,9 @@ const projectEntries: PortfolioProject[] = [
     slug: 'aetherflow',
     name: 'AetherFlow',
     visualAsset: {
-      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/99dc3317afa180058def6f0d860e4b654be62ae2/apps/platform/public/project-marks/aetherflow.svg',
-      kind: 'brand',
-      alt: { fa: 'نشان اختصاصی AetherFlow با مسیر جریان فیروزه‌ای روی زمینه تیره', en: 'AetherFlow’s own mint workflow mark on a dark field' },
+      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/eba5e2d02047375ae8a42514f7bbb58c75106ba7/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png',
+      kind: 'interface',
+      alt: { fa: 'نمای واقعی رابط دسکتاپ AetherFlow با نمونهٔ گردش‌کار و وضعیت Workerها', en: 'Actual AetherFlow desktop interface showing the workflow preview and worker states' },
     },
     caseStudyPageAsset: {
       path: 'interface-captures/aetherflow/aetherflow-fullpage-desktop.png',
