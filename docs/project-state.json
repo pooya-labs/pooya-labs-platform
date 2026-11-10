@@ -7,9 +7,9 @@
   "phase": 7,
   "phaseName": "Pre-redesign readiness and engineering closeout",
   "currentTask": {
-    "id": "P7-30",
-    "title": "Wait for settled hero reveals before capturing Browser QA visual evidence",
-    "status": "Completed: PR #59 merged as 542baa7efd5b63b941eb34bbba90a60d047cfa2a. PR-head Repository CI 42806725019 and Browser QA 42806724768 passed on 2285b3294b0e6b2bc9868d5cb8b2d35024dccf68. Post-merge main Repository CI 42807667726, Browser QA 42807667588, and GitHub Pages build/deploy 42807667809 passed on 542baa7efd5b63b941eb34bbba90a60d047cfa2a. Browser QA captures now wait for visible/full-opacity hero reveals, finite entrance animations to finish, and hero images to decode; infinite ambient animations remain enabled. Artifact 13760621268 reports 18/18 routes, 36/36 viewports, zero failures, zero confirmed Axe violations, and 36 incomplete contrast checks. Cloudflare and Apps Script production publish jobs were skipped because private deployment secrets are not configured."
+    "id": "P7-31",
+    "title": "Prepare selector-level manual contrast review matrix from Axe incomplete results",
+    "status": "Completed matrix preparation only: docs/ACCESSIBILITY-MANUAL-REVIEW.md records all 73 unique CSS target selectors from 36 incomplete color-contrast records (18 localized routes × desktop/mobile), 229 node occurrences, and cause counts. Axe reported zero confirmed violations; incomplete checks remain neither passes nor confirmed failures. Human measurement in both themes/languages and keyboard/focus/screen-reader acceptance remains pending."
   },
   "lastCheckpointDate": "2026-11-10",
   "latestVerifiedCodeCommit": "b1371043199937f26d717c0518052f32d3f54758",
@@ -409,7 +409,7 @@
     "The novels catalog remains empty pending owner-provided titles, descriptions, covers and manuscripts; do not invent content.",
     "The final redesign is explicitly Phase 8 and the complete integration of all eight projects is explicitly Phase 9. Neither begins until Phase 7 readiness is complete. Phase 10 publication remains blocked.",
     "Performance budgets remain report-only until representative physical Android/device and network review is complete; post-remediation Chromium CI shows p50/p75/maximum CLS 0 on all three hosts but is not physical-device acceptance.",
-    "Manual accessibility acceptance remains open: 36 incomplete axe color-contrast checks are not passes; complete visual contrast, keyboard-only, focus visibility, and screen-reader review.",
+    "Manual accessibility acceptance remains open: the selector-level contrast review matrix is prepared in docs/ACCESSIBILITY-MANUAL-REVIEW.md, but all 36 incomplete Axe color-contrast checks still require human measurement; complete dark/light and Persian/English contrast, keyboard-only, visible-focus, screen-reader, and physical-device review. The 36 incomplete checks are not confirmed violations or passes.",
     "Cloudflare GitHub Actions production deploy remains skipped when CLOUDFLARE_API_TOKEN is absent; native Git-push trigger also remains unverified after matching-path PR #39. Latest verified deployment remains ed73cc8e from application source e5ef6389; remediation requires owner approval.",
     "Apps Script stable Web App production publish was skipped in current main run 42666914071 because CLASPRC_JSON, CLASP_JSON, and GAS_DEPLOYMENT_ID are not configured. No new production version is verified; do not change private settings without owner action.",
     "Actual App-authenticated publisher PR creation remains unverified: all three post-setup dispatches (42631761203, 42632714049, 42632732364) completed successfully and created installation tokens, but all reported no diff because the approved image files already matched main. Exercise the write path only when a genuine owner-approved capture changes; do not fabricate a screenshot diff.",
@@ -419,7 +419,7 @@
     "GlobalCart main includes bot-authored FX snapshot commit 2ef95faf [skip ci]; its embedded sourceUpdatedAt regressed by 80 minutes versus the previous snapshot and no deployment of the new snapshot is verified. Treat FX freshness as unresolved.",
     "Manual public/private binary-asset review remains open across the portfolio. The 14 approved full-page desktop/mobile PNGs for seven projects were re-opened from artifact 13611818994; all 14 SHA-256 hashes and byte counts match the approval manifest. Visual review recorded project-specific boundaries: demo/simulated/modelled data labels, owner portrait/profile content, LuminaGlass's 32px blur, and Salon Booking's customer-facing contact area. No admin surface or customer appointment records were visible in the Salon Booking captures. Pooya.OS/NexusCanvas owner-content approval and salon-owner publication permission remain pending; other public media assets still require review."
   ],
-  "nextAction": "Continue portfolio-wide manual/binary public-asset review (Salon Booking desktop/mobile captures are now visually re-opened; salon-owner publication permission remains pending), then close human contrast/focus/keyboard/screen-reader review and physical Android/browser acceptance, owner content/media approvals, authenticated social-cache validation, owner-gated deployment remediation, and rollback rehearsal. Do not begin Phase 8/9 or V1 before mandatory gates close.",
+  "nextAction": "Execute the human contrast-review matrix in Persian/English and dark/light themes at desktop/mobile, recording rendered foreground/background samples and ratios; then complete keyboard-only, visible-focus, screen-reader and physical Android/browser acceptance. Preserve owner-content/media, Salon Booking permission, authenticated social-cache, deployment and rollback gates. Do not start Phase 8/9 or V1 before Phase 7 exits.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -849,6 +849,47 @@
       "minor": 0,
       "unknown": 0,
       "incompleteRuleChecks": 36
+    },
+    "manualContrastReview": {
+      "status": "prepared-pending-human-measurement",
+      "document": "docs/ACCESSIBILITY-MANUAL-REVIEW.md",
+      "sourceRun": "42807667588",
+      "sourceArtifact": "13760621268",
+      "sourceCommit": "542baa7efd5b63b941eb34bbba90a60d047cfa2a",
+      "axeVersion": "4.14.0",
+      "routeCount": 18,
+      "routeViewportRecords": 36,
+      "viewports": [
+        "desktop-1440x1000",
+        "mobile-390x844"
+      ],
+      "languages": [
+        "fa",
+        "en"
+      ],
+      "uniqueSelectors": 73,
+      "nodeOccurrences": 229,
+      "incompleteRuleChecks": 36,
+      "confirmedViolations": 0,
+      "unresolvedBackgroundCauses": {
+        "pseudoElements": 129,
+        "gradients": 82,
+        "overlap": 16,
+        "partialOverlap": 2
+      },
+      "manualScope": [
+        "dark-theme",
+        "light-theme",
+        "fa",
+        "en",
+        "desktop",
+        "mobile",
+        "rendered-gradient-and-pseudo-background-sampling",
+        "visible-focus-states",
+        "recorded-contrast-ratios"
+      ],
+      "manualReviewCompleted": false,
+      "limitations": "The Axe report is a default-theme automated scan. Incomplete records do not prove a contrast failure or pass and do not cover complete theme/device/screen-reader acceptance."
     }
   },
   "upstreamEvidence": {
@@ -1207,11 +1248,11 @@
     "automatedValidation": "Repository CI 42483757067 passed; Browser QA 42483757051 passed on 17 routes and 34 desktop/mobile viewport checks; GitHub Pages deploy 42483757053 passed.",
     "manualValidation": "Latest Browser QA artifact 13618234167 requires detailed axe review; manual contrast, keyboard-only, screen-reader, real-device, and external social-crawler validation remain open."
   },
-  "latestTask": "P7-30",
+  "latestTask": "P7-31",
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-10",
   "latestDocumentationCommit": "e15f39a8b571290de1debbb89a3d640608afd403",
-  "latestDocumentationCheckpoint": "P7-30-PR59-merged-542baa7efd5b63b941eb34bbba90a60d047cfa2a;settled-hero-reveal-visual-capture;PR-CI-42806725019-success;PR-BrowserQA-42806724768-success;post-merge-CI-42807667726-success;post-merge-BrowserQA-42807667588-success;GitHub-Pages-42807667809-success;Cloudflare-and-AppsScript-publish-jobs-skipped",
+  "latestDocumentationCheckpoint": "P7-31-contrast-manual-review-matrix-prepared;73-unique-selectors;36-incomplete-Axe-records;229-node-occurrences;manual-contrast-acceptance-pending",
   "latestRepositoryCiRun": "42807667726;success;exact-main-542baa7efd5b63b941eb34bbba90a60d047cfa2a",
   "latestBrowserQaRun": "42807667588;success;exact-main-542baa7efd5b63b941eb34bbba90a60d047cfa2a;artifact-13760621268",
   "latestPerformanceBaseline": {
