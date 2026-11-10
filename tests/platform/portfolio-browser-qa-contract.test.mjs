@@ -127,10 +127,13 @@ test('QA stores visual screenshots as workflow artifacts, not public site assets
 });
 
 
-test('case-study Browser QA verifies visible active motion and its reduced-motion fallback', () => {
+test('case-study Browser QA verifies the AetherFlow screenshot and active motion on the other routes', () => {
   assert.match(script, /reducedMotion: 'no-preference'/);
   assert.match(script, /art\.getAnimations\(\{ subtree: true \}\)/);
   assert.match(script, /activeAnimationCount < 3/);
+  assert.match(script, /heroImageState\.loaded/);
+  assert.match(script, /caseStudyPageImage/);
+  assert.match(script, /route\.label === 'orbit-en'/);
   assert.match(script, /await page\.emulateMedia\(\{ reducedMotion: 'reduce' \}\)/);
   assert.match(script, /reducedMotionAnimationName/);
   assert.match(script, /animations: 'allow'/);
