@@ -1,3 +1,16 @@
+## Latest checkpoint — P7-28 complete; AetherFlow product-page visual published (2026-11-10)
+
+- PR [#55](https://github.com/pooya-labs/pooya-labs-platform/pull/55) merged to `main` as [`463501c`](https://github.com/pooya-labs/pooya-labs-platform/commit/463501cb94d1e36c6062535d6596f876036b87cd).
+- AetherFlow's bilingual case-study hero now displays the approved desktop product-page capture rather than the abstract/logo-like motion scene. The homepage card keeps AetherFlow's own SVG mark. The full desktop/mobile evidence gallery below the hero remains intact.
+- The page hero reads the image from the same published Pages origin at `/pooya-labs-platform/interface-captures/aetherflow/aetherflow-fullpage-desktop.png`. The asset source is pinned to immutable platform capture commit `eba5e2d02047375ae8a42514f7bbb58c75106ba7`; its Persian/English alt text is retained. The crop shows the top product view (`object-fit: cover; object-position: top center`).
+- The Pages capture-pruning script now retains only local interface captures that a built page actually references and continues pruning unused duplicates. A contract verifies the retained file is a valid 1440×3241 PNG after the Pages build.
+- PR-head checks passed on `69ec46dd6c9cdd7008891c275d70c1f0da024d7e`: Repository CI [42794855912](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42794855912) and Chromium Browser QA [42794856114](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42794856114).
+- Post-merge main checks passed on the exact merge commit: Repository CI [42795404398](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42795404398), Browser QA [42795404244](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42795404244), and GitHub Pages build/deploy [42795404445](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42795404445). Browser QA artifact: [13753565845](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42795404244/artifacts/13753565845). The main Browser QA passed route, viewport, keyboard, metadata, and local/GitHub Pages/Cloudflare performance steps.
+- Cloudflare's workflow preflight passed, but the actual production deployment job was skipped in run [42795404418](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42795404418). Apps Script configuration preflight passed, but its publish job was skipped in run [42795404647](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42795404647). No new Cloudflare or Apps Script deployment/version is claimed.
+- No independent upstream project repository was modified. AetherFlow M08's matching-runner benchmark and all existing owner-review/manual Phase 7 gates remain open.
+
+**Release status: pre-alpha / Phase 7.** This closes the AetherFlow case-study hero image task only; it does not close Phase 7 or publish a V1 release.
+
 ## Latest checkpoint — P7-27 complete; PR #53 merged (2026-11-10)
 
 - PR [#53](https://github.com/pooya-labs/pooya-labs-platform/pull/53) merged to `main` as [`1ba198d`](https://github.com/pooya-labs/pooya-labs-platform/commit/1ba198d1293305c9b0a64c91746989570f952ec2).
