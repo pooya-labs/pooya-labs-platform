@@ -116,8 +116,10 @@ test('project artwork and interface screenshots are sourced from pinned commits 
   assert.match(aetherFlowEntry, /visualAsset: \{[\s\S]*?kind: 'brand'/);
   assert.match(aetherFlowEntry, /raw\.githubusercontent\.com\/pooya-labs\/pooya-labs-platform\/[a-f0-9]{40}\/apps\/platform\/public\/project-marks\/aetherflow\.svg/);
   assert.match(aetherFlowEntry, /alt: \{ fa: '[^']+', en: '[^']+' \}/);
-  assert.match(aetherFlowEntry, /caseStudyPageAsset: \\{[\\s\\S]*?kind: 'interface'/);
-  assert.match(aetherFlowEntry, /eba5e2d02047375ae8a42514f7bbb58c75106ba7\\/apps\\/platform\\/public\\/interface-captures\\/aetherflow\\/aetherflow-fullpage-desktop\\.png/);
+  assert.ok(aetherFlowEntry.includes('caseStudyPageAsset: {'));
+  assert.ok(aetherFlowEntry.includes("kind: 'interface'"));
+  assert.ok(aetherFlowEntry.includes('eba5e2d02047375ae8a42514f7bbb58c75106ba7/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png'));
+
 
 
   assert.equal((projectData.match(/^\s+device: '(?:desktop|mobile|detail)',?$/gm) ?? []).length, 8);
