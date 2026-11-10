@@ -1,3 +1,10 @@
+## 2026-11-10 — Phase 8 opened by owner; design direction comparison prepared
+
+- Recorded Pooya's explicit instruction to enter Phase 8 design exploration.
+- Added [PHASE-8-DESIGN-OPTIONS.md](PHASE-8-DESIGN-OPTIONS.md) comparing two coherent systems: Obsidian Editorial Systems (recommended) and Warm Editorial Gallery.
+- No full UI redesign code has been changed. The next action is owner selection of A or B, after which the bilingual prototype will be built for review round one.
+- Phase 7 acceptance carry-overs remain open and mandatory before V1; Phase 8 entry does not imply accessibility certification, content/media approval, Salon Booking permission, or publication approval.
+
 ## 2026-11-10 — P7-33 dual-theme manual contrast matrix refreshed
 
 - Rebuilt [ACCESSIBILITY-MANUAL-REVIEW.md](ACCESSIBILITY-MANUAL-REVIEW.md) from exact-main Browser QA run 42815065767 / artifact 13765540433, after the light-theme corrections and dual-theme scan were merged.
