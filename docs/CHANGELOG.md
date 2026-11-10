@@ -1,3 +1,10 @@
+## 2026-11-10 — selector-level manual contrast review matrix prepared
+
+- Added [ACCESSIBILITY-MANUAL-REVIEW.md](ACCESSIBILITY-MANUAL-REVIEW.md) from post-merge Browser QA run 42807667588 / artifact 13760621268.
+- Consolidated all 73 unique CSS target selectors from 36 incomplete `color-contrast` records across 18 localized routes and desktop/mobile viewport pairs; the records contain 229 node occurrences.
+- Categorized the unresolved rendered-background causes: pseudo-elements 129, gradients 82, overlaps 16, partial overlaps 2. Axe reported zero confirmed violations; an incomplete check is neither a confirmed failure nor a pass.
+- The matrix records dark/light, fa/en, desktop/mobile, worst-case gradient/background sampling, focus-state visibility, contrast ratios, and required human evidence. No manual contrast result is claimed.
+
 ## 2026-11-10 — Browser QA captures wait for settled hero reveals; Salon Booking screenshots re-opened
 
 - Merged PR [#59](https://github.com/pooya-labs/pooya-labs-platform/pull/59) as [`542baa7`](https://github.com/pooya-labs/pooya-labs-platform/commit/542baa7efd5b63b941eb34bbba90a60d047cfa2a).
