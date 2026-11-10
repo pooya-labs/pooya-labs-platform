@@ -72,6 +72,26 @@ function addFailure(route, viewport, message) {
   report.failures.push({ route: route.label, viewport: viewport ?? null, message });
 }
 
+async function waitForSettledReveal(page, selector) {
+  await page.waitForFunction((targetSelector) => {
+    const target = document.querySelector(targetSelector);
+    if (!(target instanceof HTMLElement) || !target.classList.contains('is-visible')) return false;
+    if (Number.parseFloat(getComputedStyle(target).opacity) < 0.99) return false;
+
+    const unfinishedFiniteAnimations = target.getAnimations({ subtree: true }).filter((animation) => {
+      const iterations = animation.effect?.getTiming().iterations ?? 1;
+      return iterations !== Infinity && animation.playState !== 'finished';
+    });
+    return unfinishedFiniteAnimations.length === 0;
+  }, selector, { timeout: 8000 });
+
+  await page.locator(selector).evaluate(async (target) => {
+    const images = Array.from(target.querySelectorAll('img'));
+    await Promise.all(images.map((image) => image.decode().catch(() => undefined)));
+  });
+  await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+}
+
 const browser = await chromium.launch({ headless: true });
 try {
   const context = await browser.newContext({
@@ -268,6 +288,15 @@ try {
       for (const viewport of viewports) {
         await page.setViewportSize({ width: viewport.width, height: viewport.height });
         await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+
+        const initialRevealSelector = route.label.startsWith('home-')
+          ? '.portfolio-hero-copy[data-reveal="hero-copy"]'
+          : '.case-study-hero[data-reveal="case-study-hero"]';
+        await waitForSettledReveal(page, initialRevealSelector);
+        if (route.label.startsWith('home-') && viewport.name === 'desktop') {
+          await waitForSettledReveal(page, '.portfolio-hero-art[data-reveal="hero-showcase"]');
+        }
+
         const shouldCaptureVisual = route.label.startsWith('home-') || (route.label !== 'home-fa' && route.label !== 'home-en');
         if (shouldCaptureVisual) {
           const fileName = route.label + '-' + viewport.name + '.png';
