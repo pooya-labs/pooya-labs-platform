@@ -314,3 +314,8 @@ test('ORBIT homepage artwork ring class cannot collide with the project-art-orbi
   assert.match(script, /artworkFrame\?\.position === 'relative'/);
   assert.match(script, /The ORBIT homepage project card must show the real dashboard screenshot/);
 });
+
+
+test('light-theme theme-toggle label has an explicit WCAG-safe foreground color', () => {
+  assert.match(portfolioCss, /\.portfolio-page\[data-theme="light"\] \.portfolio-theme > span \{ color:#405348; \}/);
+});
