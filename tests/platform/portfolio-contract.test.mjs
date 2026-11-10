@@ -110,11 +110,20 @@ test('project cards and shareable query routes expose in-site case studies', () 
 test('project artwork and interface screenshots are sourced from pinned commits with localized alt text', () => {
   assert.equal((projectData.match(/visualAsset: \{/g) ?? []).length, 8);
   assert.equal((projectData.match(/caseStudyHeroAsset: \{/g) ?? []).length, 6);
+  assert.equal((projectData.match(/caseStudyPageAsset: \{/g) ?? []).length, 1);
   assert.equal((projectData.match(/caseStudyMedia: \[/g) ?? []).length, 8);
   const aetherFlowEntry = projectData.slice(projectData.indexOf("slug: 'aetherflow'"), projectData.indexOf("slug: 'orbit'"));
   assert.match(aetherFlowEntry, /visualAsset: \{[\s\S]*?kind: 'brand'/);
   assert.match(aetherFlowEntry, /raw\.githubusercontent\.com\/pooya-labs\/pooya-labs-platform\/[a-f0-9]{40}\/apps\/platform\/public\/project-marks\/aetherflow\.svg/);
   assert.match(aetherFlowEntry, /alt: \{ fa: '[^']+', en: '[^']+' \}/);
+  assert.ok(aetherFlowEntry.includes('caseStudyPageAsset: {'));
+  assert.ok(aetherFlowEntry.includes("kind: 'interface'"));
+  assert.ok(aetherFlowEntry.includes('eba5e2d02047375ae8a42514f7bbb58c75106ba7/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png'));
+  assert.ok(aetherFlowEntry.includes("path: 'interface-captures/aetherflow/aetherflow-fullpage-desktop.png'"));
+  assert.match(projectData, /Case-study page image sources must be pinned to an immutable platform commit/);
+
+
+
 
   assert.equal((projectData.match(/^\s+device: '(?:desktop|mobile|detail)',?$/gm) ?? []).length, 8);
   assert.ok((projectData.match(/raw\.githubusercontent\.com\/pooya-labs\//g) ?? []).length >= 19);
@@ -128,7 +137,11 @@ test('project artwork and interface screenshots are sourced from pinned commits 
   assert.match(projectData, /Case-study hero assets must be pinned to an immutable source commit/);
   assert.match(projectData, /Project visual asset URL/);
   assert.match(portfolio, /project-art-image/);
-  assert.doesNotMatch(portfolio, /case-study-visual-image/);
+  assert.ok(portfolio.includes('<img className="case-study-visual-image visual-interface case-study-page-preview"'));
+  assert.ok(portfolio.includes('caseStudyPageAsset.alt[language]'));
+  assert.ok(css.includes('.case-study-visual-image.visual-interface.case-study-page-preview'));
+  assert.ok(css.includes('object-position: top center;'));
+
   assert.match(portfolio, /const desktopCapture = project\.caseStudyMedia/);
   assert.match(portfolio, /device-desktop/);
   assert.match(portfolio, /<ProjectMotionScene slug=\{project\.slug\} \/>/);

@@ -228,6 +228,10 @@ try {
             const art = document.querySelector('.case-study-motion-art');
             return art ? Number.parseFloat(getComputedStyle(art).opacity) : null;
           })(),
+          caseStudyPageImage: (() => {
+            const image = document.querySelector('.case-study-visual-image.case-study-page-preview');
+            return image instanceof HTMLImageElement ? { alt: image.alt, src: image.getAttribute('src') } : null;
+          })(),
           heroCapabilityTitleIsolated: document.querySelector('.portfolio-capabilities h2')?.getAttribute('dir') === 'auto',
         };
       });
@@ -353,6 +357,7 @@ try {
           routeRecord.visualEvidence ??= [];
           routeRecord.visualEvidence.push(projectGridFile);
         }
+        const isAetherFlowPage = route.label.startsWith('aetherflow-');
         const motionState = await page.evaluate(() => {
           const art = document.querySelector('.case-study-motion-art');
           if (!art) return { activeAnimationCount: 0, animationNames: [], opacity: null };
@@ -363,7 +368,17 @@ try {
             opacity: Number.parseFloat(getComputedStyle(art).opacity),
           };
         });
-        if (route.label !== 'home-en' && route.label !== 'home-fa') {
+        if (isAetherFlowPage) {
+          const heroImageState = await page.locator('.case-study-visual-image.case-study-page-preview').evaluate(async (image) => {
+            if (!(image instanceof HTMLImageElement)) return { loaded: false, naturalWidth: 0, src: '' };
+            await image.decode().catch(() => undefined);
+            return { loaded: image.complete && image.naturalWidth > 0, naturalWidth: image.naturalWidth, src: image.getAttribute('src') ?? '' };
+          });
+          routeRecord.aetherflowHeroImage = heroImageState;
+          if (!heroImageState.loaded || heroImageState.naturalWidth < 1000) {
+            addFailure(route, viewport.name, 'The AetherFlow product screenshot did not load as a full-width local asset.');
+          }
+        } else if (route.label !== 'home-en' && route.label !== 'home-fa') {
           if (motionState.activeAnimationCount < 3) addFailure(route, viewport.name, 'The case-study hero does not expose at least three running visual animations.');
           if ((motionState.opacity ?? 0) < .7) addFailure(route, viewport.name, 'The project motion layer is too faint to be a visible foreground visual.');
         }
@@ -588,7 +603,11 @@ try {
         if (route.label === 'home-en' && !metrics.headlineWordContained) {
           addFailure(route, viewport.name, 'The thoughtful headline word is clipped or escapes its own line bounds.');
         }
-        if (route.label !== 'home-en' && route.label !== 'home-fa') {
+        if (isAetherFlowPage) {
+          if (!semantics.caseStudyPageImage?.src?.includes('interface-captures/aetherflow/aetherflow-fullpage-desktop.png') || !semantics.caseStudyPageImage.alt) {
+            addFailure(route, viewport.name, 'The AetherFlow product screenshot or its localized alternative text is missing.');
+          }
+        } else if (route.label !== 'home-en' && route.label !== 'home-fa') {
           const slug = route.label.replace(/-(fa|en)$/, '');
           if (!semantics.caseStudyMotionScene?.split(' ').includes('scene-' + slug)) {
             addFailure(route, viewport.name, 'The case-study hero is missing its project-specific motion scene.');
@@ -596,7 +615,7 @@ try {
         }
       }
 
-      if (route.label === 'aetherflow-en') {
+      if (route.label === 'orbit-en') {
         await page.emulateMedia({ reducedMotion: 'reduce' });
         const reducedMotionState = await page.locator('.case-study-motion-art .scene-animated').first().evaluate((node) => getComputedStyle(node).animationName);
         routeRecord.reducedMotionAnimationName = reducedMotionState;

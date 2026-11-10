@@ -19,6 +19,12 @@ export interface PortfolioProject {
     kind: 'interface' | 'brand' | 'illustration';
     alt: { fa: string; en: string };
   };
+  caseStudyPageAsset?: {
+    path: string;
+    sourceUrl: string;
+    kind: 'interface';
+    alt: { fa: string; en: string };
+  };
   caseStudyHeroAsset?: {
     url: string;
     kind: 'interface';
@@ -47,6 +53,12 @@ const projectEntries: PortfolioProject[] = [
       url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/99dc3317afa180058def6f0d860e4b654be62ae2/apps/platform/public/project-marks/aetherflow.svg',
       kind: 'brand',
       alt: { fa: 'نشان اختصاصی AetherFlow با مسیر جریان فیروزه‌ای روی زمینه تیره', en: 'AetherFlow’s own mint workflow mark on a dark field' },
+    },
+    caseStudyPageAsset: {
+      path: 'interface-captures/aetherflow/aetherflow-fullpage-desktop.png',
+      sourceUrl: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/eba5e2d02047375ae8a42514f7bbb58c75106ba7/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png',
+      kind: 'interface',
+      alt: { fa: 'نمای واقعی دسکتاپ صفحهٔ اصلی AetherFlow با نمونهٔ گردش‌کار، وضعیت Workerها و ذخیره‌سازی پایدار', en: 'AetherFlow desktop product page showing its workflow preview, worker states, and durable-storage overview' },
     },
     caseStudy: {
       challenge: { fa: "اجرای گردش‌کار توزیع‌شده با شکست فرایندها، قطع ارتباط و تحویل تکراری پیام روبه‌رو است. مسئله اصلی فقط صف‌کردن کارها نیست؛ وضعیت باید قابل بازیابی و تغییرات قابل ممیزی باشند.", en: "Distributed workflows face process crashes, network partitions, and duplicate delivery. The hard problem is not merely queuing work: state must be recoverable and transitions auditable." },
@@ -372,6 +384,19 @@ export function validatePortfolioProjects(entries: readonly PortfolioProject[]):
       }
       if (!project.visualAsset.alt.fa.trim() || !project.visualAsset.alt.en.trim()) {
         throw new Error('Every project visual asset requires Persian and English alternative text.');
+      }
+    }
+    if (project.caseStudyPageAsset) {
+      if (!/^interface-captures\/[a-z0-9-]+\/[a-z0-9.-]+\.png$/.test(project.caseStudyPageAsset.path)) {
+        throw new Error('Case-study page images must use a safe path inside the platform public assets.');
+      }
+      assertHttpsUrl(project.caseStudyPageAsset.sourceUrl, ['raw.githubusercontent.com'], 'Case-study page image source URL');
+      const sourcePath = new URL(project.caseStudyPageAsset.sourceUrl).pathname;
+      if (!/^\/pooya-labs\/pooya-labs-platform\/[a-f0-9]{40}\/apps\/platform\/public\/interface-captures\/[a-z0-9-]+\/[a-z0-9.-]+\.png$/.test(sourcePath)) {
+        throw new Error('Case-study page image sources must be pinned to an immutable platform commit.');
+      }
+      if (!project.caseStudyPageAsset.alt.fa.trim() || !project.caseStudyPageAsset.alt.en.trim()) {
+        throw new Error('Every case-study page image requires Persian and English alternative text.');
       }
     }
     if (project.caseStudyHeroAsset) {
