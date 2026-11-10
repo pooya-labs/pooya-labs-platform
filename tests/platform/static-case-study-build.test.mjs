@@ -127,10 +127,18 @@ test('AetherFlow case-study hero loads the approved local desktop screenshot in 
     assert.ok(html.includes(localAsset), route + ' must load the image from the same published site origin');
     assert.ok(html.includes('case-study-visual-image visual-interface case-study-page-preview'), route + ' must use the product-page image treatment');
     assert.ok(!html.includes('case-study-motion-art'), route + ' must replace the abstract logo-like hero scene with the screenshot');
+    assert.ok(html.includes('alt="AetherFlow desktop product page showing workflow preview') || html.includes('alt="نمای واقعی دسکتاپ صفحهٔ اصلی AetherFlow'), route + ' must retain localized image alternative text');
     assert.ok(html.includes(route.startsWith('en/')
       ? 'AetherFlow desktop product page showing its workflow preview'
       : 'نمای واقعی دسکتاپ صفحهٔ اصلی AetherFlow'));
   }
+});
+
+test('the Pages build retains the locally referenced AetherFlow product screenshot after duplicate-capture pruning', { skip: !rootHtml }, async () => {
+  const screenshot = await readFile(new URL('interface-captures/aetherflow/aetherflow-fullpage-desktop.png', outputRoot));
+  assert.deepEqual(screenshot.subarray(0, 8), Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+  assert.equal(screenshot.readUInt32BE(16), 1440);
+  assert.equal(screenshot.readUInt32BE(20), 3241);
 });
 
 test('case-study image evidence uses immutable source URLs without relying on screenshot basenames', { skip: !rootHtml }, async () => {
