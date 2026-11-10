@@ -41,14 +41,27 @@ A preventive, dependency-free scanner now runs in Repository CI after the Pages 
 
 **Limitations:** this is a high-confidence pattern scanner, not an exhaustive DLP tool. It does not inspect binary file contents, scan the full Git history, detect every unknown/custom token format, or rotate credentials. It must not be treated as proof that every secret is absent. Continue using private secret stores, review any alert, and manually inspect public/private asset boundaries and deployment permissions before release.
 
-## GitHub repository and Actions permissions — 2026-11-09
+## GitHub repository and Actions permissions — current checkpoint (2026-11-10)
 
-The read-only governance audit is recorded in [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md).
+The current configuration and evidence are recorded in [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md).
 
-- The default `main` branch currently has no branch protection, no required status contexts, and no repository ruleset. This permits changes to reach `main` without an enforced PR/check gate.
-- All ten workflow files declare explicit token permissions. Validation/capture workflows are read-only; Pages has only its Pages/OIDC scopes; three capture publishers have `contents: write` and `actions: read`.
-- The capture publishers directly push reviewed artifacts to `main`. Any require-PR ruleset must account for those bot writes before activation.
-- This audit does not change repository settings or secrets. Main-branch protection is still an owner-side action and must be tested with a real PR.
+- The active repository ruleset **Protect main — PR + CI** (ID `26861856`) targets only `refs/heads/main`. It requires a pull request and strict success of both required contexts: `Typecheck, three-target build, and contract tests` and `Chromium responsive and keyboard smoke`. Branch deletion and non-fast-forward updates are blocked; the bypass-actor list is empty.
+- GitHub reports `main` as protected by the active ruleset. The classic branch-protection endpoint can still report `protection.enabled: false` because protection is implemented through a repository ruleset; do not describe the branch as unprotected.
+- The normal PR/check/merge path has been exercised. PRs #48 and #49 passed both required checks on their exact heads and merged normally. PR #49 checks: Repository CI [42724719359](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42724719359) and Browser QA [42724718975](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42724718975), exact PR head `31cc1ed`. The negative path (a deliberately pending/failed check blocks merge) has not been tested; do not create a failing PR solely to test it.
+- All eleven workflow files have been reviewed for explicit least-privilege token scopes and sensitive triggers. Validation/capture jobs use read-only default tokens; GitHub Pages has deployment-only scopes. The three reviewed-capture publishers no longer push directly to `main`: they use a single-repository GitHub App token to create reviewable PRs. The dedicated App installation is limited to `pooya-labs/pooya-labs-platform`; its marker-only permission smoke PR [#34](https://github.com/pooya-labs/pooya-labs-platform/pull/34) passed both required checks and merged as `42d12a1`.
+- The App's real changed-image PR path remains unexercised because approved capture destinations already matched the committed assets. Do not fabricate screenshot differences to force a test. Exercise that path only when a genuine owner-approved capture changes.
+- The pattern-based credential scanner has documented limits: it does not inspect binary image contents or the full Git history and is not exhaustive. Manual public/private asset review remains open; the Salon Booking owner's separate permission for public case-study use is still required.
+- This documentation correction does not change repository settings, GitHub App permissions, secrets, or production deployment configuration.
+
+## Preliminary public-asset and external-link audit — 2026-11-10
+
+A read-only source-tree and reference audit was performed as preparation for the manual public/private asset-boundary review.
+
+- The tracked repository tree contains no filename matches for the reviewed sensitive patterns (`.env`, `.clasp.json`, `.clasprc.json`, private-key/certificate/keystore files, credential/service-account JSON, or Terraform state). This is a filename check, not a binary-content or Git-history scan.
+- The project registry contains 17 repository/preview/case-study destinations; all 17 use HTTPS. All 16 external anchors in `PortfolioHome.tsx` that set `target="_blank"` also set a `rel` attribute.
+- The public Novels tree currently contains an empty `catalog.json` plus `.gitkeep` placeholders only; there are no public manuscript or cover files.
+- The public Salon Booking capture directory contains only two full-page PNGs (desktop/mobile). The approved capture manifest records the customer-facing booking page only, with no admin route or customer records, and marks the assets visually/privacy reviewed. The salon owner's separate permission for portfolio publication remains pending.
+- The PNG payloads were not independently re-opened in this audit. The pattern-based scanner does not inspect binary image content. Do not mark the complete manual asset/privacy review as passed from these path and metadata checks alone.
 
 ## Threat scenarios and baseline controls
 

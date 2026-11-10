@@ -1,3 +1,17 @@
+## 2026-11-10 — preliminary public-asset and external-link audit
+
+- Read-only repository-tree inspection found no sensitive credential-file-name matches.
+- Checked 17 project registry destinations; all use HTTPS. All 16 external anchors with `target="_blank"` in `PortfolioHome.tsx` include a `rel` attribute.
+- Confirmed the public Novels catalog is empty and only `.gitkeep` placeholders exist for covers/manuscripts.
+- Confirmed the two public Salon Booking captures are customer-facing full-page desktop/mobile assets according to the approved capture manifest; separate salon-owner permission remains pending.
+- Binary PNG payloads were not independently re-inspected in this pass. Manual visual/privacy review and salon-owner permission remain open; no complete asset-boundary pass is claimed.
+## 2026-11-10 — corrected security governance and owner-review source boundaries
+
+- Corrected the Security Model's stale statement that main was unprotected and that screenshot publishers pushed directly to main. The current ruleset 26861856 requires PR + both strict checks, and reviewed capture publishers use a single-repository GitHub App PR path.
+- Synchronized the owner-review packet with AetherFlow PR #18/#19, merged ORBIT PR #138 and its published-but-unpromoted patched Keycloak digest, and GlobalCart's FX source-timestamp regression.
+- Kept all eight project review states as needs-owner-review; no biography, featured order, contribution claim, media, or Salon Booking permission was approved by this documentation refresh.
+- No application code, upstream repository, credentials, GitHub settings, or production deployment changed.
+
 
 ## 2026-11-10 — refreshed read-only upstream source audit
 
