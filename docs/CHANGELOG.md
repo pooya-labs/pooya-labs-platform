@@ -1,3 +1,13 @@
+## 2026-11-10 — portfolio-layer connection completed for all eight projects
+
+- Merged PR [#53](https://github.com/pooya-labs/pooya-labs-platform/pull/53) as [`1ba198d`](https://github.com/pooya-labs/pooya-labs-platform/commit/1ba198d1293305c9b0a64c91746989570f952ec2).
+- Added AetherFlow's favicon-derived SVG project mark to the platform and wired it into the homepage card with localized alternative text.
+- Expanded portfolio contracts to require artwork on all eight cards, and to assert demo, source, and internal case-study links.
+- Expanded static case-study media checks to cover AetherFlow's owner-reviewed desktop/mobile full-page captures in Persian and English.
+- Exact PR-head CI/Browser QA and post-merge main CI/Browser QA/GitHub Pages deployment all passed (runs 42786194427, 42786194426, 42787101089, 42787100812, and 42787100804).
+- Cloudflare production and Apps Script publishing jobs were skipped because their private deployment configuration is unavailable; no deployment to those hosts is claimed.
+- No independent upstream project repository or live project backend was modified. Deeper runtime/API integration remains Phase 9 work; all owner-review states remain pending.
+
 ## 2026-11-10 — preliminary public-asset and external-link audit
 
 - Read-only repository-tree inspection found no sensitive credential-file-name matches.
