@@ -49,6 +49,7 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [x] Add real GlobalCart desktop/mobile storefront screenshots from its source repository, pinned to the same immutable source commit and shown in the GlobalCart case study.
 - [x] Add visually reviewed desktop/mobile UI screenshots for ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; pin every published image to an immutable portfolio commit and use bilingual alt text.
 - [x] Capture and review AetherFlow desktop/mobile full-page public-site evidence in both locales, pinned to immutable platform commit `eba5e2d02047375ae8a42514f7bbb58c75106ba7`; retain the separate M08 matching-runner benchmark as an upstream release gate.
+- [x] Use the approved AetherFlow desktop product-page capture as the bilingual case-study hero instead of the abstract/logo-like scene; keep its homepage SVG mark, retain the lower responsive gallery, serve the hero screenshot from the Pages origin, and preserve only this locally referenced capture during duplicate-image pruning.
 - [ ] Add further feature-specific captures for ORBIT Incidents/Metrics/Logs/Traces, NexusCanvas rack/analysis/snapshot states, LuminaGlass export/Audio Lab/task-board states, and AuraPulse connected/fallback ticker states where useful.
 - [ ] Use only owner-approved, privacy-reviewed synthetic/redacted interface screenshots for Salon Booking.
 - [x] Add dynamic browser titles/descriptions, base Open Graph metadata, canonical URL updates, Person JSON-LD, and a branded SVG favicon.
