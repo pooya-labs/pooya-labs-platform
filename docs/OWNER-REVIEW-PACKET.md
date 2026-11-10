@@ -2,7 +2,7 @@
 
 **Prepared:** 2026-11-08  
 **Source status refreshed:** 2026-11-10 (read-only upstream recheck; owner approval remains pending)  
-**Review state:** Prepared; owner approval of public biography, project contribution wording, contact details, project media, and Salon Booking attribution remains pending. Pooya explicitly authorized Phase 8 design exploration on 2026-11-10; that authorization is not approval of these content/media items.  
+**Review state:** Prepared; owner approval is still pending for public biography, project contribution wording, contact details, project media, and Salon Booking attribution. Pooya explicitly authorized Phase 8 design exploration on 2026-11-10; that authorization is not approval of these content/media items. Pooya explicitly authorized Phase 8 design exploration on 2026-11-10; that authorization is not approval of these content/media items.  
 **Purpose:** Give Pooya one place to review public biography, project order, role attribution, status labels, contact channels, and media boundaries before Phase 8.  
 **Important:** This document is a review snapshot, not approval to publish new claims or media. All eight project registry entries currently remain marked as needs-owner-review.
 **Owner-confirmed platform identity (2026-11-09):** Use **Pooya Monogram (پویا مونوگرام)** and the centered black-tile monogram as the Pooya Labs Platform owner identity in the homepage footer, case-study footers, bilingual README ownership blocks, and structured metadata. Credit **Pooya Goodarzi** as creator and maintainer. This narrow confirmation applies to the platform brand only; it does not approve the eight independent project dossiers/media or close any Phase 7–10 release gate.
