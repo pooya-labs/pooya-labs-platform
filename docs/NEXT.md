@@ -1,3 +1,15 @@
+## Latest checkpoint — P7-26 complete; PR #51 merged (2026-11-10)
+
+PR #50 corrected the stale Security Model and Owner Review Packet; post-merge synchronization PR [#51](https://github.com/pooya-labs/pooya-labs-platform/pull/51) merged as [f9a820c](https://github.com/pooya-labs/pooya-labs-platform/commit/f9a820cfa4d17a59ad76bda5fdfe0564697d5615).
+
+Exact PR #50 checks: [Repository CI 42727164323](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164323) and [Browser QA 42727164249](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164249). Exact PR #51 checks: [Repository CI 42728002533](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42728002533) and [Browser QA 42728002542](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42728002542), all successful.
+
+The work is documentation/state-only. The preliminary asset audit is not a full binary/privacy review: PNG payloads were not independently re-opened; Salon Booking's separate owner permission remains pending. Main has an active PR/check ruleset; all eight case-study owner approvals and manual accessibility/device gates remain open.
+
+**Remaining Phase 7 gates:** binary/public-asset review and Salon owner permission; manual contrast/focus/keyboard/screen-reader review; physical Android/browser acceptance; owner approval of bio, project order, role wording, media and Novels; authenticated social-cache validation; Cloudflare Git-trigger and Apps Script publishing decisions; rollback rehearsal.
+
+No Phase 8 redesign, Phase 9 integration, or Phase 10 V1 publication until mandatory gates close.
+
 ## Latest checkpoint — PR #50 merged; P7-26 complete (2026-11-10)
 
 PR [#50](https://github.com/pooya-labs/pooya-labs-platform/pull/50) merged as [a804267](https://github.com/pooya-labs/pooya-labs-platform/commit/a8042675b76e1785865b1956fb8904db788e0b2d). Its exact-head Repository CI [42727164323](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164323) and Portfolio Browser QA [42727164249](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164249) both passed. The changes are documentation/state-only; there is no new app deployment.
