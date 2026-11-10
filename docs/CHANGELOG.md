@@ -1,3 +1,11 @@
+## 2026-11-10 — AetherFlow homepage project card now uses its product screenshot
+
+- Merged PR [#57](https://github.com/pooya-labs/pooya-labs-platform/pull/57) as [`b137104`](https://github.com/pooya-labs/pooya-labs-platform/commit/b1371043199937f26d717c0518052f32d3f54758).
+- Replaced the AetherFlow homepage Projects-card SVG logo with the approved desktop product-interface screenshot pinned to capture commit `eba5e2d02047375ae8a42514f7bbb58c75106ba7`; top-aligned the crop to show the actual product header/workflow preview.
+- Left the bilingual case-study product-page hero unchanged; added a project-specific card class and browser assertions for image decode, source, width and top alignment in both locales at desktop/mobile sizes.
+- PR-head Repository CI/Browser QA passed (runs 42802061254 and 42802061224). Post-merge main Repository CI, Browser QA, and GitHub Pages build/deploy passed (runs 42802822245, 42802822186, and 42802822225).
+- Cloudflare production deployment and Apps Script publishing were skipped after credential/configuration preflights (runs 42802822176 and 42802822508); no deployment to those hosts is claimed.
+
 ## 2026-11-10 — AetherFlow product-page image added to the bilingual case-study hero
 
 - Merged PR [#55](https://github.com/pooya-labs/pooya-labs-platform/pull/55) as [`463501c`](https://github.com/pooya-labs/pooya-labs-platform/commit/463501cb94d1e36c6062535d6596f876036b87cd).

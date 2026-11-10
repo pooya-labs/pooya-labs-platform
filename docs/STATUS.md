@@ -1,3 +1,14 @@
+## Latest checkpoint — P7-29 complete; AetherFlow homepage project card uses its product screenshot (2026-11-10)
+
+- PR [#57](https://github.com/pooya-labs/pooya-labs-platform/pull/57) merged to `main` as [`b137104`](https://github.com/pooya-labs/pooya-labs-platform/commit/b1371043199937f26d717c0518052f32d3f54758).
+- The AetherFlow card in the homepage Projects section now displays the approved desktop product-interface capture instead of its SVG logo. Its image source is pinned to immutable platform capture commit `eba5e2d02047375ae8a42514f7bbb58c75106ba7`; the card crops from the top to show the product header and main workflow preview. The dedicated bilingual case-study hero remains unchanged.
+- Added a stable project-specific artwork class, updated the visual provenance contract, and extended Chromium Browser QA to decode and verify the AetherFlow project-card image in both homepage locales at desktop and mobile viewports.
+- PR-head Repository CI [42802061254](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802061254) and Browser QA [42802061224](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802061224) passed on `4a626e86a89a72970750f953c63db94bb792fcaf`; the browser artifact is [13756243160](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802061224/artifacts/13756243160).
+- Post-merge main Repository CI [42802822245](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802822245), Browser QA [42802822186](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802822186), and GitHub Pages build/deploy [42802822225](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802822225) all passed on the exact merge commit. Post-merge browser artifact: [13755679671](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802822186/artifacts/13755679671).
+- Cloudflare credential preflight passed, but its actual production deploy job was skipped in run [42802822176](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802822176). Apps Script configuration preflight passed, but its actual stable Web App publish job was skipped in run [42802822508](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802822508). No new deployment to those targets is claimed.
+
+**Release status: pre-alpha / Phase 7.** This closes the AetherFlow homepage-card artwork task only; it does not close Phase 7 or publish a V1 release.
+
 ## Latest checkpoint — P7-28 complete; AetherFlow product-page visual published (2026-11-10)
 
 - PR [#55](https://github.com/pooya-labs/pooya-labs-platform/pull/55) merged to `main` as [`463501c`](https://github.com/pooya-labs/pooya-labs-platform/commit/463501cb94d1e36c6062535d6596f876036b87cd).

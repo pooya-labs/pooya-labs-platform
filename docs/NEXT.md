@@ -1,3 +1,13 @@
+## Latest checkpoint — P7-29 complete; AetherFlow homepage project card uses its product screenshot (2026-11-10)
+
+PR [#57](https://github.com/pooya-labs/pooya-labs-platform/pull/57) merged to `main` as [`b137104`](https://github.com/pooya-labs/pooya-labs-platform/commit/b1371043199937f26d717c0518052f32d3f54758). The AetherFlow card in the homepage Projects section now shows its approved desktop product-interface capture instead of its logo. The screenshot remains pinned to capture commit `eba5e2d02047375ae8a42514f7bbb58c75106ba7` and is top-aligned within the landscape card frame. The bilingual product case-study hero is unchanged.
+
+PR-head CI [42802061254](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802061254) and Browser QA [42802061224](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802061224) passed; post-merge main CI [42802822245](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802822245), Browser QA [42802822186](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802822186), and GitHub Pages deployment [42802822225](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802822225) passed. The browser regression now checks that the AetherFlow homepage card image actually decodes in both languages and on desktop/mobile viewports.
+
+Cloudflare production deployment was skipped after credential preflight in run [42802822176](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802822176), and Apps Script publishing was skipped after configuration preflight in run [42802822508](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42802822508). GitHub Pages is the published host for this change.
+
+The platform remains pre-alpha / Phase 7. Existing owner approvals, manual accessibility/device/public-asset gates, AetherFlow M08 matching-runner benchmark, and all other upstream-project release gates remain open. No upstream project repository or live backend was changed.
+
 ## Latest checkpoint — P7-28 complete; AetherFlow product-page visual published (2026-11-10)
 
 PR [#55](https://github.com/pooya-labs/pooya-labs-platform/pull/55) merged to `main` as [`463501c`](https://github.com/pooya-labs/pooya-labs-platform/commit/463501cb94d1e36c6062535d6596f876036b87cd). AetherFlow's Persian and English product case-study pages now show its approved desktop product-page screenshot in the hero instead of the abstract/logo-like motion scene. The homepage card continues to use AetherFlow's own mark, and the full desktop/mobile capture gallery remains below the hero.
