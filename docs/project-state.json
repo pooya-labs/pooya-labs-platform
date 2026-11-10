@@ -7,9 +7,9 @@
   "phase": 7,
   "phaseName": "Pre-redesign readiness and engineering closeout",
   "currentTask": {
-    "id": "P7-25",
-    "title": "Refresh read-only upstream source audit and reconcile portfolio evidence",
-    "status": "Completed: PR #48 merged into main as b3e548ead98103535e7524bf550b7d6689d30720. Exact PR-head Repository CI 42723838058 and Portfolio Browser QA 42723837697 passed on 1c2f11ed9c15c38326df6a1e5d4b03a46574361f. The seven-file change is documentation/state-only; no app code, independent upstream repository, secrets, hosting settings or production deployment changed."
+    "id": "P7-26",
+    "title": "Correct stale security-governance and owner-review documentation",
+    "status": "Documentation changes prepared on branch docs/p7-26-security-and-owner-packet-refresh-2026-11-10. Security Model now matches active ruleset 26861856 and GitHub App PR-based capture publishing; owner-review packet reflects current AetherFlow, ORBIT and GlobalCart evidence. Owner approval, manual privacy/asset review and all release gates remain open. No application code or external configuration changed."
   },
   "lastCheckpointDate": "2026-11-10",
   "latestVerifiedCodeCommit": "e5ef638917d3204025d062af939cf01a28689d3a",
@@ -303,7 +303,9 @@
     },
     "latestPR48RepositoryCi": "42723838058;success;PR-head-1c2f11ed9c15c38326df6a1e5d4b03a46574361f",
     "latestPR48BrowserQa": "42723837697;success;PR-head-1c2f11ed9c15c38326df6a1e5d4b03a46574361f;responsive-route-metadata-keyboard-and-cold-performance-steps-completed",
-    "latestMainDocumentationCommit": "b3e548ead98103535e7524bf550b7d6689d30720"
+    "latestMainDocumentationCommit": "b3e548ead98103535e7524bf550b7d6689d30720",
+    "latestSecurityModelGovernanceSync": "ruleset-26861856-active;PR-plus-strict-checks;app-publishers-PR-only;negative-check-enforcement-unexercised",
+    "latestOwnerReviewPacketSourceSync": "2026-11-10;AetherFlow-PR18-19;ORBIT-PR138-merged-patched-digest-not-promoted;GlobalCart-FX-timestamp-regression;all-eight-owner-review-states-pending"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -390,7 +392,7 @@
     "ORBIT PR #138 is merged and the patched Keycloak 26.8.2/Guava 33.7.2-jre immutable digest passed strict AMD64/ARM64 and deferred-identity scans; production Compose remains pinned to Keycloak 26.8.1 and promotion/deployment is not performed.",
     "GlobalCart main includes bot-authored FX snapshot commit 2ef95faf [skip ci]; its embedded sourceUpdatedAt regressed by 80 minutes versus the previous snapshot and no deployment of the new snapshot is verified. Treat FX freshness as unresolved."
   ],
-  "nextAction": "Phase 7 next: complete manual contrast/focus/keyboard/screen-reader review in Persian/English and both themes (36 incomplete Axe contrast items remain); perform physical Android/browser acceptance; obtain owner sign-off for biography, featured order, contribution wording, contact choices, media and Novels; obtain Salon Booking owner's privacy permission; validate authenticated LinkedIn/Meta social-card cache refresh. Keep Cloudflare Git-integration remediation, Apps Script production publishing and rollback rehearsal owner-gated. AetherFlow M08 matching-runner benchmark remains open; ORBIT patched Keycloak is published but not promoted to production; GlobalCart FX snapshot freshness remains unverified. Do not begin Phase 8/9 or V1 until mandatory Phase 7 gates close.",
+  "nextAction": "Continue P7 Phase 7 autonomous public/private asset and external-link safety review; preserve unapproved Salon Booking media and binary/manual privacy checks. Owner-only gates remain manual contrast/focus/keyboard/screen-reader review, physical Android/browser acceptance, content/media/Novels approval, authenticated social-cache validation, deployment remediation and rollback rehearsal. Do not begin Phase 8/9 or V1 until mandatory gates close.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -794,7 +796,7 @@
     ],
     "projectIntegration": "deferred-to-phase-9-after-phase-8-redesign-approval; all-eight-project portfolio integration pending"
   },
-  "latestBranchHeadAtCheckpoint": "b3e548ead98103535e7524bf550b7d6689d30720",
+  "latestBranchHeadAtCheckpoint": "10a29aae9a5c2ca9721e05d78b4e3708ccf37ed3",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -1178,11 +1180,11 @@
     "automatedValidation": "Repository CI 42483757067 passed; Browser QA 42483757051 passed on 17 routes and 34 desktop/mobile viewport checks; GitHub Pages deploy 42483757053 passed.",
     "manualValidation": "Latest Browser QA artifact 13618234167 requires detailed axe review; manual contrast, keyboard-only, screen-reader, real-device, and external social-crawler validation remain open."
   },
-  "latestTask": "P7-25",
-  "latestTaskBranch": "main",
+  "latestTask": "P7-26",
+  "latestTaskBranch": "docs/p7-26-security-and-owner-packet-refresh-2026-11-10",
   "lastUpdated": "2026-11-10",
-  "latestDocumentationCommit": "b3e548ead98103535e7524bf550b7d6689d30720",
-  "latestDocumentationCheckpoint": "P7-25-PR48-merged-main-b3e548e;PR-CI-42723838058-success;PR-Browser-QA-42723837697-success;exact-PR-head-1c2f11e;docs-only-no-new-app-deployment",
+  "latestDocumentationCommit": "10a29aae9a5c2ca9721e05d78b4e3708ccf37ed3",
+  "latestDocumentationCheckpoint": "P7-26-security-model-and-owner-packet-doc-only-branch;checks-pending",
   "latestRepositoryCiRun": "42723838058;success;PR48-head-1c2f11ed9c15c38326df6a1e5d4b03a46574361f",
   "latestBrowserQaRun": "42723837697;success;PR48-head-1c2f11ed9c15c38326df6a1e5d4b03a46574361f",
   "latestPerformanceBaseline": {
@@ -1554,5 +1556,5 @@
     "license": "No explicit repository reuse license; no root LICENSE file",
     "limitations": "Does not override third-party dependencies, upstream code, contributor rights, client-controlled assets, separate agreements, or applicable law"
   },
-  "latestMainCommit": "b3e548ead98103535e7524bf550b7d6689d30720"
+  "latestMainCommit": "e8b736a97bfadf04eda18d9fb259acef94b62924"
 }
