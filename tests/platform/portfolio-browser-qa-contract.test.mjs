@@ -319,3 +319,14 @@ test('ORBIT homepage artwork ring class cannot collide with the project-art-orbi
 test('light-theme theme-toggle label has an explicit WCAG-safe foreground color', () => {
   assert.match(portfolioCss, /\.portfolio-page\[data-theme="light"\] \.portfolio-theme > span \{ color:#405348; \}/);
 });
+
+
+test('Browser QA limits Axe payloads to violations and incomplete results without reducing route/theme coverage', () => {
+  assert.equal((script.match(/\.options\(\{ resultTypes: \['violations', 'incomplete'\] \}\)/g) ?? []).length, 2);
+  assert.match(script, /route start: '/);
+  assert.match(script, /viewport start: '/);
+  assert.match(script, /viewport complete: '/);
+  assert.match(script, /route complete: '/);
+  assert.match(script, /route error: '/);
+  assert.match(workflow, /timeout-minutes: 25/);
+});
