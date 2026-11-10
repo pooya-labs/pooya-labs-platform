@@ -738,14 +738,13 @@ try {
         await page.emulateMedia({ reducedMotion: 'no-preference' });
       }
 
-      // Theme audits leave focus on the theme button; reset it so Tab starts at the first page control.
+      // Re-enter the route in a fresh document so keyboard focus starts from the first page control.
       await page.setViewportSize({ width: 390, height: 844 });
-      await page.evaluate(() => {
-        const active = document.activeElement;
-        if (active instanceof HTMLElement) active.blur();
-        const scroller = document.querySelector('.portfolio-page');
-        if (scroller instanceof HTMLElement) scroller.scrollTop = 0;
+      await page.goto(targetUrl.href, {
+        waitUntil: 'domcontentloaded',
+        timeout: 30000,
       });
+      await page.locator('.portfolio-skip-link').waitFor({ state: 'attached', timeout: 10000 });
       await page.keyboard.press('Tab');
       await page.waitForFunction(() => {
         const active = document.activeElement;
