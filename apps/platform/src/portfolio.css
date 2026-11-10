@@ -340,6 +340,11 @@
   padding: 20px;
 }
 .case-study-visual-image.visual-interface { object-fit: contain; padding: 0; }
+.case-study-visual-image.visual-interface.case-study-page-preview {
+  object-fit: cover;
+  object-position: top center;
+  padding: 0;
+}
 .case-study-visual-image.visual-illustration { object-fit: contain; padding: 12px 24px; }
 .case-study-visual-image.visual-brand { object-fit: contain; padding: 38px; }
 .case-study-visual.has-visual .case-study-art-fallback { display: none; }
