@@ -417,7 +417,7 @@
     "AetherFlow PR #19/#20 are merged and bounded CLI response handling is on main; M08 still requires a matching EPYC 9V45 five-repeat benchmark and remains experimental, not a stable v1.0.0 production release.",
     "ORBIT PR #138 is merged and the patched Keycloak 26.8.2/Guava 33.7.2-jre immutable digest passed strict AMD64/ARM64 and deferred-identity scans; production Compose remains pinned to Keycloak 26.8.1 and promotion/deployment is not performed.",
     "GlobalCart main includes bot-authored FX snapshot commit 2ef95faf [skip ci]; its embedded sourceUpdatedAt regressed by 80 minutes versus the previous snapshot and no deployment of the new snapshot is verified. Treat FX freshness as unresolved.",
-    "Manual binary public-asset review remains open across the portfolio. Salon Booking's two approved full-page desktop/mobile PNGs were reopened from capture artifact 13611818994 and visually reviewed: customer-facing booking/storefront content and business contact details are visible; no admin surface or customer appointment records were observed. The separate salon-owner publication permission is still pending."
+    "Manual public/private binary-asset review remains open across the portfolio. The 14 approved full-page desktop/mobile PNGs for seven projects were re-opened from artifact 13611818994; all 14 SHA-256 hashes and byte counts match the approval manifest. Visual review recorded project-specific boundaries: demo/simulated/modelled data labels, owner portrait/profile content, LuminaGlass's 32px blur, and Salon Booking's customer-facing contact area. No admin surface or customer appointment records were visible in the Salon Booking captures. Pooya.OS/NexusCanvas owner-content approval and salon-owner publication permission remain pending; other public media assets still require review."
   ],
   "nextAction": "Continue portfolio-wide manual/binary public-asset review (Salon Booking desktop/mobile captures are now visually re-opened; salon-owner publication permission remains pending), then close human contrast/focus/keyboard/screen-reader review and physical Android/browser acceptance, owner content/media approvals, authenticated social-cache validation, owner-gated deployment remediation, and rollback rehearsal. Do not begin Phase 8/9 or V1 before mandatory gates close.",
   "securityBaseline": {
@@ -1654,8 +1654,37 @@
     }
   },
   "preliminaryPublicAssetAndLinkAudit": {
-    "binaryImageContentReview": "partial-review-complete-2026-11-10;Salon-Booking-fullpage-desktop-and-mobile-PNGs-reopened-from-artifact-13611818994;customer-facing-booking-storefront-and-business-contact-details-visible;no-admin-surface-or-customer-appointment-records-observed;other-project-binary-assets-still-require-review",
+    "binaryImageContentReview": "partial-review-complete-2026-11-10;reopened-14-approved-fullpage-PNGs-for-7-projects-from-artifact-13611818994;SHA256-and-byte-size-match-14-of-14;comparative-contact-sheet-and-individual-desktop-captures-visually-reviewed;AetherFlow-M08-in-progress;ORBIT-demo-and-illustrative-telemetry-labelled;PooyaOS-and-NexusCanvas-owner-profile-portrait-metrics-need-owner-content-approval;LuminaGlass-32px-blur-quality-limitation;AuraPulse-SIMULATED-non-live-values-and-Binance-CORS-failure;SalonBooking-customer-facing-booking-and-business-contact-only-no-admin-or-customer-records-observed;GlobalCart-fullpage-candidate-excluded-for-blank-grid;other-assets-and-owner-permissions-remain-open",
     "salonBookingOwnerPublicationPermission": "pending",
-    "overallManualAssetBoundaryReview": "open;Salon-Booking-desktop-mobile-binary-check-complete;salon-owner-permission-pending;other-project-assets-not-yet-reopened"
+    "overallManualAssetBoundaryReview": "open;14-of-14-approved-fullpage-capture-integrity-checks-passed;scoped-visual-review-complete;owner-content-and-salon-permission-gates-pending;other-public-media-assets-remain-to-be-reviewed",
+    "portfolioFullpageCaptureReview": {
+      "checkedDate": "2026-11-10",
+      "artifactWorkflowRun": "42468215117",
+      "artifactId": "13611818994",
+      "manifest": "docs/approved-interface-captures/portfolio-2026-11-08.json",
+      "approvedCaptureProjects": [
+        "AetherFlow",
+        "ORBIT",
+        "Pooya.OS",
+        "NexusCanvas",
+        "LuminaGlass",
+        "AuraPulse",
+        "Salon Booking"
+      ],
+      "approvedPngCount": 14,
+      "sha256AndByteSizeChecks": "14-of-14-matched",
+      "visualScope": "comparative-contact-sheet-reviewed; six-non-Salon-desktop-fullpage-images-opened-individually; Salon-Booking-desktop-and-mobile-contact-section-opened-individually",
+      "findings": {
+        "aetherflow": "M08 is visibly in progress",
+        "orbit": "sample/demo environment and illustrative telemetry are explicitly labelled",
+        "pooyaOs": "owner portrait/profile and X-Ray figures are visible; owner-content approval remains pending",
+        "nexusCanvas": "modelled metrics/illustrative telemetry are labelled; owner profile chip is visible and owner-content approval remains pending",
+        "luminaGlass": "32px blur control/low-clarity capture remains a quality limitation",
+        "auraPulse": "SIMULATED trading data; market values are not represented as live; capture report records Binance CORS failure",
+        "salonBooking": "customer-facing booking/storefront and business contact details; no admin surface or customer appointment records were visible; salon-owner publication permission remains pending"
+      },
+      "globalCart": "fullpage candidate files exist in the capture artifact but remain excluded from the approval manifest/public site because the public collection grid showed blank placeholders",
+      "limitations": "scoped capture-pair review only; not legal/title approval or blanket publication approval; other logo/social-card/detail assets and owner approvals remain open"
+    }
   }
 }
