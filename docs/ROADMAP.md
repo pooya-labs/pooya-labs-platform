@@ -89,6 +89,12 @@ The release target is a credible, distinctive personal portfolio that introduces
 
 ## Phase 7 — Pre-redesign readiness and engineering closeout
 
+### Phase 7 readiness history — P7-33 dual-theme contrast matrix refreshed (2026-11-10)
+
+- [x] Refresh the manual review matrix from exact-main Browser QA run [42815065767](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767), artifact [13765540433](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767/artifacts/13765540433): 36 incomplete Axe checks in dark mode and 36 in light mode; 228/288 node occurrences; 74/56 theme selectors; 87 unique selectors across both themes.
+- [ ] Complete human rendered-background contrast measurements, visible-focus review, keyboard-only acceptance, and screen-reader flow in Persian/English and both themes. Incomplete Axe records are not passes.
+
+
 ### Phase 7 readiness history — light-theme contrast and dual-theme Browser QA (2026-11-10)
 
 - [x] Correct light-theme accent text and hero gradient contrast; PR [#62](https://github.com/pooya-labs/pooya-labs-platform/pull/62) merged as `bfe775b`. Add numeric WCAG AA regression checks for the token and gradient stops.

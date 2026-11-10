@@ -7,9 +7,9 @@
   "phase": 7,
   "phaseName": "Pre-redesign readiness and engineering closeout",
   "currentTask": {
-    "id": "P7-32",
-    "title": "Correct light-theme contrast and enforce dual-theme accessibility Browser QA",
-    "status": "Completed: PR #62 merged (light-theme accent/hero contrast and numeric AA checks), PR #64 merged (social-proof/scroll-cue and nav-hover contrast), and PR #63 merged as 5af6dd2ca19cdc87783f6312f890c6244e9240b1 (axe in both themes across every route and viewport; fresh-route keyboard skip-link validation). Exact-main Repository CI 42815065743, Browser QA 42815065767, and GitHub Pages deployment 42815065770 passed. Artifact 13765540433 records 18/18 routes, 36/36 viewport checks, 18/18 keyboard skip-link checks, zero failures, 34/34 social crawler simulations, zero confirmed axe violations in both themes, and 36 incomplete contrast checks per theme retained for human review."
+    "id": "P7-33",
+    "title": "Refresh the manual contrast review matrix from current dual-theme Browser QA",
+    "status": "Matrix preparation complete in docs/ACCESSIBILITY-MANUAL-REVIEW.md using run 42815065767 / artifact 13765540433. It records 36 incomplete Axe checks per theme, 228 dark / 288 light node occurrences, 74 dark / 56 light selectors, and 87 unique selectors across both themes. Zero confirmed Axe violations were reported. Human rendered-background measurements and all owner/device accessibility gates remain pending."
   },
   "lastCheckpointDate": "2026-11-10",
   "latestVerifiedCodeCommit": "ea52ef5315da36d1015df1cad9673b1931fbca7c",
@@ -437,7 +437,7 @@
     "GlobalCart main includes bot-authored FX snapshot commit 2ef95faf [skip ci]; its embedded sourceUpdatedAt regressed by 80 minutes versus the previous snapshot and no deployment of the new snapshot is verified. Treat FX freshness as unresolved.",
     "Manual public/private binary-asset review remains open across the portfolio. The 14 approved full-page desktop/mobile PNGs for seven projects were re-opened from artifact 13611818994; all 14 SHA-256 hashes and byte counts match the approval manifest. Visual review recorded project-specific boundaries: demo/simulated/modelled data labels, owner portrait/profile content, LuminaGlass's 32px blur, and Salon Booking's customer-facing contact area. No admin surface or customer appointment records were visible in the Salon Booking captures. Pooya.OS/NexusCanvas owner-content approval and salon-owner publication permission remain pending; other public media assets still require review."
   ],
-  "nextAction": "Complete owner-led Phase 7 acceptance: visually evaluate 36 incomplete axe contrast checks in each theme; perform physical desktop/Android, keyboard/focus and screen-reader review in Persian/English; approve owner content/media and Salon Booking permission; run authenticated LinkedIn/Meta cache refresh; resolve owner-approved Cloudflare automation and decide if Apps Script publishing is required; rehearse documented rollback paths. Do not start Phase 8 or Phase 9 until mandatory gates close; V1 remains unapproved.",
+  "nextAction": "Complete human rendered-background contrast measurements for all applicable selectors in docs/ACCESSIBILITY-MANUAL-REVIEW.md across Persian/English, dark/light and desktop/mobile; then complete physical desktop/Android, keyboard/focus and screen-reader acceptance. Preserve owner-content/media, Salon Booking permission, authenticated social-cache, deployment and rollback gates. Do not start Phase 8/9 or V1 before Phase 7 exits.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -871,6 +871,53 @@
       "incompleteRuleChecks": 72,
       "darkThemeIncompleteRuleChecks": 36,
       "lightThemeIncompleteRuleChecks": 36
+    },
+    "manualContrastReview": {
+      "status": "prepared-pending-human-measurement",
+      "document": "docs/ACCESSIBILITY-MANUAL-REVIEW.md",
+      "sourceRun": "42815065767",
+      "sourceArtifact": "13765540433",
+      "sourceCommit": "5af6dd2ca19cdc87783f6312f890c6244e9240b1",
+      "axeVersion": "4.14.0",
+      "routeCount": 18,
+      "routeViewportRecordsPerTheme": 36,
+      "viewports": [
+        "desktop-1440x1000",
+        "mobile-390x844"
+      ],
+      "languages": [
+        "fa",
+        "en"
+      ],
+      "themes": {
+        "dark": {
+          "incompleteRuleChecks": 36,
+          "nodeOccurrences": 228,
+          "uniqueSelectors": 74,
+          "confirmedViolations": 0,
+          "backgroundCauses": {
+            "pseudoElements": 129,
+            "gradients": 83,
+            "overlap": 14,
+            "partialOverlap": 2
+          }
+        },
+        "light": {
+          "incompleteRuleChecks": 36,
+          "nodeOccurrences": 288,
+          "uniqueSelectors": 56,
+          "confirmedViolations": 0,
+          "backgroundCauses": {
+            "pseudoElements": 138,
+            "gradients": 118,
+            "overlap": 30,
+            "partialOverlap": 2
+          }
+        }
+      },
+      "unionUniqueSelectors": 87,
+      "combinedNodeOccurrences": 516,
+      "manualMeasurementCompleted": false
     }
   },
   "upstreamEvidence": {
@@ -1229,11 +1276,11 @@
     "automatedValidation": "Repository CI 42483757067 passed; Browser QA 42483757051 passed on 17 routes and 34 desktop/mobile viewport checks; GitHub Pages deploy 42483757053 passed.",
     "manualValidation": "Latest Browser QA artifact 13618234167 requires detailed axe review; manual contrast, keyboard-only, screen-reader, real-device, and external social-crawler validation remain open."
   },
-  "latestTask": "P7-32",
-  "latestTaskBranch": "main",
+  "latestTask": "P7-33",
+  "latestTaskBranch": "docs/p7-33-dual-theme-contrast-review-matrix",
   "lastUpdated": "2026-11-10",
   "latestDocumentationCommit": "9dc689e7b4f3a95a7ee52f890fc4159670ea63ec",
-  "latestDocumentationCheckpoint": "P7-32;PR62-light-theme-AA-colors-bfe775b3;PR64-small-label-contrast-ea52ef5;PR63-dual-theme-browser-audit-5af6dd2ca19cdc87783f6312f890c6244e9240b1;main-CI-42815065743-success;main-BrowserQA-42815065767-success;GitHub-Pages-42815065770-success;QA-artifact-13765540433;36-incomplete-contrast-checks-each-theme-remain-human-review;Cloudflare-and-AppsScript-publish-jobs-skipped",
+  "latestDocumentationCheckpoint": "P7-33-dual-theme-manual-contrast-matrix-refreshed;run-42815065767;artifact-13765540433;36-incomplete-Axe-checks-per-theme;87-unique-selectors;human-review-pending",
   "latestRepositoryCiRun": "42815065743;success;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1",
   "latestBrowserQaRun": "42815065767;success;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1;artifact-13765540433",
   "latestPerformanceBaseline": {

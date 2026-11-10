@@ -1,3 +1,15 @@
+## Latest checkpoint — P7-33 dual-theme contrast review matrix refreshed (2026-11-10)
+
+- Refreshed [ACCESSIBILITY-MANUAL-REVIEW.md](ACCESSIBILITY-MANUAL-REVIEW.md) against exact-main Browser QA run [42815065767](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767), artifact [13765540433](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767/artifacts/13765540433), source commit `5af6dd2ca19cdc87783f6312f890c6244e9240b1`.
+- The report covers 18 localized routes at desktop/mobile sizes. Axe recorded zero confirmed violations in both themes, but 36 incomplete contrast checks remain in dark mode and 36 in light mode. Dark results contain 228 node occurrences / 74 selectors; light results contain 288 / 56; the combined inventory has 87 unique selectors.
+- Unresolved-background causes across both themes: 267 pseudo-element/decorative nodes, 201 gradient nodes, 44 overlap nodes, and 4 partial-overlap nodes. These are unresolved measurements, not confirmed failures or passes.
+- The matrix includes the current selector counts, background causes, and a pending human-result field. This closes matrix preparation only; no manual contrast pass, WCAG certification, physical-device acceptance, or screen-reader acceptance is claimed.
+- The QA artifact also verifies the AetherFlow homepage card image loaded at 1440px natural width in Persian and English desktop/mobile captures; the image now shows the product interface rather than the project mark.
+
+**Release status: pre-alpha / Phase 7.** Human contrast/focus/keyboard/screen-reader review, physical-device acceptance, owner content/media approvals, authenticated social-cache validation, hosting remediation, and rollback rehearsal remain open.
+
+---
+
 ## Latest checkpoint — P7-32 complete; light-theme contrast and dual-theme Browser QA verified (2026-11-10)
 
 - Merged the light-theme contrast corrections and regression coverage: PR [#62](https://github.com/pooya-labs/pooya-labs-platform/pull/62) (`bfe775b`), PR [#64](https://github.com/pooya-labs/pooya-labs-platform/pull/64) (`ea52ef5`), and PR [#63](https://github.com/pooya-labs/pooya-labs-platform/pull/63) (`5af6dd2`). The light theme now uses darker emerald/hero-gradient/LTR headline colors, and the small social-proof/scroll-cue labels use the AA-compliant secondary token; nav hover also uses the darker accent.
