@@ -64,6 +64,13 @@ const report = {
     incompleteRuleChecks: 0,
     incompleteRules: [],
     findings: [],
+    lightTheme: {
+      checks: 0,
+      impactCounts: { critical: 0, serious: 0, moderate: 0, minor: 0, unknown: 0 },
+      incompleteRuleChecks: 0,
+      incompleteRules: [],
+      findings: [],
+    },
   },
   note: 'Automated Chromium smoke and responsive checks. Homepage and bilingual project desktop/mobile screenshots are retained only as private workflow artifacts, never published to the website. Mobile case-study routes also exercise touch scroll chaining from the full-page screenshot frame to the outer page. This is not a manual screen-reader audit or WCAG certification.',
 };
@@ -605,6 +612,67 @@ try {
             failureSummary: node.failureSummary?.slice(0, 1200) ?? null,
           })),
         }));
+        const lightThemeAxeSummary = { checked: false, violationCount: 0, incompleteRuleCount: 0 };
+        const lightThemeButton = page.locator('.portfolio-theme');
+        if (await lightThemeButton.count()) {
+          await lightThemeButton.click();
+          await page.waitForFunction(() => document.querySelector('.portfolio-page')?.getAttribute('data-theme') === 'light');
+          await page.waitForTimeout(400);
+
+          const lightThemeAxeResults = await new AxeBuilder({ page }).withTags(report.accessibility.tags).analyze();
+          const lightThemeAxeFindings = lightThemeAxeResults.violations.map((violation) => ({
+            id: violation.id,
+            impact: violation.impact ?? 'unknown',
+            description: violation.description,
+            help: violation.help,
+            helpUrl: violation.helpUrl,
+            nodes: violation.nodes.slice(0, 12).map((node) => ({
+              target: node.target,
+              failureSummary: node.failureSummary?.slice(0, 1200) ?? null,
+            })),
+          }));
+          lightThemeAxeSummary.checked = true;
+          lightThemeAxeSummary.violationCount = lightThemeAxeFindings.length;
+          lightThemeAxeSummary.incompleteRuleCount = lightThemeAxeResults.incomplete.length;
+          report.accessibility.lightTheme.checks += 1;
+
+          for (const rule of lightThemeAxeResults.incomplete) {
+            report.accessibility.lightTheme.incompleteRules.push({
+              route: route.label,
+              viewport: viewport.name,
+              id: rule.id,
+              impact: rule.impact ?? 'unknown',
+              description: rule.description,
+              help: rule.help,
+              helpUrl: rule.helpUrl,
+              nodes: rule.nodes.slice(0, 8).map((node) => ({
+                target: node.target,
+                failureSummary: node.failureSummary?.slice(0, 1200) ?? null,
+              })),
+            });
+          }
+          report.accessibility.lightTheme.incompleteRuleChecks += lightThemeAxeResults.incomplete.length;
+
+          for (const finding of lightThemeAxeFindings) {
+            report.accessibility.lightTheme.impactCounts[finding.impact] =
+              (report.accessibility.lightTheme.impactCounts[finding.impact] ?? 0) + 1;
+            report.accessibility.lightTheme.findings.push({
+              route: route.label,
+              viewport: viewport.name,
+              ...finding,
+            });
+            if (finding.impact === 'critical' || finding.impact === 'serious') {
+              addFailure(route, viewport.name, 'High-impact axe accessibility violation in the light theme (' + finding.impact + '): ' + finding.id);
+            }
+          }
+
+          await lightThemeButton.click();
+          await page.waitForFunction(() => document.querySelector('.portfolio-page')?.getAttribute('data-theme') === 'dark');
+          await page.waitForTimeout(400);
+        } else {
+          addFailure(route, viewport.name, 'Theme toggle is missing; light-theme accessibility could not be audited.');
+        }
+
         routeRecord.viewportChecks.push({
           ...viewport,
           ...metrics,
@@ -613,6 +681,8 @@ try {
           caseStudyGalleryScroll,
           axeViolationCount: axeFindings.length,
           axeIncompleteRuleCount: axeResults.incomplete.length,
+          lightThemeAxeViolationCount: lightThemeAxeSummary.violationCount,
+          lightThemeAxeIncompleteRuleCount: lightThemeAxeSummary.incompleteRuleCount,
         });
         report.accessibility.incompleteRuleChecks += axeResults.incomplete.length;
         for (const rule of axeResults.incomplete) {
@@ -668,9 +738,14 @@ try {
         await page.emulateMedia({ reducedMotion: 'no-preference' });
       }
 
-      // The skip link is the first interactive element in the page DOM.
+      // Theme audits leave focus on the theme button; reset it so Tab starts at the first page control.
       await page.setViewportSize({ width: 390, height: 844 });
-      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.evaluate(() => {
+        const active = document.activeElement;
+        if (active instanceof HTMLElement) active.blur();
+        const scroller = document.querySelector('.portfolio-page');
+        if (scroller instanceof HTMLElement) scroller.scrollTop = 0;
+      });
       await page.keyboard.press('Tab');
       await page.waitForFunction(() => {
         const active = document.activeElement;
