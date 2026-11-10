@@ -278,3 +278,28 @@ test('visual evidence waits for the initial reveal, finite entrance animations, 
   assert.ok(script.indexOf('await waitForSettledReveal(page, initialRevealSelector)') < script.indexOf('await page.screenshot('));
 });
 
+test('Browser QA runs axe on every route and viewport in both dark and light themes', () => {
+  assert.match(script, /lightTheme: \{/);
+  assert.match(script, /checks: 0/);
+  assert.match(script, /const lightThemeButton = page\.locator\('\.portfolio-theme'\)/);
+  assert.match(script, /getAttribute\('data-theme'\) === 'light'/);
+  assert.match(script, /getAttribute\('data-theme'\) === 'dark'/);
+  assert.match(script, /const lightThemeAxeResults = await new AxeBuilder\(\{ page \}\)/);
+  assert.match(script, /report\.accessibility\.lightTheme\.checks \+= 1/);
+  assert.match(script, /report\.accessibility\.lightTheme\.incompleteRuleChecks \+= lightThemeAxeResults\.incomplete\.length/);
+  assert.match(script, /lightThemeAxeViolationCount/);
+  assert.match(script, /lightThemeAxeIncompleteRuleCount/);
+  assert.match(script, /High-impact axe accessibility violation in the light theme/);
+  assert.ok(script.indexOf('await lightThemeButton.click()') < script.indexOf('const lightThemeAxeResults'));
+  assert.ok(script.indexOf('const lightThemeAxeResults') < script.indexOf("await lightThemeButton.click();\n          await page.waitForFunction(() => document.querySelector('.portfolio-page')?.getAttribute('data-theme') === 'dark')"));
+});
+
+test('keyboard skip-link audit starts from a fresh route load after theme audits', () => {
+  const keyboardReload = script.lastIndexOf('await page.goto(targetUrl.href, {');
+  const skipLinkWait = script.indexOf("await page.locator('.portfolio-skip-link').waitFor({ state: 'attached', timeout: 10000 });", keyboardReload);
+  const firstTab = script.indexOf("await page.keyboard.press('Tab')", keyboardReload);
+  assert.ok(keyboardReload >= 0, 'Browser QA must reload the route after the two-theme audit.');
+  assert.ok(skipLinkWait > keyboardReload, 'The skip link must be attached in the fresh document before keyboard input.');
+  assert.ok(firstTab > skipLinkWait, 'Keyboard-only navigation must start after a fresh document load.');
+});
+
