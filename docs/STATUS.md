@@ -1,3 +1,11 @@
+## Latest checkpoint — P7-26 public-asset preflight added (2026-11-10)
+
+- Added a read-only source-tree/link preflight to [SECURITY-MODEL.md](SECURITY-MODEL.md): no sensitive credential-file-name matches; 17/17 project registry destinations use HTTPS; 16/16 `target="_blank"` anchors have a `rel` attribute; the public Novels catalog is empty.
+- The only Salon Booking portfolio captures are two full-page customer-facing PNGs. Their manifest records visual/privacy review and no admin route/customer records, but the salon owner's separate publication permission remains pending.
+- The binary PNG payloads were not independently re-opened in this pass, so the complete public/private asset and visual privacy review remains open. No customer/admin asset or screenshot was added or changed.
+- The stale governance and owner-packet statements corrected in P7-26 remain documentation-only. All eight owner-review states remain pending.
+
+**Release status: pre-alpha / Phase 7.** This preliminary audit does not close the manual asset, accessibility, physical-device, owner-approval, social-cache, deployment, or rollback gates.
 ## Latest checkpoint — P7-26 security and owner-packet documentation corrected (2026-11-10)
 
 - A targeted documentation audit found two stale statements and corrected them: [SECURITY-MODEL.md](SECURITY-MODEL.md) now records active ruleset 26861856 and the GitHub App PR-based capture publication boundary; [OWNER-REVIEW-PACKET.md](OWNER-REVIEW-PACKET.md) now reflects current AetherFlow, ORBIT and GlobalCart source facts.
