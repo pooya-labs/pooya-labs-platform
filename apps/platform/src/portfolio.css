@@ -1903,6 +1903,7 @@
 .portfolio-page[data-theme="light"] .portfolio-case-study .portfolio-workspace { color:#405348;background:rgba(33,65,48,.045);border-color:rgba(35,55,45,.14); }
 .portfolio-page[data-theme="light"] .portfolio-theme,.portfolio-page[data-theme="light"] .portfolio-language { color:#405348; }
 .portfolio-page[data-theme="light"] .portfolio-theme { background:#fff; }
+.portfolio-page[data-theme="light"] .portfolio-theme > span { color:#405348; }
 .portfolio-page[data-theme="light"] .portfolio-brand-mark { background:linear-gradient(145deg,#eef5ee,#fff);border-color:rgba(48,133,97,.22); }
 .portfolio-page .portfolio-eyebrow,.portfolio-page .eyebrow-index { color:var(--pf-emerald); }
 .portfolio-page .eyebrow-pulse { background:var(--pf-emerald);box-shadow:0 0 12px color-mix(in srgb,var(--pf-emerald) 45%,transparent); }

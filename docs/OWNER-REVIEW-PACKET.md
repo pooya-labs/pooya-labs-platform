@@ -2,7 +2,7 @@
 
 **Prepared:** 2026-11-08  
 **Source status refreshed:** 2026-11-10 (read-only upstream recheck; owner approval remains pending)  
-**Review state:** Prepared; owner approval is still pending.  
+**Review state:** Prepared; owner approval is still pending for public biography, project contribution wording, contact details, project media, and Salon Booking attribution. Pooya explicitly authorized Phase 8 design exploration on 2026-11-10; that authorization is not approval of these content/media items. Pooya explicitly authorized Phase 8 design exploration on 2026-11-10; that authorization is not approval of these content/media items.  
 **Purpose:** Give Pooya one place to review public biography, project order, role attribution, status labels, contact channels, and media boundaries before Phase 8.  
 **Important:** This document is a review snapshot, not approval to publish new claims or media. All eight project registry entries currently remain marked as needs-owner-review.
 **Owner-confirmed platform identity (2026-11-09):** Use **Pooya Monogram (پویا مونوگرام)** and the centered black-tile monogram as the Pooya Labs Platform owner identity in the homepage footer, case-study footers, bilingual README ownership blocks, and structured metadata. Credit **Pooya Goodarzi** as creator and maintainer. This narrow confirmation applies to the platform brand only; it does not approve the eight independent project dossiers/media or close any Phase 7–10 release gate.
@@ -103,7 +103,7 @@ Do not invent titles, cover art, author text, or manuscript content. Files commi
 
 ## 7. Owner decisions requested
 
-Please review and confirm or correct these items before Phase 8 begins:
+Please review and confirm or correct these items during the Phase 8 owner review rounds, before public release:
 
 - [ ] Headline in Persian and English.
 - [ ] Introduction and About copy, including whether the public positioning should explicitly include AI Engineering.
@@ -118,3 +118,8 @@ Please review and confirm or correct these items before Phase 8 begins:
 **Source freshness note:** The project-head, release, and open-PR inventory was refreshed read-only on 2026-11-10; see [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md). The current audit records AetherFlow PRs #18–#20, ORBIT PR #138 merged with the patched image verified but not promoted, and GlobalCart's FX freshness anomaly. AetherFlow's live Sheet write/reload/read check and GlobalCart's separate owner-confirmed manual review are recorded in their current source docs; neither changes Pooya Labs portfolio approval. A current source status does not imply owner approval of the portfolio wording or media.
 
 **Approval rule:** No item is considered approved by the existence of this document. Keep all eight project review states as needs-owner-review until the owner explicitly confirms the relevant content and media. Phase 8 redesign, Phase 9 project integration, and Phase 10 release remain gated by the existing roadmap.
+
+
+## 8. Phase 8 sequencing authorization (2026-11-10)
+
+Pooya explicitly authorized opening Phase 8 design exploration. This allows the visual-direction comparison and prototype work to begin; it does not approve the content/media checklist above. Keep every independent project review state as `needs-owner-review` until Pooya approves the relevant wording and media. Keep Salon Booking permission separate and pending. All remaining accessibility, physical-device, public/private asset, authenticated social-cache, deployment, and rollback checks remain mandatory before V1.

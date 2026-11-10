@@ -170,12 +170,26 @@ This phase is the work currently in progress. Complete every autonomous engineer
 
 **Exit gate:** autonomous readiness work is complete, all known defects are fixed or explicitly bounded, and the owner-review packet is ready. Only then begin Phase 8. Phase 7 does not include the final project-by-project media/content integration; that is intentionally reserved for Phase 9.
 
+### Owner-authorized Phase 8 entry — 2026-11-10
+
+Pooya explicitly instructed the project to prepare for the redesign and enter Phase 8. Accordingly, **Phase 8 design exploration is open** on 2026-11-10, based on main commit `3888d0799afdf4c3bb702489b6f1fc22c98d1f3b`.
+
+This is a narrow sequencing authorization, not a retroactive Phase 7 acceptance:
+- Phase 7 human accessibility, device, content/media, Salon Booking permission, authenticated social-cache, deployment, asset-boundary, and rollback gates remain open.
+- Those carry-over items remain mandatory before Phase 10/V1 publication; none is recorded as passed or waived.
+- Phase 8 begins with P8-01: compare two complete design directions and obtain Pooya's choice. Do not begin the full UI code redesign until the owner chooses A or B.
+- The previous Framer-inspired motion reference remains a reference, not a template to copy. The pointer-following lens remains excluded.
+
+Direction comparison and decision checklist: [PHASE-8-DESIGN-OPTIONS.md](PHASE-8-DESIGN-OPTIONS.md).
+
 ## Phase 8 — Complete redesign and owner approval (penultimate stage)
 
-This is the second-to-last stage before V1. The full public site is redesigned again only after Phase 7 readiness is satisfied. The current site remains a review baseline, not the final approved design.
+This is the second-to-last stage before V1. Phase 8 design exploration is owner-authorized from 2026-11-10. The full public site remains a review baseline until a direction is selected and the complete redesign passes two explicit owner review rounds.
+
+The remaining Phase 7 owner/device and publication gates continue in parallel and remain mandatory before V1. Their status is not changed by opening this design phase.
 
 - [ ] Revisit the full visual direction with Pooya, including identity, logo usage, typography, color system, hierarchy, spacing, page flow, responsive behavior, navigation, motion, and project-storytelling approach.
-- [ ] Compare at least two coherent design directions and agree on one before implementation.
+- [x] Compare two coherent design directions and document the trade-offs in [PHASE-8-DESIGN-OPTIONS.md](PHASE-8-DESIGN-OPTIONS.md); owner selection of A or B remains pending before implementation.
 - [ ] Redesign the entire portfolio consistently—not as isolated section patches—including homepage, navigation, project cards, case-study templates, media galleries, About, novels, contact, and footer.
 - [ ] Preserve correct content boundaries, verified links, RTL/LTR behavior, reduced motion, accessibility, and performance budgets throughout the redesign.
 - [ ] Publish a review preview and complete owner review round one on desktop and mobile.

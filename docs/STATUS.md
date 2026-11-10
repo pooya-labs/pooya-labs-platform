@@ -1,3 +1,14 @@
+## Latest checkpoint — P8-01 opened by owner; direction selection pending (2026-11-10)
+
+- Pooya explicitly instructed the project to enter Phase 8. Design exploration is now open from main commit [`3888d07`](https://github.com/pooya-labs/pooya-labs-platform/commit/3888d0799afdf4c3bb702489b6f1fc22c98d1f3b).
+- Created [PHASE-8-DESIGN-OPTIONS.md](PHASE-8-DESIGN-OPTIONS.md) with two complete directions: A — Obsidian Editorial Systems (recommended), and B — Warm Editorial Gallery. The full UI rebuild has not started because the roadmap requires Pooya to select one before implementation.
+- The new brief covers identity, dark/light themes, bilingual RTL/LTR behavior, hero, project grid, case-study system, Novels empty state, motion, accessibility, responsive behavior, and technical boundaries.
+- The ORBIT homepage screenshot fix is merged and deployed in PR [#68](https://github.com/pooya-labs/pooya-labs-platform/pull/68) / commit [`3888d07`](https://github.com/pooya-labs/pooya-labs-platform/commit/3888d0799afdf4c3bb702489b6f1fc22c98d1f3b). Exact PR-head CI/Browser QA and post-merge GitHub Pages deployment/Browser QA passed.
+- **Phase 7 is not marked complete.** The 72 incomplete Axe contrast checks, physical-device/keyboard/screen-reader acceptance, owner content/media review, Salon Booking permission, authenticated social-cache checks, hosting remediation, asset audit, and rollback rehearsal remain required before V1. Starting design exploration does not waive any of these gates.
+- Release remains `pre-alpha`; Phase 9 project-level content/media integration and Phase 10 V1 remain blocked until Phase 8 passes its two owner review rounds and the carry-over publication gates are closed.
+
+---
+
 ## Latest checkpoint — P7-33 dual-theme contrast review matrix refreshed (2026-11-10)
 
 - Refreshed [ACCESSIBILITY-MANUAL-REVIEW.md](ACCESSIBILITY-MANUAL-REVIEW.md) against exact-main Browser QA run [42815065767](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767), artifact [13765540433](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767/artifacts/13765540433), source commit `5af6dd2ca19cdc87783f6312f890c6244e9240b1`.

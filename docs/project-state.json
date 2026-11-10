@@ -4,15 +4,15 @@
   "repository": "pooya-labs/pooya-labs-platform",
   "defaultBranch": "main",
   "release": "pre-alpha",
-  "phase": 7,
-  "phaseName": "Pre-redesign readiness and engineering closeout",
+  "phase": 8,
+  "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P7-33",
-    "title": "Refresh the manual contrast review matrix from current dual-theme Browser QA",
-    "status": "Matrix preparation complete in docs/ACCESSIBILITY-MANUAL-REVIEW.md using run 42815065767 / artifact 13765540433. It records 36 incomplete Axe checks per theme, 228 dark / 288 light node occurrences, 74 dark / 56 light selectors, and 87 unique selectors across both themes. Zero confirmed Axe violations were reported. Human rendered-background measurements and all owner/device accessibility gates remain pending."
+    "id": "P8-01",
+    "title": "Compare two complete visual directions and obtain Pooya's selection",
+    "status": "Phase 8 design exploration explicitly authorized by Pooya on 2026-11-10. Direction comparison is documented in docs/PHASE-8-DESIGN-OPTIONS.md. Recommended A — Obsidian Editorial Systems; alternative B — Warm Editorial Gallery. Full application redesign has not started; owner selection is required before implementation."
   },
   "lastCheckpointDate": "2026-11-10",
-  "latestVerifiedCodeCommit": "ea52ef5315da36d1015df1cad9673b1931fbca7c",
+  "latestVerifiedCodeCommit": "3888d0799afdf4c3bb702489b6f1fc22c98d1f3b",
   "tests": {
     "repositoryCi": "passed-main-run-42815065743;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1;typecheck;three-target-build;security-scan;contract-tests",
     "transportHarnessContract": "passed",
@@ -437,7 +437,7 @@
     "GlobalCart main includes bot-authored FX snapshot commit 2ef95faf [skip ci]; its embedded sourceUpdatedAt regressed by 80 minutes versus the previous snapshot and no deployment of the new snapshot is verified. Treat FX freshness as unresolved.",
     "Manual public/private binary-asset review remains open across the portfolio. The 14 approved full-page desktop/mobile PNGs for seven projects were re-opened from artifact 13611818994; all 14 SHA-256 hashes and byte counts match the approval manifest. Visual review recorded project-specific boundaries: demo/simulated/modelled data labels, owner portrait/profile content, LuminaGlass's 32px blur, and Salon Booking's customer-facing contact area. No admin surface or customer appointment records were visible in the Salon Booking captures. Pooya.OS/NexusCanvas owner-content approval and salon-owner publication permission remain pending; other public media assets still require review."
   ],
-  "nextAction": "Complete human rendered-background contrast measurements for all applicable selectors in docs/ACCESSIBILITY-MANUAL-REVIEW.md across Persian/English, dark/light and desktop/mobile; then complete physical desktop/Android, keyboard/focus and screen-reader acceptance. Preserve owner-content/media, Salon Booking permission, authenticated social-cache, deployment and rollback gates. Do not start Phase 8/9 or V1 before Phase 7 exits.",
+  "nextAction": "Pooya selects direction A or B in docs/PHASE-8-DESIGN-OPTIONS.md. Then implement the complete bilingual responsive portfolio prototype for owner review round one. Keep Phase 7 human accessibility/device/content/privacy/social-cache/deployment/rollback requirements open and mandatory before V1. Do not begin Phase 9 integration before Phase 8 second-round approval.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
@@ -826,7 +826,7 @@
     "externalSocialPreviewValidation": "main-browser-user-agent-simulation-passed-34-of-34;authenticated-linkedin-meta-debugger-and-cache-refresh-pending",
     "actualUiScreenshots": "14 approved full-page desktop/mobile captures across seven projects published; AuraPulse and Salon Booking card assets now connected; GlobalCart full-page capture remains withheld pending storefront-grid repair",
     "ownerContentApproval": "pending-owner-review-packet-prepared-and-merged-aca573500192",
-    "fullSiteRedesign": "three previous implementation/feedback rounds exist; complete new Phase 8 redesign and explicit second-round approval still required",
+    "fullSiteRedesign": "phase8-opened-by-owner-2026-11-10;two-direction-comparison-prepared;waiting-for-owner-selection-before-full-implementation;two-review-rounds-required",
     "keyboardSkipNavigation": "automated-main-browser-qa-passed-18-of-18-routes;fresh-page-load-before-first-tab;manual-physical-device-review-pending",
     "novelLibrary": "implemented-with-empty-catalog; final titles, descriptions, manuscripts and covers pending Pooya",
     "orbit": "v1.0.0 stable portfolio-demo; Cloudflare edge architecture merged but Worker route disabled, origin and gateway secret unset; CF01-CF05 live acceptance pending",
@@ -834,7 +834,7 @@
     "manualAccessibility": "main-run-42815065767;18-of-18-routes;36-of-36-viewports;18-of-18-keyboard-skip-link-checks;zero-confirmed-axe-violations-in-dark-and-light-themes;36-incomplete-contrast-checks-per-theme-remain-human-review;manual-physical-device-screen-reader-acceptance-pending",
     "v1Approval": "not-approved",
     "phaseOrder": [
-      "Phase 7 readiness and engineering closeout",
+      "Phase 7 readiness and engineering closeout (owner acceptance carry-over remains open)",
       "Phase 8 complete redesign and two owner approval rounds (penultimate)",
       "Phase 9 full portfolio-level integration of all eight projects (last implementation stage before publication)",
       "Phase 10 V1 release hardening and publication"
@@ -1276,11 +1276,11 @@
     "automatedValidation": "Repository CI 42483757067 passed; Browser QA 42483757051 passed on 17 routes and 34 desktop/mobile viewport checks; GitHub Pages deploy 42483757053 passed.",
     "manualValidation": "Latest Browser QA artifact 13618234167 requires detailed axe review; manual contrast, keyboard-only, screen-reader, real-device, and external social-crawler validation remain open."
   },
-  "latestTask": "P7-33",
-  "latestTaskBranch": "docs/p7-33-dual-theme-contrast-review-matrix",
+  "latestTask": "P8-01",
+  "latestTaskBranch": "phase-8/design-direction-review",
   "lastUpdated": "2026-11-10",
-  "latestDocumentationCommit": "9dc689e7b4f3a95a7ee52f890fc4159670ea63ec",
-  "latestDocumentationCheckpoint": "P7-33-dual-theme-manual-contrast-matrix-refreshed;run-42815065767;artifact-13765540433;36-incomplete-Axe-checks-per-theme;87-unique-selectors;human-review-pending",
+  "latestDocumentationCommit": "3888d0799afdf4c3bb702489b6f1fc22c98d1f3b",
+  "latestDocumentationCheckpoint": "P8-01-owner-authorized-phase8-entry;two-design-directions-prepared;owner-selection-pending;phase7-carryover-gates-open",
   "latestRepositoryCiRun": "42815065743;success;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1",
   "latestBrowserQaRun": "42815065767;success;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1;artifact-13765540433",
   "latestPerformanceBaseline": {
@@ -1346,47 +1346,7 @@
       "observedAtUtc": "2026-11-10"
     }
   },
-  "ownerReviewPacket": {
-    "path": "docs/OWNER-REVIEW-PACKET.md",
-    "prepared": true,
-    "status": "prepared-owner-approval-pending",
-    "preparedOn": "2026-11-09",
-    "includes": [
-      "bilingual-homepage-headline-introduction-about",
-      "language-and-theme-defaults",
-      "eight-project-featured-order",
-      "source-backed-status-and-role-attribution",
-      "public-contact-channels",
-      "project-specific-disclosure-boundaries",
-      "brand-screenshot-and-social-media-review",
-      "novels-empty-catalog-decision",
-      "latest-upstream-main-heads-release-state-and-open-pr-inventory",
-      "source-backed-GlobalCart-owner-manual-QA-status",
-      "source-backed-AetherFlow-live-Apps-Script-persistence-acceptance"
-    ],
-    "ownerDecisionsPending": [
-      "headline-introduction-about-copy",
-      "AI-Engineering-positioning-wording",
-      "featured-project-order",
-      "per-project-role-and-contribution-wording",
-      "project-status-labels",
-      "public-contact-channels",
-      "personal-assets-and-screenshot-permission",
-      "Salon-Booking-owner-permission-and-redacted-media",
-      "Novels-content-or-empty-section-decision"
-    ],
-    "allProjectReviewStatesRemain": "needs-owner-review",
-    "approvalRecorded": false,
-    "mergedAtMainCommit": "aca573500192f8581896bde10e68ef82c0ca2256",
-    "contractTestRun": 42519333195,
-    "browserQaRun": 42519333196,
-    "sourceStatusRefreshedOn": "2026-11-09",
-    "globalCartStatus": "Stable portfolio/demo release · v1.0.0",
-    "latestRefreshMergedAtMainCommit": "23f16896624ef391e284d3579a7f7278f5c8cbaf",
-    "latestRefreshPullRequest": 18,
-    "latestRefreshRepositoryCiRun": 42522600509,
-    "latestRefreshBrowserQaRun": 42522600586
-  },
+  "ownerReviewPacket": "Prepared; Phase 8 design exploration authorized 2026-11-10; public content/media approval still pending.",
   "upstreamSourceRecheck": {
     "date": "2026-11-10",
     "mode": "read-only",
@@ -1660,7 +1620,7 @@
     "individualCreatorAndMaintainer": "Pooya Goodarzi",
     "approvalScope": "Platform brand-owner attribution only; independent project ownership and content approvals remain unchanged."
   },
-  "latestVerifiedMainCommit": "5af6dd2ca19cdc87783f6312f890c6244e9240b1",
+  "latestVerifiedMainCommit": "3888d0799afdf4c3bb702489b6f1fc22c98d1f3b",
   "ownerConfirmedScope": {
     "exclusiveProject": "pooya-labs/pooya-labs-platform",
     "owner": "Pooya Goodarzi",
@@ -1669,7 +1629,7 @@
     "license": "No explicit repository reuse license; no root LICENSE file",
     "limitations": "Does not override third-party dependencies, upstream code, contributor rights, client-controlled assets, separate agreements, or applicable law"
   },
-  "latestMainCommit": "5af6dd2ca19cdc87783f6312f890c6244e9240b1",
+  "latestMainCommit": "3888d0799afdf4c3bb702489b6f1fc22c98d1f3b",
   "projectPortfolioIntegration": {
     "completedAt": "2026-11-10",
     "mergedPr": 53,
@@ -1755,5 +1715,43 @@
       "globalCart": "fullpage candidate files exist in the capture artifact but remain excluded from the approval manifest/public site because the public collection grid showed blank placeholders",
       "limitations": "scoped capture-pair review only; not legal/title approval or blanket publication approval; other logo/social-card/detail assets and owner approvals remain open"
     }
-  }
+  },
+  "phase8": {
+    "openedAt": "2026-11-10",
+    "authorization": "Pooya explicitly requested entering Phase 8 design exploration.",
+    "baselineMainCommit": "3888d0799afdf4c3bb702489b6f1fc22c98d1f3b",
+    "task": "P8-01",
+    "status": "direction-review-pending-owner-selection",
+    "optionsDocument": "docs/PHASE-8-DESIGN-OPTIONS.md",
+    "directions": {
+      "A": "Obsidian Editorial Systems",
+      "B": "Warm Editorial Gallery"
+    },
+    "recommendedDirection": "A",
+    "fullApplicationImplementationStarted": false,
+    "firstOwnerReview": "pending",
+    "secondOwnerReview": "pending",
+    "explicitFinalDesignApproval": "pending"
+  },
+  "phase7Carryover": {
+    "status": "open-owner-acceptance-and-prepublication-gates",
+    "phase8EntryDoesNotCloseOrWaive": true,
+    "items": [
+      "Human review of 36 incomplete Axe contrast checks in each theme",
+      "Physical desktop/Android review and actual keyboard/focus/screen-reader acceptance",
+      "Owner approval of public biography, contribution wording, project order, contact details and media",
+      "Separate Salon Booking owner permission for attribution and imagery",
+      "Authenticated LinkedIn/Meta share-cache validation",
+      "Cloudflare native deployment trigger/credential decision; Apps Script decision if required",
+      "Public/private asset audit and non-destructive rollback rehearsal"
+    ],
+    "blocksV1": true
+  },
+  "history": [
+    {
+      "date": "2026-11-10",
+      "event": "Owner authorized Phase 8 design exploration; Phase 7 human/publication gates carried forward as mandatory V1 blockers.",
+      "baselineCommit": "3888d0799afdf4c3bb702489b6f1fc22c98d1f3b"
+    }
+  ]
 }
