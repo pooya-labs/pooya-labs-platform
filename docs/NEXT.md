@@ -1,3 +1,23 @@
+## Latest checkpoint — PR #50 merged; P7-26 complete (2026-11-10)
+
+PR [#50](https://github.com/pooya-labs/pooya-labs-platform/pull/50) merged as [a804267](https://github.com/pooya-labs/pooya-labs-platform/commit/a8042675b76e1785865b1956fb8904db788e0b2d). Its exact-head Repository CI [42727164323](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164323) and Portfolio Browser QA [42727164249](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164249) both passed. The changes are documentation/state-only; there is no new app deployment.
+
+**Preserved boundaries:** main uses active ruleset 26861856; ORBIT's patched Keycloak image is published and scanned but not promoted; GlobalCart's FX snapshot remains freshness-unverified; AetherFlow M08/matched-runner benchmark remains open. The asset preflight is preliminary only: binary image payloads were not re-opened, and Salon Booking owner permission remains pending.
+
+**Remaining Phase 7 gates:** manual contrast/focus/keyboard/screen-reader review; physical Android/browser acceptance; owner approval of biography, order, contributions, media and Novels; Salon Booking permission; authenticated social-cache validation; Cloudflare Git-trigger / Apps Script publishing decisions; controlled rollback rehearsal.
+
+Do not begin Phase 8 redesign, Phase 9 integration, or Phase 10 V1 publication until mandatory gates close.
+
+## Latest checkpoint — PR #50 merged; P7-26 documentation work complete (2026-11-10)
+
+PR [#50](https://github.com/pooya-labs/pooya-labs-platform/pull/50) merged as [a804267](https://github.com/pooya-labs/pooya-labs-platform/commit/a8042675b76e1785865b1956fb8904db788e0b2d). Exact PR-head Repository CI [42727164323](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164323) and Portfolio Browser QA [42727164249](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164249) passed on e58f284. The PR was documentation/state-only and did not publish a new application build.
+
+**Current technical facts:** main's active PR/check ruleset and GitHub App publisher boundary are accurately documented; the owner packet reflects current AetherFlow/ORBIT/GlobalCart source facts; the preliminary static file/link check has been recorded. Binary PNG contents were not independently re-opened in this pass. The two Salon Booking captures remain customer-facing only, but the salon owner's separate public-use permission is still pending.
+
+**Remaining Phase 7 gates:** manual contrast/focus/keyboard/screen-reader review; physical Android/browser acceptance; explicit owner approval of the homepage, eight project descriptions/roles/media and Novels decision; Salon Booking owner permission; authenticated social-cache checks; Cloudflare Git-trigger remediation; Apps Script production configuration; and controlled rollback rehearsal.
+
+Do not begin Phase 8 redesign, Phase 9 project integration, or Phase 10 V1 publication until the mandatory gates close.
+
 ## Latest checkpoint — P7-26 preliminary asset/link preflight (2026-11-10)
 
 The read-only source-tree/link preflight found no sensitive credential-like filenames, verified HTTPS for all 17 project registry destinations and `rel` attributes on all 16 new-tab anchors, and confirmed the Novels catalog remains empty. The only Salon Booking assets in the public capture directory are two customer-facing full-page PNGs; their existing manifest records privacy review, but not the salon owner's separate permission.
