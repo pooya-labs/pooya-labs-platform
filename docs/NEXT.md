@@ -1,15 +1,12 @@
-## Current next action — complete owner-led Phase 7 acceptance (2026-11-10)
+## Current next action — P8-01 owner selects a design direction (2026-11-10)
 
-The P7-33 preparation step refreshes [ACCESSIBILITY-MANUAL-REVIEW.md](ACCESSIBILITY-MANUAL-REVIEW.md) from the latest dual-theme Browser QA artifact [13765540433](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767/artifacts/13765540433). It lists 87 distinct selectors across both themes (74 dark / 56 light), but every manual result remains pending.
+Pooya authorized Phase 8 design exploration. Review [PHASE-8-DESIGN-OPTIONS.md](PHASE-8-DESIGN-OPTIONS.md): A — Obsidian Editorial Systems (recommended), or B — Warm Editorial Gallery.
 
-1. Measure the rendered foreground/background ratio for every applicable selector in Persian/English, dark/light, desktop/mobile; resolve gradient, pseudo-element and overlap backgrounds, and record evidence in the matrix.
-2. Complete physical desktop and Android review, keyboard-only order, visible-focus checks, and screen-reader flow in Persian/English and both themes. Chromium emulation is not physical-device or assistive-technology acceptance.
-3. Review and approve the owner packet: biography/positioning, project order and contribution statements, public statuses, contact links, approved media, and the Novels decision. Keep Salon Booking publication permission pending until the salon owner approves.
-4. Complete authenticated LinkedIn Post Inspector and Meta Sharing Debugger/cache-refresh checks; user-agent simulation alone is not evidence that the social caches refreshed.
-5. Resolve Cloudflare's missing private Actions token/native push-trigger path only with owner approval; decide whether Apps Script production publishing is required. Rehearse documented rollback paths only after the relevant approval.
-6. Close the source/content and public/private asset audit. Do not begin Phase 8 redesign or Phase 9 project integration before mandatory Phase 7 gates; do not create a V1 release claim.
+The full code redesign does not start until Pooya selects A or B. After selection, P8-02 produces the complete bilingual responsive prototype for owner review round one. The final review round follows revisions and includes physical-device confirmation.
 
-Latest evidence: [Repository CI](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065743), [Browser QA](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767), [GitHub Pages deploy](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065770), and [dual-theme contrast matrix](ACCESSIBILITY-MANUAL-REVIEW.md).
+Phase 7's outstanding human acceptance and publication tasks continue in parallel; they remain blockers for V1 and are not considered approved by opening Phase 8.
+
+Latest baseline: [ORBIT fix and release commit](https://github.com/pooya-labs/pooya-labs-platform/commit/3888d0799afdf4c3bb702489b6f1fc22c98d1f3b), [GitHub Pages deployment](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42857733822), [post-merge Browser QA](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42857733886).
 
 ---
 
