@@ -124,6 +124,7 @@ try {
   page.on('pageerror', (error) => pageErrors.push(error.message));
 
   for (const route of routes) {
+    console.log('[portfolio-browser-qa] route start: ' + route.label);
     const targetUrl = new URL(route.path, baseUrl);
     const routeRecord = {
       route: route.label,
@@ -151,6 +152,7 @@ try {
       if (!response || !response.ok()) {
         addFailure(route, null, 'Document request did not return a successful HTTP response.');
         report.checks.push(routeRecord);
+    console.log('[portfolio-browser-qa] route complete: ' + route.label + ' (' + report.checks.length + '/' + routes.length + ')');
         continue;
       }
 
@@ -293,6 +295,7 @@ try {
       }
 
       for (const viewport of viewports) {
+        console.log('[portfolio-browser-qa] viewport start: ' + route.label + ' / ' + viewport.name);
         await page.setViewportSize({ width: viewport.width, height: viewport.height });
         await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
 
@@ -619,7 +622,7 @@ try {
             if (scroller instanceof HTMLElement) scroller.scrollTop = 0;
           });
         }
-        const axeResults = await new AxeBuilder({ page }).withTags(report.accessibility.tags).analyze();
+        const axeResults = await new AxeBuilder({ page }).withTags(report.accessibility.tags).options({ resultTypes: ['violations', 'incomplete'] }).analyze();
         const axeFindings = axeResults.violations.map((violation) => ({
           id: violation.id,
           impact: violation.impact ?? 'unknown',
@@ -638,7 +641,7 @@ try {
           await page.waitForFunction(() => document.querySelector('.portfolio-page')?.getAttribute('data-theme') === 'light');
           await page.waitForTimeout(400);
 
-          const lightThemeAxeResults = await new AxeBuilder({ page }).withTags(report.accessibility.tags).analyze();
+          const lightThemeAxeResults = await new AxeBuilder({ page }).withTags(report.accessibility.tags).options({ resultTypes: ['violations', 'incomplete'] }).analyze();
           const lightThemeAxeFindings = lightThemeAxeResults.violations.map((violation) => ({
             id: violation.id,
             impact: violation.impact ?? 'unknown',
@@ -747,6 +750,7 @@ try {
             addFailure(route, viewport.name, 'The case-study hero is missing its project-specific motion scene.');
           }
         }
+        console.log('[portfolio-browser-qa] viewport complete: ' + route.label + ' / ' + viewport.name);
       }
 
       if (route.label === 'orbit-en') {
@@ -785,6 +789,7 @@ try {
       }
     } catch (error) {
       addFailure(route, null, error instanceof Error ? error.message : String(error));
+      console.error('[portfolio-browser-qa] route error: ' + route.label + ': ' + (error instanceof Error ? error.stack ?? error.message : String(error)));
     }
 
     if (route.label === 'home-en') {
