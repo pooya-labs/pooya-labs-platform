@@ -1,3 +1,13 @@
+## Latest checkpoint — PR #50 merged; P7-26 handoff synchronized (2026-11-10)
+
+- PR [#50](https://github.com/pooya-labs/pooya-labs-platform/pull/50) merged into main as [a804267](https://github.com/pooya-labs/pooya-labs-platform/commit/a8042675b76e1785865b1956fb8904db788e0b2d).
+- Exact PR-head Repository CI [42727164323](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164323) and Portfolio Browser QA [42727164249](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164249) passed on head e58f284. Browser QA completed route, metadata, keyboard and performance steps.
+- The merged changes are documentation/state-only. No application source, independent upstream repo, secret, hosting setting or production deployment changed.
+- Preliminary asset/link checks found no sensitive credential filenames, 17/17 project registry URLs use HTTPS, 16/16 new-tab links carry rel attributes, and the public Novels catalog is empty. The public Salon Booking captures are customer-facing only; separate salon-owner permission and independent binary image review remain open.
+- All eight project review states remain needs-owner-review. Manual accessibility, physical device, authenticated social-cache, owner-content/privacy, deployment and rollback gates remain open.
+
+**Release status: pre-alpha / Phase 7.** No Phase 8, Phase 9 or V1 gate is closed by this documentation task.
+
 ## Latest checkpoint — P7-26 merged; security and owner-review records synchronized (2026-11-10)
 
 - PR [#50](https://github.com/pooya-labs/pooya-labs-platform/pull/50) merged as [a804267](https://github.com/pooya-labs/pooya-labs-platform/commit/a8042675b76e1785865b1956fb8904db788e0b2d). The six changed files are documentation and machine-readable project state only.
