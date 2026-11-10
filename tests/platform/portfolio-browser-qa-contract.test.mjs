@@ -294,3 +294,12 @@ test('Browser QA runs axe on every route and viewport in both dark and light the
   assert.ok(script.indexOf('const lightThemeAxeResults') < script.indexOf("await lightThemeButton.click();\n          await page.waitForFunction(() => document.querySelector('.portfolio-page')?.getAttribute('data-theme') === 'dark')"));
 });
 
+test('keyboard skip-link audit resets theme-toggle focus before the first Tab keypress', () => {
+  const focusReset = script.indexOf('if (active instanceof HTMLElement) active.blur();');
+  const firstTab = script.indexOf("await page.keyboard.press('Tab')");
+  assert.ok(focusReset >= 0, 'Browser QA must blur the focused theme toggle before keyboard-only navigation.');
+  assert.ok(firstTab > focusReset, 'The skip-link check must start from document body focus after theme audits.');
+  assert.match(script, /const scroller = document\.querySelector\('\.portfolio-page'\)/);
+  assert.match(script, /if \(scroller instanceof HTMLElement\) scroller\.scrollTop = 0/);
+});
+
