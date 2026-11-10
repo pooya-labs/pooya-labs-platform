@@ -140,6 +140,8 @@ The selectors are grouped by the UI family that needs to be inspected. The numbe
 - `.glass-controls > span:nth-child(1)` (2; pseudo-element)
 - `.glass-controls > span:nth-child(3)` (2; pseudo-element)
 - `.glass-footnote` (2; pseudo-element)
+- `span:nth-child(1) > b` (2; pseudo-element)
+- `span:nth-child(3) > b` (2; pseudo-element)
 
 ### AuraPulse motion scene
 
