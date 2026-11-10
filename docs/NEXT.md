@@ -1,3 +1,13 @@
+## Latest checkpoint — PR #50 merged; P7-26 complete (2026-11-10)
+
+PR [#50](https://github.com/pooya-labs/pooya-labs-platform/pull/50) merged as [a804267](https://github.com/pooya-labs/pooya-labs-platform/commit/a8042675b76e1785865b1956fb8904db788e0b2d). Its exact-head Repository CI [42727164323](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164323) and Portfolio Browser QA [42727164249](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164249) both passed. The changes are documentation/state-only; there is no new app deployment.
+
+**Preserved boundaries:** main uses active ruleset 26861856; ORBIT's patched Keycloak image is published and scanned but not promoted; GlobalCart's FX snapshot remains freshness-unverified; AetherFlow M08/matched-runner benchmark remains open. The asset preflight is preliminary only: binary image payloads were not re-opened, and Salon Booking owner permission remains pending.
+
+**Remaining Phase 7 gates:** manual contrast/focus/keyboard/screen-reader review; physical Android/browser acceptance; owner approval of biography, order, contributions, media and Novels; Salon Booking permission; authenticated social-cache validation; Cloudflare Git-trigger / Apps Script publishing decisions; controlled rollback rehearsal.
+
+Do not begin Phase 8 redesign, Phase 9 integration, or Phase 10 V1 publication until mandatory gates close.
+
 ## Latest checkpoint — PR #50 merged; P7-26 documentation work complete (2026-11-10)
 
 PR [#50](https://github.com/pooya-labs/pooya-labs-platform/pull/50) merged as [a804267](https://github.com/pooya-labs/pooya-labs-platform/commit/a8042675b76e1785865b1956fb8904db788e0b2d). Exact PR-head Repository CI [42727164323](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164323) and Portfolio Browser QA [42727164249](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42727164249) passed on e58f284. The PR was documentation/state-only and did not publish a new application build.
