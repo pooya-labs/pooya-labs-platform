@@ -282,8 +282,8 @@ test('Browser QA runs axe on every route and viewport in both dark and light the
   assert.match(script, /lightTheme: \{/);
   assert.match(script, /checks: 0/);
   assert.match(script, /const lightThemeButton = page\.locator\('\.portfolio-theme'\)/);
-  assert.match(script, /data-theme\) === 'light'/);
-  assert.match(script, /data-theme\) === 'dark'/);
+  assert.match(script, /getAttribute\('data-theme'\) === 'light'/);
+  assert.match(script, /getAttribute\('data-theme'\) === 'dark'/);
   assert.match(script, /const lightThemeAxeResults = await new AxeBuilder\(\{ page \}\)/);
   assert.match(script, /report\.accessibility\.lightTheme\.checks \+= 1/);
   assert.match(script, /report\.accessibility\.lightTheme\.incompleteRuleChecks \+= lightThemeAxeResults\.incomplete\.length/);
