@@ -35,6 +35,7 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [x] Move project data out of the portfolio component into a validated content registry with unique slugs and verified-link rules.
 - [x] Add verified repository and public preview links for the eight current projects.
 - [x] Add initial bilingual project case-study views with shareable query-string routes.
+- [x] Complete and regression-test portfolio-layer wiring for all eight projects: homepage cards expose each official demo, source repository, and bilingual in-site case study; every project has localized artwork, a source-backed dossier, and a bilingual architecture diagram. This does not embed independent application code or live APIs; deeper runtime integration remains Phase 9 under ADR-0001.
 - [x] Add project-specific challenge, approach, engineering highlights, and scope/boundary sections based on repository documentation.
 - [x] Expand all eight bilingual dossiers with source-backed role/attribution, architecture, implementation details, engineering decisions, verification evidence, and direct source/CI references.
 - [x] Add a per-project content audit that separates source-confirmed facts from the missing evidence and owner decisions needed before V1.
@@ -44,10 +45,10 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [ ] Confirm personal role/contribution wording for all eight projects; AetherFlow's current README does not identify an individual author or contribution split.
 - [ ] Complete the per-project screenshot, architecture-diagram, current-SHA verification, manual QA, and owner-acceptance tasks in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md).
 - [ ] Add any missing project outcomes or measured results only when the source repository provides reproducible evidence; never infer metrics.
-- [x] Add seven source-repository project-card/hero visuals pinned to immutable commits, bilingual alt text, lazy loading, responsive rendering, and graceful fallbacks.
+- [x] Add localized visual artwork to all eight project cards; seven assets come from their respective project repositories and AetherFlow's favicon-derived SVG is preserved in the platform repository at immutable commit `99dc3317afa180058def6f0d860e4b654be62ae2`. All cards use bilingual alt text, lazy loading, responsive rendering, and graceful fallbacks.
 - [x] Add real GlobalCart desktop/mobile storefront screenshots from its source repository, pinned to the same immutable source commit and shown in the GlobalCart case study.
 - [x] Add visually reviewed desktop/mobile UI screenshots for ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, and AuraPulse; pin every published image to an immutable portfolio commit and use bilingual alt text.
-- [ ] Capture AetherFlow desktop/mobile UI evidence after reconciling the public M07 badge with the audited M08 status.
+- [x] Capture and review AetherFlow desktop/mobile full-page public-site evidence in both locales, pinned to immutable platform commit `eba5e2d02047375ae8a42514f7bbb58c75106ba7`; retain the separate M08 matching-runner benchmark as an upstream release gate.
 - [ ] Add further feature-specific captures for ORBIT Incidents/Metrics/Logs/Traces, NexusCanvas rack/analysis/snapshot states, LuminaGlass export/Audio Lab/task-board states, and AuraPulse connected/fallback ticker states where useful.
 - [ ] Use only owner-approved, privacy-reviewed synthetic/redacted interface screenshots for Salon Booking.
 - [x] Add dynamic browser titles/descriptions, base Open Graph metadata, canonical URL updates, Person JSON-LD, and a branded SVG favicon.
