@@ -6,6 +6,7 @@ import { portfolioProjects } from './content/projects';
 import './styles.css';
 import './portfolio.css';
 import './novels.css';
+import './phase8-editorial.css';
 
 // Prevent restoring a stale mid-page position when opening a project URL directly.
 if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
