@@ -53,6 +53,16 @@ The current configuration and evidence are recorded in [GITHUB-REPOSITORY-GOVERN
 - The pattern-based credential scanner has documented limits: it does not inspect binary image contents or the full Git history and is not exhaustive. Manual public/private asset review remains open; the Salon Booking owner's separate permission for public case-study use is still required.
 - This documentation correction does not change repository settings, GitHub App permissions, secrets, or production deployment configuration.
 
+## Preliminary public-asset and external-link audit — 2026-11-10
+
+A read-only source-tree and reference audit was performed as preparation for the manual public/private asset-boundary review.
+
+- The tracked repository tree contains no filename matches for the reviewed sensitive patterns (`.env`, `.clasp.json`, `.clasprc.json`, private-key/certificate/keystore files, credential/service-account JSON, or Terraform state). This is a filename check, not a binary-content or Git-history scan.
+- The project registry contains 17 repository/preview/case-study destinations; all 17 use HTTPS. All 16 external anchors in `PortfolioHome.tsx` that set `target="_blank"` also set a `rel` attribute.
+- The public Novels tree currently contains an empty `catalog.json` plus `.gitkeep` placeholders only; there are no public manuscript or cover files.
+- The public Salon Booking capture directory contains only two full-page PNGs (desktop/mobile). The approved capture manifest records the customer-facing booking page only, with no admin route or customer records, and marks the assets visually/privacy reviewed. The salon owner's separate permission for portfolio publication remains pending.
+- The PNG payloads were not independently re-opened in this audit. The pattern-based scanner does not inspect binary image content. Do not mark the complete manual asset/privacy review as passed from these path and metadata checks alone.
+
 ## Threat scenarios and baseline controls
 
 | Threat | Baseline control before feature release |
