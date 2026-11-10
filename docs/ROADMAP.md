@@ -189,7 +189,7 @@ This is the second-to-last stage before V1. Phase 8 design exploration is owner-
 The remaining Phase 7 owner/device and publication gates continue in parallel and remain mandatory before V1. Their status is not changed by opening this design phase.
 
 - [ ] Revisit the full visual direction with Pooya, including identity, logo usage, typography, color system, hierarchy, spacing, page flow, responsive behavior, navigation, motion, and project-storytelling approach.
-- [ ] Compare at least two coherent design directions and agree on one before implementation.
+- [x] Compare two coherent design directions and document the trade-offs in [PHASE-8-DESIGN-OPTIONS.md](PHASE-8-DESIGN-OPTIONS.md); owner selection of A or B remains pending before implementation.
 - [ ] Redesign the entire portfolio consistently—not as isolated section patches—including homepage, navigation, project cards, case-study templates, media galleries, About, novels, contact, and footer.
 - [ ] Preserve correct content boundaries, verified links, RTL/LTR behavior, reduced motion, accessibility, and performance budgets throughout the redesign.
 - [ ] Publish a review preview and complete owner review round one on desktop and mobile.
