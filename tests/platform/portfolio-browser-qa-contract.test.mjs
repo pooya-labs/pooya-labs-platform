@@ -263,3 +263,18 @@ test('Browser QA audits raw HTML social metadata and locally built preview image
   assert.match(script, /socialCrawlerAudit\.passedChecks/);
   assert.match(script, /socialCrawlerAudit\.expectedChecks/);
 });
+
+test('visual evidence waits for the initial reveal, finite entrance animations, and hero images to settle', () => {
+  assert.match(script, /async function waitForSettledReveal\(page, selector\)/);
+  assert.match(script, /target\.classList\.contains\('is-visible'\)/);
+  assert.match(script, /getComputedStyle\(target\)\.opacity/);
+  assert.match(script, /target\.getAnimations\(\{ subtree: true \}\)/);
+  assert.match(script, /iterations !== Infinity/);
+  assert.match(script, /image\.decode\(\)\.catch\(\(\) => undefined\)/);
+  assert.match(script, /await waitForSettledReveal\(page, initialRevealSelector\)/);
+  assert.match(script, /\.portfolio-hero-copy\[data-reveal="hero-copy"\]/);
+  assert.match(script, /\.case-study-hero\[data-reveal="case-study-hero"\]/);
+  assert.match(script, /await waitForSettledReveal\(page, '\.portfolio-hero-art\[data-reveal="hero-showcase"\]'\)/);
+  assert.ok(script.indexOf('await waitForSettledReveal(page, initialRevealSelector)') < script.indexOf('await page.screenshot('));
+});
+
