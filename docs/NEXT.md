@@ -1,3 +1,18 @@
+## Current next action — finish owner-led Phase 7 acceptance (2026-11-10)
+
+The P7-32 automated engineering checkpoint is complete on main `5af6dd2ca19cdc87783f6312f890c6244e9240b1`: CI, dual-theme Browser QA, and GitHub Pages deployment passed. Continue with owner/human gates rather than another automated redesign round:
+
+1. Inspect the 36 incomplete axe contrast records in the dark theme and the 36 in the light theme. Review every gradient/pseudo-background text case visually; incomplete axe checks must not be treated as passes.
+2. Complete real-device review on desktop and physical Android, plus keyboard-only focus order and screen-reader flow in Persian/English and both themes. Chromium emulation does not replace physical-device or assistive-technology acceptance.
+3. Review and approve the owner packet: biography/positioning, project order and contribution statements, public statuses, contact links, approved media, and Novels decision. Keep Salon Booking publication permission pending until the salon owner approves.
+4. Complete authenticated LinkedIn Post Inspector and Meta Sharing Debugger/cache-refresh checks; the 34/34 user-agent simulation is not evidence that platform caches refreshed.
+5. Resolve Cloudflare's missing private Actions token/native push-trigger path with owner approval, decide whether Apps Script production publishing is needed and configure its private secrets only if required, then rehearse the documented rollback paths without destructive production action.
+6. Close the source/content and public/private asset audit. Do not begin Phase 8 redesign or Phase 9 project integration before mandatory Phase 7 gates; do not create a V1 release claim.
+
+Latest evidence: [Repository CI](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065743), [Browser QA](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767), [GitHub Pages deploy](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065770), and [Browser QA artifact 13765540433](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767/artifacts/13765540433).
+
+---
+
 ## Latest checkpoint — P7-30 complete; Browser QA waits for settled hero captures (2026-11-10)
 
 - PR [#59](https://github.com/pooya-labs/pooya-labs-platform/pull/59) was squash-merged to `main` as [`542baa7`](https://github.com/pooya-labs/pooya-labs-platform/commit/542baa7efd5b63b941eb34bbba90a60d047cfa2a).

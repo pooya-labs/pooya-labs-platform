@@ -1,3 +1,13 @@
+## 2026-11-10 — Light-theme contrast correction and dual-theme accessibility regression coverage
+
+- Merged PR [#62](https://github.com/pooya-labs/pooya-labs-platform/pull/62) and [#64](https://github.com/pooya-labs/pooya-labs-platform/pull/64): darkened light-theme emerald, hero-gradient and LTR headline colors; replaced the legacy low-contrast social-proof/scroll-cue overrides with the audited `--pf-dim` token; darkened navigation hover text. Added numeric WCAG AA contrast contracts for the corrected colors.
+- Merged PR [#63](https://github.com/pooya-labs/pooya-labs-platform/pull/63): Browser QA now runs axe in both color themes for every bilingual route and desktop/mobile viewport, preserves separate light-theme results, and reloads a fresh route before its keyboard skip-link test.
+- Exact-main commit `5af6dd2ca19cdc87783f6312f890c6244e9240b1` passed Repository CI [42815065743](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065743), Browser QA [42815065767](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767), and GitHub Pages deploy [42815065770](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065770).
+- QA artifact 13765540433 records 18/18 routes, 36/36 viewports, 18/18 keyboard skip-link checks, zero failures, 34/34 LinkedIn/Facebook user-agent checks, zero confirmed axe violations in either theme, and 36 incomplete contrast checks per theme that remain for human review.
+- The 20-sample performance baseline completed with zero failures and p75 CLS 0 across all three hosts. p75 TTFB/FCP/LCP: local 5/216/288 ms; GitHub Pages 47/292/340 ms; Cloudflare Pages 52/336/404 ms. Budgets remain report-only.
+- Cloudflare and Apps Script workflow preflights ran, but actual production publish jobs skipped because their required private Actions secrets are absent. No new deployment/version for those platforms is claimed.
+- Human contrast review, physical Android/browser acceptance, manual screen-reader review, owner content/media approvals, authenticated social-cache validation and rollback rehearsal remain open. No V1 release is approved.
+
 ## 2026-11-10 — Browser QA captures wait for settled hero reveals; Salon Booking screenshots re-opened
 
 - Merged PR [#59](https://github.com/pooya-labs/pooya-labs-platform/pull/59) as [`542baa7`](https://github.com/pooya-labs/pooya-labs-platform/commit/542baa7efd5b63b941eb34bbba90a60d047cfa2a).
