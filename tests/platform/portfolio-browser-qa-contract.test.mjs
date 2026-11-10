@@ -164,13 +164,16 @@ test('About visual evidence waits for the reveal transition and the supplied wor
 });
 
 
-test('the eight case-study heroes use product-specific motion scenes rather than a generic orbit', () => {
-  for (const slug of ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'global-cart', 'salon-booking']) {
+test('case-study heroes use AetherFlow product imagery and product-specific motion scenes elsewhere', () => {
+  for (const slug of ['orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'global-cart', 'salon-booking']) {
     assert.ok(portfolioCss.includes(`.scene-${slug}`), `Missing dedicated hero scene styles for ${slug}`);
+  }
+  for (const slug of ['aetherflow', 'orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'global-cart', 'salon-booking']) {
     assert.ok(portfolioCss.includes(`.card-scene-${slug}`), `Missing compact project-card motion for ${slug}`);
   }
   assert.match(portfolioSource, /function ProjectMotionScene/);
   assert.match(portfolioSource, /case-study-motion-art scene-\$\{slug\}/);
+  assert.match(portfolioSource, /caseStudyPageAsset \\? <img className="case-study-visual-image visual-interface case-study-page-preview"/);
   assert.match(portfolioSource, /<ProjectMotionScene slug=\{project\.slug\} \/>/);
   assert.match(portfolioSource, /<ProjectMotionScene slug=\{project\.slug\} compact \/>/);
   assert.match(portfolioSource, /market-simulated/);
@@ -189,8 +192,11 @@ test('mobile case-study screenshots allow native Android scroll chaining into th
   assert.match(script, /outerScrollTop > setup\.outerBefore/);
 });
 
-test('reduced-motion QA checks the replacement product-specific scene animations', () => {
+test('reduced-motion QA checks a case study that still uses motion and excludes the static AetherFlow image route', () => {
   assert.match(script, /\.case-study-motion-art \.scene-animated/);
+  assert.match(script, /route\.label === 'orbit-en'/);
+  assert.match(script, /heroImageState\.loaded/);
+  assert.match(script, /isAetherFlowPage/);
   assert.match(script, /reducedMotionAnimationName/);
   assert.match(portfolioCss, /\.case-study-motion-art \.scene-animated[\s\S]*?animation:none!important/);
 });
