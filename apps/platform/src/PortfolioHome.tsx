@@ -946,7 +946,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
                     onError={(event) => { event.currentTarget.remove(); event.currentTarget.parentElement?.classList.remove('has-visual'); }} />}
                   <ProjectMotionScene slug={project.slug} compact />
                   <div className="project-art-fallback" aria-hidden="true">
-                    <div className={`project-art-orbit art-${project.number}`} />
+                    <div className={`project-art-orbit-ring art-${project.number}`} />
                     <div className="project-art-core"><span>{project.name.slice(0, 1)}</span></div>
                   </div>
                   <span className="project-art-code">{project.tags[0].toUpperCase()}</span>
