@@ -1,3 +1,10 @@
+## 2026-11-10 — corrected security governance and owner-review source boundaries
+
+- Corrected the Security Model's stale statement that main was unprotected and that screenshot publishers pushed directly to main. The current ruleset 26861856 requires PR + both strict checks, and reviewed capture publishers use a single-repository GitHub App PR path.
+- Synchronized the owner-review packet with AetherFlow PR #18/#19, merged ORBIT PR #138 and its published-but-unpromoted patched Keycloak digest, and GlobalCart's FX source-timestamp regression.
+- Kept all eight project review states as needs-owner-review; no biography, featured order, contribution claim, media, or Salon Booking permission was approved by this documentation refresh.
+- No application code, upstream repository, credentials, GitHub settings, or production deployment changed.
+
 
 ## 2026-11-10 — refreshed read-only upstream source audit
 
