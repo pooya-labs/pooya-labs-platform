@@ -276,3 +276,19 @@ test('light-theme emerald accents and hero gradient meet WCAG AA contrast on pag
   }
 });
 
+test('light-theme social proof and scroll guidance use the AA-compliant secondary text token', () => {
+  assert.match(css, /\.portfolio-page\[data-theme="light"\] \.portfolio-social-proof,[\s\S]*?\.portfolio-page\[data-theme="light"\] \.portfolio-scroll-cue\s*\{\s*color:\s*var\(--pf-dim\)!important/);
+  assert.match(css, /\.portfolio-page\[data-theme="light"\] \.portfolio-nav a:hover\s*\{\s*color:\s*var\(--pf-emerald\)!important/);
+
+  const selector = '.portfolio-page[data-theme="light"] {';
+  const blocks = [...css.matchAll(/\.portfolio-page\[data-theme="light"\]\s*\{([^}]*)\}/g)];
+  const lightTheme = blocks.map((match) => match[1]).reverse()
+    .find((block) => /--pf-dim:\s*#[0-9a-f]{6}/i.test(block)) ?? '';
+  const dim = lightTheme.match(/--pf-dim:\s*(#[0-9a-f]{6})/i)?.[1];
+  assert.ok(dim, 'The light-theme secondary text token must be measurable');
+  for (const background of ['#f5f6f2', '#f0f3ee', '#e9eee9', '#fffffc']) {
+    const ratio = contrastRatio(dim, background);
+    assert.ok(ratio >= 4.5, 'Secondary label contrast against ' + background + ' is ' + ratio.toFixed(2) + ':1; expected at least 4.5:1');
+  }
+});
+
