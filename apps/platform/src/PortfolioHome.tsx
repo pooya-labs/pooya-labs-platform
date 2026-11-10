@@ -940,7 +940,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             {projects.map((project) => (
               <article className="portfolio-project-card" key={project.name}>
                 <div className="project-card-top"><span className="project-number">{project.number} / POOYA LABS</span><span className="project-status"><i />{project.status[language]}</span></div>
-                <div className={'project-art' + ((project.caseStudyHeroAsset ?? project.visualAsset) ? ' has-visual visual-' + (project.caseStudyHeroAsset ?? project.visualAsset)!.kind : '')}>
+                <div className={'project-art project-art-' + project.slug + ((project.caseStudyHeroAsset ?? project.visualAsset) ? ' has-visual visual-' + (project.caseStudyHeroAsset ?? project.visualAsset)!.kind : '')}>
                   {(project.caseStudyHeroAsset ?? project.visualAsset) && <img className="project-art-image" src={(project.caseStudyHeroAsset ?? project.visualAsset)!.url}
                     alt={(project.caseStudyHeroAsset ?? project.visualAsset)!.alt[language]} loading="lazy" decoding="async"
                     onError={(event) => { event.currentTarget.remove(); event.currentTarget.parentElement?.classList.remove('has-visual'); }} />}

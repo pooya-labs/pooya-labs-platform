@@ -314,6 +314,9 @@
   object-fit: cover;
   padding: 0;
 }
+.project-art-aetherflow .project-art-image {
+  object-position: top center;
+}
 .project-art.visual-illustration .project-art-image {
   object-fit: contain;
   padding: 8px 20px;
