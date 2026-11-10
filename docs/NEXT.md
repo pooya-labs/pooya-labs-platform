@@ -1,6 +1,6 @@
 ## Current next action — complete owner-led Phase 7 acceptance (2026-11-10)
 
-The P7-33 preparation step refreshes [ACCESSIBILITY-MANUAL-REVIEW.md](ACCESSIBILITY-MANUAL-REVIEW.md) from the latest dual-theme Browser QA artifact [13765540433](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767/artifacts/13765540433). It lists 87 distinct selectors across both themes (74 dark / 56 light), but every manual result remains pending.
+P7-33 is merged in PR [#66](https://github.com/pooya-labs/pooya-labs-platform/pull/66) as [17ca08d](https://github.com/pooya-labs/pooya-labs-platform/commit/17ca08d21ee91cd5ae22a32445f7e396a4282433). Its PR-head Repository CI [42852825087](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42852825087) and Browser QA [42852824850](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42852824850) passed. The matrix at [ACCESSIBILITY-MANUAL-REVIEW.md](ACCESSIBILITY-MANUAL-REVIEW.md) lists 87 distinct selectors across both themes (74 dark / 56 light); every human measurement remains pending.
 
 1. Measure the rendered foreground/background ratio for every applicable selector in Persian/English, dark/light, desktop/mobile; resolve gradient, pseudo-element and overlap backgrounds, and record evidence in the matrix.
 2. Complete physical desktop and Android review, keyboard-only order, visible-focus checks, and screen-reader flow in Persian/English and both themes. Chromium emulation is not physical-device or assistive-technology acceptance.
@@ -9,7 +9,7 @@ The P7-33 preparation step refreshes [ACCESSIBILITY-MANUAL-REVIEW.md](ACCESSIBIL
 5. Resolve Cloudflare's missing private Actions token/native push-trigger path only with owner approval; decide whether Apps Script production publishing is required. Rehearse documented rollback paths only after the relevant approval.
 6. Close the source/content and public/private asset audit. Do not begin Phase 8 redesign or Phase 9 project integration before mandatory Phase 7 gates; do not create a V1 release claim.
 
-Latest evidence: [Repository CI](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065743), [Browser QA](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767), [GitHub Pages deploy](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065770), and [dual-theme contrast matrix](ACCESSIBILITY-MANUAL-REVIEW.md).
+Latest evidence: [PR #66 merge](https://github.com/pooya-labs/pooya-labs-platform/commit/17ca08d21ee91cd5ae22a32445f7e396a4282433), [PR Repository CI](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42852825087), [PR Browser QA](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42852824850), and [dual-theme contrast matrix](ACCESSIBILITY-MANUAL-REVIEW.md).
 
 ---
 
