@@ -1,3 +1,12 @@
+## 2026-11-10 — Browser QA captures wait for settled hero reveals; Salon Booking screenshots re-opened
+
+- Merged PR [#59](https://github.com/pooya-labs/pooya-labs-platform/pull/59) as [`542baa7`](https://github.com/pooya-labs/pooya-labs-platform/commit/542baa7efd5b63b941eb34bbba90a60d047cfa2a).
+- Browser QA now waits for the initial visible hero/case-study reveal, full opacity, completion of finite entrance animations, and hero image decode before saving private screenshots. Infinite ambient animations remain active; the public application source was not changed.
+- PR-head Repository CI/Browser QA passed (runs 42806725019 and 42806724768). Post-merge main Repository CI, Browser QA, and Pages deploy passed (runs 42807667726, 42807667588, and 42807667809).
+- Post-merge report artifact 13760621268 confirms 18/18 routes, 36/36 viewports, zero failures, zero confirmed Axe violations, and 36 incomplete contrast checks reserved for human review. The 20-sample performance probe had zero failures and p75 CLS 0 on local, GitHub Pages, and Cloudflare Pages.
+- Cloudflare and Apps Script checks ran, but the actual production publish jobs were skipped because their required private Actions secrets are not configured. No new deployment/version is claimed for those hosts.
+- Re-opened Salon Booking's approved desktop/mobile full-page capture PNGs from artifact 13611818994. Only customer-facing booking/storefront content and business contact details were visible; no admin surface or customer appointment records were observed. Salon-owner publication permission remains pending; portfolio-wide binary review remains open.
+
 ## 2026-11-10 — AetherFlow homepage project card now uses its product screenshot
 
 - Merged PR [#57](https://github.com/pooya-labs/pooya-labs-platform/pull/57) as [`b137104`](https://github.com/pooya-labs/pooya-labs-platform/commit/b1371043199937f26d717c0518052f32d3f54758).
