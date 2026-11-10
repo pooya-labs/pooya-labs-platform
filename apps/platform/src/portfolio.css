@@ -3063,3 +3063,12 @@
   -webkit-text-fill-color:#205f49!important;
   text-shadow:none;
 }
+
+/* Keep the small social-proof and scroll-cue labels above WCAG AA in the ivory theme. */
+.portfolio-page[data-theme="light"] .portfolio-social-proof,
+.portfolio-page[data-theme="light"] .portfolio-scroll-cue {
+  color:var(--pf-dim)!important;
+}
+.portfolio-page[data-theme="light"] .portfolio-nav a:hover {
+  color:var(--pf-emerald)!important;
+}
