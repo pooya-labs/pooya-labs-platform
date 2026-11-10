@@ -1,3 +1,15 @@
+## Latest checkpoint — P7-34 PR #66 merged; post-merge handoff synchronized (2026-11-10)
+
+- PR [#66](https://github.com/pooya-labs/pooya-labs-platform/pull/66) merged into `main` as [`17ca08d`](https://github.com/pooya-labs/pooya-labs-platform/commit/17ca08d21ee91cd5ae22a32445f7e396a4282433). The six documentation/state files now contain the refreshed dual-theme contrast matrix and P7-33 handoff.
+- Exact PR-head Repository CI [42852825087](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42852825087) and Browser QA [42852824850](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42852824850) both passed on `86eeb7ce867bcb679885e81363eda28d11ea466b`; Browser QA artifact [13781048028](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42852824850/artifacts/13781048028).
+- Browser QA verified 18/18 routes, 36/36 desktop/mobile checks, 18/18 keyboard skip-link checks, 34/34 LinkedIn/Facebook user-agent simulations, zero failures, no horizontal overflow, and zero confirmed Axe violations in either theme. The 36 incomplete contrast checks per theme remain human-review items.
+- Three-host performance testing completed 20 samples per host with zero failures and p75 CLS 0. p75 TTFB/FCP/LCP: local 4/212/264 ms; GitHub Pages 88/280/352 ms; Cloudflare Pages 58/412/416 ms.
+- The AetherFlow homepage card screenshot decoded at 1440px natural width and top alignment in Persian and English desktop/mobile captures. No application code changed in PR #66; the previously merged card implementation remains the deployed source baseline.
+
+**Release status: pre-alpha / Phase 7.** Human contrast/focus/keyboard/screen-reader review, physical-device acceptance, owner content/media approvals, Salon Booking publication permission, authenticated social-cache validation, hosting remediation, and rollback rehearsal remain open. Phase 8/9 and V1 are not approved.
+
+---
+
 ## Latest checkpoint — P7-33 dual-theme contrast review matrix refreshed (2026-11-10)
 
 - Refreshed [ACCESSIBILITY-MANUAL-REVIEW.md](ACCESSIBILITY-MANUAL-REVIEW.md) against exact-main Browser QA run [42815065767](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767), artifact [13765540433](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767/artifacts/13765540433), source commit `5af6dd2ca19cdc87783f6312f890c6244e9240b1`.
