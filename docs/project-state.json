@@ -8,8 +8,8 @@
   "phaseName": "Pre-redesign readiness and engineering closeout",
   "currentTask": {
     "id": "P7-26",
-    "title": "Correct stale security-governance and owner-review documentation",
-    "status": "Documentation changes prepared on branch docs/p7-26-security-and-owner-packet-refresh-2026-11-10. Security Model now matches active ruleset 26861856 and GitHub App PR-based capture publishing; owner-review packet reflects current AetherFlow, ORBIT and GlobalCart evidence. Owner approval, manual privacy/asset review and all release gates remain open. No application code or external configuration changed."
+    "title": "Correct stale security-governance and owner-review documentation; run preliminary asset/link audit",
+    "status": "Prepared on branch docs/p7-26-security-and-owner-packet-refresh-2026-11-10. Security Model and Owner Review Packet now reflect current governance and AetherFlow/ORBIT/GlobalCart evidence. Read-only source-tree audit found no sensitive credential filename matches, 17/17 project registry URLs use HTTPS, 16/16 new-tab anchors have rel attributes, and the public Novels catalog is empty. Two Salon Booking customer-facing captures are documented; separate salon-owner permission and independent binary image review remain open. No application code or external configuration changed."
   },
   "lastCheckpointDate": "2026-11-10",
   "latestVerifiedCodeCommit": "e5ef638917d3204025d062af939cf01a28689d3a",
@@ -305,7 +305,28 @@
     "latestPR48BrowserQa": "42723837697;success;PR-head-1c2f11ed9c15c38326df6a1e5d4b03a46574361f;responsive-route-metadata-keyboard-and-cold-performance-steps-completed",
     "latestMainDocumentationCommit": "b3e548ead98103535e7524bf550b7d6689d30720",
     "latestSecurityModelGovernanceSync": "ruleset-26861856-active;PR-plus-strict-checks;app-publishers-PR-only;negative-check-enforcement-unexercised",
-    "latestOwnerReviewPacketSourceSync": "2026-11-10;AetherFlow-PR18-19;ORBIT-PR138-merged-patched-digest-not-promoted;GlobalCart-FX-timestamp-regression;all-eight-owner-review-states-pending"
+    "latestOwnerReviewPacketSourceSync": "2026-11-10;AetherFlow-PR18-19;ORBIT-PR138-merged-patched-digest-not-promoted;GlobalCart-FX-timestamp-regression;all-eight-owner-review-states-pending",
+    "preliminaryPublicAssetAndLinkAudit": {
+      "checkedDate": "2026-11-10",
+      "mode": "read-only-source-tree-and-text-reference-check",
+      "sensitiveCredentialFilenameMatches": 0,
+      "sensitiveFilenamePatterns": [
+        ".env",
+        ".clasp.json",
+        ".clasprc.json",
+        "private-key/certificate/keystore",
+        "credential/service-account JSON",
+        "Terraform state"
+      ],
+      "projectRegistryHttpsDestinations": "17-of-17",
+      "targetBlankAnchorsWithRel": "16-of-16",
+      "publicNovelCatalog": "empty;only-.gitkeep-placeholders-for-covers-and-manuscripts",
+      "salonBookingPublicCaptures": "2-fullpage-PNGs-customer-facing-desktop-mobile-only",
+      "salonBookingManifest": "visual-and-privacy-reviewed;no-admin-route-or-customer-records-observed-by-capture-runner",
+      "binaryImageContentReview": "not-reperformed-in-this-pass",
+      "salonOwnerPublicationPermission": "pending",
+      "overallManualAssetBoundaryReview": "open"
+    }
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -390,9 +411,10 @@
     "Main branch protection/ruleset is active and was exercised through PR #46 with both required checks and a normal squash merge. The main ruleset's negative failed/pending-check path has not been tested deliberately.",
     "AetherFlow PR #19/#20 are merged and bounded CLI response handling is on main; M08 still requires a matching EPYC 9V45 five-repeat benchmark and remains experimental, not a stable v1.0.0 production release.",
     "ORBIT PR #138 is merged and the patched Keycloak 26.8.2/Guava 33.7.2-jre immutable digest passed strict AMD64/ARM64 and deferred-identity scans; production Compose remains pinned to Keycloak 26.8.1 and promotion/deployment is not performed.",
-    "GlobalCart main includes bot-authored FX snapshot commit 2ef95faf [skip ci]; its embedded sourceUpdatedAt regressed by 80 minutes versus the previous snapshot and no deployment of the new snapshot is verified. Treat FX freshness as unresolved."
+    "GlobalCart main includes bot-authored FX snapshot commit 2ef95faf [skip ci]; its embedded sourceUpdatedAt regressed by 80 minutes versus the previous snapshot and no deployment of the new snapshot is verified. Treat FX freshness as unresolved.",
+    "Manual binary public-asset review remains open: the source-tree scan found no sensitive credential filenames and the approved Salon Booking manifest describes two customer-facing privacy-reviewed captures, but the PNG payloads were not independently re-opened in this pass. Salon-owner publication permission is separately pending."
   ],
-  "nextAction": "Continue P7 Phase 7 autonomous public/private asset and external-link safety review; preserve unapproved Salon Booking media and binary/manual privacy checks. Owner-only gates remain manual contrast/focus/keyboard/screen-reader review, physical Android/browser acceptance, content/media/Novels approval, authenticated social-cache validation, deployment remediation and rollback rehearsal. Do not begin Phase 8/9 or V1 until mandatory gates close.",
+  "nextAction": "Continue manual/binary public asset review and resolve Salon Booking owner permission; then close manual contrast/focus/keyboard/screen-reader review and physical Android/browser acceptance, owner content/media approvals, authenticated social-cache validation, deployment remediation and rollback rehearsal. Do not begin Phase 8/9 or V1 before mandatory gates close.",
   "securityBaseline": {
     "threatModelDrafted": true,
     "dataClassificationDrafted": true,
