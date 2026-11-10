@@ -1,3 +1,19 @@
+## Latest checkpoint — P7-31 contrast-review matrix prepared (2026-11-10)
+
+- Added [ACCESSIBILITY-MANUAL-REVIEW.md](ACCESSIBILITY-MANUAL-REVIEW.md), a selector-level human review matrix sourced from post-merge Browser QA run [42807667588](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42807667588), artifact [13760621268](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42807667588/artifacts/13760621268).
+- The source report covers 18 localized routes and 36 desktop/mobile route-view combinations. Axe reported zero confirmed violations and 36 incomplete `color-contrast` checks; these are not confirmed failures or passes. The 36 records contain 229 node occurrences across 73 unique CSS target selectors.
+- The matrix groups all 73 selectors by shared shell, homepage, case-study/media areas, and project-specific visuals; it records why Axe could not determine each background (pseudo-elements: 129 nodes; gradients: 82; overlap: 16; partial overlap: 2).
+- Manual measurements remain pending. The source report does not prove dark/light theme contrast, physical-device rendering, keyboard focus, or screen-reader acceptance. The matrix explicitly requires Persian/English, dark/light, desktop/mobile, worst-case rendered background and visible-focus checks.
+- PR #60 synchronized the previous P7-30 status and capture audit; it was merged as [`32de2af`](https://github.com/pooya-labs/pooya-labs-platform/commit/32de2af3bf101a7ae4f80e966a9b42f97b8c1f28). PR-head CI [42809224957](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42809224957) and Browser QA [42809224891](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42809224891) passed on `bbafcad44ff9e2b3656755a95283f6cf92b4b12a`.
+
+**Release status: pre-alpha / Phase 7.** This completes preparation of the contrast review matrix only. It does not close the manual contrast, keyboard, focus, screen-reader, physical-device, owner-approval, or release gates.
+
+## Next work — execute the manual accessibility review
+
+The selector-level contrast review matrix is prepared at [ACCESSIBILITY-MANUAL-REVIEW.md](ACCESSIBILITY-MANUAL-REVIEW.md). It is a worklist, not a pass record. Human review must measure the rendered foreground/background pairs across Persian and English, dark and light themes, and desktop/mobile; resolve gradient, pseudo-element and overlap backgrounds; and record actual contrast ratios and evidence. Continue keyboard-only, visible-focus, and screen-reader-flow review with the exact browser/device/screen-reader combinations.
+
+Keep physical Android/browser acceptance, owner content/media approval, Salon Booking owner permission, authenticated LinkedIn/Meta cache refresh, owner-gated Cloudflare/Apps Script deployment setup, and rollback rehearsal open. Do not start Phase 8 redesign, Phase 9 integration, or Phase 10 V1 publication until Phase 7 exit criteria are met.
+
 ## Latest checkpoint — P7-30 complete; Browser QA waits for settled hero captures (2026-11-10)
 
 - PR [#59](https://github.com/pooya-labs/pooya-labs-platform/pull/59) was squash-merged to `main` as [`542baa7`](https://github.com/pooya-labs/pooya-labs-platform/commit/542baa7efd5b63b941eb34bbba90a60d047cfa2a).
