@@ -1,4 +1,15 @@
 
+## Latest checkpoint — P7-25 merged; handoff synchronized (2026-11-10)
+
+- PR [#48](https://github.com/pooya-labs/pooya-labs-platform/pull/48) merged normally into `main` as [`b3e548e`](https://github.com/pooya-labs/pooya-labs-platform/commit/b3e548ead98103535e7524bf550b7d6689d30720). The seven changed paths are documentation/README and machine-readable project state only.
+- Exact PR-head Repository CI [42723838058](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42723838058) and Portfolio Browser QA [42723837697](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42723837697) both passed on `1c2f11e`. Browser QA completed route/metadata/keyboard checks and cold-route, GitHub Pages and Cloudflare Pages performance steps. The main branch merge commit is documentation-only; this PR does not claim a new app build/deployment.
+- The read-only eight-repository inventory and corrected AetherFlow/ORBIT/GlobalCart boundaries are in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md). No independent repository was modified.
+- AetherFlow M08 remains open pending the matching EPYC 9V45 benchmark. ORBIT's patched Keycloak 26.8.2 digest is published and verified but production Compose remains on 26.8.1. GlobalCart's newest FX data snapshot remains freshness-unverified due to its backward source timestamp and skipped CI.
+- Platform application-source deployment remains unchanged: GitHub Pages' latest verified build includes the `e5ef6389` application source, and Cloudflare's latest verified deployment remains `ed73cc8e` from the same source. The platform still lacks verified native Cloudflare Git-push publishing and Apps Script stable Web App publishing; both are gated by private configuration.
+- Remaining Phase 7 gates are unchanged: manual contrast/focus/keyboard/screen-reader review (36 incomplete Axe contrast records), physical Android/browser acceptance, owner content/order/role/media/Novels approvals, Salon Booking privacy permission, authenticated social-cache validation, deployment remediation and rollback rehearsal.
+
+**Release status: pre-alpha / Phase 7.** PR #48 closes the source-inventory documentation task only; it does not authorize Phase 8, Phase 9, or V1.
+
 ## Latest checkpoint — P7-25 upstream source audit refreshed (2026-11-10)
 
 - The current platform `main` checkpoint before this documentation refresh is [`b1db0ccc0b0d`](https://github.com/pooya-labs/pooya-labs-platform/commit/b1db0ccc0b0d2f554338ef0553af342f8c72fd48), following merged PR #47. There are no open platform PRs at the start of this task. The current P7-25 branch changes documentation/project state only; it does not change React/UI source, workflows, secrets, hosting configuration, or production deployments.
