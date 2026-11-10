@@ -119,14 +119,14 @@ test('reviewed project interface screenshots are embedded in both static case-st
   assert.ok(!aetherFlow.includes('interface-captures/aetherflow/aetherflow-mobile.png'));
 });
 
-test('AetherFlow case-study hero uses the approved desktop product screenshot in both locales', { skip: !rootHtml }, async () => {
-  const sourceUrl = 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/eba5e2d02047375ae8a42514f7bbb58c75106ba7/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png';
+test('AetherFlow case-study hero loads the approved local desktop screenshot in both locales', { skip: !rootHtml }, async () => {
+  const localAsset = '/pooya-labs-platform/interface-captures/aetherflow/aetherflow-fullpage-desktop.png';
   for (const route of ['projects/aetherflow/index.html', 'en/projects/aetherflow/index.html']) {
     const html = await readFile(new URL(route, outputRoot), 'utf8');
     assert.ok(html.includes('case-study-page-preview'), route + ' must render a real product screenshot in the hero');
-    assert.ok(html.includes(sourceUrl), route + ' must use the immutable approved AetherFlow screenshot');
+    assert.ok(html.includes(localAsset), route + ' must load the image from the same published site origin');
     assert.ok(html.includes('case-study-visual-image visual-interface case-study-page-preview'), route + ' must use the product-page image treatment');
-    assert.ok(!html.includes('case-study-motion-art'), route + ' must not render the abstract logo-like hero scene over the screenshot');
+    assert.ok(!html.includes('case-study-motion-art'), route + ' must replace the abstract logo-like hero scene with the screenshot');
     assert.ok(html.includes(route.startsWith('en/')
       ? 'AetherFlow desktop product page showing its workflow preview'
       : 'نمای واقعی دسکتاپ صفحهٔ اصلی AetherFlow'));
