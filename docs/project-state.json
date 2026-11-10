@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P7-26",
     "title": "Correct stale security-governance and owner-review documentation; run preliminary asset/link audit",
-    "status": "Prepared on branch docs/p7-26-security-and-owner-packet-refresh-2026-11-10. Security Model and Owner Review Packet now reflect current governance and AetherFlow/ORBIT/GlobalCart evidence. Read-only source-tree audit found no sensitive credential filename matches, 17/17 project registry URLs use HTTPS, 16/16 new-tab anchors have rel attributes, and the public Novels catalog is empty. Two Salon Booking customer-facing captures are documented; separate salon-owner permission and independent binary image review remain open. No application code or external configuration changed."
+    "status": "Completed: PR #50 merged into main as a8042675b76e1785865b1956fb8904db788e0b2d. Exact PR-head Repository CI 42727164323 and Portfolio Browser QA 42727164249 passed on e58f284. Documentation corrections and the preliminary source-tree/link preflight are recorded; binary image review and Salon Booking owner permission remain open."
   },
   "lastCheckpointDate": "2026-11-10",
   "latestVerifiedCodeCommit": "e5ef638917d3204025d062af939cf01a28689d3a",
@@ -61,7 +61,7 @@
     "documentationCheckpoint": "passed-run-42496528868-on-b429828f0ed8f967317934fffed32daffa7b6a5f;state-roadmap-next-status-and-ADR-synchronized",
     "githubActionsRuntimeWarning": "none-observed-in-latest-successful-run-42502717615",
     "latestVerifiedTestCommit": "558970fefad25fa16632a8d740eb1a7a32c8f3bd",
-    "latestDocumentationCheckpoint": "P7-25-PR48-merged-b3e548e;PR-CI-42723838058-success;PR-Browser-QA-42723837697-success;docs-only-no-app-deployment",
+    "latestDocumentationCheckpoint": "P7-26-PR50-merged-a804267;PR-CI-42727164323-success;PR-Browser-QA-42727164249-success;docs-only-no-app-deployment",
     "latestDetailedAxeReport": "run-42514976406;zero-confirmed-axe-violations;36-incomplete-axe-checks;artifact-13631024148",
     "latestRepositoryCiRun": "42666914377;success;exact-main-5321d3f44298a9d81d3fbc8f0712d4bc9acb8962",
     "latestBrowserQaRun": "42666914164;success;exact-main-5321d3f44298a9d81d3fbc8f0712d4bc9acb8962;18-of-18-routes;36-of-36-viewports;34-of-34-social-crawler-checks;zero-failures;zero-confirmed-Axe-violations;36-incomplete-contrast-checks;artifact-13697461514",
@@ -326,7 +326,9 @@
       "binaryImageContentReview": "not-reperformed-in-this-pass",
       "salonOwnerPublicationPermission": "pending",
       "overallManualAssetBoundaryReview": "open"
-    }
+    },
+    "latestPR50RepositoryCi": "42727164323;success;PR-head-e58f2849ddf1053136ab40263b0cff99a7b64952",
+    "latestPR50BrowserQa": "42727164249;success;PR-head-e58f2849ddf1053136ab40263b0cff99a7b64952;responsive-route-metadata-keyboard-and-local-GitHubPages-Cloudflare-performance-steps-completed"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
@@ -818,7 +820,7 @@
     ],
     "projectIntegration": "deferred-to-phase-9-after-phase-8-redesign-approval; all-eight-project portfolio integration pending"
   },
-  "latestBranchHeadAtCheckpoint": "10a29aae9a5c2ca9721e05d78b4e3708ccf37ed3",
+  "latestBranchHeadAtCheckpoint": "a8042675b76e1785865b1956fb8904db788e0b2d",
   "accessibility": {
     "skipNavigation": "bilingual-home-interactive-case-study-and-static-case-study-fixed-position-visible-on-focus",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -1203,12 +1205,12 @@
     "manualValidation": "Latest Browser QA artifact 13618234167 requires detailed axe review; manual contrast, keyboard-only, screen-reader, real-device, and external social-crawler validation remain open."
   },
   "latestTask": "P7-26",
-  "latestTaskBranch": "docs/p7-26-security-and-owner-packet-refresh-2026-11-10",
+  "latestTaskBranch": "main",
   "lastUpdated": "2026-11-10",
-  "latestDocumentationCommit": "10a29aae9a5c2ca9721e05d78b4e3708ccf37ed3",
-  "latestDocumentationCheckpoint": "P7-26-security-model-and-owner-packet-doc-only-branch;checks-pending",
-  "latestRepositoryCiRun": "42723838058;success;PR48-head-1c2f11ed9c15c38326df6a1e5d4b03a46574361f",
-  "latestBrowserQaRun": "42723837697;success;PR48-head-1c2f11ed9c15c38326df6a1e5d4b03a46574361f",
+  "latestDocumentationCommit": "a8042675b76e1785865b1956fb8904db788e0b2d",
+  "latestDocumentationCheckpoint": "P7-26-PR50-merged-main-a804267;PR-CI-42727164323-success;PR-Browser-QA-42727164249-success;exact-PR-head-e58f284;docs-only-no-app-deploy",
+  "latestRepositoryCiRun": "42727164323;success;PR50-head-e58f2849ddf1053136ab40263b0cff99a7b64952",
+  "latestBrowserQaRun": "42727164249;success;PR50-head-e58f2849ddf1053136ab40263b0cff99a7b64952",
   "latestPerformanceBaseline": {
     "run": "42624753816",
     "artifact": "13678551079",
@@ -1578,5 +1580,5 @@
     "license": "No explicit repository reuse license; no root LICENSE file",
     "limitations": "Does not override third-party dependencies, upstream code, contributor rights, client-controlled assets, separate agreements, or applicable law"
   },
-  "latestMainCommit": "e8b736a97bfadf04eda18d9fb259acef94b62924"
+  "latestMainCommit": "a8042675b76e1785865b1956fb8904db788e0b2d"
 }
