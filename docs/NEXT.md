@@ -1,3 +1,9 @@
+## Latest owner correction — AuraPulse and GlobalCart project-card motion
+
+- AuraPulse must read as a multi-row market / paper-trading dashboard, not one row of bars with a decorative line. The mini scene now has BTC, ETH, and SOL rows, separate animated micro-bars, and a visible SIM marker.
+- GlobalCart must read as an actual marketplace storefront. Its compact motion now shows search, category navigation, a cart count, and a three-item product grid.
+- Keep the correction scoped to the compact homepage card windows. Continue on `redesign/live-site-baseline`, publish Preview only, and defer tests/QA until `بازطراحی پایان یافت`.
+
 ## Latest motion adjustment — rays start from the bottom edge
 
 - The proof-section ray field now begins at one shared point near the bottom center (`y=382`), with the curves fanning outward earlier toward the upper edges.
