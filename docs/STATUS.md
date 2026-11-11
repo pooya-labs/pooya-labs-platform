@@ -723,3 +723,11 @@ Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for th
 - Root cause: inherited logical `inset-inline-start:-38px` remained active while the v5 override also set physical `right:-10px`; in LTR this constrained both sides and stretched the absolutely positioned card into a wide blank bar.
 - Reset the inherited logical start inset, position the card using logical inline-end only, and constrain it to content width with a bounded max-width. Kept the change scoped to the Workspace v5 preview card.
 - Preview-only on `redesign/live-site-baseline`; no production/main changes and no broad QA.
+
+
+## Workspace v6 — brand mark and internal app visual alignment (2026-11-12)
+
+- Replaced the handmade P glyph in the Workspace header with the repository's official `apps/platform/public/brand/pooya-monogram-tile.svg` asset.
+- Updated the shared internal app-window frame, titlebar, controls, content surfaces, and responsive sizing to match the current Workspace visual language.
+- Restyled Settings, Terminal, overview, and file utility surfaces in the same design system while preserving their existing React behavior and local-only terminal command restrictions.
+- Added matching light/dark surface treatments and narrow-screen window sizing. Preview-only; production/main unchanged.
