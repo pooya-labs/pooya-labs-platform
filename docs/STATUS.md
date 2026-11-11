@@ -1,3 +1,10 @@
+## Workspace design language reset v2 (2026-11-12)
+
+- Replaced the previous sci-fi/glass/gradient visual direction with a restrained editorial product interface: warm neutral surfaces, structured typography, thin borders, simple cards, and controlled forest-green accents.
+- Reworked the hero, workspace app cards, status/activity panels, top bar, side rail, and mobile dock visual language.
+- Added a coordinated graphite/soft-sage dark theme while retaining the warm light theme; existing app actions, command palette, window manager, RPC status, language and theme controls remain intact.
+- Preview-only on `redesign/live-site-baseline`; no production merge/deploy and no broad QA.
+
 ## Complete Workspace dashboard redesign (2026-11-11)
 
 - Corrected scope: redesigned the actual Workspace landing dashboard, not only the Files app surface.
