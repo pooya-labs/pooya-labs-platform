@@ -1,3 +1,9 @@
+## Corrected target — fade the whole foundation section edge
+
+- The visible dividing line was the `.portfolio-proof` section's bottom border. That border is removed and the section's bottom edge is masked to fade into the page surface.
+- The internal curved SVG baseline is restored to its earlier appearance; future changes should target the actual visual surface the owner identifies.
+- Continue focused changes on `redesign/live-site-baseline`. No QA until `بازطراحی پایان یافت`; Preview only.
+
 ## Most recent owner correction — fade the foundation animation baseline
 
 - The lower curved line beneath the animated foundation graphic now fades smoothly into the page instead of reading as a separate divider.
