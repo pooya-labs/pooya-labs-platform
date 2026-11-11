@@ -1,3 +1,9 @@
+## Workspace redesign v3 — structural reset (2026-11-12)
+
+- Replaced the prior restrained dashboard treatment with a materially different portfolio-aligned command center: stronger editorial hierarchy, a deep forest-green hero, a live-looking workspace snapshot composition, summary metrics, and a more deliberate app-launch grid.
+- Rebuilt the hero visual from the legacy orbit/monogram motif into a compact product dashboard preview; retained existing launch actions, RPC state, command palette, language/theme switching, and local-preview disclosures.
+- Added dedicated desktop/mobile and light/dark styling under a new `workspace-v3` scope. Preview-only; no production merge/deploy and no broad QA.
+
 ## Workspace design language reset v2 (2026-11-12)
 
 - Replaced the previous sci-fi/glass/gradient visual direction with a restrained editorial product interface: warm neutral surfaces, structured typography, thin borders, simple cards, and controlled forest-green accents.
