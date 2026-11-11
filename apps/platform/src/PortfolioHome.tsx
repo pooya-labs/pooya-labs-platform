@@ -377,6 +377,65 @@ export function ProjectCaseStudy({ project, language, onLanguageChange, theme, o
   const caseStudyPageAsset = project.caseStudyPageAsset;
   const desktopCapture = project.caseStudyMedia?.find((item) => item.device === 'desktop') ?? project.caseStudyHeroAsset;
   const mobileCaptures = (project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop');
+
+  useEffect(() => {
+    const galleries = Array.from(document.querySelectorAll<HTMLElement>(
+      '.portfolio-case-study .case-study-media-card.device-mobile [data-gallery-scroll="true"]',
+    ));
+    const cleanups: Array<() => void> = [];
+
+    for (const gallery of galleries) {
+      const pageScroller = gallery.closest<HTMLElement>('.portfolio-page');
+      if (!pageScroller) continue;
+
+      let previousY: number | null = null;
+
+      const handleTouchStart = (event: TouchEvent) => {
+        previousY = event.touches.length === 1 ? event.touches[0].clientY : null;
+      };
+
+      const handleTouchMove = (event: TouchEvent) => {
+        if (event.touches.length !== 1 || previousY === null) return;
+
+        const currentY = event.touches[0].clientY;
+        const deltaY = previousY - currentY;
+        previousY = currentY;
+        if (Math.abs(deltaY) < 1) return;
+
+        const maxGalleryScroll = Math.max(0, gallery.scrollHeight - gallery.clientHeight);
+        const atGalleryTop = gallery.scrollTop <= 1;
+        const atGalleryBottom = gallery.scrollTop >= maxGalleryScroll - 1;
+        const shouldHandoffToPage = (deltaY > 0 && atGalleryBottom) || (deltaY < 0 && atGalleryTop);
+
+        if (!shouldHandoffToPage) return;
+
+        // The nested image frame has reached its edge. Cancel its native boundary gesture
+        // and continue the same finger movement on the outer portfolio scroll surface.
+        if (event.cancelable) event.preventDefault();
+        const maxPageScroll = Math.max(0, pageScroller.scrollHeight - pageScroller.clientHeight);
+        pageScroller.scrollTop = Math.max(0, Math.min(maxPageScroll, pageScroller.scrollTop + deltaY));
+      };
+
+      const handleTouchEnd = () => {
+        previousY = null;
+      };
+
+      gallery.addEventListener('touchstart', handleTouchStart, { passive: true });
+      gallery.addEventListener('touchmove', handleTouchMove, { passive: false });
+      gallery.addEventListener('touchend', handleTouchEnd, { passive: true });
+      gallery.addEventListener('touchcancel', handleTouchEnd, { passive: true });
+
+      cleanups.push(() => {
+        gallery.removeEventListener('touchstart', handleTouchStart);
+        gallery.removeEventListener('touchmove', handleTouchMove);
+        gallery.removeEventListener('touchend', handleTouchEnd);
+        gallery.removeEventListener('touchcancel', handleTouchEnd);
+      });
+    }
+
+    return () => cleanups.forEach((cleanup) => cleanup());
+  }, [project.slug]);
+
   return (
     <div className={`portfolio-page portfolio-case-study ${rtl ? 'is-rtl' : 'is-ltr'}`} data-theme={theme}>
       <a className="portfolio-skip-link" href="#main-content">{t.skipToContent}</a>
