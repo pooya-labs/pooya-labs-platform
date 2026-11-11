@@ -463,3 +463,10 @@ The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDI
 - Replaced the Salon Booking homepage Projects-card image with the Shayan Salon website hero asset (`shayan-hero.webp`). The previous full-page capture remains unchanged in the case-study gallery.
 
 **Next:** review the fresh Cloudflare Pages preview on the target device and provide the next focused correction. Do not run tests or QA until «بازطراحی پایان یافت».
+
+
+## Root-cause correction — Salon Booking homepage image (2026-11-11)
+
+- The prior data-only change did not affect the homepage because the Projects-card JSX preferred `caseStudyHeroAsset` before `visualAsset`.
+- Fixed the card renderer in `apps/platform/src/PortfolioHome.tsx` to prefer `visualAsset`; the Salon Booking card now uses `shayan-hero.webp`, while case-study media remains unchanged.
+- A fresh preview is required for owner review. No tests or QA before «بازطراحی پایان یافت».
