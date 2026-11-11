@@ -630,3 +630,10 @@
 - Strengthened animated paths, chart bars, tiny labels, code syntax, borders, and card copy in light mode.
 - Preserved scene layout, dark miniature surfaces, animation keyframes, timing, and movement.
 - Preview only; no tests or QA executed by owner-directed workflow.
+
+
+## 2026-11-11 — Foundation animation baseline fade
+
+- Replaced the crisp lower curved divider-like stroke with a very subtle emerald gradient that fades toward both ends.
+- Left the radial animation, particles, typography, spacing, and surrounding layout unchanged.
+- Preview only; no tests or QA executed.
