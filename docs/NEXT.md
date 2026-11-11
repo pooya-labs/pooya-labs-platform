@@ -1,3 +1,10 @@
+## Next checkpoint — review refreshed portfolio copy and skills
+
+- The current portfolio snapshot is 8 projects: ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, GlobalCart, and Salon Booking are complete; AetherFlow is the only active development project.
+- The Skills section now lists 53 repository-backed technologies/capabilities across six bilingual groups. Treat the list as demonstrated project experience, not a self-rated proficiency scale.
+- Check the updated project summaries and case-study details in the Cloudflare Preview. Any owner feedback should be applied directly to `redesign/live-site-baseline`.
+- Keep production and `main` untouched. Defer tests, CI, accessibility sweeps, and broad QA until the owner says `بازطراحی پایان یافت`.
+
 ## Owner identity clarification — restore full name (2026-11-11)
 
 - The `PROJECT OWNER` name must display the full identity: `POOYA GOODARZI` / `پویا گودرزی`, not the surname alone.
