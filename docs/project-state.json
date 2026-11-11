@@ -1826,23 +1826,22 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Replace Salon Booking homepage card artwork with a real top-of-homepage screenshot",
+    "title": "Replace incorrect Pooya Monogram footer name with Goodarzi",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
-      "apps/platform/src/content/projects.ts",
-      "apps/platform/public/interface-captures/salon-booking/salon-booking-home-hero.png"
+      "apps/platform/src/PortfolioHome.tsx"
     ],
-    "sourceAsset": "https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/ca0c71abac5fc3d838a3505cebf0bcbda195136f/apps/platform/public/interface-captures/salon-booking/salon-booking-home-hero.png",
-    "capture": {
-      "url": "https://pooya-labs.github.io/salon-booking/",
-      "viewport": "1440x1000",
-      "scope": "top viewport of live homepage"
-    },
-    "scope": "Only Salon Booking homepage-card visualAsset changes; its full-page desktop/mobile case-study captures and every other project card remain unchanged",
+    "scope": "Shared owner attribution component; both footer placements and Persian/English modes display Goodarzi. Creator/maintainer byline and monogram artwork remain unchanged.",
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
   },
   "events": [
+    {
+      "date": "2026-11-11",
+      "event": "Owner requested the footer display name be Goodarzi instead of Pooya Monogram. Updated the shared footer attribution label across both placements and locales, preserving the creator/maintainer byline and existing artwork.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
+    },
     {
       "date": "2026-11-11",
       "event": "Pinned the newly added Salon Booking homepage screenshot to its immutable source commit after the first Cloudflare Preview build correctly enforced the repository's immutable-asset URL contract.",
