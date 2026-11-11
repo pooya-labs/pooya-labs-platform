@@ -54,6 +54,11 @@ const projectEntries: PortfolioProject[] = [
       kind: 'interface',
       alt: { fa: 'نمای واقعی رابط دسکتاپ AetherFlow با نمونهٔ گردش‌کار و وضعیت Workerها', en: 'Actual AetherFlow desktop interface showing the workflow preview and worker states' },
     },
+    caseStudyHeroAsset: {
+      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/eba5e2d02047375ae8a42514f7bbb58c75106ba7/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png',
+      kind: 'interface',
+      alt: { fa: 'نمای واقعی رابط دسکتاپ AetherFlow با نمونهٔ گردش‌کار و وضعیت Workerها', en: 'Actual AetherFlow desktop interface showing the workflow preview and worker states' },
+    },
     caseStudyPageAsset: {
       path: 'interface-captures/aetherflow/aetherflow-fullpage-desktop.png',
       sourceUrl: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/eba5e2d02047375ae8a42514f7bbb58c75106ba7/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png',
