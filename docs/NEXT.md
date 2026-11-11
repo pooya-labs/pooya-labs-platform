@@ -1,3 +1,9 @@
+# Next — review Workspace v6 internal apps
+
+- Review the official Pooya Monogram in the Workspace header.
+- Open Settings, Terminal, Files, and Overview; confirm their window chrome and content now match the redesigned Workspace in both themes and on mobile.
+- Keep changes on `redesign/live-site-baseline`; Preview only. Do not merge or deploy Production.
+
 # Next — review Workspace preview status card
 
 - Check that the “System status” floating chip is now compact and attached to the lower-right edge of the snapshot preview in both English (LTR) and Persian (RTL).
