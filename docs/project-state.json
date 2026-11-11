@@ -7,12 +7,12 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-08-WORKSPACE-DESIGN-RESET-V2",
-    "title": "Reset Workspace visual language to restrained editorial product UI",
+    "id": "P8-09-WORKSPACE-STRUCTURAL-REDESIGN-V3",
+    "title": "Replace the legacy Workspace dashboard structure with a portfolio-aligned command center",
     "status": "Implemented on preview branch; deployment pending."
   },
   "lastCheckpointDate": "2026-11-12",
-  "latestVerifiedCodeCommit": "a0a7ee049e1d5d28276ae4c812ef65802bd368e6",
+  "latestVerifiedCodeCommit": "5f7a6144f1371cffcd9011762234074110e4e33f",
   "tests": {
     "repositoryCi": "passed-main-run-42815065743;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1;typecheck;three-target-build;security-scan;contract-tests",
     "transportHarnessContract": "passed",
@@ -1944,6 +1944,13 @@
     "status": "implemented-preview-branch",
     "appCommit": "0f59da7fed0d17b56eaa3a5befee0b4c3042d09b",
     "stylesCommit": "a0a7ee049e1d5d28276ae4c812ef65802bd368e6",
+    "productionChanged": false,
+    "qa": "deferred-until-owner-says-redesign-complete"
+  },
+  "workspaceRedesignV3": {
+    "status": "implemented-preview-branch",
+    "appCommit": "90222be993de38734101af8cd83fa11c7d8ec1b3",
+    "stylesCommit": "5f7a6144f1371cffcd9011762234074110e4e33f",
     "productionChanged": false,
     "qa": "deferred-until-owner-says-redesign-complete"
   }
