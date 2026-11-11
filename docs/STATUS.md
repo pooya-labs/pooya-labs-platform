@@ -1,3 +1,10 @@
+## Preview publish — portfolio refresh deployed successfully (2026-11-11)
+
+- Cloudflare Pages preview build and deploy both succeeded for commit `33d7eedc9bdbb9330df68cd9f6c86ea8acc57f5a`.
+- Preview URL: `https://099b2bd5.pooya-labs-platform.pages.dev`.
+- The typed case-study dossier interface and the AetherFlow entry were restored before this successful build. The homepage, categorized skills, project status cards, and updated case studies are included in this preview.
+- This is a Preview deployment from `redesign/live-site-baseline`, not Production. No tests, CI workflows, browser QA, or visual QA were run; those remain deferred until `بازطراحی پایان یافت`.
+
 ## Latest checkpoint — portfolio content and repository-derived skills refreshed (2026-11-11)
 
 - Updated the homepage and project directory to reflect the owner's current portfolio status: 8 projects total, 7 completed, and AetherFlow as the only project still in active development.
