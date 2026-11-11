@@ -1,3 +1,9 @@
+## 2026-11-11 — Official GitHub and Telegram marks
+
+- Replaced generic social symbols with recognizable GitHub and Telegram brand SVG marks across the hero, contact actions, and footer, including hydrated case-study pages.
+- Preserved the Pooya Labs owner monogram and Instagram glyph.
+- Preview-only; no tests or QA run.
+
 ## 2026-11-11 — AI engineering, UI/UX, motion, and language refinement
 
 - Repositioned the bilingual portfolio hero and About section around AI engineering, software engineering, UI/UX, and motion-rich product experiences.
