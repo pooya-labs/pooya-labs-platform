@@ -634,7 +634,8 @@ try {
                     touch.send('Input.synthesizeScrollGesture', {
                       x,
                       y: startY,
-                      yDistance: 180,
+                      // A negative distance moves the emulated finger upward, matching the primary swipe.
+                      yDistance: -180,
                       speed: 900,
                       gestureSourceType: 'touch',
                       preventFling: true,
