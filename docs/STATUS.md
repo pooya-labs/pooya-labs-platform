@@ -527,3 +527,10 @@ Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for th
 - Added corresponding light-theme surface colors so the same fade remains continuous in both themes.
 - Kept the shared desktop SVG, focal point, ray paths, particles, and animation timing unchanged. Desktop styling is untouched.
 - Preview only; no tests, browser QA, or physical Android visual verification were run.
+
+## 2026-11-11 — Restore desktop-style mobile foundation framing
+
+- Removed the dark left/right surface overlays and the lower tinted overlay that made the purple radial artwork appear to darken before fading.
+- Restored the foundation section's native desktop background and outer section mask on mobile.
+- Kept the centered magnified mobile SVG crop, while using alpha-only horizontal edge fading combined with the existing top fade. The artwork now fades transparently into the section instead of being covered by a dark color.
+- The shared SVG, focal origin, rays, particles, and animation timing remain unchanged. Preview only; no tests, browser QA, or physical Android visual verification were run.
