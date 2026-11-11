@@ -7,9 +7,9 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-NOVELS-UPLOAD-INTEGRATION",
-    "title": "Connect uploaded Ghazal and Gavazn books to the public Novels library",
-    "status": "Implemented on preview branch; Cloudflare preview pending."
+    "id": "P8-WORKSPACE-OWNER-SIGN-IN",
+    "title": "Add a server-verified, database-free owner sign-in gate to Workspace",
+    "status": "Frontend and Cloudflare Pages Functions committed on preview branch; Preview secrets and owner sign-in verification pending."
   },
   "lastCheckpointDate": "2026-11-12",
   "latestVerifiedCodeCommit": "780cd900bc8cc26807203f32946e936a10d9f332",
@@ -2022,5 +2022,6 @@
     "behaviorChanged": false,
     "productionChanged": false,
     "qa": "owner-review-pending"
-  }
+  },
+  "latestCodeCommit": "8e8a4c08c697e63fb3a4f7bd4727318a0c3a1bc7"
 }

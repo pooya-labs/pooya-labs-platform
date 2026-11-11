@@ -59,7 +59,17 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [x] Add a repeatable local Chromium Browser QA gate that reads the raw static HTML response under LinkedInBot and Facebook externalhit User-Agent strings on all 17 public routes (34 checks), validates title/description, canonical/og:url parity, and fetches each locally built Open Graph PNG to verify HTTP 200, PNG signature, and 1200×627 dimensions. This is a build-regression guard; it does not replace production-host audits, authenticated platform debuggers, or cache-refresh confirmation.
 - [ ] Validate the cached cards in the authenticated LinkedIn Post Inspector and Meta Sharing Debugger, request cache refresh where available, and record each result.
 
-## Phase 4 — Secondary workspace boundary (closed for V1 scope)
+## Phase 4 — Secondary workspace boundary (reopened for owner sign-in)
+
+- [x] Keep the public portfolio as the primary visitor experience; the existing Spatial OS shell remains a separate, secondary experience.
+- [x] Do not add public visitor accounts, a generic SaaS dashboard, or an owner CMS to the portfolio V1.
+- [x] Add a bilingual login screen before opening the Workspace, with no credential storage in the browser.
+- [x] Add Cloudflare Pages Functions for server-side credential verification, signed HttpOnly session cookies, session checks, and logout; no database is required.
+- [x] Keep username/password values out of the repository and frontend bundle; use Cloudflare Pages Preview Secret variables.
+- [ ] Configure the two Preview secrets and verify owner sign-in/logout on a fresh Cloudflare Preview deployment.
+- [ ] If Workspace is later enabled on GitHub Pages or Apps Script, design and verify a host-specific server-side authorization adapter first.
+
+**Scope and security boundary:** this is a lightweight owner-only entry gate for the Workspace interface, not a guarantee that static frontend code/assets are private. Do not place sensitive data in the client bundle. Any future private data or privileged API must independently enforce the signed session on the server.
 
 - [x] Keep the public portfolio as the primary visitor experience; the existing Spatial OS shell remains a separate, secondary experience.
 - [x] Do not add public visitor accounts, a generic SaaS dashboard, or an owner CMS to the portfolio V1.

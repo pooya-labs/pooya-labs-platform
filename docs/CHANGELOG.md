@@ -1,3 +1,11 @@
+# 2026-11-12 — Add private Workspace sign-in gate
+
+- Added a responsive Persian/English login screen before entering the secondary Workspace.
+- Added Cloudflare Pages Functions for credential verification, HMAC-signed seven-day HttpOnly session cookies, session checks, and logout; no database or client-side credential persistence.
+- Credentials are not present in source control. Cloudflare Preview must be configured with WORKSPACE_USERNAME and WORKSPACE_PASSWORD Secret variables before the login flow can be verified.
+- This protects entry to the Workspace UI only; static SPA code remains public. Future private APIs must enforce the session server-side.
+- Preview branch only; no Production or main changes. Runtime verification is pending Preview secret setup.
+
 # 2026-11-12 — Connect uploaded novels to the public library
 
 - Added the «گوزن» and «غزال» cover and PDF assets to the platform's public novel directory, reusing the optimized WebP cover blobs.
