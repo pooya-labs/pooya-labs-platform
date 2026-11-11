@@ -841,7 +841,7 @@
     ],
     "projectIntegration": "deferred-to-phase-9-after-phase-8-redesign-approval; all-eight-project portfolio integration pending"
   },
-  "latestBranchHeadAtCheckpoint": "3b758f182ab0d635bd3369515c144976314e04d0",
+  "latestBranchHeadAtCheckpoint": "56fc32c772785d23fde1eb15f839d66c5fb2bc9e",
   "accessibility": {
     "skipNavigation": "browser-qa-passed-main-run-42815065767;18-of-18-routes;fresh-document-before-first-tab;visible-focus-and-main-target-correct",
     "reducedMotion": "skip-link-transition-disabled-under-prefers-reduced-motion",
@@ -1259,28 +1259,22 @@
     "commitsAheadOfPreviousAppCheckpoint": 8
   },
   "latestOwnerFeedback": {
-    "date": "2026-11-08",
-    "task": "P7 visual feedback round 3",
+    "date": "2026-11-11",
+    "task": "AuraPulse and GlobalCart compact homepage project-card animations",
     "requests": [
-      "fix project architecture text overflow",
-      "redesign header and color system",
-      "replace logo and make brand consistent",
-      "rework lower/footer section",
-      "add Telegram and Instagram contact buttons",
-      "recreate Stripe-inspired radial section with headline and metrics",
-      "slow hero screenshot animation",
-      "fix direct-route page opening in the middle"
+      "Replace AuraPulse's single row of bars and unrelated line with a multi-row market dashboard that represents the product.",
+      "Replace GlobalCart's abstract floating cards and basket with a compact visual that clearly represents the marketplace."
     ],
-    "implementation": "Three visual feedback/implementation cycles are merged on main; the latest branch includes Systems in Motion, the four-card craft gallery, bidirectional headline isolation, scroll verification, and the emerald About mark. Formal owner visual approval remains pending.",
-    "ownerApproval": "pending-live-desktop-mobile-visual-review",
-    "automatedValidation": "Repository CI 42483757067 passed; Browser QA 42483757051 passed on 17 routes and 34 desktop/mobile viewport checks; GitHub Pages deploy 42483757053 passed.",
-    "manualValidation": "Latest Browser QA artifact 13618234167 requires detailed axe review; manual contrast, keyboard-only, screen-reader, real-device, and external social-crawler validation remain open."
+    "implementation": "AuraPulse now shows simulated BTC, ETH, and SOL market rows with separate animated micro-candles and SIM/PAPER TRADING labels. GlobalCart now shows a miniature marketplace storefront with product search, category navigation, a cart count, and distinct audio/device/home product tiles. Only compact homepage card scenes changed.",
+    "ownerApproval": "pending-preview-review",
+    "automatedValidation": "not-run-by-owner-redesign-workflow;deferred-until-بازطراحی-پایان-یافت",
+    "manualValidation": "pending-owner-review-on-Cloudflare-preview"
   },
-  "latestTask": "P8-01",
-  "latestTaskBranch": "phase-8/design-direction-review",
+  "latestTask": "Homepage compact motion scenes — AuraPulse and GlobalCart",
+  "latestTaskBranch": "redesign/live-site-baseline",
   "lastUpdated": "2026-11-11",
-  "latestDocumentationCommit": "3888d0799afdf4c3bb702489b6f1fc22c98d1f3b",
-  "latestDocumentationCheckpoint": "P8-01-owner-authorized-phase8-entry;two-design-directions-prepared;owner-selection-pending;phase7-carryover-gates-open",
+  "latestDocumentationCommit": "56fc32c772785d23fde1eb15f839d66c5fb2bc9e",
+  "latestDocumentationCheckpoint": "2026-11-11-owner-corrected-AuraPulse-and-GlobalCart-homepage-mini-scenes;preview-only;owner-review-pending",
   "latestRepositoryCiRun": "42815065743;success;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1",
   "latestBrowserQaRun": "42815065767;success;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1;artifact-13765540433",
   "latestPerformanceBaseline": {
@@ -1800,6 +1794,12 @@
       "event": "Owner reported that the narrow mobile product screenshot captures intercept scrolling and make it difficult to continue down the project detail page. Added invisible outer side gutters for document scrolling while retaining a centered independent inner image scroller.",
       "branch": "redesign/live-site-baseline",
       "status": "implemented-preview-pending-owner-review"
+    },
+    {
+      "date": "2026-11-11",
+      "event": "Owner reported that AuraPulse's one-row candle strip and unrelated line did not represent the product, and GlobalCart's abstract mini-scene did not match the marketplace. Rebuilt both compact homepage scenes as a multi-row simulated trading terminal and a miniature product storefront.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
     }
   ],
   "ownerRedesignWorkflow": {
@@ -1817,19 +1817,20 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Separate Android page-scroll gutters from centered product-image scrolling",
+    "title": "Align AuraPulse and GlobalCart homepage mini-scenes with product identity",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
+      "apps/platform/src/PortfolioHome.tsx",
       "apps/platform/src/portfolio.css"
     ],
     "scope": [
-      "widen mobile media section invisibly",
-      "center a narrower inner vertical image scroller",
-      "allow swipes in side gutters to scroll the main page",
-      "preserve image scrolling in the center",
-      "leave desktop and non-touch layouts unchanged"
+      "AuraPulse: replace one row of candles and unrelated decorative line with three market rows",
+      "AuraPulse: show BTC, ETH, and SOL with clearly simulated paper-trading context",
+      "GlobalCart: replace abstract floating product blocks with an actual miniature storefront",
+      "GlobalCart: show search, category navigation, cart count, and distinct product cards",
+      "preserve all other project card layouts and project-detail animations"
     ],
-    "implementation": "On coarse-pointer screens up to 680px, the media section extends 28px beyond the content column. The mobile capture frame is narrower than its card, centered, and vertically scrollable; the remaining transparent side gutters are outside that frame and therefore scroll the main document.",
+    "implementation": "The AuraPulse compact scene is a three-row market terminal with independent animated micro-candles and explicit SIM/PAPER TRADING labels. The GlobalCart compact scene is a miniature marketplace UI with search, categories, cart count, and distinct audio/device/home product imagery. Only the two compact homepage card scenes were changed.",
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
   }
