@@ -5,17 +5,38 @@ export interface CaseStudyDossier {
   architecture: LocalizedText;
   implementation: { fa: string[]; en: string[] };
   decisions: { fa: string[]; en: string[] };
-  verification: {
+  verification: { fa: string[]; en: string[] };
+  references: CaseStudyReference[];
+}
+
+export const coreDossiers = {
+  aetherflow: {
+    role: { fa: "AetherFlow یکی از پروژه‌های مهندسی سازمان Pooya Labs است؛ محدوده و پیشرفت آن در README و نقشه راه مخزن ثبت می‌شود.", en: "AetherFlow is a Pooya Labs engineering project; its scope and progress are documented in the repository README and roadmap." },
+    architecture: { fa: "هسته ناهمگام Rust/Tokio و کنترل‌پلین Axum روی PostgreSQL پایدار و NATS JetStream قرار دارند. Outbox/Inbox تحویل حداقل یک‌باره را ممکن می‌کند؛ Wasmtime، CLI، SDK تایپ‌شده Rust، OpenAPI و OpenTelemetry لایه‌های توسعه و عملیات‌اند.", en: "An asynchronous Rust/Tokio core and Axum control plane sit over durable PostgreSQL and NATS JetStream. Outbox/Inbox supports at-least-once delivery; Wasmtime, a CLI, typed Rust SDK, OpenAPI, and OpenTelemetry provide extension and operations layers." },
+    implementation: {
+      fa: ["چرخه عمر پایدار Workflow/Task، رویدادهای قابل ممیزی و aggregation تراکنشی.", "Workerهای بازیابی‌پذیر با lease، heartbeat، epoch fencing و retry محدود.", "API نسخه‌دار برای workflow، task، worker و tenant؛ ده جدول با FORCE RLS.", "تفکیک نقش migration از runtime و اعتبارنامه‌های operator/tenant.", "لاگ JSON، tracing هم‌بسته، metrics محدود و خروجی اختیاری OTLP.", "endpoint اختیاری Prometheus برای Worker مستقل Rust؛ فقط loopback، احراز هویت‌شده و به‌صورت پیش‌فرض خاموش.", "شمارنده‌های چرخه عمر اتصال NATS در سطح همان process؛ بدون ادعای metrics مربوط به API یا تجمیع بین replicaها."],
+      en: ["Durable workflow/task lifecycles, auditable events, and transactional aggregation.", "Recoverable workers with leases, heartbeats, epoch fencing, and bounded retries.", "Versioned workflow/task/worker/tenant API; ten tables with FORCE RLS.", "Separate migration/runtime roles and operator/tenant credentials.", "JSON logs, correlated tracing, bounded metrics, and opt-in OTLP.", "Optional Prometheus endpoint for the standalone Rust worker; loopback-only, authenticated, and disabled by default.", "Process-local NATS connection lifecycle counters; no claim of API-process metrics or cross-replica aggregation."]
+    },
+    decisions: {
+      fa: ["تضمین at-least-once است، نه exactly-once عمومی؛ اثر جانبی بیرونی به idempotency برنامه نیاز دارد.", "پروژه experimental است؛ Compose و CI به معنی میزبانی production نیستند.", "بنچمارک فقط روی fingerprint منطبق مقایسه می‌شود و SLO تولیدی نیست.", "RPO/RTO، PITR/WAL archive و آزمون‌های عملیاتی بیشتر هنوز باز هستند."],
+      en: ["The guarantee is at-least-once, not universal exactly-once; external effects need application-level idempotency.", "The project remains experimental; Compose and CI are not production hosting.", "Benchmarks compare only matching fingerprints and are not production SLOs.", "RPO/RTO, PITR/WAL archiving, and more operational drills remain open."]
+    },
+    verification: {
       fa: ["M00 تا M07 تکمیل شده‌اند و M08 همچنان تنها مسیر توسعهٔ فعال پروژه است؛ نسخه ۱٫۰٫۰ منتشر نشده است.", "PR #32 endpoint اختیاری Prometheus را برای Worker مستقل Rust اضافه کرد؛ endpoint فقط روی loopback، با Bearer token و به‌صورت پیش‌فرض خاموش است و digest توکن نگه‌داری می‌شود.", "PR #33 شمارنده‌های چرخه عمر اتصال NATS را در سطح process اضافه کرد؛ این داده‌ها metrics مربوط به API یا تجمیع بین replicaها نیستند.", "PR #34 پوشش CI برای احراز هویت mutual TLS سمت client در NATS را اضافه کرد؛ این تغییر به معنی تنظیم policy سمت سرور در production نیست.", "ماتریس دقیق main روی commit نهایی: Rust CI با ۲۱/۲۱ مرحله، PostgreSQL/JetStream با ۳۵/۳۵ مرحله، Security و Pages موفق شدند.", "باقی‌مانده‌های M08 شامل سناریوهای عملیاتی و بازیابی بیشتر است؛ پروژه همچنان experimental است و آماده‌بودن production ادعا نمی‌شود."],
       en: ["M00–M07 are complete; M08 remains the only active development track. AetherFlow has not released v1.0.0.", "PR #32 added an opt-in Prometheus endpoint for the standalone Rust worker; it is loopback-only, Bearer-authenticated, disabled by default, and stores a token digest.", "PR #33 exposed NATS connection lifecycle counters at process scope; these are not API-process metrics or cross-replica aggregation.", "PR #34 added CI coverage for NATS client mutual-TLS authentication; it does not establish production server-side NATS policy.", "The exact final-main matrix passed: Rust CI 21/21 quality steps, PostgreSQL/JetStream 35/35 steps, Security, and Pages.", "Further operational and recovery scenarios remain part of M08. The project remains experimental and is not described as production-ready."]
     },
-    
     references: [
       { label: { fa: "README و وضعیت", en: "README and status" }, url: "https://github.com/pooya-labs/aetherflow/blob/main/README.md" },
       { label: { fa: "نقشه راه", en: "Roadmap" }, url: "https://github.com/pooya-labs/aetherflow/blob/main/ROADMAP.md" },
       { label: { fa: "OpenAPI", en: "OpenAPI" }, url: "https://github.com/pooya-labs/aetherflow/blob/main/docs/api/openapi.yaml" },
       { label: { fa: "گزارش بنچمارک", en: "Benchmark report" }, url: "https://github.com/pooya-labs/aetherflow/blob/main/docs/performance/end-to-end-load.md" },
-      { label: { fa: "تست API restart", en: "API restart recovery test" }, url: "https://github.com/pooya-labs/aetherflow/actions/runs/42011508896" }
+      { label: { fa: "PR #32 — Prometheus برای Worker", en: "PR #32 — Worker Prometheus endpoint" }, url: "https://github.com/pooya-labs/aetherflow/pull/32" },
+      { label: { fa: "PR #33 — شمارنده‌های اتصال NATS", en: "PR #33 — NATS connection counters" }, url: "https://github.com/pooya-labs/aetherflow/pull/33" },
+      { label: { fa: "PR #34 — آزمون mutual TLS", en: "PR #34 — mutual TLS tests" }, url: "https://github.com/pooya-labs/aetherflow/pull/34" },
+      { label: { fa: "Rust CI", en: "Rust CI" }, url: "https://github.com/pooya-labs/aetherflow/actions/runs/43041020304" },
+      { label: { fa: "PostgreSQL و JetStream CI", en: "PostgreSQL and JetStream CI" }, url: "https://github.com/pooya-labs/aetherflow/actions/runs/43041020474" },
+      { label: { fa: "Security", en: "Security" }, url: "https://github.com/pooya-labs/aetherflow/actions/runs/43041020411" },
+      { label: { fa: "انتشار Pages", en: "Pages deployment" }, url: "https://github.com/pooya-labs/aetherflow/actions/runs/43041018506" }
     ]
   },
   orbit: {
