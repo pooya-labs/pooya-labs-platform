@@ -678,3 +678,9 @@
 - Added left/right gradient fades to the magnified mobile radial animation to remove the visibly cropped ends.
 - Replaced the narrow-screen outer section mask with layered surface and bottom gradients, avoiding the Android mask-compositing artifact at the lower edge.
 - Matched overlay colors for the light theme while preserving the shared desktop artwork, single-point origin, rays, particles, and animation timing. Preview only; no tests or QA executed.
+
+## 2026-11-11 — Restore desktop-style mobile foundation framing
+
+- Removed the mobile dark-tinted left/right overlays and the extra bottom overlay that caused an unwanted dark-to-purple transition over the radial animation.
+- Restored the original section background and outer mask behavior shared with desktop, with a transparent horizontal edge fade on the magnified mobile visual.
+- Preserved the SVG artwork, origin, rays, particles, and animation timing. Preview only; no tests or QA executed.
