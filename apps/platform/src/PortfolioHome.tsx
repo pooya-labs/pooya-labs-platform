@@ -234,11 +234,32 @@ function ProjectMotionScene({ slug, compact = false }: { slug: string; compact?:
   if (compact) {
     return (
       <div className={`project-card-motion card-scene-${slug}`} aria-hidden="true">
-        {slug === 'aetherflow' && <><i className="mini-flow-node" /><i className="mini-flow-edge" /><i className="mini-flow-node second" /><i className="mini-flow-edge second" /><i className="mini-flow-node third" /><b className="mini-flow-packet" /></>}
-        {slug === 'orbit' && <><i className="mini-orbit-ring" /><i className="mini-orbit-ring second" /><b className="mini-orbit-pulse" /><span className="mini-orbit-bars"><i /><i /><i /><i /><i /></span></>}
-        {slug === 'pooya-os' && <><i className="mini-os-window back" /><i className="mini-os-window front" /><b className="mini-os-cursor" /></>}
-        {slug === 'nexus-canvas' && <><i className="mini-nexus-edge one" /><i className="mini-nexus-edge two" /><i className="mini-nexus-edge three" /><b className="mini-nexus-node one" /><b className="mini-nexus-node two" /><b className="mini-nexus-node three" /><b className="mini-nexus-node four" /></>}
-        {slug === 'lumina-glass' && <><i className="mini-glass-orb" /><i className="mini-glass-orbit one" /><i className="mini-glass-orbit two" /><b className="mini-glass-sheen" /></>}
+        {slug === 'aetherflow' && <div className="mini-flow-console">
+          <div className="mini-scene-head"><span className="mini-scene-live" />WORKFLOW RUN <b>LIVE</b></div>
+          <div className="mini-flow-track"><div><i>↳</i><b>TRIGGER</b><small>event</small></div><span /><div><i>01</i><b>WORKER</b><small>execute</small></div><span /><div><i>✓</i><b>COMMIT</b><small>persist</small></div></div>
+          <div className="mini-flow-foot"><span>RETRY</span><i /><i /><i /><b>3 STEPS</b></div>
+        </div>}
+        {slug === 'orbit' && <div className="mini-orbit-console">
+          <div className="mini-scene-head"><span className="mini-scene-live" />SERVICE OBSERVABILITY <b>DEMO</b></div>
+          <div className="mini-orbit-metrics"><div><small>HEALTH</small><strong>99.9%</strong><i>OPERATIONAL</i></div><div><small>INCIDENTS</small><strong>01</strong><i>MONITORING</i></div></div>
+          <div className="mini-orbit-chart"><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /></div>
+          <div className="mini-orbit-log"><span />trace.span.completed <b>12ms</b></div>
+        </div>}
+        {slug === 'pooya-os' && <div className="mini-os-desktop">
+          <div className="mini-os-topbar"><b>P</b><span>POOYA.OS</span><i>LOCAL WORKSPACE</i></div>
+          <div className="mini-os-body"><div className="mini-os-sidebar"><i /><i /><i /><i /></div><div className="mini-os-apps"><div><i className="files" /><b>FILES</b></div><div><i className="terminal" /><b>TERMINAL</b></div><div><i className="studio" /><b>STUDIO</b></div><div><i className="settings" /><b>SETTINGS</b></div></div></div>
+          <div className="mini-os-dock"><i /><i /><i /><i /></div>
+        </div>}
+        {slug === 'nexus-canvas' && <div className="mini-nexus-canvas">
+          <div className="mini-scene-head">NEXUS CANVAS <b>GRAPH / 04</b></div>
+          <div className="mini-nexus-graph"><i className="edge a" /><i className="edge b" /><i className="edge c" /><i className="edge d" /><span className="node gateway">API</span><span className="node worker">JOB</span><span className="node service">CORE</span><span className="node store">DB</span></div>
+          <div className="mini-nexus-foot"><span>4 NODES</span><span>3 CONNECTIONS</span><b>SYNCED</b></div>
+        </div>}
+        {slug === 'lumina-glass' && <div className="mini-glass-lab">
+          <div className="mini-scene-head">LUMINAGLASS <b>OPTICAL LAB</b></div>
+          <div className="mini-glass-stage"><i className="mini-glass-ray one" /><i className="mini-glass-ray two" /><div className="mini-glass-prism"><i /></div><span className="mini-glass-orbit one" /><span className="mini-glass-orbit two" /></div>
+          <div className="mini-glass-controls"><span>BLUR <b>24</b></span><i><b /></i><span>DEPTH <b>0.72</b></span></div>
+        </div>}
         {slug === 'aura-pulse' && (
           <div className="mini-aura-terminal">
             <div className="mini-aura-head"><span className="mini-aura-indicator" /><span className="mini-aura-title">MARKET OVERVIEW</span><span className="mini-aura-chip">SIM</span></div>
@@ -261,7 +282,12 @@ function ProjectMotionScene({ slug, compact = false }: { slug: string; compact?:
             </div>
           </div>
         )}
-        {slug === 'salon-booking' && <><span className="mini-booking-grid">{Array.from({ length: 12 }, (_, index) => <i key={index} />)}</span><b className="mini-booking-slot" /></>}
+        {slug === 'salon-booking' && <div className="mini-booking-calendar">
+          <div className="mini-scene-head">APPOINTMENTS <b>THIS WEEK</b></div>
+          <div className="mini-booking-days"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span></div>
+          <div className="mini-booking-times"><span>09:00</span><i /><i /><i /><span>10:30</span><i /><i className="selected" /><i /><span>12:00</span><i /><i /><i /><span>13:30</span><i className="busy" /><i /><i /></div>
+          <div className="mini-booking-confirm"><b>✓</b><span>11:30 APPOINTMENT</span><strong>CONFIRMED</strong></div>
+        </div>}
       </div>
     );
   }
