@@ -1,3 +1,8 @@
+## Next refinement — mobile hero headline
+
+- Check the wrapped English hero accent phrase on a narrow Android viewport when convenient; desktop styling is intentionally unchanged.
+- Continue on `redesign/live-site-baseline`; defer broad QA until `بازطراحی پایان یافت`.
+
 ## Next refinement — social brand icon consistency
 
 - Review the GitHub and Telegram brand marks in the hero, contact section, footer, and hydrated case-study footer.
