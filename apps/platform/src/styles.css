@@ -1734,3 +1734,24 @@ kbd { display: inline-flex; align-items: center; gap: 3px; padding: 3px 6px; bor
   .workspace-v5 .workspace-header-control,
   .workspace-v5 .primary-button { transition:none; }
 }
+
+
+/* Workspace preview status card — prevent absolute-position stretch */
+.workspace-v5 .preview-float {
+  inset-inline-start:auto;
+  inset-inline-end:-10px;
+  left:auto;
+  right:auto;
+  width:max-content;
+  min-width:190px;
+  max-width:calc(100% - 18px);
+  flex:0 0 auto;
+  white-space:nowrap;
+}
+.workspace-v5 .preview-float > span:nth-child(2) {
+  flex:0 0 auto;
+  min-width:0;
+}
+.workspace-v5 .preview-float > i {
+  flex:0 0 6px;
+}
