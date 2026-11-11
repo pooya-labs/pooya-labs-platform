@@ -1,3 +1,9 @@
+## Next refinement — Workspace dashboard owner review
+
+- Review the actual Workspace landing dashboard (not only the Files app) at desktop and narrow Android widths, in Persian/English and light/dark themes.
+- Preserve all existing app launch, command palette, local preview, and RPC status behavior.
+- Continue on `redesign/live-site-baseline`; do not merge or deploy Production. Defer broad QA until `بازطراحی پایان یافت`.
+
 ## Next refinement — My workspace redesign
 
 - Review the redesigned Files app at desktop and narrow mobile widths, including Persian/English and light/dark themes.
