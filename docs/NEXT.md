@@ -1,3 +1,10 @@
+## Next refinement — AI engineering and design positioning preview
+
+- Review the updated AI Engineer positioning, C++/Python language entries, seven skill groups / 65 items, UI/UX and motion-design emphasis, and explicit Rust + Tokio wording in AetherFlow.
+- Keep AI focus-area labels distinct from verified project integrations; do not add model frameworks or production AI claims without repository evidence.
+- Continue on `redesign/live-site-baseline` only; do not merge or deploy Production without explicit approval.
+- Defer tests and broad QA until the owner says `بازطراحی پایان یافت`.
+
 ## Current preview ready for owner review
 
 - Latest refreshed portfolio preview: `https://099b2bd5.pooya-labs-platform.pages.dev` (Cloudflare build and deploy succeeded on 2026-11-11).
