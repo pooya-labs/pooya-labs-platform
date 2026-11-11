@@ -1,3 +1,9 @@
+## Latest owner clarification — use surname only in footer byline (2026-11-11)
+
+- Corrected the footer creator/maintainer byline to `گودرزی` / `Goodarzi` only; removed `پویا` / `Pooya` from that byline in both language modes.
+- The primary footer name remains `Goodarzi`; layout, monogram artwork, and all other content remain unchanged.
+- Preview-only on `redesign/live-site-baseline`; no tests or QA run.
+
 ## Latest owner correction — footer identity label (2026-11-11)
 
 - Replaced the incorrect `پویا مونوگرام / POOYA MONOGRAM` footer name with `Goodarzi` in the shared owner-attribution component, covering both footer placements and both language modes.
