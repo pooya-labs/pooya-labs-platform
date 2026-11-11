@@ -1,3 +1,9 @@
+# 2026-11-12 — Workspace v6 brand and internal app alignment
+
+- Replaced the improvised header P glyph with the official Pooya Monogram SVG already used by the platform's brand assets.
+- Unified internal app window frames and updated Settings, Terminal, Overview, and Files surfaces to the current Workspace design system, including dark/light variants and mobile sizing.
+- Kept application behavior intact and scoped all changes to Workspace. Preview only; no Production/main changes.
+
 # 2026-11-12 — Workspace preview status-card width fix
 
 - Fixed the stretched blank bar under the Workspace snapshot preview. An inherited logical start inset conflicted with a physical right inset in the English LTR layout, forcing the absolutely positioned status chip to expand across the parent.
