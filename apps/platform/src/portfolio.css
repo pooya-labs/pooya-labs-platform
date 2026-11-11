@@ -3323,3 +3323,90 @@
   from { opacity:.56;transform:scale(.88); }
   to { opacity:.92;transform:scale(1.12); }
 }
+
+/* Android / touch-first layout: keep the single public scroll surface stable while browser chrome expands and collapses. */
+@media (max-width: 980px) and (pointer: coarse) {
+  .portfolio-page {
+    height: 100vh !important;
+    height: 100svh !important;
+    min-height: 100vh !important;
+    min-height: 100svh !important;
+    max-height: 100vh !important;
+    max-height: 100svh !important;
+    overflow-x: hidden !important;
+    overflow-x: clip !important;
+    overflow-y: auto !important;
+    touch-action: pan-y pinch-zoom;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-gutter: auto;
+  }
+
+  .portfolio-header {
+    top: calc(env(safe-area-inset-top, 0px) + 6px);
+  }
+
+  .portfolio-page :is(#about, #projects, #stack, #contact, #novels) {
+    scroll-margin-block-start: 112px;
+  }
+
+  .portfolio-nav {
+    max-width: 100%;
+    touch-action: pan-x pan-y pinch-zoom;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .portfolio-nav::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Flatten the stacked showcase cards on narrow touch screens; keep their slow drift and layered positions. */
+@media (max-width: 760px) and (pointer: coarse) {
+  .portfolio-container {
+    width: min(calc(100% - 32px), 580px);
+  }
+
+  .portfolio-hero-art {
+    width: 100%;
+    min-width: 0;
+    transform: none !important;
+  }
+
+  .hero-preview {
+    transform: none !important;
+    transform-style: flat;
+    backface-visibility: hidden;
+  }
+
+  .portfolio-theme,
+  .portfolio-language,
+  .portfolio-workspace {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .portfolio-nav a,
+  .portfolio-hero-actions a,
+  .project-card-footer .project-actions a {
+    min-height: 40px;
+  }
+
+  /* Touch browsers can retain :hover after a tap; avoid cards staying lifted or enlarged. */
+  .portfolio-project-card:hover {
+    transform: none;
+  }
+
+  .portfolio-project-card:hover::before {
+    opacity: 0;
+    transform: none;
+  }
+
+  .portfolio-project-card:hover .project-art-image,
+  .portfolio-project-card:hover .project-card-motion,
+  .portfolio-project-card:hover .project-card-content h3 {
+    transform: none;
+    filter: none;
+  }
+}
