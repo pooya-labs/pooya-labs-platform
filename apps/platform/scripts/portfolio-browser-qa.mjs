@@ -497,7 +497,7 @@ try {
           const frame = page.locator('.case-study-media-card.device-mobile .case-study-media-frame').first();
           if (await frame.count()) {
             await frame.scrollIntoViewIfNeeded();
-            const setup = await frame.evaluate((element) => {
+            const setup = await frame.evaluate(async (element) => {
               const pageScroller = document.querySelector('.portfolio-page');
               const image = element.querySelector('img');
               if (!(element instanceof HTMLElement) || !(pageScroller instanceof HTMLElement)) {
@@ -506,11 +506,13 @@ try {
               const innerMaxScroll = Math.max(0, element.scrollHeight - element.clientHeight);
               const outerMaxScroll = Math.max(0, pageScroller.scrollHeight - pageScroller.clientHeight);
               element.scrollTop = innerMaxScroll;
+              await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
               const rect = element.getBoundingClientRect();
               return {
                 available: innerMaxScroll > 40 && outerMaxScroll - pageScroller.scrollTop > 40,
                 reason: innerMaxScroll <= 40 ? 'The mobile capture has no internal overflow.' : 'No outer page content remains below the capture.',
                 innerMaxScroll,
+                innerScrollTopBeforeGesture: element.scrollTop,
                 outerBefore: pageScroller.scrollTop,
                 outerMaxScroll,
                 viewportHeight: window.innerHeight,

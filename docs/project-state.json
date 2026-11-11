@@ -350,10 +350,11 @@
     "lightThemeContrast": "passed-PR62-bfe775b3-and-PR64-ea52ef5;emerald-and-hero-gradient-and-LTR-headline-and-social-proof-scroll-cue-and-nav-hover;numeric-AA-contract-tests;minimum-4.5-to-1",
     "dualThemeAxeAudit": "passed-PR63-and-main-run-42815065767;36-dark-scans-and-36-light-scans;zero-confirmed-violations-each-theme;36-incomplete-contrast-checks-each-theme;manual-review-required",
     "keyboardSkipLinkBrowserQa": "passed-main-run-42815065767;18-of-18-routes;fresh-document-before-first-tab;visible-focus-and-main-target-correct",
-    "phase8PrototypeRepositoryCi": "run-43017396961;lint-format-typecheck-three-target-build-secret-scan-passed;contract-test-found-one-stale-inline-hero-selector-expectation;contract-updated-for-named-selector-and-bounded-decode;fresh-exact-head-run-pending",
-    "phase8PrototypeBrowserQa": "run-43017396822;install-build-preview-passed;Chromium-route-check-step-started;run-predates-latest-contract-correction;fresh-exact-head-run-pending",
+    "phase8PrototypeRepositoryCi": "run-43017396961;lint-format-typecheck-three-target-build-secret-scan-passed;contract-test-found-one-stale-inline-hero-selector-expectation;selector-and-bounded-decode-contract-corrected-on-eb32c785;exact-head-rerun-pending",
+    "phase8PrototypeBrowserQa": "run-43017396822;18-of-18-routes;36-of-36-viewports;34-of-34-social-crawler-checks;zero-confirmed-axe-violations;36-incomplete-contrast-checks;8-mobile-gallery-scroll-handoff-failures-on-aetherflow-orbit-luminaglass-aura-pulse-fa-en;artifact-13853382898",
     "phase8PrototypePublication": "not-merged;not-deployed;review-only;no-V1-approval",
-    "phase8PrototypeContractRegression": "first-run-failure-was-stale-test-expectation-not-app-runtime;assertions-updated-to-named-hero-selector-and-bounded-image-decode"
+    "phase8PrototypeContractRegression": "first-run-failure-was-stale-test-expectation-not-app-runtime;assertions-updated-to-named-hero-selector-and-bounded-image-decode",
+    "phase8PrototypeGalleryScroll": "CSS-overflow-and-overscroll-values-correct-and-inner-overflow-present;harness-now-waits-two-animation-frames-after-setting-inner-scroll-boundary;exact-head-verification-pending"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
