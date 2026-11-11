@@ -1769,23 +1769,21 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Improve light-theme legibility of capability visuals below the capability heading",
+    "title": "Fade the lower baseline of the foundation animation into the page",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
-      "apps/platform/src/portfolio.css"
+      "apps/platform/src/portfolio.css",
+      "apps/platform/src/PortfolioHome.tsx"
     ],
     "scope": [
-      "capability interface mockup",
-      "animated topology/network scene",
-      "code terminal scene",
-      "capability card labels and supporting copy"
+      "proof-baseline SVG stroke only"
     ],
+    "implementation": "Replace the distinct lower curve stroke with a very low-opacity horizontal gradient fading to transparent at both ends.",
     "preserved": [
-      "existing website structure and layout",
-      "current component hierarchy",
-      "dark miniature-scene treatment",
-      "existing animation keyframes",
-      "animation timing and movement"
+      "all other animation rays and particles",
+      "animation timing and movement",
+      "section typography, layout, and spacing",
+      "site structure and theme behavior"
     ],
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
