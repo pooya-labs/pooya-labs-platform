@@ -1826,16 +1826,22 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Use Goodarzi only in footer identity and byline",
+    "title": "Refine sticky header glass in dark mode",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
-      "apps/platform/src/PortfolioHome.tsx"
+      "apps/platform/src/portfolio.css"
     ],
-    "scope": "Both footer placements and Persian/English modes show Goodarzi; creator/maintainer byline is گودرزی / Goodarzi only, without Pooya.",
+    "scope": "Make the top bar containing the logo, navigation, language/theme controls and workspace action visibly translucent and glass-like in dark mode; preserve light mode.",
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
   },
   "events": [
+    {
+      "date": "2026-11-11",
+      "event": "Owner requested a glassier dark-mode header/navigation bar. Added a translucent graphite/teal gradient, stronger backdrop blur, subtle inner highlights, and lightly tinted nav/control trays; light mode remains unchanged.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
+    },
     {
       "date": "2026-11-11",
       "event": "Owner clarified surname-only footer byline. Changed the creator/maintainer line to گودرزی / Goodarzi, removing Pooya in both locales; primary footer name remains Goodarzi.",
