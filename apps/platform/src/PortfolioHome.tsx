@@ -239,8 +239,28 @@ function ProjectMotionScene({ slug, compact = false }: { slug: string; compact?:
         {slug === 'pooya-os' && <><i className="mini-os-window back" /><i className="mini-os-window front" /><b className="mini-os-cursor" /></>}
         {slug === 'nexus-canvas' && <><i className="mini-nexus-edge one" /><i className="mini-nexus-edge two" /><i className="mini-nexus-edge three" /><b className="mini-nexus-node one" /><b className="mini-nexus-node two" /><b className="mini-nexus-node three" /><b className="mini-nexus-node four" /></>}
         {slug === 'lumina-glass' && <><i className="mini-glass-orb" /><i className="mini-glass-orbit one" /><i className="mini-glass-orbit two" /><b className="mini-glass-sheen" /></>}
-        {slug === 'aura-pulse' && <><span className="mini-market-bars"><i /><i /><i /><i /><i /><i /><i /></span><b className="mini-market-line" /></>}
-        {slug === 'global-cart' && <><i className="mini-cart-product one" /><i className="mini-cart-product two" /><i className="mini-cart-product three" /><b className="mini-cart-basket" /></>}
+        {slug === 'aura-pulse' && (
+          <div className="mini-aura-terminal">
+            <div className="mini-aura-head"><span className="mini-aura-indicator" /><span className="mini-aura-title">MARKET OVERVIEW</span><span className="mini-aura-chip">SIM</span></div>
+            <div className="mini-aura-markets">
+              <div className="mini-aura-row"><span className="mini-aura-symbol">BTC</span><span className="mini-aura-spark"><i /><i /><i /><i /><i /><i /></span><strong>68.4K</strong></div>
+              <div className="mini-aura-row"><span className="mini-aura-symbol">ETH</span><span className="mini-aura-spark"><i /><i /><i /><i /><i /><i /></span><strong>3.4K</strong></div>
+              <div className="mini-aura-row"><span className="mini-aura-symbol">SOL</span><span className="mini-aura-spark"><i /><i /><i /><i /><i /><i /></span><strong>164</strong></div>
+            </div>
+            <div className="mini-aura-foot"><span>PAPER TRADING</span><span>ORDERS 02</span></div>
+          </div>
+        )}
+        {slug === 'global-cart' && (
+          <div className="mini-commerce">
+            <div className="mini-commerce-head"><span className="mini-commerce-brand">G</span><span className="mini-commerce-search">SEARCH PRODUCTS</span><span className="mini-commerce-bag">02</span></div>
+            <div className="mini-commerce-categories"><span>TECH</span><span>HOME</span><span>LIVING</span></div>
+            <div className="mini-commerce-grid">
+              <div className="mini-commerce-item"><span className="mini-commerce-image audio" /><span className="mini-commerce-item-copy"><span /><i /></span></div>
+              <div className="mini-commerce-item"><span className="mini-commerce-image device" /><span className="mini-commerce-item-copy"><span /><i /></span></div>
+              <div className="mini-commerce-item"><span className="mini-commerce-image home" /><span className="mini-commerce-item-copy"><span /><i /></span></div>
+            </div>
+          </div>
+        )}
         {slug === 'salon-booking' && <><span className="mini-booking-grid">{Array.from({ length: 12 }, (_, index) => <i key={index} />)}</span><b className="mini-booking-slot" /></>}
       </div>
     );
