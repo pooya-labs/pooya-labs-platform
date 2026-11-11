@@ -255,9 +255,9 @@ function ProjectMotionScene({ slug, compact = false }: { slug: string; compact?:
             <div className="mini-commerce-head"><span className="mini-commerce-brand">G</span><span className="mini-commerce-search">SEARCH PRODUCTS</span><span className="mini-commerce-bag">02</span></div>
             <div className="mini-commerce-categories"><span>TECH</span><span>HOME</span><span>LIVING</span></div>
             <div className="mini-commerce-grid">
-              <div className="mini-commerce-item"><span className="mini-commerce-image audio" /><span className="mini-commerce-item-copy"><span /><i /></span></div>
-              <div className="mini-commerce-item"><span className="mini-commerce-image device" /><span className="mini-commerce-item-copy"><span /><i /></span></div>
-              <div className="mini-commerce-item"><span className="mini-commerce-image home" /><span className="mini-commerce-item-copy"><span /><i /></span></div>
+              <div className="mini-commerce-item"><span className="mini-commerce-image audio" /><span className="mini-commerce-item-copy"><span /><span className="mini-commerce-price-line" /></span></div>
+              <div className="mini-commerce-item"><span className="mini-commerce-image device" /><span className="mini-commerce-item-copy"><span /><span className="mini-commerce-price-line" /></span></div>
+              <div className="mini-commerce-item"><span className="mini-commerce-image home" /><span className="mini-commerce-item-copy"><span /><span className="mini-commerce-price-line" /></span></div>
             </div>
           </div>
         )}
