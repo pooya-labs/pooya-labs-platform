@@ -1,3 +1,8 @@
+# Next — review Workspace preview status card
+
+- Check that the “System status” floating chip is now compact and attached to the lower-right edge of the snapshot preview in both English (LTR) and Persian (RTL).
+- Continue Workspace-only changes on `redesign/live-site-baseline`; Preview only. Full QA remains deferred until `بازطراحی پایان یافت`.
+
 # Next — owner review Workspace v5
 
 - Current Preview: https://cad4d67b.pooya-labs-platform.pages.dev (Cloudflare build and deploy succeeded on `d5e508256d23fa07bc82307397017fad338d7c73`).
