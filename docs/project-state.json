@@ -1769,23 +1769,23 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Make the lower end of the foundation animation originate from one clear point",
+    "title": "Make the foundation animation rise from one point at its lower edge",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
       "apps/platform/src/PortfolioHome.tsx",
       "apps/platform/src/portfolio.css"
     ],
     "scope": [
-      "foundation animation ray geometry",
-      "single lower focal glow",
-      "animation visual bottom fade"
+      "proof ray source coordinate",
+      "Bézier fan-out geometry",
+      "origin halo and focal dot",
+      "desktop/mobile lower breathing room"
     ],
-    "implementation": "Rays now converge on a clearly visible lower focal point; the former curved baseline is removed; a subtle focal glow marks the origin; internal visual masking no longer hides it while the outer section retains a soft bottom fade.",
+    "implementation": "Moved all ray paths and the halo/point from y=340 to y=382; moved the first control point lower and increased early lateral spread so rays visibly fan from one common point.",
     "preserved": [
-      "main radial glow composition",
-      "particle field and animation",
-      "section typography and layout",
-      "animation durations and movement style"
+      "section title, statistics, palette and overall composition",
+      "radial ray and particle animation timing",
+      "section-level lower fade into page"
     ],
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
