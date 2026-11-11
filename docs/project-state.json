@@ -7,9 +7,9 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-13-WORKSPACE-V5-FULL-SURFACE-REPAIR",
-    "title": "Repair the complete Workspace layout from header through footer",
-    "status": "Implemented; Cloudflare Preview build and deploy succeeded; owner review pending."
+    "id": "P8-14-WORKSPACE-PREVIEW-STATUS-CHIP",
+    "title": "Fix the stretched System status chip under the Workspace hero snapshot",
+    "status": "Implemented on preview branch; deployment pending."
   },
   "lastCheckpointDate": "2026-11-12",
   "latestVerifiedCodeCommit": "7ec0d1feb69d01e4551bf6d6d0739a90afa48544",
@@ -1914,6 +1914,12 @@
       "event": "Workspace v5 full-surface repair was deployed successfully to Cloudflare Preview at https://cad4d67b.pooya-labs-platform.pages.dev; build and deploy stages both succeeded for d5e508256d23fa07bc82307397017fad338d7c73. Production/main remain unchanged; full QA is deferred until owner completion.",
       "branch": "redesign/live-site-baseline",
       "status": "preview-deployed-owner-review-pending"
+    },
+    {
+      "date": "2026-11-12",
+      "event": "Owner shared a screenshot showing the Workspace hero preview's System status floating card stretched into a wide blank bar. Root cause was the inherited logical inline-start inset conflicting with the v5 physical right inset in LTR. Reset the inherited start inset and constrained the chip to content width; change is Workspace-only.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-deployment-pending"
     }
   ],
   "portfolioContentSnapshot": {
@@ -2000,5 +2006,14 @@
     "build": "success",
     "deploy": "success",
     "productionChanged": false
+  },
+  "workspacePreviewStatusCardFix": {
+    "status": "implemented-preview-pending-deployment",
+    "cssCommit": "bf617514c3ac931cac23f9c081de564f94f341dd",
+    "scope": "Workspace v5 hero preview status chip only",
+    "rootCause": "Inherited inset-inline-start:-38px conflicted with right:-10px in LTR, stretching the absolute positioned card.",
+    "fix": "Reset logical start inset; anchor with logical inline-end; use content-sized width and bounded max-width.",
+    "productionChanged": false,
+    "qa": "targeted-owner-review-pending; full-QA-deferred"
   }
 }
