@@ -1,3 +1,10 @@
+## Current preview ready for owner review
+
+- Latest refreshed portfolio preview: `https://099b2bd5.pooya-labs-platform.pages.dev` (Cloudflare build and deploy succeeded on 2026-11-11).
+- Review the six bilingual skill groups, seven completed project cards, AetherFlow's in-development state, and corrected project case studies.
+- Continue all changes on `redesign/live-site-baseline`; do not merge to `main` or deploy Production without explicit owner approval.
+- Defer tests and broad QA until the owner says `بازطراحی پایان یافت`.
+
 ## Next checkpoint — review refreshed portfolio copy and skills
 
 - The current portfolio snapshot is 8 projects: ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, GlobalCart, and Salon Booking are complete; AetherFlow is the only active development project.
