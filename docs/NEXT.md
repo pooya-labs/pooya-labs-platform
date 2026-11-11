@@ -385,3 +385,11 @@ The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDI
 - Do not modify independent project repositories during this platform readiness pass unless a concrete blocker is explicitly approved as an upstream task.
 - A missing owner approval, physical-device test, private credential, or third-party salon permission must remain an explicit blocker; do not mark it complete on the owner's behalf.
 
+## Active owner-directed redesign — clean current-site baseline (2026-11-11)
+
+- Continue on `redesign/live-site-baseline`, created directly from current `main` commit `f42e9bd889636b87b7deb774b085f3a90ffbd3f4`. Do not use the broken broad prototype preview from PR #70 as the new iteration base.
+- Each instruction: make the focused change on this branch, publish a fresh Cloudflare Pages preview from its latest head, and send Pooya the live link for immediate visual feedback.
+- Skip interim tests and QA. The preview build/deploy is only to make the actual current website visible; it is not a full validation pass.
+- Run the full test, browser, responsive, accessibility, performance, and debugging pass only after Pooya explicitly says **“بازطراحی پایان یافت”**.
+- Keep `main` and production unchanged until explicit final approval.
+- First change on this branch: light-theme contrast correction for the existing site animations. See `apps/platform/src/portfolio.css` and `docs/CHANGELOG.md`.
