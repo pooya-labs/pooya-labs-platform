@@ -6,6 +6,7 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [x] Define Pooya Labs as a personal portfolio and engineering project showcase.
 - [x] Set the primary visitor journey: understand Pooya → explore selected work → inspect case studies/evidence → connect.
 - [x] Separate the public portfolio from the secondary owner workspace.
+- [x] Add a host-independent, client-side demo login gate for Workspace; explicitly do not treat it as security.
 - [x] Decide that portfolio visitors do not need a generic customer account or dashboard.
 - [x] Define guardrails against fake metrics, inflated skills, guessed project links, and unsupported completion claims.
 - [ ] Review and approve the public biography, positioning, and featured-project priorities with Pooya.
