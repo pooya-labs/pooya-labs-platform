@@ -2962,7 +2962,7 @@
 .project-art-image { transition:transform .7s cubic-bezier(.2,.75,.2,1),filter .7s ease; }
 .portfolio-project-card:hover .project-art-image { transform:scale(1.045);filter:saturate(1.08) contrast(1.02); }
 .project-card-motion {
-  position:absolute;z-index:3;top:13px;inset-inline-end:13px;width:clamp(104px,34%,148px);height:76px;
+  position:absolute;z-index:3;top:13px;left:13px;right:auto;inset-inline-end:auto;width:clamp(104px,34%,148px);height:76px;
   overflow:hidden;border:1px solid rgba(178,224,202,.22);border-radius:12px;
   background:linear-gradient(145deg,rgba(7,20,22,.78),rgba(9,24,32,.62));
   box-shadow:0 12px 28px rgba(0,0,0,.2),inset 0 1px rgba(255,255,255,.09);
@@ -3049,7 +3049,7 @@
   .commerce-stage { inset:22% 4% 18%; }.commerce-products { right:22%;gap:5px; }.commerce-product { height:112px;padding:7px; }.commerce-product > b { font-size:7px; }.commerce-product small { font-size:5px; }
   .commerce-cart { width:69px;height:66px; }.commerce-cart b { font-size:6px; }.commerce-foot { left:6%;right:6%;font-size:6px; }
   .booking-stage { inset:20% 4% 13%; }.booking-calendar { left:2%;width:67%;padding:8px; }.booking-confirmation { right:0;width:43%;padding:8px;gap:6px; }.booking-confirmation b { font-size:7px; }.booking-confirmation small { font-size:6px; }
-  .project-card-motion { top:10px;inset-inline-end:10px;width:112px;height:68px; }
+  .project-card-motion { top:10px;left:10px;right:auto;inset-inline-end:auto;width:112px;height:68px; }
   .project-card-motion .mini-os-window { transform:scale(.9);transform-origin:top left; }
 }
 @media (prefers-reduced-motion:reduce) {
