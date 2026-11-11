@@ -1,3 +1,10 @@
+## 2026-11-11 — My workspace visual redesign
+
+- Replaced the legacy Files app table-first layout with a polished workspace library: editorial hero, emerald glass folder visual, at-a-glance counts, folder card, and recent-file rows.
+- Added responsive mobile behavior and coordinated light-theme styling, preserving Persian/English support.
+- Kept the content clearly labeled as local sample data; no cloud storage or new backend behavior was added.
+- Preview-only; no broad QA run.
+
 ## 2026-11-11 — Android mobile hero headline fix
 
 - Reworked the narrow-screen English accent phrase to wrap between its text prefix and highlighted word rather than overflowing and being cut off at both viewport edges.
