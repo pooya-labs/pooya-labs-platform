@@ -1,3 +1,9 @@
+## 2026-11-11 — Android mobile hero headline fix
+
+- Reworked the narrow-screen English accent phrase to wrap between its text prefix and highlighted word rather than overflowing and being cut off at both viewport edges.
+- Kept the fix scoped to mobile widths; desktop styling is unchanged.
+- Preview-only; no broad QA run.
+
 ## 2026-11-11 — Official GitHub and Telegram marks
 
 - Replaced generic social symbols with recognizable GitHub and Telegram brand SVG marks across the hero, contact actions, and footer, including hydrated case-study pages.
