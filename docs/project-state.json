@@ -7,12 +7,12 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-12-WORKSPACE-HEADER-PREFERENCES",
-    "title": "Move language and light/dark controls into the Workspace header only",
-    "status": "Implemented on preview branch; deployment pending."
+    "id": "P8-13-WORKSPACE-V5-FULL-SURFACE-REPAIR",
+    "title": "Repair the complete Workspace layout from header through footer",
+    "status": "Implemented on the preview branch; preview deployment pending."
   },
   "lastCheckpointDate": "2026-11-12",
-  "latestVerifiedCodeCommit": "6af18aafeaf4d0bb7a806a2a5ff35d8cf4655e72",
+  "latestVerifiedCodeCommit": "7ec0d1feb69d01e4551bf6d6d0739a90afa48544",
   "tests": {
     "repositoryCi": "passed-main-run-42815065743;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1;typecheck;three-target-build;security-scan;contract-tests",
     "transportHarnessContract": "passed",
@@ -1902,6 +1902,12 @@
       "event": "Owner reported that the global visualAsset-first homepage card change altered other project images. Narrowed the override to salon-booking only; all other cards retain caseStudyHeroAsset-first ordering.",
       "branch": "redesign/live-site-baseline",
       "status": "implemented-preview-pending-owner-review"
+    },
+    {
+      "date": "2026-11-12",
+      "event": "Owner reported that the Workspace was visually broken from header through footer. Replaced the conflicting v4 layout with a unified responsive composition, fixed the mobile three-child/two-column header and intermediate-width action overflow, bound root direction to language, and rebuilt the scroll/content layout. Portfolio surfaces remain unchanged.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-deployment-pending"
     }
   ],
   "portfolioContentSnapshot": {
@@ -1961,5 +1967,20 @@
     "productionChanged": false,
     "qa": "deferred-until-owner-approval",
     "summary": "Full-width desktop header, no legacy side rail, two-column hero with large workspace preview, expanded metrics, four-column app grid, and balanced lower panels; compact mobile layout retained."
+  },
+  "workspaceRedesignV5": {
+    "status": "implemented-preview-pending-deployment",
+    "appCommit": "36edba7781502fe5d40e692facfbb44d71f3066e",
+    "stylesCommit": "7ec0d1feb69d01e4551bf6d6d0739a90afa48544",
+    "scope": "Workspace only",
+    "fixes": [
+      "mobile-header-three-column-placement",
+      "intermediate-width-header-overflow",
+      "locale-bound-root-direction",
+      "bounded-scroll-stage-and-overlay-layering",
+      "responsive-hero-metrics-app-grid-lower-panels-footer"
+    ],
+    "productionChanged": false,
+    "qa": "deferred-until-owner-says-redesign-complete"
   }
 }
