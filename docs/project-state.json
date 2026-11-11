@@ -1826,16 +1826,22 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Replace incorrect Pooya Monogram footer name with Goodarzi",
+    "title": "Use Goodarzi only in footer identity and byline",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
       "apps/platform/src/PortfolioHome.tsx"
     ],
-    "scope": "Shared owner attribution component; both footer placements and Persian/English modes display Goodarzi. Creator/maintainer byline and monogram artwork remain unchanged.",
+    "scope": "Both footer placements and Persian/English modes show Goodarzi; creator/maintainer byline is گودرزی / Goodarzi only, without Pooya.",
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
   },
   "events": [
+    {
+      "date": "2026-11-11",
+      "event": "Owner clarified surname-only footer byline. Changed the creator/maintainer line to گودرزی / Goodarzi, removing Pooya in both locales; primary footer name remains Goodarzi.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
+    },
     {
       "date": "2026-11-11",
       "event": "Owner requested the footer display name be Goodarzi instead of Pooya Monogram. Updated the shared footer attribution label across both placements and locales, preserving the creator/maintainer byline and existing artwork.",
