@@ -3566,10 +3566,12 @@
   .case-study-media-card.device-mobile .case-study-media-frame {
     position: relative;
     width: 100%;
-    min-height: 0;
-    overflow: hidden;
+    height: min(72svh, 720px);
+    min-height: 420px;
+    overflow-x: hidden;
+    overflow-y: auto;
     touch-action: pan-y;
-    overscroll-behavior-y: auto;
+    overscroll-behavior-y: contain;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -3592,7 +3594,7 @@
     position: relative;
     z-index: 1;
     display: block;
-    width: auto;
+    width: 100%;
     max-width: 100%;
     height: auto;
     max-height: none;
