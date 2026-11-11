@@ -1,3 +1,10 @@
+# 2026-11-12 — Workspace header language and theme controls
+
+- Moved the language control into the Workspace header and removed its floating and side-rail duplicates.
+- Added a header theme toggle for light/dark mode with localized accessible names.
+- Responsive header styling is scoped to Workspace v4 only; portfolio surfaces are unchanged.
+- Preview branch only; no production deploy or broad QA.
+
 # 2026-11-12 — Workspace v4 touch and scroll repair
 
 - Repaired the Workspace viewport sizing so the content stage and its scroll surface have a definite, bounded height.
