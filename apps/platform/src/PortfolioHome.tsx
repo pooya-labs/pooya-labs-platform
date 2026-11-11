@@ -1,4 +1,4 @@
-import { Activity, ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Layers3, Monitor, Moon, Send, Sun, TerminalSquare } from 'lucide-react';
+import { Activity, ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Layers3, Monitor, Moon, Sun, TerminalSquare } from 'lucide-react';
 import { useEffect, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
 import { portfolioProjects as projects, type PortfolioProject } from './content/projects';
 import { coreDossiers } from './content/case-study-dossiers-core';
@@ -6,6 +6,14 @@ import { productDossiers } from './content/case-study-dossiers-products';
 import { architectureDiagrams } from './content/architecture-diagrams';
 import type { CaseStudyDossier } from './content/case-study-dossiers-types';
 import { NovelLibrarySection, NovelReader, loadNovelCatalog, localizedNovelText, type NovelRecord } from './NovelLibrary';
+
+
+function GitHubBrandIcon({ size = 18, className = '' }: { size?: number; className?: string }) {
+  return <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .297a12 12 0 0 0-3.793 23.385c.6.111.82-.26.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.304-5.466-1.333-5.466-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 0 1 6.004 0c2.29-1.552 3.297-1.23 3.297-1.23.655 1.652.243 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.805 5.623-5.476 5.921.43.372.814 1.103.814 2.222v3.293c0 .32.216.694.825.576A12.001 12.001 0 0 0 12 .297Z" /></svg>;
+}
+function TelegramBrandIcon({ size = 18, className = '' }: { size?: number; className?: string }) {
+  return <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23.91 3.79 20.3 20.83c-.27 1.2-.98 1.5-1.98.94l-5.47-4.03-2.64 2.54c-.29.29-.53.53-1.09.53l.39-5.56L19.63 6.1c.42-.38-.09-.59-.65-.21L6.24 13.96.82 12.26c-1.18-.37-1.2-1.18.25-1.75L22.26 2.2c.98-.36 1.84.24 1.65 1.59Z" /></svg>;
+}
 
 type Language = 'fa' | 'en';
 type Theme = 'dark' | 'light';
@@ -543,8 +551,8 @@ export function ProjectCaseStudy({ project, language, onLanguageChange, theme, o
           <OwnerAttribution language={language} assetBase={baseUrl} />
           <p>{t.footer}</p>
           <div className="portfolio-footer-socials">
-            <a href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Code2 size={17} /> GitHub</a>
-            <a href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><Send size={16} /> @pooyayee</a>
+            <a href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><GitHubBrandIcon size={17} /> GitHub</a>
+            <a href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><TelegramBrandIcon size={16} /> @pooyayee</a>
             <a href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><img className="instagram-brand-icon" src={`${baseUrl}brand/instagram-glyph.svg`} alt="" aria-hidden="true" /> @_p.ooya</a>
           </div>
           <small>© {new Date().getFullYear()} POOYA GOODARZI · POOYA LABS</small>
@@ -850,7 +858,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             <p className="portfolio-intro" dir="auto">{t.intro}</p>
             <div className="portfolio-hero-actions">
               <a className="portfolio-primary" href="#projects">{t.explore}<ArrowDown size={16} /></a>
-              <a className="portfolio-secondary portfolio-github-link" href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><img className="portfolio-github-mark" src={`${import.meta.env.BASE_URL}brand/pooya-monogram.webp`} alt="" aria-hidden="true" />{t.github}<ExternalLink size={13} /></a>
+              <a className="portfolio-secondary portfolio-github-link" href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><GitHubBrandIcon size={18} className="portfolio-github-mark" />{t.github}<ExternalLink size={13} /></a>
             </div>
             <div className="portfolio-social-proof"><span className="proof-line" /><span>POOYA LABS</span><span className="proof-dot">·</span><span>BUILDING IN PUBLIC</span></div>
           </div>
@@ -1130,8 +1138,8 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
           <h2>{t.contactTitle}</h2>
           <p>{t.contactBody}</p>
           <div className="portfolio-contact-actions">
-            <a className="portfolio-primary portfolio-contact-github" href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer"><Code2 size={18} /><span>{t.contactAction}<small>github.com/pooya-labs</small></span><ArrowUpRight size={16} /></a>
-            <a className="portfolio-social-button" href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><Send size={17} /><span>{t.contactTelegram}<small>@pooyayee</small></span><ArrowUpRight size={15} /></a>
+            <a className="portfolio-primary portfolio-contact-github" href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer"><GitHubBrandIcon size={18} /><span>{t.contactAction}<small>github.com/pooya-labs</small></span><ArrowUpRight size={16} /></a>
+            <a className="portfolio-social-button" href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><TelegramBrandIcon size={17} /><span>{t.contactTelegram}<small>@pooyayee</small></span><ArrowUpRight size={15} /></a>
             <a className="portfolio-social-button" href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><img className="instagram-brand-icon" src={`${import.meta.env.BASE_URL}brand/instagram-glyph.svg`} alt="" aria-hidden="true" /><span>{t.contactInstagram}<small>@_p.ooya</small></span><ArrowUpRight size={15} /></a>
           </div>
         </section>
