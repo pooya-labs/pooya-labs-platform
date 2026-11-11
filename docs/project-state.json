@@ -7,8 +7,8 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-03-PORTFOLIO-POSITIONING",
-    "title": "Emphasize AI engineering, UI/UX and motion craft; add C++/Python and clarify AetherFlow Tokio",
+    "id": "P8-04-SOCIAL-BRAND-MARKS",
+    "title": "Use official GitHub and Telegram brand marks consistently across portfolio links",
     "status": "Implemented on preview branch; deployment pending."
   },
   "lastCheckpointDate": "2026-11-11",
