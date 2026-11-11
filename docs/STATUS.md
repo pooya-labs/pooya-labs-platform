@@ -573,3 +573,5 @@ Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for th
 - On coarse-pointer mobile layouts, widened the interface-capture section slightly beyond the content column without adding visible decoration.
 - Kept each mobile screenshot centered in a narrower inner vertical scroll frame; the transparent side gutters remain outside that frame so swipes there scroll the main case-study page.
 - Preserved the inner image scroll in the center. Desktop and non-touch layouts are unchanged. Preview only; no tests or Android visual review were run.
+- تصویر کارت Salon Booking در بخش Projects صفحه اصلی به تصویر اصلی بالای وب‌سایت شایان سالن (`shayan-hero.webp`) تغییر کرد. تصویر تمام‌صفحه قبلی در گالری مطالعه موردی دست‌نخورده باقی ماند.
+- Replaced the Salon Booking homepage Projects-card image with the Shayan Salon website hero asset (`shayan-hero.webp`). The previous full-page capture remains unchanged in the case-study gallery.
