@@ -12,7 +12,7 @@
     "status": "Working branch redesign/live-site-baseline starts from exact current main commit f42e9bd889636b87b7deb774b085f3a90ffbd3f4. It excludes the rejected broad Phase 8 prototype stylesheet. First focused change is light-theme animation contrast in apps/platform/src/portfolio.css. Publish a Cloudflare Pages preview after each owner instruction for immediate visual feedback. Do not run tests, CI, browser QA, visual review, performance checks, or debugging until Pooya explicitly says 'بازطراحی پایان یافت'. No main merge or production deployment during this iterative phase."
   },
   "lastCheckpointDate": "2026-11-11",
-  "latestVerifiedCodeCommit": "3888d0799afdf4c3bb702489b6f1fc22c98d1f3b",
+  "latestVerifiedCodeCommit": "54ca6138f75e9ba7878428713bc0332759c82450",
   "tests": {
     "repositoryCi": "passed-main-run-42815065743;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1;typecheck;three-target-build;security-scan;contract-tests",
     "transportHarnessContract": "passed",
@@ -1260,14 +1260,14 @@
   },
   "latestOwnerFeedback": {
     "date": "2026-11-11",
-    "task": "Extend the successful AuraPulse and GlobalCart mini-scene redesign to every remaining homepage project",
-    "implementation": "Redesigned AetherFlow as a trigger-worker-commit workflow; Orbit as a service health, incident and telemetry dashboard; Pooya OS as a spatial desktop with app launcher; Nexus Canvas as a connected node graph; LuminaGlass as a refractive prism optical lab with controls; and Salon Booking as a weekly appointment grid with a confirmed slot. Together with the previously redesigned AuraPulse and GlobalCart scenes, all eight homepage project-card mini-scenes are now product-specific.",
-    "scope": "Only compact homepage project-card motion windows; preserve project detail scenes and card layouts.",
+    "task": "Replace the Salon Booking image in the homepage Projects section with an image from the top of the salon website.",
+    "implementation": "Changed only the Salon Booking visualAsset to the immutable Shayan Salon public hero asset shayan-hero.webp from salon-booking commit e4170913b704f3e9d3d9c0eaef2a953161524c68. Updated bilingual alt text. The caseStudyHeroAsset and caseStudyMedia full-page captures remain unchanged.",
+    "scope": "Homepage Salon Booking project card only; no changes to Salon Booking source repository or case-study gallery.",
     "ownerApproval": "pending-preview-review",
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
   },
-  "latestTask": "Homepage compact motion scenes — all remaining project cards",
+  "latestTask": "Salon Booking homepage project-card image — use website hero instead of full-page capture",
   "latestTaskBranch": "redesign/live-site-baseline",
   "lastUpdated": "2026-11-11",
   "latestDocumentationCommit": "56fc32c772785d23fde1eb15f839d66c5fb2bc9e",
@@ -1803,6 +1803,12 @@
       "event": "Owner approved the AuraPulse and GlobalCart mini-scene redesign and requested the same product-specific treatment for all remaining project cards. Rebuilt AetherFlow, Orbit, Pooya OS, Nexus Canvas, LuminaGlass and Salon Booking compact scenes.",
       "branch": "redesign/live-site-baseline",
       "status": "implemented-preview-pending-owner-review"
+    },
+    {
+      "date": "2026-11-11",
+      "event": "Owner requested replacing the Salon Booking homepage Projects-card image, which showed the lower/full-page site, with an image from the top of the site. Updated the card to use the immutable Shayan Salon hero asset and left case-study gallery captures unchanged.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
     }
   ],
   "ownerRedesignWorkflow": {
@@ -1820,22 +1826,13 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Product-align all homepage project-card mini-scenes",
+    "title": "Use Salon Booking website hero image on homepage project card",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
-      "apps/platform/src/PortfolioHome.tsx",
-      "apps/platform/src/portfolio.css"
+      "apps/platform/src/content/projects.ts"
     ],
-    "projects": {
-      "aetherflow": "Trigger → worker → durable commit workflow",
-      "orbit": "Service health, incident state and telemetry dashboard",
-      "pooyaOs": "Spatial desktop with app launcher",
-      "nexusCanvas": "Connected graph nodes",
-      "luminaGlass": "Refractive prism optical lab with controls",
-      "salonBooking": "Weekly appointment slots and confirmed booking",
-      "auraPulse": "Three-row simulated market terminal",
-      "globalCart": "Miniature marketplace storefront"
-    },
+    "sourceAsset": "https://raw.githubusercontent.com/pooya-labs/salon-booking/e4170913b704f3e9d3d9c0eaef2a953161524c68/public/images/shayan-hero.webp",
+    "scope": "Homepage Salon Booking visualAsset only; preserve full-page case-study captures",
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
   }
