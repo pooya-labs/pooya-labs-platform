@@ -651,3 +651,11 @@
 - Moved the radial ray convergence point slightly upward so it remains visible above the lower page fade.
 - Removed the broad curved baseline and added a subtle focal glow/point to make the rays visibly originate from one point.
 - Preserved particle motion, primary glow composition, and animation timing. Preview only; no tests or QA executed.
+
+
+## 2026-11-11 — Foundation rays bottom focal point
+
+- Moved the radial ray origin, halo, and focal dot to the bottom-center edge of the SVG field.
+- Reworked the first Bézier control point to let the rays fan outward from the origin earlier.
+- Preserved the surrounding section fade and reserved lower breathing room for the point on desktop and mobile.
+- Preview only; no tests or QA executed.
