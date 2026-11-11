@@ -1,3 +1,10 @@
+# Novels — uploaded books connected to the public library (2026-11-12)
+
+- Published the uploaded «گوزن» and «غزال» entries in the existing homepage Novels section using the optimized WebP covers.
+- Copied the original PDF manuscripts into the platform's public novel assets and added in-page PDF reading with an open-full-file fallback.
+- The catalog now marks both books as published. The upload archive remains intact; all changes are preview-branch only.
+- Cloudflare preview deployment and runtime rendering have not yet been verified.
+
 # Workspace header controls update (2026-11-12)
 
 - Moved the language selector into the Workspace top header and removed the duplicate floating/side-rail language controls from the Workspace view.
