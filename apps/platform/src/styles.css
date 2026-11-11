@@ -1755,3 +1755,321 @@ kbd { display: inline-flex; align-items: center; gap: 3px; padding: 3px 6px; bor
 .workspace-v5 .preview-float > i {
   flex:0 0 6px;
 }
+
+/* Workspace v6 — shared visual system for internal app windows */
+.workspace-v5 .brand-mark-image {
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  padding:0;
+  border:1px solid rgba(80,105,80,.16);
+  border-radius:12px;
+  background:#080808;
+  box-shadow:0 5px 14px rgba(0,0,0,.12);
+}
+.workspace-v5 .brand-mark-image img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+.workspace-v5 .brand-mark-image span,
+.workspace-v5 .brand-mark-image i { display:none; }
+
+/* App windows now share the same quiet, premium Workspace surface. */
+.workspace-v5 .app-window {
+  min-width:min(320px, calc(100vw - 28px));
+  min-height:280px;
+  border:1px solid var(--w3-line);
+  border-radius:18px;
+  color:var(--w3-ink);
+  background:var(--w3-paper);
+  box-shadow:0 28px 80px rgba(25,42,28,.17),0 2px 8px rgba(25,42,28,.05);
+  backdrop-filter:blur(22px);
+}
+.workspace-v5 .app-window.is-active {
+  border-color:rgba(76,119,83,.38);
+  box-shadow:0 30px 85px rgba(25,42,28,.2),0 0 0 1px rgba(76,119,83,.08);
+}
+.workspace-v5 .window-titlebar {
+  flex:0 0 54px;
+  min-width:0;
+  padding:0 16px;
+  border-bottom:1px solid var(--w3-line);
+  background:var(--w3-paper-2);
+  color:var(--w3-ink);
+}
+.workspace-v5 .window-title { gap:10px; }
+.workspace-v5 .window-app-icon {
+  width:31px;
+  height:31px;
+  border-radius:9px;
+  color:var(--w3-green);
+  background:var(--w3-green-soft);
+}
+.workspace-v5 .window-title strong { color:var(--w3-ink); font-size:12px; }
+.workspace-v5 .window-title small { color:var(--w3-muted); font-size:9px; }
+.workspace-v5 .window-controls { gap:5px; }
+.workspace-v5 .window-controls button {
+  width:29px;
+  height:29px;
+  border-color:transparent;
+  border-radius:8px;
+  color:var(--w3-muted);
+}
+.workspace-v5 .window-controls button:hover {
+  border-color:var(--w3-line);
+  color:var(--w3-ink);
+  background:var(--w3-bg);
+}
+.workspace-v5 .window-content {
+  min-width:0;
+  color:var(--w3-ink);
+  background:var(--w3-paper);
+  scrollbar-width:thin;
+  scrollbar-color:rgba(125,145,125,.35) transparent;
+}
+.workspace-v5 .window-resize-corner {
+  border-color:rgba(100,125,100,.35);
+}
+
+/* Settings */
+.workspace-v5 .settings-app,
+.workspace-v5 .mini-overview,
+.workspace-v5 .files-app {
+  padding:clamp(18px,2.2vw,28px);
+  color:var(--w3-ink);
+  background:var(--w3-paper);
+}
+.workspace-v5 .settings-heading { margin-bottom:22px; }
+.workspace-v5 .settings-heading h2,
+.workspace-v5 .mini-heading h2 {
+  margin:0 0 8px;
+  color:var(--w3-ink);
+  font-size:23px;
+  line-height:1.3;
+  letter-spacing:-.035em;
+}
+.workspace-v5 .settings-heading p,
+.workspace-v5 .mini-heading p {
+  color:var(--w3-muted);
+  font-size:11px;
+  line-height:1.8;
+}
+.workspace-v5 .settings-block {
+  padding:18px 0;
+  border-top:1px solid var(--w3-line);
+}
+.workspace-v5 .settings-label {
+  gap:9px;
+  margin-bottom:13px;
+  color:var(--w3-green);
+}
+.workspace-v5 .settings-label strong { color:var(--w3-ink); font-size:11px; }
+.workspace-v5 .theme-options { gap:9px; }
+.workspace-v5 .theme-options button {
+  min-width:112px;
+  min-height:42px;
+  padding:10px 13px;
+  border:1px solid var(--w3-line);
+  border-radius:10px;
+  color:var(--w3-muted);
+  background:var(--w3-paper-2);
+  font-size:10px;
+  transition:border-color .18s,background .18s,color .18s;
+}
+.workspace-v5 .theme-options button:hover {
+  border-color:rgba(76,119,83,.45);
+  color:var(--w3-green);
+}
+.workspace-v5 .theme-options button.chosen {
+  border-color:rgba(76,119,83,.48);
+  color:var(--w3-green);
+  background:var(--w3-green-soft);
+  box-shadow:inset 0 0 0 1px rgba(76,119,83,.06);
+}
+.workspace-v5 .settings-info {
+  gap:10px;
+  margin-top:17px;
+  padding:13px 14px;
+  border:1px solid var(--w3-line);
+  border-radius:11px;
+  color:var(--w3-muted);
+  background:var(--w3-paper-2);
+  font-size:10px;
+  line-height:1.8;
+}
+.workspace-v5 .settings-info svg { flex:0 0 auto; color:var(--w3-green); }
+
+/* Terminal: dark code surface framed by the same Workspace chrome. */
+.workspace-v5 .terminal-app {
+  height:100%;
+  min-height:280px;
+  padding:16px;
+  color:#dce9df;
+  background:#18231b;
+  font-size:11px;
+}
+.workspace-v5 .terminal-topline {
+  height:32px;
+  margin-bottom:14px;
+  padding-bottom:12px;
+  border-bottom:1px solid rgba(205,225,205,.12);
+}
+.workspace-v5 .terminal-topline small {
+  color:#9aaa9c;
+  font-size:9px;
+}
+.workspace-v5 .terminal-output {
+  min-height:130px;
+  color:#c5d3c7;
+  font-size:11px;
+  line-height:1.9;
+}
+.workspace-v5 .terminal-welcome { color:#a9d1a9; }
+.workspace-v5 .terminal-command { color:#b8dfb6; }
+.workspace-v5 .terminal-response { color:#d2ddd2; }
+.workspace-v5 .terminal-form {
+  min-height:43px;
+  padding:6px 9px 6px 12px;
+  border:1px solid rgba(169,209,169,.22);
+  border-radius:10px;
+  background:rgba(255,255,255,.045);
+}
+.workspace-v5 .terminal-form input {
+  min-width:0;
+  color:#f0f6f0;
+  font-size:11px;
+}
+.workspace-v5 .terminal-form input::placeholder { color:#8d9f90; }
+.workspace-v5 .terminal-form button {
+  width:30px;
+  height:30px;
+  border-radius:8px;
+  color:#18301e;
+  background:#b8d8b4;
+}
+.workspace-v5 .terminal-safe-note {
+  color:#9aaa9c;
+  font-size:9px;
+  line-height:1.7;
+}
+.workspace-v5 .terminal-safe-note svg { flex:0 0 auto; color:#a9d1a9; }
+
+/* Other internal tools inherit the same spacing, type, and neutral surfaces. */
+.workspace-v5 .app-toolbar {
+  gap:12px;
+  margin-bottom:18px;
+}
+.workspace-v5 .app-toolbar strong { color:var(--w3-ink); font-size:13px; }
+.workspace-v5 .app-toolbar small { color:var(--w3-muted); font-size:9px; }
+.workspace-v5 .small-action {
+  min-height:34px;
+  border-color:var(--w3-line);
+  border-radius:9px;
+  color:var(--w3-green);
+  background:var(--w3-green-soft);
+}
+.workspace-v5 .mini-stats { gap:9px; margin-top:22px; }
+.workspace-v5 .mini-stats > div {
+  min-width:0;
+  padding:14px;
+  border-color:var(--w3-line);
+  border-radius:11px;
+  background:var(--w3-paper-2);
+}
+.workspace-v5 .mini-stats > div > span { color:var(--w3-green); }
+.workspace-v5 .mini-stats strong { color:var(--w3-ink); font-size:20px; }
+.workspace-v5 .mini-stats small { color:var(--w3-muted); font-size:9px; }
+.workspace-v5 .mini-callout {
+  border-color:var(--w3-line);
+  border-radius:11px;
+  color:var(--w3-green);
+  background:var(--w3-green-soft);
+}
+.workspace-v5 .mini-callout strong { color:var(--w3-ink); }
+.workspace-v5 .mini-callout small { color:var(--w3-muted); }
+.workspace-v5 .file-row {
+  border-bottom-color:var(--w3-line);
+  color:var(--w3-muted);
+}
+.workspace-v5 .file-row.file-header {
+  border-bottom-color:var(--w3-line);
+  color:var(--w3-muted);
+}
+.workspace-v5 .file-name { color:var(--w3-ink); }
+.workspace-v5 .file-name i { color:var(--w3-green); }
+.workspace-v5 .file-sample { color:var(--w3-muted); }
+
+.workspace-v5[data-theme="dark"] .app-window {
+  border-color:#39483b;
+  background:#202a22;
+  box-shadow:0 30px 85px rgba(0,0,0,.35);
+}
+.workspace-v5[data-theme="dark"] .window-titlebar,
+.workspace-v5[data-theme="dark"] .window-content,
+.workspace-v5[data-theme="dark"] .settings-app,
+.workspace-v5[data-theme="dark"] .mini-overview,
+.workspace-v5[data-theme="dark"] .files-app {
+  border-color:#39483b;
+  color:#e5ece4;
+  background:#202a22;
+}
+.workspace-v5[data-theme="dark"] .window-titlebar { background:#263329; }
+.workspace-v5[data-theme="dark"] .window-title strong,
+.workspace-v5[data-theme="dark"] .settings-heading h2,
+.workspace-v5[data-theme="dark"] .mini-heading h2,
+.workspace-v5[data-theme="dark"] .settings-label strong,
+.workspace-v5[data-theme="dark"] .app-toolbar strong,
+.workspace-v5[data-theme="dark"] .mini-stats strong,
+.workspace-v5[data-theme="dark"] .mini-callout strong,
+.workspace-v5[data-theme="dark"] .file-name {
+  color:#e5ece4;
+}
+.workspace-v5[data-theme="dark"] .settings-heading p,
+.workspace-v5[data-theme="dark"] .mini-heading p,
+.workspace-v5[data-theme="dark"] .settings-label,
+.workspace-v5[data-theme="dark"] .settings-info,
+.workspace-v5[data-theme="dark"] .app-toolbar small,
+.workspace-v5[data-theme="dark"] .mini-stats small,
+.workspace-v5[data-theme="dark"] .mini-callout small {
+  color:#aab8aa;
+}
+.workspace-v5[data-theme="dark"] .settings-block,
+.workspace-v5[data-theme="dark"] .file-row { border-color:#39483b; }
+.workspace-v5[data-theme="dark"] .theme-options button,
+.workspace-v5[data-theme="dark"] .mini-stats > div,
+.workspace-v5[data-theme="dark"] .settings-info {
+  border-color:#39483b;
+  color:#b9c8b9;
+  background:#263329;
+}
+.workspace-v5[data-theme="dark"] .theme-options button.chosen {
+  border-color:#66866b;
+  color:#c0dfbd;
+  background:#304332;
+}
+.workspace-v5[data-theme="dark"] .mini-callout {
+  border-color:#405744;
+  color:#c0dfbd;
+  background:#29392c;
+}
+
+@media (max-width:760px) {
+  .workspace-v5 .app-window {
+    min-width:0;
+    width:calc(100vw - 24px) !important;
+    max-width:calc(100vw - 24px);
+    max-height:calc(100dvh - 100px);
+    border-radius:14px;
+  }
+  .workspace-v5 .window-titlebar { flex-basis:49px; padding-inline:12px; }
+  .workspace-v5 .window-title strong { font-size:11px; }
+  .workspace-v5 .settings-app,
+  .workspace-v5 .mini-overview,
+  .workspace-v5 .files-app { padding:17px; }
+  .workspace-v5 .settings-heading h2,
+  .workspace-v5 .mini-heading h2 { font-size:20px; }
+  .workspace-v5 .theme-options button { min-width:0; flex:1 1 110px; }
+  .workspace-v5 .terminal-app { min-height:260px; padding:12px; }
+}
