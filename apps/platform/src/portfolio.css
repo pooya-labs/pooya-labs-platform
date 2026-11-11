@@ -3728,3 +3728,21 @@
   background: rgba(205, 235, 240, .045);
   border-color: rgba(160, 215, 220, .11);
 }
+
+/* Repository-derived skill groups — bilingual, responsive, and theme-aware. */
+.skill-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 30px; }
+.skill-group { min-width: 0; padding: 21px 22px 22px; border: 1px solid rgba(160, 198, 211, .15); border-radius: 17px; background: linear-gradient(145deg, rgba(255,255,255,.04), rgba(255,255,255,.012)); }
+.skill-group h3 { display: flex; align-items: baseline; gap: 11px; margin: 0 0 15px; color: rgba(231, 240, 246, .94); font-size: 12px; font-weight: 650; }
+.skill-group h3 small { flex: 0 0 auto; color: var(--pf-emerald); font: 8px ui-monospace, monospace; letter-spacing: .12em; }
+.skill-group-items { display: flex; flex-wrap: wrap; gap: 7px; }
+.skill-group-items span { display: inline-flex; align-items: center; min-height: 30px; max-width: 100%; padding: 5px 9px; border: 1px solid rgba(160, 198, 211, .13); border-radius: 8px; color: rgba(210, 225, 234, .88); background: rgba(255,255,255,.025); font-size: 9px; line-height: 1.45; }
+.portfolio-page[data-theme="light"] .skill-group { border-color: rgba(36, 65, 96, .14); background: linear-gradient(145deg, rgba(255,255,255,.88), rgba(239,246,250,.76)); }
+.portfolio-page[data-theme="light"] .skill-group h3 { color: #29435f; }
+.portfolio-page[data-theme="light"] .skill-group-items span { color: #39566f; border-color: rgba(36, 65, 96, .13); background: rgba(255,255,255,.72); }
+@media (max-width: 760px) {
+  .skill-groups { grid-template-columns: 1fr; gap: 10px; margin-top: 22px; }
+  .skill-group { padding: 17px 16px 18px; border-radius: 14px; }
+  .skill-group h3 { margin-bottom: 12px; font-size: 11px; }
+  .skill-group-items { gap: 6px; }
+  .skill-group-items span { min-height: 29px; padding: 5px 8px; font-size: 8px; }
+}
