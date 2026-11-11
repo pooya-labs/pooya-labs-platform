@@ -666,3 +666,10 @@
 - The exact-head Browser QA report [43024823137](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43024823137/artifacts/13857121416) showed the synthesized fallback moved the emulated finger downward, opposite to the upward swipe required to advance the outer page.
 - Changed only the Browser QA fallback distance from positive to negative and added a contract assertion. No production CSS, content, layout, or interaction code was changed.
 - Awaiting exact-head CI and full Browser QA before deciding whether any app-level defect remains.
+
+
+## 2026-11-11 — Explicit Android gallery scroll handoff
+
+- Reproduced the originally reported nested-scroll defect in Browser QA: on eight localized case-study routes, the inner screenshot frame reached its boundary while the outer portfolio scroller remained stationary. Reversing the synthetic swipe and disabling image dragging in the test did not resolve it.
+- Added an explicit, one-finger touch boundary bridge: at the inner gallery top/bottom edge it cancels the inner boundary action and applies the finger delta to the outer `.portfolio-page` scroll surface. This is a targeted bug fix; the visual system and content remain unchanged.
+- Added a contract test for the edge checks, non-passive touchmove listener, cancellation and outer scroll delta. Full CI/Browser QA verification pending.
