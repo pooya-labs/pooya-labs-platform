@@ -503,3 +503,9 @@ The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDI
 
 - The initial renderer priority change affected all project cards. It has been narrowed to `salon-booking` only.
 - All other project cards retain the prior `caseStudyHeroAsset`-first behavior. Review the fresh preview; no tests/QA until «بازطراحی پایان یافت».
+
+
+## Latest owner-directed refinement — dark header glass
+
+- The sticky top bar (brand mark, navigation, language/theme controls, workspace action) now has a more visible translucent graphite/teal glass treatment in dark mode.
+- Light mode is unchanged. Preview only; no tests or QA before «بازطراحی پایان یافت».
