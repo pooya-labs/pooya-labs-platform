@@ -540,3 +540,10 @@ Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for th
 - Fixed the remaining visible seam at the bottom of the mobile radial scene by moving the fade into the visual frame itself.
 - Extended the mobile frame below the unchanged 245px SVG and applied a continuous alpha fade across the frame's lower edge, beginning before the SVG's lower halo reaches the boundary.
 - Kept the existing transparent side fades, desktop section mask/background, SVG paths, origin, rays, particles, and animation timing. Preview only; no tests or physical Android verification were run.
+
+## 2026-11-11 — AetherFlow project-detail motion scene
+
+- Enabled the existing dedicated AetherFlow Trigger → Worker → Commit motion scene in the project-detail hero instead of allowing its full-page screenshot to cover the animation.
+- Preserved the authentic desktop product screenshot as the project's desktop interface capture further down the case study.
+- Added AetherFlow-specific light-theme contrast: a stable dark-glass stage, brighter mint/blue flow edges, and high-contrast step labels and footer metadata.
+- Kept the animation geometry and timing, all other project visuals, and desktop/mobile layout behavior unchanged. Preview only; no tests or visual QA were run.
