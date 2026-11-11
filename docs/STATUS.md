@@ -1,3 +1,12 @@
+## Latest refinement — AI engineering, UI/UX, motion, and language coverage (2026-11-11)
+
+- Strengthened the bilingual personal positioning to explicitly lead with AI Engineer / مهندس هوش مصنوعی, while retaining software engineering as the foundation.
+- Elevated UI/UX design, interaction design, design systems, prototyping, motion design, and micro-interactions as core product-craft capabilities in the hero, About copy, and focus areas.
+- Added C++ and Python to the language group.
+- Expanded the Skills section to seven bilingual groups and 65 listed items, including an AI engineering focus group. AI-related items are presented as the owner's stated focus areas, not as claims of specific model-training frameworks or shipped AI infrastructure.
+- Made the AetherFlow implementation explicit: Rust is paired with the asynchronous Tokio runtime; the project remains experimental and M08 is still active.
+- Preview-only on `redesign/live-site-baseline`; build/deploy pending. No tests or QA run.
+
 ## Preview publish — portfolio refresh deployed successfully (2026-11-11)
 
 - Cloudflare Pages preview build and deploy both succeeded for commit `33d7eedc9bdbb9330df68cd9f6c86ea8acc57f5a`.
