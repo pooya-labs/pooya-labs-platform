@@ -3410,3 +3410,25 @@
     filter: none;
   }
 }
+
+/* Mobile radial proof scene: magnify the center of the wide desktop field instead of squeezing it into a phone-width frame. */
+@media (max-width: 680px) {
+  .portfolio-proof-visual {
+    height: 245px;
+    min-height: 245px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .portfolio-proof-visual .proof-radial-svg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 220%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+    transform: translateX(-50%);
+    overflow: visible;
+  }
+}
