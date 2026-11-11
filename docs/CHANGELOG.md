@@ -727,3 +727,8 @@
 
 - Fixed the Projects-card JSX to prefer `visualAsset` over `caseStudyHeroAsset`, resolving why the earlier hero-image data change was invisible on the homepage.
 - Salon Booking now displays the Shayan Salon top/hero asset on its homepage card; the full-page case-study image remains intact. Preview only; no tests or QA executed.
+
+
+## 2026-11-11 — Limit homepage image priority override to Salon Booking
+
+- Scoped the `visualAsset`-first selection to the Salon Booking card only; all other project cards preserve their original image selection order. Preview only; no tests or QA executed.
