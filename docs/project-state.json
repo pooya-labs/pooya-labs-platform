@@ -1769,21 +1769,20 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Fade the lower baseline of the foundation animation into the page",
+    "title": "Fade the actual bottom edge of the foundation animation section into the page",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
       "apps/platform/src/portfolio.css",
       "apps/platform/src/PortfolioHome.tsx"
     ],
     "scope": [
-      "proof-baseline SVG stroke only"
+      "portfolio-proof section bottom edge"
     ],
-    "implementation": "Replace the distinct lower curve stroke with a very low-opacity horizontal gradient fading to transparent at both ends.",
+    "implementation": "Remove the section bottom border and fade the whole section's lower edge with a CSS mask; restore the SVG baseline to its original styling.",
     "preserved": [
-      "all other animation rays and particles",
-      "animation timing and movement",
-      "section typography, layout, and spacing",
-      "site structure and theme behavior"
+      "section content and layout",
+      "animation rays, particles, timing and movement",
+      "top border and internal SVG baseline styling"
     ],
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
