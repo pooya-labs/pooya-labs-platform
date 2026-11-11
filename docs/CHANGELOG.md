@@ -1,3 +1,12 @@
+# 2026-11-12 — Replace Workspace server login with portable demo gate
+
+- Replaced the Cloudflare Pages Functions login flow with a host-independent client-side demo check.
+- Added a one-tab session flag using sessionStorage; returning to the portfolio clears the flag.
+- Removed the Cloudflare-specific login, session, logout endpoints and shared auth helper.
+- No external provider, database, API, or host connection is required.
+- Explicit security boundary: this is a visual/demo gate only; credentials are discoverable in public client code and it must not protect private data or privileged operations.
+- Preview branch only; production and main remain untouched.
+
 # 2026-11-12 — Add private Workspace sign-in gate
 
 - Added a responsive Persian/English login screen before entering the secondary Workspace.
