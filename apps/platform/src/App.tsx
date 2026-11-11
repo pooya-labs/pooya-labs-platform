@@ -353,7 +353,7 @@ function App(): ReactNode {
   }
 
   return (
-    <div className="platform-shell" data-theme={theme}>
+    <div className="platform-shell workspace-v3" data-theme={theme}>
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
       <div className="ambient-grid" />
@@ -430,14 +430,25 @@ function App(): ReactNode {
                   <button className="quiet-button" onClick={() => setPaletteOpen(true)}><Command size={15} /> {t.allApps}</button>
                 </div>
               </div>
-              <div className="hero-visual" aria-hidden="true">
-                <div className="visual-ring ring-one" /><div className="visual-ring ring-two" />
-                <div className="visual-core"><span>P</span><i /></div>
-                <div className="visual-satellite satellite-one"><Zap size={16} /></div>
-                <div className="visual-satellite satellite-two"><Activity size={15} /></div>
-                <div className="visual-satellite satellite-three"><Cpu size={14} /></div>
+              <div className="workspace-preview" aria-hidden="true">
+                <div className="preview-window">
+                  <div className="preview-window-bar"><span /><span /><span /><small>POOYA LABS / OVERVIEW</small></div>
+                  <div className="preview-window-body">
+                    <div className="preview-kicker">WORKSPACE SNAPSHOT <i /></div>
+                    <div className="preview-stat"><strong>08</strong><span>PROJECTS</span><b>↗</b></div>
+                    <div className="preview-progress"><i /></div>
+                    <div className="preview-mini-grid"><span><i /> ORBIT <b>READY</b></span><span><i /> GLOBALCART <b>LIVE</b></span><span><i /> AETHERFLOW <b>BUILDING</b></span></div>
+                  </div>
+                </div>
+                <div className="preview-float"><span className="preview-float-icon"><Activity size={14} /></span><span><b>System status</b><small>All services ready</small></span><i /></div>
               </div>
               <div className="hero-bottomline"><span><ShieldCheck size={14} /> {t.uiReady}</span><span className="hero-bottom-divider" /><span>{t.version}</span></div>
+            </section>
+
+            <section className="workspace-metrics" aria-label={language === 'fa' ? 'خلاصه فضای کاری' : 'Workspace summary'}>
+              <div><span>{language === 'fa' ? 'پروژه‌های من' : 'MY PROJECTS'}</span><strong>08</strong><small>{language === 'fa' ? 'در مجموعه' : 'In the portfolio'}</small></div>
+              <div><span>{language === 'fa' ? 'ابزارهای محیط' : 'WORKSPACE APPS'}</span><strong>04</strong><small>{language === 'fa' ? 'آماده استفاده' : 'Ready to launch'}</small></div>
+              <div><span>{language === 'fa' ? 'وضعیت سیستم' : 'SYSTEM STATUS'}</span><strong className="metric-ready">{language === 'fa' ? 'آماده' : 'Ready'}</strong><small>{language === 'fa' ? 'پیش‌نمایش محلی' : 'Local preview'}</small></div>
             </section>
 
             <section className="section-heading">
