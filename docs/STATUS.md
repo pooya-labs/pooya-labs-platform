@@ -575,3 +575,10 @@ Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for th
 - Preserved the inner image scroll in the center. Desktop and non-touch layouts are unchanged. Preview only; no tests or Android visual review were run.
 - تصویر کارت Salon Booking در بخش Projects صفحه اصلی به تصویر اصلی بالای وب‌سایت شایان سالن (`shayan-hero.webp`) تغییر کرد. تصویر تمام‌صفحه قبلی در گالری مطالعه موردی دست‌نخورده باقی ماند.
 - Replaced the Salon Booking homepage Projects-card image with the Shayan Salon website hero asset (`shayan-hero.webp`). The previous full-page capture remains unchanged in the case-study gallery.
+
+
+## 2026-11-11 — Fix Salon Booking homepage card image selection
+
+- Corrected the actual Projects-card renderer in `apps/platform/src/PortfolioHome.tsx`: it now prefers `visualAsset` over `caseStudyHeroAsset`.
+- Root cause: the card previously preferred the unchanged full-page case-study capture, so the earlier `visualAsset` update never appeared on the homepage.
+- The Salon Booking card now selects `shayan-hero.webp`; the case-study hero/gallery still retain the full-page captures. Preview only; no tests or visual QA run.
