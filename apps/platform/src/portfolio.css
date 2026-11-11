@@ -3713,3 +3713,18 @@
 .mini-booking-confirm { display:flex;align-items:center;gap:4px;margin-top:4px;padding:3px 4px;border:1px solid rgba(143,224,188,.2);border-radius:4px;background:rgba(114,205,164,.07);color:rgba(220,238,227,.76);font-size:4px; }
 .mini-booking-confirm>b { width:7px;height:7px;display:grid!important;place-items:center;border-radius:50%;background:rgba(125,226,177,.2);color:#aaf0cd;font-size:5px; }
 .mini-booking-confirm strong { margin-inline-start:auto;color:#a8e7c5;font-size:4px;letter-spacing:.03em; }
+
+
+/* Dark-theme glass refinement for the sticky brand/navigation bar. */
+.portfolio-page[data-theme="dark"] .portfolio-header {
+  background: linear-gradient(115deg, rgba(25, 39, 52, .76), rgba(13, 25, 35, .64) 52%, rgba(20, 39, 43, .72));
+  border-color: rgba(160, 215, 220, .2);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, .24), inset 0 1px rgba(230, 255, 255, .12), inset 0 -1px rgba(100, 220, 195, .045);
+  -webkit-backdrop-filter: blur(28px) saturate(1.55);
+  backdrop-filter: blur(28px) saturate(1.55);
+}
+.portfolio-page[data-theme="dark"] .portfolio-nav,
+.portfolio-page[data-theme="dark"] .portfolio-header-actions {
+  background: rgba(205, 235, 240, .045);
+  border-color: rgba(160, 215, 220, .11);
+}
