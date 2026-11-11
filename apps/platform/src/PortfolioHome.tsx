@@ -839,18 +839,11 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
               <defs>
                 <radialGradient id="proof-core-gradient"><stop stopColor="#bda7ff" stopOpacity=".42" /><stop offset=".42" stopColor="#8f78df" stopOpacity=".16" /><stop offset="1" stopColor="#8f78df" stopOpacity="0" /></radialGradient>
                 <linearGradient id="proof-line-gradient" x1="0" y1="1" x2="1" y2="0"><stop stopColor="#8775d8" stopOpacity=".12" /><stop offset=".52" stopColor="#a99df1" stopOpacity=".82" /><stop offset="1" stopColor="#81b7d5" stopOpacity=".18" /></linearGradient>
-                <linearGradient id="proof-baseline-gradient" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stopColor="var(--pf-emerald)" stopOpacity="0" />
-                  <stop offset=".18" stopColor="var(--pf-emerald)" stopOpacity=".025" />
-                  <stop offset=".5" stopColor="var(--pf-emerald)" stopOpacity=".07" />
-                  <stop offset=".82" stopColor="var(--pf-emerald)" stopOpacity=".025" />
-                  <stop offset="1" stopColor="var(--pf-emerald)" stopOpacity="0" />
-                </linearGradient>
               </defs>
               <ellipse className="proof-radial-glow" cx="600" cy="365" rx="450" ry="220" fill="url(#proof-core-gradient)" />
               {proofRays.map((ray) => <path key={ray.id} className="proof-ray" d={'M 600 386 C ' + ray.c1x.toFixed(1) + ' 220, ' + ray.c2x.toFixed(1) + ' ' + ray.c2y.toFixed(1) + ', ' + ray.x.toFixed(1) + ' ' + ray.y.toFixed(1)} stroke="url(#proof-line-gradient)" strokeWidth={ray.width} strokeOpacity={ray.opacity} fill="none" />)}
               {proofParticles.map((particle) => <circle key={particle.id} className="proof-particle" cx={particle.x} cy={particle.y} r={particle.radius} style={{ animationDelay: particle.delay + 's' }} />)}
-              <path className="proof-baseline" d="M 175 385 Q 600 300 1025 385" stroke="url(#proof-baseline-gradient)" fill="none" />
+              <path className="proof-baseline" d="M 175 385 Q 600 300 1025 385" fill="none" />
             </svg>
           </div>
         </section>
