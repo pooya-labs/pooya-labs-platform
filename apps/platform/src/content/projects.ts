@@ -73,8 +73,8 @@ const projectEntries: PortfolioProject[] = [
     },
     category: { fa: 'سیستم‌های توزیع‌شده و گردش‌کار', en: 'Distributed systems & workflows' },
     description: {
-      fa: 'پلتفرم اجرای گردش‌کار توزیع‌شده با Rust؛ با تمرکز بر وضعیت پایدار، بازیابی Workerها، تحویل قابل اتکا و مشاهده‌پذیری. پروژه همچنان در حال توسعه است و هنوز محصول آماده تولید محسوب نمی‌شود.',
-      en: 'A Rust-based distributed workflow execution platform focused on durable state, recoverable workers, reliable delivery, and observability. It remains under active development and is not production-ready.',
+      fa: 'پلتفرم اجرای گردش‌کار توزیع‌شده با زبان Rust و runtime ناهمگام Tokio؛ با تمرکز بر وضعیت پایدار، بازیابی Workerها، تحویل قابل اتکا و مشاهده‌پذیری. پروژه همچنان در حال توسعه است و هنوز محصول آمادهٔ تولید محسوب نمی‌شود.',
+      en: 'A distributed workflow execution platform built with Rust and the asynchronous Tokio runtime, focused on durable state, recoverable workers, reliable delivery, and observability. It remains under active development and is not production-ready.',
     },
     status: { fa: 'در حال توسعه · M08', en: 'In development · M08' },
     statusKey: 'in-development',
