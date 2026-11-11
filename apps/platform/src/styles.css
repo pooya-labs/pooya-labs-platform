@@ -1065,3 +1065,75 @@ kbd { display: inline-flex; align-items: center; gap: 3px; padding: 3px 6px; bor
   .workspace-v4 .app-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
   .workspace-v4 .bottom-grid {grid-template-columns:1fr}
 }
+
+
+/* Workspace v4 interaction and viewport repair */
+.workspace-v4 {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+}
+.workspace-v4 .workspace-layout {
+  display: flex !important;
+  flex: 1 1 auto;
+  width: 100%;
+  height: calc(100vh - 82px);
+  height: calc(100dvh - 82px);
+  min-height: 0;
+  overflow: hidden;
+}
+.workspace-v4 .desktop-stage {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.workspace-v4 .desktop-scroll {
+  width: min(1540px, 100%);
+  height: 100%;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  scrollbar-gutter: stable;
+}
+.workspace-v4 .workspace-preview,
+.workspace-v4 .hero-orbit,
+.workspace-v4 .hero-glow,
+.workspace-v4 .hero-panel::before,
+.workspace-v4 .hero-panel::after {
+  pointer-events: none;
+}
+.workspace-v4 button,
+.workspace-v4 a,
+.workspace-v4 input {
+  touch-action: manipulation;
+}
+.workspace-v4 .mobile-dock { pointer-events: auto; }
+@media (max-width: 760px) {
+  .workspace-v4 .workspace-layout {
+    display: flex !important;
+    flex: 1 1 auto;
+    height: calc(100vh - 62px);
+    height: calc(100dvh - 62px);
+    min-height: 0;
+  }
+  .workspace-v4 .desktop-stage {
+    flex: 1 1 auto;
+    height: 100%;
+    min-height: 0;
+  }
+  .workspace-v4 .desktop-scroll {
+    height: 100%;
+    min-height: 0;
+    padding: 24px 16px 126px;
+    overscroll-behavior-y: auto;
+    touch-action: pan-y;
+  }
+  .workspace-v4 .workspace-preview { pointer-events: none; }
+}
