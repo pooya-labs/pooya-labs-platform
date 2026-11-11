@@ -1826,14 +1826,24 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Use Salon Booking website hero image on homepage project card",
+    "title": "Fix Salon Booking homepage card image selection",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
-      "apps/platform/src/content/projects.ts"
+      "apps/platform/src/content/projects.ts",
+      "apps/platform/src/PortfolioHome.tsx"
     ],
     "sourceAsset": "https://raw.githubusercontent.com/pooya-labs/salon-booking/e4170913b704f3e9d3d9c0eaef2a953161524c68/public/images/shayan-hero.webp",
-    "scope": "Homepage Salon Booking visualAsset only; preserve full-page case-study captures",
+    "rootCause": "Homepage card renderer preferred caseStudyHeroAsset before visualAsset, so the previous visualAsset change was not displayed.",
+    "scope": "Homepage Projects card prefers visualAsset; case-study captures remain unchanged",
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
-  }
+  },
+  "events": [
+    {
+      "date": "2026-11-11",
+      "event": "Owner reported the Salon Booking homepage card still showed the old lower/full-page capture. Root cause was the card renderer prioritizing caseStudyHeroAsset over visualAsset. Updated apps/platform/src/PortfolioHome.tsx to prefer visualAsset for homepage cards while preserving case-study media.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
+    }
+  ]
 }
