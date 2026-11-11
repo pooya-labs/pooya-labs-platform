@@ -405,7 +405,7 @@ function App(): ReactNode {
           </div>
         </aside>
 
-        <main className="desktop-stage">
+        <main className="desktop-stage workspace-redesign">
           <div className="desktop-scroll">
             <section className="welcome-row">
               <div>
