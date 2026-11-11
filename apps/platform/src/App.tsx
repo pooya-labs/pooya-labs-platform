@@ -367,6 +367,12 @@ function App(): ReactNode {
           <Search size={16} /><span>{t.search}</span><kbd><Command size={11} /> K</kbd>
         </button>
         <div className="topbar-actions">
+          <button className="workspace-header-control" onClick={() => setLanguage((value) => value === 'fa' ? 'en' : 'fa')} aria-label={language === 'fa' ? 'تغییر زبان به انگلیسی' : 'Switch language to Persian'} title={language === 'fa' ? 'English' : 'فارسی'}>
+            <Languages size={16} /><span>{language === 'fa' ? 'EN' : 'FA'}</span>
+          </button>
+          <button className="workspace-header-control" onClick={() => setTheme((value) => value === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? (language === 'fa' ? 'فعال‌کردن حالت روشن' : 'Switch to light mode') : (language === 'fa' ? 'فعال‌کردن حالت تاریک' : 'Switch to dark mode')} title={theme === 'dark' ? t.lightMode : t.darkMode}>
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
           <button className="text-button portfolio-return" onClick={() => setWorkspaceOpen(false)}>{language === 'fa' ? 'بازگشت به وب‌سایت' : 'Back to portfolio'}</button>
           <div className={'connection-pill ' + (htmlServiceHost ? 'is-live' : '')}>
             <span className="status-dot" /><span>{htmlServiceHost ? t.liveRpc : t.localPreview}</span>
@@ -400,7 +406,6 @@ function App(): ReactNode {
             })}
           </div>
           <div className="rail-bottom">
-            <button className="rail-button" onClick={() => setLanguage((value) => value === 'fa' ? 'en' : 'fa')} aria-label={t.language}><Languages size={18} /></button>
             <button className="rail-button" onClick={() => openApp('settings')} aria-label={t.appearance}><Settings size={18} /></button>
           </div>
         </aside>
@@ -564,7 +569,6 @@ function App(): ReactNode {
         <div className="notification-empty"><Bell size={18} /><span>{t.noActivity}</span></div>
       </div>}
 
-      <div className="language-switcher"><button onClick={() => setLanguage((value) => value === 'fa' ? 'en' : 'fa')} aria-label={t.languageSwitch}><Languages size={14} /> {t.languageSwitch}</button></div>
     </div>
   );
 }
