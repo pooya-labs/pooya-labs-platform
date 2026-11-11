@@ -1782,6 +1782,12 @@
       "event": "Owner reported that the lower boundary of the mobile foundation artwork still ended as a hard line before a disconnected fade. Extended the visual frame below the unchanged SVG and added a continuous alpha fade that overlaps its lower halo.",
       "branch": "redesign/live-site-baseline",
       "status": "implemented-preview-pending-owner-review"
+    },
+    {
+      "date": "2026-11-11",
+      "event": "Owner requested a project-detail animation for AetherFlow and readable contrast in light theme. Enabled the existing Trigger → Worker → Commit motion scene in the case-study hero, preserved the real desktop screenshot as a separate interface capture, and strengthened AetherFlow light-theme scene contrast.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
     }
   ],
   "ownerRedesignWorkflow": {
@@ -1799,24 +1805,24 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Continuous lower fade on the mobile foundation animation",
+    "title": "Add AetherFlow project-detail animation with light-theme contrast",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
+      "apps/platform/src/PortfolioHome.tsx",
+      "apps/platform/src/content/projects.ts",
       "apps/platform/src/portfolio.css"
     ],
     "scope": [
-      "continuous alpha fade at the bottom of the mobile animation frame",
-      "overlap the SVG lower halo so no hard cutoff remains",
-      "retain existing transparent left and right edge fades",
-      "preserve the desktop section background and mask"
+      "show AetherFlow's existing workflow motion scene in project details",
+      "keep the actual product screenshot available in interface captures",
+      "ensure readable light-theme contrast for labels, nodes, flow edges, and status"
     ],
-    "implementation": "The mobile visual frame is extended to 284px while the centered SVG remains 245px tall and unchanged. A vertical alpha mask stays opaque through 82% of the frame and fades to transparent at 100%, overlapping the SVG lower halo so the image boundary and fade form one continuous transition.",
+    "implementation": "The case-study hero now bypasses the AetherFlow full-page screenshot so its existing Trigger → Worker → Commit animation is shown. The screenshot was retained as caseStudyHeroAsset for the separate desktop interface-captures section. Light theme uses an intentionally dark motion stage with higher-contrast labels, cards, edges, and metadata.",
     "preserved": [
-      "desktop section and radial composition",
-      "shared SVG viewBox and path geometry",
-      "single lower focal origin and halo",
-      "ray and particle animations and timing",
-      "content and spacing outside the mobile foundation scene"
+      "all existing AetherFlow animation markup and motion timing",
+      "original desktop product screenshot and interface evidence",
+      "all other project case-study animations",
+      "desktop and mobile case-study layout"
     ],
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
