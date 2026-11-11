@@ -719,3 +719,5 @@
 
 - Expanded the mobile capture section's invisible side gutters and separated them from the centered inner image scroller, allowing the outer case-study page to scroll from either side while preserving image scrolling in the middle.
 - Desktop and non-touch layouts are unchanged. Preview only; no tests or QA executed.
+- تصویر کارت Salon Booking در بخش Projects صفحه اصلی به تصویر اصلی بالای وب‌سایت شایان سالن (`shayan-hero.webp`) تغییر کرد. تصویر تمام‌صفحه قبلی در گالری مطالعه موردی دست‌نخورده باقی ماند.
+- Replaced the Salon Booking homepage Projects-card image with the Shayan Salon website hero asset (`shayan-hero.webp`). The previous full-page capture remains unchanged in the case-study gallery.
