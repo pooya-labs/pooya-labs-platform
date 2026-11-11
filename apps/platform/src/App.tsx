@@ -353,7 +353,7 @@ function App(): ReactNode {
   }
 
   return (
-    <div className="platform-shell workspace-v3" data-theme={theme}>
+    <div className="platform-shell workspace-v3 workspace-v4" data-theme={theme}>
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
       <div className="ambient-grid" />
