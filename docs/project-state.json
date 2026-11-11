@@ -7,12 +7,12 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-15-WORKSPACE-V6-BRAND-INTERNAL-APPS",
-    "title": "Use official Pooya Monogram and align internal Workspace apps",
-    "status": "Implemented on preview branch; deployment pending."
+    "id": "P8-NOVELS-UPLOAD-INTEGRATION",
+    "title": "Connect uploaded Ghazal and Gavazn books to the public Novels library",
+    "status": "Implemented on preview branch; Cloudflare preview pending."
   },
   "lastCheckpointDate": "2026-11-12",
-  "latestVerifiedCodeCommit": "7ec0d1feb69d01e4551bf6d6d0739a90afa48544",
+  "latestVerifiedCodeCommit": "780cd900bc8cc26807203f32946e936a10d9f332",
   "tests": {
     "repositoryCi": "passed-main-run-42815065743;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1;typecheck;three-target-build;security-scan;contract-tests",
     "transportHarnessContract": "passed",
@@ -1158,25 +1158,7 @@
       "latestObservedChange": "Latest main commit changed only the bilingual README ownership mark to the centered rounded black-tile platform monogram; owner permission and privacy-reviewed imagery restrictions remain."
     }
   },
-  "novelLibrary": {
-    "implemented": true,
-    "homepageSection": true,
-    "bilingual": true,
-    "catalogPath": "apps/platform/public/novels/catalog.json",
-    "coverDirectory": "apps/platform/public/novels/covers/",
-    "manuscriptDirectory": "apps/platform/public/novels/manuscripts/",
-    "supportedManuscriptFormats": [
-      "md",
-      "txt"
-    ],
-    "reader": "in-site-safe-markdown-reader",
-    "publishedFlagRequired": true,
-    "initialNovelCount": 0,
-    "ownerCopyPending": true,
-    "uploadGuide": "docs/NOVELS-GUIDE.md",
-    "privacyNote": "public-repository-files-remain-public-even-when-published-false",
-    "publishedSection": "live-in-github-pages-run-42247171442"
-  },
+  "novelLibrary": "two-published-books;WebP-covers;PDF-inline-reader;preview-deployment-pending",
   "reconciliation": {
     "date": "2026-11-08",
     "inspectedMainCodeAndTestCheckpoint": "7a2d6c38731ea57e66bcedc5363566905ab5affe",
