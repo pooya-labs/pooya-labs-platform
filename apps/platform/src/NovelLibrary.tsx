@@ -41,7 +41,7 @@ export function validateNovelCatalog(value: unknown): NovelRecord[] {
       throw new Error('Novel synopsis values must be localized strings.');
     }
     if (!isSafeNovelPath(novel.cover, 'covers', 'webp|png|jpe?g')) throw new Error('Novel covers must be image files inside novels/covers/.');
-    if (!isSafeNovelPath(novel.manuscript, 'manuscripts', 'md|txt')) throw new Error('Novel manuscripts must be Markdown or text files inside novels/manuscripts/.');
+    if (!isSafeNovelPath(novel.manuscript, 'manuscripts', 'md|txt|pdf')) throw new Error('Novel manuscripts must be PDF, Markdown, or text files inside novels/manuscripts/.');
     if (typeof novel.published !== 'boolean') throw new Error('Every novel requires an explicit published flag.');
     if (novel.language !== undefined && !['fa', 'en', 'multi'].includes(String(novel.language))) throw new Error('Novel language must be fa, en, or multi.');
     if (novel.genres !== undefined && (!Array.isArray(novel.genres) || novel.genres.some((genre) => typeof genre !== 'string'))) {
@@ -163,6 +163,10 @@ export function NovelReader({ novel, language, theme, onThemeChange, loading, er
     : { back: 'Back to library', subtitle: 'FROM THE STORY LIBRARY', loading: 'Loading the manuscript…', unavailable: 'The manuscript is not available yet.', missing: 'This novel could not be found in the library.', retry: 'Check the manuscript file or try again.' };
   useEffect(() => {
     if (!novel) return;
+    if (/\\.pdf$/i.test(novel.manuscript)) {
+      setManuscript(null); setManuscriptLoading(false); setManuscriptError(null);
+      return;
+    }
     const controller = new AbortController();
     setManuscript(null); setManuscriptLoading(true); setManuscriptError(null);
     fetch(novelAssetUrl(novel.manuscript), { signal: controller.signal })
@@ -196,7 +200,11 @@ export function NovelReader({ novel, language, theme, onThemeChange, loading, er
             </section>
             <section className="novel-text-section" aria-label={rtl ? 'متن رمان' : 'Novel manuscript'}>
               <div className="novel-text-topline"><BookOpen size={17}/><span>{rtl ? 'متن اثر' : 'THE MANUSCRIPT'}</span><span className="novel-text-rule"/></div>
-              {manuscriptLoading ? <div className="novel-empty-state" role="status"><LoaderCircle size={20} className="novel-spinner"/>{copy.loading}</div>
+              {novel.manuscript.toLowerCase().endsWith('.pdf') ? <div className="novel-pdf-viewer">
+                  <iframe src={novelAssetUrl(novel.manuscript) + '#toolbar=1&navpanes=0&view=FitH'} title={title} loading="lazy" />
+                  <a href={novelAssetUrl(novel.manuscript)} target="_blank" rel="noreferrer">{rtl ? 'باز کردن فایل کامل' : 'Open full PDF'}</a>
+                </div>
+                : manuscriptLoading ? <div className="novel-empty-state" role="status"><LoaderCircle size={20} className="novel-spinner"/>{copy.loading}</div>
                 : manuscriptError ? <div className="novel-empty-state novel-empty-error" role="status"><strong>{copy.unavailable}</strong><p>{copy.retry} ({manuscriptError})</p></div>
                 : manuscript?.trim() ? <NovelManuscript source={manuscript}/>
                 : <div className="novel-empty-state"><BookText size={25}/><strong>{copy.unavailable}</strong></div>}
