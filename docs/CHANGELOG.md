@@ -659,3 +659,10 @@
 - Merged PR [#6](https://github.com/pooya-labs/pooya-labs-platform/pull/6) for visual round 3 and PR [#7](https://github.com/pooya-labs/pooya-labs-platform/pull/7) for unique screenshot-landmark names. The latter removed 32 repeated `landmark-unique` moderate axe findings.
 - Validation on main `fa5d412506387622ca39df792fcaed62eb88cb67`: Repository CI **67/67 tests**, Browser QA **17/17 routes and 34/34 viewports with zero axe violations**, GitHub Pages/Cloudflare Pages/Apps Script deployments all succeeded.
 - Manual review is still required for 36 incomplete axe checks (34 color-contrast, 2 aria-prohibited-attr), keyboard/screen-reader behavior, external social-preview crawlers, and explicit owner V1 approval.
+
+
+## 2026-11-11 — Correct mobile touch QA fallback direction
+
+- The exact-head Browser QA report [43024823137](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43024823137/artifacts/13857121416) showed the synthesized fallback moved the emulated finger downward, opposite to the upward swipe required to advance the outer page.
+- Changed only the Browser QA fallback distance from positive to negative and added a contract assertion. No production CSS, content, layout, or interaction code was changed.
+- Awaiting exact-head CI and full Browser QA before deciding whether any app-level defect remains.
