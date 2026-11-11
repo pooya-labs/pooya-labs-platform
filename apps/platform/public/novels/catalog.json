@@ -4,7 +4,8 @@
     {
       "slug": "gavazn",
       "title": {
-        "fa": "گوزن"
+        "fa": "گوزن",
+        "en": "Gavazn"
       },
       "language": "fa",
       "genres": [],
@@ -15,7 +16,8 @@
     {
       "slug": "ghazal",
       "title": {
-        "fa": "غزال"
+        "fa": "غزال",
+        "en": "Ghazal"
       },
       "language": "fa",
       "genres": [],
