@@ -3538,3 +3538,67 @@
     text-overflow: clip;
   }
 }
+
+/* Android case-study captures: keep the narrow phone screenshot centered while
+   leaving invisible side gutters available for the outer document scroll. */
+@media (max-width: 680px) and (pointer: coarse) {
+  .case-study-media-section {
+    width: calc(100% + 28px);
+    margin-inline: -14px;
+    padding-inline: 14px;
+    box-sizing: border-box;
+  }
+
+  .case-study-media-grid {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .case-study-media-card.device-mobile {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    margin-inline: auto;
+    overflow: visible;
+    touch-action: pan-y;
+  }
+
+  .case-study-media-card.device-mobile .case-study-media-frame {
+    position: relative;
+    width: 100%;
+    min-height: 0;
+    overflow: hidden;
+    touch-action: pan-y;
+    overscroll-behavior-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .case-study-media-card.device-mobile .case-study-media-frame::before,
+  .case-study-media-card.device-mobile .case-study-media-frame::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    width: clamp(18px, 7vw, 34px);
+    pointer-events: none;
+    background: transparent;
+  }
+
+  .case-study-media-card.device-mobile .case-study-media-frame::before { left: 0; }
+  .case-study-media-card.device-mobile .case-study-media-frame::after { right: 0; }
+
+  .case-study-media-card.device-mobile .case-study-media-frame img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: none;
+    margin-inline: auto;
+    object-fit: contain;
+    object-position: top center;
+    touch-action: pan-y;
+  }
+}
