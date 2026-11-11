@@ -1,3 +1,10 @@
+## 2026-11-12 — Workspace structural redesign v3
+
+- Replaced the previous hero monogram/orbit artwork with a compact workspace snapshot preview and status tile.
+- Added an explicit summary strip for portfolio projects, workspace apps, and local preview status.
+- Reworked the full Workspace visual system with a forest-green hero, editorial hierarchy, stronger spacing, clearer launch cards, refined navigation, and dedicated mobile composition.
+- Preserved existing app interactions, local-preview honesty, bilingual support, and light/dark themes. Preview-only; no broad QA run.
+
 ## 2026-11-12 — Workspace design language reset v2
 
 - Replaced the previous neon/glass-heavy design with a quieter editorial product UI using warm neutrals, graphite, restrained forest green, clean typography, and simple bordered surfaces.
