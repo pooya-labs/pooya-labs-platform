@@ -438,9 +438,9 @@ The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDI
 - The same common lower origin, halo, particles, colors, Bézier fan, and animation timing are shared with desktop; only the mobile viewing frame changes.
 - Review the updated preview on Android. Continue the owner-led loop without interim QA until **“بازطراحی پایان یافت”**.
 
-## Active owner-directed redesign — mobile foundation edge blending (2026-11-11)
+## Active owner-directed redesign — desktop-style mobile foundation framing (2026-11-11)
 
-- The mobile radial scene now fades out at both horizontal edges using surface-matched gradient overlays.
-- The bottom transition of the entire foundation section no longer depends on CSS mask compositing on narrow screens; layered section and bottom-overlay gradients blend it into the page background in dark and light themes.
-- Desktop animation and composition are unchanged. Review the current Cloudflare preview on Android and report any remaining visual mismatch.
-- Do not run full tests or QA before **“بازطراحی پایان یافت”**.
+- Removed all surface-colored edge and bottom overlays that were tinting the radial animation on Android.
+- The mobile foundation section now keeps the same background and outer fade mask as desktop. The cropped SVG uses a transparent horizontal edge fade, composited with its existing top fade; no dark gradient is painted over the artwork.
+- The SVG crop and animation remain unchanged. Review the current Cloudflare preview on Android.
+- Do not run full tests or QA before **“بازطراحی پایان یافت”**; do not merge to main or deploy production.
