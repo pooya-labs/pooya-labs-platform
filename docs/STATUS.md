@@ -1,3 +1,10 @@
+# Workspace v4 — touch and scroll repair (2026-11-12)
+
+- Fixed the viewport/flex sizing contract: the Workspace shell now uses the dynamic viewport height, the content stage is constrained to the space below the header, and the scroll container receives a definite height.
+- Restored native vertical scrolling on desktop and Android with `overflow-y:auto`, `touch-action:pan-y`, and momentum scrolling on touch devices.
+- Marked the decorative workspace preview and hero artwork as non-interactive so they cannot intercept taps.
+- Kept all changes on `redesign/live-site-baseline`; production and `main` remain untouched. This is a targeted interaction repair, not the deferred full QA pass.
+
 # Workspace v4 — desktop composition reset (2026-11-12)\n\n- Corrected the previous incomplete delivery: the v3 pass had retained the legacy desktop shell and did not constitute a full desktop redesign.\n- Rebuilt the desktop composition with a full-width editorial header, no legacy icon rail, a two-column hero with a large product snapshot, expanded metric panels, four-column app launcher, and balanced lower dashboard panels.\n- Preserved the compact mobile layout and existing app actions, RPC, command palette, language/theme behavior.\n- Preview-only; production remains untouched. Broad QA remains deferred until owner approval.\n\n## Workspace redesign v3 — structural reset (2026-11-12)
 
 - Replaced the prior restrained dashboard treatment with a materially different portfolio-aligned command center: stronger editorial hierarchy, a deep forest-green hero, a live-looking workspace snapshot composition, summary metrics, and a more deliberate app-launch grid.
