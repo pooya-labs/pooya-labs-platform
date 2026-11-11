@@ -1,3 +1,9 @@
+## Next refinement — social brand icon consistency
+
+- Review the GitHub and Telegram brand marks in the hero, contact section, footer, and hydrated case-study footer.
+- Keep the owner monogram and Instagram glyph as their own identity assets.
+- Continue on `redesign/live-site-baseline` only; defer tests and broad QA until `بازطراحی پایان یافت`.
+
 ## Next refinement — AI engineering and design positioning preview
 
 - Review the updated AI Engineer positioning, C++/Python language entries, seven skill groups / 65 items, UI/UX and motion-design emphasis, and explicit Rust + Tokio wording in AetherFlow.
