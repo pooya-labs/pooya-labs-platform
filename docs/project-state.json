@@ -7,9 +7,9 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-03-PORTFOLIO-CONTENT",
-    "title": "Refresh bilingual project status, case-study details, and repository-derived skills",
-    "status": "Implemented and successfully published to Cloudflare Preview; owner review pending."
+    "id": "P8-03-PORTFOLIO-POSITIONING",
+    "title": "Emphasize AI engineering, UI/UX and motion craft; add C++/Python and clarify AetherFlow Tokio",
+    "status": "Implemented on preview branch; deployment pending."
   },
   "lastCheckpointDate": "2026-11-11",
   "latestVerifiedCodeCommit": "54ca6138f75e9ba7878428713bc0332759c82450",
@@ -1826,23 +1826,27 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Refresh portfolio narrative, project completion states, case studies, and skills",
-    "status": "preview-build-and-deploy-successful-owner-review-pending",
+    "title": "AI engineering and design craft positioning refinement",
+    "status": "implemented-preview-deployment-pending",
     "implementationFiles": [
       "apps/platform/src/PortfolioHome.tsx",
       "apps/platform/src/content/projects.ts",
-      "apps/platform/src/content/case-study-dossiers-core.ts",
-      "apps/platform/src/content/case-study-dossiers-products.ts",
-      "apps/platform/src/portfolio.css"
+      "apps/platform/src/content/case-study-dossiers-core.ts"
     ],
-    "scope": "Refresh all homepage content in Persian and English; show seven completed projects and AetherFlow as the only active development project; derive categorized skills from actual implementations and documentation across all eight project repositories; correct stale release and case-study information without hiding product limitations.",
+    "scope": "Lead with AI Engineer positioning; emphasize UI/UX, interaction design, design systems, prototyping, motion and micro-interactions; add C++ and Python; explicitly identify Tokio as the async runtime used with Rust in AetherFlow.",
     "validation": "deferred-until-owner-declares-redesign-finished",
-    "release": "preview-only; no merge or production deployment",
+    "release": "preview-only",
     "previewUrl": "https://099b2bd5.pooya-labs-platform.pages.dev",
     "deploymentId": "099b2bd5-ad29-43a8-aa17-adc9bbc45c55",
     "latestSourceCommit": "33d7eedc9bdbb9330df68cd9f6c86ea8acc57f5a"
   },
   "events": [
+    {
+      "date": "2026-11-11",
+      "event": "Refined the portfolio's bilingual positioning around AI engineering and UI/UX/motion craft; added C++ and Python; expanded skills to 7 groups/65 items; explicitly identified Tokio as AetherFlow's async runtime alongside Rust.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-deployment-pending"
+    },
     {
       "date": "2026-11-11",
       "event": "The first content-refresh Preview attempt exposed a TypeScript dossier-interface parse issue. Restored the typed CaseStudyDossier interface and AetherFlow entry, then Cloudflare Pages build and deploy succeeded on 33d7eedc9bdbb9330df68cd9f6c86ea8acc57f5a. Preview: https://099b2bd5.pooya-labs-platform.pages.dev. No tests or QA were run.",
@@ -1905,8 +1909,8 @@
     "inDevelopmentProjects": [
       "aetherflow"
     ],
-    "skillGroups": 6,
-    "listedSkillItems": 53,
+    "skillGroups": 7,
+    "listedSkillItems": 65,
     "locales": [
       "fa",
       "en"
@@ -1917,6 +1921,16 @@
     "sourceCommit": "33d7eedc9bdbb9330df68cd9f6c86ea8acc57f5a",
     "cloudflareBuild": "success",
     "cloudflareDeploy": "success",
-    "tests": "deferred"
+    "tests": "deferred",
+    "addedLanguages": [
+      "C++",
+      "Python"
+    ],
+    "positioning": [
+      "AI Engineering",
+      "UI/UX Design",
+      "Motion Design"
+    ],
+    "aetherflowRuntime": "Rust + Tokio"
   }
 }
