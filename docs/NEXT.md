@@ -1,3 +1,9 @@
+# Next — Workspace demo login
+
+1. Review the demo login on the current preview host.
+2. Confirm username `pooya` and the owner-provided password work, incorrect credentials are rejected, and returning to the portfolio clears the session.
+3. Treat this strictly as a visual gate; never place private data or privileged operations behind it.
+4. Keep changes on `redesign/live-site-baseline`; do not merge to `main` or deploy production before explicit approval.
 # Next — configure Workspace Preview credentials (2026-11-12)
 
 1. In Cloudflare Dashboard, open Workers & Pages → pooya-labs-platform → Settings → Variables and Secrets → Preview.
