@@ -716,8 +716,22 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
     if (!root || !('IntersectionObserver' in window)) return;
     const targets = Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'));
     if (!targets.length) return;
-    // .portfolio-page owns scrolling; reset it on route changes and observe within that viewport.
-    root.scrollTop = 0;
+    // .portfolio-page owns scrolling. Keep the list position when returning from a
+    // project or novel, rather than sending the reader back to the top.
+    const isDetailRoute = Boolean(selectedProject?.slug || selectedNovelSlug);
+    if (isDetailRoute) {
+      root.scrollTop = 0;
+    } else {
+      try {
+        const savedPosition = window.sessionStorage.getItem('pooya-labs:portfolio-return-scroll');
+        if (savedPosition !== null) {
+          root.scrollTop = Math.max(0, Number(savedPosition) || 0);
+          window.sessionStorage.removeItem('pooya-labs:portfolio-return-scroll');
+        }
+      } catch {
+        // Session storage may be unavailable in restricted browsing contexts.
+      }
+    }
     root.classList.add('motion-ready');
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
@@ -776,10 +790,16 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
   const openCaseStudy = (event: ReactMouseEvent<HTMLAnchorElement>, project: PortfolioProject) => {
     event.preventDefault();
     const url = new URL(getProjectRouteHref(project.slug, language), window.location.href);
+    try {
+      const page = document.querySelector<HTMLElement>('.portfolio-page');
+      window.sessionStorage.setItem('pooya-labs:portfolio-return-scroll', String(page?.scrollTop ?? 0));
+    } catch {
+      // Session storage may be unavailable in restricted browsing contexts.
+    }
     window.history.pushState({}, '', url);
     setSelectedProject(project);
     setSelectedNovelSlug(null);
-    window.scrollTo({ top: 0, behavior: 'auto' });
+
   };
 
   const closeCaseStudy = () => {
@@ -798,6 +818,12 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
     url.search = '';
     url.hash = '';
     url.searchParams.set('novel', novel.slug);
+    try {
+      const page = document.querySelector<HTMLElement>('.portfolio-page');
+      window.sessionStorage.setItem('pooya-labs:portfolio-return-scroll', String(page?.scrollTop ?? 0));
+    } catch {
+      // Session storage may be unavailable in restricted browsing contexts.
+    }
     window.history.pushState({}, '', url);
     setSelectedProject(null);
     setSelectedNovelSlug(novel.slug);
