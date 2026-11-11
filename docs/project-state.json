@@ -7,9 +7,9 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-02-ITERATIVE",
-    "title": "Restore and publish the full owner identity in the shared footer attribution",
-    "status": "Full name and full byline explicitly bound in shared owner component; preview deployment pending; production untouched."
+    "id": "P8-03-PORTFOLIO-CONTENT",
+    "title": "Refresh bilingual project status, case-study details, and repository-derived skills",
+    "status": "Implemented on redesign preview branch; owner review pending."
   },
   "lastCheckpointDate": "2026-11-11",
   "latestVerifiedCodeCommit": "54ca6138f75e9ba7878428713bc0332759c82450",
@@ -1826,16 +1826,26 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Refine sticky header glass in dark mode",
+    "title": "Refresh portfolio narrative, project completion states, case studies, and skills",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
+      "apps/platform/src/PortfolioHome.tsx",
+      "apps/platform/src/content/projects.ts",
+      "apps/platform/src/content/case-study-dossiers-core.ts",
+      "apps/platform/src/content/case-study-dossiers-products.ts",
       "apps/platform/src/portfolio.css"
     ],
-    "scope": "Make the top bar containing the logo, navigation, language/theme controls and workspace action visibly translucent and glass-like in dark mode; preserve light mode.",
+    "scope": "Refresh all homepage content in Persian and English; show seven completed projects and AetherFlow as the only active development project; derive categorized skills from actual implementations and documentation across all eight project repositories; correct stale release and case-study information without hiding product limitations.",
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
   },
   "events": [
+    {
+      "date": "2026-11-11",
+      "event": "Refreshed the portfolio in both languages: seven completed projects and AetherFlow as the only active project; replaced the preliminary skills row with six groups/53 repository-derived items; corrected GlobalCart v1.0.0, Salon Booking Apps Script 1.5.5/Android prerelease, Pooya.OS nine profiles, ORBIT Local Work v1.1.0, and current AetherFlow M08 notes.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
+    },
     {
       "date": "2026-11-11",
       "event": "Owner requested a glassier dark-mode header/navigation bar. Added a translucent graphite/teal gradient, stronger backdrop blur, subtle inner highlights, and lightly tinted nav/control trays; light mode remains unchanged.",
@@ -1878,5 +1888,20 @@
       "branch": "redesign/live-site-baseline",
       "status": "implemented-preview-pending-owner-review"
     }
-  ]
+  ],
+  "portfolioContentSnapshot": {
+    "date": "2026-11-11",
+    "totalProjects": 8,
+    "completedProjects": 7,
+    "inDevelopmentProjects": [
+      "aetherflow"
+    ],
+    "skillGroups": 6,
+    "listedSkillItems": 53,
+    "locales": [
+      "fa",
+      "en"
+    ],
+    "branch": "redesign/live-site-baseline"
+  }
 }
