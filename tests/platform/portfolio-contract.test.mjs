@@ -271,3 +271,13 @@ test('project evidence capture records private desktop/mobile screenshots and mo
   assert.match(capture, /salon-booking/);
   assert.match(capture, /connection required/);
 });
+
+
+test('mobile screenshot gallery hands edge swipes to the outer portfolio scroller', () => {
+  assert.match(portfolio, /const maxGalleryScroll = Math\.max\(0, gallery\.scrollHeight - gallery\.clientHeight\)/);
+  assert.match(portfolio, /const shouldHandoffToPage = \(deltaY > 0 && atGalleryBottom\) \|\| \(deltaY < 0 && atGalleryTop\)/);
+  assert.match(portfolio, /gallery\.addEventListener\('touchmove', handleTouchMove, \{ passive: false \}\)/);
+  assert.match(portfolio, /if \(event\.cancelable\) event\.preventDefault\(\)/);
+  assert.match(portfolio, /pageScroller\.scrollTop = Math\.max\(0, Math\.min\(maxPageScroll, pageScroller\.scrollTop \+ deltaY\)\)/);
+  assert.match(portfolio, /gallery\.removeEventListener\('touchmove', handleTouchMove\)/);
+});
