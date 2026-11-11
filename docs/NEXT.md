@@ -1,3 +1,10 @@
+## Next checkpoint — review Workspace redesign v3
+
+- Review the new structural layout at desktop and narrow Android widths, in Persian/English and light/dark themes.
+- Confirm the new forest hero, embedded workspace snapshot, summary strip, and app-launch cards feel meaningfully aligned with the portfolio rather than the previous dashboard.
+- Preserve all existing interactions and backend boundaries. Defer broad QA until `بازطراحی پایان یافت`.
+- Continue on `redesign/live-site-baseline`; do not merge or deploy Production.
+
 ## Next refinement — Workspace v2 owner review
 
 - Review the new editorial workspace direction at desktop and narrow Android widths, in Persian/English and light/dark themes.
