@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P8-03-PORTFOLIO-CONTENT",
     "title": "Refresh bilingual project status, case-study details, and repository-derived skills",
-    "status": "Implemented on redesign preview branch; owner review pending."
+    "status": "Implemented and successfully published to Cloudflare Preview; owner review pending."
   },
   "lastCheckpointDate": "2026-11-11",
   "latestVerifiedCodeCommit": "54ca6138f75e9ba7878428713bc0332759c82450",
@@ -1827,7 +1827,7 @@
   "activeRedesignInstruction": {
     "date": "2026-11-11",
     "title": "Refresh portfolio narrative, project completion states, case studies, and skills",
-    "status": "implemented-preview-pending-owner-review",
+    "status": "preview-build-and-deploy-successful-owner-review-pending",
     "implementationFiles": [
       "apps/platform/src/PortfolioHome.tsx",
       "apps/platform/src/content/projects.ts",
@@ -1837,9 +1837,18 @@
     ],
     "scope": "Refresh all homepage content in Persian and English; show seven completed projects and AetherFlow as the only active development project; derive categorized skills from actual implementations and documentation across all eight project repositories; correct stale release and case-study information without hiding product limitations.",
     "validation": "deferred-until-owner-declares-redesign-finished",
-    "release": "preview-only; no merge or production deployment"
+    "release": "preview-only; no merge or production deployment",
+    "previewUrl": "https://099b2bd5.pooya-labs-platform.pages.dev",
+    "deploymentId": "099b2bd5-ad29-43a8-aa17-adc9bbc45c55",
+    "latestSourceCommit": "33d7eedc9bdbb9330df68cd9f6c86ea8acc57f5a"
   },
   "events": [
+    {
+      "date": "2026-11-11",
+      "event": "The first content-refresh Preview attempt exposed a TypeScript dossier-interface parse issue. Restored the typed CaseStudyDossier interface and AetherFlow entry, then Cloudflare Pages build and deploy succeeded on 33d7eedc9bdbb9330df68cd9f6c86ea8acc57f5a. Preview: https://099b2bd5.pooya-labs-platform.pages.dev. No tests or QA were run.",
+      "branch": "redesign/live-site-baseline",
+      "status": "preview-build-and-deploy-successful-owner-review-pending"
+    },
     {
       "date": "2026-11-11",
       "event": "Refreshed the portfolio in both languages: seven completed projects and AetherFlow as the only active project; replaced the preliminary skills row with six groups/53 repository-derived items; corrected GlobalCart v1.0.0, Salon Booking Apps Script 1.5.5/Android prerelease, Pooya.OS nine profiles, ORBIT Local Work v1.1.0, and current AetherFlow M08 notes.",
@@ -1902,6 +1911,12 @@
       "fa",
       "en"
     ],
-    "branch": "redesign/live-site-baseline"
+    "branch": "redesign/live-site-baseline",
+    "previewUrl": "https://099b2bd5.pooya-labs-platform.pages.dev",
+    "deploymentId": "099b2bd5-ad29-43a8-aa17-adc9bbc45c55",
+    "sourceCommit": "33d7eedc9bdbb9330df68cd9f6c86ea8acc57f5a",
+    "cloudflareBuild": "success",
+    "cloudflareDeploy": "success",
+    "tests": "deferred"
   }
 }
