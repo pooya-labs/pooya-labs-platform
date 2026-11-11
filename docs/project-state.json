@@ -1278,7 +1278,7 @@
   },
   "latestTask": "P8-01",
   "latestTaskBranch": "phase-8/design-direction-review",
-  "lastUpdated": "2026-11-10",
+  "lastUpdated": "2026-11-11",
   "latestDocumentationCommit": "3888d0799afdf4c3bb702489b6f1fc22c98d1f3b",
   "latestDocumentationCheckpoint": "P8-01-owner-authorized-phase8-entry;two-design-directions-prepared;owner-selection-pending;phase7-carryover-gates-open",
   "latestRepositoryCiRun": "42815065743;success;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1",
@@ -1770,6 +1770,12 @@
       "event": "Owner requested softer left/right ends on the mobile foundation animation and correction of the doubled lower fade. Added mobile edge fades and replaced mask-based section fade with layered gradient fades for dark/light themes.",
       "branch": "redesign/live-site-baseline",
       "status": "implemented-preview-pending-owner-review"
+    },
+    {
+      "date": "2026-11-11",
+      "event": "Owner clarified that the animation artwork itself was correct and the Android frame was tinting it dark before fading to purple. Removed colored mobile overlays, restored the shared desktop section background/mask, and switched the cropped visual to transparent alpha-only side fading.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
     }
   ],
   "ownerRedesignWorkflow": {
@@ -1787,18 +1793,18 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Smooth left/right edges and lower fade of the mobile foundation animation",
+    "title": "Restore desktop-style mobile foundation framing",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
       "apps/platform/src/portfolio.css"
     ],
     "scope": [
-      "mobile left and right radial artwork edge fades",
-      "mobile lower edge fade of the full foundation section",
-      "dark and light theme surface-matched gradient overlays",
-      "remove dependency on section mask compositing on narrow viewports"
+      "remove dark-tinted mobile left/right overlays",
+      "remove extra lower overlay that obscured the radial artwork",
+      "restore shared desktop section background and outer fade mask on mobile",
+      "keep a transparent alpha-only horizontal edge fade on the cropped mobile visual"
     ],
-    "implementation": "Added left/right surface-colored gradient overlays to the cropped radial SVG frame. For narrow screens only, disabled the outer section mask and replaced it with a section background that fades to transparent plus a bottom overlay that fades the animation into the section surface and the section into the page. Added matching light-theme stops.",
+    "implementation": "Removed the mobile surface-colored pseudo-element overlays and the mobile override that disabled the section mask. The desktop section background and outer mask now apply on mobile as well. The magnified SVG remains unchanged; its visual frame combines a transparent horizontal alpha fade with the existing top fade.",
     "preserved": [
       "desktop section and radial composition",
       "shared SVG viewBox and path geometry",
