@@ -1137,3 +1137,61 @@ kbd { display: inline-flex; align-items: center; gap: 3px; padding: 3px 6px; bor
   }
   .workspace-v4 .workspace-preview { pointer-events: none; }
 }
+
+/* Workspace-only header preference controls */
+.workspace-v4 .workspace-header-control {
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: 11px;
+  color: var(--text-soft);
+  background: var(--surface-soft);
+  cursor: pointer;
+  transition: color .18s ease, border-color .18s ease, background .18s ease, transform .18s ease;
+}
+.workspace-v4 .workspace-header-control span {
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: .04em;
+}
+.workspace-v4 .workspace-header-control:hover {
+  color: var(--text);
+  border-color: var(--mint);
+  background: var(--surface-raised);
+  transform: translateY(-1px);
+}
+.workspace-v4 .workspace-header-control:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+}
+.workspace-v4 .topbar-actions { gap: 10px; }
+.workspace-v4 .language-switcher { display: none; }
+@media (max-width: 760px) {
+  .workspace-v4 .topbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    padding-inline: 12px;
+  }
+  .workspace-v4 .topbar-actions {
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .workspace-v4 .topbar-actions .connection-pill,
+  .workspace-v4 .topbar-actions .profile-chip,
+  .workspace-v4 .topbar-actions .topbar-divider,
+  .workspace-v4 .topbar-actions .portfolio-return,
+  .workspace-v4 .topbar-actions > .icon-button {
+    display: none;
+  }
+  .workspace-v4 .workspace-header-control {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+}
