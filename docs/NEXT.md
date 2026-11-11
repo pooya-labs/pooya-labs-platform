@@ -425,3 +425,9 @@ The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDI
 - Run the full test, browser, responsive, accessibility, performance, and debugging pass only after Pooya explicitly says **“بازطراحی پایان یافت”**.
 - Keep `main` and production unchanged until explicit final approval.
 - First change on this branch: light-theme contrast correction for the existing site animations. See `apps/platform/src/portfolio.css` and `docs/CHANGELOG.md`.
+
+## Active owner-directed redesign — Android responsive pass (2026-11-11)
+
+- Android/touch correction is implemented in `apps/platform/src/portfolio.css`: stable small-viewport sizing for the dedicated scroll surface, native pinch zoom, touch-safe anchor/navigation behavior, safe-area-aware sticky header positioning, flatter narrow-screen hero cards, and larger touch targets.
+- The desktop composition is unchanged. Review the new Cloudflare Pages preview on Android and report any remaining device-specific visual issue.
+- Continue the owner-led iteration loop: no tests or QA until **“بازطراحی پایان یافت”**; no merge to main or production deployment.
