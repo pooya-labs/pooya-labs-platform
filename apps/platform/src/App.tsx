@@ -353,7 +353,7 @@ function App(): ReactNode {
   }
 
   return (
-    <div className="platform-shell workspace-v3 workspace-v4" data-theme={theme}>
+    <div className="platform-shell workspace-v3 workspace-v4 workspace-v5" data-theme={theme} dir={isRtl ? 'rtl' : 'ltr'} lang={language} style={{ direction: isRtl ? 'rtl' : 'ltr' }}>
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
       <div className="ambient-grid" />
