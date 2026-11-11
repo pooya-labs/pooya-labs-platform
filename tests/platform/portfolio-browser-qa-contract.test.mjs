@@ -193,6 +193,7 @@ test('mobile case-study screenshots allow native Android scroll chaining into th
   assert.match(script, /Input\.dispatchTouchEvent/);
   assert.ok(script.includes('Input.synthesizeScrollGesture'));
   assert.match(script, /resolve\('timed-out'\), 4000/);
+  assert.match(script, /yDistance: -180/);
   assert.match(script, /timed out after 4s/);
   assert.match(script, /galleryHitTargetInsideFrame/);
   assert.match(script, /ancestorScrollChain/);
