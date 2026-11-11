@@ -560,11 +560,6 @@ try {
               };
             });
             if (setup.available) {
-              // Diagnostic experiment: disable native image dragging on the touched screenshot only.
-              await frame.evaluate((element) => {
-                const image = element.querySelector('img');
-                if (image instanceof HTMLImageElement) image.draggable = false;
-              });
               const x = setup.gestureX;
               const startY = setup.gestureStartY;
               const endY = Math.round(Math.max(setup.rect.top + 28, startY - 150));
