@@ -312,7 +312,7 @@ const projectEntries: PortfolioProject[] = [
     visualAsset: {
       url: 'https://raw.githubusercontent.com/pooya-labs/salon-booking/e4170913b704f3e9d3d9c0eaef2a953161524c68/public/images/shayan-hero.webp',
       kind: 'interface',
-      alt: { fa: 'تصویر واقعی سامانه رزرو شایان سالن در نمای دسکتاپ', en: 'Actual Shayan Salon booking experience on desktop' },
+      alt: { fa: 'تصویر اصلی بخش بالایی وب‌سایت شایان سالن', en: 'Shayan Salon website hero section' },
     },
     caseStudyHeroAsset: {
       url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/6deb62f48a8350f5ed293ac3dbcd27c9d30113dd/apps/platform/public/interface-captures/salon-booking/salon-booking-fullpage-desktop.png',
