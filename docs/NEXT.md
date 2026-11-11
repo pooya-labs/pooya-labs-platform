@@ -1,3 +1,9 @@
+# Next — review Workspace header controls
+
+- Confirm language switching and light/dark theme switching from the Workspace header on desktop and Android.
+- Confirm the public portfolio homepage and project pages remain unchanged.
+- Continue only on the owner-designated latest Preview deployment; do not merge or deploy Production without explicit approval.
+
 # Next — verify Workspace v4 interaction repair
 
 1. Reopen the latest Preview and confirm Android taps work on the header, hero actions, and app cards.
