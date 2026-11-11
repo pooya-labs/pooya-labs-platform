@@ -437,3 +437,10 @@ The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDI
 - The radial foundation artwork below “The foundation behind every project.” now crops and magnifies its centered desktop SVG field on screens up to 680px instead of compressing the entire wide composition.
 - The same common lower origin, halo, particles, colors, Bézier fan, and animation timing are shared with desktop; only the mobile viewing frame changes.
 - Review the updated preview on Android. Continue the owner-led loop without interim QA until **“بازطراحی پایان یافت”**.
+
+## Active owner-directed redesign — mobile foundation edge blending (2026-11-11)
+
+- The mobile radial scene now fades out at both horizontal edges using surface-matched gradient overlays.
+- The bottom transition of the entire foundation section no longer depends on CSS mask compositing on narrow screens; layered section and bottom-overlay gradients blend it into the page background in dark and light themes.
+- Desktop animation and composition are unchanged. Review the current Cloudflare preview on Android and report any remaining visual mismatch.
+- Do not run full tests or QA before **“بازطراحی پایان یافت”**.
