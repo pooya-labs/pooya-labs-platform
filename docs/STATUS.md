@@ -476,3 +476,10 @@ Pooya requested a strict final-stage order. The roadmap now reserves **Phase 8 f
 
 ## Previous verified checkpoints
 
+
+
+## 2026-11-11 — Correct the Browser QA touch-fallback direction
+
+- Exact-head Browser QA run [43024823137](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43024823137) completed 18/18 routes, 36/36 viewport checks, and 34/34 social-crawler checks, with zero confirmed Axe violations but eight gallery handoff failures. Artifact [13857121416](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43024823137/artifacts/13857121416) shows the fallback Input.synthesizeScrollGesture moved the emulated finger downward (touchstart at y=697, touchend at y=892), opposite to the intended upward swipe that should advance the outer page. Touch events were not prevented; this points to a QA fallback-direction defect rather than evidence of a production event handler blocking scroll.
+- Corrected the fallback to yDistance: -180 and added a contract assertion for the direction. This is a test-harness correction only; no production interaction or visual styling was changed.
+- Exact-head CI and Browser QA for commits 51dbcbe3 / 5f0f6900 are pending. Keep PR #70 isolated, unmerged and undeployed until the corrected full browser matrix is verified and Pooya gives the requested next-stage instructions.
