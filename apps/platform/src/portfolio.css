@@ -314,8 +314,11 @@
   object-fit: cover;
   padding: 0;
 }
+.project-art-salon-booking .project-art-image,
 .project-art-aetherflow .project-art-image {
+  object-fit: cover !important;
   object-position: top center;
+  padding: 0 !important;
 }
 .project-art.visual-illustration .project-art-image {
   object-fit: contain;
@@ -3778,33 +3781,3 @@
 
 
 
-/* Keep the original Salon Booking and AetherFlow artwork intact; use a softened
-   duplicate of that exact asset only to fill the side gutters behind it. */
-.project-art-salon-booking .project-art-backdrop,
-.project-art-aetherflow .project-art-backdrop {
-  position: absolute;
-  inset: -12px;
-  z-index: 0;
-  display: block;
-  width: calc(100% + 24px);
-  height: calc(100% + 24px);
-  max-width: none;
-  object-fit: cover;
-  object-position: center;
-  padding: 0;
-  filter: blur(13px) brightness(.52) saturate(.8);
-  transform: scale(1.04);
-  pointer-events: none;
-}
-.project-art-salon-booking .project-art-image,
-.project-art-aetherflow .project-art-image {
-  z-index: 1;
-  object-fit: contain !important;
-  object-position: center center;
-  padding: 0 !important;
-}
-.project-art-salon-booking.has-visual::before,
-.project-art-aetherflow.has-visual::before {
-  z-index: 2;
-  background: linear-gradient(90deg, rgba(5, 13, 21, .12), rgba(5, 13, 21, .02) 50%, rgba(5, 13, 21, .12));
-}
