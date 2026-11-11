@@ -714,4 +714,4 @@ Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for th
 - Rebuilt the vertical layout contract: fixed header, bounded workspace stage, one native scroll surface, correctly layered windows/docks, and safe-area-aware mobile padding.
 - Rebalanced the welcome row, hero and preview, metric strip, app grid, lower panels, and footer for wide desktop, compact desktop/tablet, and narrow Android screens.
 - Retained the existing app launch, command palette, local-preview/RPC status, notification, and window interactions. No backend behavior changed.
-- Preview-only on `redesign/live-site-baseline`; production and `main` remain untouched. Full QA remains deferred until `بازطراحی پایان یافت`.
+- Cloudflare Preview build and deploy succeeded on commit `d5e508256d23fa07bc82307397017fad338d7c73`: https://cad4d67b.pooya-labs-platform.pages.dev (deployment `cad4d67b-f0a9-418c-86a6-868fb65a42c3`). Preview-only on `redesign/live-site-baseline`; production and `main` remain untouched. Full QA remains deferred until `بازطراحی پایان یافت`.
