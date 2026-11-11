@@ -431,3 +431,9 @@ The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDI
 - Android/touch correction is implemented in `apps/platform/src/portfolio.css`: stable small-viewport sizing for the dedicated scroll surface, native pinch zoom, touch-safe anchor/navigation behavior, safe-area-aware sticky header positioning, flatter narrow-screen hero cards, and larger touch targets.
 - The desktop composition is unchanged. Review the new Cloudflare Pages preview on Android and report any remaining device-specific visual issue.
 - Continue the owner-led iteration loop: no tests or QA until **“بازطراحی پایان یافت”**; no merge to main or production deployment.
+
+## Active owner-directed redesign — mobile foundation animation (2026-11-11)
+
+- The radial foundation artwork below “The foundation behind every project.” now crops and magnifies its centered desktop SVG field on screens up to 680px instead of compressing the entire wide composition.
+- The same common lower origin, halo, particles, colors, Bézier fan, and animation timing are shared with desktop; only the mobile viewing frame changes.
+- Review the updated preview on Android. Continue the owner-led loop without interim QA until **“بازطراحی پایان یافت”**.
