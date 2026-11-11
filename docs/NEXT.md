@@ -455,3 +455,11 @@ The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDI
 - Mobile interface captures retain a centered, independently scrollable image viewport.
 - Invisible side gutters sit outside the inner image viewport and belong to the main case-study document, so swiping beside the narrow phone screenshot advances the page.
 - Desktop and non-touch layouts remain unchanged. Verify the interaction on Android; do not run full tests or QA before **“بازطراحی پایان یافت”** and do not merge to main.
+
+## Latest owner-directed correction — Salon Booking homepage image
+
+- تصویر کارت Salon Booking در بخش Projects صفحه اصلی به تصویر اصلی بالای وب‌سایت شایان سالن (`shayan-hero.webp`) تغییر کرد. تصویر تمام‌صفحه قبلی در گالری مطالعه موردی دست‌نخورده باقی ماند.
+
+- Replaced the Salon Booking homepage Projects-card image with the Shayan Salon website hero asset (`shayan-hero.webp`). The previous full-page capture remains unchanged in the case-study gallery.
+
+**Next:** review the fresh Cloudflare Pages preview on the target device and provide the next focused correction. Do not run tests or QA until «بازطراحی پایان یافت».
