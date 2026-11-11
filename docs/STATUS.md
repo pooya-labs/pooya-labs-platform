@@ -534,3 +534,9 @@ Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for th
 - Restored the foundation section's native desktop background and outer section mask on mobile.
 - Kept the centered magnified mobile SVG crop, while using alpha-only horizontal edge fading combined with the existing top fade. The artwork now fades transparently into the section instead of being covered by a dark color.
 - The shared SVG, focal origin, rays, particles, and animation timing remain unchanged. Preview only; no tests, browser QA, or physical Android visual verification were run.
+
+## 2026-11-11 — Continuous lower fade on the mobile foundation animation
+
+- Fixed the remaining visible seam at the bottom of the mobile radial scene by moving the fade into the visual frame itself.
+- Extended the mobile frame below the unchanged 245px SVG and applied a continuous alpha fade across the frame's lower edge, beginning before the SVG's lower halo reaches the boundary.
+- Kept the existing transparent side fades, desktop section mask/background, SVG paths, origin, rays, particles, and animation timing. Preview only; no tests or physical Android verification were run.
