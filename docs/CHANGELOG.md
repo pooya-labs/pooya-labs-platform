@@ -759,3 +759,9 @@
 ## 2026-11-11 — Limit homepage image priority override to Salon Booking
 
 - Scoped the `visualAsset`-first selection to the Salon Booking card only; all other project cards preserve their original image selection order. Preview only; no tests or QA executed.
+
+
+## 2026-11-11 — Dark-theme glass navigation bar
+
+- Increased the dark header's transparency and backdrop blur, added a subtle graphite-to-teal glass gradient, refined the border and inner highlights, and lightly tinted the navigation/control trays.
+- Scoped all visual changes to dark mode; light-mode glass styling is untouched. Preview only; no tests or QA executed.
