@@ -1,3 +1,10 @@
+## Latest checkpoint — remaining homepage project-card scenes redesigned (2026-11-11)
+
+- Rebuilt the six remaining compact project-card windows to communicate each product directly: AetherFlow workflow pipeline, Orbit service observability, Pooya OS desktop/app launcher, Nexus Canvas connected-node graph, LuminaGlass refractive material lab, and Salon Booking appointment calendar.
+- Together with the previously redesigned AuraPulse and GlobalCart scenes, all eight current project-card mini-scenes now use product-specific visual language.
+- Scope remains limited to compact homepage card windows; larger project-detail scenes and card layouts are unchanged.
+- Preview-only on `redesign/live-site-baseline`. No tests or manual visual QA run; owner review remains pending until `بازطراحی پایان یافت`.
+
 ## Latest checkpoint — AuraPulse and GlobalCart project-card scenes aligned with their products (2026-11-11)
 
 - Replaced AuraPulse's single strip of candles and unrelated sweeping line with a compact market terminal: three clearly separated BTC / ETH / SOL rows, individual animated mini-candles, and explicit SIM / PAPER TRADING context.
