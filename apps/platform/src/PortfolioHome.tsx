@@ -17,8 +17,8 @@ function OwnerAttribution({ language, assetBase }: { language: Language; assetBa
       <img src={`${assetBase}brand/pooya-monogram-tile.svg`} alt="" aria-hidden="true" width={42} height={42} decoding="async" />
       <span className="portfolio-owner-attribution-copy">
         <span className="portfolio-owner-attribution-label">{isPersian ? 'مالک پروژه' : 'PROJECT OWNER'}</span>
-        <strong>{'Goodarzi'}</strong>
-        <span className="portfolio-owner-attribution-byline">{isPersian ? 'ایجاد و نگه‌داری: گودرزی' : 'Created & maintained by Goodarzi'}</span>
+        <strong>{isPersian ? 'پویا گودرزی' : 'POOYA GOODARZI'}</strong>
+        <span className="portfolio-owner-attribution-byline">{isPersian ? 'ایجاد و نگه‌داری: پویا گودرزی' : 'Created & maintained by Pooya Goodarzi'}</span>
       </span>
     </a>
   );
@@ -545,7 +545,7 @@ export function ProjectCaseStudy({ project, language, onLanguageChange, theme, o
             <a href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><Send size={16} /> @pooyayee</a>
             <a href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><img className="instagram-brand-icon" src={`${baseUrl}brand/instagram-glyph.svg`} alt="" aria-hidden="true" /> @_p.ooya</a>
           </div>
-          <small>© {new Date().getFullYear()} POOYA MONOGRAM · POOYA LABS</small>
+          <small>© {new Date().getFullYear()} POOYA GOODARZI · POOYA LABS</small>
         </div>
       </footer>
     </div>
@@ -1114,7 +1114,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         <OwnerAttribution language={language} assetBase={import.meta.env.BASE_URL} />
         <span>{t.footer}</span>
         <a href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><Code2 size={17} /> GitHub</a>
-        <small>© {new Date().getFullYear()} POOYA MONOGRAM · POOYA LABS</small>
+        <small>© {new Date().getFullYear()} POOYA GOODARZI · POOYA LABS</small>
       </footer>
     </div>
   );
