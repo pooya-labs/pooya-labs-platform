@@ -438,9 +438,8 @@ The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDI
 - The same common lower origin, halo, particles, colors, Bézier fan, and animation timing are shared with desktop; only the mobile viewing frame changes.
 - Review the updated preview on Android. Continue the owner-led loop without interim QA until **“بازطراحی پایان یافت”**.
 
-## Active owner-directed redesign — AetherFlow project-detail animation (2026-11-11)
+## Active owner-directed redesign — Android header navigation spacing (2026-11-11)
 
-- The existing AetherFlow Trigger → Worker → Commit animation now appears in its case-study hero rather than being hidden behind the full-page screenshot.
-- The authentic AetherFlow desktop screenshot remains available in the interface-captures section.
-- Light-theme styling keeps the motion stage on an intentional dark surface and strengthens the contrast of flow nodes, edges, status text, and labels.
-- Review both light and dark themes in the current Cloudflare preview. Do not run full tests or QA before **“بازطراحی پایان یافت”**; do not merge to main or deploy production.
+- The five primary navigation items now occupy equal-width columns on narrow screens; each label is centered and the row no longer uses content-sized horizontal scrolling.
+- Desktop layout is unchanged. Review the navigation row on Android at the owner's usual portrait viewport.
+- Do not run full tests or QA before **“بازطراحی پایان یافت”**; do not merge to main or deploy production.
