@@ -1,3 +1,10 @@
+## 2026-11-11 — Complete Workspace dashboard redesign
+
+- Rebuilt the main Workspace landing experience to match the current Pooya Labs portfolio: editorial welcome header, emerald glass hero, redesigned app launcher cards, refined recent-activity and runtime-status surfaces, and mobile-specific composition.
+- Scoped the visual changes to the Workspace dashboard while preserving existing interactions and the separate Files app.
+- Preserved bilingual content, theme support, local-preview labels, and existing backend boundaries.
+- Preview-only; no broad QA run.
+
 ## 2026-11-11 — My workspace visual redesign
 
 - Replaced the legacy Files app table-first layout with a polished workspace library: editorial hero, emerald glass folder visual, at-a-glance counts, folder card, and recent-file rows.
