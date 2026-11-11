@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P8-02",
     "title": "Stabilize and validate the Obsidian Editorial prototype for owner review round one",
-    "status": "PR #70 remains isolated, unmerged and undeployed. Repository CI 43024051205 passed. Browser QA 43024051284 completed the full matrix (18/18 routes, 36/36 viewports, 34/34 crawler checks, zero confirmed Axe violations) but eight mobile gallery handoff failures remained. Artifact 13856267913 confirms both wrapper overflow values are clip; the four failing routes are AetherFlow, ORBIT, LuminaGlass and AuraPulse, while Pooya.OS, NexusCanvas, GlobalCart and Salon Booking pass with the same CSS. Therefore wrapper clipping is not the cause. The harness now records ancestor scroll-chain styles, image draggable/pointer state, and touch event capture/bubble traces including defaultPrevented. Exact-head verification pending. Phase 7 publication gates remain open."
+    "status": "PR #70 remains an isolated, unmerged and undeployed review prototype. Browser QA 43024823137 completed 18/18 routes, 36/36 viewports and 34/34 crawler checks, with zero confirmed Axe violations but eight mobile gallery handoff failures. Touch traces showed no preventDefault; the synthesized fallback used positive yDistance and moved the emulated finger downward, opposite to the intended upward swipe. Corrected the QA fallback to yDistance -180 and added a contract assertion. This is test-harness-only; exact-head CI and Browser QA are pending. No production UI change, merge, or deployment has been made."
   },
   "lastCheckpointDate": "2026-11-11",
   "latestVerifiedCodeCommit": "3888d0799afdf4c3bb702489b6f1fc22c98d1f3b",
@@ -1757,6 +1757,11 @@
       "date": "2026-11-10",
       "event": "Owner authorized Phase 8 design exploration; Phase 7 human/publication gates carried forward as mandatory V1 blockers.",
       "baselineCommit": "3888d0799afdf4c3bb702489b6f1fc22c98d1f3b"
+    },
+    {
+      "date": "2026-11-11",
+      "event": "Browser QA touch fallback direction corrected after event traces showed the synthesized gesture moved the emulated finger opposite to the expected upward swipe; QA-only change, exact-head verification pending.",
+      "commit": "5f0f690029a00e622b3bde686d870324dce59731"
     }
   ]
 }
