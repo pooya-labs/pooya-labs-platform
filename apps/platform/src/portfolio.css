@@ -1928,7 +1928,7 @@
 .portfolio-proof {
   position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:stretch;
   width:100%;min-height:0;gap:0;margin:58px 0 104px;
-  padding:76px max(24px,calc((100vw - 1200px)/2)) 0;overflow:hidden;
+  padding:76px max(24px,calc((100vw - 1200px)/2)) 72px;overflow:hidden;
   border:0;border-top:1px solid var(--pf-line);border-bottom:0;border-radius:0;
   background:#111719;color:var(--pf-text);box-shadow:none;
   -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 calc(100% - 40px),transparent 100%);
@@ -1953,7 +1953,7 @@
 .portfolio-proof-stats strong { color:var(--pf-control-text);font-size:clamp(29px,3.2vw,45px);font-weight:530;letter-spacing:-.06em;line-height:1; }
 .portfolio-proof-stats small { color:var(--pf-control-muted);font-size:11px;line-height:1.6; }
 .portfolio-proof-visual {
-  position:relative;width:100%;height:clamp(250px,30vw,390px);margin:0 auto;overflow:hidden;
+  position:relative;width:100%;height:clamp(250px,30vw,390px);margin:0 auto;overflow:visible;
   -webkit-mask-image:linear-gradient(180deg,transparent 0,black 12%,black 100%);
   mask-image:linear-gradient(180deg,transparent 0,black 12%,black 100%);
 }
@@ -2041,7 +2041,7 @@
   .portfolio-contact-actions { display:grid;grid-template-columns:1fr; }
   .portfolio-contact-actions a { width:100%; }
   .portfolio-social-button { justify-content:flex-start; }
-  .portfolio-proof { margin:38px 0 70px;padding:54px 18px 0; }
+  .portfolio-proof { margin:38px 0 70px;padding:54px 18px 72px; }
   .portfolio-proof-heading h2 { font-size:clamp(29px,8vw,42px); }
   .portfolio-proof-stats { grid-template-columns:repeat(2,minmax(0,1fr));margin-top:24px;padding-block:17px; }
   .portfolio-proof-stats article { padding:12px 10px;border-inline-start:0; }
@@ -3308,7 +3308,7 @@
 .proof-origin-halo {
   fill:url(#proof-origin-gradient);
   filter:blur(1px);
-  transform-origin:600px 340px;
+  transform-origin:600px 382px;
   animation:proof-origin-pulse 4.8s ease-in-out infinite alternate;
 }
 .proof-origin-point {
