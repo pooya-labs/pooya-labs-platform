@@ -7,12 +7,12 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-06-MY-WORKSPACE-REDESIGN",
-    "title": "Complete visual redesign of My workspace / Files app aligned with the new Pooya Labs portfolio",
-    "status": "Implemented on preview branch; deployment pending."
+    "id": "P8-07-WORKSPACE-DASHBOARD-REDESIGN",
+    "title": "Complete redesign of the actual Workspace landing dashboard aligned with the Pooya Labs portfolio",
+    "status": "Implemented on preview branch; preview deployment pending."
   },
   "lastCheckpointDate": "2026-11-11",
-  "latestVerifiedCodeCommit": "54ca6138f75e9ba7878428713bc0332759c82450",
+  "latestVerifiedCodeCommit": "111e078e0938acba2f5ef30346a24a23e6022deb",
   "tests": {
     "repositoryCi": "passed-main-run-42815065743;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1;typecheck;three-target-build;security-scan;contract-tests",
     "transportHarnessContract": "passed",
@@ -1932,5 +1932,12 @@
       "Motion Design"
     ],
     "aetherflowRuntime": "Rust + Tokio"
+  },
+  "workspaceDashboardRedesign": {
+    "status": "implemented-preview-branch",
+    "appCommit": "5b86823c550dc14224cf1e08071e3da73ed39475",
+    "stylesCommit": "111e078e0938acba2f5ef30346a24a23e6022deb",
+    "productionChanged": false,
+    "qa": "deferred-until-owner-says-redesign-complete"
   }
 }
