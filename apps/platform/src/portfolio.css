@@ -3626,3 +3626,90 @@
     touch-action: pan-y;
   }
 }
+
+
+/* Product-specific compact scenes for the remaining homepage project cards. */
+.card-scene-aetherflow .mini-flow-console,
+.card-scene-orbit .mini-orbit-console,
+.card-scene-pooya-os .mini-os-desktop,
+.card-scene-nexus-canvas .mini-nexus-canvas,
+.card-scene-lumina-glass .mini-glass-lab,
+.card-scene-salon-booking .mini-booking-calendar { position:absolute;inset:7px 8px;z-index:1;min-width:0;min-height:0; }
+.card-scene-aetherflow .mini-flow-console i,.card-scene-aetherflow .mini-flow-console b,
+.card-scene-orbit .mini-orbit-console i,.card-scene-orbit .mini-orbit-console b,
+.card-scene-pooya-os .mini-os-desktop i,.card-scene-pooya-os .mini-os-desktop b,
+.card-scene-nexus-canvas .mini-nexus-canvas i,.card-scene-nexus-canvas .mini-nexus-canvas b,
+.card-scene-lumina-glass .mini-glass-lab i,.card-scene-lumina-glass .mini-glass-lab b,
+.card-scene-salon-booking .mini-booking-calendar i,.card-scene-salon-booking .mini-booking-calendar b { position:static;display:block; }
+.mini-scene-head { height:8px;display:flex;align-items:center;gap:4px;color:rgba(224,241,233,.75);font-size:5px;line-height:1;letter-spacing:.06em;white-space:nowrap; }
+.mini-scene-head b { margin-inline-start:auto;color:#a9e7c7;font-size:4px;font-weight:700; }
+.mini-scene-live { width:4px;height:4px;flex:none;border-radius:50%;background:#83e6b5;box-shadow:0 0 6px rgba(131,230,181,.8);animation:scene-dot-pulse 2s infinite; }
+
+/* AetherFlow — trigger, worker and durable commit pipeline. */
+.mini-flow-track { height:39px;display:flex;align-items:center;justify-content:space-between;gap:2px;margin-top:4px; }
+.mini-flow-track>div { flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:1px;padding:2px 1px;border:1px solid rgba(133,222,185,.2);border-radius:4px;background:rgba(111,210,169,.07); }
+.mini-flow-track>div i { width:11px;height:11px;display:grid!important;place-items:center;border:1px solid rgba(151,235,199,.5);border-radius:3px;color:#b8f2d6;font-size:6px;font-style:normal;animation:scene-dot-pulse 2.4s infinite; }
+.mini-flow-track>div b { color:#dceee5;font-size:4px;letter-spacing:.04em; }.mini-flow-track>div small { color:rgba(214,232,222,.48);font-size:4px; }
+.mini-flow-track>span { flex:0 0 6px;height:1px;background:linear-gradient(90deg,#7bdcb5,rgba(123,220,181,.12));position:relative; }
+.mini-flow-track>span::after { content:"";position:absolute;top:-2px;left:0;width:4px;height:4px;border-radius:50%;background:#eafff5;box-shadow:0 0 5px #83ebbb;animation:flow-packet-pass 2.4s linear infinite; }
+.mini-flow-foot { display:flex;align-items:center;gap:3px;margin-top:4px;color:rgba(213,232,222,.55);font-size:4px;letter-spacing:.04em; }.mini-flow-foot i { width:10px;height:2px;border-radius:2px;background:#80dcb5;opacity:.7; }.mini-flow-foot b { margin-inline-start:auto;color:#b8e9d0;font-size:4px; }
+
+/* Orbit — service health, incident count and telemetry. */
+.mini-orbit-metrics { display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px; }
+.mini-orbit-metrics>div { min-width:0;padding:3px 4px;border:1px solid rgba(137,211,197,.17);border-radius:4px;background:rgba(112,191,183,.06); }
+.mini-orbit-metrics small { display:block;color:rgba(218,235,229,.55);font-size:4px;letter-spacing:.06em; }
+.mini-orbit-metrics strong { display:block;margin-top:1px;color:#b8f0d8;font-size:10px;line-height:1.1;font-weight:700; }
+.mini-orbit-metrics>div:nth-child(2) strong { color:#d7c9ff; }
+.mini-orbit-metrics i { margin-top:1px;color:rgba(170,222,199,.6);font-size:4px;font-style:normal; }
+.mini-orbit-chart { height:12px;display:flex;align-items:end;gap:3px;margin-top:4px;padding:0 2px;border-bottom:1px solid rgba(148,211,190,.16); }
+.mini-orbit-chart i { flex:1;height:var(--orbit-h,50%);border-radius:2px 2px 0 0;background:linear-gradient(#91e5c1,rgba(103,190,164,.35));transform-origin:bottom;animation:aura-mini-candle 1.9s ease-in-out infinite alternate; }
+.mini-orbit-chart i:nth-child(3n) { --orbit-h:85%;animation-delay:-.7s; }.mini-orbit-chart i:nth-child(3n + 1) { --orbit-h:42%;animation-delay:-1.2s; }.mini-orbit-chart i:nth-child(3n + 2) { --orbit-h:65%; }
+.mini-orbit-log { display:flex;align-items:center;gap:3px;margin-top:3px;color:rgba(218,234,226,.6);font-size:4px;white-space:nowrap; }
+.mini-orbit-log span { width:4px;height:4px;border-radius:50%;background:#8de3b8; }.mini-orbit-log b { margin-inline-start:auto;color:#b9e9d0;font-size:4px; }
+
+/* Pooya OS — a tiny spatial desktop with app launcher and dock. */
+.mini-os-topbar { height:9px;display:flex;align-items:center;gap:4px;padding:0 3px;border:1px solid rgba(152,211,233,.18);border-radius:4px;background:rgba(127,187,215,.09);color:#d8eff8;font-size:5px; }
+.mini-os-topbar>b { width:7px;height:7px;display:grid!important;place-items:center;border-radius:2px;background:linear-gradient(145deg,#a4e4c4,#6da5d9);color:#142a35;font-size:5px; }
+.mini-os-topbar>i { margin-inline-start:auto;color:rgba(208,232,244,.52);font-size:4px;font-style:normal; }
+.mini-os-body { height:39px;display:flex;gap:4px;margin-top:4px; }
+.mini-os-sidebar { width:13px;flex:none;display:flex;flex-direction:column;align-items:center;gap:4px;padding:4px 2px;border:1px solid rgba(153,206,229,.14);border-radius:4px;background:rgba(130,177,207,.07); }
+.mini-os-sidebar i { width:5px;height:5px;border:1px solid rgba(167,222,239,.65);border-radius:2px; }
+.mini-os-sidebar i:first-child { background:rgba(135,225,193,.55);border-color:#9de8c8; }
+.mini-os-apps { flex:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px; }
+.mini-os-apps>div { min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:1px solid rgba(150,205,228,.15);border-radius:4px;background:linear-gradient(145deg,rgba(150,206,231,.12),rgba(98,139,181,.05)); }
+.mini-os-apps>div>i { width:10px;height:10px;border:1px solid rgba(173,224,240,.65);border-radius:3px;background:rgba(132,205,224,.2); }
+.mini-os-apps>div>i.terminal { border-radius:2px;background:linear-gradient(135deg,rgba(119,223,185,.45),rgba(67,142,137,.22)); }
+.mini-os-apps>div>i.studio { border-radius:50%;background:linear-gradient(135deg,rgba(192,163,255,.55),rgba(106,139,206,.22)); }
+.mini-os-apps>div>i.settings { border-radius:50%;border-style:dashed; }
+.mini-os-apps>div>b { color:rgba(222,238,246,.7);font-size:4px;font-weight:600; }
+.mini-os-dock { height:7px;display:flex;align-items:center;justify-content:center;gap:5px;margin-top:4px; }
+.mini-os-dock i { width:6px;height:6px;border:1px solid rgba(170,224,239,.6);border-radius:2px;background:rgba(134,194,218,.25); }
+
+/* Nexus Canvas — editable connected-node graph. */
+.mini-nexus-graph { position:relative;height:42px;margin-top:3px; }
+.mini-nexus-graph .edge { position:absolute!important;height:1px;background:linear-gradient(90deg,rgba(123,225,190,.75),rgba(165,154,255,.65));transform-origin:left center; }
+.mini-nexus-graph .edge.a { left:15%;top:19px;width:35%;transform:rotate(-18deg); }.mini-nexus-graph .edge.b { left:48%;top:13px;width:34%;transform:rotate(20deg); }.mini-nexus-graph .edge.c { left:16%;top:20px;width:66%;transform:rotate(0);opacity:.55; }.mini-nexus-graph .edge.d { left:49%;top:14px;width:34%;transform:rotate(48deg);opacity:.5; }
+.mini-nexus-graph .node { position:absolute;z-index:1;display:grid;place-items:center;width:19px;height:14px;border:1px solid rgba(142,225,194,.58);border-radius:4px;background:linear-gradient(145deg,rgba(26,76,62,.95),rgba(23,46,58,.95));color:#d7f5e7;font-size:5px;font-weight:700;box-shadow:0 0 7px rgba(125,220,183,.14);animation:scene-dot-pulse 3s infinite; }
+.mini-nexus-graph .gateway { left:5%;top:13px; }.mini-nexus-graph .worker { left:40%;top:1px;animation-delay:-.8s; }.mini-nexus-graph .service { right:5%;top:13px;animation-delay:-1.4s; }.mini-nexus-graph .store { left:43%;bottom:0;animation-delay:-2s; }
+.mini-nexus-foot { display:flex;align-items:center;gap:5px;margin-top:1px;color:rgba(217,235,226,.55);font-size:4px;letter-spacing:.04em; }.mini-nexus-foot span:last-of-type { margin-inline-start:auto; }.mini-nexus-foot b { color:#a9e7c7;font-size:4px; }
+
+/* LuminaGlass — refractive material preview and optical controls. */
+.mini-glass-stage { position:relative;height:42px;display:grid;place-items:center;overflow:hidden; }
+.mini-glass-prism { position:relative;z-index:2;width:24px;height:25px;border:1px solid rgba(227,245,255,.82);border-radius:6px 10px 6px 10px;background:linear-gradient(135deg,rgba(219,247,255,.5),rgba(157,147,255,.22) 52%,rgba(120,219,222,.22));box-shadow:inset 0 0 9px rgba(255,255,255,.38),0 0 12px rgba(162,207,255,.16);transform:rotate(-14deg);animation:glass-prism-hover 4.5s infinite alternate; }
+.mini-glass-prism i { position:absolute!important;left:50%;top:0;width:1px;height:100%;background:linear-gradient(transparent,rgba(255,255,255,.9),transparent);transform:rotate(28deg); }
+.mini-glass-orbit { position:absolute!important;left:50%;top:50%;width:66px;height:22px;border:1px solid rgba(146,218,245,.48);border-radius:50%;transform:translate(-50%,-50%) rotate(-18deg);animation:glass-orbit-spin 12s linear infinite; }
+.mini-glass-orbit.two { width:48px;height:35px;border-color:rgba(194,169,255,.46);transform:translate(-50%,-50%) rotate(55deg);animation-direction:reverse; }
+.mini-glass-ray { position:absolute!important;left:13%;top:50%;width:32%;height:1px;background:linear-gradient(90deg,transparent,#e8faff);transform:rotate(-18deg); }.mini-glass-ray.two { left:auto;right:12%;background:linear-gradient(90deg,#c6b4ff,transparent);transform:rotate(18deg); }
+.mini-glass-controls { display:flex;align-items:center;gap:4px;color:rgba(221,238,245,.6);font-size:4px;letter-spacing:.04em; }.mini-glass-controls>span { white-space:nowrap; }.mini-glass-controls>span b { display:inline;color:#ccecff;font-size:4px; }
+.mini-glass-controls>i { position:relative!important;flex:1;height:2px;border-radius:2px;background:rgba(181,214,238,.22); }.mini-glass-controls>i>b { position:absolute!important;left:65%;top:-1px;width:4px;height:4px;border-radius:50%;background:#b6eaff;box-shadow:0 0 5px #b6eaff; }
+
+/* Salon Booking — real appointment slots, not a generic calendar grid. */
+.mini-booking-days { display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-top:3px;color:rgba(220,237,228,.58);font-size:4px;text-align:center;letter-spacing:.04em; }
+.mini-booking-times { display:grid;grid-template-columns:20px repeat(3,minmax(0,1fr));grid-template-rows:repeat(4,6px);gap:3px;margin-top:3px;align-items:center; }
+.mini-booking-times>span { color:rgba(219,235,226,.5);font-size:4px;white-space:nowrap; }
+.mini-booking-times>i { height:5px;border:1px solid rgba(142,220,187,.28);border-radius:2px;background:rgba(125,211,171,.1); }
+.mini-booking-times>i.selected { border-color:#a8efce;background:rgba(129,231,185,.55);box-shadow:0 0 7px rgba(129,231,185,.3);animation:booking-slot-breathe 2.2s infinite; }
+.mini-booking-times>i.busy { border-color:rgba(225,165,191,.3);background:rgba(219,153,183,.18); }
+.mini-booking-confirm { display:flex;align-items:center;gap:4px;margin-top:4px;padding:3px 4px;border:1px solid rgba(143,224,188,.2);border-radius:4px;background:rgba(114,205,164,.07);color:rgba(220,238,227,.76);font-size:4px; }
+.mini-booking-confirm>b { width:7px;height:7px;display:grid!important;place-items:center;border-radius:50%;background:rgba(125,226,177,.2);color:#aaf0cd;font-size:5px; }
+.mini-booking-confirm strong { margin-inline-start:auto;color:#a8e7c5;font-size:4px;letter-spacing:.03em; }
