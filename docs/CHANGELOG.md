@@ -688,3 +688,11 @@
 - Browser QA [43029421702](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43029421702): 18/18 routes, 36/36 viewports, 34/34 crawler checks, zero failures, zero confirmed Axe violations; 16/16 localized mobile case-study galleries passed handoff. Artifact [13859393276](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43029421702/artifacts/13859393276).
 - Published-host performance probes each collected 20/20 samples with zero failures (GitHub Pages p75 LCP 344 ms / CLS 0; Cloudflare Pages p75 LCP 424 ms / CLS 0). These are measurements of the current live hosts, not deployment of this PR.
 - No visual redesign, mainline merge, or production deployment occurred in this fix. Physical Android acceptance remains required.
+
+
+## 2026-11-11 — Preserve animation visibility in light theme
+
+- Added light-theme contrast surfaces for the animated capability previews, system-flow illustration, craft motion gallery, project-card motion previews, and case-study scenes.
+- Brightened supporting labels and fine animated strokes where the previous dark-theme opacity values were too faint on light surfaces.
+- Kept the existing animation keyframes, timing, movement, and scene composition unchanged. No tests or visual QA were run between owner instructions; wait for the explicit “بازطراحی پایان یافت” signal before the full validation pass.
+- The change remains isolated to PR #70; no merge or public deployment was performed.
