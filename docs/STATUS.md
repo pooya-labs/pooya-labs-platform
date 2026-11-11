@@ -1,4 +1,12 @@
-## Latest owner clarification — use surname only in footer byline (2026-11-11)
+## Owner identity clarification — restore full name (2026-11-11)
+
+- The `PROJECT OWNER` name must display the full identity: `POOYA GOODARZI` / `پویا گودرزی`, not the surname alone.
+- Preserve the full creator byline exactly: `Created & maintained by Pooya Goodarzi` / `ایجاد و نگه‌داری: پویا گودرزی`.
+- Preserve both copyright lines as `© 2026 POOYA GOODARZI · POOYA LABS` (year remains dynamic in the UI).
+- Explicitly bind the full owner name and byline in the shared component so both homepage and case-study footer placements use the same complete text.
+- Preview-only on `redesign/live-site-baseline`; no tests or QA run.
+
+
 
 - Corrected the footer creator/maintainer byline to `گودرزی` / `Goodarzi` only; removed `پویا` / `Pooya` from that byline in both language modes.
 - The primary footer name remains `Goodarzi`; layout, monogram artwork, and all other content remain unchanged.
