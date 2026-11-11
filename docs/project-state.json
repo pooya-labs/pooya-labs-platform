@@ -7,8 +7,8 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-04-SOCIAL-BRAND-MARKS",
-    "title": "Use official GitHub and Telegram brand marks consistently across portfolio links",
+    "id": "P8-05-ANDROID-HERO-OVERFLOW",
+    "title": "Fix clipped English hero headline on narrow Android screens",
     "status": "Implemented on preview branch; deployment pending."
   },
   "lastCheckpointDate": "2026-11-11",
