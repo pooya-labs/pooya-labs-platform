@@ -360,7 +360,7 @@ function App(): ReactNode {
 
       <header className="topbar">
         <div className="brand-lockup">
-          <div className="brand-mark" aria-hidden="true"><span>P</span><i /></div>
+          <div className="brand-mark brand-mark-image" aria-hidden="true"><img src={`${import.meta.env.BASE_URL}brand/pooya-monogram-tile.svg`} alt="" /></div>
           <div className="brand-copy"><strong>Pooya Labs</strong><span>{t.personalWorkspace}</span></div>
         </div>
         <button className="global-search" onClick={() => setPaletteOpen(true)} aria-label={t.search}>
