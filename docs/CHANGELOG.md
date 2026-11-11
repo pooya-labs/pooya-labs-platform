@@ -1,3 +1,10 @@
+## 2026-11-11 — Portfolio refresh preview successfully deployed
+
+- Repaired the typed case-study dossier interface and restored AetherFlow's dossier entry after the first Cloudflare Preview build exposed a parse error.
+- Cloudflare Pages build and deploy succeeded on commit `33d7eedc9bdbb9330df68cd9f6c86ea8acc57f5a`.
+- Preview URL: `https://099b2bd5.pooya-labs-platform.pages.dev`.
+- Production and `main` remain untouched. No tests or QA were run.
+
 ## 2026-11-11 — Portfolio content, project statuses, and skills refreshed
 
 - Updated bilingual homepage copy, portfolio status metrics, project descriptions, focus areas, and the skills section from current repository evidence.
