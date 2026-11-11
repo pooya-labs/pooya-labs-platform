@@ -1,3 +1,10 @@
+## Latest checkpoint — foundation rays start at the bottom focal point (2026-11-11)
+
+- Moved the shared origin of all radial rays from the middle-lower area to the bottom-center edge of the animated field (`y=382` in the SVG viewBox).
+- Increased the early horizontal spread of the ray curves so the full fan opens upward from that single point. Moved the halo and focal dot with the origin.
+- Kept the section-level bottom fade, and added lower breathing room so the origin remains visible before the page blend begins. Desktop and mobile spacing both updated.
+- Preview-only; no tests or QA executed.
+
 ## Latest checkpoint — foundation animation now converges at one lower focal point (2026-11-11)
 
 - Refined the “The foundation behind every project” radial animation so all animated rays visibly converge on one focal point near the bottom, rather than disappearing into the center of a broad lower glow.
