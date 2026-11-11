@@ -1,3 +1,10 @@
+# 2026-11-12 — Workspace v4 touch and scroll repair
+
+- Repaired the Workspace viewport sizing so the content stage and its scroll surface have a definite, bounded height.
+- Restored vertical scrolling for desktop and mobile browsers; enabled native touch panning and momentum scrolling.
+- Removed pointer interception from decorative preview/hero layers.
+- Preview branch only; no production deploy and no broad QA run.
+
 # Workspace v4 desktop composition reset (2026-11-12)\n\n- Replaced the retained desktop rail-and-dashboard composition with a full-width workspace header and a new two-column hero composition.\n- Expanded desktop metrics, app cards, and lower dashboard panels to use the available desktop canvas intentionally.\n- Kept mobile presentation compact and retained existing interactions.\n- Preview branch only; no production deploy.\n\n## 2026-11-12 — Workspace structural redesign v3
 
 - Replaced the previous hero monogram/orbit artwork with a compact workspace snapshot preview and status tile.
