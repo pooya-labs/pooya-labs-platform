@@ -1788,6 +1788,12 @@
       "event": "Owner requested a project-detail animation for AetherFlow and readable contrast in light theme. Enabled the existing Trigger → Worker → Commit motion scene in the case-study hero, preserved the real desktop screenshot as a separate interface capture, and strengthened AetherFlow light-theme scene contrast.",
       "branch": "redesign/live-site-baseline",
       "status": "implemented-preview-pending-owner-review"
+    },
+    {
+      "date": "2026-11-11",
+      "event": "Owner reported uneven spacing among About, Projects, Novels, Stack, and Contact in the Android header. Replaced the narrow-screen content-sized navigation row with five equal-width grid columns and centered labels.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
     }
   ],
   "ownerRedesignWorkflow": {
@@ -1805,24 +1811,22 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Add AetherFlow project-detail animation with light-theme contrast",
+    "title": "Evenly distribute Android header navigation items",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
-      "apps/platform/src/PortfolioHome.tsx",
-      "apps/platform/src/content/projects.ts",
       "apps/platform/src/portfolio.css"
     ],
     "scope": [
-      "show AetherFlow's existing workflow motion scene in project details",
-      "keep the actual product screenshot available in interface captures",
-      "ensure readable light-theme contrast for labels, nodes, flow edges, and status"
+      "five primary navigation slots share equal width on narrow screens",
+      "center each label within its slot",
+      "keep the row contained within the mobile header without horizontal overflow",
+      "preserve desktop navigation layout"
     ],
-    "implementation": "The case-study hero now bypasses the AetherFlow full-page screenshot so its existing Trigger → Worker → Commit animation is shown. The screenshot was retained as caseStudyHeroAsset for the separate desktop interface-captures section. Light theme uses an intentionally dark motion stage with higher-contrast labels, cards, edges, and metadata.",
+    "implementation": "At widths up to 680px, the primary navigation becomes a five-column CSS grid with minmax(0,1fr) columns, centered links, compact horizontal padding, and contained overflow. Desktop rules are unchanged.",
     "preserved": [
-      "all existing AetherFlow animation markup and motion timing",
-      "original desktop product screenshot and interface evidence",
-      "all other project case-study animations",
-      "desktop and mobile case-study layout"
+      "desktop header and navigation",
+      "navigation order, labels, destinations, and interaction",
+      "other project and case-study visuals"
     ],
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
