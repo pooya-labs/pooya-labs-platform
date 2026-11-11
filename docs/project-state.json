@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P8-02",
     "title": "Stabilize and validate the Obsidian Editorial prototype for owner review round one",
-    "status": "PR #70 remains an isolated review branch, not merged or deployed. Browser QA 43028159461 still reproduced eight instances of the originally reported nested-scroll handoff defect after swipe direction correction; disabling image drag in the test also did not help. Added an explicit one-finger touch boundary bridge in ProjectCaseStudy: when the inner screenshot gallery is at its top/bottom edge, cancel the nested boundary gesture and transfer the finger delta to the outer .portfolio-page scroller. Added a contract test. Exact-head CI and full Browser QA are pending. This is a targeted interaction bug fix, not a visual redesign. Keep main/public hosts unchanged."
+    "status": "PR #70 remains an isolated, unmerged and undeployed review branch. The original nested-scroll defect is fixed with an explicit one-finger touch boundary bridge from the mobile screenshot frame to the outer .portfolio-page scroll surface. Exact-head Repository CI 43029421750 passed. Exact-head Browser QA 43029421702 passed 18/18 routes, 36/36 viewports, 34/34 social crawler checks, zero failures, zero confirmed Axe violations, and 16/16 localized case-study gallery handoffs; artifact 13859393276. Thirty-six incomplete Axe checks and physical Android verification remain manual owner gates. Both published-host performance probes collected 20/20 measurements with zero failures. No visual redesign or production deployment/merge was performed."
   },
   "lastCheckpointDate": "2026-11-11",
   "latestVerifiedCodeCommit": "3888d0799afdf4c3bb702489b6f1fc22c98d1f3b",
@@ -1767,6 +1767,18 @@
       "date": "2026-11-11",
       "event": "Added explicit mobile nested-scroll boundary handoff after Browser QA reproduced the Android issue: inner screenshot reaches max scroll while outer portfolio page does not advance on eight localized routes.",
       "commit": "e78a314fa6bd17f5028a71c256ae809746c87898"
+    },
+    {
+      "date": "2026-11-11",
+      "event": "Verified explicit mobile gallery scroll handoff on all 16 localized case-study routes; exact-head CI and full Browser QA passed. PR remains review-only pending physical Android and human owner gates.",
+      "commit": "e32d6386b0c527cd1e590db66abf0c3c054878f7"
     }
-  ]
+  ],
+  "phase8PrototypeChecks": {
+    "repositoryCi": "run-43029421750;passed;3-build-targets;typecheck;dependency-audit;credential-scan;contract-tests",
+    "browserQa": "run-43029421702;18-of-18-routes;36-of-36-viewports;34-of-34-social-crawlers;0-failures;0-confirmed-axe-violations;36-incomplete-axe-checks;artifact-13859393276",
+    "galleryScrollHandoff": "verified-16-of-16-localized-case-study-mobile-routes;touch-boundary-bridge-transfers-edge-delta-to-outer-portfolio-page",
+    "liveHostPerformance": "20-of-20-github-pages-and-20-of-20-cloudflare-pages-measurements;0-failures;github-pages-p75-lcp-344ms-cls-0;cloudflare-pages-p75-lcp-424ms-cls-0"
+  },
+  "phase8PrototypePublication": "PR-70-open-unmerged-undeployed;main-and-live-hosts-unchanged"
 }
