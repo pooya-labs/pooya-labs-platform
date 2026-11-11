@@ -1,3 +1,12 @@
+## 2026-11-11 — Portfolio content, project statuses, and skills refreshed
+
+- Updated bilingual homepage copy, portfolio status metrics, project descriptions, focus areas, and the skills section from current repository evidence.
+- Replaced the preliminary technology strip with six responsive skill groups and 53 listed items spanning languages/native development, UI, backend/integrations, data/observability, system/product engineering, and quality/security/delivery.
+- Updated status labels to seven completed projects and one active project (AetherFlow).
+- Rewrote stale GlobalCart v0.2.3 verification with the v1.0.0 release, E2E, Lighthouse, security, Pages, and live-review results; updated Salon Booking's Apps Script 1.5.5 and Android v1.2 prerelease notes; corrected Pooya.OS's nine project profiles; included ORBIT Local Work v1.1.0 and current AetherFlow M08 work.
+- Preserved explicit limitations and non-production boundaries in the relevant case studies.
+- Preview-only on `redesign/live-site-baseline`; no tests or QA run.
+
 ## Owner identity clarification — restore full name (2026-11-11)
 
 - The `PROJECT OWNER` name must display the full identity: `POOYA GOODARZI` / `پویا گودرزی`, not the surname alone.
