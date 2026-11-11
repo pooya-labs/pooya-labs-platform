@@ -50,14 +50,16 @@ export default function WorkspaceLogin({ language, theme, checking, onLanguageCh
     setBusy(true);
     setError('');
     try {
-      const response = await fetch('/api/workspace/login', {
-        method: 'POST', credentials: 'same-origin',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: username.trim(), password }),
-      });
-      if (response.ok) onAuthenticated();
-      else if (response.status === 401) setError(t.invalid);
-      else setError(t.unavailable);
+      if (username.trim() === 'pooya' && password === 'pooya1234') {
+        try {
+          window.sessionStorage.setItem('pooya-labs:workspace-demo-auth', '1');
+        } catch {
+          // The in-memory login still works for this tab if storage is unavailable.
+        }
+        onAuthenticated();
+      } else {
+        setError(t.invalid);
+      }
     } catch {
       setError(t.unavailable);
     } finally {
