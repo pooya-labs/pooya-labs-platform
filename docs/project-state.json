@@ -1769,17 +1769,23 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Increase animation legibility in light theme on the current site",
-    "status": "implemented-on-clean-baseline",
+    "title": "Improve light-theme legibility of capability visuals below the capability heading",
+    "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
       "apps/platform/src/portfolio.css"
+    ],
+    "scope": [
+      "capability interface mockup",
+      "animated topology/network scene",
+      "code terminal scene",
+      "capability card labels and supporting copy"
     ],
     "preserved": [
       "existing website structure and layout",
       "current component hierarchy",
+      "dark miniature-scene treatment",
       "existing animation keyframes",
-      "animation timing and movement",
-      "scene composition"
+      "animation timing and movement"
     ],
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
