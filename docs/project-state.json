@@ -7,8 +7,8 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-14-WORKSPACE-PREVIEW-STATUS-CHIP",
-    "title": "Fix the stretched System status chip under the Workspace hero snapshot",
+    "id": "P8-15-WORKSPACE-V6-BRAND-INTERNAL-APPS",
+    "title": "Use official Pooya Monogram and align internal Workspace apps",
     "status": "Implemented on preview branch; deployment pending."
   },
   "lastCheckpointDate": "2026-11-12",
@@ -1920,6 +1920,12 @@
       "event": "Owner shared a screenshot showing the Workspace hero preview's System status floating card stretched into a wide blank bar. Root cause was the inherited logical inline-start inset conflicting with the v5 physical right inset in LTR. Reset the inherited start inset and constrained the chip to content width; change is Workspace-only.",
       "branch": "redesign/live-site-baseline",
       "status": "implemented-preview-deployment-pending"
+    },
+    {
+      "date": "2026-11-12",
+      "event": "Owner requested the official Pooya Monogram in the Workspace header and noted that Settings, Terminal, and other internal tools still retained the old visual style. Replaced the text glyph with the existing brand SVG and aligned internal window chrome and app surfaces to Workspace v5 styling without changing app behavior.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-deployment-pending"
     }
   ],
   "portfolioContentSnapshot": {
@@ -2015,5 +2021,24 @@
     "fix": "Reset logical start inset; anchor with logical inline-end; use content-sized width and bounded max-width.",
     "productionChanged": false,
     "qa": "targeted-owner-review-pending; full-QA-deferred"
+  },
+  "workspaceRedesignV6": {
+    "status": "implemented-preview-pending-deployment",
+    "appCommit": "961871e2aefe7948ba595030eb25209dd5a78583",
+    "stylesCommit": "5a4e130b40585e9d21b2b5cf76c0dd26d8140a7c",
+    "logoAsset": "apps/platform/public/brand/pooya-monogram-tile.svg",
+    "scope": "Workspace only",
+    "surfaces": [
+      "shared app-window chrome",
+      "settings",
+      "terminal",
+      "overview",
+      "files",
+      "light and dark themes",
+      "mobile window sizing"
+    ],
+    "behaviorChanged": false,
+    "productionChanged": false,
+    "qa": "owner-review-pending"
   }
 }
