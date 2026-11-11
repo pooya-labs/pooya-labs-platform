@@ -438,9 +438,9 @@ The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDI
 - The same common lower origin, halo, particles, colors, Bézier fan, and animation timing are shared with desktop; only the mobile viewing frame changes.
 - Review the updated preview on Android. Continue the owner-led loop without interim QA until **“بازطراحی پایان یافت”**.
 
-## Active owner-directed redesign — desktop-style mobile foundation framing (2026-11-11)
+## Active owner-directed redesign — continuous mobile foundation lower fade (2026-11-11)
 
-- Removed all surface-colored edge and bottom overlays that were tinting the radial animation on Android.
-- The mobile foundation section now keeps the same background and outer fade mask as desktop. The cropped SVG uses a transparent horizontal edge fade, composited with its existing top fade; no dark gradient is painted over the artwork.
-- The SVG crop and animation remain unchanged. Review the current Cloudflare preview on Android.
+- The mobile radial visual frame now extends below the unchanged 245px SVG and fades continuously to transparency across its lower edge. The fade overlaps the SVG's lower halo so there is no hard image boundary followed by a separate section fade.
+- Existing horizontal alpha fades remain in place. The desktop section background and outer fade behavior are retained.
+- SVG geometry, focal origin, rays, particles, and animation timing are unchanged. Review the current Cloudflare preview on Android.
 - Do not run full tests or QA before **“بازطراحی پایان یافت”**; do not merge to main or deploy production.
