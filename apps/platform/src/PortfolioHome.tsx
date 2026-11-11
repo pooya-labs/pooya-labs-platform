@@ -46,8 +46,8 @@ const proofRays = Array.from({ length: 112 }, (_, index) => {
   const spread = Math.abs(progress - 0.5) * 2;
   const y = 26 + spread * 112 + ((index * 17) % 9) * 2;
   const bend = (index % 7 - 3) * 7;
-  const c1x = 600 + (x - 600) * 0.16 + bend;
-  const c2x = 600 + (x - 600) * 0.78 - bend;
+  const c1x = 600 + (x - 600) * 0.36 + bend;
+  const c2x = 600 + (x - 600) * 0.88 - bend;
   const c2y = y + 88 + ((index * 13) % 20);
   return { id: index, x, y, c1x, c2x, c2y, opacity: 0.2 + ((index * 19) % 55) / 100, width: index % 9 === 0 ? 1.6 : 0.85 };
 });
@@ -846,10 +846,10 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
                 </radialGradient>
               </defs>
               <ellipse className="proof-radial-glow" cx="600" cy="365" rx="450" ry="220" fill="url(#proof-core-gradient)" />
-              {proofRays.map((ray) => <path key={ray.id} className="proof-ray" d={'M 600 340 C ' + ray.c1x.toFixed(1) + ' 236, ' + ray.c2x.toFixed(1) + ' ' + ray.c2y.toFixed(1) + ', ' + ray.x.toFixed(1) + ' ' + ray.y.toFixed(1)} stroke="url(#proof-line-gradient)" strokeWidth={ray.width} strokeOpacity={ray.opacity} fill="none" />)}
+              {proofRays.map((ray) => <path key={ray.id} className="proof-ray" d={'M 600 382 C ' + ray.c1x.toFixed(1) + ' 318, ' + ray.c2x.toFixed(1) + ' ' + ray.c2y.toFixed(1) + ', ' + ray.x.toFixed(1) + ' ' + ray.y.toFixed(1)} stroke="url(#proof-line-gradient)" strokeWidth={ray.width} strokeOpacity={ray.opacity} fill="none" />)}
               {proofParticles.map((particle) => <circle key={particle.id} className="proof-particle" cx={particle.x} cy={particle.y} r={particle.radius} style={{ animationDelay: particle.delay + 's' }} />)}
-              <circle className="proof-origin-halo" cx="600" cy="340" r="18" />
-              <circle className="proof-origin-point" cx="600" cy="340" r="2.8" />
+              <circle className="proof-origin-halo" cx="600" cy="382" r="18" />
+              <circle className="proof-origin-point" cx="600" cy="382" r="2.8" />
             </svg>
           </div>
         </section>
