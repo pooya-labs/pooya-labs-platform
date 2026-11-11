@@ -1,3 +1,10 @@
+## Latest checkpoint — AuraPulse and GlobalCart project-card scenes aligned with their products (2026-11-11)
+
+- Replaced AuraPulse's single strip of candles and unrelated sweeping line with a compact market terminal: three clearly separated BTC / ETH / SOL rows, individual animated mini-candles, and explicit SIM / PAPER TRADING context.
+- Replaced GlobalCart's floating abstract product blocks and detached basket with a miniature storefront interface: product search, category navigation, a cart count, and three product cards with distinct audio, device, and home-product artwork.
+- The changes affect only the two compact animated windows on the homepage project cards; the larger project-detail scenes and desktop/mobile card layout are unchanged.
+- Preview-only on `redesign/live-site-baseline`. No tests, browser QA, or visual QA executed; owner review remains pending until `بازطراحی پایان یافت`.
+
 ## Latest checkpoint — foundation rays start at the bottom focal point (2026-11-11)
 
 - Moved the shared origin of all radial rays from the middle-lower area to the bottom-center edge of the animated field (`y=382` in the SVG viewBox).
