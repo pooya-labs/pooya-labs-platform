@@ -92,10 +92,40 @@ async function waitForSettledReveal(page, selector) {
     return unfinishedFiniteAnimations.length === 0;
   }, selector, { timeout: 8000 });
 
-  await page.locator(selector).evaluate(async (target) => {
+  console.log('[portfolio-browser-qa] image decode start: ' + selector);
+  const imageDecode = await page.locator(selector).evaluate(async (target) => {
     const images = Array.from(target.querySelectorAll('img'));
-    await Promise.all(images.map((image) => image.decode().catch(() => undefined)));
+    for (const image of images) {
+      if (!image.complete && image.loading === 'lazy') image.loading = 'eager';
+    }
+
+    let timeoutId;
+    const result = await Promise.race([
+      Promise.all(images.map(async (image) => {
+        const src = image.currentSrc || image.src;
+        try {
+          await image.decode();
+          return { src, loaded: image.complete && image.naturalWidth > 0 };
+        } catch (error) {
+          return { src, loaded: false, error: error instanceof Error ? error.message : String(error) };
+        }
+      })).then((records) => ({ timedOut: false, records })),
+      new Promise((resolve) => {
+        timeoutId = window.setTimeout(() => resolve({ timedOut: true, records: [] }), 10000);
+      }),
+    ]);
+    if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+    return result;
   });
+
+  if (imageDecode.timedOut) {
+    throw new Error('Image decode exceeded 10 seconds for ' + selector + '.');
+  }
+  const failedImages = imageDecode.records.filter((image) => !image.loaded);
+  if (failedImages.length > 0) {
+    throw new Error('One or more reveal images failed to decode: ' + JSON.stringify(failedImages.slice(0, 5)));
+  }
+  console.log('[portfolio-browser-qa] image decode complete: ' + selector + ' (' + imageDecode.records.length + ' images)');
   await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
 }
 
@@ -302,9 +332,14 @@ try {
         const initialRevealSelector = route.label.startsWith('home-')
           ? '.portfolio-hero-copy[data-reveal="hero-copy"]'
           : '.case-study-hero[data-reveal="case-study-hero"]';
+        console.log('[portfolio-browser-qa] reveal wait start: ' + route.label + ' / ' + viewport.name + ' / ' + initialRevealSelector);
         await waitForSettledReveal(page, initialRevealSelector);
+        console.log('[portfolio-browser-qa] reveal wait complete: ' + route.label + ' / ' + viewport.name + ' / ' + initialRevealSelector);
         if (route.label.startsWith('home-') && viewport.name === 'desktop') {
-          await waitForSettledReveal(page, '.portfolio-hero-art[data-reveal="hero-showcase"]');
+          const heroShowcaseSelector = '.portfolio-hero-art[data-reveal="hero-showcase"]';
+          console.log('[portfolio-browser-qa] reveal wait start: ' + route.label + ' / ' + viewport.name + ' / ' + heroShowcaseSelector);
+          await waitForSettledReveal(page, heroShowcaseSelector);
+          console.log('[portfolio-browser-qa] reveal wait complete: ' + route.label + ' / ' + viewport.name + ' / ' + heroShowcaseSelector);
         }
 
         const shouldCaptureVisual = route.label.startsWith('home-') || (route.label !== 'home-fa' && route.label !== 'home-en');
@@ -822,6 +857,7 @@ try {
       addFailure(route, null, 'Uncaught browser error: ' + routeRecord.pageErrors.join(' | '));
     }
     report.checks.push(routeRecord);
+    console.log('[portfolio-browser-qa] route complete: ' + route.label + ' (' + report.checks.length + '/' + routes.length + ')');
   }
 
   for (const crawler of socialCrawlerAgents) {

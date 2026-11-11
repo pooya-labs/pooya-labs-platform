@@ -1,12 +1,12 @@
-## Current next action — P8-01 owner selects a design direction (2026-11-10)
+## Current next action — P8-02 verify prototype Browser QA, then owner review (2026-11-11)
 
-Pooya authorized Phase 8 design exploration. Review [PHASE-8-DESIGN-OPTIONS.md](PHASE-8-DESIGN-OPTIONS.md): A — Obsidian Editorial Systems (recommended), or B — Warm Editorial Gallery.
+PR [#70](https://github.com/pooya-labs/pooya-labs-platform/pull/70) contains the isolated Direction A — Obsidian Editorial review prototype. The first Repository CI run passed; Browser QA run [42867978257](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42867978257) was cancelled at the first Persian homepage desktop viewport without an artifact. The browser harness now bounds lazy-image decoding and emits stage-level diagnostics.
 
-The full code redesign does not start until Pooya selects A or B. After selection, P8-02 produces the complete bilingual responsive prototype for owner review round one. The final review round follows revisions and includes physical-device confirmation.
+Next: confirm the new PR-head Repository CI and Browser QA results. Do not merge or deploy the prototype as V1. Once the preview artifact exists, present the bilingual desktop/mobile result for owner review round one and record feedback before revisions. Direction A remains provisional until Pooya explicitly confirms the design direction.
 
-Phase 7's outstanding human acceptance and publication tasks continue in parallel; they remain blockers for V1 and are not considered approved by opening Phase 8.
+Phase 7's manual contrast, keyboard/focus/screen-reader, physical-device, owner-content/media, Salon Booking permission, authenticated social-cache, deployment-configuration, asset-review, and rollback tasks continue in parallel. They remain publication blockers and are not waived by this prototype.
 
-Latest baseline: [ORBIT fix and release commit](https://github.com/pooya-labs/pooya-labs-platform/commit/3888d0799afdf4c3bb702489b6f1fc22c98d1f3b), [GitHub Pages deployment](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42857733822), [post-merge Browser QA](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42857733886).
+Latest baseline: [main ORBIT fix](https://github.com/pooya-labs/pooya-labs-platform/commit/3888d0799afdf4c3bb702489b6f1fc22c98d1f3b); [PR #70 prototype](https://github.com/pooya-labs/pooya-labs-platform/pull/70).
 
 ---
 

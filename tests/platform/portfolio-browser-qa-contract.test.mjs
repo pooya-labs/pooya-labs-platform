@@ -330,3 +330,15 @@ test('Browser QA limits Axe payloads to violations and incomplete results withou
   assert.match(script, /route error: '/);
   assert.match(workflow, /timeout-minutes: 25/);
 });
+
+
+test('hero reveal image decoding promotes lazy images and has a bounded diagnostic timeout', () => {
+  assert.match(script, /image\.loading = 'eager'/);
+  assert.match(script, /Promise\.race\(\[/);
+  assert.match(script, /window\.setTimeout\(\(\) => resolve\(\{ timedOut: true, records: \[\] \}\), 10000\)/);
+  assert.match(script, /Image decode exceeded 10 seconds/);
+  assert.match(script, /image decode start: '/);
+  assert.match(script, /image decode complete: '/);
+  assert.match(script, /reveal wait start: '/);
+  assert.match(script, /reveal wait complete: '/);
+});

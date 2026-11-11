@@ -1,3 +1,9 @@
+## 2026-11-11 — Phase 8 prototype Browser QA image wait bounded
+
+- Investigated PR #70's cancelled Browser QA run 42867978257. Its runner stopped at the first Persian homepage desktop viewport without producing a report artifact.
+- Bounded the reveal helper's image-decode wait to 10 seconds, promotes pending lazy-loaded preview images before capture, and reports failed/timed-out image decoding instead of waiting indefinitely. Added progress logs around reveal and route completion and a regression contract for the timeout.
+- This is a feature-branch QA reliability change only. It does not change the published site, approve Direction A, close Phase 7 gates, or authorize a V1 release. A new CI/Browser QA run is required to verify the correction.
+
 ## 2026-11-10 — Phase 8 opened by owner; design direction comparison prepared
 
 - Recorded Pooya's explicit instruction to enter Phase 8 design exploration.

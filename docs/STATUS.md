@@ -1,3 +1,13 @@
+## Latest checkpoint — P8-02 prototype Browser QA wait made bounded (2026-11-11)
+
+- Continued the isolated Obsidian Editorial review prototype in [PR #70](https://github.com/pooya-labs/pooya-labs-platform/pull/70); the prototype remains on its feature branch and is not part of the public site.
+- PR-head Repository CI passed on the first prototype revision (run [42867978077](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42867978077)). Browser QA run [42867978257](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42867978257) was cancelled after remaining at the first Persian homepage desktop viewport; no final report artifact was produced.
+- Inspected the runner log and the test sequence. The reveal-capture helper awaited image decoding for every descendant without a timeout, including lazy-loaded preview images. Updated the helper to promote pending lazy images to eager loading, cap image decoding at 10 seconds, fail with an explicit diagnostic when images do not settle, and log reveal/route boundaries. Added a contract test for the bounded behavior.
+- The change affects only private browser-test tooling and its contract; it does not alter production application behavior or publish a deployment. The new PR-head Browser QA result is pending.
+- Direction A remains a review prototype, not final design selection or owner approval. Phase 7 accessibility/device/content/privacy/social-cache/deployment/rollback gates remain open; release stays `pre-alpha`.
+
+---
+
 ## Latest checkpoint — P8-01 opened by owner; direction selection pending (2026-11-10)
 
 - Pooya explicitly instructed the project to enter Phase 8. Design exploration is now open from main commit [`3888d07`](https://github.com/pooya-labs/pooya-labs-platform/commit/3888d0799afdf4c3bb702489b6f1fc22c98d1f3b).
