@@ -1,3 +1,9 @@
+## Latest checkpoint — capability-section light-theme legibility improved (2026-11-11)
+
+- Applied the next owner-requested correction on `redesign/live-site-baseline`, without changing the existing page structure or animation behavior.
+- Improved contrast across all three animated capability mockups below “Thoughtful engineering, from interface to infrastructure.”: interface preview, topology/network diagram, and code-terminal scene. Raised visual boundaries, moving lines/bars, small labels, code syntax, and supporting copy in light theme while preserving the dark miniature-scene treatment.
+- Published as a Cloudflare Pages preview only. No production deployment, merge to `main`, automated tests, browser QA, or visual QA was run; full validation remains deferred until the owner says `بازطراحی پایان یافت`.
+
 ## Latest checkpoint — P8-01 opened by owner; direction selection pending (2026-11-10)
 
 - Pooya explicitly instructed the project to enter Phase 8. Design exploration is now open from main commit [`3888d07`](https://github.com/pooya-labs/pooya-labs-platform/commit/3888d0799afdf4c3bb702489b6f1fc22c98d1f3b).
