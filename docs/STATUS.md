@@ -715,3 +715,11 @@ Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for th
 - Rebalanced the welcome row, hero and preview, metric strip, app grid, lower panels, and footer for wide desktop, compact desktop/tablet, and narrow Android screens.
 - Retained the existing app launch, command palette, local-preview/RPC status, notification, and window interactions. No backend behavior changed.
 - Cloudflare Preview build and deploy succeeded on commit `d5e508256d23fa07bc82307397017fad338d7c73`: https://cad4d67b.pooya-labs-platform.pages.dev (deployment `cad4d67b-f0a9-418c-86a6-868fb65a42c3`). Preview-only on `redesign/live-site-baseline`; production and `main` remain untouched. Full QA remains deferred until `بازطراحی پایان یافت`.
+
+
+## Workspace preview status-card width correction (2026-11-12)
+
+- Fixed the highlighted floating “System status” card in the Workspace hero preview.
+- Root cause: inherited logical `inset-inline-start:-38px` remained active while the v5 override also set physical `right:-10px`; in LTR this constrained both sides and stretched the absolutely positioned card into a wide blank bar.
+- Reset the inherited logical start inset, position the card using logical inline-end only, and constrain it to content width with a bounded max-width. Kept the change scoped to the Workspace v5 preview card.
+- Preview-only on `redesign/live-site-baseline`; no production/main changes and no broad QA.
