@@ -12,6 +12,7 @@ import {
 import { isHtmlServiceHost, rpcCall, type RpcResponse } from './lib/rpc';
 import { APP_MANIFEST } from './lib/app-manifest';
 import PortfolioHome from './PortfolioHome';
+import WorkspaceLogin from './WorkspaceLogin';
 
 type Language = 'fa' | 'en';
 type Theme = 'dark' | 'light';
@@ -150,6 +151,8 @@ function getDate(language: Language, date: Date): string {
 
 function App(): ReactNode {
   const [workspaceOpen, setWorkspaceOpen] = useState(false);
+  const [workspaceAuthenticated, setWorkspaceAuthenticated] = useState(false);
+  const [workspaceAuthChecking, setWorkspaceAuthChecking] = useState(false);
   const [language, setLanguage] = useState<Language>(() => /\/en\/projects\//.test(window.location.pathname) ? 'en' : /\/projects\//.test(window.location.pathname) ? 'fa' : readPreference('language-v2', 'en'));
   const [theme, setTheme] = useState<Theme>(() => readPreference('theme', 'dark'));
   const [now, setNow] = useState(() => new Date());
@@ -168,6 +171,25 @@ function App(): ReactNode {
   const isRtl = language === 'fa';
   const t = copy[language];
   const htmlServiceHost = isHtmlServiceHost();
+
+  const openWorkspace = useCallback(async () => {
+    setWorkspaceOpen(true);
+    setWorkspaceAuthChecking(true);
+    try {
+      const response = await fetch('/api/workspace/session', { method: 'GET', credentials: 'same-origin', cache: 'no-store' });
+      setWorkspaceAuthenticated(response.ok);
+    } catch {
+      setWorkspaceAuthenticated(false);
+    } finally {
+      setWorkspaceAuthChecking(false);
+    }
+  }, []);
+
+  const exitWorkspace = useCallback(() => {
+    void fetch('/api/workspace/logout', { method: 'POST', credentials: 'same-origin' }).catch(() => undefined);
+    setWorkspaceAuthenticated(false);
+    setWorkspaceOpen(false);
+  }, []);
 
   useEffect(() => {
     writePreference('language-v2', language);
@@ -349,7 +371,11 @@ function App(): ReactNode {
   };
 
   if (!workspaceOpen) {
-    return <PortfolioHome language={language} onLanguageChange={setLanguage} theme={theme} onThemeChange={setTheme} onOpenWorkspace={() => setWorkspaceOpen(true)} />;
+    return <PortfolioHome language={language} onLanguageChange={setLanguage} theme={theme} onThemeChange={setTheme} onOpenWorkspace={openWorkspace} />;
+  }
+
+  if (!workspaceAuthenticated) {
+    return <WorkspaceLogin language={language} theme={theme} checking={workspaceAuthChecking} onLanguageChange={setLanguage} onThemeChange={setTheme} onAuthenticated={() => setWorkspaceAuthenticated(true)} onBack={() => setWorkspaceOpen(false)} />;
   }
 
   return (
@@ -373,7 +399,7 @@ function App(): ReactNode {
           <button className="workspace-header-control" onClick={() => setTheme((value) => value === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? (language === 'fa' ? 'فعال‌کردن حالت روشن' : 'Switch to light mode') : (language === 'fa' ? 'فعال‌کردن حالت تاریک' : 'Switch to dark mode')} title={theme === 'dark' ? t.lightMode : t.darkMode}>
             {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
-          <button className="text-button portfolio-return" onClick={() => setWorkspaceOpen(false)}>{language === 'fa' ? 'بازگشت به وب‌سایت' : 'Back to portfolio'}</button>
+          <button className="text-button portfolio-return" onClick={exitWorkspace}>{language === 'fa' ? 'بازگشت به وب‌سایت' : 'Back to portfolio'}</button>
           <div className={'connection-pill ' + (htmlServiceHost ? 'is-live' : '')}>
             <span className="status-dot" /><span>{htmlServiceHost ? t.liveRpc : t.localPreview}</span>
           </div>
