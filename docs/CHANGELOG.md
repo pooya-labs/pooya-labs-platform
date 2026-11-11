@@ -659,3 +659,10 @@
 - Reworked the first Bézier control point to let the rays fan outward from the origin earlier.
 - Preserved the surrounding section fade and reserved lower breathing room for the point on desktop and mobile.
 - Preview only; no tests or QA executed.
+
+## 2026-11-11 — Android touch layout and viewport stabilization
+
+- Replaced the dynamic viewport height with the stable small viewport height for touch-first devices, preventing the portfolio scroll surface from resizing with Android browser chrome.
+- Kept page scrolling vertical, restored pinch-to-zoom, made the sticky header safe-area-aware, and improved horizontal navigation touch behavior.
+- Flattened the hero preview stack on narrow touch screens without removing its slow drift, enlarged important tap targets, and removed persistent hover lift/scale states from project cards.
+- Desktop layout and production were left unchanged. Preview only; no tests or QA executed.
