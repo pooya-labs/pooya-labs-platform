@@ -689,3 +689,9 @@
 
 - Extended the mobile visual frame below the SVG and applied a bottom alpha mask across the frame, overlapping the SVG's lower halo to remove the hard cutoff/disconnected fade appearance.
 - Kept the side fades, desktop section styling, artwork geometry, focal origin, and animation behavior unchanged. Preview only; no tests or QA executed.
+
+## 2026-11-11 — AetherFlow project-detail animation
+
+- Activated the existing AetherFlow workflow animation in the case-study hero instead of the static full-page product image.
+- Retained the actual desktop screenshot as a separate interface capture.
+- Improved light-theme contrast for the dark-glass scene, workflow cards, animated edges, and status labels. Preview only; no tests or QA executed.
