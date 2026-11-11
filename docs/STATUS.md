@@ -5,6 +5,12 @@
 - Kept the owner monogram and Instagram mark unchanged; those are separate identity assets.
 - Preview-only on `redesign/live-site-baseline`; no tests or broad QA run.
 
+## Android mobile hero headline overflow fix (2026-11-11)
+
+- Fixed the English accent headline phrase overflowing the viewport on narrow Android screens. The phrase now wraps cleanly between its prefix and highlighted keyword, remains centered, and uses a mobile-safe type scale.
+- Desktop headline layout and typography remain unchanged; this is scoped to viewports at or below 680px.
+- Preview-only; no broad QA or repeated device testing.
+
 ## Latest refinement — AI engineering, UI/UX, motion, and language coverage (2026-11-11)
 
 - Strengthened the bilingual personal positioning to explicitly lead with AI Engineer / مهندس هوش مصنوعی, while retaining software engineering as the foundation.
