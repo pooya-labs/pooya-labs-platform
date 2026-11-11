@@ -4,15 +4,6 @@
 2. Confirm username `pooya` and the owner-provided password work, incorrect credentials are rejected, and returning to the portfolio clears the session.
 3. Treat this strictly as a visual gate; never place private data or privileged operations behind it.
 4. Keep changes on `redesign/live-site-baseline`; do not merge to `main` or deploy production before explicit approval.
-# Next — configure Workspace Preview credentials (2026-11-12)
-
-1. In Cloudflare Dashboard, open Workers & Pages → pooya-labs-platform → Settings → Variables and Secrets → Preview.
-2. Add WORKSPACE_USERNAME as a Secret with value pooya.
-3. Add WORKSPACE_PASSWORD as a Secret with the owner-provided password from the private handoff in ChatGPT. Do not add either value to GitHub, README files, or build-time Vite variables.
-4. Save the Preview variables, then create a fresh deployment from redesign/live-site-baseline so the Pages Functions receive them.
-5. Open the latest Preview, enter Workspace, and verify correct credentials succeed, incorrect credentials fail, and returning to the portfolio signs out.
-6. Keep Production and main untouched. This login gate is for Cloudflare Pages; GitHub Pages and Apps Script hosts need their own server-side auth adapters before using it.
-
 # Next — verify the Novels preview (2026-11-12)
 
 1. Open the latest Cloudflare Preview and navigate to the Novels section.
