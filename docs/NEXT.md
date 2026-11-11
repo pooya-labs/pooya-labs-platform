@@ -1,3 +1,9 @@
+## Latest motion adjustment — rays start from the bottom edge
+
+- The proof-section ray field now begins at one shared point near the bottom center (`y=382`), with the curves fanning outward earlier toward the upper edges.
+- The focal halo and center dot follow that point; lower page fade remains below the origin on desktop and mobile.
+- Continue using the current Preview branch only. Defer QA until `بازطراحی پایان یافت`.
+
 ## Latest refinement — single-point foundation animation origin
 
 - Keep the lower origin of the foundation animation visually anchored at one clear point; the rays should fan outward from it.
