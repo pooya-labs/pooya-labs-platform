@@ -1764,6 +1764,12 @@
       "event": "Owner reported the foundation radial animation was compressed on Android. Mobile frame now centers and magnifies the shared desktop radial SVG without changing desktop styling or animation behavior.",
       "branch": "redesign/live-site-baseline",
       "status": "implemented-preview-pending-owner-review"
+    },
+    {
+      "date": "2026-11-11",
+      "event": "Owner requested softer left/right ends on the mobile foundation animation and correction of the doubled lower fade. Added mobile edge fades and replaced mask-based section fade with layered gradient fades for dark/light themes.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
     }
   ],
   "ownerRedesignWorkflow": {
@@ -1781,22 +1787,24 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Correct mobile framing of the foundation radial animation",
+    "title": "Smooth left/right edges and lower fade of the mobile foundation animation",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
       "apps/platform/src/portfolio.css"
     ],
     "scope": [
-      "mobile crop and scale of the shared desktop radial SVG",
-      "centered focal point at the bottom of the mobile animation frame",
-      "preservation of shared rays, glow, particles, gradients, and animation timing"
+      "mobile left and right radial artwork edge fades",
+      "mobile lower edge fade of the full foundation section",
+      "dark and light theme surface-matched gradient overlays",
+      "remove dependency on section mask compositing on narrow viewports"
     ],
-    "implementation": "For viewports up to 680px, the radial proof SVG is centered at 220% width in a 245px clipped visual frame. This magnifies the center of the wide desktop artwork rather than compressing the full 1200×390 viewBox into the phone viewport. The underlying SVG and its single lower origin are shared with desktop.",
+    "implementation": "Added left/right surface-colored gradient overlays to the cropped radial SVG frame. For narrow screens only, disabled the outer section mask and replaced it with a section background that fades to transparent plus a bottom overlay that fades the animation into the section surface and the section into the page. Added matching light-theme stops.",
     "preserved": [
-      "desktop layout and animation framing",
-      "shared desktop/mobile SVG rays and Bézier paths",
-      "bottom-center origin halo and focal point",
-      "particle and ray animation timing, gradients and color treatment"
+      "desktop section and radial composition",
+      "shared SVG viewBox and path geometry",
+      "single lower focal origin and halo",
+      "ray and particle animations and timing",
+      "content and spacing outside the mobile foundation scene"
     ],
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
