@@ -7,8 +7,8 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-05-ANDROID-HERO-OVERFLOW",
-    "title": "Fix clipped English hero headline on narrow Android screens",
+    "id": "P8-06-MY-WORKSPACE-REDESIGN",
+    "title": "Complete visual redesign of My workspace / Files app aligned with the new Pooya Labs portfolio",
     "status": "Implemented on preview branch; deployment pending."
   },
   "lastCheckpointDate": "2026-11-11",
