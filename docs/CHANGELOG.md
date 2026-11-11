@@ -1,3 +1,10 @@
+## 2026-11-12 — Workspace design language reset v2
+
+- Replaced the previous neon/glass-heavy design with a quieter editorial product UI using warm neutrals, graphite, restrained forest green, clean typography, and simple bordered surfaces.
+- Reworked workspace navigation, hero, app cards, status panels, and mobile presentation; preserved behavior and bilingual/theme support.
+- Added a matching dark theme with graphite surfaces and soft sage accents.
+- Preview-only; no broad QA run.
+
 ## 2026-11-11 — Complete Workspace dashboard redesign
 
 - Rebuilt the main Workspace landing experience to match the current Pooya Labs portfolio: editorial welcome header, emerald glass hero, redesigned app launcher cards, refined recent-activity and runtime-status surfaces, and mobile-specific composition.
