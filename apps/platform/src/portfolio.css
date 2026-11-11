@@ -3565,30 +3565,16 @@
 
   .case-study-media-card.device-mobile .case-study-media-frame {
     position: relative;
-    width: 100%;
+    width: calc(100% - clamp(36px, 14vw, 68px));
     height: min(72svh, 720px);
     min-height: 420px;
+    margin-inline: auto;
     overflow-x: hidden;
     overflow-y: auto;
     touch-action: pan-y;
     overscroll-behavior-y: contain;
     -webkit-overflow-scrolling: touch;
   }
-
-  .case-study-media-card.device-mobile .case-study-media-frame::before,
-  .case-study-media-card.device-mobile .case-study-media-frame::after {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    bottom: 0;
-    width: clamp(18px, 7vw, 34px);
-    pointer-events: none;
-    background: transparent;
-  }
-
-  .case-study-media-card.device-mobile .case-study-media-frame::before { left: 0; }
-  .case-study-media-card.device-mobile .case-study-media-frame::after { right: 0; }
 
   .case-study-media-card.device-mobile .case-study-media-frame img {
     position: relative;
