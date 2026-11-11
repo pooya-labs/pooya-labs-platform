@@ -1260,21 +1260,18 @@
   },
   "latestOwnerFeedback": {
     "date": "2026-11-11",
-    "task": "AuraPulse and GlobalCart compact homepage project-card animations",
-    "requests": [
-      "Replace AuraPulse's single row of bars and unrelated line with a multi-row market dashboard that represents the product.",
-      "Replace GlobalCart's abstract floating cards and basket with a compact visual that clearly represents the marketplace."
-    ],
-    "implementation": "AuraPulse now shows simulated BTC, ETH, and SOL market rows with separate animated micro-candles and SIM/PAPER TRADING labels. GlobalCart now shows a miniature marketplace storefront with product search, category navigation, a cart count, and distinct audio/device/home product tiles. Only compact homepage card scenes changed.",
+    "task": "Extend the successful AuraPulse and GlobalCart mini-scene redesign to every remaining homepage project",
+    "implementation": "Redesigned AetherFlow as a trigger-worker-commit workflow; Orbit as a service health, incident and telemetry dashboard; Pooya OS as a spatial desktop with app launcher; Nexus Canvas as a connected node graph; LuminaGlass as a refractive prism optical lab with controls; and Salon Booking as a weekly appointment grid with a confirmed slot. Together with the previously redesigned AuraPulse and GlobalCart scenes, all eight homepage project-card mini-scenes are now product-specific.",
+    "scope": "Only compact homepage project-card motion windows; preserve project detail scenes and card layouts.",
     "ownerApproval": "pending-preview-review",
-    "automatedValidation": "not-run-by-owner-redesign-workflow;deferred-until-بازطراحی-پایان-یافت",
-    "manualValidation": "pending-owner-review-on-Cloudflare-preview"
+    "validation": "deferred-until-owner-declares-redesign-finished",
+    "release": "preview-only; no merge or production deployment"
   },
-  "latestTask": "Homepage compact motion scenes — AuraPulse and GlobalCart",
+  "latestTask": "Homepage compact motion scenes — all remaining project cards",
   "latestTaskBranch": "redesign/live-site-baseline",
   "lastUpdated": "2026-11-11",
   "latestDocumentationCommit": "56fc32c772785d23fde1eb15f839d66c5fb2bc9e",
-  "latestDocumentationCheckpoint": "2026-11-11-owner-corrected-AuraPulse-and-GlobalCart-homepage-mini-scenes;preview-only;owner-review-pending",
+  "latestDocumentationCheckpoint": "2026-11-11-all-eight-homepage-project-mini-scenes-product-aligned;preview-only;owner-review-pending",
   "latestRepositoryCiRun": "42815065743;success;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1",
   "latestBrowserQaRun": "42815065767;success;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1;artifact-13765540433",
   "latestPerformanceBaseline": {
@@ -1800,6 +1797,12 @@
       "event": "Owner reported that AuraPulse's one-row candle strip and unrelated line did not represent the product, and GlobalCart's abstract mini-scene did not match the marketplace. Rebuilt both compact homepage scenes as a multi-row simulated trading terminal and a miniature product storefront.",
       "branch": "redesign/live-site-baseline",
       "status": "implemented-preview-pending-owner-review"
+    },
+    {
+      "date": "2026-11-11",
+      "event": "Owner approved the AuraPulse and GlobalCart mini-scene redesign and requested the same product-specific treatment for all remaining project cards. Rebuilt AetherFlow, Orbit, Pooya OS, Nexus Canvas, LuminaGlass and Salon Booking compact scenes.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
     }
   ],
   "ownerRedesignWorkflow": {
@@ -1817,20 +1820,22 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Align AuraPulse and GlobalCart homepage mini-scenes with product identity",
+    "title": "Product-align all homepage project-card mini-scenes",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
       "apps/platform/src/PortfolioHome.tsx",
       "apps/platform/src/portfolio.css"
     ],
-    "scope": [
-      "AuraPulse: replace one row of candles and unrelated decorative line with three market rows",
-      "AuraPulse: show BTC, ETH, and SOL with clearly simulated paper-trading context",
-      "GlobalCart: replace abstract floating product blocks with an actual miniature storefront",
-      "GlobalCart: show search, category navigation, cart count, and distinct product cards",
-      "preserve all other project card layouts and project-detail animations"
-    ],
-    "implementation": "The AuraPulse compact scene is a three-row market terminal with independent animated micro-candles and explicit SIM/PAPER TRADING labels. The GlobalCart compact scene is a miniature marketplace UI with search, categories, cart count, and distinct audio/device/home product imagery. Only the two compact homepage card scenes were changed.",
+    "projects": {
+      "aetherflow": "Trigger → worker → durable commit workflow",
+      "orbit": "Service health, incident state and telemetry dashboard",
+      "pooyaOs": "Spatial desktop with app launcher",
+      "nexusCanvas": "Connected graph nodes",
+      "luminaGlass": "Refractive prism optical lab with controls",
+      "salonBooking": "Weekly appointment slots and confirmed booking",
+      "auraPulse": "Three-row simulated market terminal",
+      "globalCart": "Miniature marketplace storefront"
+    },
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
   }
