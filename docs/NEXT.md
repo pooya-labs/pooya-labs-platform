@@ -1,3 +1,8 @@
+# Next — review Salon Booking and AetherFlow card images
+
+- On the latest Preview, confirm both project images fill their artwork frames consistently with the other cards on desktop and Android.
+- Confirm no other project-card artwork or card sizing changed.
+- Keep the change on `redesign/live-site-baseline`; do not merge or deploy Production.
 # Next — Workspace demo login
 
 1. Review the demo login on the current preview host.
