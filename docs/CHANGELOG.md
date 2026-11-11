@@ -695,3 +695,8 @@
 - Activated the existing AetherFlow workflow animation in the case-study hero instead of the static full-page product image.
 - Retained the actual desktop screenshot as a separate interface capture.
 - Improved light-theme contrast for the dark-glass scene, workflow cards, animated edges, and status labels. Preview only; no tests or QA executed.
+
+## 2026-11-11 — Even mobile header navigation spacing
+
+- Distributed the five primary navigation links into equal-width mobile columns with centered labels and compact padding.
+- Removed the content-width/scroll-based uneven spacing from the narrow header row; desktop navigation is unchanged. Preview only; no tests or QA executed.
