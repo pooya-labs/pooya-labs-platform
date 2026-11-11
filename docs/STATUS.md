@@ -703,3 +703,15 @@ Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for th
 - Refined the sticky header that contains the Pooya Labs mark, navigation, theme/language controls, and workspace action.
 - Replaced the near-solid dark surface with a restrained translucent graphite/teal glass gradient, clearer soft edge, subtle inner highlights, and stronger blur/saturation.
 - Gave the navigation and control trays a faint glass tint in dark mode. Light mode and page content remain unchanged. Preview only; no tests or QA run.
+
+
+## Workspace v5 — rebuild of the entire workspace surface (2026-11-12)
+
+- Replaced the conflicting v4 header/grid rules with one scoped responsive layout for the Workspace surface only.
+- Fixed the mobile header's three-child / two-column placement so brand, search, and language/theme controls stay on one row.
+- Simplified intermediate-width header actions to prevent the desktop controls from overflowing or colliding.
+- Bound the Workspace root direction and language to the selected locale; English now renders left-to-right and Persian right-to-left throughout the environment.
+- Rebuilt the vertical layout contract: fixed header, bounded workspace stage, one native scroll surface, correctly layered windows/docks, and safe-area-aware mobile padding.
+- Rebalanced the welcome row, hero and preview, metric strip, app grid, lower panels, and footer for wide desktop, compact desktop/tablet, and narrow Android screens.
+- Retained the existing app launch, command palette, local-preview/RPC status, notification, and window interactions. No backend behavior changed.
+- Preview-only on `redesign/live-site-baseline`; production and `main` remain untouched. Full QA remains deferred until `بازطراحی پایان یافت`.
