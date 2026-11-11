@@ -7,9 +7,9 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-WORKSPACE-OWNER-SIGN-IN",
-    "title": "Add a server-verified, database-free owner sign-in gate to Workspace",
-    "status": "Frontend and Cloudflare Pages Functions committed on preview branch; Preview secrets and owner sign-in verification pending."
+    "id": "P8-WORKSPACE-DEMO-LOGIN",
+    "title": "Add a host-independent demo login gate to Workspace",
+    "status": "Implemented on redesign/live-site-baseline; client-side demo gate only, no external auth service or backend."
   },
   "lastCheckpointDate": "2026-11-12",
   "latestVerifiedCodeCommit": "780cd900bc8cc26807203f32946e936a10d9f332",
