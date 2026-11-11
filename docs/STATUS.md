@@ -458,3 +458,17 @@ Pooya requested a strict final-stage order. The roadmap now reserves **Phase 8 f
 
 ## Previous verified checkpoints
 
+## Owner instruction — use the live site as the redesign baseline (2026-11-11)
+
+Pooya clarified the review workflow after rejecting the first Phase 8 preview as broken:
+
+- The prior preview branch `phase-8/prototype-a-obsidian-editorial` applied a broad isolated visual-system layer and is **not** the working base for incremental corrections. Do not ask Pooya to review that preview or continue applying his focused instructions there.
+- The new working branch `redesign/live-site-baseline` was created directly from the exact current `main` commit `f42e9bd889636b87b7deb774b085f3a90ffbd3f4`. Its site implementation is the current production code, without the Phase 8 prototype stylesheet.
+- Apply each owner instruction as a focused change on this baseline branch, preserving the existing website and its behavior.
+- After each instruction, publish a Cloudflare Pages **preview** from the current branch head and give Pooya that live preview URL so he can inspect it and report the next correction.
+- Publishing the preview requires a deployment build; this is not permission to run a separate test/QA cycle. Do not run CI, test suites, browser QA, screenshot review, performance checks, or a debugging pass between instructions.
+- Start the full validation and debugging phase only after Pooya explicitly says **“بازطراحی پایان یافت”**. Do not merge to `main`, publish production, or label the redesign complete before his approval.
+
+### First focused correction on the clean baseline
+
+Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for the existing animated capability/topology preview, system-flow wires, craft-motion miniatures, case-study motion scenes, and project-card motion previews. Kept the existing page layout, components, keyframes, animation timing, and movement. No tests or visual QA were run.
