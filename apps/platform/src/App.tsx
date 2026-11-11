@@ -172,21 +172,24 @@ function App(): ReactNode {
   const t = copy[language];
   const htmlServiceHost = isHtmlServiceHost();
 
-  const openWorkspace = useCallback(async () => {
-    setWorkspaceOpen(true);
-    setWorkspaceAuthChecking(true);
+  const openWorkspace = useCallback(() => {
+    let authenticated = false;
     try {
-      const response = await fetch('/api/workspace/session', { method: 'GET', credentials: 'same-origin', cache: 'no-store' });
-      setWorkspaceAuthenticated(response.ok);
+      authenticated = window.sessionStorage.getItem('pooya-labs:workspace-demo-auth') === '1';
     } catch {
-      setWorkspaceAuthenticated(false);
-    } finally {
-      setWorkspaceAuthChecking(false);
+      authenticated = false;
     }
+    setWorkspaceAuthenticated(authenticated);
+    setWorkspaceAuthChecking(false);
+    setWorkspaceOpen(true);
   }, []);
 
   const exitWorkspace = useCallback(() => {
-    void fetch('/api/workspace/logout', { method: 'POST', credentials: 'same-origin' }).catch(() => undefined);
+    try {
+      window.sessionStorage.removeItem('pooya-labs:workspace-demo-auth');
+    } catch {
+      // Session storage may be unavailable in restricted browsing contexts.
+    }
     setWorkspaceAuthenticated(false);
     setWorkspaceOpen(false);
   }, []);
