@@ -1,3 +1,20 @@
+## Owner instruction — redesign execution cadence (2026-11-11)
+
+## Owner-directed redesign execution protocol — 2026-11-11
+
+Pooya's explicit working rule for the redesign phase:
+
+- Apply each new owner instruction promptly to the working website implementation, in the order received. Make the requested change in the product itself; do not replace implementation with suggestions, mockups, or plans.
+- Work incrementally on the existing site. Preserve sound structure, content, and working features unless an instruction explicitly asks to change them. “Redesign” means the requested focused changes, not rebuilding the whole platform by default.
+- Do not spend the owner's time on routine test runs between instructions. Until the owner declares the redesign finished, skip routine CI/test suites, browser QA, manual QA, screenshot reviews, performance runs, and debugging passes. Continue implementing the next instruction without pausing for an intermediate test/approval cycle.
+- Keep a concise record of changes and report what was actually applied. Do not describe unrun checks as passed.
+- Start the full validation and debugging phase only when Pooya explicitly says **“بازطراحی پایان یافت”** or gives an unmistakably equivalent completion instruction. At that point run the full relevant test/build/browser/responsive/accessibility checks, inspect the site, fix the defects found, and report remaining owner-only gates.
+- This sequencing instruction does not waive security, privacy, data-integrity, repository permission, or branch-protection requirements. Never claim a public deployment or release unless it has actually completed.
+
+Current operating mode: implementation-first. Apply each incoming redesign instruction directly to the working site without routine tests or debugging between instructions. Full QA/debugging begins only after Pooya explicitly declares “بازطراحی پایان یافت”. No public deployment is implied by this workflow note.
+
+---
+
 ## Latest checkpoint — P8-02 prototype Browser QA wait made bounded (2026-11-11)
 
 - Continued the isolated Obsidian Editorial review prototype in [PR #70](https://github.com/pooya-labs/pooya-labs-platform/pull/70); the prototype remains on its feature branch and is not part of the public site.
