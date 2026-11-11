@@ -1929,8 +1929,10 @@
   position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:stretch;
   width:100%;min-height:0;gap:0;margin:58px 0 104px;
   padding:76px max(24px,calc((100vw - 1200px)/2)) 0;overflow:hidden;
-  border:0;border-block:1px solid var(--pf-line);border-radius:0;
+  border:0;border-top:1px solid var(--pf-line);border-bottom:0;border-radius:0;
   background:#111719;color:var(--pf-text);box-shadow:none;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 calc(100% - 100px),transparent 100%);
+  mask-image:linear-gradient(180deg,#000 0%,#000 calc(100% - 100px),transparent 100%);
 }
 .portfolio-page[data-theme="light"] .portfolio-proof { color:#192a21;background:linear-gradient(180deg,#f6f7f4 0%,#f0f2ed 100%);border-color:rgba(35,55,45,.1); }
 .portfolio-proof::before {
@@ -1960,7 +1962,7 @@
 .proof-ray:nth-of-type(3n) { animation-duration:29s; }
 .proof-particle { fill:#b4a6fa;opacity:.56;animation:proof-particle-twinkle 5s ease-in-out infinite alternate; }
 .portfolio-page[data-theme="light"] .proof-particle { fill:#8879c9;opacity:.52; }
-.proof-baseline { stroke-width:1; }
+.proof-baseline { stroke:var(--pf-emerald);stroke-opacity:.18;stroke-width:1; }
 @keyframes proof-ray-flow { to { stroke-dashoffset:-120; } }
 @keyframes proof-particle-twinkle { from { opacity:.18;transform:scale(.7); } to { opacity:.82;transform:scale(1.15); } }
 @keyframes proof-glow-breathe { from { transform:scale(.94);opacity:.55; } to { transform:scale(1.08);opacity:1; } }
