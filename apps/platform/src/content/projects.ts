@@ -310,7 +310,7 @@ const projectEntries: PortfolioProject[] = [
     slug: 'salon-booking',
     name: 'Salon Booking',
     visualAsset: {
-      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/redesign/live-site-baseline/apps/platform/public/interface-captures/salon-booking/salon-booking-home-hero.png',
+      url: 'https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/ca0c71abac5fc3d838a3505cebf0bcbda195136f/apps/platform/public/interface-captures/salon-booking/salon-booking-home-hero.png',
       kind: 'interface',
       alt: { fa: 'تصویر اصلی بخش بالایی وب‌سایت شایان سالن', en: 'Shayan Salon website hero section' },
     },
