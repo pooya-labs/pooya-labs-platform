@@ -1,3 +1,14 @@
+## Owner-directed redesign execution protocol — 2026-11-11
+
+Pooya's explicit working rule for the redesign phase:
+
+- Apply each new owner instruction promptly to the working website implementation, in the order received. Make the requested change in the product itself; do not replace implementation with suggestions, mockups, or plans.
+- Work incrementally on the existing site. Preserve sound structure, content, and working features unless an instruction explicitly asks to change them. “Redesign” means the requested focused changes, not rebuilding the whole platform by default.
+- Do not spend the owner's time on routine test runs between instructions. Until the owner declares the redesign finished, skip routine CI/test suites, browser QA, manual QA, screenshot reviews, performance runs, and debugging passes. Continue implementing the next instruction without pausing for an intermediate test/approval cycle.
+- Keep a concise record of changes and report what was actually applied. Do not describe unrun checks as passed.
+- Start the full validation and debugging phase only when Pooya explicitly says **“بازطراحی پایان یافت”** or gives an unmistakably equivalent completion instruction. At that point run the full relevant test/build/browser/responsive/accessibility checks, inspect the site, fix the defects found, and report remaining owner-only gates.
+- This sequencing instruction does not waive security, privacy, data-integrity, repository permission, or branch-protection requirements. Never claim a public deployment or release unless it has actually completed.
+
 ## Current next action — P8-02 verify prototype Browser QA, then owner review (2026-11-11)
 
 PR [#70](https://github.com/pooya-labs/pooya-labs-platform/pull/70) contains the isolated Direction A — Obsidian Editorial review prototype. The first Repository CI run passed; Browser QA run [42867978257](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42867978257) was cancelled at the first Persian homepage desktop viewport without an artifact. The browser harness now bounds lazy-image decoding and emits stage-level diagnostics. CI run [43017396961](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43017396961) completed lint/format/typecheck/build/security successfully but exposed one stale contract assertion; that assertion is now aligned. Browser run [43017396822](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43017396822) completed 18/18 routes, 36/36 viewports and 34/34 crawler checks, with zero confirmed Axe violations, but eight mobile gallery scroll-handoff checks failed across AetherFlow, ORBIT, LuminaGlass and AuraPulse. The report is available as artifact [13853382898](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43017396822/artifacts/13853382898). The harness now waits for two animation frames after positioning the inner frame at its scroll boundary; verify this exact revision before owner review.
