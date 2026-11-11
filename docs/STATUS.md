@@ -1,3 +1,11 @@
+## Complete Workspace dashboard redesign (2026-11-11)
+
+- Corrected scope: redesigned the actual Workspace landing dashboard, not only the Files app surface.
+- Added a portfolio-aligned editorial welcome header, refined date/status panel, deep emerald glass hero, updated app-launch cards, recent activity/status surfaces, and responsive mobile layout.
+- Preserved existing app launch actions, command palette, RPC status check, language/theme behavior, and all underlying workspace functionality.
+- Kept the current local-preview and sample-data disclosures intact; no new backend or cloud-storage capability was added.
+- Preview-only on `redesign/live-site-baseline`; no production merge/deploy and no broad QA.
+
 ## My workspace / Files complete visual redesign (2026-11-11)
 
 - Rebuilt the Files app surface with an editorial glass hero, emerald visual motif, compact summary cards, a clear folder hierarchy, and a refined recent-files list.
