@@ -513,6 +513,7 @@ try {
                 reason: innerMaxScroll <= 40 ? 'The mobile capture has no internal overflow.' : 'No outer page content remains below the capture.',
                 innerMaxScroll,
                 innerScrollTopBeforeGesture: element.scrollTop,
+                galleryCardOverflowY: getComputedStyle(element.parentElement).overflowY,
                 outerBefore: pageScroller.scrollTop,
                 outerMaxScroll,
                 viewportHeight: window.innerHeight,
@@ -562,6 +563,9 @@ try {
               }
               if (setup.overflowY !== 'auto' || setup.overscrollBehaviorY !== 'auto' || !setup.touchAction.includes('pan-y')) {
                 addFailure(route, viewport.name, 'The mobile gallery does not expose native vertical touch scroll chaining.');
+              }
+              if (setup.galleryCardOverflowY !== 'clip') {
+                addFailure(route, viewport.name, 'The mobile gallery card wrapper must clip its corners without creating an intermediate scroll container.');
               }
               await page.evaluate(() => {
                 const pageScroller = document.querySelector('.portfolio-page');

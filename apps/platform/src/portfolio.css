@@ -3073,3 +3073,8 @@
 .portfolio-page[data-theme="light"] .portfolio-nav a:hover {
   color:var(--pf-emerald)!important;
 }
+
+
+/* Let mobile screenshot frames hand vertical touch scrolling to the page.
+   overflow:clip preserves rounded clipping without creating an extra scroll container. */
+.case-study-media-card { overflow:clip; }

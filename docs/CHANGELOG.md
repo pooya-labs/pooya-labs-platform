@@ -1,3 +1,9 @@
+## 2026-11-11 — Mobile gallery scroll handoff wrapper correction
+
+- The two-frame synchronization alone did not resolve eight mobile gallery touch-handoff failures in run 43019049052. Its artifact showed valid inner scroll boundaries while the parent page did not move.
+- CSS inspection found the containing figure still had `overflow:hidden`, creating an intermediate clipping scroll container. Changed it to `overflow:clip`, which retains clipping while avoiding a scroll container, and added an explicit computed-style QA check.
+- Simplified the new regression-test assertions after CI run 43019049074 exposed an over-escaped whitespace expression. Exact-head Repository CI and Browser QA are pending.
+
 ## 2026-11-11 — Phase 8 prototype Browser QA image wait bounded
 
 - Investigated PR #70's cancelled Browser QA run 42867978257. Its runner stopped at the first Persian homepage desktop viewport without producing a report artifact.

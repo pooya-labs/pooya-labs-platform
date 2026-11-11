@@ -4,6 +4,8 @@ PR [#70](https://github.com/pooya-labs/pooya-labs-platform/pull/70) contains the
 
 Next: confirm the new PR-head Repository CI and Browser QA results. Do not merge or deploy the prototype as V1. Once the preview artifact exists, present the bilingual desktop/mobile result for owner review round one and record feedback before revisions. Direction A remains provisional until Pooya explicitly confirms the design direction.
 
+Browser QA run [43019049052](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43019049052) repeated the eight mobile gallery handoff failures after waiting two animation frames. The downloaded report [13853843321](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43019049052/artifacts/13853843321) confirms inner scroll reached its boundary but the parent stayed still. The common wrapper used `overflow:hidden`; changed it to `overflow:clip` so it retains rounded clipping without acting as an intermediate scroll container. QA now checks the wrapper's computed overflow. The rAF contract assertion was simplified after CI run 43019049074 exposed over-escaped whitespace matching.
+
 Phase 7's manual contrast, keyboard/focus/screen-reader, physical-device, owner-content/media, Salon Booking permission, authenticated social-cache, deployment-configuration, asset-review, and rollback tasks continue in parallel. They remain publication blockers and are not waived by this prototype.
 
 Latest baseline: [main ORBIT fix](https://github.com/pooya-labs/pooya-labs-platform/commit/3888d0799afdf4c3bb702489b6f1fc22c98d1f3b); [PR #70 prototype](https://github.com/pooya-labs/pooya-labs-platform/pull/70).
