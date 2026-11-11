@@ -1,3 +1,10 @@
+# 2026-11-12 — Connect uploaded novels to the public library
+
+- Added the «گوزن» and «غزال» cover and PDF assets to the platform's public novel directory, reusing the optimized WebP cover blobs.
+- Populated the novel catalog so both books appear in the existing homepage Novels section.
+- Extended the reader to display PDF manuscripts inline with a separate full-file link, while retaining Markdown/text support.
+- Preview branch only; deployment and browser rendering still pending.
+
 # 2026-11-12 — Workspace v6 brand and internal app alignment
 
 - Replaced the improvised header P glyph with the official Pooya Monogram SVG already used by the platform's brand assets.
