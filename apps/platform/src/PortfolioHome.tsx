@@ -179,7 +179,7 @@ const text = {
     focus4: 'Distributed systems, data, and infrastructure',
     stackEyebrow: 'AI ENGINEERING · DESIGN · TECHNOLOGY',
     stackTitle: 'From AI engineering to polished digital experiences.',
-    This list combines the languages and focus areas I have identified with technologies and capabilities used across my projects; it is not a proficiency ranking or a claim that every technology is deployed in production.
+    stackSub: 'This list combines the languages and focus areas I have identified with technologies and capabilities used across my projects; it is not a proficiency ranking or a claim that every technology is deployed in production.',
     contactEyebrow: 'Let’s connect',
     contactTitle: 'Have something worth building?',
     contactBody: 'For source code, development updates, and new projects, start with my GitHub profile.',
