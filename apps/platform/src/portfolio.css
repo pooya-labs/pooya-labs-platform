@@ -3452,3 +3452,55 @@
     height: 245px;
   }
 }
+
+
+/* AetherFlow case-study motion stays legible in light mode on its intentional dark-glass stage. */
+.portfolio-page[data-theme="light"] .case-study-motion-art.scene-aetherflow {
+  --scene-accent: #82efc1;
+  --scene-secondary: #9bcaff;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  filter: saturate(1.12) contrast(1.08);
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(72, 193, 145, .2), transparent 66%),
+    linear-gradient(135deg, rgba(5, 19, 18, .12), rgba(5, 17, 23, .04)),
+    #101b19;
+}
+
+.portfolio-page[data-theme="light"] .case-study-motion-art.scene-aetherflow .flow-step {
+  border-color: rgba(130, 239, 193, .5);
+  background: linear-gradient(145deg, rgba(13, 43, 35, .98), rgba(10, 29, 35, .97));
+  box-shadow: 0 16px 35px rgba(4, 18, 17, .3), inset 0 1px rgba(255, 255, 255, .12);
+}
+
+.portfolio-page[data-theme="light"] .case-study-motion-art.scene-aetherflow .flow-step strong {
+  color: #f3fff9;
+}
+
+.portfolio-page[data-theme="light"] .case-study-motion-art.scene-aetherflow .flow-step small {
+  color: #d6eee3 !important;
+}
+
+.portfolio-page[data-theme="light"] .case-study-motion-art.scene-aetherflow .flow-edge {
+  background: rgba(130, 239, 193, .34);
+}
+
+.portfolio-page[data-theme="light"] .case-study-motion-art.scene-aetherflow .flow-edge i {
+  background: linear-gradient(90deg, transparent, #82efc1, transparent);
+}
+
+.portfolio-page[data-theme="light"] .case-study-motion-art.scene-aetherflow .flow-foot {
+  color: #d1e8dc !important;
+}
+
+.portfolio-page[data-theme="light"] .case-study-motion-art.scene-aetherflow .flow-foot div i {
+  background: rgba(130, 239, 193, .3);
+}
+
+.portfolio-page[data-theme="light"] .case-study-motion-art.scene-aetherflow .flow-foot div i:nth-child(-n+3) {
+  background: #82efc1;
+}
+
+.portfolio-page[data-theme="light"] .case-study-motion-art.scene-aetherflow .flow-sweep {
+  opacity: .68;
+}
