@@ -7,12 +7,12 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-09-WORKSPACE-STRUCTURAL-REDESIGN-V3",
-    "title": "Replace the legacy Workspace dashboard structure with a portfolio-aligned command center",
+    "id": "P8-10-WORKSPACE-DESKTOP-COMPOSITION-V4",
+    "title": "Replace the retained legacy desktop Workspace shell with a distinct portfolio-aligned composition",
     "status": "Implemented on preview branch; deployment pending."
   },
   "lastCheckpointDate": "2026-11-12",
-  "latestVerifiedCodeCommit": "5f7a6144f1371cffcd9011762234074110e4e33f",
+  "latestVerifiedCodeCommit": "pending",
   "tests": {
     "repositoryCi": "passed-main-run-42815065743;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1;typecheck;three-target-build;security-scan;contract-tests",
     "transportHarnessContract": "passed",
@@ -1953,5 +1953,11 @@
     "stylesCommit": "5f7a6144f1371cffcd9011762234074110e4e33f",
     "productionChanged": false,
     "qa": "deferred-until-owner-says-redesign-complete"
+  },
+  "workspaceRedesignV4": {
+    "status": "implemented-preview-branch",
+    "productionChanged": false,
+    "qa": "deferred-until-owner-approval",
+    "summary": "Full-width desktop header, no legacy side rail, two-column hero with large workspace preview, expanded metrics, four-column app grid, and balanced lower panels; compact mobile layout retained."
   }
 }
