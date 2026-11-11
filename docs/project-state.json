@@ -1776,6 +1776,12 @@
       "event": "Owner clarified that the animation artwork itself was correct and the Android frame was tinting it dark before fading to purple. Removed colored mobile overlays, restored the shared desktop section background/mask, and switched the cropped visual to transparent alpha-only side fading.",
       "branch": "redesign/live-site-baseline",
       "status": "implemented-preview-pending-owner-review"
+    },
+    {
+      "date": "2026-11-11",
+      "event": "Owner reported that the lower boundary of the mobile foundation artwork still ended as a hard line before a disconnected fade. Extended the visual frame below the unchanged SVG and added a continuous alpha fade that overlaps its lower halo.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
     }
   ],
   "ownerRedesignWorkflow": {
@@ -1793,18 +1799,18 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Restore desktop-style mobile foundation framing",
+    "title": "Continuous lower fade on the mobile foundation animation",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
       "apps/platform/src/portfolio.css"
     ],
     "scope": [
-      "remove dark-tinted mobile left/right overlays",
-      "remove extra lower overlay that obscured the radial artwork",
-      "restore shared desktop section background and outer fade mask on mobile",
-      "keep a transparent alpha-only horizontal edge fade on the cropped mobile visual"
+      "continuous alpha fade at the bottom of the mobile animation frame",
+      "overlap the SVG lower halo so no hard cutoff remains",
+      "retain existing transparent left and right edge fades",
+      "preserve the desktop section background and mask"
     ],
-    "implementation": "Removed the mobile surface-colored pseudo-element overlays and the mobile override that disabled the section mask. The desktop section background and outer mask now apply on mobile as well. The magnified SVG remains unchanged; its visual frame combines a transparent horizontal alpha fade with the existing top fade.",
+    "implementation": "The mobile visual frame is extended to 284px while the centered SVG remains 245px tall and unchanged. A vertical alpha mask stays opaque through 82% of the frame and fades to transparent at 100%, overlapping the SVG lower halo so the image boundary and fade form one continuous transition.",
     "preserved": [
       "desktop section and radial composition",
       "shared SVG viewBox and path geometry",
