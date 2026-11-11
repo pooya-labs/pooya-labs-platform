@@ -7,12 +7,12 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-07-WORKSPACE-DASHBOARD-REDESIGN",
-    "title": "Complete redesign of the actual Workspace landing dashboard aligned with the Pooya Labs portfolio",
-    "status": "Implemented on preview branch; preview deployment pending."
+    "id": "P8-08-WORKSPACE-DESIGN-RESET-V2",
+    "title": "Reset Workspace visual language to restrained editorial product UI",
+    "status": "Implemented on preview branch; deployment pending."
   },
-  "lastCheckpointDate": "2026-11-11",
-  "latestVerifiedCodeCommit": "111e078e0938acba2f5ef30346a24a23e6022deb",
+  "lastCheckpointDate": "2026-11-12",
+  "latestVerifiedCodeCommit": "a0a7ee049e1d5d28276ae4c812ef65802bd368e6",
   "tests": {
     "repositoryCi": "passed-main-run-42815065743;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1;typecheck;three-target-build;security-scan;contract-tests",
     "transportHarnessContract": "passed",
@@ -1937,6 +1937,13 @@
     "status": "implemented-preview-branch",
     "appCommit": "5b86823c550dc14224cf1e08071e3da73ed39475",
     "stylesCommit": "111e078e0938acba2f5ef30346a24a23e6022deb",
+    "productionChanged": false,
+    "qa": "deferred-until-owner-says-redesign-complete"
+  },
+  "workspaceDesignV2": {
+    "status": "implemented-preview-branch",
+    "appCommit": "0f59da7fed0d17b56eaa3a5befee0b4c3042d09b",
+    "stylesCommit": "a0a7ee049e1d5d28276ae4c812ef65802bd368e6",
     "productionChanged": false,
     "qa": "deferred-until-owner-says-redesign-complete"
   }
