@@ -6,15 +6,6 @@
 - Important security boundary: this is a visual/demo gate only. Credentials are present in the public JavaScript bundle and can be discovered or bypassed. Do not use it to protect private data, files, or privileged operations.
 - Works consistently on GitHub Pages, Cloudflare Pages, and the static frontend when served by Apps Script, because it uses browser APIs only.
 - Changes are limited to `redesign/live-site-baseline`; `main` and production remain untouched.
-# Workspace sign-in gate (2026-11-12)
-
-- Added a bilingual, responsive username/password entry screen before the secondary Workspace experience.
-- Added Cloudflare Pages Functions for login, session validation, and logout. Successful sign-in issues a seven-day HttpOnly, Secure, SameSite=Lax cookie signed with HMAC; no database or browser localStorage credential is used.
-- The username and password are expected only as Cloudflare Pages Preview Secret environment variables (WORKSPACE_USERNAME and WORKSPACE_PASSWORD); no credential values are committed to GitHub.
-- The application and server endpoints are implemented on redesign/live-site-baseline. Cloudflare Preview secret configuration and an owner sign-in smoke test are still pending, so login is not yet ready to use.
-- Scope note: this is a lightweight owner-entry gate for the Workspace UI, not protection for static JavaScript/assets. Do not put sensitive data in the client bundle; any future private data API must independently validate the session server-side.
-- GitHub Pages and the Apps Script host do not currently provide these Pages Functions routes; the gate is intended for the Cloudflare Pages host.
-
 # Novels — uploaded books connected to the public library (2026-11-12)
 
 - Published the uploaded «گوزن» and «غزال» entries in the existing homepage Novels section using the optimized WebP covers.
