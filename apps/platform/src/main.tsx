@@ -4,6 +4,7 @@ import App from './App';
 import { HydratedCaseStudy } from './PortfolioHome';
 import { portfolioProjects } from './content/projects';
 import './styles.css';
+import './workspace-auth.css';
 import './portfolio.css';
 import './novels.css';
 
