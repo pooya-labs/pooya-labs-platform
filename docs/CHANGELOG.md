@@ -615,3 +615,10 @@
 - Merged PR [#6](https://github.com/pooya-labs/pooya-labs-platform/pull/6) for visual round 3 and PR [#7](https://github.com/pooya-labs/pooya-labs-platform/pull/7) for unique screenshot-landmark names. The latter removed 32 repeated `landmark-unique` moderate axe findings.
 - Validation on main `fa5d412506387622ca39df792fcaed62eb88cb67`: Repository CI **67/67 tests**, Browser QA **17/17 routes and 34/34 viewports with zero axe violations**, GitHub Pages/Cloudflare Pages/Apps Script deployments all succeeded.
 - Manual review is still required for 36 incomplete axe checks (34 color-contrast, 2 aria-prohibited-attr), keyboard/screen-reader behavior, external social-preview crawlers, and explicit owner V1 approval.
+
+## 2026-11-11 — Restart incremental redesign on the exact current site
+
+- The prior preview based on the isolated Phase 8 visual-system prototype was rejected by the owner because it did not preserve the current website.
+- Created `redesign/live-site-baseline` directly from the current `main` SHA `f42e9bd889636b87b7deb774b085f3a90ffbd3f4`. This branch does not include the prototype stylesheet or its broader visual changes.
+- Applied the first requested correction directly to the existing `apps/platform/src/portfolio.css`: stronger light-theme contrast for the current site's animated details and scenes. Existing structure, scene composition, keyframes, and animation timing are unchanged.
+- Workflow: publish a Cloudflare Pages preview after each owner instruction, let the owner inspect it and provide the next correction, and defer all test/QA/debugging runs until the explicit **“بازطراحی پایان یافت”** signal. No merge to main or production deployment is authorized by these iterations.
