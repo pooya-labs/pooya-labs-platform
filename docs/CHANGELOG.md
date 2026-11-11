@@ -684,3 +684,8 @@
 - Removed the mobile dark-tinted left/right overlays and the extra bottom overlay that caused an unwanted dark-to-purple transition over the radial animation.
 - Restored the original section background and outer mask behavior shared with desktop, with a transparent horizontal edge fade on the magnified mobile visual.
 - Preserved the SVG artwork, origin, rays, particles, and animation timing. Preview only; no tests or QA executed.
+
+## 2026-11-11 — Continuous lower fade on mobile radial animation
+
+- Extended the mobile visual frame below the SVG and applied a bottom alpha mask across the frame, overlapping the SVG's lower halo to remove the hard cutoff/disconnected fade appearance.
+- Kept the side fades, desktop section styling, artwork geometry, focal origin, and animation behavior unchanged. Preview only; no tests or QA executed.
