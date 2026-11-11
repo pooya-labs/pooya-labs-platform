@@ -1,3 +1,9 @@
+# Next — verify the Novels preview (2026-11-12)
+
+1. Open the latest Cloudflare Preview and navigate to the Novels section.
+2. Confirm both covers render and each PDF opens in the reader; use the open-full-file link if the browser does not support embedded PDF viewing.
+3. Keep all changes on `redesign/live-site-baseline`; do not merge to `main` or deploy Production without explicit approval.
+
 # Next — review Workspace v6 internal apps
 
 - Review the official Pooya Monogram in the Workspace header.
