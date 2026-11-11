@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P8-13-WORKSPACE-V5-FULL-SURFACE-REPAIR",
     "title": "Repair the complete Workspace layout from header through footer",
-    "status": "Implemented on the preview branch; preview deployment pending."
+    "status": "Implemented; Cloudflare Preview build and deploy succeeded; owner review pending."
   },
   "lastCheckpointDate": "2026-11-12",
   "latestVerifiedCodeCommit": "7ec0d1feb69d01e4551bf6d6d0739a90afa48544",
@@ -1908,6 +1908,12 @@
       "event": "Owner reported that the Workspace was visually broken from header through footer. Replaced the conflicting v4 layout with a unified responsive composition, fixed the mobile three-child/two-column header and intermediate-width action overflow, bound root direction to language, and rebuilt the scroll/content layout. Portfolio surfaces remain unchanged.",
       "branch": "redesign/live-site-baseline",
       "status": "implemented-preview-deployment-pending"
+    },
+    {
+      "date": "2026-11-12",
+      "event": "Workspace v5 full-surface repair was deployed successfully to Cloudflare Preview at https://cad4d67b.pooya-labs-platform.pages.dev; build and deploy stages both succeeded for d5e508256d23fa07bc82307397017fad338d7c73. Production/main remain unchanged; full QA is deferred until owner completion.",
+      "branch": "redesign/live-site-baseline",
+      "status": "preview-deployed-owner-review-pending"
     }
   ],
   "portfolioContentSnapshot": {
@@ -1969,7 +1975,7 @@
     "summary": "Full-width desktop header, no legacy side rail, two-column hero with large workspace preview, expanded metrics, four-column app grid, and balanced lower panels; compact mobile layout retained."
   },
   "workspaceRedesignV5": {
-    "status": "implemented-preview-pending-deployment",
+    "status": "preview-deployed-owner-review-pending",
     "appCommit": "36edba7781502fe5d40e692facfbb44d71f3066e",
     "stylesCommit": "7ec0d1feb69d01e4551bf6d6d0739a90afa48544",
     "scope": "Workspace only",
@@ -1981,6 +1987,18 @@
       "responsive-hero-metrics-app-grid-lower-panels-footer"
     ],
     "productionChanged": false,
-    "qa": "deferred-until-owner-says-redesign-complete"
+    "qa": "deferred-until-owner-says-redesign-complete",
+    "previewUrl": "https://cad4d67b.pooya-labs-platform.pages.dev",
+    "deploymentId": "cad4d67b-f0a9-418c-86a6-868fb65a42c3",
+    "deploymentCommit": "d5e508256d23fa07bc82307397017fad338d7c73"
+  },
+  "latestPreview": {
+    "url": "https://cad4d67b.pooya-labs-platform.pages.dev",
+    "deploymentId": "cad4d67b-f0a9-418c-86a6-868fb65a42c3",
+    "deploymentCommit": "d5e508256d23fa07bc82307397017fad338d7c73",
+    "environment": "preview",
+    "build": "success",
+    "deploy": "success",
+    "productionChanged": false
   }
 }
