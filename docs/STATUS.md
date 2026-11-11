@@ -582,3 +582,10 @@ Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for th
 - Corrected the actual Projects-card renderer in `apps/platform/src/PortfolioHome.tsx`: it now prefers `visualAsset` over `caseStudyHeroAsset`.
 - Root cause: the card previously preferred the unchanged full-page case-study capture, so the earlier `visualAsset` update never appeared on the homepage.
 - The Salon Booking card now selects `shayan-hero.webp`; the case-study hero/gallery still retain the full-page captures. Preview only; no tests or visual QA run.
+
+
+## 2026-11-11 — Scope Salon Booking card image override
+
+- Corrected the previous broad renderer change: only `salon-booking` now prefers `visualAsset` over `caseStudyHeroAsset` in the homepage Projects card.
+- Every other project card retains its original `caseStudyHeroAsset ?? visualAsset` selection order. Case-study pages and galleries are unchanged.
+- Preview-only correction; no tests or visual QA run.
