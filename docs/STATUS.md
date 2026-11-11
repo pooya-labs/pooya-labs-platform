@@ -1,3 +1,8 @@
+# Homepage project image framing fix (2026-11-12)
+
+- Corrected only the Salon Booking and AetherFlow project-card artwork on the homepage.
+- Their screenshots now explicitly fill the same image frame as the other project cards using full-width/full-height cover sizing with no inner padding; surrounding card dimensions and all other project images are unchanged.
+- Preview branch only. No production or main changes.
 # Workspace demo login (2026-11-12)
 
 - Replaced the Cloudflare-only server login flow with a host-independent, client-side demo gate.
