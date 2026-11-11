@@ -616,3 +616,10 @@ Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for th
 - Corrected the previous broad renderer change: only `salon-booking` now prefers `visualAsset` over `caseStudyHeroAsset` in the homepage Projects card.
 - Every other project card retains its original `caseStudyHeroAsset ?? visualAsset` selection order. Case-study pages and galleries are unchanged.
 - Preview-only correction; no tests or visual QA run.
+
+
+## 2026-11-11 — Dark-theme glass navigation bar
+
+- Refined the sticky header that contains the Pooya Labs mark, navigation, theme/language controls, and workspace action.
+- Replaced the near-solid dark surface with a restrained translucent graphite/teal glass gradient, clearer soft edge, subtle inner highlights, and stronger blur/saturation.
+- Gave the navigation and control trays a faint glass tint in dark mode. Light mode and page content remain unchanged. Preview only; no tests or QA run.
