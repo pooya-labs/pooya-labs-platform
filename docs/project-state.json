@@ -1752,6 +1752,12 @@
       "date": "2026-11-10",
       "event": "Owner authorized Phase 8 design exploration; Phase 7 human/publication gates carried forward as mandatory V1 blockers.",
       "baselineCommit": "3888d0799afdf4c3bb702489b6f1fc22c98d1f3b"
+    },
+    {
+      "date": "2026-11-11",
+      "event": "Owner requested Android correction; stable touch viewport, native pinch zoom, responsive navigation and mobile hero-card interaction refinements implemented on the live-site baseline branch.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
     }
   ],
   "ownerRedesignWorkflow": {
@@ -1769,23 +1775,24 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Make the foundation animation rise from one point at its lower edge",
+    "title": "Repair the new portfolio layout on Android and touch devices",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
-      "apps/platform/src/PortfolioHome.tsx",
       "apps/platform/src/portfolio.css"
     ],
     "scope": [
-      "proof ray source coordinate",
-      "Bézier fan-out geometry",
-      "origin halo and focal dot",
-      "desktop/mobile lower breathing room"
+      "stable small-viewport sizing for the dedicated portfolio scroll surface",
+      "native pinch zoom and touch-safe vertical and horizontal scrolling",
+      "safe-area-aware sticky header and anchor targets",
+      "narrow touch-screen hero preview rendering and tap target sizing",
+      "prevent persistent touch-hover card transforms"
     ],
-    "implementation": "Moved all ray paths and the halo/point from y=340 to y=382; moved the first control point lower and increased early lateral spread so rays visibly fan from one common point.",
+    "implementation": "Added touch-first responsive overrides: use 100svh rather than dynamic viewport height; preserve the dedicated internal scroll surface; allow pinch zoom; improve mobile navigation scrolling and sticky-header safe-area spacing; flatten the 3D hero preview stack on narrow touch displays while preserving slow drift; enlarge touch targets and neutralize sticky hover transforms.",
     "preserved": [
-      "section title, statistics, palette and overall composition",
-      "radial ray and particle animation timing",
-      "section-level lower fade into page"
+      "desktop layout, typography and visual composition",
+      "existing site architecture and single public scroll surface",
+      "hero preview order, layered positions and slow motion",
+      "project content, bilingual behavior and both themes"
     ],
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
