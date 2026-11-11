@@ -508,6 +508,10 @@ try {
               element.scrollTop = innerMaxScroll;
               await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
               const rect = element.getBoundingClientRect();
+              const gestureX = Math.round(Math.min(rect.right - 24, Math.max(rect.left + 24, rect.left + (rect.right - rect.left) * .55)));
+              const gestureStartY = Math.round(Math.min(rect.bottom - 28, window.innerHeight - 28));
+              const hitTarget = document.elementFromPoint(gestureX, gestureStartY);
+              const galleryHitTargetInsideFrame = hitTarget === element || (hitTarget instanceof Node && element.contains(hitTarget));
               return {
                 available: innerMaxScroll > 40 && outerMaxScroll - pageScroller.scrollTop > 40,
                 reason: innerMaxScroll <= 40 ? 'The mobile capture has no internal overflow.' : 'No outer page content remains below the capture.',
@@ -519,14 +523,20 @@ try {
                 viewportHeight: window.innerHeight,
                 imageLoaded: image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0,
                 rect: { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom },
+                gestureX,
+                gestureStartY,
+                galleryHitTargetInsideFrame,
+                galleryHitTargetTag: hitTarget instanceof Element ? hitTarget.tagName : null,
+                galleryHitTargetClass: hitTarget instanceof HTMLElement ? String(hitTarget.className) : '',
+                galleryHitTargetTouchAction: hitTarget instanceof Element ? getComputedStyle(hitTarget).touchAction : null,
                 overflowY: getComputedStyle(element).overflowY,
                 overscrollBehaviorY: getComputedStyle(element).overscrollBehaviorY,
                 touchAction: getComputedStyle(element).touchAction,
               };
             });
             if (setup.available) {
-              const x = Math.round(Math.min(setup.rect.right - 24, Math.max(setup.rect.left + 24, setup.rect.left + (setup.rect.right - setup.rect.left) * .55)));
-              const startY = Math.round(Math.min(setup.rect.bottom - 28, setup.viewportHeight - 28));
+              const x = setup.gestureX;
+              const startY = setup.gestureStartY;
               const endY = Math.round(Math.max(setup.rect.top + 28, startY - 150));
               const touch = await context.newCDPSession(page);
               try {
@@ -544,19 +554,34 @@ try {
                 await touch.send('Emulation.setTouchEmulationEnabled', { enabled: false });
                 await touch.detach();
               }
-              const after = await frame.evaluate((element) => {
+              const readScrollPosition = () => frame.evaluate((element) => {
                 const pageScroller = document.querySelector('.portfolio-page');
                 return {
                   innerScrollTop: element instanceof HTMLElement ? element.scrollTop : 0,
                   outerScrollTop: pageScroller instanceof HTMLElement ? pageScroller.scrollTop : 0,
                 };
               });
+              let after = await readScrollPosition();
+              let gesture = 'Input.dispatchTouchEvent';
+              if (after.outerScrollTop <= setup.outerBefore + 4) {
+                await touch.send('Input.synthesizeScrollGesture', {
+                  x,
+                  y: startY,
+                  yDistance: 180,
+                  speed: 900,
+                  gestureSourceType: 'touch',
+                  preventFling: true,
+                });
+                await page.waitForTimeout(220);
+                after = await readScrollPosition();
+                gesture = 'Input.dispatchTouchEvent + Input.synthesizeScrollGesture(touch)';
+              }
               caseStudyGalleryScroll = {
                 available: true,
                 passed: after.outerScrollTop > setup.outerBefore + 4,
                 ...setup,
                 ...after,
-                gesture: 'Chromium touch input at the inner gallery boundary',
+                gesture,
               };
               if (!caseStudyGalleryScroll.passed) {
                 addFailure(route, viewport.name, 'A touch swipe at the end of the mobile screenshot did not continue scrolling the outer case-study page.');

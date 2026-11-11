@@ -1,3 +1,9 @@
+## 2026-11-11 — Add gallery hit-target diagnostics and synthesized touch retry
+
+- Browser QA run 43020372105 confirmed that the parent wrapper computed to `overflow:clip` but the eight gallery handoff failures remained. The report is artifact 13855395382.
+- Added `elementFromPoint` diagnostics (inside-frame result, target tag/class, target touch-action) and a second CDP gesture using `Input.synthesizeScrollGesture` with `gestureSourceType: 'touch'` when raw touch dispatch does not move the parent.
+- Repository CI run 43020372078 passed lint, formatting, typecheck, all host builds, security scan and bundle generation; only the CSS regex contract assertion failed because of over-escaping. Replaced it with a direct string assertion. New exact-head checks pending.
+
 ## 2026-11-11 — Mobile gallery scroll handoff wrapper correction
 
 - The two-frame synchronization alone did not resolve eight mobile gallery touch-handoff failures in run 43019049052. Its artifact showed valid inner scroll boundaries while the parent page did not move.

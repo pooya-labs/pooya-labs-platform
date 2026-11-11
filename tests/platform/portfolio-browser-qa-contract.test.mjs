@@ -185,10 +185,12 @@ test('mobile case-study screenshots allow native Android scroll chaining into th
   assert.match(portfolioCss, /overscroll-behavior-y:auto/);
   assert.match(portfolioCss, /touch-action:pan-y pinch-zoom/);
   assert.match(portfolioCss, /-webkit-overflow-scrolling:touch/);
-  assert.match(portfolioCss, /\.case-study-media-card \\{ overflow:clip; \\}/);
+  assert.ok(portfolioCss.includes('.case-study-media-card { overflow:clip; }'));
   assert.match(portfolioSource, /data-gallery-scroll="true"/);
   assert.match(portfolioSource, /case-study-scroll-note/);
   assert.match(script, /Input\.dispatchTouchEvent/);
+  assert.match(script, /Input\\.synthesizeScrollGesture/);
+  assert.match(script, /galleryHitTargetInsideFrame/);
   assert.match(script, /Emulation\.setTouchEmulationEnabled/);
   assert.match(script, /caseStudyGalleryScroll/);
   assert.match(script, /const setup = await frame\.evaluate\(async \(element\) => \{/);
