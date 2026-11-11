@@ -511,3 +511,11 @@ Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for th
 - Flattened the layered hero preview cards on narrow touch screens while preserving their positions and slow motion; increased key control and link hit areas and prevented sticky touch-hover card transforms.
 - Kept desktop layout and production/main unchanged. No tests, browser QA, or independent visual review were run; physical Android review remains part of the owner's final redesign acceptance.
 - Preview-only iteration on `redesign/live-site-baseline`.
+
+## 2026-11-11 — Mobile foundation radial animation composition
+
+- Corrected the foundation animation below “The foundation behind every project.” on narrow screens.
+- The mobile SVG now uses a centered 220%-width crop of the desktop radial field instead of fitting the full 1200×390 composition into a narrow phone viewport, which had compressed the visual.
+- Kept the shared ray geometry, single bottom-center origin, origin halo/focal point, particles, gradients, and animation timing in sync with desktop.
+- Limited the change to the foundation visual's mobile frame; desktop composition remains unchanged.
+- Preview only. No tests, browser QA, or independent visual review were run.
