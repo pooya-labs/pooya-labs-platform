@@ -1,3 +1,9 @@
+## Latest checkpoint — foundation section bottom edge blended into page (2026-11-11)
+
+- Corrected the target after owner feedback: the visible divider was the bottom border of the entire `.portfolio-proof` section, not the SVG's internal curved baseline.
+- Removed the section's bottom border and applied a bottom-edge mask so the animated field and section surface fade smoothly into the page background. Retained the top edge and restored the SVG baseline to its original styling.
+- Preview-only. No tests or QA executed; full validation remains deferred until `بازطراحی پایان یافت`.
+
 ## Latest checkpoint — foundation animation baseline softly faded (2026-11-11)
 
 - Applied the owner-requested refinement to the lower curved baseline beneath the animated field in “The foundation behind every project.”
