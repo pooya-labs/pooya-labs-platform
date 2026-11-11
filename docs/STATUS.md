@@ -1,3 +1,10 @@
+# Workspace header controls update (2026-11-12)
+
+- Moved the language selector into the Workspace top header and removed the duplicate floating/side-rail language controls from the Workspace view.
+- Added a light/dark theme toggle beside the language selector in the Workspace header, with localized accessible labels and hover/focus states.
+- Scoped layout styling to `workspace-v4`; the public portfolio homepage and project pages are not intentionally changed.
+- Preview-only on the latest owner-designated preview line; production and `main` remain untouched.
+
 # Workspace v4 — touch and scroll repair (2026-11-12)
 
 - Fixed the viewport/flex sizing contract: the Workspace shell now uses the dynamic viewport height, the content stage is constrained to the space below the header, and the scroll container receives a definite height.
