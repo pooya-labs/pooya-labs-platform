@@ -666,3 +666,9 @@
 - Kept page scrolling vertical, restored pinch-to-zoom, made the sticky header safe-area-aware, and improved horizontal navigation touch behavior.
 - Flattened the hero preview stack on narrow touch screens without removing its slow drift, enlarged important tap targets, and removed persistent hover lift/scale states from project cards.
 - Desktop layout and production were left unchanged. Preview only; no tests or QA executed.
+
+## 2026-11-11 — Mobile foundation animation framing
+
+- Fixed the radial animation under “The foundation behind every project.” on narrow phone screens.
+- Magnified and centered the shared desktop SVG within a clipped mobile viewport so the rays spread visibly from the same single lower focal point rather than appearing vertically compressed.
+- Preserved the desktop scene, rays, halo, particles, gradients, and animation timing. Preview only; no tests or QA executed.
