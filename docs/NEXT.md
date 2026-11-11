@@ -1,3 +1,9 @@
+## Most recent owner correction — fade the foundation animation baseline
+
+- The lower curved line beneath the animated foundation graphic now fades smoothly into the page instead of reading as a separate divider.
+- Continue from the current live-site baseline branch and preserve every other part of the animation unless the owner requests a specific change.
+- Keep all tests and QA deferred until `بازطراحی پایان یافت`; publish only Preview deployments after focused corrections.
+
 ## Active owner-led redesign iteration — capability visuals
 
 - Current baseline: `redesign/live-site-baseline`, branched from the live `main` baseline; continue editing this branch only.
