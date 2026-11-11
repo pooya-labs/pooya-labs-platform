@@ -1931,8 +1931,8 @@
   padding:76px max(24px,calc((100vw - 1200px)/2)) 0;overflow:hidden;
   border:0;border-top:1px solid var(--pf-line);border-bottom:0;border-radius:0;
   background:#111719;color:var(--pf-text);box-shadow:none;
-  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 calc(100% - 100px),transparent 100%);
-  mask-image:linear-gradient(180deg,#000 0%,#000 calc(100% - 100px),transparent 100%);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 calc(100% - 40px),transparent 100%);
+  mask-image:linear-gradient(180deg,#000 0%,#000 calc(100% - 40px),transparent 100%);
 }
 .portfolio-page[data-theme="light"] .portfolio-proof { color:#192a21;background:linear-gradient(180deg,#f6f7f4 0%,#f0f2ed 100%);border-color:rgba(35,55,45,.1); }
 .portfolio-proof::before {
@@ -1954,7 +1954,8 @@
 .portfolio-proof-stats small { color:var(--pf-control-muted);font-size:11px;line-height:1.6; }
 .portfolio-proof-visual {
   position:relative;width:100%;height:clamp(250px,30vw,390px);margin:0 auto;overflow:hidden;
-  mask-image:linear-gradient(180deg,transparent 0,black 12%,black 82%,transparent 100%);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,black 12%,black 100%);
+  mask-image:linear-gradient(180deg,transparent 0,black 12%,black 100%);
 }
 .proof-radial-svg { display:block;width:min(100%,1400px);height:100%;margin:0 auto;overflow:visible; }
 .proof-radial-glow { filter:blur(16px);transform-origin:50% 95%;animation:proof-glow-breathe 8.5s ease-in-out infinite alternate; }
@@ -1962,7 +1963,7 @@
 .proof-ray:nth-of-type(3n) { animation-duration:29s; }
 .proof-particle { fill:#b4a6fa;opacity:.56;animation:proof-particle-twinkle 5s ease-in-out infinite alternate; }
 .portfolio-page[data-theme="light"] .proof-particle { fill:#8879c9;opacity:.52; }
-.proof-baseline { stroke:var(--pf-emerald);stroke-opacity:.18;stroke-width:1; }
+.proof-baseline { display:none; }
 @keyframes proof-ray-flow { to { stroke-dashoffset:-120; } }
 @keyframes proof-particle-twinkle { from { opacity:.18;transform:scale(.7); } to { opacity:.82;transform:scale(1.15); } }
 @keyframes proof-glow-breathe { from { transform:scale(.94);opacity:.55; } to { transform:scale(1.08);opacity:1; } }
@@ -3300,4 +3301,25 @@
   border-color:rgba(118,194,151,.54);
   background:linear-gradient(145deg,rgba(7,20,22,.94),rgba(9,24,32,.9));
   box-shadow:0 12px 28px rgba(0,0,0,.25),inset 0 1px rgba(255,255,255,.12);
+}
+
+
+/* A visible focal origin makes the lower edge of the proof animation converge to one point. */
+.proof-origin-halo {
+  fill:url(#proof-origin-gradient);
+  filter:blur(1px);
+  transform-origin:600px 340px;
+  animation:proof-origin-pulse 4.8s ease-in-out infinite alternate;
+}
+.proof-origin-point {
+  fill:#e4dcff;
+  filter:drop-shadow(0 0 6px rgba(169,157,255,.86));
+}
+.portfolio-page[data-theme="light"] .proof-origin-point {
+  fill:#6658b2;
+  filter:drop-shadow(0 0 6px rgba(102,88,178,.5));
+}
+@keyframes proof-origin-pulse {
+  from { opacity:.56;transform:scale(.88); }
+  to { opacity:.92;transform:scale(1.12); }
 }
