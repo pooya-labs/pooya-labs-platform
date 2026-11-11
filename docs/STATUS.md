@@ -1,3 +1,9 @@
+## Latest owner correction — footer identity label (2026-11-11)
+
+- Replaced the incorrect `پویا مونوگرام / POOYA MONOGRAM` footer name with `Goodarzi` in the shared owner-attribution component, covering both footer placements and both language modes.
+- Kept the creator/maintainer byline and surrounding layout unchanged. No other page content or project branding was changed.
+- Preview-only on `redesign/live-site-baseline`; no tests or QA run.
+
 ## Latest checkpoint — Salon Booking homepage card now uses a real live hero screenshot (2026-11-11)
 
 - Captured the top viewport of the published Shayan Salon Booking homepage at 1440×1000 using Cloudflare Browser Rendering; the capture shows the site navigation, hero headline, booking CTA, and top feature strip.
