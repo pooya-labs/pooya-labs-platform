@@ -1,3 +1,9 @@
+## Next refinement — My workspace redesign
+
+- Review the redesigned Files app at desktop and narrow mobile widths, including Persian/English and light/dark themes.
+- Keep sample/local storage labeling explicit; do not imply cloud sync or functional folder creation.
+- Continue on `redesign/live-site-baseline`; no production merge/deploy. Defer broad QA until `بازطراحی پایان یافت`.
+
 ## Next refinement — mobile hero headline
 
 - Check the wrapped English hero accent phrase on a narrow Android viewport when convenient; desktop styling is intentionally unchanged.
