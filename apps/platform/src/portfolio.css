@@ -3504,3 +3504,37 @@
 .portfolio-page[data-theme="light"] .case-study-motion-art.scene-aetherflow .flow-sweep {
   opacity: .68;
 }
+
+/* Android header navigation: give all five destinations an equal, stable share of the row. */
+@media (max-width: 680px) {
+  .portfolio-header .portfolio-nav {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: stretch;
+    justify-content: stretch;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    gap: 2px;
+    padding: 4px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .portfolio-header .portfolio-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 40px;
+    padding: 6px 2px;
+    font-size: clamp(8px, 2.35vw, 10px);
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+  }
+}
