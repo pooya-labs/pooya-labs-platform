@@ -1,3 +1,10 @@
+# Next — owner review Workspace v5
+
+- Review the complete Workspace from header through footer on desktop and Android.
+- Check Persian/English direction and light/dark themes; verify that header controls stay aligned and the page scrolls naturally.
+- Keep all further Workspace-only changes on `redesign/live-site-baseline` and use the latest owner-designated Preview link.
+- Do not merge to `main` or deploy Production. Run full cross-device QA only after the owner says `بازطراحی پایان یافت`.
+
 # Next — review Workspace header controls
 
 - Confirm language switching and light/dark theme switching from the Workspace header on desktop and Android.
