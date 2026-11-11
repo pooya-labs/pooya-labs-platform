@@ -637,3 +637,10 @@
 - Replaced the crisp lower curved divider-like stroke with a very subtle emerald gradient that fades toward both ends.
 - Left the radial animation, particles, typography, spacing, and surrounding layout unchanged.
 - Preview only; no tests or QA executed.
+
+
+## 2026-11-11 — Corrected foundation section edge fade
+
+- Removed the bottom border from the foundation section and faded its lower edge into the page background with a section-level mask.
+- Restored the internal SVG curve to its original styling; the earlier edit targeted the wrong line.
+- Preview only; no tests or QA executed.
