@@ -539,6 +539,18 @@ try {
               const startY = setup.gestureStartY;
               const endY = Math.round(Math.max(setup.rect.top + 28, startY - 150));
               const touch = await context.newCDPSession(page);
+              const readScrollPosition = () => frame.evaluate((element) => {
+                const pageScroller = document.querySelector('.portfolio-page');
+                return {
+                  innerScrollTop: element instanceof HTMLElement ? element.scrollTop : 0,
+                  outerScrollTop: pageScroller instanceof HTMLElement ? pageScroller.scrollTop : 0,
+                };
+              });
+              let after = {
+                innerScrollTop: setup.innerScrollTopBeforeGesture,
+                outerScrollTop: setup.outerBefore,
+              };
+              let gesture = 'Input.dispatchTouchEvent';
               try {
                 await touch.send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 1 });
                 await touch.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ id: 1, x, y: startY }] });
@@ -550,31 +562,24 @@ try {
                 }
                 await touch.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
                 await page.waitForTimeout(220);
+                after = await readScrollPosition();
+
+                if (after.outerScrollTop <= setup.outerBefore + 4) {
+                  await touch.send('Input.synthesizeScrollGesture', {
+                    x,
+                    y: startY,
+                    yDistance: 180,
+                    speed: 900,
+                    gestureSourceType: 'touch',
+                    preventFling: true,
+                  });
+                  await page.waitForTimeout(220);
+                  after = await readScrollPosition();
+                  gesture = 'Input.dispatchTouchEvent + Input.synthesizeScrollGesture(touch)';
+                }
               } finally {
                 await touch.send('Emulation.setTouchEmulationEnabled', { enabled: false });
                 await touch.detach();
-              }
-              const readScrollPosition = () => frame.evaluate((element) => {
-                const pageScroller = document.querySelector('.portfolio-page');
-                return {
-                  innerScrollTop: element instanceof HTMLElement ? element.scrollTop : 0,
-                  outerScrollTop: pageScroller instanceof HTMLElement ? pageScroller.scrollTop : 0,
-                };
-              });
-              let after = await readScrollPosition();
-              let gesture = 'Input.dispatchTouchEvent';
-              if (after.outerScrollTop <= setup.outerBefore + 4) {
-                await touch.send('Input.synthesizeScrollGesture', {
-                  x,
-                  y: startY,
-                  yDistance: 180,
-                  speed: 900,
-                  gestureSourceType: 'touch',
-                  preventFling: true,
-                });
-                await page.waitForTimeout(220);
-                after = await readScrollPosition();
-                gesture = 'Input.dispatchTouchEvent + Input.synthesizeScrollGesture(touch)';
               }
               caseStudyGalleryScroll = {
                 available: true,

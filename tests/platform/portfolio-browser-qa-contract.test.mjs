@@ -189,7 +189,7 @@ test('mobile case-study screenshots allow native Android scroll chaining into th
   assert.match(portfolioSource, /data-gallery-scroll="true"/);
   assert.match(portfolioSource, /case-study-scroll-note/);
   assert.match(script, /Input\.dispatchTouchEvent/);
-  assert.match(script, /Input\\.synthesizeScrollGesture/);
+  assert.ok(script.includes('Input.synthesizeScrollGesture'));
   assert.match(script, /galleryHitTargetInsideFrame/);
   assert.match(script, /Emulation\.setTouchEmulationEnabled/);
   assert.match(script, /caseStudyGalleryScroll/);

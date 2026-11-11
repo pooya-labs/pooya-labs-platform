@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P8-02",
     "title": "Stabilize and validate the Obsidian Editorial prototype for owner review round one",
-    "status": "PR #70 remains an isolated, unmerged and undeployed review prototype. The lazy-image decode hang is fixed. Browser QA runs 43017396822, 43019049052, and 43020372105 completed 18/18 routes, 36/36 viewports and 34/34 crawler checks with zero confirmed Axe violations but continued to report eight mobile gallery touch-handoff failures across AetherFlow, ORBIT, LuminaGlass and AuraPulse in both locales. The shared gallery card now computes to overflow:clip, but artifact 13855395382 confirms that alone did not fix the handoff. QA now records elementFromPoint target details and retries using CDP Input.synthesizeScrollGesture with touch input after raw touch dispatch. CI run 43020372078 passed all build/security stages but failed one over-escaped CSS assertion; it is replaced with a direct string check. Exact-head CI and Browser QA pending. Phase 7 publication gates remain open."
+    "status": "PR #70 remains an isolated, unmerged and undeployed review prototype. The lazy-image decode hang is fixed. Browser QA 43017396822, 43019049052, and 43020372105 completed all 18 routes and found eight mobile gallery handoff failures. Run 43021510687 was inconclusive (10/18 routes, 28/36 viewports) because the new synthesized-touch fallback was called after its CDP session had already been detached; the target browser was not shown to have closed. The fallback now executes inside the session's try/finally. CI run 43021510689 passed all build/security stages but failed one over-escaped command-name regex, now replaced by direct includes(). Exact-head CI and Browser QA pending. Phase 7 gates remain open."
   },
   "lastCheckpointDate": "2026-11-11",
   "latestVerifiedCodeCommit": "3888d0799afdf4c3bb702489b6f1fc22c98d1f3b",
@@ -350,11 +350,11 @@
     "lightThemeContrast": "passed-PR62-bfe775b3-and-PR64-ea52ef5;emerald-and-hero-gradient-and-LTR-headline-and-social-proof-scroll-cue-and-nav-hover;numeric-AA-contract-tests;minimum-4.5-to-1",
     "dualThemeAxeAudit": "passed-PR63-and-main-run-42815065767;36-dark-scans-and-36-light-scans;zero-confirmed-violations-each-theme;36-incomplete-contrast-checks-each-theme;manual-review-required",
     "keyboardSkipLinkBrowserQa": "passed-main-run-42815065767;18-of-18-routes;fresh-document-before-first-tab;visible-focus-and-main-target-correct",
-    "phase8PrototypeRepositoryCi": "run-43020372078;lint-format-typecheck-three-target-build-secret-scan-bundle-generation-passed;only-CSS-overflow-regex-test-failed-due-to-overescaping;direct-string-contract-assertion-replaces-regex;exact-head-rerun-pending",
-    "phase8PrototypeBrowserQa": "run-43020372105;18-of-18-routes;36-of-36-viewports;34-of-34-social-crawler-checks;zero-confirmed-axe-violations;36-incomplete-contrast-checks;8-mobile-gallery-touch-handoff-failures-persisted-with-overflow-clip;artifact-13855395382",
+    "phase8PrototypeRepositoryCi": "run-43021510689;lint-format-typecheck-three-target-build-secret-scan-bundle-generation-passed;contract-test-failed-on-overescaped-synthesizeScrollGesture-regex;direct-string-includes-assertion-added;exact-head-rerun-pending",
+    "phase8PrototypeBrowserQa": "run-43021510687;inconclusive;10-of-18-routes;28-of-36-viewports;34-of-34-crawler-checks;zero-axe-violations-with-partial-coverage;eight-route-errors-from-cdp-session-detached-before-fallback;artifact-13854099986",
     "phase8PrototypePublication": "not-merged;not-deployed;review-only;no-V1-approval",
     "phase8PrototypeContractRegression": "first-run-failure-was-stale-test-expectation-not-app-runtime;assertions-updated-to-named-hero-selector-and-bounded-image-decode",
-    "phase8PrototypeGalleryScroll": "overflow-clip-computed-on-card-but-did-not-fix-handoff;new-elementFromPoint-hit-target-diagnostics;fallback-CDP-synthesizeScrollGesture-with-touch-source-added;exact-head-verification-pending"
+    "phase8PrototypeGalleryScroll": "overflow-clip-computed-but-initial-dispatch-handoff-still-failed-in-earlier-valid-run;new-CDP-synthesizeScrollGesture-fallback-was-attempted-after-detach-in-inconclusive-run;ordering-corrected;exact-head-verification-pending"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",

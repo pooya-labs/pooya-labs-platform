@@ -1,3 +1,9 @@
+## 2026-11-11 — Keep synthesized touch fallback inside CDP session lifetime
+
+- Inspected Browser QA run 43021510687's route logs and located a test-harness ordering bug: `touch.detach()` ran before the synthesized gesture fallback, so the follow-up `touch.send()` operated on a detached session. The run was inconclusive (10/18 routes, 28/36 viewports) and is not evidence of browser closure or an app defect.
+- Moved the fallback into the session's try block before cleanup. Simplified the regression test to use direct string inclusion for the command name after CI 43021510689 exposed an over-escaped regex.
+- Fresh exact-head checks pending.
+
 ## 2026-11-11 — Add gallery hit-target diagnostics and synthesized touch retry
 
 - Browser QA run 43020372105 confirmed that the parent wrapper computed to `overflow:clip` but the eight gallery handoff failures remained. The report is artifact 13855395382.
