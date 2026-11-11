@@ -519,3 +519,11 @@ Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for th
 - Kept the shared ray geometry, single bottom-center origin, origin halo/focal point, particles, gradients, and animation timing in sync with desktop.
 - Limited the change to the foundation visual's mobile frame; desktop composition remains unchanged.
 - Preview only. No tests, browser QA, or independent visual review were run.
+
+## 2026-11-11 — Mobile foundation animation edge and lower fade
+
+- Added dedicated left/right gradient overlays to the magnified mobile radial animation so the cropped rays dissolve into the section surface instead of ending at hard vertical edges.
+- Removed reliance on the outer section's CSS mask for narrow screens. Its lower transition now uses a layered background gradient plus a composited bottom fade overlay, blending the foundation section into the page background.
+- Added corresponding light-theme surface colors so the same fade remains continuous in both themes.
+- Kept the shared desktop SVG, focal point, ray paths, particles, and animation timing unchanged. Desktop styling is untouched.
+- Preview only; no tests, browser QA, or physical Android visual verification were run.
