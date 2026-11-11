@@ -622,3 +622,11 @@
 - Created `redesign/live-site-baseline` directly from the current `main` SHA `f42e9bd889636b87b7deb774b085f3a90ffbd3f4`. This branch does not include the prototype stylesheet or its broader visual changes.
 - Applied the first requested correction directly to the existing `apps/platform/src/portfolio.css`: stronger light-theme contrast for the current site's animated details and scenes. Existing structure, scene composition, keyframes, and animation timing are unchanged.
 - Workflow: publish a Cloudflare Pages preview after each owner instruction, let the owner inspect it and provide the next correction, and defer all test/QA/debugging runs until the explicit **“بازطراحی پایان یافت”** signal. No merge to main or production deployment is authorized by these iterations.
+
+
+## 2026-11-11 — Light-theme capability motion contrast
+
+- Increased contrast in the capability section's interface, topology, and terminal mini-scenes.
+- Strengthened animated paths, chart bars, tiny labels, code syntax, borders, and card copy in light mode.
+- Preserved scene layout, dark miniature surfaces, animation keyframes, timing, and movement.
+- Preview only; no tests or QA executed by owner-directed workflow.
