@@ -700,3 +700,8 @@
 
 - Distributed the five primary navigation links into equal-width mobile columns with centered labels and compact padding.
 - Removed the content-width/scroll-based uneven spacing from the narrow header row; desktop navigation is unchanged. Preview only; no tests or QA executed.
+
+## 2026-11-11 — Android project-detail gallery scroll gutters
+
+- Expanded the mobile capture section's invisible side gutters and separated them from the centered inner image scroller, allowing the outer case-study page to scroll from either side while preserving image scrolling in the middle.
+- Desktop and non-touch layouts are unchanged. Preview only; no tests or QA executed.
