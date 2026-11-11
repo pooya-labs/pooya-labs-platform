@@ -523,6 +523,30 @@ try {
                 outerMaxScroll,
                 viewportHeight: window.innerHeight,
                 imageLoaded: image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0,
+                imageDraggable: image instanceof HTMLImageElement && image.draggable,
+                imagePointerEvents: image instanceof HTMLImageElement ? getComputedStyle(image).pointerEvents : null,
+                ancestorScrollChain: (() => {
+                  const chain = [];
+                  for (let current = element; current && chain.length < 8; current = current.parentElement) {
+                    const style = getComputedStyle(current);
+                    chain.push({
+                      tag: current.tagName,
+                      className: typeof current.className === 'string' ? current.className : '',
+                      overflowX: style.overflowX,
+                      overflowY: style.overflowY,
+                      overscrollBehaviorY: style.overscrollBehaviorY,
+                      touchAction: style.touchAction,
+                      pointerEvents: style.pointerEvents,
+                      position: style.position,
+                      transform: style.transform,
+                      scrollHeight: current instanceof HTMLElement ? current.scrollHeight : 0,
+                      clientHeight: current instanceof HTMLElement ? current.clientHeight : 0,
+                      scrollTop: current instanceof HTMLElement ? current.scrollTop : 0,
+                    });
+                    if (current.classList?.contains('portfolio-page')) break;
+                  }
+                  return chain;
+                })(),
                 rect: { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom },
                 gestureX,
                 gestureStartY,
@@ -539,6 +563,45 @@ try {
               const x = setup.gestureX;
               const startY = setup.gestureStartY;
               const endY = Math.round(Math.max(setup.rect.top + 28, startY - 150));
+              await frame.evaluate((element) => {
+                const records = [];
+                const describe = (event, listener) => ({
+                  type: event.type,
+                  listener,
+                  phase: event.eventPhase,
+                  cancelable: event.cancelable,
+                  defaultPrevented: event.defaultPrevented,
+                  targetTag: event.target instanceof Element ? event.target.tagName : null,
+                  targetClass: event.target instanceof HTMLElement ? String(event.target.className) : '',
+                  clientY: event.touches?.[0]?.clientY ?? event.changedTouches?.[0]?.clientY ?? null,
+                  timeStamp: Math.round(event.timeStamp),
+                });
+                const frameCapture = (event) => records.push(describe(event, 'frame-capture'));
+                const frameBubble = (event) => records.push(describe(event, 'frame-bubble'));
+                const documentCapture = (event) => records.push(describe(event, 'document-capture'));
+                const documentBubble = (event) => records.push(describe(event, 'document-bubble'));
+                element.addEventListener('touchstart', frameCapture, true);
+                element.addEventListener('touchmove', frameCapture, true);
+                element.addEventListener('touchmove', frameBubble, false);
+                element.addEventListener('touchend', frameBubble, false);
+                document.addEventListener('touchstart', documentCapture, true);
+                document.addEventListener('touchmove', documentCapture, true);
+                document.addEventListener('touchmove', documentBubble, false);
+                document.addEventListener('touchend', documentBubble, false);
+                window.__portfolioGalleryTouchTrace = {
+                  records,
+                  cleanup: () => {
+                    element.removeEventListener('touchstart', frameCapture, true);
+                    element.removeEventListener('touchmove', frameCapture, true);
+                    element.removeEventListener('touchmove', frameBubble, false);
+                    element.removeEventListener('touchend', frameBubble, false);
+                    document.removeEventListener('touchstart', documentCapture, true);
+                    document.removeEventListener('touchmove', documentCapture, true);
+                    document.removeEventListener('touchmove', documentBubble, false);
+                    document.removeEventListener('touchend', documentBubble, false);
+                  },
+                };
+              });
               const touch = await context.newCDPSession(page);
               const readScrollPosition = () => frame.evaluate((element) => {
                 const pageScroller = document.querySelector('.portfolio-page');
@@ -594,12 +657,19 @@ try {
                 await touch.send('Emulation.setTouchEmulationEnabled', { enabled: false });
                 await touch.detach();
               }
+              const touchTrace = await frame.evaluate(() => {
+                const trace = window.__portfolioGalleryTouchTrace;
+                trace?.cleanup?.();
+                window.__portfolioGalleryTouchTrace = undefined;
+                return trace?.records ?? [];
+              });
               caseStudyGalleryScroll = {
                 available: true,
                 passed: after.outerScrollTop > setup.outerBefore + 4,
                 ...setup,
                 ...after,
                 gesture,
+                touchTrace,
               };
               if (!caseStudyGalleryScroll.passed) {
                 addFailure(route, viewport.name, 'A touch swipe at the end of the mobile screenshot did not continue scrolling the outer case-study page.');

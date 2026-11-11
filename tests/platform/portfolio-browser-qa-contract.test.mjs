@@ -195,6 +195,12 @@ test('mobile case-study screenshots allow native Android scroll chaining into th
   assert.match(script, /resolve\('timed-out'\), 4000/);
   assert.match(script, /timed out after 4s/);
   assert.match(script, /galleryHitTargetInsideFrame/);
+  assert.match(script, /ancestorScrollChain/);
+  assert.match(script, /imageDraggable: image instanceof HTMLImageElement/);
+  assert.match(script, /window\.__portfolioGalleryTouchTrace/);
+  assert.match(script, /document-capture/);
+  assert.match(script, /document-bubble/);
+  assert.match(script, /defaultPrevented: event\.defaultPrevented/);
   assert.match(script, /Emulation\.setTouchEmulationEnabled/);
   assert.match(script, /caseStudyGalleryScroll/);
   assert.match(script, /const setup = await frame\.evaluate\(async \(element\) => \{/);

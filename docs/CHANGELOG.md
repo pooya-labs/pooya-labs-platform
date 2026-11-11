@@ -1,3 +1,9 @@
+## 2026-11-11 — Instrument route-specific mobile touch handling
+
+- Browser QA run 43024051284 completed 18/18 routes, 36/36 viewports, and 34/34 social-crawler checks with zero confirmed Axe violations. Eight gallery handoff failures remained. Artifact 13856267913 confirms both wrapper overflow values compute to `clip`; the failing set is AetherFlow, ORBIT, LuminaGlass, and AuraPulse in both locales, while Pooya.OS, NexusCanvas, GlobalCart, and Salon Booking pass with the same computed frame/card/section values.
+- Added ancestor scroll-chain diagnostics, image draggable/pointer state, and capture/bubble listeners for touchstart/touchmove/touchend to record target, phase, cancelability, and `defaultPrevented`.
+- No production interaction behavior was changed in this commit; this is diagnostic instrumentation pending exact-head verification.
+
 ## 2026-11-11 — Bound the synthesized mobile touch fallback
 
 - The Browser QA workflow for commit d4c1c26 remained in the Chromium responsive/route-check step beyond the previous runs' normal duration and did not yet expose a report artifact.
