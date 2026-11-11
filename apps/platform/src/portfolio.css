@@ -1585,7 +1585,7 @@
 .case-study-panel p,.case-study-boundaries p,.case-study-highlights li,.case-study-source-list a { min-width:0;max-width:100%;overflow-wrap:anywhere;hyphens:auto; }
 .case-study-panel p,.case-study-boundaries p { line-height:1.95; }
 .case-study-panel .portfolio-eyebrow { min-width:0;flex-wrap:wrap;overflow-wrap:anywhere; }
-.case-study-media-section { overflow:hidden; }
+.case-study-media-section { overflow:clip; }
 .case-study-media-heading { display:flex;align-items:center;justify-content:space-between;gap:14px; }
 .case-study-media-note { color:var(--pf-dim);font:9px ui-monospace,monospace;letter-spacing:.13em; }
 .case-study-media-grid { display:grid;grid-template-columns:minmax(0,1.7fr) minmax(210px,.58fr);align-items:start;gap:clamp(12px,2vw,22px);margin-top:18px; }

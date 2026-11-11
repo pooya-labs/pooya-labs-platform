@@ -518,6 +518,7 @@ try {
                 innerMaxScroll,
                 innerScrollTopBeforeGesture: element.scrollTop,
                 galleryCardOverflowY: getComputedStyle(element.parentElement).overflowY,
+                gallerySectionOverflowY: getComputedStyle(element.closest('.case-study-media-section')).overflowY,
                 outerBefore: pageScroller.scrollTop,
                 outerMaxScroll,
                 viewportHeight: window.innerHeight,
@@ -596,6 +597,9 @@ try {
               }
               if (setup.galleryCardOverflowY !== 'clip') {
                 addFailure(route, viewport.name, 'The mobile gallery card wrapper must clip its corners without creating an intermediate scroll container.');
+              }
+              if (setup.gallerySectionOverflowY !== 'clip') {
+                addFailure(route, viewport.name, 'The mobile gallery section wrapper must clip its panel without creating an intermediate scroll container.');
               }
               await page.evaluate(() => {
                 const pageScroller = document.querySelector('.portfolio-page');

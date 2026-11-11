@@ -1,3 +1,9 @@
+## 2026-11-11 — Remove intermediate overflow clipping from the gallery section
+
+- The full Browser QA run 43022221019 passed 18/18 routes, 36/36 viewports, and 34/34 social crawler checks, with zero confirmed Axe violations; eight mobile gallery handoff failures remained. Artifact 13855034068 confirms a correct image hit target and inner scroll styles.
+- The section wrapper `.case-study-media-section` still used `overflow:hidden`, so it could remain an intermediate scroll container even after the card wrapper was changed. Replaced it with `overflow:clip` and added computed-style reporting and a contract assertion.
+- Repository CI 43022221237 passed on the preceding commit. New exact-head Browser QA is pending.
+
 ## 2026-11-11 — Keep synthesized touch fallback inside CDP session lifetime
 
 - Inspected Browser QA run 43021510687's route logs and located a test-harness ordering bug: `touch.detach()` ran before the synthesized gesture fallback, so the follow-up `touch.send()` operated on a detached session. The run was inconclusive (10/18 routes, 28/36 viewports) and is not evidence of browser closure or an app defect.
