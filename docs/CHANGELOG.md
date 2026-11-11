@@ -1,3 +1,9 @@
+## 2026-11-11 — Bound the synthesized mobile touch fallback
+
+- The Browser QA workflow for commit d4c1c26 remained in the Chromium responsive/route-check step beyond the previous runs' normal duration and did not yet expose a report artifact.
+- Added a 4-second timeout around `Input.synthesizeScrollGesture`. The harness records a specific timeout result and continues the remaining routes instead of letting a CDP gesture stall the whole run.
+- The section-wrapper `overflow:clip` correction and exact-head browser verification remain pending. Repository CI 43023441943 passed before this harness-only timeout change.
+
 ## 2026-11-11 — Remove intermediate overflow clipping from the gallery section
 
 - The full Browser QA run 43022221019 passed 18/18 routes, 36/36 viewports, and 34/34 social crawler checks, with zero confirmed Axe violations; eight mobile gallery handoff failures remained. Artifact 13855034068 confirms a correct image hit target and inner scroll styles.

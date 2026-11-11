@@ -566,17 +566,29 @@ try {
                 after = await readScrollPosition();
 
                 if (after.outerScrollTop <= setup.outerBefore + 4) {
-                  await touch.send('Input.synthesizeScrollGesture', {
-                    x,
-                    y: startY,
-                    yDistance: 180,
-                    speed: 900,
-                    gestureSourceType: 'touch',
-                    preventFling: true,
-                  });
-                  await page.waitForTimeout(220);
-                  after = await readScrollPosition();
-                  gesture = 'Input.dispatchTouchEvent + Input.synthesizeScrollGesture(touch)';
+                  let gestureTimeout;
+                  const synthesizedGesture = await Promise.race([
+                    touch.send('Input.synthesizeScrollGesture', {
+                      x,
+                      y: startY,
+                      yDistance: 180,
+                      speed: 900,
+                      gestureSourceType: 'touch',
+                      preventFling: true,
+                    }).then(() => 'completed'),
+                    new Promise((resolve) => {
+                      gestureTimeout = setTimeout(() => resolve('timed-out'), 4000);
+                    }),
+                  ]);
+                  if (gestureTimeout !== undefined) clearTimeout(gestureTimeout);
+                  if (synthesizedGesture === 'completed') {
+                    await page.waitForTimeout(220);
+                    after = await readScrollPosition();
+                    gesture = 'Input.dispatchTouchEvent + Input.synthesizeScrollGesture(touch)';
+                  } else {
+                    after = await readScrollPosition();
+                    gesture = 'Input.dispatchTouchEvent + Input.synthesizeScrollGesture(touch) timed out after 4s';
+                  }
                 }
               } finally {
                 await touch.send('Emulation.setTouchEmulationEnabled', { enabled: false });
