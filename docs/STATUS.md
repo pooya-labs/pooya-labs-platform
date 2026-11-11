@@ -517,3 +517,10 @@ Pooya requested a strict final-stage order. The roadmap now reserves **Phase 8 f
 - Verified artifact [13859393276](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43029421702/artifacts/13859393276): all **16/16 localized case-study mobile galleries** passed the edge-handoff test. For each route, the inner frame stayed at its boundary while the outer `.portfolio-page` scroll position advanced; touch traces showed the frame handler canceling the nested edge gesture. This reproduces and resolves the Android-specific behavior Pooya described in the Chromium regression test.
 - Both production-host performance probes collected 20/20 samples with zero failures. GitHub Pages p75 LCP 344 ms / CLS 0; Cloudflare Pages p75 LCP 424 ms / CLS 0. These performance checks measure the already-published hosts, not the unmerged PR build.
 - PR #70 remains open, isolated and unmerged; no production deployment or mainline update was made. Actual Android-device verification and the human accessibility/content approvals remain open owner checks.
+
+
+## Active redesign correction — light-theme animation contrast (2026-11-11)
+
+The first owner-directed visual correction is applied in `apps/platform/src/phase8-editorial.css`. Light mode now gives animated capability previews, the system-flow illustration, craft motion gallery, case-study motion scenes, and compact project motion previews explicit contrast treatment. Supporting animated labels and thin strokes have also been strengthened. Existing motion, keyframes, timing, and scene geometry are preserved.
+
+Per the owner’s redesign execution rule, no tests, browser QA, screenshots, or performance checks were run for this incremental instruction. Continue implementing new owner instructions immediately; begin the full validation/debugging cycle only after the explicit **“بازطراحی پایان یافت”** declaration. PR #70 remains isolated, unmerged, and undeployed.
