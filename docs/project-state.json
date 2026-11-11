@@ -1794,6 +1794,12 @@
       "event": "Owner reported uneven spacing among About, Projects, Novels, Stack, and Contact in the Android header. Replaced the narrow-screen content-sized navigation row with five equal-width grid columns and centered labels.",
       "branch": "redesign/live-site-baseline",
       "status": "implemented-preview-pending-owner-review"
+    },
+    {
+      "date": "2026-11-11",
+      "event": "Owner reported that the narrow mobile product screenshot captures intercept scrolling and make it difficult to continue down the project detail page. Added invisible outer side gutters for document scrolling while retaining a centered independent inner image scroller.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
     }
   ],
   "ownerRedesignWorkflow": {
@@ -1811,23 +1817,19 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Evenly distribute Android header navigation items",
+    "title": "Separate Android page-scroll gutters from centered product-image scrolling",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
       "apps/platform/src/portfolio.css"
     ],
     "scope": [
-      "five primary navigation slots share equal width on narrow screens",
-      "center each label within its slot",
-      "keep the row contained within the mobile header without horizontal overflow",
-      "preserve desktop navigation layout"
+      "widen mobile media section invisibly",
+      "center a narrower inner vertical image scroller",
+      "allow swipes in side gutters to scroll the main page",
+      "preserve image scrolling in the center",
+      "leave desktop and non-touch layouts unchanged"
     ],
-    "implementation": "At widths up to 680px, the primary navigation becomes a five-column CSS grid with minmax(0,1fr) columns, centered links, compact horizontal padding, and contained overflow. Desktop rules are unchanged.",
-    "preserved": [
-      "desktop header and navigation",
-      "navigation order, labels, destinations, and interaction",
-      "other project and case-study visuals"
-    ],
+    "implementation": "On coarse-pointer screens up to 680px, the media section extends 28px beyond the content column. The mobile capture frame is narrower than its card, centered, and vertically scrollable; the remaining transparent side gutters are outside that frame and therefore scroll the main document.",
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
   }
