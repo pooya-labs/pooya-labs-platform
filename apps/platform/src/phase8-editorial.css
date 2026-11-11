@@ -954,3 +954,111 @@
   .novel-text-section { padding:22px 18px 35px; }
   .novel-manuscript { font-size:16px;line-height:2.05; }
 }
+
+
+/* Light-theme motion contrast: preserve the existing animation design on a readable stage. */
+/* Keep the existing motion palette and timing; give the artwork a stable contrast surface. */
+.portfolio-page[data-theme="light"] .capability-visual {
+  border-color:rgba(52,102,75,.38);
+  background:radial-gradient(ellipse at 50% 45%,rgba(84,168,125,.22),transparent 70%),#14231f;
+}
+.portfolio-page[data-theme="light"] .capability-float-tag {
+  color:rgba(232,244,235,.86);
+}
+.portfolio-page[data-theme="light"] .capability-topology .topology-path-secondary {
+  stroke:rgba(125,229,181,.82);
+}
+.portfolio-page[data-theme="light"] .system-wire-base {
+  stroke:rgba(32,95,73,.28);
+}
+.portfolio-page[data-theme="light"] .system-wire-flow {
+  stroke-width:3;
+}
+.portfolio-page[data-theme="light"] .system-field-wires stop:first-child {
+  stop-color:#286b4d;
+}
+.portfolio-page[data-theme="light"] .system-field-wires stop:nth-child(2) {
+  stop-color:#31845d;
+}
+.portfolio-page[data-theme="light"] .system-field-wires stop:last-child {
+  stop-color:#386b91;
+}
+.portfolio-page[data-theme="light"] .system-wire-orbit {
+  stroke:#356b4b;
+  stroke-opacity:.36;
+}
+.portfolio-page[data-theme="light"] .system-wire-anchor {
+  stroke:#205f49;
+  filter:drop-shadow(0 0 7px rgba(32,95,73,.38));
+}
+.portfolio-page[data-theme="light"] .craft-principle-visual {
+  border-color:rgba(32,95,73,.24);
+  background:radial-gradient(ellipse at 50% 50%,rgba(51,149,112,.16),transparent 70%),#f0f4ed;
+}
+.portfolio-page[data-theme="light"] .craft-visual-clarity i {
+  background:#456f53;
+}
+.portfolio-page[data-theme="light"] .craft-visual-motion i:first-child,
+.portfolio-page[data-theme="light"] .craft-visual-reliability i {
+  border-color:rgba(32,95,73,.58);
+}
+.portfolio-page[data-theme="light"] .craft-visual-motion i:nth-child(2) {
+  border-color:#356b4b;
+}
+.portfolio-page[data-theme="light"] .craft-visual-curiosity i {
+  background:#52775d;
+}
+
+/* Case-study motion was authored for dark glass; retain that intentional stage in light mode. */
+.portfolio-page[data-theme="light"] .case-study-visual:not(.has-visual) {
+  border-color:rgba(52,102,75,.38);
+  background:#101b19;
+  box-shadow:0 14px 34px rgba(28,47,34,.12);
+}
+.portfolio-page[data-theme="light"] .case-study-motion-art {
+  color:#edf7ef;
+  background:
+    radial-gradient(ellipse at 50% 50%,color-mix(in srgb,var(--scene-accent) 18%,transparent),transparent 65%),
+    linear-gradient(135deg,rgba(5,15,18,.2),rgba(5,15,18,.06)),
+    #101b19;
+}
+.portfolio-page[data-theme="light"] .case-study-motion-art .scene-topline,
+.portfolio-page[data-theme="light"] .case-study-motion-art .flow-step small,
+.portfolio-page[data-theme="light"] .case-study-motion-art .flow-foot,
+.portfolio-page[data-theme="light"] .case-study-motion-art .orbit-health-card small,
+.portfolio-page[data-theme="light"] .case-study-motion-art .orbit-stat-card small,
+.portfolio-page[data-theme="light"] .case-study-motion-art .orbit-chart-label,
+.portfolio-page[data-theme="light"] .case-study-motion-art .orbit-stat-card > span,
+.portfolio-page[data-theme="light"] .case-study-motion-art .orbit-log-card span,
+.portfolio-page[data-theme="light"] .case-study-motion-art .os-titlebar span,
+.portfolio-page[data-theme="light"] .case-study-motion-art .nexus-node small,
+.portfolio-page[data-theme="light"] .case-study-motion-art .nexus-toolbar,
+.portfolio-page[data-theme="light"] .case-study-motion-art .glass-controls > span,
+.portfolio-page[data-theme="light"] .case-study-motion-art .glass-footnote,
+.portfolio-page[data-theme="light"] .case-study-motion-art .market-symbol span,
+.portfolio-page[data-theme="light"] .case-study-motion-art .market-range,
+.portfolio-page[data-theme="light"] .case-study-motion-art .commerce-product small,
+.portfolio-page[data-theme="light"] .case-study-motion-art .commerce-foot,
+.portfolio-page[data-theme="light"] .case-study-motion-art .booking-calendar-head,
+.portfolio-page[data-theme="light"] .case-study-motion-art .booking-confirmation small {
+  color:rgba(235,245,237,.84);
+}
+.portfolio-page[data-theme="light"] .case-study-motion-art .orbit-chart-grid,
+.portfolio-page[data-theme="light"] .case-study-motion-art .market-grid {
+  stroke:rgba(220,239,227,.22);
+}
+.portfolio-page[data-theme="light"] .case-study-motion-art .orbit-signal-ring {
+  border-color:rgba(117,218,195,.3);
+}
+.portfolio-page[data-theme="light"] .case-study-motion-art .market-range span,
+.portfolio-page[data-theme="light"] .case-study-motion-art .market-range b {
+  border-color:rgba(229,243,233,.22);
+}
+.portfolio-page[data-theme="light"] .case-study-motion-art .booking-slots i {
+  border-color:rgba(151,214,188,.3);
+}
+.portfolio-page[data-theme="light"] .project-card-motion {
+  border-color:rgba(118,194,151,.48);
+  background:linear-gradient(145deg,rgba(7,20,22,.94),rgba(9,24,32,.88));
+  box-shadow:0 12px 28px rgba(0,0,0,.25),inset 0 1px rgba(255,255,255,.12);
+}
