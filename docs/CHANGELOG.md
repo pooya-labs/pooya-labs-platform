@@ -672,3 +672,9 @@
 - Fixed the radial animation under “The foundation behind every project.” on narrow phone screens.
 - Magnified and centered the shared desktop SVG within a clipped mobile viewport so the rays spread visibly from the same single lower focal point rather than appearing vertically compressed.
 - Preserved the desktop scene, rays, halo, particles, gradients, and animation timing. Preview only; no tests or QA executed.
+
+## 2026-11-11 — Soft mobile foundation edges and lower transition
+
+- Added left/right gradient fades to the magnified mobile radial animation to remove the visibly cropped ends.
+- Replaced the narrow-screen outer section mask with layered surface and bottom gradients, avoiding the Android mask-compositing artifact at the lower edge.
+- Matched overlay colors for the light theme while preserving the shared desktop artwork, single-point origin, rays, particles, and animation timing. Preview only; no tests or QA executed.
