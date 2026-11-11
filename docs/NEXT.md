@@ -1,5 +1,6 @@
 # Next — owner review Workspace v5
 
+- Current Preview: https://cad4d67b.pooya-labs-platform.pages.dev (Cloudflare build and deploy succeeded on `d5e508256d23fa07bc82307397017fad338d7c73`).
 - Review the complete Workspace from header through footer on desktop and Android.
 - Check Persian/English direction and light/dark themes; verify that header controls stay aligned and the page scrolls naturally.
 - Keep all further Workspace-only changes on `redesign/live-site-baseline` and use the latest owner-designated Preview link.
