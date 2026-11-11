@@ -17,7 +17,7 @@ function OwnerAttribution({ language, assetBase }: { language: Language; assetBa
       <img src={`${assetBase}brand/pooya-monogram-tile.svg`} alt="" aria-hidden="true" width={42} height={42} decoding="async" />
       <span className="portfolio-owner-attribution-copy">
         <span className="portfolio-owner-attribution-label">{isPersian ? 'مالک پروژه' : 'PROJECT OWNER'}</span>
-        <strong>{isPersian ? 'پویا مونوگرام' : 'POOYA MONOGRAM'}</strong>
+        <strong>{'Goodarzi'}</strong>
         <span className="portfolio-owner-attribution-byline">{isPersian ? 'ایجاد و نگه‌داری: پویا گودرزی' : 'Created & maintained by Pooya Goodarzi'}</span>
       </span>
     </a>
