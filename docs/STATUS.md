@@ -553,3 +553,9 @@ Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for th
 - Changed the five primary navigation destinations (About, Projects, Novels, Stack, Contact) into equal-width grid cells on narrow screens.
 - Centered each label within its own slot, reduced horizontal padding, and kept the row within the header width without uneven content-sized gaps or horizontal overflow.
 - Desktop navigation is unchanged. Preview only; no Android visual review or tests were run.
+
+## 2026-11-11 — Android project-detail gallery scroll gutters
+
+- On coarse-pointer mobile layouts, widened the interface-capture section slightly beyond the content column without adding visible decoration.
+- Kept each mobile screenshot centered in a narrower inner vertical scroll frame; the transparent side gutters remain outside that frame so swipes there scroll the main case-study page.
+- Preserved the inner image scroll in the center. Desktop and non-touch layouts are unchanged. Preview only; no tests or Android visual review were run.
