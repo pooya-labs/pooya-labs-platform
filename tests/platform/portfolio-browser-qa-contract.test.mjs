@@ -270,11 +270,12 @@ test('visual evidence waits for the initial reveal, finite entrance animations, 
   assert.match(script, /getComputedStyle\(target\)\.opacity/);
   assert.match(script, /target\.getAnimations\(\{ subtree: true \}\)/);
   assert.match(script, /iterations !== Infinity/);
-  assert.match(script, /image\.decode\(\)\.catch\(\(\) => undefined\)/);
+  assert.match(script, /await image\.decode\(\)/);
   assert.match(script, /await waitForSettledReveal\(page, initialRevealSelector\)/);
   assert.match(script, /\.portfolio-hero-copy\[data-reveal="hero-copy"\]/);
   assert.match(script, /\.case-study-hero\[data-reveal="case-study-hero"\]/);
-  assert.match(script, /await waitForSettledReveal\(page, '\.portfolio-hero-art\[data-reveal="hero-showcase"\]'\)/);
+  assert.match(script, /const heroShowcaseSelector = '\.portfolio-hero-art\[data-reveal="hero-showcase"\]'/);
+  assert.match(script, /await waitForSettledReveal\(page, heroShowcaseSelector\)/);
   assert.ok(script.indexOf('await waitForSettledReveal(page, initialRevealSelector)') < script.indexOf('await page.screenshot('));
 });
 

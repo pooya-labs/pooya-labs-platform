@@ -350,9 +350,10 @@
     "lightThemeContrast": "passed-PR62-bfe775b3-and-PR64-ea52ef5;emerald-and-hero-gradient-and-LTR-headline-and-social-proof-scroll-cue-and-nav-hover;numeric-AA-contract-tests;minimum-4.5-to-1",
     "dualThemeAxeAudit": "passed-PR63-and-main-run-42815065767;36-dark-scans-and-36-light-scans;zero-confirmed-violations-each-theme;36-incomplete-contrast-checks-each-theme;manual-review-required",
     "keyboardSkipLinkBrowserQa": "passed-main-run-42815065767;18-of-18-routes;fresh-document-before-first-tab;visible-focus-and-main-target-correct",
-    "phase8PrototypeRepositoryCi": "passed-run-42867978077;PR-70-first-prototype-head-25e3a9766e68ceea2237efb65af07dfba9d368b6;typecheck;three-target-build;contract-tests",
-    "phase8PrototypeBrowserQa": "cancelled-run-42867978257;stalled-at-home-fa-desktop-before-first-reveal-capture;no-report-artifact;unbounded-lazy-image-decode-wait-identified;bounded-10s-decode-fix-and-contract-added-on-PR70-branch;verification-pending",
-    "phase8PrototypePublication": "not-merged;not-deployed;review-only;no-V1-approval"
+    "phase8PrototypeRepositoryCi": "run-43017396961;lint-format-typecheck-three-target-build-secret-scan-passed;contract-test-found-one-stale-inline-hero-selector-expectation;contract-updated-for-named-selector-and-bounded-decode;fresh-exact-head-run-pending",
+    "phase8PrototypeBrowserQa": "run-43017396822;install-build-preview-passed;Chromium-route-check-step-started;run-predates-latest-contract-correction;fresh-exact-head-run-pending",
+    "phase8PrototypePublication": "not-merged;not-deployed;review-only;no-V1-approval",
+    "phase8PrototypeContractRegression": "first-run-failure-was-stale-test-expectation-not-app-runtime;assertions-updated-to-named-hero-selector-and-bounded-image-decode"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
