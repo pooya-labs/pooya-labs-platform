@@ -615,18 +615,49 @@ function WindowFrame(props: WindowFrameProps): ReactNode {
         </div>}
 
         {app.id === 'files' && <div className="files-app">
-          <div className="app-toolbar"><div><strong>{language === 'fa' ? 'فضای کاری من' : 'My workspace'}</strong><small>{t.localPreview}</small></div>
-            <button className="small-action"><Plus size={14} /> {language === 'fa' ? 'پوشه جدید' : 'New folder'}</button></div>
-          <div className="file-table">
-            <div className="file-row file-header"><span>{t.fileName}</span><span>{t.fileType}</span><span>{t.modified}</span><span>{t.state}</span></div>
-            {sampleFiles.map((file) => <div className="file-row" key={file.name}>
-              <span className="file-name"><i>{file.type === 'folder' ? <Folder size={16} /> : <FileText size={16} />}</i>{file.name}</span>
-              <span>{file.type === 'folder' ? t.folder : file.type === 'code' ? t.code : t.document}</span>
-              <span>{file.modified === 'today' ? t.today : language === 'fa' ? 'دیروز' : 'Yesterday'}</span>
-              <span className="file-sample"><i />{t.sample}</span>
-            </div>)}
+          <section className="files-welcome">
+            <div className="files-welcome-copy">
+              <div className="files-eyebrow"><span /> {language === 'fa' ? 'کتابخانه شخصی / فایل‌ها' : 'PERSONAL LIBRARY / FILES'}</div>
+              <h2>{language === 'fa' ? 'فضای کاری من' : 'My workspace'}<span>.</span></h2>
+              <p>{language === 'fa' ? 'فایل‌ها، یادداشت‌ها و منابع پروژه‌ها؛ مرتب و در دسترس.' : 'Your project files, notes, and resources — organized and close at hand.'}</p>
+            </div>
+            <div className="files-welcome-art" aria-hidden="true">
+              <div className="files-art-orbit files-art-orbit-a" /><div className="files-art-orbit files-art-orbit-b" />
+              <div className="files-art-folder"><Folder size={35} strokeWidth={1.35} /></div>
+              <span className="files-art-spark files-art-spark-a" /><span className="files-art-spark files-art-spark-b" />
+            </div>
+            <div className="files-welcome-meta"><span><span className="files-live-dot" /> {t.localPreview}</span><span>{language === 'fa' ? 'محتوای نمایشی' : 'SAMPLE CONTENT'}</span></div>
+          </section>
+
+          <div className="files-summary">
+            <div className="files-summary-card"><span className="files-summary-icon folder"><Folder size={17} /></span><div><strong>01</strong><small>{language === 'fa' ? 'پوشه' : 'Folder'}</small></div><span className="files-summary-note">{language === 'fa' ? 'اصلی' : 'Root'}</span></div>
+            <div className="files-summary-card"><span className="files-summary-icon document"><FileText size={17} /></span><div><strong>03</strong><small>{language === 'fa' ? 'فایل' : 'Files'}</small></div><span className="files-summary-note">{language === 'fa' ? 'همه موارد' : 'All items'}</span></div>
+            <div className="files-summary-card"><span className="files-summary-icon recent"><Clock3 size={17} /></span><div><strong>02</strong><small>{language === 'fa' ? 'به‌روزرسانی امروز' : 'Updated today'}</small></div><span className="files-summary-note">{language === 'fa' ? 'اخیر' : 'Recent'}</span></div>
           </div>
-          <div className="files-footnote"><HardDrive size={14} /> {t.localState}</div>
+
+          <section className="files-section">
+            <div className="files-section-heading"><div><span>{language === 'fa' ? 'ساختار' : 'STRUCTURE'}</span><h3>{language === 'fa' ? 'پوشه‌های اصلی' : 'Your folders'}</h3></div><small>{language === 'fa' ? '۱ پوشه' : '01 FOLDER'}</small></div>
+            <div className="files-folder-card">
+              <div className="files-folder-icon"><Folder size={23} strokeWidth={1.6} /></div>
+              <div className="files-folder-copy"><strong>Pooya Labs</strong><span>{language === 'fa' ? 'فضای اصلی پروژه‌ها و مستندات' : 'Main space for projects and documentation'}</span></div>
+              <span className="files-folder-count">{language === 'fa' ? '۳ فایل' : '3 ITEMS'}</span>
+              <ArrowUpRight size={17} className="files-folder-arrow" />
+            </div>
+          </section>
+
+          <section className="files-section files-recent-section">
+            <div className="files-section-heading"><div><span>{language === 'fa' ? 'دسترسی سریع' : 'QUICK ACCESS'}</span><h3>{language === 'fa' ? 'فایل‌های اخیر' : 'Recent files'}</h3></div><small>{language === 'fa' ? '۳ مورد' : '03 ITEMS'}</small></div>
+            <div className="files-list">
+              {sampleFiles.filter((file) => file.type !== 'folder').map((file, index) => <div className="files-list-row" key={file.name}>
+                <span className={'files-list-icon files-list-icon-' + file.type}>{file.type === 'code' ? <TerminalSquare size={18} /> : <FileText size={18} />}</span>
+                <span className="files-list-name"><strong>{file.name}</strong><small>{file.type === 'code' ? (language === 'fa' ? 'فایل کد' : 'Source file') : (language === 'fa' ? 'سند متنی' : 'Text document')}</small></span>
+                <span className="files-list-date">{file.modified === 'today' ? t.today : language === 'fa' ? 'دیروز' : 'Yesterday'}</span>
+                <span className="files-list-sample"><i />{t.sample}</span>
+                <MoreHorizontal size={17} className="files-list-more" />
+              </div>)}
+            </div>
+          </section>
+          <div className="files-footnote"><ShieldCheck size={14} /> {t.localState}<span>·</span>{language === 'fa' ? 'این محتوا صرفاً نمونه است و به فضای ابری متصل نیست.' : 'Sample content only — no cloud storage is connected.'}</div>
         </div>}
 
         {app.id === 'terminal' && <div className="terminal-app">
