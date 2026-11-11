@@ -1,3 +1,10 @@
+## Official GitHub and Telegram brand marks (2026-11-11)
+
+- Replaced generic Lucide/code/send symbols and the personal monogram used as a GitHub social mark with recognizable GitHub and Telegram brand SVG marks.
+- Applied the brand marks consistently to the hero GitHub link, contact actions, and footer social links in both the homepage and hydrated case-study layout.
+- Kept the owner monogram and Instagram mark unchanged; those are separate identity assets.
+- Preview-only on `redesign/live-site-baseline`; no tests or broad QA run.
+
 ## Latest refinement — AI engineering, UI/UX, motion, and language coverage (2026-11-11)
 
 - Strengthened the bilingual personal positioning to explicitly lead with AI Engineer / مهندس هوش مصنوعی, while retaining software engineering as the foundation.
