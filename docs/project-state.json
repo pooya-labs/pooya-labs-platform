@@ -8,8 +8,8 @@
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
     "id": "P8-02-ITERATIVE",
-    "title": "Apply owner-directed redesign corrections to the exact current website",
-    "status": "Working branch redesign/live-site-baseline starts from exact current main commit f42e9bd889636b87b7deb774b085f3a90ffbd3f4. It excludes the rejected broad Phase 8 prototype stylesheet. First focused change is light-theme animation contrast in apps/platform/src/portfolio.css. Publish a Cloudflare Pages preview after each owner instruction for immediate visual feedback. Do not run tests, CI, browser QA, visual review, performance checks, or debugging until Pooya explicitly says 'بازطراحی پایان یافت'. No main merge or production deployment during this iterative phase."
+    "title": "Restore and publish the full owner identity in the shared footer attribution",
+    "status": "Full name and full byline explicitly bound in shared owner component; preview deployment pending; production untouched."
   },
   "lastCheckpointDate": "2026-11-11",
   "latestVerifiedCodeCommit": "54ca6138f75e9ba7878428713bc0332759c82450",
