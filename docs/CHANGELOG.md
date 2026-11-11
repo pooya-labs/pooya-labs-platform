@@ -1,3 +1,12 @@
+## 2026-11-11 — AI engineering, UI/UX, motion, and language refinement
+
+- Repositioned the bilingual portfolio hero and About section around AI engineering, software engineering, UI/UX, and motion-rich product experiences.
+- Added C++ and Python to the language skills.
+- Expanded the skills taxonomy to seven groups and 65 items, including UI/UX design, interaction design, motion design, micro-interactions, design systems, prototyping, and an AI engineering focus group.
+- Clarified in both AetherFlow project summary and technical dossier that its asynchronous Rust core uses the Tokio runtime.
+- Preserved scope honesty: AI focus areas are presented as declared areas of focus, not claims of specific model-training stacks or deployed AI systems.
+- Preview-only; no tests or QA run.
+
 ## 2026-11-11 — Portfolio refresh preview successfully deployed
 
 - Repaired the typed case-study dossier interface and restored AetherFlow's dossier entry after the first Cloudflare Preview build exposed a parse error.
