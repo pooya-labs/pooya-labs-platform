@@ -1,4 +1,4 @@
-## Next checkpoint — review Workspace redesign v3
+# Next — Workspace v4 owner review\n\n1. Review the desktop composition on the v4 preview.\n2. If the owner approves the redesign, run the deferred desktop/mobile and interaction QA.\n3. Keep production untouched until explicit approval.\n\n## Next checkpoint — review Workspace redesign v3
 
 - Review the new structural layout at desktop and narrow Android widths, in Persian/English and light/dark themes.
 - Confirm the new forest hero, embedded workspace snapshot, summary strip, and app-launch cards feel meaningfully aligned with the portfolio rather than the previous dashboard.
