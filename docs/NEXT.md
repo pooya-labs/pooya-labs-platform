@@ -1,3 +1,10 @@
+# Next — verify Workspace v4 interaction repair
+
+1. Reopen the latest Preview and confirm Android taps work on the header, hero actions, and app cards.
+2. Confirm vertical scrolling works on Windows desktop and Android.
+3. Once the owner says `بازطراحی پایان یافت`, run the deferred full responsive and interaction QA.
+4. Keep production and `main` untouched until explicit approval.
+
 # Next — Workspace v4 owner review\n\n1. Review the desktop composition on the v4 preview.\n2. If the owner approves the redesign, run the deferred desktop/mobile and interaction QA.\n3. Keep production untouched until explicit approval.\n\n## Next checkpoint — review Workspace redesign v3
 
 - Review the new structural layout at desktop and narrow Android widths, in Persian/English and light/dark themes.
