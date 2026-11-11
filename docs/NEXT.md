@@ -438,8 +438,8 @@ The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDI
 - The same common lower origin, halo, particles, colors, Bézier fan, and animation timing are shared with desktop; only the mobile viewing frame changes.
 - Review the updated preview on Android. Continue the owner-led loop without interim QA until **“بازطراحی پایان یافت”**.
 
-## Active owner-directed redesign — Android header navigation spacing (2026-11-11)
+## Active owner-directed redesign — Android project-detail gallery scrolling (2026-11-11)
 
-- The five primary navigation items now occupy equal-width columns on narrow screens; each label is centered and the row no longer uses content-sized horizontal scrolling.
-- Desktop layout is unchanged. Review the navigation row on Android at the owner's usual portrait viewport.
-- Do not run full tests or QA before **“بازطراحی پایان یافت”**; do not merge to main or deploy production.
+- Mobile interface captures retain a centered, independently scrollable image viewport.
+- Invisible side gutters sit outside the inner image viewport and belong to the main case-study document, so swiping beside the narrow phone screenshot advances the page.
+- Desktop and non-touch layouts remain unchanged. Verify the interaction on Android; do not run full tests or QA before **“بازطراحی پایان یافت”** and do not merge to main.
