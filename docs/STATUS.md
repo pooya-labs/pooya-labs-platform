@@ -1,3 +1,11 @@
+# Workspace demo login (2026-11-12)
+
+- Replaced the Cloudflare-only server login flow with a host-independent, client-side demo gate.
+- Demo credentials: username `pooya`; password is supplied directly by the owner and intentionally kept out of documentation.
+- Successful login stores only a one-tab session flag in sessionStorage; returning to the portfolio clears it. No external authentication provider, API, database, Cloudflare Function, or server connection is used.
+- Important security boundary: this is a visual/demo gate only. Credentials are present in the public JavaScript bundle and can be discovered or bypassed. Do not use it to protect private data, files, or privileged operations.
+- Works consistently on GitHub Pages, Cloudflare Pages, and the static frontend when served by Apps Script, because it uses browser APIs only.
+- Changes are limited to `redesign/live-site-baseline`; `main` and production remain untouched.
 # Workspace sign-in gate (2026-11-12)
 
 - Added a bilingual, responsive username/password entry screen before the secondary Workspace experience.
