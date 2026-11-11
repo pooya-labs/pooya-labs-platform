@@ -1,3 +1,11 @@
+## Active owner-led redesign iteration — capability visuals
+
+- Current baseline: `redesign/live-site-baseline`, branched from the live `main` baseline; continue editing this branch only.
+- Most recent correction: preserve and strengthen light-theme legibility for the three animated capability mockups directly below the capability heading.
+- Continue applying each new owner instruction directly and publish a fresh Cloudflare Preview after each focused correction.
+- Do not run tests, CI, Browser QA, accessibility sweeps, or broad visual review until the owner explicitly says `بازطراحی پایان یافت`.
+- Preview deployment must remain Preview-only. Do not merge to `main` or deploy Production.
+
 ## Current next action — P8-01 owner selects a design direction (2026-11-10)
 
 Pooya authorized Phase 8 design exploration. Review [PHASE-8-DESIGN-OPTIONS.md](PHASE-8-DESIGN-OPTIONS.md): A — Obsidian Editorial Systems (recommended), or B — Warm Editorial Gallery.
