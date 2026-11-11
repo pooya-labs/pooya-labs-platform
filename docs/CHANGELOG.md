@@ -1,3 +1,9 @@
+# 2026-11-12 — Workspace preview status-card width fix
+
+- Fixed the stretched blank bar under the Workspace snapshot preview. An inherited logical start inset conflicted with a physical right inset in the English LTR layout, forcing the absolutely positioned status chip to expand across the parent.
+- Reset the start inset and use a single logical end anchor with content-sized width. Other Workspace sections and portfolio surfaces are unchanged.
+- Preview-only; no production deploy or broad QA.
+
 # 2026-11-12 — Workspace v5 full-surface layout repair
 
 - Rebuilt the Workspace header, content canvas, hero, metrics, app launcher, lower panels, and footer as one responsive composition.
