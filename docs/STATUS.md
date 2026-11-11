@@ -503,3 +503,11 @@ Pooya clarified the review workflow after rejecting the first Phase 8 preview as
 ### First focused correction on the clean baseline
 
 Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for the existing animated capability/topology preview, system-flow wires, craft-motion miniatures, case-study motion scenes, and project-card motion previews. Kept the existing page layout, components, keyframes, animation timing, and movement. No tests or visual QA were run.
+
+## 2026-11-11 — Android and touch-first responsive correction
+
+- Stabilized the public portfolio's internal scroll viewport on touch devices with `100svh`, avoiding layout-height changes as Android browser chrome expands and collapses while preserving the one-scroll-surface architecture.
+- Restored native pinch zoom, kept vertical page scrolling and horizontal mobile navigation touch-friendly, and accounted for the top safe area on sticky headers.
+- Flattened the layered hero preview cards on narrow touch screens while preserving their positions and slow motion; increased key control and link hit areas and prevented sticky touch-hover card transforms.
+- Kept desktop layout and production/main unchanged. No tests, browser QA, or independent visual review were run; physical Android review remains part of the owner's final redesign acceptance.
+- Preview-only iteration on `redesign/live-site-baseline`.
