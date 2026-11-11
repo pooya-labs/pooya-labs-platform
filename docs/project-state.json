@@ -12,7 +12,7 @@
     "status": "Implemented on redesign/live-site-baseline; client-side demo gate only, no external auth service or backend."
   },
   "lastCheckpointDate": "2026-11-12",
-  "latestVerifiedCodeCommit": "780cd900bc8cc26807203f32946e936a10d9f332",
+  "latestVerifiedCodeCommit": "8624ccd1fc37c155c0683b87b57e1ef44cf6c437",
   "tests": {
     "repositoryCi": "passed-main-run-42815065743;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1;typecheck;three-target-build;security-scan;contract-tests",
     "transportHarnessContract": "passed",
@@ -351,7 +351,8 @@
     "dualThemeAxeAudit": "passed-PR63-and-main-run-42815065767;36-dark-scans-and-36-light-scans;zero-confirmed-violations-each-theme;36-incomplete-contrast-checks-each-theme;manual-review-required",
     "keyboardSkipLinkBrowserQa": "passed-main-run-42815065767;18-of-18-routes;fresh-document-before-first-tab;visible-focus-and-main-target-correct",
     "workspaceV4InteractionRepair": "targeted CSS repair committed; browser/device QA intentionally deferred until owner review",
-    "workspaceHeaderPreferences": "implemented in Workspace-only React branch and workspace-v4 CSS; preview deployment pending; owner desktop/mobile review required"
+    "workspaceHeaderPreferences": "implemented in Workspace-only React branch and workspace-v4 CSS; preview deployment pending; owner desktop/mobile review required",
+    "workspaceDemoLogin": "implemented-on-preview-branch;runtime-preview-verification-pending"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
