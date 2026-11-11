@@ -1,3 +1,9 @@
+## Latest checkpoint — foundation animation now converges at one lower focal point (2026-11-11)
+
+- Refined the “The foundation behind every project” radial animation so all animated rays visibly converge on one focal point near the bottom, rather than disappearing into the center of a broad lower glow.
+- Removed the former curved baseline, added a restrained focal glow and point, and adjusted the visual masks so the origin remains visible while the section itself still fades softly into the page at its bottom edge.
+- The central artwork, particles, overall layout, and motion timing remain unchanged apart from the ray convergence/origin treatment. Preview only; no test or QA cycle executed.
+
 ## Latest checkpoint — foundation section bottom edge blended into page (2026-11-11)
 
 - Corrected the target after owner feedback: the visible divider was the bottom border of the entire `.portfolio-proof` section, not the SVG's internal curved baseline.
