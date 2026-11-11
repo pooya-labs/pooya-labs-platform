@@ -547,3 +547,9 @@ Updated `apps/platform/src/portfolio.css` to improve light-theme contrast for th
 - Preserved the authentic desktop product screenshot as the project's desktop interface capture further down the case study.
 - Added AetherFlow-specific light-theme contrast: a stable dark-glass stage, brighter mint/blue flow edges, and high-contrast step labels and footer metadata.
 - Kept the animation geometry and timing, all other project visuals, and desktop/mobile layout behavior unchanged. Preview only; no tests or visual QA were run.
+
+## 2026-11-11 — Even mobile header navigation spacing
+
+- Changed the five primary navigation destinations (About, Projects, Novels, Stack, Contact) into equal-width grid cells on narrow screens.
+- Centered each label within its own slot, reduced horizontal padding, and kept the row within the header width without uneven content-sized gaps or horizontal overflow.
+- Desktop navigation is unchanged. Preview only; no Android visual review or tests were run.
