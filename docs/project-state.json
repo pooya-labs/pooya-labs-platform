@@ -7,12 +7,12 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P8-11-WORKSPACE-V4-INTERACTION-REPAIR",
-    "title": "Restore bounded viewport sizing, desktop scroll, and Android touch input in Workspace v4",
+    "id": "P8-12-WORKSPACE-HEADER-PREFERENCES",
+    "title": "Move language and light/dark controls into the Workspace header only",
     "status": "Implemented on preview branch; deployment pending."
   },
   "lastCheckpointDate": "2026-11-12",
-  "latestVerifiedCodeCommit": "e764966d1010131b5492e45419380b6ba2e53ecf",
+  "latestVerifiedCodeCommit": "6af18aafeaf4d0bb7a806a2a5ff35d8cf4655e72",
   "tests": {
     "repositoryCi": "passed-main-run-42815065743;exact-main-5af6dd2ca19cdc87783f6312f890c6244e9240b1;typecheck;three-target-build;security-scan;contract-tests",
     "transportHarnessContract": "passed",
@@ -350,7 +350,8 @@
     "lightThemeContrast": "passed-PR62-bfe775b3-and-PR64-ea52ef5;emerald-and-hero-gradient-and-LTR-headline-and-social-proof-scroll-cue-and-nav-hover;numeric-AA-contract-tests;minimum-4.5-to-1",
     "dualThemeAxeAudit": "passed-PR63-and-main-run-42815065767;36-dark-scans-and-36-light-scans;zero-confirmed-violations-each-theme;36-incomplete-contrast-checks-each-theme;manual-review-required",
     "keyboardSkipLinkBrowserQa": "passed-main-run-42815065767;18-of-18-routes;fresh-document-before-first-tab;visible-focus-and-main-target-correct",
-    "workspaceV4InteractionRepair": "targeted CSS repair committed; browser/device QA intentionally deferred until owner review"
+    "workspaceV4InteractionRepair": "targeted CSS repair committed; browser/device QA intentionally deferred until owner review",
+    "workspaceHeaderPreferences": "implemented in Workspace-only React branch and workspace-v4 CSS; preview deployment pending; owner desktop/mobile review required"
   },
   "hosting": {
     "primaryApplicationRuntime": "static-react-vite-on-github-pages",
