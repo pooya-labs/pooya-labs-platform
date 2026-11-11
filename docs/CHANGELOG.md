@@ -673,3 +673,12 @@
 - Reproduced the originally reported nested-scroll defect in Browser QA: on eight localized case-study routes, the inner screenshot frame reached its boundary while the outer portfolio scroller remained stationary. Reversing the synthetic swipe and disabling image dragging in the test did not resolve it.
 - Added an explicit, one-finger touch boundary bridge: at the inner gallery top/bottom edge it cancels the inner boundary action and applies the finger delta to the outer `.portfolio-page` scroll surface. This is a targeted bug fix; the visual system and content remain unchanged.
 - Added a contract test for the edge checks, non-passive touchmove listener, cancellation and outer scroll delta. Full CI/Browser QA verification pending.
+
+
+## 2026-11-11 — Verified Android gallery-to-page scroll handoff
+
+- Added a non-passive `touchmove` boundary bridge for mobile case-study screenshot frames. At the top/bottom edge, it prevents the inner frame's boundary action and transfers the same finger delta to `.portfolio-page`; inside the image, scrolling remains local. Listeners are cleaned up on unmount.
+- Repository CI [43029421750](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43029421750): passed type-check, all three builds, security/credential checks, and contract tests.
+- Browser QA [43029421702](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43029421702): 18/18 routes, 36/36 viewports, 34/34 crawler checks, zero failures, zero confirmed Axe violations; 16/16 localized mobile case-study galleries passed handoff. Artifact [13859393276](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43029421702/artifacts/13859393276).
+- Published-host performance probes each collected 20/20 samples with zero failures (GitHub Pages p75 LCP 344 ms / CLS 0; Cloudflare Pages p75 LCP 424 ms / CLS 0). These are measurements of the current live hosts, not deployment of this PR.
+- No visual redesign, mainline merge, or production deployment occurred in this fix. Physical Android acceptance remains required.
