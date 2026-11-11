@@ -1,3 +1,9 @@
+## Latest checkpoint — foundation animation baseline softly faded (2026-11-11)
+
+- Applied the owner-requested refinement to the lower curved baseline beneath the animated field in “The foundation behind every project.”
+- Replaced the crisp single-color stroke with a very low-opacity horizontal gradient that fades out at both ends and blends into the surrounding surface. No other visual element or animation behavior was changed.
+- Preview-only update. No tests, browser QA, or visual QA executed; final validation remains deferred until the owner says `بازطراحی پایان یافت`.
+
 ## Latest checkpoint — capability-section light-theme legibility improved (2026-11-11)
 
 - Applied the next owner-requested correction on `redesign/live-site-baseline`, without changing the existing page structure or animation behavior.
