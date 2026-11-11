@@ -3746,3 +3746,32 @@
   .skill-group-items { gap: 6px; }
   .skill-group-items span { min-height: 29px; padding: 5px 8px; font-size: 8px; }
 }
+
+
+/* Android/mobile headline fix: wrap the accent phrase instead of forcing a clipped max-content row. */
+@media (max-width: 680px) {
+  .portfolio-hero-copy .hero-title-word-line {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: baseline !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: .08em .18em !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    font-size: clamp(27px, 7.6vw, 34px) !important;
+    line-height: 1.18 !important;
+    letter-spacing: -.025em !important;
+    padding-inline: 0 !important;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .portfolio-hero-copy .hero-title-word-line .hero-title-prefix,
+  .portfolio-hero-copy .hero-title-word-line .hero-title-word {
+    flex: 0 1 auto !important;
+    max-width: 100%;
+    white-space: nowrap !important;
+  }
+}
