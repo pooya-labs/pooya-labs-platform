@@ -1,3 +1,10 @@
+# 2026-11-12 — Workspace v5 full-surface layout repair
+
+- Rebuilt the Workspace header, content canvas, hero, metrics, app launcher, lower panels, and footer as one responsive composition.
+- Corrected the mobile header's column mismatch and intermediate desktop header overflow; ensured language controls and theme controls remain together in the Workspace header.
+- Bound page direction to the selected language and restored a definite, touch-friendly scroll surface with clear overlay layering.
+- Scoped the implementation to Workspace only; portfolio surfaces, production, and `main` were not changed. Full QA is still deferred until owner completion.
+
 # 2026-11-12 — Workspace header language and theme controls
 
 - Moved the language control into the Workspace header and removed its floating and side-rail duplicates.
