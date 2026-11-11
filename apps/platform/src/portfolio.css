@@ -3433,84 +3433,16 @@
   }
 }
 
-/* Android/mobile finish: fade the cropped radial art at both horizontal edges and replace section masks with composited gradients. */
+/* Mobile proof framing follows the desktop fade: alpha-only edges, with no tinted overlays. */
 @media (max-width: 680px) {
-  .portfolio-proof {
-    --proof-edge-color: #111719;
-    --proof-bottom-solid: #111719;
-    --proof-bottom-clear: rgba(11,16,18,0);
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-    background: linear-gradient(
-      180deg,
-      #111719 0%,
-      #111719 calc(100% - 84px),
-      rgba(17,23,25,0) 100%
-    );
-  }
-
-  .portfolio-proof::after {
-    content: "";
-    position: absolute;
-    z-index: 5;
-    inset-inline: 0;
-    bottom: 0;
-    height: 104px;
-    pointer-events: none;
-    background: linear-gradient(
-      180deg,
-      rgba(17,23,25,0) 0%,
-      color-mix(in srgb, var(--proof-bottom-solid) 86%, transparent) 34%,
-      var(--proof-bottom-solid) 62%,
-      var(--proof-bottom-clear) 100%
-    );
-  }
-
   .portfolio-proof-visual {
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 100%);
-    mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 100%);
-  }
-
-  .portfolio-proof-visual::before,
-  .portfolio-proof-visual::after {
-    content: "";
-    position: absolute;
-    z-index: 4;
-    top: 0;
-    bottom: 0;
-    width: clamp(44px, 17%, 76px);
-    pointer-events: none;
-  }
-
-  .portfolio-proof-visual::before {
-    left: 0;
-    background: linear-gradient(
-      90deg,
-      var(--proof-edge-color) 0%,
-      color-mix(in srgb, var(--proof-edge-color) 78%, transparent) 35%,
-      transparent 100%
-    );
-  }
-
-  .portfolio-proof-visual::after {
-    right: 0;
-    background: linear-gradient(
-      270deg,
-      var(--proof-edge-color) 0%,
-      color-mix(in srgb, var(--proof-edge-color) 78%, transparent) 35%,
-      transparent 100%
-    );
-  }
-
-  .portfolio-page[data-theme="light"] .portfolio-proof {
-    --proof-edge-color: #f3f4ef;
-    --proof-bottom-solid: #f0f2ed;
-    --proof-bottom-clear: rgba(245,246,242,0);
-    background: linear-gradient(
-      180deg,
-      #f6f7f4 0%,
-      #f0f2ed calc(100% - 84px),
-      rgba(240,242,237,0) 100%
-    );
+    -webkit-mask-image:
+      linear-gradient(90deg, transparent 0%, #000 13%, #000 87%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 12%, #000 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(90deg, transparent 0%, #000 13%, #000 87%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 12%, #000 100%);
+    mask-composite: intersect;
   }
 }
