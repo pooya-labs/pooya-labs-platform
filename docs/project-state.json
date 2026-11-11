@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P8-02",
     "title": "Stabilize and validate the Obsidian Editorial prototype for owner review round one",
-    "status": "PR #70 remains an isolated, unmerged and undeployed review branch. The original nested-scroll defect is fixed with an explicit one-finger touch boundary bridge from the mobile screenshot frame to the outer .portfolio-page scroll surface. Exact-head Repository CI 43029421750 passed. Exact-head Browser QA 43029421702 passed 18/18 routes, 36/36 viewports, 34/34 social crawler checks, zero failures, zero confirmed Axe violations, and 16/16 localized case-study gallery handoffs; artifact 13859393276. Thirty-six incomplete Axe checks and physical Android verification remain manual owner gates. Both published-host performance probes collected 20/20 measurements with zero failures. No visual redesign or production deployment/merge was performed."
+    "status": "PR #70 remains isolated, unmerged, and undeployed. The mobile gallery boundary handoff remains implemented and previously verified. The first owner-directed redesign correction is now applied: light-theme contrast was strengthened for animated capability previews, system-flow graphics, craft motion visuals, case-study scenes, and compact project-card motion. Existing keyframes, timing, movement, and scene composition are preserved. No tests or visual QA were run for this instruction under the owner’s implementation-first rule; full validation is deferred until the explicit 'بازطراحی پایان یافت' declaration."
   },
   "lastCheckpointDate": "2026-11-11",
   "latestVerifiedCodeCommit": "3888d0799afdf4c3bb702489b6f1fc22c98d1f3b",
@@ -1803,5 +1803,26 @@
     "galleryScrollHandoff": "verified-16-of-16-localized-case-study-mobile-routes;touch-boundary-bridge-transfers-edge-delta-to-outer-portfolio-page",
     "liveHostPerformance": "20-of-20-github-pages-and-20-of-20-cloudflare-pages-measurements;0-failures;github-pages-p75-lcp-344ms-cls-0;cloudflare-pages-p75-lcp-424ms-cls-0"
   },
-  "phase8PrototypePublication": "PR-70-open-unmerged-undeployed;main-and-live-hosts-unchanged"
+  "phase8PrototypePublication": "PR-70-open-unmerged-undeployed;main-and-live-hosts-unchanged",
+  "activeRedesignInstruction": {
+    "date": "2026-11-11",
+    "title": "Make existing animations legible in light theme",
+    "status": "implemented-on-working-branch",
+    "implementationFiles": [
+      "apps/platform/src/phase8-editorial.css"
+    ],
+    "documentationFiles": [
+      "docs/CHANGELOG.md",
+      "docs/STATUS.md",
+      "docs/NEXT.md"
+    ],
+    "preserved": [
+      "existing animation keyframes",
+      "animation timing and movement",
+      "scene composition"
+    ],
+    "validation": "deferred-until-owner-declares-redesign-finished",
+    "release": "no-merge-or-public-deployment"
+  },
+  "latestWorkingBranchHead": "0cfdade872ec35e6986d43b7912390b50bbc52ff"
 }
