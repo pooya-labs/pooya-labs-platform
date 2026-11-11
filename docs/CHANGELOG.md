@@ -644,3 +644,10 @@
 - Removed the bottom border from the foundation section and faded its lower edge into the page background with a section-level mask.
 - Restored the internal SVG curve to its original styling; the earlier edit targeted the wrong line.
 - Preview only; no tests or QA executed.
+
+
+## 2026-11-11 — Single-point foundation animation origin
+
+- Moved the radial ray convergence point slightly upward so it remains visible above the lower page fade.
+- Removed the broad curved baseline and added a subtle focal glow/point to make the rays visibly originate from one point.
+- Preserved particle motion, primary glow composition, and animation timing. Preview only; no tests or QA executed.
