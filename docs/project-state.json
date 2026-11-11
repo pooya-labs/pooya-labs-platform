@@ -1736,7 +1736,30 @@
     "fullApplicationImplementationStarted": false,
     "firstOwnerReview": "pending",
     "secondOwnerReview": "pending",
-    "explicitFinalDesignApproval": "pending"
+    "explicitFinalDesignApproval": "pending",
+    "redesignExecutionPolicy": {
+      "ownerInstructionDate": "2026-11-11",
+      "mode": "rapid-owner-directed-implementation",
+      "applyEachInstructionTo": "working-website-implementation",
+      "preserveExistingWorkingFeatures": true,
+      "routineTestsBetweenInstructions": false,
+      "routineBrowserAndManualQaBetweenInstructions": false,
+      "routineDebugPassesBetweenInstructions": false,
+      "fullValidationTrigger": "owner-explicitly-declares-redesign-finished",
+      "acceptedCompletionPhrase": "بازطراحی پایان یافت",
+      "afterTrigger": [
+        "run relevant repository CI and builds",
+        "run full browser and responsive QA",
+        "review accessibility and visual behavior",
+        "debug and fix defects found",
+        "report remaining owner-only release gates"
+      ],
+      "constraints": [
+        "do not claim unrun checks passed",
+        "do not bypass security, privacy, data-integrity, repository permission, or branch-protection requirements",
+        "do not claim public deployment or release unless it actually completed"
+      ]
+    }
   },
   "phase7Carryover": {
     "status": "open-owner-acceptance-and-prepublication-gates",
