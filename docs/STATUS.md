@@ -1,3 +1,10 @@
+## My workspace / Files complete visual redesign (2026-11-11)
+
+- Rebuilt the Files app surface with an editorial glass hero, emerald visual motif, compact summary cards, a clear folder hierarchy, and a refined recent-files list.
+- Added responsive layouts for narrow screens and explicit light-theme surfaces while retaining bilingual labels and existing sample-content honesty.
+- Kept file data local/sample; no cloud storage or new file-management capability is implied.
+- Preview-only; no broad QA or device test.
+
 ## Official GitHub and Telegram brand marks (2026-11-11)
 
 - Replaced generic Lucide/code/send symbols and the personal monogram used as a GitHub social mark with recognizable GitHub and Telegram brand SVG marks.
