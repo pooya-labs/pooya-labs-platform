@@ -1,3 +1,9 @@
+## Latest owner direction — redesign all remaining project-card mini-scenes
+
+- Extend the successful AuraPulse and GlobalCart mini-scene redesign to all remaining homepage projects.
+- Implemented compact product-specific visuals for AetherFlow (workflow execution), Orbit (service health / incidents / telemetry), Pooya OS (desktop / app launcher), Nexus Canvas (connected graph), LuminaGlass (refractive optical lab), and Salon Booking (appointment slots / confirmation).
+- Keep all changes limited to homepage compact card windows. Preserve project detail pages and the existing card layout. Continue on `redesign/live-site-baseline`, publish Preview only, and defer QA until `بازطراحی پایان یافت`.
+
 ## Latest owner correction — AuraPulse and GlobalCart project-card motion
 
 - AuraPulse must read as a multi-row market / paper-trading dashboard, not one row of bars with a decorative line. The mini scene now has BTC, ETH, and SOL rows, separate animated micro-bars, and a visible SIM marker.
