@@ -1832,7 +1832,7 @@
       "apps/platform/src/content/projects.ts",
       "apps/platform/public/interface-captures/salon-booking/salon-booking-home-hero.png"
     ],
-    "sourceAsset": "https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/redesign/live-site-baseline/apps/platform/public/interface-captures/salon-booking/salon-booking-home-hero.png",
+    "sourceAsset": "https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/ca0c71abac5fc3d838a3505cebf0bcbda195136f/apps/platform/public/interface-captures/salon-booking/salon-booking-home-hero.png",
     "capture": {
       "url": "https://pooya-labs.github.io/salon-booking/",
       "viewport": "1440x1000",
@@ -1843,6 +1843,12 @@
     "release": "preview-only; no merge or production deployment"
   },
   "events": [
+    {
+      "date": "2026-11-11",
+      "event": "Pinned the newly added Salon Booking homepage screenshot to its immutable source commit after the first Cloudflare Preview build correctly enforced the repository's immutable-asset URL contract.",
+      "branch": "redesign/live-site-baseline",
+      "status": "source-asset-pinned"
+    },
     {
       "date": "2026-11-11",
       "event": "Captured the actual published Shayan Salon Booking homepage top viewport (1440x1000), added the PNG to the platform's interface-captures assets, and assigned it only to Salon Booking's homepage-card visualAsset. Case-study full-page captures and all other project cards remain unchanged.",
