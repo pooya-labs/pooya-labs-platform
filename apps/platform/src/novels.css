@@ -41,3 +41,8 @@
 @media(max-width:760px){.novel-section{padding:57px 0 70px}.novel-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.novel-card-content{padding-inline:12px}.novel-card h3{font-size:16px}.novel-card p{font-size:10px;min-height:57px}.novel-reader-main{padding-top:9px}.novel-reader-hero{grid-template-columns:1fr;gap:25px;padding:24px 0 37px}.novel-reader-cover{width:min(62%,245px)}.novel-reader-intro h1{font-size:34px}.novel-text-section{padding:20px 17px 35px;border-radius:13px}.novel-manuscript{font-size:16px;line-height:2.1}}
 @media(max-width:420px){.novel-grid{grid-template-columns:1fr 1fr;gap:9px}.novel-cover-frame{margin:8px}.novel-card-content{padding:2px 10px 14px}.novel-card h3{font-size:14px}.novel-card p{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.novel-card,.novel-cover-frame img{transition:none}.novel-card:hover,.novel-card:hover .novel-cover-frame img{transform:none}.novel-spinner{animation-duration:2s}}
+
+.novel-pdf-viewer{display:grid;gap:14px}
+.novel-pdf-viewer iframe{display:block;width:100%;height:min(78vh,1100px);min-height:560px;border:1px solid var(--pf-line);border-radius:12px;background:#fff}
+.novel-pdf-viewer>a{justify-self:start;color:var(--pf-emerald);font-size:12px;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:760px){.novel-pdf-viewer iframe{height:72vh;min-height:440px}}
