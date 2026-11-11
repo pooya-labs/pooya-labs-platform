@@ -470,3 +470,9 @@ The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDI
 - The prior data-only change did not affect the homepage because the Projects-card JSX preferred `caseStudyHeroAsset` before `visualAsset`.
 - Fixed the card renderer in `apps/platform/src/PortfolioHome.tsx` to prefer `visualAsset`; the Salon Booking card now uses `shayan-hero.webp`, while case-study media remains unchanged.
 - A fresh preview is required for owner review. No tests or QA before «بازطراحی پایان یافت».
+
+
+## Follow-up correction — keep other project cards unchanged (2026-11-11)
+
+- The initial renderer priority change affected all project cards. It has been narrowed to `salon-booking` only.
+- All other project cards retain the prior `caseStudyHeroAsset`-first behavior. Review the fresh preview; no tests/QA until «بازطراحی پایان یافت».
