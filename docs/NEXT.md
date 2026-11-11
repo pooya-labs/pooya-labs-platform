@@ -1,3 +1,9 @@
+## Next refinement — Workspace v2 owner review
+
+- Review the new editorial workspace direction at desktop and narrow Android widths, in Persian/English and light/dark themes.
+- Preserve all existing app interactions and backend boundaries. Defer broad QA until `بازطراحی پایان یافت`.
+- Continue on `redesign/live-site-baseline`; no production merge/deploy.
+
 ## Next refinement — Workspace dashboard owner review
 
 - Review the actual Workspace landing dashboard (not only the Files app) at desktop and narrow Android widths, in Persian/English and light/dark themes.
