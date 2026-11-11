@@ -74,32 +74,32 @@ const text = {
     navAbout: 'درباره من',
     navWork: 'پروژه‌ها',
     navNovels: 'رمان‌ها',
-    navStack: 'فناوری‌ها',
+    navStack: 'مهارت‌ها',
     navContact: 'ارتباط',
     eyebrow: 'مهندسی کامپیوتر · ساخت نرم‌افزار',
     headlineA: 'ایده‌ها را',
     headlineB: 'به تجربه‌های دیجیتال',
     headlineWord: '',
     headlineC: 'تبدیل می‌کنم.',
-    intro: 'من پویا هستم؛ دانشجوی مهندسی کامپیوتر با تمرکز بر طراحی محصول، مهندسی فرانت‌اند و تفکر سیستمی. اینجا پروژه‌هایی را می‌بینی که می‌سازم، همراه با مسیر فنی، تصمیم‌ها و وضعیت واقعی هرکدام.',
+    intro: 'من پویا هستم؛ دانشجوی مهندسی کامپیوتر و سازندهٔ محصولات نرم‌افزاری. در هشت پروژهٔ مستقل، از طراحی رابط و ابزارهای تعاملی تا سیستم‌های توزیع‌شده، داشبوردهای داده، مارکت‌پلیس و سامانهٔ رزرو کار کرده‌ام؛ هفت پروژه تکمیل شده‌اند و توسعهٔ AetherFlow ادامه دارد.',
     explore: 'دیدن پروژه‌ها',
     github: 'گیت‌هاب من',
     scroll: 'برای آشنایی بیشتر پایین برو',
     selected: 'کارهای منتخب',
-    selectedSub: 'پروژه‌ها و آزمایش‌هایی که بخشی از مسیر یادگیری و مهندسی من هستند.',
-    allProjects: '۸ پروژه در ویترین',
-    proofEyebrow: 'بنیان مهندسی', proofTitle: 'پشت هر پروژه، یک بنیان مهندسی.', proofSub: 'نرم‌افزار، سیستم و تجربه‌های محصولی که با شواهد واقعی ساخته شده‌اند.', proofStat1: 'پروژه مستقل', proofStat2: 'صفحه مطالعه موردی', proofStat3: 'زبان رابط', proofStat4: 'مسیر انتشار',
+    selectedSub: 'هفت پروژهٔ تکمیل‌شده و AetherFlow که توسعهٔ آن ادامه دارد؛ هر صفحه جزئیات فنی و محدودهٔ واقعی محصول را نشان می‌دهد.',
+    allProjects: '۸ پروژه · ۷ تکمیل‌شده · ۱ در حال توسعه',
+    proofEyebrow: 'بنیان مهندسی', proofTitle: 'پشت هر پروژه، یک بنیان مهندسی.', proofSub: 'هشت پروژهٔ مستقل در حوزهٔ محصول و مهندسی نرم‌افزار؛ هفت پروژه تکمیل شده و AetherFlow تنها مسیر توسعهٔ فعال است.', proofStat1: 'پروژه مستقل', proofStat2: 'پروژه تکمیل‌شده', proofStat3: 'زبان رابط', proofStat4: 'پروژه در حال توسعه',
     aboutEyebrow: 'کمی درباره من',
-    aboutTitle: 'از طراحی محصول تا ساخت سیستم‌های نرم‌افزاری.',
-    aboutBody: 'در پروژه‌هایم از رابط‌های تعاملی و ابزارهای بصری تا سیستم‌های توزیع‌شده، داشبوردهای داده و محصولات وب کار کرده‌ام. تلاشم این است که هر پروژه با معماری مشخص، مرزهای روشن، تست و توضیح صادقانه از وضعیت واقعی ارائه شود.',
-    focus: 'حوزه‌های تمرکز',
-    focus1: 'طراحی محصول و مهندسی فرانت‌اند',
-    focus2: 'سیستم‌های توزیع‌شده و مشاهده‌پذیری',
-    focus3: 'ابزارهای بصری و تجربه‌های تعاملی',
-    focus4: 'محصولات داده‌محور و اتوماسیون',
-    stackEyebrow: 'جعبه ابزار',
-    stackTitle: 'فناوری‌هایی که با آن‌ها می‌سازم.',
-    stackSub: 'فهرست اولیه ابزارهای استفاده‌شده در پروژه‌ها؛ با رشد نمونه‌کارها دقیق‌تر می‌شود.',
+    aboutTitle: 'محصولات را از مسئله تا پیاده‌سازی و انتشار می‌سازم.',
+    aboutBody: 'در پروژه‌هایم تجربهٔ ساخت رابط‌های واکنش‌گرا، ابزارهای بصری و صوتی، اپلیکیشن اندروید، سامانه‌های رزرو و فروشگاهی، داشبوردهای بازار و مشاهده‌پذیری و زیرساخت‌های توزیع‌شده را به‌کار گرفته‌ام. هفت پروژه به مرحلهٔ تکمیل رسیده‌اند و AetherFlow همچنان در مسیر توسعه است؛ در هر مطالعهٔ موردی، معماری، تصمیم‌ها و محدودیت‌های واقعی همان محصول را توضیح داده‌ام.',
+    focus: 'حوزه‌های مهارتی',
+    focus1: 'طراحی محصول، رابط کاربری و مهندسی فرانت‌اند',
+    focus2: 'بک‌اند، APIها و سیستم‌های توزیع‌شده',
+    focus3: 'داده، مشاهده‌پذیری و زیرساخت نرم‌افزار',
+    focus4: 'ابزارهای تعاملی، وب و اپلیکیشن اندروید',
+    stackEyebrow: 'مهارت‌ها و فناوری‌ها',
+    stackTitle: 'مهارت‌ها و فناوری‌هایی که در پروژه‌ها به‌کار گرفته‌ام.',
+    stackSub: 'این فهرست از کد، مستندات و قابلیت‌های پیاده‌سازی‌شده در مخزن پروژه‌ها استخراج شده است؛ نه رتبه‌بندی سطح مهارت و نه ادعای میزبانی تولیدی همهٔ اجزا.',
     contactEyebrow: 'در تماس باشیم',
     contactTitle: 'ایده‌ای برای ساختن داریم؟',
     contactBody: 'برای دیدن کدها، روند توسعه و پروژه‌های تازه، از گیت‌هاب من شروع کن.',
@@ -154,32 +154,32 @@ const text = {
     navAbout: 'About',
     navWork: 'Projects',
     navNovels: 'Novels',
-    navStack: 'Stack',
+    navStack: 'Skills',
     navContact: 'Contact',
     eyebrow: 'Computer engineering · Software builder',
     headlineA: 'Turning ideas',
     headlineB: 'into',
     headlineWord: 'thoughtful',
     headlineC: 'digital experiences.',
-    intro: 'I’m Pooya, a computer engineering student focused on product design, frontend engineering, and systems thinking. Here I share the projects I build, along with their technical journey, decisions, and honest current status.',
+    intro: 'I’m Pooya, a computer engineering student and software product builder. Across eight independent projects, I have worked on interactive interfaces, distributed systems, data dashboards, marketplace experiences, and booking products. Seven projects are complete; AetherFlow is the only active development track.',
     explore: 'Explore projects',
     github: 'My GitHub',
     scroll: 'Scroll to explore',
     selected: 'Selected work',
-    selectedSub: 'Projects and experiments that are part of my engineering journey.',
-    allProjects: '8 projects featured',
-    proofEyebrow: 'THE ENGINEERING FOUNDATION', proofTitle: 'The foundation behind every project.', proofSub: 'Software, systems, and product experiences built with visible evidence.', proofStat1: 'Independent projects', proofStat2: 'Case-study routes', proofStat3: 'Interface languages', proofStat4: 'Publishing targets',
+    selectedSub: 'Seven completed projects, alongside AetherFlow as the one active engineering track. Each case study documents the product, its technical decisions, and its real boundaries.',
+    allProjects: '8 projects · 7 completed · 1 in development',
+    proofEyebrow: 'THE ENGINEERING FOUNDATION', proofTitle: 'The foundation behind every project.', proofSub: 'Eight independent product and software-engineering projects: seven are complete, with AetherFlow as the only active development track.', proofStat1: 'Independent projects', proofStat2: 'Completed projects', proofStat3: 'Interface languages', proofStat4: 'In development',
     aboutEyebrow: 'A little about me',
-    aboutTitle: 'From product design to building software systems.',
-    aboutBody: 'My projects span interactive interfaces and visual tools, distributed systems, data dashboards, and web products. I aim to present each one with a clear architecture, honest boundaries, testing, and an accurate account of its current state.',
-    focus: 'Areas of focus',
-    focus1: 'Product design and frontend engineering',
-    focus2: 'Distributed systems and observability',
-    focus3: 'Visual tools and interactive experiences',
-    focus4: 'Data-driven products and automation',
-    stackEyebrow: 'Toolbox',
-    stackTitle: 'Technologies I build with.',
-    stackSub: 'An initial list of tools used across these projects; it will become more precise as case studies are published.',
+    aboutTitle: 'Building products from problem definition to implementation and release.',
+    aboutBody: 'My work spans responsive product interfaces, visual and audio tools, a native Android companion app, booking and marketplace systems, market-data dashboards, observability workspaces, and distributed infrastructure. Seven projects have reached completion while AetherFlow remains under active development. Each case study documents the architecture, engineering decisions, and real product boundaries.',
+    focus: 'Engineering focus areas',
+    focus1: 'Product design, UI, and frontend engineering',
+    focus2: 'Backend development, APIs, and distributed systems',
+    focus3: 'Data engineering, observability, and infrastructure',
+    focus4: 'Interactive tools, web products, and Android apps',
+    stackEyebrow: 'SKILLS & TECHNOLOGY',
+    stackTitle: 'Skills and technologies demonstrated across my projects.',
+    stackSub: 'Derived from code, documentation, and implemented features across the project repositories. This is not a proficiency ranking or a claim that every component is hosted in production.',
     contactEyebrow: 'Let’s connect',
     contactTitle: 'Have something worth building?',
     contactBody: 'For source code, development updates, and new projects, start with my GitHub profile.',
@@ -666,6 +666,25 @@ export function HydratedCaseStudy({ project, language: initialLanguage, baseUrl 
   );
 }
 
+const skillGroups = {
+  fa: [
+    { title: 'زبان‌ها و توسعهٔ بومی', items: ['Rust', 'Go', 'TypeScript', 'JavaScript', 'SQL', 'Kotlin', 'Android'] },
+    { title: 'وب، رابط و تجربهٔ محصول', items: ['React', 'Next.js', 'Vite', 'Tailwind CSS', 'Framer Motion', 'SVG', 'Canvas', 'Web Audio API', 'BroadcastChannel', 'Responsive UI', 'RTL / LTR', 'Accessibility'] },
+    { title: 'بک‌اند و یکپارچه‌سازی', items: ['Tokio', 'REST APIs', 'OpenAPI', 'Google Apps Script', 'Cloudflare Workers', 'Firebase Cloud Messaging', 'OAuth 2.0 / OIDC'] },
+    { title: 'داده، زیرساخت و مشاهده‌پذیری', items: ['PostgreSQL', 'NATS JetStream', 'Google Sheets', 'Docker Compose', 'OpenTelemetry', 'Prometheus', 'Loki', 'Tempo', 'localStorage'] },
+    { title: 'معماری و مهندسی محصول', items: ['Distributed Workflows', 'Durable Execution', 'Worker Recovery', 'Event-driven Architecture', 'Graph Algorithms', 'Incident & SLO Management', 'Marketplace & Catalog Systems', 'Booking & Scheduling', 'Market Data & Paper Trading'] },
+    { title: 'کیفیت، امنیت و انتشار', items: ['GitHub Actions', 'CI/CD', 'Playwright', 'axe-core', 'Unit & Integration Testing', 'Browser E2E Testing', 'Access Control', 'GitHub Pages', 'Cloudflare Pages'] }
+  ],
+  en: [
+    { title: 'Languages & native development', items: ['Rust', 'Go', 'TypeScript', 'JavaScript', 'SQL', 'Kotlin', 'Android'] },
+    { title: 'Web, UI & product experience', items: ['React', 'Next.js', 'Vite', 'Tailwind CSS', 'Framer Motion', 'SVG', 'Canvas', 'Web Audio API', 'BroadcastChannel', 'Responsive UI', 'RTL / LTR', 'Accessibility'] },
+    { title: 'Backend & integrations', items: ['Tokio', 'REST APIs', 'OpenAPI', 'Google Apps Script', 'Cloudflare Workers', 'Firebase Cloud Messaging', 'OAuth 2.0 / OIDC'] },
+    { title: 'Data, infrastructure & observability', items: ['PostgreSQL', 'NATS JetStream', 'Google Sheets', 'Docker Compose', 'OpenTelemetry', 'Prometheus', 'Loki', 'Tempo', 'localStorage'] },
+    { title: 'System & product engineering', items: ['Distributed Workflows', 'Durable Execution', 'Worker Recovery', 'Event-driven Architecture', 'Graph Algorithms', 'Incident & SLO Management', 'Marketplace & Catalog Systems', 'Booking & Scheduling', 'Market Data & Paper Trading'] },
+    { title: 'Quality, security & delivery', items: ['GitHub Actions', 'CI/CD', 'Playwright', 'axe-core', 'Unit & Integration Testing', 'Browser E2E Testing', 'Access Control', 'GitHub Pages', 'Cloudflare Pages'] }
+  ]
+} as const;
+
 export default function PortfolioHome({ language, onLanguageChange, theme, onThemeChange, onOpenWorkspace }: PortfolioHomeProps): ReactNode {
   const t = text[language];
   const rtl = language === 'fa';
@@ -879,9 +898,9 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
           </div>
           <div className="portfolio-proof-stats" role="group" aria-label={t.proofEyebrow}>
             <article><strong>08</strong><small>{t.proofStat1}</small></article>
-            <article><strong>16</strong><small>{t.proofStat2}</small></article>
+            <article><strong>07</strong><small>{t.proofStat2}</small></article>
             <article><strong>02</strong><small>{t.proofStat3}</small></article>
-            <article><strong>03</strong><small>{t.proofStat4}</small></article>
+            <article><strong>01</strong><small>{t.proofStat4}</small></article>
           </div>
           <div className="portfolio-proof-visual" aria-hidden="true">
             <svg className="proof-radial-svg" viewBox="0 0 1200 390" preserveAspectRatio="xMidYMax meet">
@@ -1091,9 +1110,14 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             <div><div className="portfolio-eyebrow"><span className="eyebrow-index">04 /</span>{t.stackEyebrow}</div><h2>{t.stackTitle}</h2><p>{t.stackSub}</p></div>
             <TerminalSquare size={32} strokeWidth={1.2} />
           </div>
-          <div className="stack-list">
-            {['Rust', 'Next.js', 'React', 'TypeScript', 'Go', 'PostgreSQL', 'NATS JetStream', 'OpenTelemetry', 'Vite', 'Google Apps Script', 'SVG / Canvas', 'Web Audio API'].map((technology, index) => (
-              <span key={technology}><small>0{index + 1}</small>{technology}</span>
+          <div className="skill-groups">
+            {skillGroups[language].map((group, index) => (
+              <article className="skill-group" key={group.title}>
+                <h3 dir="auto"><small>{String(index + 1).padStart(2, '0')}</small><bdi dir="auto">{group.title}</bdi></h3>
+                <div className="skill-group-items" aria-label={group.title}>
+                  {group.items.map((skill) => <span key={skill}>{skill}</span>)}
+                </div>
+              </article>
             ))}
           </div>
         </section>
