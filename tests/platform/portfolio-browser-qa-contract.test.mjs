@@ -198,6 +198,7 @@ test('mobile case-study screenshots allow native Android scroll chaining into th
   assert.match(script, /galleryHitTargetInsideFrame/);
   assert.match(script, /ancestorScrollChain/);
   assert.match(script, /imageDraggable: image instanceof HTMLImageElement/);
+  assert.match(script, /image\.draggable = false/);
   assert.match(script, /window\.__portfolioGalleryTouchTrace/);
   assert.match(script, /document-capture/);
   assert.match(script, /document-bubble/);
