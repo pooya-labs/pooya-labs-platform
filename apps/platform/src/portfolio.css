@@ -3776,18 +3776,3 @@
   }
 }
 
-
-/* Homepage project artwork: Salon Booking and AetherFlow must fill the shared card frame. */
-.portfolio-project-card .project-art-salon-booking .project-art-image,
-.portfolio-project-card .project-art-aetherflow .project-art-image {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  max-height: none;
-  object-fit: cover !important;
-  object-position: center center;
-  padding: 0 !important;
-}
