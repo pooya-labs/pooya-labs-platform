@@ -721,3 +721,9 @@
 - Desktop and non-touch layouts are unchanged. Preview only; no tests or QA executed.
 - تصویر کارت Salon Booking در بخش Projects صفحه اصلی به تصویر اصلی بالای وب‌سایت شایان سالن (`shayan-hero.webp`) تغییر کرد. تصویر تمام‌صفحه قبلی در گالری مطالعه موردی دست‌نخورده باقی ماند.
 - Replaced the Salon Booking homepage Projects-card image with the Shayan Salon website hero asset (`shayan-hero.webp`). The previous full-page capture remains unchanged in the case-study gallery.
+
+
+## 2026-11-11 — Correct Salon Booking homepage card image priority
+
+- Fixed the Projects-card JSX to prefer `visualAsset` over `caseStudyHeroAsset`, resolving why the earlier hero-image data change was invisible on the homepage.
+- Salon Booking now displays the Shayan Salon top/hero asset on its homepage card; the full-page case-study image remains intact. Preview only; no tests or QA executed.
