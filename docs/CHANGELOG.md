@@ -1,3 +1,10 @@
+## 2026-11-11 — AuraPulse and GlobalCart homepage motion corrected
+
+- Rebuilt AuraPulse's compact project-card visual as a three-row, explicitly simulated market terminal with BTC / ETH / SOL tickers and animated per-row micro-candles. Removed the unrelated decorative line.
+- Rebuilt GlobalCart's compact project-card visual as a miniature marketplace storefront with product search, category navigation, cart count, and distinct product tiles.
+- Only the two homepage mini-scenes changed; project-detail animations and card layout remain untouched.
+- Changes are on `redesign/live-site-baseline` for owner review. Preview only; no tests or QA run.
+
 ## 2026-11-10 — Phase 8 opened by owner; design direction comparison prepared
 
 - Recorded Pooya's explicit instruction to enter Phase 8 design exploration.
