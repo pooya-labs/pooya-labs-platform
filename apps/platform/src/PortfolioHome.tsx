@@ -12,13 +12,15 @@ type Theme = 'dark' | 'light';
 
 function OwnerAttribution({ language, assetBase }: { language: Language; assetBase: string }) {
   const isPersian = language === 'fa';
+  const ownerName = isPersian ? 'پویا گودرزی' : 'POOYA GOODARZI';
+  const ownerByline = isPersian ? 'ایجاد و نگه‌داری: پویا گودرزی' : 'Created & maintained by Pooya Goodarzi';
   return (
     <a className="portfolio-owner-attribution" href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer">
       <img src={`${assetBase}brand/pooya-monogram-tile.svg`} alt="" aria-hidden="true" width={42} height={42} decoding="async" />
       <span className="portfolio-owner-attribution-copy">
         <span className="portfolio-owner-attribution-label">{isPersian ? 'مالک پروژه' : 'PROJECT OWNER'}</span>
-        <strong>{isPersian ? 'پویا گودرزی' : 'POOYA GOODARZI'}</strong>
-        <span className="portfolio-owner-attribution-byline">{isPersian ? 'ایجاد و نگه‌داری: پویا گودرزی' : 'Created & maintained by Pooya Goodarzi'}</span>
+        <strong>{ownerName}</strong>
+        <span className="portfolio-owner-attribution-byline">{ownerByline}</span>
       </span>
     </a>
   );
