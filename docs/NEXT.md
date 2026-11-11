@@ -423,3 +423,11 @@ The failing routes reproduce the same Android behavior Pooya originally reported
 ## Current verified checkpoint — mobile gallery scroll chaining (2026-11-11)
 
 The original Android issue is now fixed in the isolated PR #70 branch. The mobile screenshot frame remains independently scrollable; when a one-finger gesture reaches its top or bottom edge, its remaining movement is explicitly handed to the outer portfolio scroller. Exact-head CI [43029421750](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43029421750) and Browser QA [43029421702](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43029421702) both pass. Browser QA confirms 18/18 routes, 36/36 viewports, 34/34 crawler checks, zero failures and 16/16 localized gallery handoffs. Artifact [13859393276](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43029421702/artifacts/13859393276). Remaining work before owner acceptance: physical Android verification, 36 incomplete Axe contrast checks, and outstanding Phase 7 owner/accessibility/privacy/deployment gates. Do not merge or deploy without Pooya's approval; stop before the next design/owner-instruction gate.
+
+
+## Active owner-directed redesign work — light-theme animation legibility (2026-11-11)
+
+- Applied the first focused correction in `apps/platform/src/phase8-editorial.css`: animated visual stages now retain sufficient foreground/background contrast in light mode across capability previews, system flows, craft motion, case-study scenes, and project-card motion previews.
+- Existing animation behavior and composition are preserved; this is not a redesign of the animation system.
+- Continue applying each new owner instruction directly without routine intermediate tests or visual review. Run the full validation/debugging pass only when Pooya explicitly says **“بازطراحی پایان یافت”**.
+- Keep PR #70 isolated; do not merge or publish as part of this incremental correction.
