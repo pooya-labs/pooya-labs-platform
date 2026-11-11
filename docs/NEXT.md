@@ -402,3 +402,8 @@ The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDI
 ## Current continuation — 2026-11-11
 
 The latest diagnostic artifact [13857121416](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43024823137/artifacts/13857121416) exposed a direction error in the QA fallback: positive yDistance produced a downward finger movement, while the check expects an upward finger swipe to scroll the outer page down. The QA fallback is now yDistance: -180, guarded by a contract assertion. This does not change production UI. Wait for exact-head Repository CI and Browser QA; if the corrected test clears, finish remaining debugging/validation and stop before any larger visual redesign or release action. Pooya asked to be notified when that next design/redesign instruction gate is reached.
+
+
+## Current debugging checkpoint — explicit gallery scroll handoff (2026-11-11)
+
+The failing routes reproduce the same Android behavior Pooya originally reported: the full-page screenshot is an inner scroll surface, and on some case studies reaching its lower boundary does not continue the gesture on the outer page. The QA run after correcting swipe direction still failed eight cases; the drag-image experiment also did not help. A targeted touchmove bridge now transfers the remaining finger delta to `.portfolio-page` when the inner gallery is at its top or bottom edge. It is not a visual redesign and does not alter the public `main` site. Next: run exact-head CI and the complete browser matrix; inspect every new artifact. If the automated behavior passes, still retain real Android verification as an owner check before the redesign/approval gate. Do not merge or deploy PR #70.
