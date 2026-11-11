@@ -1,3 +1,9 @@
+## Latest refinement — single-point foundation animation origin
+
+- Keep the lower origin of the foundation animation visually anchored at one clear point; the rays should fan outward from it.
+- The old curved baseline is removed. The animation visual no longer fades out before its focal origin; only the outer section edge has a short, soft fade into the page.
+- Continue owner-led visual iterations on `redesign/live-site-baseline`. No tests/QA until `بازطراحی پایان یافت`; Preview only.
+
 ## Corrected target — fade the whole foundation section edge
 
 - The visible dividing line was the `.portfolio-proof` section's bottom border. That border is removed and the section's bottom edge is masked to fade into the page surface.
