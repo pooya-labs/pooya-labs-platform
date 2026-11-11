@@ -1826,17 +1826,29 @@
   },
   "activeRedesignInstruction": {
     "date": "2026-11-11",
-    "title": "Scope Salon Booking homepage image override to its own card",
+    "title": "Replace Salon Booking homepage card artwork with a real top-of-homepage screenshot",
     "status": "implemented-preview-pending-owner-review",
     "implementationFiles": [
-      "apps/platform/src/PortfolioHome.tsx",
-      "apps/platform/src/content/projects.ts"
+      "apps/platform/src/content/projects.ts",
+      "apps/platform/public/interface-captures/salon-booking/salon-booking-home-hero.png"
     ],
-    "scope": "Only salon-booking card prefers visualAsset; all other cards retain caseStudyHeroAsset ?? visualAsset",
+    "sourceAsset": "https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/redesign/live-site-baseline/apps/platform/public/interface-captures/salon-booking/salon-booking-home-hero.png",
+    "capture": {
+      "url": "https://pooya-labs.github.io/salon-booking/",
+      "viewport": "1440x1000",
+      "scope": "top viewport of live homepage"
+    },
+    "scope": "Only Salon Booking homepage-card visualAsset changes; its full-page desktop/mobile case-study captures and every other project card remain unchanged",
     "validation": "deferred-until-owner-declares-redesign-finished",
     "release": "preview-only; no merge or production deployment"
   },
   "events": [
+    {
+      "date": "2026-11-11",
+      "event": "Captured the actual published Shayan Salon Booking homepage top viewport (1440x1000), added the PNG to the platform's interface-captures assets, and assigned it only to Salon Booking's homepage-card visualAsset. Case-study full-page captures and all other project cards remain unchanged.",
+      "branch": "redesign/live-site-baseline",
+      "status": "implemented-preview-pending-owner-review"
+    },
     {
       "date": "2026-11-11",
       "event": "Owner reported the Salon Booking homepage card still showed the old lower/full-page capture. Root cause was the card renderer prioritizing caseStudyHeroAsset over visualAsset. Updated apps/platform/src/PortfolioHome.tsx to prefer visualAsset for homepage cards while preserving case-study media.",

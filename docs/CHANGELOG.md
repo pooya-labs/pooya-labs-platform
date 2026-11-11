@@ -1,3 +1,10 @@
+## 2026-11-11 — Salon Booking homepage card uses the live homepage screenshot
+
+- Captured the published Shayan Salon Booking homepage's first viewport (1440×1000), including the navigation, full hero message, booking actions, and feature strip.
+- Added the capture as `apps/platform/public/interface-captures/salon-booking/salon-booking-home-hero.png` and updated only the Salon Booking card's `visualAsset` URL.
+- Preserved the full-page desktop and mobile images for the case-study page; all other project-card images remain unchanged.
+- Preview-only on `redesign/live-site-baseline`; no tests or QA run.
+
 ## 2026-11-11 — Remaining homepage project-card mini-scenes redesigned
 
 - Replaced generic abstract compact animations with product-specific mini interfaces for AetherFlow, Orbit, Pooya OS, Nexus Canvas, LuminaGlass, and Salon Booking.

@@ -1,3 +1,10 @@
+## Latest owner correction — use a real screenshot for the Salon Booking homepage card
+
+- Capture the actual published Shayan Salon Booking homepage at the top of the page, not the lower/full-page booking flow and not an isolated hero artwork.
+- The new 1440×1000 screenshot is stored at `apps/platform/public/interface-captures/salon-booking/salon-booking-home-hero.png` and is assigned only to Salon Booking's homepage-card `visualAsset`.
+- Preserve the full-page desktop/mobile captures for the case-study detail. Keep all other project cards unchanged.
+- Continue on `redesign/live-site-baseline`, deploy Preview only, and defer tests/QA until `بازطراحی پایان یافت`.
+
 ## Latest owner direction — redesign all remaining project-card mini-scenes
 
 - Extend the successful AuraPulse and GlobalCart mini-scene redesign to all remaining homepage projects.

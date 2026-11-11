@@ -1,3 +1,10 @@
+## Latest checkpoint — Salon Booking homepage card now uses a real live hero screenshot (2026-11-11)
+
+- Captured the top viewport of the published Shayan Salon Booking homepage at 1440×1000 using Cloudflare Browser Rendering; the capture shows the site navigation, hero headline, booking CTA, and top feature strip.
+- Added the screenshot as `apps/platform/public/interface-captures/salon-booking/salon-booking-home-hero.png` and pointed only the Salon Booking homepage card's `visualAsset` to it.
+- Kept the full-page desktop and mobile captures assigned to the Salon Booking case study. No other project-card image selection or asset was changed.
+- Preview-only on `redesign/live-site-baseline`. No tests or QA run; owner review remains pending until `بازطراحی پایان یافت`.
+
 ## Latest checkpoint — remaining homepage project-card scenes redesigned (2026-11-11)
 
 - Rebuilt the six remaining compact project-card windows to communicate each product directly: AetherFlow workflow pipeline, Orbit service observability, Pooya OS desktop/app launcher, Nexus Canvas connected-node graph, LuminaGlass refractive material lab, and Salon Booking appointment calendar.
