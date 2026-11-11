@@ -397,3 +397,8 @@ The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDI
 - Do not modify independent project repositories during this platform readiness pass unless a concrete blocker is explicitly approved as an upstream task.
 - A missing owner approval, physical-device test, private credential, or third-party salon permission must remain an explicit blocker; do not mark it complete on the owner's behalf.
 
+
+
+## Current continuation — 2026-11-11
+
+The latest diagnostic artifact [13857121416](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43024823137/artifacts/13857121416) exposed a direction error in the QA fallback: positive yDistance produced a downward finger movement, while the check expects an upward finger swipe to scroll the outer page down. The QA fallback is now yDistance: -180, guarded by a contract assertion. This does not change production UI. Wait for exact-head Repository CI and Browser QA; if the corrected test clears, finish remaining debugging/validation and stop before any larger visual redesign or release action. Pooya asked to be notified when that next design/redesign instruction gate is reached.
