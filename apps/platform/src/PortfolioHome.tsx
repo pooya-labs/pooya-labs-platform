@@ -18,7 +18,7 @@ function OwnerAttribution({ language, assetBase }: { language: Language; assetBa
       <span className="portfolio-owner-attribution-copy">
         <span className="portfolio-owner-attribution-label">{isPersian ? 'مالک پروژه' : 'PROJECT OWNER'}</span>
         <strong>{'Goodarzi'}</strong>
-        <span className="portfolio-owner-attribution-byline">{isPersian ? 'ایجاد و نگه‌داری: پویا گودرزی' : 'Created & maintained by Pooya Goodarzi'}</span>
+        <span className="portfolio-owner-attribution-byline">{isPersian ? 'ایجاد و نگه‌داری: گودرزی' : 'Created & maintained by Goodarzi'}</span>
       </span>
     </a>
   );
