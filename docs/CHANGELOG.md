@@ -1,3 +1,9 @@
+## 2026-11-11 — Record owner-directed redesign workflow
+
+- Recorded Pooya's instruction to apply each redesign command promptly to the working website, preserving existing working features and avoiding routine test/QA/debug cycles between instructions.
+- Full testing and debugging are deferred until the owner explicitly says “بازطراحی پایان یافت” (or an unmistakable equivalent). Until then, changes are implemented and documented in sequence; unrun checks must not be reported as passed.
+- This changes the work cadence only; it does not bypass repository protections or imply a public deployment.
+
 ## 2026-11-11 — Instrument route-specific mobile touch handling
 
 - Browser QA run 43024051284 completed 18/18 routes, 36/36 viewports, and 34/34 social-crawler checks with zero confirmed Axe violations. Eight gallery handoff failures remained. Artifact 13856267913 confirms both wrapper overflow values compute to `clip`; the failing set is AetherFlow, ORBIT, LuminaGlass, and AuraPulse in both locales, while Pooya.OS, NexusCanvas, GlobalCart, and Salon Booking pass with the same computed frame/card/section values.
