@@ -422,7 +422,7 @@ function App(): ReactNode {
             <section className="hero-panel">
               <div className="hero-orbit orbit-a" /><div className="hero-orbit orbit-b" /><div className="hero-glow" />
               <div className="hero-content">
-                <div className="hero-label"><span className="hero-label-dot" /> POOYA LABS / SPATIAL OS</div>
+                <div className="hero-label"><span className="hero-label-dot" /> POOYA LABS / WORKSPACE</div>
                 <h2>{language === 'fa' ? 'از ایده تا خروجی، همه‌چیز زیر نظر تو.' : 'From intent to verified work.'}</h2>
                 <p>{t.welcome}</p>
                 <div className="hero-actions">
@@ -478,7 +478,7 @@ function App(): ReactNode {
               </div>
             </section>
 
-            <footer className="desktop-footer"><span>POOYA LABS <i>·</i> SPATIAL WORKSPACE</span><span>{htmlServiceHost ? t.hostHtml : t.hostPreview}</span></footer>
+            <footer className="desktop-footer"><span>POOYA LABS <i>·</i> PERSONAL WORKSPACE</span><span>{htmlServiceHost ? t.hostHtml : t.hostPreview}</span></footer>
           </div>
 
           <div className="window-layer">
