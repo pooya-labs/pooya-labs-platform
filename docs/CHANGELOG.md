@@ -1,3 +1,10 @@
+## 2026-11-11 — Remaining homepage project-card mini-scenes redesigned
+
+- Replaced generic abstract compact animations with product-specific mini interfaces for AetherFlow, Orbit, Pooya OS, Nexus Canvas, LuminaGlass, and Salon Booking.
+- AetherFlow: trigger → worker → durable commit workflow. Orbit: service health, incident state, telemetry. Pooya OS: spatial desktop and app launcher. Nexus Canvas: connected graph nodes. LuminaGlass: refractive prism with optical controls. Salon Booking: weekly appointment slots and confirmed booking.
+- Combined with AuraPulse and GlobalCart, all eight homepage project-card mini-scenes are now product-aligned.
+- Preview only on `redesign/live-site-baseline`; tests and QA remain deferred.
+
 ## 2026-11-11 — AuraPulse and GlobalCart homepage motion corrected
 
 - Rebuilt AuraPulse's compact project-card visual as a three-row, explicitly simulated market terminal with BTC / ETH / SOL tickers and animated per-row micro-candles. Removed the unrelated decorative line.
