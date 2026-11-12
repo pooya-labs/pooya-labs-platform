@@ -134,8 +134,8 @@ test('the owner-designed monogram and wordmark replace the generated identity', 
 });
 
 
-test('the English hero keeps thoughtful as an isolated, unbroken LTR word', () => {
-  assert.ok(home.includes("headlineB: 'into',") && home.includes("headlineWord: 'thoughtful'"));
+test('the English hero keeps intelligent as an isolated, unbroken LTR word', () => {
+  assert.ok(home.includes("headlineB: 'meets expressive',") && home.includes("headlineWord: 'intelligent'"));
   assert.ok(home.includes('hero-title-word-line'));
   assert.ok(home.includes('<bdi dir="ltr" className="hero-title-word">{t.headlineWord}</bdi>'));
   assert.ok(css.includes('.portfolio-hero-copy .hero-title-word-line'));
@@ -144,7 +144,7 @@ test('the English hero keeps thoughtful as an isolated, unbroken LTR word', () =
   assert.ok(css.includes('background:none!important'));
   assert.ok(css.includes('color:#79e5c5!important'));
   const browserQa = readFile(new URL('../../apps/platform/scripts/portfolio-browser-qa.mjs', import.meta.url), 'utf8');
-  return browserQa.then((source) => assert.ok(source.includes('thoughtful headline word is missing, split, or clipped')));
+  return browserQa.then((source) => assert.ok(source.includes('intelligent headline word is missing, split, or clipped')));
 });
 
 test('the supplied monogram is borderless and its reveal respects reduced motion', () => {
