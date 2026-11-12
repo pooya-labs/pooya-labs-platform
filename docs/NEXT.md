@@ -1,3 +1,18 @@
+# Next — Phase 9 project evidence and source reconciliation (2026-11-12)
+
+The final redesign is approved, merged and published to both static production hosts. Do not reopen Phase 8 design selection or the superseded prototype PR. Do not tag V1 yet.
+
+1. Recheck the exact default-branch SHAs, releases, open PRs, current CI/deployment evidence and hosted routes for AetherFlow, ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, GlobalCart and Salon Booking.
+2. Reconcile each bilingual dossier against its exact upstream source: verified features, architecture, the owner's role/contribution wording, demo/simulation boundaries, limitations, links, screenshots and alt text.
+3. Complete owner content/media decisions that are still open. Salon Booking attribution and any customer-facing visual material require the salon owner's separate permission; never publish admin data or booking records.
+4. Recheck the two published Novels entries and public PDF reader after the deployment, using the existing uploaded manuscript and WebP assets only.
+5. Keep Phase 7 carry-over active in parallel: human contrast/keyboard/screen-reader review, physical desktop and Android acceptance, content/privacy approvals, authenticated LinkedIn/Meta cache validation, Cloudflare native Git-push decision, and non-destructive rollback rehearsal.
+6. After Phase 9 evidence is complete, run Phase 10 release hardening. The project stays pre-alpha until every required gate is closed and V1 is explicitly approved.
+
+Latest verified application SHA: `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`.
+GitHub Pages: https://pooya-labs.github.io/pooya-labs-platform/
+Cloudflare Pages: https://pooya-labs-platform.pages.dev/
+
 # Current next actions after redesign promotion — 2026-11-12
 
 1. **Owner device review:** inspect the live GitHub Pages and Cloudflare versions on Windows desktop and physical Android, especially the Salon Booking and AetherFlow project-card artwork. The earlier edge-fill experiment was reverted; do not reopen that styling change unless Pooya requests it.
