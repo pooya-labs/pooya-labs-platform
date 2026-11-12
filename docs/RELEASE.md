@@ -2,6 +2,14 @@
 
 This checklist governs public portfolio releases. The completed redesign has been explicitly approved for promotion by Pooya and merged to `main` on 2026-11-12; Phase 8 is complete. The current release remains **pre-alpha / portfolio draft**, because Phase 7 owner-acceptance/readiness carry-over, Phase 9 project-level evidence/content integration and Phase 10 final release gates remain open. Required order: Phase 7 readiness → Phase 8 redesign (complete) → Phase 9 full project integration → Phase 10 V1 hardening and publication.
 
+## Latest exact-main evidence — 2026-11-12
+
+- PR [#75](https://github.com/pooya-labs/pooya-labs-platform/pull/75) merged the semantic skill-group role and contract test. Final main application SHA: `64c5966cba21a2d25d8f357b351593cbe51f26b2`.
+- Exact-main Repository CI [43221461282](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461282) and Browser QA [43221461301](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461301) passed.
+- Browser QA: 18/18 routes; 36/36 viewport checks; 18/18 keyboard skip links; 34/34 social-crawler checks; zero confirmed Axe violations and zero ARIA-incomplete records. Thirty-six color-contrast checks per theme remain incomplete and require human rendered-background measurement.
+- GitHub Pages run [43221461285](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461285) published artifact `13944694071`; Cloudflare Pages Production deployment [975b9e6d](https://975b9e6d.pooya-labs-platform.pages.dev/) published the same SHA with all five stages successful.
+- This is a post-redesign accessibility/deployment correction, not a V1 release. Phase 7 owner/device/accessibility/privacy/social-cache/rollback gates, Phase 9 final evidence integration and Phase 10 release hardening remain open.
+
 ## Before any public release
 
 - [x] Promote the owner-declared-complete redesign via PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71) and merge the targeted post-merge theme-label contrast correction via PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72); final application SHA `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`.
