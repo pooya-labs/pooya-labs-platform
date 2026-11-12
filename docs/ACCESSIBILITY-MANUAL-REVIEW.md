@@ -1,5 +1,19 @@
 # Manual Contrast Review Matrix
 
+**Latest completed exact-head evidence — 12 November 2026:** PR [#75](https://github.com/pooya-labs/pooya-labs-platform/pull/75), Browser QA run [43220737568](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43220737568), artifact [13944948728](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43220737568/artifacts/13944948728), PR head `e9a8a2f0e0de553ee160833dc260ad8a3a968551`. The PR head and merged main commit `64c5966cba21a2d25d8f357b351593cbe51f26b2` have the same Git tree.
+
+| Theme | Incomplete rule checks | Color-contrast checks | ARIA-prohibited-attribute checks | Node occurrences | Unique CSS selectors | Confirmed Axe violations |
+|---|---:|---:|---:|---:|---:|---:|
+| Dark | 36 | 36 | 0 | 267 | 56 | 0 |
+| Light | 36 | 36 | 0 | 288 | 48 | 0 |
+| **Combined** | **72** | **72** | **0** | **555** | **70-selector union** | **0** |
+
+The previous `aria-prohibited-attr` incompletes were caused by skill-chip group containers having `aria-label` on generic `div` elements without a supported role. PR #75 adds `role="group"` to those containers and an automated contract assertion. The latest report contains no ARIA-prohibited-attribute checks in either theme.
+
+All remaining incomplete checks are `color-contrast`. Axe cannot reliably calculate the rendered background for text over gradients, pseudo-elements, and overlapping decorative layers. These are neither confirmed failures nor passes. Each requires rendered-pixel sampling and a manual WCAG AA comparison. No manual color measurement or WCAG certification is claimed.
+
+The latest report passed 18/18 localized routes, 36/36 desktop/mobile viewport checks, 18/18 keyboard skip-link checks, 12/12 mobile gallery gutter swipe checks, and 34/34 social-crawler checks. It recorded no page errors, missing image alt text, horizontal overflow, or confirmed Axe violations. This is automated Chromium evidence only; physical-device, screen-reader and human color-contrast acceptance remain open.
+
 **Status:** Prepared for human review. No manual color measurement, WCAG certification, or owner acceptance is claimed.  
 **Evidence:** [Browser QA run 42815065767](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767), [artifact 13765540433](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767/artifacts/13765540433).  
 **Source commit:** `5af6dd2ca19cdc87783f6312f890c6244e9240b1`.  
