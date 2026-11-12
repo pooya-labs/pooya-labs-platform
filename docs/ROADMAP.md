@@ -133,7 +133,7 @@ Phase 7 readiness work remains open. The autonomous engineering, source-verifica
 
 
 ### Product and content readiness
-- [x] Refresh the read-only source inventory for all eight upstream §main§ branches in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md) (latest: 2026-11-10). Distinguish verified PR-head CI/deployment evidence from commits without a current build/deploy; record AetherFlow PR #19/#20, merged ORBIT PR #138 and its unpromoted patched Keycloak digest, and GlobalCart's FX source-timestamp regression. No upstream repository was modified.
+- [x] Refresh the read-only source inventory for all eight upstream `main` branches in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md) (latest: 2026-11-13). Record the current exact heads and open PRs; AetherFlow PR #47 remains open, while ORBIT PRs #186/#181/#190/#192 are merged and no open ORBIT PR remains. Preserve the GlobalCart's timestamped FX snapshot as stale/unverified. No independent project repository was modified.
 - [ ] Complete the full feature/route, live-link, contribution, logo/media/source, caption, and alt-text acceptance for all eight projects. Final portfolio content/media integration remains Phase 9 work.
 - [ ] Keep every unverified claim, missing contribution statement, and unavailable runtime visibly bounded; never convert a prototype, simulated feed, synthetic demo, or unpublished service into a live/production claim.
 - [ ] Verify all current project links, logos, owner attributions, image sources, captions, and alt text against the newly rechecked upstream repositories; the new SHA inventory does not substitute for feature-level or owner acceptance.

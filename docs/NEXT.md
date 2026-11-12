@@ -1,12 +1,12 @@
-# Next — Phase 7 acceptance and Phase 9 evidence reconciliation (2026-11-12)
+# Next — Phase 7 acceptance and Phase 9 evidence reconciliation (2026-11-13)
 
-The owner-directed redesign is complete and live on both static hosts at main SHA `64c5966cba21a2d25d8f357b351593cbe51f26b2`. PR #75 also resolved the named skill-group ARIA semantics. Do not reopen Phase 8 design selection and do not tag V1.
+The owner-directed redesign is complete and live on both static hosts at main SHA `64c5966cba21a2d25d8f357b351593cbe51f26b2`. PR #75 also resolved the named skill-group ARIA semantics. The read-only upstream source inventory was refreshed on 2026-11-13; this does not close Phase 7 or authorize Phase 9 integration. Do not reopen Phase 8 design selection and do not tag V1.
 
 1. Complete the manual review of the 36 remaining contrast checks in each theme, including real foreground/background sampling over gradients, pseudo-elements and overlapping artwork. ARIA-prohibited-attribute incompletes are now zero.
 2. Complete physical Windows/Android review and actual keyboard/focus/screen-reader acceptance. Browser emulation is not physical-device sign-off.
 3. Verify the public biography, roles/contribution wording, project order, contact details, project claims and media with the owner. Obtain the salon owner's separate media/attribution permission.
 4. Validate LinkedIn Post Inspector and Meta Sharing Debugger/cache refreshes, complete the public/private asset audit and rehearse non-destructive rollback on both static hosts.
-5. Keep the eight-project source inventory current. AetherFlow #47 and ORBIT #192/#190/#181 are open at upstream; preserve project-specific demo/runtime/release boundaries. Do not modify the source-project repositories or integrate their code before the Phase 9 authorization gate.
+5. Keep the eight-project source inventory current. The read-only 2026-11-13 refresh is recorded in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md): AetherFlow PR #47 remains open; ORBIT PRs #181/#186/#190/#192 are merged and no open ORBIT PR remains. Preserve project-specific demo/runtime/release boundaries. Do not modify source-project repositories or integrate their code before the Phase 9 authorization gate.
 6. After Phase 7 carry-over acceptance is closed, perform the final Phase 9 content/evidence/media reconciliation across all eight project dossiers.
 7. Perform Phase 10 release hardening only after Phase 9 is complete. The current platform remains pre-alpha, not V1.
 
