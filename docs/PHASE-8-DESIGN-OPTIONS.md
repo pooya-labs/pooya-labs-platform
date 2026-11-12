@@ -1,5 +1,15 @@
 # Phase 8 — Complete redesign: direction comparison
 
+**Status: complete.** The completed owner-directed redesign was promoted to `main` on 2026-11-12 through PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71) and finalized by PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72) and the semantic accessibility fix in PR [#75](https://github.com/pooya-labs/pooya-labs-platform/pull/75), exact application SHA `64c5966cba21a2d25d8f357b351593cbe51f26b2`. The superseded prototype PR [#70](https://github.com/pooya-labs/pooya-labs-platform/pull/70) is closed and was not merged.
+
+**Important decision record:** this document compared Direction A and B as options. Pooya did not make a separate checkbox selection of A or B in this file; he later iteratively directed and explicitly approved the actual redesign that was promoted. Do not rewrite the historical record as though he explicitly chose A or B. The shipped visual direction is documented in [DESIGN-DIRECTION.md](DESIGN-DIRECTION.md).
+
+The design milestone is complete, but V1 is not approved. Phase 7 human/owner acceptance carry-over remains open; Phase 9 project evidence/content reconciliation must wait until those gates are closed.
+
+---
+
+# Phase 8 — Complete redesign: direction comparison
+
 **Phase:** 8 — Complete redesign and owner approval  
 **Entry authorization:** Pooya explicitly requested entering Phase 8 on 2026-11-10.  
 **Current task:** P8-01 — compare two coherent visual systems and obtain the owner's direction selection.  
