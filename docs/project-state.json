@@ -9,9 +9,9 @@
   "currentTask": {
     "id": "P7-POST-PR75-ACCESSIBILITY-AND-SOURCE-AUDIT",
     "title": "Verify semantic accessibility fix, production parity and latest upstream project evidence",
-    "status": "PR #75 merged. Main code SHA 64c5966cba21a2d25d8f357b351593cbe51f26b2. Both static hosts publish this SHA; main CI and Browser QA passed. Phase 7 human acceptance remains open; Phase 9 and 10 are pending."
+    "status": "PR #75 merged. Main application SHA remains 64c5966cba21a2d25d8f357b351593cbe51f26b2 and both static hosts publish it. Read-only upstream inventory refreshed 2026-11-13: ORBIT main is 63ac457ad0b2 with PRs #181/#186/#190/#192 merged and no open PRs; AetherFlow PR #47 remains open. Phase 7 human acceptance remains open; Phase 9 and 10 are pending."
   },
-  "lastCheckpointDate": "2026-11-12",
+  "lastCheckpointDate": "2026-11-13",
   "latestVerifiedCodeCommit": "64c5966cba21a2d25d8f357b351593cbe51f26b2",
   "tests": {
     "repositoryCi": "passed-main-run-43221461282;exact-main-64c5966cba21a2d25d8f357b351593cbe51f26b2;lint;format;typecheck;three-target-build;secret-scan;contract-tests",
@@ -1256,7 +1256,7 @@
   },
   "latestTask": "Phase 8 redesign promotion, post-merge contrast correction and synchronized static-host publication",
   "latestTaskBranch": "main",
-  "lastUpdated": "2026-11-12",
+  "lastUpdated": "2026-11-13",
   "latestDocumentationCommit": "1559b88f09649843930bfa2c92635beb0b6d7137",
   "latestDocumentationCheckpoint": "2026-11-11-all-eight-homepage-project-mini-scenes-product-aligned;preview-only;owner-review-pending",
   "latestRepositoryCiRun": "43221461282;success;exact-main-64c5966cba21a2d25d8f357b351593cbe51f26b2",
@@ -1292,74 +1292,74 @@
   },
   "upstreamMainHeads": {
     "AetherFlow": {
-      "sha": "ad3edc60d0f65922bfeecc94111725fc61cebab3",
-      "observedAtUtc": "2026-11-10"
+      "sha": "bfc1109b94736bdbf67d81e0d85a8b4949337d83",
+      "observedAtUtc": "2026-11-13"
     },
     "ORBIT": {
-      "sha": "3c8ebc56d34a4c9ed553338c7d8531bb1c4a0e20",
-      "observedAtUtc": "2026-11-10"
+      "sha": "63ac457ad0b2c7887e0f0d0e158399a8fd7472cc",
+      "observedAtUtc": "2026-11-13"
     },
     "Pooya.OS": {
       "sha": "c3b79f7f861398419d4b63f994a9c08c23cbdd01",
-      "observedAtUtc": "2026-11-10"
+      "observedAtUtc": "2026-11-13"
     },
     "NexusCanvas": {
       "sha": "99a95ad3649bc34068eace565a975257994da519",
-      "observedAtUtc": "2026-11-10"
+      "observedAtUtc": "2026-11-13"
     },
     "LuminaGlass": {
       "sha": "450067f9327f8a83235d6b06d174b04452d0dcde",
-      "observedAtUtc": "2026-11-10"
+      "observedAtUtc": "2026-11-13"
     },
     "AuraPulse": {
-      "sha": "410529e3e81894f0d330a2055cc2e900b2d58a7c6",
-      "observedAtUtc": "2026-11-10"
+      "sha": "410529e3e81894c0908020703add51b314e016ba",
+      "observedAtUtc": "2026-11-13"
     },
     "GlobalCart": {
-      "sha": "2ef95fafda7ccee913f7b47aec8a8dec088c6be1",
-      "observedAtUtc": "2026-11-10"
+      "sha": "08f17873e111f5aa4e965d2ecf0304c747865dbe",
+      "observedAtUtc": "2026-11-13"
     },
     "Salon Booking": {
-      "sha": "4fc21aeb46593377b2dc96322ce31a5e3c82dce4",
-      "observedAtUtc": "2026-11-10"
+      "sha": "e4170913b704f3e9d3d9c0eaef2a953161524c68",
+      "observedAtUtc": "2026-11-13"
     }
   },
   "ownerReviewPacket": "Prepared; Phase 8 design exploration authorized 2026-11-10; public content/media approval still pending.",
   "upstreamSourceRecheck": {
-    "date": "2026-11-10",
+    "date": "2026-11-13",
     "mode": "read-only",
     "upstreamMainHeads": {
       "AetherFlow": {
-        "sha": "ad3edc60d0f65922bfeecc94111725fc61cebab3",
-        "observedAtUtc": "2026-11-10"
+        "sha": "bfc1109b94736bdbf67d81e0d85a8b4949337d83",
+        "observedAtUtc": "2026-11-13"
       },
       "ORBIT": {
-        "sha": "3c8ebc56d34a4c9ed553338c7d8531bb1c4a0e20",
-        "observedAtUtc": "2026-11-10"
+        "sha": "63ac457ad0b2c7887e0f0d0e158399a8fd7472cc",
+        "observedAtUtc": "2026-11-13"
       },
       "Pooya.OS": {
         "sha": "c3b79f7f861398419d4b63f994a9c08c23cbdd01",
-        "observedAtUtc": "2026-11-10"
+        "observedAtUtc": "2026-11-13"
       },
       "NexusCanvas": {
         "sha": "99a95ad3649bc34068eace565a975257994da519",
-        "observedAtUtc": "2026-11-10"
+        "observedAtUtc": "2026-11-13"
       },
       "LuminaGlass": {
         "sha": "450067f9327f8a83235d6b06d174b04452d0dcde",
-        "observedAtUtc": "2026-11-10"
+        "observedAtUtc": "2026-11-13"
       },
       "AuraPulse": {
-        "sha": "410529e3e81894f0d330a2055cc2e900b2d58a7c6",
-        "observedAtUtc": "2026-11-10"
+        "sha": "410529e3e81894c0908020703add51b314e016ba",
+        "observedAtUtc": "2026-11-13"
       },
       "GlobalCart": {
-        "sha": "2ef95fafda7ccee913f7b47aec8a8dec088c6be1",
-        "observedAtUtc": "2026-11-10"
+        "sha": "08f17873e111f5aa4e965d2ecf0304c747865dbe",
+        "observedAtUtc": "2026-11-13"
       },
       "Salon Booking": {
-        "sha": "4fc21aeb46593377b2dc96322ce31a5e3c82dce4",
-        "observedAtUtc": "2026-11-10"
+        "sha": "e4170913b704f3e9d3d9c0eaef2a953161524c68",
+        "observedAtUtc": "2026-11-13"
       }
     },
     "aetherflowLiveSheetAcceptance": "owner-confirmed",
@@ -1375,13 +1375,9 @@
     "postMergeRepositoryCiRun": "42625390685;success-on-main-01749d717f6e31a1096cde91ff7773a9b58e1626",
     "browserQaRun": "42526817146",
     "aetherflowLatestPages": "run-42622137557;success-on-current-main-cc56560",
-    "aetherflowOpenDependencyPrs": [
-      5,
-      6,
-      7
-    ],
-    "globalcartLatestMain": "2ef95fafda7ccee913f7b47aec8a8dec088c6be1",
-    "globalcartLatestMainDelta": "data/fx-rate.json-only;bot-authored;[skip ci];sourceUpdatedAt-regressed-80-minutes;new-snapshot-deployment-not-verified",
+    "aetherflowOpenDependencyPrs": [],
+    "globalcartLatestMain": "08f17873e111f5aa4e965d2ecf0304c747865dbe",
+    "globalcartLatestMainDelta": "main-08f17873e111;catalog-snapshot-lockfile-and-site-imagery;embedded-TGJU-USD-snapshot-remains-timestamped-2026-11-10T09:50:30Z-and-is-not-verified-current-as-of-2026-11-13",
     "globalcartLatestPages": "run-42628309742-success-on-1c3d27f;not-latest-fx-snapshot",
     "orbitRepositorySecurity": "run-42538507204-success",
     "browserQaCommit": "9f91535e1854813150fec3b201d4f99034e2dfb5",
@@ -1397,10 +1393,21 @@
     "aetherflowLatestDocsMerge": "ad3edc60d0f65922bfeecc94111725fc61cebab3;PR20-merged",
     "aetherflowLatestPr19RustCi": "42657163383;success;exact-PR19-head",
     "aetherflowLatestPr19SupplyChain": "42657163367;success;exact-PR19-head",
-    "aetherflowOpenPullRequests": [],
+    "aetherflowOpenPullRequests": [
+      47
+    ],
     "aetherflowBenchmarkGate": "open;matching-EPYC-9V45-runner-required",
     "orbitOpenPullRequests": [],
-    "otherFiveUnchanged": true
+    "otherFiveUnchanged": true,
+    "orbitLatestMain": "63ac457ad0b2c7887e0f0d0e158399a8fd7472cc",
+    "orbitLatestApplicationCode": "096b3e525d24db6796d600335a81a1f26810b035",
+    "orbitMergedMaintenancePrs": [
+      186,
+      181,
+      190,
+      192
+    ],
+    "orbitLatestCi": "PR181-CI-43211470512-success;PR181-Security-43211468751-success;PR190-CI-43211488610-success;PR190-Security-43211488518-success;main-Pages-43227586048-success;main-CI-43227586118-partial-with-two-E2E-jobs-cancelled;main-Security-43227586304-partial-with-three-image-jobs-cancelled;PR192-docs-only-CI-43209768590-success;PR192-docs-only-Security-43209768958-success"
   },
   "repositoryGovernance": {
     "auditDate": "2026-11-09",
