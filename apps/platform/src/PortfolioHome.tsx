@@ -1150,7 +1150,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             {skillGroups[language].map((group, index) => (
               <article className="skill-group" key={group.title}>
                 <h3 dir="auto"><small>{String(index + 1).padStart(2, '0')}</small><bdi dir="auto">{group.title}</bdi></h3>
-                <div className="skill-group-items" aria-label={group.title}>
+                <div className="skill-group-items" role="group" aria-label={group.title}>
                   {group.items.map((skill) => <span key={skill}>{skill}</span>)}
                 </div>
               </article>
