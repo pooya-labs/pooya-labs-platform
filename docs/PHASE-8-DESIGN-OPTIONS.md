@@ -1,9 +1,19 @@
 # Phase 8 — Complete redesign: direction comparison
 
+**Status: complete.** The completed owner-directed redesign was promoted to `main` on 2026-11-12 through PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71) and finalized by PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72), exact application SHA `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`. The superseded prototype PR [#70](https://github.com/pooya-labs/pooya-labs-platform/pull/70) is closed and was not merged.
+
+**Important decision record:** this document compared Direction A and B as options. Pooya did not make a separate checkbox selection of A or B in this file; he later iteratively directed and explicitly approved the actual redesign that was promoted. Do not rewrite the historical record as though he explicitly chose A or B. The shipped visual direction is documented in [DESIGN-DIRECTION.md](DESIGN-DIRECTION.md).
+
+The design milestone is complete, but V1 is not approved. Phase 7 human/owner acceptance carry-over remains open; Phase 9 project evidence/content reconciliation must wait until those gates are closed.
+
+---
+
+# Phase 8 — Complete redesign: direction comparison
+
 **Phase:** 8 — Complete redesign and owner approval  
 **Entry authorization:** Pooya explicitly requested entering Phase 8 on 2026-11-10.  
 **Current task:** P8-01 — compare two coherent visual systems and obtain the owner's direction selection.  
-**Implementation state:** not started; do not replace the existing site until one direction is selected.  
+**Implementation state:** completed later through owner-directed iterative revisions and promoted via PR #71; do not treat the old comparison prototype as the final shipped design.  
 **Release state:** pre-alpha. This document is not approval to publish new biography, project claims, personal media, client material, or V1.
 
 ## Why this phase is open
@@ -126,7 +136,7 @@ The Phase 8 brief preserves the previously selected Framer motion reference as a
 
 **Direction A is the recommended starting point**, with two safeguards borrowed from Direction B: stronger whitespace and editorial typography. That hybrid detail does not create a third direction; Direction A remains the selected system unless Pooya chooses B.
 
-The recommendation is not final owner approval. No full application implementation should begin until Pooya selects A or B (or requests a specific adjustment). After selection, prepare a full-site prototype and deliver review round one on desktop and mobile.
+This was the historical recommendation before implementation. The final owner approval was subsequently given to the actual iterative design that was promoted; no separate A/B checkbox selection is claimed. The shipped design and exact current SHA are documented above.
 
 ## Owner decision
 
@@ -134,8 +144,7 @@ The recommendation is not final owner approval. No full application implementati
 - [ ] Select B — Warm Editorial Gallery.
 - [ ] Request adjustments before choosing.
 
-**Decision status:** pending Pooya.  
-**Next step after selection:** P8-02 — produce the complete bilingual responsive prototype for owner review round one.
+**Historical decision status:** the A/B checkbox selection was not separately recorded. The final implemented design was later explicitly approved and promoted by Pooya. Phase 8 is complete; Phase 7 carry-over still blocks Phase 9/V1.
 
 ## Phase 7 carry-over gates — still open
 
