@@ -1,3 +1,19 @@
+# Next — Phase 7 acceptance and Phase 9 evidence reconciliation (2026-11-12)
+
+The owner-directed redesign is complete and live on both static hosts at main SHA `64c5966cba21a2d25d8f357b351593cbe51f26b2`. PR #75 also resolved the named skill-group ARIA semantics. Do not reopen Phase 8 design selection and do not tag V1.
+
+1. Complete the manual review of the 36 remaining contrast checks in each theme, including real foreground/background sampling over gradients, pseudo-elements and overlapping artwork. ARIA-prohibited-attribute incompletes are now zero.
+2. Complete physical Windows/Android review and actual keyboard/focus/screen-reader acceptance. Browser emulation is not physical-device sign-off.
+3. Verify the public biography, roles/contribution wording, project order, contact details, project claims and media with the owner. Obtain the salon owner's separate media/attribution permission.
+4. Validate LinkedIn Post Inspector and Meta Sharing Debugger/cache refreshes, complete the public/private asset audit and rehearse non-destructive rollback on both static hosts.
+5. Keep the eight-project source inventory current. AetherFlow #47 and ORBIT #192/#190/#181 are open at upstream; preserve project-specific demo/runtime/release boundaries. Do not modify the source-project repositories or integrate their code before the Phase 9 authorization gate.
+6. After Phase 7 carry-over acceptance is closed, perform the final Phase 9 content/evidence/media reconciliation across all eight project dossiers.
+7. Perform Phase 10 release hardening only after Phase 9 is complete. The current platform remains pre-alpha, not V1.
+
+Both static production hosts now publish the same exact SHA. GitHub Pages run 43221461285 / artifact 13944694071 succeeded; Cloudflare Production deployment 975b9e6d-8004-447a-9bfe-898c746036a9 completed all five stages through the authenticated connected Cloudflare API. The Cloudflare GitHub Actions deploy job remains skipped because `CLOUDFLARE_API_TOKEN` is not configured; no native Git-push automation is claimed. Apps Script publish remains optional and was skipped because its private clasp secrets are not configured.
+
+---
+
 # Next — Phase 9 project evidence and source reconciliation (2026-11-12)
 
 The final redesign is approved, merged and published to both static production hosts. Do not reopen Phase 8 design selection or the superseded prototype PR. Do not tag V1 yet.
@@ -17,7 +33,7 @@ Cloudflare Pages: https://pooya-labs-platform.pages.dev/
 
 1. **Owner device review:** inspect the live GitHub Pages and Cloudflare versions on Windows desktop and physical Android, especially the Salon Booking and AetherFlow project-card artwork. The earlier edge-fill experiment was reverted; do not reopen that styling change unless Pooya requests it.
 2. **Workspace and novels review:** inspect Workspace V6 in Persian/English and light/dark themes; confirm its navigation, scrolling, internal tools and visual-only demo login behave as expected. Confirm the «گوزن» and «غزال» covers and PDF reader render correctly on the published hosts.
-3. **Human accessibility review:** inspect the 40 incomplete Axe contrast checks per theme, real keyboard/focus behavior and screen-reader flow. Automated Chromium results are evidence, not WCAG certification.
+3. **Human accessibility review:** inspect the 36 incomplete color-contrast checks per theme; ARIA-prohibited-attribute incompletes resolved by PR #75, real keyboard/focus behavior and screen-reader flow. Automated Chromium results are evidence, not WCAG certification.
 4. **Owner/content/privacy approval:** review biography, role/contribution wording, project order, contact details, project statuses and public media. Obtain Salon Booking owner permission and complete the privacy review; never publish customer appointments or admin data.
 5. **Publication housekeeping:** validate LinkedIn Post Inspector and Meta Sharing Debugger cache refreshes, complete the public/private asset audit and rehearse non-destructive rollback for both static hosts.
 6. **Phase 9:** after Phase 7 carry-over acceptance is closed, complete final portfolio-level integration and evidence for all eight projects. Do not embed unconnected backends or claim unavailable runtime features.
