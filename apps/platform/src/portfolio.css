@@ -3780,17 +3780,4 @@
 }
 
 
-/* Windows desktop project-card edge fill: preserve the original captures and remove the side gutters only for these two cards. */
-@media (min-width: 681px) {
-  .portfolio-project-card .project-art.project-art-salon-booking .project-art-image,
-  .portfolio-project-card .project-art.project-art-aetherflow .project-art-image {
-    inset-block: 0;
-    inset-inline: -4%;
-    width: auto;
-    height: 100%;
-    max-width: none;
-    object-fit: cover !important;
-    object-position: center top !important;
-    padding: 0 !important;
-  }
-}
+
