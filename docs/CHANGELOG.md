@@ -1,3 +1,13 @@
+# 2026-11-12 — Publish the final owner-approved portfolio redesign
+
+- Promoted the completed redesign through PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71), then fixed the post-merge light-theme toggle-label contrast issue through PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72).
+- Final application commit: `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`.
+- Exact-main Repository CI [43215080520](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080520) and Portfolio Browser QA [43215080506](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080506) passed. QA covered 18 routes, 36 desktop/mobile viewports, 18 keyboard skip links, 12 mobile gallery-scroll checks and 34 social-crawler checks; zero confirmed Axe violations in either theme. Forty incomplete Axe records per theme remain for human review.
+- Published the matching GitHub Pages artifact [13941954722](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080845/artifacts/13941954722) and Cloudflare Pages Production deployment [b7ed72f1](https://b7ed72f1.pooya-labs-platform.pages.dev/), both from the exact final SHA.
+- Confirmed the restored original Salon Booking and AetherFlow artwork renders in both desktop and mobile project-card frames; no source project repositories were modified.
+- Registered the uploaded «گوزن» and «غزال» books in the public Novels library with WebP covers and PDF reader links. Kept the client-side Workspace demo gate clearly bounded as non-security.
+- This is a completed Phase 8 design promotion, not a V1 release. Phase 7 owner-acceptance carry-over, Phase 9 source/evidence reconciliation and Phase 10 release hardening remain open.
+
 # 2026-11-12 — Promote completed portfolio redesign and publish both static hosts
 
 - Promoted the final owner-requested redesign from `redesign/live-site-baseline` through PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71), merge commit `04d7e6c6ca01e8343be6590463890426f61546b1`.
