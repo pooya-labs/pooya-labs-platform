@@ -104,6 +104,7 @@ try {
   const context = await browser.newContext({
     viewport: { width: 1440, height: 1000 },
     deviceScaleFactor: 1,
+    hasTouch: true,
     reducedMotion: 'no-preference',
   });
   await context.addInitScript(() => {
@@ -291,7 +292,7 @@ try {
         if (semantics.systemFieldCount !== 1 || semantics.systemNodeCount !== 3) addFailure(route, null, 'The Systems in Motion section is incomplete.');
         if (semantics.craftSectionCount !== 1 || semantics.craftPrincipleCount !== 4) addFailure(route, null, 'The craft-principles section is incomplete.');
         if (!semantics.heroTitleRunsIsolated || !semantics.heroCapabilityTitleIsolated) addFailure(route, null, 'A first-page headline is not isolated from mixed bidirectional text.');
-        if (!semantics.heroWord || semantics.thoughtfulWord.text !== 'intelligent' || !semantics.thoughtfulWord.fullyContained) {
+        if (!semantics.heroWord || semantics.heroWord.text !== 'intelligent' || !semantics.heroWord.fullyContained) {
           addFailure(route, null, 'The English intelligent headline word is missing, split, or clipped.');
         }
       }
@@ -476,13 +477,16 @@ try {
               const innerMaxScroll = Math.max(0, element.scrollHeight - element.clientHeight);
               const outerMaxScroll = Math.max(0, pageScroller.scrollHeight - pageScroller.clientHeight);
               element.scrollTop = innerMaxScroll;
+              const outerBefore = pageScroller.scrollTop;
+              const outerRemaining = Math.max(0, outerMaxScroll - outerBefore);
               const rect = element.getBoundingClientRect();
               return {
-                available: innerMaxScroll > 40 && outerMaxScroll - pageScroller.scrollTop > 40,
+                available: innerMaxScroll > 40 && outerRemaining > 40,
                 reason: innerMaxScroll <= 40 ? 'The mobile capture has no internal overflow.' : 'No outer page content remains below the capture.',
                 innerMaxScroll,
-                outerBefore: pageScroller.scrollTop,
+                outerBefore,
                 outerMaxScroll,
+                outerRemaining,
                 viewportHeight: window.innerHeight,
                 imageLoaded: image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0,
                 rect: { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom },
@@ -743,7 +747,7 @@ try {
           addFailure(route, viewport.name, 'Horizontal overflow detected at this viewport.');
         }
         if (route.label === 'home-en' && !metrics.headlineWordContained) {
-          addFailure(route, viewport.name, 'The thoughtful headline word is clipped or escapes its own line bounds.');
+          addFailure(route, viewport.name, 'The intelligent headline word is clipped or escapes its own line bounds.');
         }
         if (isAetherFlowPage) {
           if (!semantics.caseStudyMotionScene?.split(' ').includes('scene-aetherflow')) {
