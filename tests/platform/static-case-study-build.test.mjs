@@ -119,28 +119,24 @@ test('reviewed project interface screenshots are embedded in both static case-st
   assert.ok(!aetherFlow.includes('interface-captures/aetherflow/aetherflow-mobile.png'));
 });
 
-test('AetherFlow case-study hero loads the approved local desktop screenshot in both locales', { skip: !rootHtml }, async () => {
-  const localAsset = '/pooya-labs-platform/interface-captures/aetherflow/aetherflow-fullpage-desktop.png';
+test('AetherFlow case-study hero uses its animated workflow scene and keeps the authentic desktop capture in the gallery', { skip: !rootHtml }, async () => {
   for (const route of ['projects/aetherflow/index.html', 'en/projects/aetherflow/index.html']) {
     const html = await readFile(new URL(route, outputRoot), 'utf8');
-    assert.ok(html.includes('case-study-page-preview'), route + ' must render a real product screenshot in the hero');
-    assert.ok(html.includes(localAsset), route + ' must load the image from the same published site origin');
-    assert.ok(html.includes('case-study-visual-image visual-interface case-study-page-preview'), route + ' must use the product-page image treatment');
-    assert.ok(!html.includes('case-study-motion-art'), route + ' must replace the abstract logo-like hero scene with the screenshot');
+    assert.ok(html.includes('case-study-motion-art scene-aetherflow flow-scene'), route + ' must render the AetherFlow-specific workflow scene in the hero');
+    assert.ok(!html.includes('case-study-page-preview'), route + ' must not overlay the old static hero screenshot');
+    assert.ok(html.includes('case-study-media-card device-desktop'), route + ' must retain the real desktop screenshot in the interface gallery');
+    assert.ok(html.includes('https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/eba5e2d02047375ae8a42514f7bbb58c75106ba7/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png'), route + ' must load the immutable desktop capture');
     assert.ok(html.includes(route.startsWith('en/')
-      ? 'alt="AetherFlow desktop product page showing its workflow preview'
-      : 'alt="نمای واقعی دسکتاپ صفحهٔ اصلی AetherFlow'), route + ' must retain localized image alternative text');
-    assert.ok(html.includes(route.startsWith('en/')
-      ? 'AetherFlow desktop product page showing its workflow preview'
-      : 'نمای واقعی دسکتاپ صفحهٔ اصلی AetherFlow'));
+      ? 'alt="Actual AetherFlow desktop interface showing the workflow preview and worker states"'
+      : 'alt="نمای واقعی رابط دسکتاپ AetherFlow با نمونهٔ گردش‌کار و وضعیت Workerها"'), route + ' must retain localized alternative text');
   }
 });
 
-test('the Pages build retains the locally referenced AetherFlow product screenshot after duplicate-capture pruning', { skip: !rootHtml }, async () => {
-  const screenshot = await readFile(new URL('interface-captures/aetherflow/aetherflow-fullpage-desktop.png', outputRoot));
-  assert.deepEqual(screenshot.subarray(0, 8), Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
-  assert.equal(screenshot.readUInt32BE(16), 1440);
-  assert.equal(screenshot.readUInt32BE(20), 3241);
+test('the Pages build prunes the unused local AetherFlow duplicate while preserving its immutable gallery source', { skip: !rootHtml }, async () => {
+  const duplicate = await readFile(new URL('interface-captures/aetherflow/aetherflow-fullpage-desktop.png', outputRoot), 'utf8').catch(() => null);
+  assert.equal(duplicate, null, 'The unreferenced local duplicate should be pruned from the Pages output');
+  const html = await readFile(new URL('projects/aetherflow/index.html', outputRoot), 'utf8');
+  assert.ok(html.includes('/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png'));
 });
 
 test('case-study image evidence uses immutable source URLs without relying on screenshot basenames', { skip: !rootHtml }, async () => {
