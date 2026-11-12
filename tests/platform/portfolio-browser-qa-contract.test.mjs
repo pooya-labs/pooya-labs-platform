@@ -185,7 +185,7 @@ test('case-study heroes use AetherFlow workflow motion and authentic project-spe
   assert.match(portfolioSource, /SIMULATED/);
 });
 
-test('mobile case-study screenshots allow native Android scroll chaining into the remaining page', () => {
+test('mobile case-study screenshots keep an independently scrollable center and outer-page side gutters', () => {
   assert.match(portfolioCss, /overscroll-behavior-y:auto/);
   assert.match(portfolioCss, /touch-action:pan-y pinch-zoom/);
   assert.match(portfolioCss, /-webkit-overflow-scrolling:touch/);
@@ -196,6 +196,9 @@ test('mobile case-study screenshots allow native Android scroll chaining into th
   assert.match(script, /Emulation\.setTouchEmulationEnabled/);
   assert.match(script, /caseStudyGalleryScroll/);
   assert.match(script, /outerRemaining/);
+  assert.match(script, /gutterSide/);
+  assert.match(script, /gutterX/);
+  assert.match(script, /touch swipe in the transparent side gutter/);
   assert.match(script, /outerScrollTop > setup\.outerBefore/);
   assert.match(portfolioCss, /overscroll-behavior-y:auto/);
   assert.match(portfolioCss, /touch-action:pan-y pinch-zoom/);
