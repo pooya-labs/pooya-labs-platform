@@ -1,7 +1,7 @@
 
 # Project content audit — pre-release source of truth
 
-**Last reviewed:** 2026-11-10 (latest read-only upstream recheck)  
+**Last reviewed:** 2026-11-12 (latest read-only upstream recheck)  
 **Purpose:** Separate facts supported by the eight source repositories from information/evidence still required before Pooya Labs V1.  
 **Rule:** Do not fill gaps with assumptions. Keep verified descriptions in the portfolio and keep missing items as release checklist tasks.
 
