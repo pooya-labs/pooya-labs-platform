@@ -40,7 +40,7 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [x] Add project-specific challenge, approach, engineering highlights, and scope/boundary sections based on repository documentation.
 - [x] Expand all eight bilingual dossiers with source-backed role/attribution, architecture, implementation details, engineering decisions, verification evidence, and direct source/CI references.
 - [x] Add a per-project content audit that separates source-confirmed facts from the missing evidence and owner decisions needed before V1.
-- [x] Add a separate public novels library driven by a validated JSON catalog, with cover images, an in-site Markdown/TXT reader, and a documented GitHub upload workflow. Keep the catalog empty until Pooya supplies final titles and copy.
+- [x] Add a separate public novels library driven by a validated JSON catalog, with cover images, Markdown/TXT/PDF reading and a documented GitHub upload workflow. Connect the two owner-supplied titles «گوزن» and «غزال» with optimized WebP covers and PDF manuscripts on 2026-11-12; manual verification of the live reader remains open.
 - [ ] Curate the featured-project order with Pooya; highlight only the strongest and most presentable work.
 - [ ] Review and approve every public project description and status with Pooya; retain source-backed technical facts as the baseline.
 - [ ] Confirm personal role/contribution wording for all eight projects; AetherFlow's current README does not identify an individual author or contribution split.
@@ -195,20 +195,17 @@ Direction comparison and decision checklist: [PHASE-8-DESIGN-OPTIONS.md](PHASE-8
 
 ## Phase 8 — Complete redesign and owner approval (penultimate stage)
 
-This is the second-to-last stage before V1. Phase 8 design exploration is owner-authorized from 2026-11-10. The full public site remains a review baseline until a direction is selected and the complete redesign passes two explicit owner review rounds.
+**Status: complete — owner-requested redesign promoted to `main` on 2026-11-12.** After iterative visual revisions, Pooya explicitly declared the redesign complete and requested replacing the main repository. PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71) promoted the completed redesign; PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72) then fixed the label-level light-theme contrast issue identified by post-merge Browser QA. This approval applies to the completed current redesign; it does not claim that Pooya explicitly selected option A or B in the earlier comparison document.
 
-The remaining Phase 7 owner/device and publication gates continue in parallel and remain mandatory before V1. Their status is not changed by opening this design phase.
+- [x] Complete the bilingual public portfolio redesign and iterative visual feedback on the designated redesign branch.
+- [x] Preserve responsive behavior, RTL/LTR layout, light/dark themes, reduced-motion handling and project-specific visual treatments.
+- [x] Revert the unsuccessful desktop edge-fill experiment; preserve the original AetherFlow capture and case-study media, and use the requested Salon Booking top-of-site hero image on its homepage card.
+- [x] Promote the redesign through PR #71 (merge `04d7e6c6ca01e8343be6590463890426f61546b1`) and apply the targeted contrast correction through PR #72 (final application SHA `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`).
+- [x] Publish the final application SHA to GitHub Pages (run 43215080845) and Cloudflare Pages Production (deployment `b7ed72f1-7507-4598-9e61-9f5745997751`).
+- [x] Pass main Repository CI (run 43215080520) and main Browser QA (run 43215080506): 18/18 routes, 36/36 viewport checks, 18/18 keyboard skip-link checks, 34/34 social-crawler checks, zero confirmed Axe violations across both themes.
+- [ ] Complete the outstanding Phase 7 human acceptance and publication gates. Forty incomplete Axe checks per theme, physical-device review, assistive-technology review, owner content/media permissions, authenticated social-cache validation and rollback rehearsal remain separate open items.
 
-- [ ] Revisit the full visual direction with Pooya, including identity, logo usage, typography, color system, hierarchy, spacing, page flow, responsive behavior, navigation, motion, and project-storytelling approach.
-- [x] Compare two coherent design directions and document the trade-offs in [PHASE-8-DESIGN-OPTIONS.md](PHASE-8-DESIGN-OPTIONS.md); owner selection of A or B remains pending before implementation.
-- [ ] Redesign the entire portfolio consistently—not as isolated section patches—including homepage, navigation, project cards, case-study templates, media galleries, About, novels, contact, and footer.
-- [ ] Preserve correct content boundaries, verified links, RTL/LTR behavior, reduced motion, accessibility, and performance budgets throughout the redesign.
-- [ ] Publish a review preview and complete owner review round one on desktop and mobile.
-- [ ] Record all requested revisions and apply the approved changes.
-- [ ] Publish the revised preview and complete owner review round two, including physical-device confirmation.
-- [ ] Obtain explicit written owner approval of the complete redesigned site and freeze the design direction.
-
-**Exit gate:** Pooya explicitly approves the complete redesigned portfolio after the second review. Do not begin final project integration until this approval is recorded.
+**Exit gate:** the requested redesign is complete and promoted. This does not approve V1 or waive Phase 7 carry-over. Proceed to Phase 9 only after the Phase 7 readiness/owner-acceptance gates are closed.
 
 ## Phase 9 — Full project integration (final stage before V1 publication)
 
