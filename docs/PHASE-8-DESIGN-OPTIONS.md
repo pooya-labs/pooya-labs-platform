@@ -1,19 +1,20 @@
 # Phase 8 — Complete redesign: direction comparison
 
-**Status: complete.** The completed owner-directed redesign was promoted to `main` on 2026-11-12 through PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71) and finalized by PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72), exact application SHA `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`. The superseded prototype PR [#70](https://github.com/pooya-labs/pooya-labs-platform/pull/70) is closed and was not merged.
+**Status: complete.** The owner-directed redesign was promoted to `main` through PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71), followed by the light-theme header-label contrast correction in PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72) and semantic skill-chip accessibility correction in PR [#75](https://github.com/pooya-labs/pooya-labs-platform/pull/75). Current application SHA: `64c5966cba21a2d25d8f357b351593cbe51f26b2`. The early prototype PR [#70](https://github.com/pooya-labs/pooya-labs-platform/pull/70) was closed as superseded and was not merged.
 
-**Important decision record:** this document compared Direction A and B as options. Pooya did not make a separate checkbox selection of A or B in this file; he later iteratively directed and explicitly approved the actual redesign that was promoted. Do not rewrite the historical record as though he explicitly chose A or B. The shipped visual direction is documented in [DESIGN-DIRECTION.md](DESIGN-DIRECTION.md).
+**Decision record:** this document compared Direction A and B as options. Pooya did not make a separate checkbox selection of A or B; he later iteratively directed and explicitly approved the actual design that was promoted. The shipped visual direction is documented in [DESIGN-DIRECTION.md](DESIGN-DIRECTION.md). Do not retrospectively claim an explicit A/B selection.
 
-The design milestone is complete, but V1 is not approved. Phase 7 human/owner acceptance carry-over remains open; Phase 9 project evidence/content reconciliation must wait until those gates are closed.
+Phase 8 is complete, but V1 is not approved. Phase 7 human/owner acceptance remains open and blocks Phase 9 final evidence integration and Phase 10 publication.
 
 ---
 
-# Phase 8 — Complete redesign: direction comparison
+
+## Historical design comparison (P8-01)
 
 **Phase:** 8 — Complete redesign and owner approval  
 **Entry authorization:** Pooya explicitly requested entering Phase 8 on 2026-11-10.  
-**Current task:** P8-01 — compare two coherent visual systems and obtain the owner's direction selection.  
-**Implementation state:** completed later through owner-directed iterative revisions and promoted via PR #71; do not treat the old comparison prototype as the final shipped design.  
+**Historical task:** P8-01 — compare two coherent visual systems.  
+**Implementation state:** completed later through owner-directed iterative revisions and promoted via PRs #71, #72 and #75; the old comparison prototype is not the final shipped design.  
 **Release state:** pre-alpha. This document is not approval to publish new biography, project claims, personal media, client material, or V1.
 
 ## Why this phase is open
@@ -150,7 +151,7 @@ This was the historical recommendation before implementation. The final owner ap
 
 Pooya's instruction authorizes Phase 8 design exploration to begin now. It does **not** mark Phase 7 fully accepted and does not waive the following pre-publication requirements:
 
-- Human review of the 36 incomplete Axe contrast checks in each theme.
+- Human rendered-background measurements for the 36 incomplete color-contrast checks in each theme.
 - Physical desktop/Android review and actual keyboard/focus/screen-reader evaluation.
 - Owner approval of biography, headline, positioning, featured order, project contribution wording, contact details, and public media.
 - Separate Salon Booking owner permission for attribution and imagery.
@@ -159,3 +160,4 @@ Pooya's instruction authorizes Phase 8 design exploration to begin now. It does 
 - Public/private asset audit and non-destructive rollback rehearsal.
 
 These remain blockers for Phase 10/V1. Full project-content/media integration remains Phase 9 after the Phase 8 two-round redesign approval.
+
