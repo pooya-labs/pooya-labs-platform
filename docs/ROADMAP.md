@@ -100,6 +100,13 @@ The release target is a credible, distinctive personal portfolio that introduces
 
 ## Phase 7 — Pre-redesign readiness and engineering closeout
 
+### Phase 7 readiness history — P7-34 latest dual-theme contrast inventory (2026-11-13)
+
+- [x] Re-run the full portfolio Browser QA after the PR #77 source-inventory refresh. PR #78's documentation-only head `dd37e1f37b646137280f1a315143f82aef549bc6` was based on `860c067bb1b19d94ebb67184bd59e1ebb5a85acb`; the application source remained `64c5966cba21a2d25d8f357b351593cbe51f26b2`. Exact-head Repository CI [43328360853](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43328360853) and Browser QA [43328360741](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43328360741) passed.
+- [x] Refresh [ACCESSIBILITY-MANUAL-REVIEW.md](ACCESSIBILITY-MANUAL-REVIEW.md) from artifact [13994116607](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43328360741/artifacts/13994116607): 36 incomplete `color-contrast` checks per theme, 269 dark / 288 light node occurrences, 56 / 48 unique selectors, zero confirmed Axe violations.
+- [ ] Complete manual rendered-background contrast measurements, focus visibility, keyboard-only acceptance and screen-reader flow in both languages and themes. This QA recheck does not satisfy human or physical-device acceptance.
+
+
 ### Phase 7 readiness history — P7-33 dual-theme contrast matrix refreshed (2026-11-10)
 
 - [x] Refresh the manual review matrix from exact-main Browser QA run [42815065767](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767), artifact [13765540433](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767/artifacts/13765540433): 36 incomplete Axe checks in dark mode and 36 in light mode; 228/288 node occurrences; 74/56 theme selectors; 87 unique selectors across both themes.
