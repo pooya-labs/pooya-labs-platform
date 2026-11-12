@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, BookText, ChevronDown, Code2, ExternalLink, LoaderCircle, Moon, Sun } from 'lucide-react';
+import { ArrowUpLeft, BookOpen, BookText, ChevronDown, Code2, LoaderCircle, Moon, Sun } from 'lucide-react';
 import { useEffect, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
 
 export type NovelLocaleText = { fa: string; en?: string };
