@@ -1,5 +1,14 @@
 # Visual Direction — Pooya Labs personal portfolio
 
+**Current as-built status (2026-11-12):** The owner-directed redesign is complete and live on both static production hosts at exact application SHA `64c5966cba21a2d25d8f357b351593cbe51f26b2`. The as-built direction is a personal engineering portfolio with a restrained graphite/ivory/emerald visual system, editorial hierarchy, an animated proof/hero composition, systems-flow storytelling, project-specific visual scenes, and a craft gallery. It preserves English-first/LTR, Persian/RTL, dark/light themes, reduced-motion support and native pointer behavior. The removed cursor-following lens remains excluded.
+
+- Owner promotion: PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71); contrast correction: PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72); semantic skill-group role correction: PR [#75](https://github.com/pooya-labs/pooya-labs-platform/pull/75).
+- CI on final application main checkpoint: [43221461282](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461282); PR-head Browser QA after the semantic correction: [43220737568](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43220737568). Post-merge main Browser QA is run [43221461301](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461301).
+- GitHub Pages: [production site](https://pooya-labs.github.io/pooya-labs-platform/); Cloudflare Pages: [canonical production host](https://pooya-labs-platform.pages.dev/).
+- Phase 8 is complete. PR #75 removed the skill-group ARIA ambiguities in automated QA. Thirty-six incomplete contrast checks per theme remain for human review; Phase 7 manual/owner acceptance remains open and blocks Phase 9 final evidence integration and V1. No project-level content or client media has been implicitly approved by the design promotion.
+
+## Historical design brief and earlier baseline
+
 **Status:** The current motion-led portfolio is a review baseline, not the final design. A complete new redesign with two owner review/approval rounds is Phase 8, the penultimate stage before V1. Full portfolio-level integration of all eight projects is Phase 9, immediately before release.
 
 ## Product first
