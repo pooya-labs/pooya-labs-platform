@@ -125,9 +125,13 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [ ] Complete a project-specific legal/title and third-party asset review before making any formal copyright/rights assignment claim.
 
 
-### Current carry-over status — 2026-11-12
+### Current Phase 7 carry-over status — 2026-11-12 post-PR #75
 
-Phase 8 was subsequently opened by explicit owner instruction and is now complete; the full redesign was approved for promotion and merged through PRs #71 and #72. PR #75 then added a semantic `role="group"` to the skill chips, removing the four per-theme incomplete ARIA checks from the Browser QA report; the 36 contrast-only incomplete checks per theme remain. This does **not** retroactively close the Phase 7 exit gate. The remaining human contrast/ARIA review, physical-device and assistive-technology acceptance, owner content/media/privacy approvals, authenticated social-cache validation, deployment-automation decision and rollback rehearsal remain mandatory before Phase 9 integration and Phase 10/V1 publication. Read-only upstream source verification may proceed as preparation; do not begin final project content/media integration until the carry-over gates are closed.
+The skill-chip ARIA ambiguity is resolved and absent from the latest exact-main Axe report. Only the 36 color-contrast incomplete checks per theme remain; they are background-resolution uncertainty, not confirmed failures or passes. Physical device, real screen-reader, public content/media approvals, Salon Booking permission, authenticated share-cache validation and rollback rehearsal remain mandatory before Phase 9/V1.
+
+### Historical carry-over status before PR #75 — 2026-11-12
+
+Phase 8 was subsequently opened by explicit owner instruction and is now complete; the full redesign was approved for promotion and merged through PRs #71 and #72. PR #75 then added a semantic `role="group"` to the skill chips, removing the four per-theme incomplete ARIA checks from the Browser QA report; the 36 contrast-only incomplete checks per theme remain. This does **not** retroactively close the Phase 7 exit gate. The remaining human rendered-background contrast review, physical-device and assistive-technology acceptance, owner content/media/privacy approvals, authenticated social-cache validation, deployment-automation decision and rollback rehearsal remain mandatory before Phase 9 integration and Phase 10/V1 publication. Read-only upstream source verification may proceed as preparation; do not begin final project content/media integration until the carry-over gates are closed.
 
 Phase 7 readiness work remains open. The autonomous engineering, source-verification and accessibility-preparation tasks below have been completed where evidenced; unresolved human/owner acceptance items are carried forward before Phase 9 and V1. The original Phase 7 exit gate below is historical because the owner separately authorized early Phase 8 entry.
 
@@ -200,15 +204,15 @@ Direction comparison and decision checklist: [PHASE-8-DESIGN-OPTIONS.md](PHASE-8
 
 ## Phase 8 — Complete redesign and owner approval (penultimate stage)
 
-**Status: complete — owner-requested redesign promoted to `main` on 2026-11-12.** After iterative visual revisions, Pooya explicitly declared the redesign complete and requested replacing the main repository. PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71) promoted the completed redesign; PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72) then fixed the label-level light-theme contrast issue identified by post-merge Browser QA. This approval applies to the completed current redesign; it does not claim that Pooya explicitly selected option A or B in the earlier comparison document.
+**Status: complete — owner-requested redesign promoted to `main` on 2026-11-12.** After iterative visual revisions, Pooya explicitly declared the redesign complete and requested replacing the main repository. PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71) promoted the completed redesign; PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72) then fixed the label-level light-theme contrast issue identified by post-merge Browser QA; PR [#75](https://github.com/pooya-labs/pooya-labs-platform/pull/75) added a semantic group role to the labeled skill-chip collection, eliminating the ARIA-incomplete findings. This approval applies to the completed current redesign; it does not claim that Pooya explicitly selected option A or B in the earlier comparison document.
 
 - [x] Complete the bilingual public portfolio redesign and iterative visual feedback on the designated redesign branch.
 - [x] Preserve responsive behavior, RTL/LTR layout, light/dark themes, reduced-motion handling and project-specific visual treatments.
 - [x] Revert the unsuccessful desktop edge-fill experiment; preserve the original AetherFlow capture and case-study media, and use the requested Salon Booking top-of-site hero image on its homepage card.
-- [x] Promote the redesign through PR #71 (merge `04d7e6c6ca01e8343be6590463890426f61546b1`) and apply the targeted contrast correction through PR #72 (final application SHA `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`).
-- [x] Publish the final application SHA to GitHub Pages (run 43215080845) and Cloudflare Pages Production (deployment `b7ed72f1-7507-4598-9e61-9f5745997751`).
-- [x] Pass main Repository CI (run 43215080520) and main Browser QA (run 43215080506): 18/18 routes, 36/36 viewport checks, 18/18 keyboard skip-link checks, 34/34 social-crawler checks, zero confirmed Axe violations across both themes.
-- [ ] Complete the outstanding Phase 7 human acceptance and publication gates. Forty incomplete Axe checks per theme, physical-device review, assistive-technology review, owner content/media permissions, authenticated social-cache validation and rollback rehearsal remain separate open items.
+- [x] Promote the redesign through PR #71 (merge `04d7e6c6ca01e8343be6590463890426f61546b1`) and apply the targeted contrast correction through PR #72 (final application SHA `64c5966cba21a2d25d8f357b351593cbe51f26b2`).
+- [x] Publish the final application SHA to GitHub Pages (run 43215080845) and Cloudflare Pages Production (deployment `975b9e6d-8004-447a-9bfe-898c746036a9`).
+- [x] Pass main Repository CI (run 43221461282) and main Browser QA (run 43221461301): 18/18 routes, 36/36 viewport checks, 18/18 keyboard skip-link checks, 34/34 social-crawler checks, zero confirmed Axe violations across both themes.
+- [ ] Complete the outstanding Phase 7 human acceptance and publication gates. Thirty-six incomplete color-contrast checks per theme (zero ARIA-incomplete checks after PR #75), physical-device review, assistive-technology review, owner content/media permissions, authenticated social-cache validation and rollback rehearsal remain separate open items.
 
 **Exit gate:** the requested redesign is complete and promoted. This does not approve V1 or waive Phase 7 carry-over. Proceed to Phase 9 only after the Phase 7 readiness/owner-acceptance gates are closed.
 
