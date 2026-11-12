@@ -1,3 +1,11 @@
+# 2026-11-12 — Remove skill-group ARIA ambiguity and republish both hosts
+
+- Added `role="group"` to the localized skill-chip collection, retaining its existing accessible name, and added a contract regression test. PR [#75](https://github.com/pooya-labs/pooya-labs-platform/pull/75); merge commit / final application SHA `64c5966cba21a2d25d8f357b351593cbe51f26b2`.
+- Repository CI [43221461282](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461282) and exact-main Browser QA [43221461301](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461301) passed.
+- Browser QA: 18 routes, 36 desktop/mobile viewports, 18 keyboard skip-link checks, 34 social-crawler checks, zero confirmed Axe violations and zero ARIA-incomplete records. Thirty-six incomplete color-contrast checks per theme remain for human evaluation.
+- GitHub Pages deployed artifact `13944694071` from the exact SHA (run [43221461285](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461285)). Cloudflare Pages Production deployment [975b9e6d](https://975b9e6d.pooya-labs-platform.pages.dev/) completed all five stages from the same SHA.
+- Phase 8 remains complete; Phase 7 human/owner acceptance still blocks Phase 9 final integration and Phase 10/V1 publication.
+
 # 2026-11-12 — Publish the final owner-approved portfolio redesign
 
 - Promoted the completed redesign through PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71), then fixed the post-merge light-theme toggle-label contrast issue through PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72).
