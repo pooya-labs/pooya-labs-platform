@@ -9,7 +9,7 @@
   "currentTask": {
     "id": "P7-POST-PR75-ACCESSIBILITY-AND-SOURCE-AUDIT",
     "title": "Verify semantic accessibility fix, production parity and latest upstream project evidence",
-    "status": "PR #75 merged. Main application SHA remains 64c5966cba21a2d25d8f357b351593cbe51f26b2 and both static hosts publish it. Read-only upstream inventory refreshed 2026-11-13: ORBIT main is 63ac457ad0b2 with PRs #181/#186/#190/#192 merged and no open PRs; AetherFlow PR #47 remains open. Phase 7 human acceptance remains open; Phase 9 and 10 are pending."
+    "status": "PR #77 merged as 860c067bb1b19d94ebb67184bd59e1ebb5a85acb. Read-only source inventory for all eight upstream repositories refreshed at 2026-11-13. PR-head Repository CI 43327481662 and Portfolio Browser QA 43327481659 both passed. Application code remains 64c5966cba21a2d25d8f357b351593cbe51f26b2 and the static-host deployment remains unchanged. Phase 7 human acceptance remains open; Phase 9 and 10 are pending."
   },
   "lastCheckpointDate": "2026-11-13",
   "latestVerifiedCodeCommit": "64c5966cba21a2d25d8f357b351593cbe51f26b2",
@@ -1254,11 +1254,11 @@
     "validation": "CI 43221461282;Browser-QA 43221461301;Pages 43221461285;Cloudflare-deployment-975b9e6d",
     "release": "phase8-complete;both-static-hosts-parity;phase7-phase9-phase10-open"
   },
-  "latestTask": "Phase 8 redesign promotion, post-merge contrast correction and synchronized static-host publication",
+  "latestTask": "Read-only eight-project source inventory refresh and PR #77 post-merge checkpoint",
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-13",
-  "latestDocumentationCommit": "1559b88f09649843930bfa2c92635beb0b6d7137",
-  "latestDocumentationCheckpoint": "2026-11-11-all-eight-homepage-project-mini-scenes-product-aligned;preview-only;owner-review-pending",
+  "latestDocumentationCommit": "860c067bb1b19d94ebb67184bd59e1ebb5a85acb",
+  "latestDocumentationCheckpoint": "2026-11-13-read-only-upstream-inventory-refresh;PR77-merged;main-860c067bb1b19d94ebb67184bd59e1ebb5a85acb;PR-head-CI-43327481662-success;PR-head-BrowserQA-43327481659-success;docs-only",
   "latestRepositoryCiRun": "43221461282;success;exact-main-64c5966cba21a2d25d8f357b351593cbe51f26b2",
   "latestBrowserQaRun": "43221461301;success;exact-main-64c5966cba21a2d25d8f357b351593cbe51f26b2;artifact-13946521920",
   "latestPerformanceBaseline": {
@@ -1953,6 +1953,12 @@
       "event": "PR #75 merged as 64c5966, adding a semantic role to skill-chip groups and a contract test. Exact-main CI and Browser QA passed; 36 incomplete color-contrast checks per theme remain for human review and no ARIA-prohibited-attribute incompletes remain. GitHub Pages and Cloudflare Production both publish exact main SHA 64c5966. Phase 7 carry-over, Phase 9 and Phase 10 remain open.",
       "branch": "main",
       "status": "accessibility-semantic-fix-merged-and-static-hosts-synchronized;pre-alpha-not-v1"
+    },
+    {
+      "date": "2026-11-13",
+      "event": "PR #77 merged as 860c067bb1b19d94ebb67184bd59e1ebb5a85acb. Updated the read-only upstream inventory for all eight projects, reconciled ORBIT maintenance PRs #181/#186/#190/#192 and AetherFlow #47, and synchronized release handoff docs. PR-head Repository CI 43327481662 and Portfolio Browser QA 43327481659 passed. Documentation-only: the application SHA and static deployments were not changed.",
+      "branch": "main",
+      "status": "merged-and-verified;docs-only;phase7-phase9-phase10-open"
     }
   ],
   "portfolioContentSnapshot": {
