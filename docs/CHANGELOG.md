@@ -2,7 +2,7 @@
 
 - PR [#75](https://github.com/pooya-labs/pooya-labs-platform/pull/75) added `role="group"` to the localized `.skill-group-items` containers while keeping their existing labels and visual structure unchanged.
 - Added a contract assertion for the supported role. PR-head Repository CI [43220737566](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43220737566) and Browser QA [43220737568](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43220737568) passed.
-- The latest QA artifact [13944948728](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43220737568/artifacts/13944948728) reports zero incomplete `aria-prohibited-attr` checks and zero confirmed Axe violations across dark/light themes. Thirty-six incomplete contrast checks per theme remain for human review.
+- The PR-head QA artifact [13944948728](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43220737568/artifacts/13944948728) and final main QA artifact [13946521920](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461301/artifacts/13946521920) both report zero incomplete `aria-prohibited-attr` checks and zero confirmed Axe violations across dark/light themes. Thirty-six incomplete contrast checks per theme remain for human review.
 - Main commit: `64c5966cba21a2d25d8f357b351593cbe51f26b2`. GitHub Pages run 43221461285 and Cloudflare Production deployment 975b9e6d publish that exact SHA. Cloudflare API deployment completed all five stages; native Git-trigger automation remains unverified because the GitHub Actions secret is absent.
 - No project-card images, layout, content, or source-project repositories were changed by PR #75.
 
