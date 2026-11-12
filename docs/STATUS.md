@@ -1,3 +1,18 @@
+# Current platform status — 2026-11-12 (post-PR #75)
+
+- Final application source on `main`: `64c5966cba21a2d25d8f357b351593cbe51f26b2`.
+- PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71) promoted the owner-approved redesign; PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72) fixed the light-theme toggle label; PR [#75](https://github.com/pooya-labs/pooya-labs-platform/pull/75) added `role="group"` to localized named skill-chip collections and a regression contract.
+- Exact PR-head CI [43220737566](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43220737566) and Browser QA [43220737568](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43220737568) passed. The PR head and final main commit have the same Git tree.
+- GitHub Pages run [43221461285](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461285) succeeded on the new main SHA. Cloudflare Production deployment `975b9e6d-8004-447a-9bfe-898c746036a9` completed queue, initialize, clone, build and deploy from that same SHA. The GitHub Actions Cloudflare deploy job itself is still skipped because `CLOUDFLARE_API_TOKEN` is not configured; the direct authenticated Cloudflare API deployment succeeded.
+- The completed PR-head Browser QA report covers 18 localized routes, 36 desktop/mobile viewports, 18 fresh-load keyboard skip links, 12 mobile case-study gallery swipes and 34 crawler checks. It reports zero page errors, zero missing image alt text, zero horizontal overflow, zero confirmed Axe violations, and zero remaining incomplete `aria-prohibited-attr` checks. Thirty-six contrast checks per theme remain incomplete for human review.
+- The Salon Booking homepage card uses the requested top-of-site hero image; the earlier edge-fill experiment was reverted. The original AetherFlow artwork and case-study media were preserved.
+- «گوزن» and «غزال» are connected to Novels with optimized WebP covers and PDF manuscripts. Workspace login is a client-side visual demo gate only, not security or authentication.
+- Phase 8 redesign is complete. Phase 7 human/device/accessibility/content/privacy/social-cache/rollback gates still block Phase 9 final integration and Phase 10 V1. The platform remains pre-alpha.
+
+Earlier checkpoints follow and should be treated as historical where they differ from this current record.
+
+---
+
 # Final redesign promotion and production parity — 2026-11-12
 
 - Pooya explicitly declared the redesign complete and instructed that it replace the primary repository version. Phase 8 owner approval is recorded; this is approval of the redesign promotion, **not** V1 approval.
