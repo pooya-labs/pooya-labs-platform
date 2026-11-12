@@ -6,11 +6,23 @@ The repository is the shared source of truth, but each host has its own build ou
 
 | Target | Purpose | Build output | Release mechanism | Current state |
 |---|---|---|---|---|
-| GitHub Pages | Public static portfolio | `dist/pages` | `.github/workflows/pages-platform.yml` | Live; successful deployment run 42659840309, application source SHA `e5ef6389`, artifact 13693239378 |
-| Cloudflare Pages | Independent public-host mirror | `dist/cloudflare` | Authorized Cloudflare Pages API deployment; native Git push trigger not observed | Live; deployment `ed73cc8e`, exact main SHA `e5ef6389`, all five stages successful |
-| Google Apps Script | HtmlService application/runtime | `dist/gas/index.html` plus `Code.gs` and manifest | `.github/workflows/deploy-gas.yml` using `clasp` | Build/artifact verified; automatic deployment is gated on private repository secrets |
+| GitHub Pages | Public static portfolio | `dist/pages` | `.github/workflows/pages-platform.yml` | Live; run 43215080845, application source SHA `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`, artifact 13941954722 |
+| Cloudflare Pages | Independent public-host mirror | `dist/cloudflare` | Connected Cloudflare Pages API; native Git push trigger not observed | Live; Production deployment `b7ed72f1-7507-4598-9e61-9f5745997751`, exact main SHA `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`, all five stages successful |
+| Google Apps Script | Optional HtmlService application/runtime | `dist/gas/index.html` plus `Code.gs` and manifest | `.github/workflows/deploy-gas.yml` using `clasp` | Build covered by CI; production publish skipped on run 43215080602 because `CLASPRC_JSON`, `CLASP_JSON` and `GAS_DEPLOYMENT_ID` are not configured; not required for the static Pages portfolio |
 
-## Latest verified production parity — 2026-11-09 17:16 UTC
+## Latest verified production parity — 2026-11-12
+
+- The final promoted application source is exact main commit [`b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`](https://github.com/pooya-labs/pooya-labs-platform/commit/b7d4d136d58e2121d6bd2bd11c03ff774431a2d7).
+- PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71) promoted the owner-declared-complete redesign; PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72) applied the post-merge light-theme toggle-label contrast correction.
+- Repository CI [43215080520](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080520) and Browser QA [43215080506](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080506) passed on the exact main SHA.
+- Browser QA passed 18/18 routes, 36/36 desktop/mobile viewports, 18/18 keyboard skip-link checks, 34/34 social crawler checks, and reported zero confirmed Axe violations in either theme. Forty incomplete contrast checks per theme remain for manual review; this is not WCAG certification.
+- GitHub Pages [run 43215080845](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080845) deployed artifact `13941954722` from this SHA. Public URL: [https://pooya-labs.github.io/pooya-labs-platform/](https://pooya-labs.github.io/pooya-labs-platform/).
+- Cloudflare Pages Production deployment [`b7ed72f1`](https://b7ed72f1.pooya-labs-platform.pages.dev/) (ID `b7ed72f1-7507-4598-9e61-9f5745997751`) completed queue, initialize, clone, build and deploy successfully from the same SHA. Canonical project domain: [https://pooya-labs-platform.pages.dev/](https://pooya-labs-platform.pages.dev/). Trigger type was `ad_hoc` through the connected Cloudflare API.
+- GitHub's Cloudflare workflow [43215080554](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080554) skipped its actual deploy job because `CLOUDFLARE_API_TOKEN` is absent. The direct connected Cloudflare API deployment above succeeded; this does not prove native `github:push` automation. Add the GitHub secret only if automatic workflow deployment is required.
+- Apps Script workflow [43215080602](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080602) skipped the actual publish job because its three private deployment secrets are not configured. The current public site is static and does not depend on Apps Script.
+- V1 remains blocked by Phase 7 human/owner acceptance, Phase 9 project integration and Phase 10 release gates.
+
+## Historical production parity checkpoint — 2026-11-09 17:16 UTC (superseded)
 
 - Repository main is documentation-only commit [`d4402211cc6fcca59f143018574bd3cd9cf64aab`](https://github.com/pooya-labs/pooya-labs-platform/commit/d4402211cc6fcca59f143018574bd3cd9cf64aab). PR #44 exact-head CI [42661281955](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42661281955), Browser QA [42661281908](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42661281908), and post-merge main CI [42661735358](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42661735358) passed.
 - Current published application source on both static hosts remains `e5ef6389`; PR #44 changed documentation only.
@@ -39,13 +51,13 @@ The repository is the shared source of truth, but each host has its own build ou
 - Site base: `/`
 - Hosting mode: static Pages assets; this deployment does not reuse or modify the unrelated `globalcart-catalog`, `orbit-runtime`, or `salon-booking` Workers.
 
-The latest verified production deployment is `ed73cc8e-7fcb-42b7-8ca0-b6e591f9f160`, published from exact main commit `e5ef638917d3204025d062af939cf01a28689d3a`. Cloudflare confirmed successful queue, initialize, clone, build, and deploy stages. Its unique deployment URL is [`https://ed73cc8e.pooya-labs-platform.pages.dev/`](https://ed73cc8e.pooya-labs-platform.pages.dev/); the canonical production alias is [`https://pooya-labs-platform.pages.dev/`](https://pooya-labs-platform.pages.dev/).
+The latest verified Production deployment is `b7ed72f1-7507-4598-9e61-9f5745997751`, published from exact main commit `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`. Cloudflare confirmed successful queue, initialize, clone, build, and deploy stages. Its unique deployment URL is [`https://b7ed72f1.pooya-labs-platform.pages.dev/`](https://b7ed72f1.pooya-labs-platform.pages.dev/); the canonical production alias is [`https://pooya-labs-platform.pages.dev/`](https://pooya-labs-platform.pages.dev/).
 
 The Pages project records GitHub as its source, with production branch `main`, `production_deployments_enabled=true`, and path filters `apps/platform/**` and `package.json`. Preview deployments remain disabled. After a matching-path push to main via PR #39, no Cloudflare deployment with `deployment_trigger.type=github:push` appeared; the latest deploy was instead requested through the Pages API as `ad_hoc`. The native Git integration is therefore not operationally verified in this checkpoint. Do not rely on automatic Git deployment until a real `github:push` deployment is observed.
 
-The repository workflow `.github/workflows/deploy-cloudflare.yml` is configured to build, test, request a Pages deployment for the exact commit, and wait for the deployment to succeed. Its latest run [42651297288](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42651297288) passed the credential-check job but skipped the deploy job because the repository secret `CLOUDFLARE_API_TOKEN` is absent. To enable this repeatable push-based path, create a Cloudflare API token with **Account → Cloudflare Pages → Edit**, then add it under **GitHub repository → Settings → Secrets and variables → Actions**. Set its name to `CLOUDFLARE_API_TOKEN`. Never commit or paste the token. After adding it, make a small application commit and verify that the workflow's build/deploy job completes instead of skipping.
+The repository workflow `.github/workflows/deploy-cloudflare.yml` is configured to build, test, request a Pages deployment for the exact commit, and wait for the deployment to succeed. Its current run [43215080554](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080554) passed the credential-check job but skipped the deploy job because the repository secret `CLOUDFLARE_API_TOKEN` is absent. For this release, the exact SHA was instead deployed successfully through the authenticated Cloudflare connector API as deployment `b7ed72f1-7507-4598-9e61-9f5745997751`. To enable this repeatable push-based path, create a Cloudflare API token with **Account → Cloudflare Pages → Edit**, then add it under **GitHub repository → Settings → Secrets and variables → Actions**. Set its name to `CLOUDFLARE_API_TOKEN`. Never commit or paste the token. After adding it, make a small application commit and verify that the workflow's build/deploy job completes instead of skipping.
 
-Until that secret is configured and a push-triggered run is verified, publish Cloudflare releases explicitly through the authorized Cloudflare Pages API using the exact, CI-verified main commit. The deployments above were performed this way; they are not proof of native Git auto-deployment.
+Until that secret is configured and a push-triggered run is verified, publish Cloudflare releases explicitly through the authorized connected Cloudflare Pages API using the exact, CI-verified main commit. The current deployment used that path and succeeded; it is not proof of native Git auto-deployment.
 
 ## Google Apps Script
 
@@ -57,7 +69,7 @@ Until that secret is configured and a push-triggered run is verified, publish Cl
   - `appsscript.json`: V8 manifest
 - The deployment workflow installs `@google/clasp`, pushes this isolated directory, then updates the existing Web App deployment ID.
 
-The workflow is intentionally fail-safe and skips the deploy job until all three repository Actions secrets exist:
+The workflow is intentionally fail-safe and skips the deploy job until all three repository Actions secrets exist. The latest attempt, run [43215080602](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080602), skipped the actual publish job because these values are not configured. Apps Script publishing is optional for the static GitHub Pages/Cloudflare portfolio:
 
 1. `CLASPRC_JSON`: private OAuth credentials from the authorized `clasp login` session.
 2. `CLASP_JSON`: private project mapping JSON containing the Apps Script `scriptId`. The workflow forces `rootDir` to `dist/gas-deploy`.
