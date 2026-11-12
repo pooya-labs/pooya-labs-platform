@@ -42,6 +42,10 @@ test('portfolio project cards expose verified demos and source repositories', ()
   assert.equal((projectData.match(/previewUrl: 'https:\/\/[^']+\.github\.io\//g) ?? []).length, 8);
 });
 
+test('skill categories use named semantic groups for assistive technology', () => {
+  assert.match(portfolio, /className="skill-group-items" role="group" aria-label=\{group\.title\}/);
+});
+
 test('portfolio is bilingual, responsive, and honors reduced motion', () => {
   assert.match(portfolio, /language: Language/);
   assert.match(css, /@media \(max-width: 680px\)/);
