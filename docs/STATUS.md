@@ -1,3 +1,21 @@
+# Current platform status — 2026-11-12
+
+<badge>Design promoted to main</badge>
+
+- The completed portfolio redesign was promoted through PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71); the targeted light-theme header-label contrast correction followed through PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72).
+- Current application source on `main`: `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`.
+- GitHub Pages deployment [43215080845](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080845) succeeded. Cloudflare Pages Production deployment `b7ed72f1-7507-4598-9e61-9f5745997751` also completed all five stages successfully from the same SHA.
+- Main Repository CI [43215080520](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080520) and main Browser QA [43215080506](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080506) passed.
+- Browser QA evidence: 18/18 routes, 36/36 desktop/mobile viewport checks, 18/18 keyboard skip-link checks, 34/34 social-crawler checks, and zero confirmed Axe violations in either theme. Forty Axe contrast checks per theme remain incomplete because gradients/pseudo-backgrounds need human review; this is not a WCAG certification.
+- The Salon Booking homepage card now uses the requested top-of-site hero image. The prior desktop edge-fill experiment was reverted; the original AetherFlow capture and case-study media were not replaced.
+- «گوزن» and «غزال» are connected to the public Novels catalog with WebP covers and PDF manuscripts. Human review of the published reader remains on the next-action list.
+- Workspace sign-in is a client-side demo gate only. It is not authentication and must not protect private data or privileged operations.
+- Phase 7 owner/device/accessibility/privacy/social-cache/rollback gates remain open. Phase 9 project-content integration and Phase 10 V1 release are not complete. The project remains pre-alpha.
+
+The entries below preserve earlier checkpoints and are historical unless they agree with this current status.
+
+---
+
 # Homepage project image framing fix (2026-11-12)
 
 - Corrected only the Salon Booking and AetherFlow project-card artwork on the homepage.
