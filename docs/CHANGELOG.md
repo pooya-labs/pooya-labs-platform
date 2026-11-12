@@ -1,3 +1,17 @@
+# 2026-11-12 — Promote completed portfolio redesign and publish both static hosts
+
+- Promoted the final owner-requested redesign from `redesign/live-site-baseline` through PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71), merge commit `04d7e6c6ca01e8343be6590463890426f61546b1`.
+- Applied the follow-up label-level light-theme header-toggle contrast correction through PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72), final application commit `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`.
+- Preserved the reverted project-card edge-fill experiment; retained the original AetherFlow capture and case-study media; used the requested Salon Booking top-of-site hero in its homepage project card.
+- Published GitHub Pages from exact SHA `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7` (run [43215080845](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080845), artifact `13941954722`) and Cloudflare Pages Production from the same SHA (deployment `b7ed72f1-7507-4598-9e61-9f5745997751`, all five stages successful).
+- Main Repository CI [43215080520](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080520) and main Browser QA [43215080506](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080506) passed.
+- Browser evidence: 18 routes, 36 desktop/mobile viewport checks, 18 keyboard skip-link checks, 34 crawler checks, zero confirmed Axe violations across both themes. Forty contrast checks per theme remain incomplete and require manual review.
+- The two owner-supplied novels, «گوزن» and «غزال», are connected with optimized WebP covers and PDF reader assets.
+- The Cloudflare GitHub Actions job was skipped because its repository secret is absent; the exact-SHA Production deployment was completed through the authorized connected Cloudflare API. Apps Script deployment was also skipped because its separate private secrets are not configured and is not required for the static portfolio hosts.
+- This promotion is not a V1 release. Phase 7 acceptance carry-over, Phase 9 full project integration, and Phase 10 release hardening remain open.
+
+---
+
 # 2026-11-12 — Replace Workspace server login with portable demo gate
 
 - Replaced the Cloudflare Pages Functions login flow with a host-independent client-side demo check.
