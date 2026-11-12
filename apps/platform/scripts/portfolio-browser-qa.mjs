@@ -72,7 +72,7 @@ const report = {
       findings: [],
     },
   },
-  note: 'Automated Chromium smoke and responsive checks. Homepage and bilingual project desktop/mobile screenshots are retained only as private workflow artifacts, never published to the website. Mobile case-study routes also exercise touch scroll chaining from the full-page screenshot frame to the outer page. This is not a manual screen-reader audit or WCAG certification.',
+  note: 'Automated Chromium smoke and responsive checks. Homepage and bilingual project desktop/mobile screenshots are retained only as private workflow artifacts, never published to the website. Mobile case-study routes also verify that a vertical swipe in the transparent side gutter advances the outer page while the centered screenshot remains independently scrollable. This is not a manual screen-reader audit or WCAG certification.',
 };
 
 function addFailure(route, viewport, message) {
@@ -470,35 +470,53 @@ try {
             await frame.scrollIntoViewIfNeeded();
             const setup = await frame.evaluate((element) => {
               const pageScroller = document.querySelector('.portfolio-page');
+              const card = element.closest('.case-study-media-card.device-mobile');
               const image = element.querySelector('img');
-              if (!(element instanceof HTMLElement) || !(pageScroller instanceof HTMLElement)) {
+              if (!(element instanceof HTMLElement) || !(pageScroller instanceof HTMLElement) || !(card instanceof HTMLElement)) {
                 return { available: false, reason: 'Scroll containers not found.' };
               }
               const innerMaxScroll = Math.max(0, element.scrollHeight - element.clientHeight);
               const outerMaxScroll = Math.max(0, pageScroller.scrollHeight - pageScroller.clientHeight);
-              element.scrollTop = innerMaxScroll;
               const outerBefore = pageScroller.scrollTop;
               const outerRemaining = Math.max(0, outerMaxScroll - outerBefore);
               const rect = element.getBoundingClientRect();
+              const cardRect = card.getBoundingClientRect();
+              const leftGutter = Math.max(0, rect.left - cardRect.left);
+              const rightGutter = Math.max(0, cardRect.right - rect.right);
+              const gutterSide = leftGutter >= rightGutter ? 'left' : 'right';
+              const gutterWidth = Math.max(leftGutter, rightGutter);
+              const gutterX = gutterSide === 'left'
+                ? cardRect.left + gutterWidth / 2
+                : cardRect.right - gutterWidth / 2;
               return {
-                available: innerMaxScroll > 40 && outerRemaining > 40,
-                reason: innerMaxScroll <= 40 ? 'The mobile capture has no internal overflow.' : 'No outer page content remains below the capture.',
+                available: innerMaxScroll > 40 && outerRemaining > 40 && gutterWidth > 6,
+                reason: innerMaxScroll <= 40
+                  ? 'The mobile capture has no internal overflow.'
+                  : outerRemaining <= 40
+                    ? 'No outer page scroll range remains.'
+                    : 'The mobile capture has no usable side gutter.',
                 innerMaxScroll,
+                innerBefore: element.scrollTop,
                 outerBefore,
                 outerMaxScroll,
                 outerRemaining,
                 viewportHeight: window.innerHeight,
                 imageLoaded: image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0,
                 rect: { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom },
+                cardRect: { left: cardRect.left, right: cardRect.right, top: cardRect.top, bottom: cardRect.bottom },
+                gutterSide,
+                gutterWidth,
+                gutterX,
                 overflowY: getComputedStyle(element).overflowY,
                 overscrollBehaviorY: getComputedStyle(element).overscrollBehaviorY,
                 touchAction: getComputedStyle(element).touchAction,
+                cardTouchAction: getComputedStyle(card).touchAction,
               };
             });
             if (setup.available) {
-              const x = Math.round(Math.min(setup.rect.right - 24, Math.max(setup.rect.left + 24, setup.rect.left + (setup.rect.right - setup.rect.left) * .55)));
-              const startY = Math.round(Math.min(setup.rect.bottom - 28, setup.viewportHeight - 28));
-              const endY = Math.round(Math.max(setup.rect.top + 28, startY - 150));
+              const x = Math.round(setup.gutterX);
+              const startY = Math.round(Math.min(setup.cardRect.bottom - 24, setup.viewportHeight - 24));
+              const endY = Math.round(Math.max(setup.cardRect.top + 24, startY - 150));
               const touch = await context.newCDPSession(page);
               try {
                 await touch.send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 1 });
@@ -524,16 +542,17 @@ try {
               });
               caseStudyGalleryScroll = {
                 available: true,
-                passed: after.outerScrollTop > setup.outerBefore + 4,
+                passed: after.outerScrollTop > setup.outerBefore + 4 && after.innerScrollTop === setup.innerBefore,
                 ...setup,
                 ...after,
-                gesture: 'Chromium touch input at the inner gallery boundary',
+                gesture: 'Chromium touch swipe in the transparent side gutter',
               };
               if (!caseStudyGalleryScroll.passed) {
-                addFailure(route, viewport.name, 'A touch swipe at the end of the mobile screenshot did not continue scrolling the outer case-study page.');
+                addFailure(route, viewport.name, 'A touch swipe in the mobile screenshot side gutter did not scroll the outer case-study page independently.');
               }
-              if (setup.overflowY !== 'auto' || setup.overscrollBehaviorY !== 'auto' || !setup.touchAction.includes('pan-y')) {
-                addFailure(route, viewport.name, 'The mobile gallery does not expose native vertical touch scroll chaining.');
+              if (setup.overflowY !== 'auto' || setup.overscrollBehaviorY !== 'auto' ||
+                  !setup.touchAction.includes('pan-y') || !setup.cardTouchAction.includes('pan-y')) {
+                addFailure(route, viewport.name, 'The mobile screenshot and outer card do not expose native vertical touch scrolling.');
               }
               await page.evaluate(() => {
                 const pageScroller = document.querySelector('.portfolio-page');
