@@ -848,7 +848,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
   }, [language, rtl]);
 
   if (selectedProject) return <ProjectCaseStudy project={selectedProject} language={language} onLanguageChange={onLanguageChange} theme={theme} onThemeChange={onThemeChange} onBack={closeCaseStudy} baseUrl={import.meta.env.BASE_URL} />;
-  if (selectedNovelSlug) return <NovelReader novel={selectedNovel} language={language} theme={theme} onThemeChange={onThemeChange} loading={novelCatalogLoading} error={novelCatalogError} onBack={closeNovel} />;
+  if (selectedNovelSlug) return <NovelReader novel={selectedNovel} language={language} onLanguageChange={onLanguageChange} theme={theme} onThemeChange={onThemeChange} loading={novelCatalogLoading} error={novelCatalogError} onBack={closeNovel} onOpenWorkspace={onOpenWorkspace} />;
 
   return (
     <div className={`portfolio-page ${rtl ? 'is-rtl' : 'is-ltr'}`} data-theme={theme}>
