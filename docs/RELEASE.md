@@ -12,10 +12,10 @@ This checklist governs public portfolio releases. The completed redesign has bee
 
 ## Before any public release
 
-- [x] Promote the owner-declared-complete redesign via PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71) and merge the targeted post-merge theme-label contrast correction via PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72); final application SHA `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`.
+- [x] Promote the owner-declared-complete redesign via PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71) merge the targeted post-merge theme-label contrast correction via PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72), and merge the semantic skill-group role correction via PR [#75](https://github.com/pooya-labs/pooya-labs-platform/pull/75); final application SHA `64c5966cba21a2d25d8f357b351593cbe51f26b2`.
 
 - [x] Confirm that the active `main` ruleset [Protect main — PR + CI](https://github.com/pooya-labs/pooya-labs-platform/rules/26861856) is exercised by a normal PR whose two required checks pass and whose merge uses the regular path. Verified by PR #36: both required contexts passed, the PR merged without bypass, and post-merge CI passed. Do not use direct pushes or bypass actors. See [GITHUB-REPOSITORY-GOVERNANCE.md](GITHUB-REPOSITORY-GOVERNANCE.md).
-- [x] Confirm the promoted application change is on main at exact commit `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`; PR #71 and PR #72 were merged through the protected PR path.
+- [x] Confirm the final application change is on main at exact commit `64c5966cba21a2d25d8f357b351593cbe51f26b2`; PRs #71, #72 and #75 were merged through the protected PR path.
 - [ ] Pass `npm run lint`, `npm run format:check`, `npm run typecheck`, `npm test`, `npm run build`, and `npm run build:cloudflare`.
 - [x] Pass the portfolio Browser QA workflow on exact main SHA `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`: run 43215080506; 18/18 routes, 36/36 desktop/mobile viewports, 18/18 keyboard skip-link checks, 34/34 crawler checks and zero confirmed Axe violations in both themes. Forty incomplete contrast checks per theme remain for human review.
 - [ ] Review accessibility findings. Distinguish confirmed violations from incomplete automated checks; manually verify contrast, focus visibility, keyboard operation, and screen-reader flow in both languages and themes.
@@ -32,7 +32,7 @@ This checklist governs public portfolio releases. The completed redesign has bee
 
 ## Publishing
 
-- [x] Publish GitHub Pages and Cloudflare Pages independently for application source `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`; GitHub Pages run 43215080845 / artifact `13941954722`, Cloudflare deployment `b7ed72f1-7507-4598-9e61-9f5745997751` / API trigger `ad_hoc`.
+- [x] Publish GitHub Pages and Cloudflare Pages independently for application source `64c5966cba21a2d25d8f357b351593cbe51f26b2`; GitHub Pages run 43221461285 / artifact `13944694071`, Cloudflare deployment `975b9e6d-8004-447a-9bfe-898c746036a9` / API trigger `ad_hoc`.
 
 1. Confirm the main-branch commit has passing required checks.
 2. Publish GitHub Pages and Cloudflare Pages independently; verify each host against the same intended application revision.
