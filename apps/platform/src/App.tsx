@@ -1,9 +1,9 @@
 import {
   Activity, ArrowDownLeft, ArrowUpRight, Bell, Check, ChevronDown, Clock3,
-  Command, Cpu, FileText, Folder, Grid2X2, HardDrive, Home, Languages,
+  Command, FileText, Folder, Grid2X2, Home, Languages,
   LayoutDashboard, Maximize2, Minimize2, Monitor, Moon, MoreHorizontal,
   Plus, Search, Send, Settings, ShieldCheck, Sparkles, Sun, TerminalSquare,
-  Wifi, X, Zap, type LucideIcon,
+  Wifi, X, type LucideIcon,
 } from 'lucide-react';
 import {
   useCallback, useEffect, useMemo, useRef, useState,
@@ -692,7 +692,7 @@ function WindowFrame(props: WindowFrameProps): ReactNode {
           <section className="files-section files-recent-section">
             <div className="files-section-heading"><div><span>{language === 'fa' ? 'دسترسی سریع' : 'QUICK ACCESS'}</span><h3>{language === 'fa' ? 'فایل‌های اخیر' : 'Recent files'}</h3></div><small>{language === 'fa' ? '۳ مورد' : '03 ITEMS'}</small></div>
             <div className="files-list">
-              {sampleFiles.filter((file) => file.type !== 'folder').map((file, index) => <div className="files-list-row" key={file.name}>
+              {sampleFiles.filter((file) => file.type !== 'folder').map((file) => <div className="files-list-row" key={file.name}>
                 <span className={'files-list-icon files-list-icon-' + file.type}>{file.type === 'code' ? <TerminalSquare size={18} /> : <FileText size={18} />}</span>
                 <span className="files-list-name"><strong>{file.name}</strong><small>{file.type === 'code' ? (language === 'fa' ? 'فایل کد' : 'Source file') : (language === 'fa' ? 'سند متنی' : 'Text document')}</small></span>
                 <span className="files-list-date">{file.modified === 'today' ? t.today : language === 'fa' ? 'دیروز' : 'Yesterday'}</span>
