@@ -53,100 +53,69 @@ Review each selector in the theme column where it has a non-zero occurrence coun
 4. Record the exact route, language, theme, viewport, selector, foreground/background sample, measured ratio, result, and screenshot/evidence reference.
 5. Fix confirmed failures in application CSS and add a regression assertion where a stable foreground/background pair can be tested automatically.
 
-## Selector inventory
+## Current selector inventory — exact main QA run 43221461301
 
-Counts are node occurrences in the latest 36 route/viewport records for each theme, not counts of unique pages. A dash means the selector was not present in that theme's incomplete-result set. Every human result remains pending.
+Counts are node occurrences across the 18 localized routes at two viewports. A dash means no incomplete node for that selector in the theme. The unresolved-background column comes directly from Axe failure summaries. Two dark and four light occurrences of `.flow-trigger > .flow-icon` contain non-text content; do not treat those icon-only nodes as text-contrast failures. All 36 incomplete rule checks per theme are color-contrast checks, but this is an automated rule classification, not a statement that every occurrence needs color adjustment.
 
-| CSS selector | Dark nodes | Light nodes | Unresolved background | Human result |
+| CSS selector | Dark node occurrences | Light node occurrences | Unresolved background | Human result |
 |---|---:|---:|---|---|
-| .booking-calendar-head > span:nth-child(1) | 2 | 4 | pseudo-element | Pending |
-| .booking-calendar-head > span:nth-child(2) | 2 | 4 | pseudo-element | Pending |
-| .booking-calendar-head > span:nth-child(3) | 2 | 2 | pseudo-element | Pending |
-| .booking-calendar-head > span:nth-child(4) | 2 | 1 | pseudo-element | Pending |
-| .case-study-back | 14 | 30 | overlap | Pending |
-| .case-study-heading > .portfolio-eyebrow | 2 | 2 | gradient | Pending |
-| .case-study-heading > .portfolio-eyebrow > .eyebrow-index | 2 | 2 | gradient | Pending |
-| .case-study-heading > p | 2 | 2 | partial overlap | Pending |
-| .case-study-index | 4 | 2 | gradient + pseudo-element | Pending |
-| .case-study-media-heading > .portfolio-eyebrow | — | 1 | gradient | Pending |
-| .case-study-scroll-note | 4 | — | gradient | Pending |
-| .case-study-section-grid > .case-study-panel:nth-child(1) > .portfolio-eyebrow | 3 | — | gradient | Pending |
-| .case-study-section-grid > .case-study-panel:nth-child(1) > .portfolio-eyebrow > .eyebrow-index | 3 | — | gradient | Pending |
-| .case-study-section-grid > .case-study-panel:nth-child(1) > p | 3 | — | gradient | Pending |
-| .case-study-section-grid > .case-study-panel:nth-child(2) > .portfolio-eyebrow | 3 | — | gradient | Pending |
-| .case-study-section-grid > .case-study-panel:nth-child(2) > .portfolio-eyebrow > .eyebrow-index | 1 | — | gradient | Pending |
-| .case-study-status | 2 | 1 | gradient | Pending |
-| .device-desktop > figcaption | 8 | — | gradient | Pending |
-| .device-mobile > figcaption | 4 | — | gradient | Pending |
-| .device-mobile.case-study-media-card:nth-child(2) > figcaption | 11 | — | gradient | Pending |
-| .device-mobile.case-study-media-card:nth-child(2) > figcaption > .case-study-scroll-note | 12 | — | gradient | Pending |
-| .glass-controls > span:nth-child(1) | 2 | 4 | pseudo-element | Pending |
-| .glass-controls > span:nth-child(3) | 2 | 2 | pseudo-element | Pending |
-| .glass-footnote | 2 | — | pseudo-element | Pending |
-| .hero-gradient | 1 | — | pseudo-element | Pending |
-| .hero-preview-1 > .hero-preview-caption > b | 2 | — | pseudo-element | Pending |
-| .hero-preview-1 > .hero-preview-caption > span | 2 | — | pseudo-element | Pending |
-| .hero-preview-1 > .hero-preview-toolbar > small | 2 | — | pseudo-element | Pending |
-| .hero-preview-1 > .hero-preview-toolbar > strong | 2 | — | pseudo-element | Pending |
-| .hero-preview-2 > .hero-preview-toolbar > strong | 1 | — | pseudo-element | Pending |
-| .hero-title-line[dir="auto"]:nth-child(1) | 2 | 1 | pseudo-element | Pending |
-| .hero-title-line[dir="auto"]:nth-child(3) | 2 | — | pseudo-element | Pending |
-| .hero-title-prefix | 1 | — | pseudo-element | Pending |
-| .hero-title-word | 1 | — | pseudo-element | Pending |
-| .market-range > span:nth-child(1) | 2 | 2 | pseudo-element | Pending |
-| .market-range > span:nth-child(2) | 2 | 1 | pseudo-element | Pending |
-| .market-range > span:nth-child(3) | 2 | — | pseudo-element | Pending |
-| .market-simulated | 2 | 4 | pseudo-element | Pending |
-| .market-symbol > span | 2 | 4 | pseudo-element | Pending |
-| .market-symbol > strong | 2 | 4 | pseudo-element | Pending |
-| .node-gateway | 2 | 4 | pseudo-element | Pending |
-| .node-gateway > small | 2 | 4 | pseudo-element | Pending |
-| .node-service | 2 | 2 | pseudo-element | Pending |
-| .node-service > small | 2 | 1 | pseudo-element | Pending |
-| .node-worker | 2 | — | pseudo-element | Pending |
-| .orbit-health-card > small | 2 | 4 | pseudo-element | Pending |
-| .orbit-health-card > strong | 2 | 4 | pseudo-element | Pending |
-| .orbit-stat-card > small | 2 | 2 | pseudo-element | Pending |
-| .orbit-stat-card > strong | 2 | 1 | pseudo-element | Pending |
-| .os-avatar | 2 | 2 | pseudo-element | Pending |
-| .os-terminal-line > span | 2 | 1 | pseudo-element | Pending |
-| .os-window-back > .os-titlebar > span | 2 | 4 | pseudo-element | Pending |
-| .os-window-front > .os-titlebar > span | 2 | 4 | pseudo-element | Pending |
-| .portfolio-brand[href$="pooya-labs-platform/"] > span:nth-child(2) > small | — | 16 | gradient | Pending |
-| .portfolio-brand[href$="pooya-labs-platform/"] > span:nth-child(2) > strong | — | 32 | gradient | Pending |
-| .portfolio-hero-copy > .portfolio-eyebrow | 2 | 2 | pseudo-element | Pending |
-| .portfolio-intro | 2 | — | pseudo-element | Pending |
-| .portfolio-language | — | 28 | gradient | Pending |
-| .portfolio-primary[href$="#projects"] | 2 | — | pseudo-element | Pending |
-| .portfolio-secondary | 2 | 1 | gradient + pseudo-element | Pending |
-| .portfolio-social-proof > span:nth-child(2) | 3 | — | pseudo-element | Pending |
-| .portfolio-social-proof > span:nth-child(4) | 2 | — | pseudo-element | Pending |
-| .portfolio-workspace > span | 17 | — | gradient | Pending |
-| .product-a > b | 2 | 4 | pseudo-element | Pending |
-| .product-a > small | 2 | 4 | pseudo-element | Pending |
-| .product-b > b | 2 | 2 | pseudo-element | Pending |
-| .product-b > small | 2 | 1 | pseudo-element | Pending |
-| .product-c > b | 2 | — | pseudo-element | Pending |
-| .project-tags > span:nth-child(1) | 2 | 2 | gradient | Pending |
-| .project-tags > span:nth-child(2) | 2 | 2 | gradient | Pending |
-| .project-tags > span:nth-child(3) | — | 2 | gradient | Pending |
-| .proof-dot | 2 | — | pseudo-element | Pending |
-| .scene-topline > i | 12 | 24 | pseudo-element | Pending |
-| .scene-topline > span | 14 | 28 | pseudo-element | Pending |
-| a[href$="#about"] | — | 4 | gradient | Pending |
-| a[href$="#contact"] | — | 3 | gradient | Pending |
-| a[href$="#novels"] | — | 4 | gradient | Pending |
-| a[href$="#stack"] | — | 4 | gradient | Pending |
-| em | 2 | — | pseudo-element | Pending |
-| h1 | 2 | 2 | gradient | Pending |
-| header > .portfolio-brand[href$="#top"] > span:nth-child(2) > small | — | 2 | gradient | Pending |
-| header > .portfolio-brand[href$="#top"] > span:nth-child(2) > strong | — | 4 | gradient | Pending |
-| nav > a[href$="#projects"] | — | 4 | gradient | Pending |
-| span:nth-child(1) > b | 2 | 4 | pseudo-element | Pending |
-| span:nth-child(3) > b | 2 | 1 | pseudo-element | Pending |
-| span:nth-child(4) | — | 2 | gradient | Pending |
-| span:nth-child(5) | 2 | — | pseudo-element | Pending |
+| `.booking-calendar-head > span:nth-child(1)` | 2 | 4 | pseudo-element | Pending |
+| `.booking-calendar-head > span:nth-child(2)` | 2 | 4 | pseudo-element | Pending |
+| `.booking-calendar-head > span:nth-child(3)` | 2 | 2 | pseudo-element | Pending |
+| `.booking-calendar-head > span:nth-child(4)` | 1 | 1 | pseudo-element | Pending |
+| `.case-study-back` | 16 | 32 | overlap | Pending |
+| `.case-study-scroll-note` | 4 | — | gradient | Pending |
+| `.case-study-section-grid > .case-study-panel:nth-child(1) > .portfolio-eyebrow` | 3 | — | gradient | Pending |
+| `.case-study-section-grid > .case-study-panel:nth-child(1) > .portfolio-eyebrow > .eyebrow-index` | 1 | — | gradient | Pending |
+| `.device-desktop > figcaption` | 8 | — | gradient | Pending |
+| `.device-mobile > figcaption` | 4 | — | gradient | Pending |
+| `.device-mobile.case-study-media-card:nth-child(2) > figcaption` | 11 | — | gradient | Pending |
+| `.device-mobile.case-study-media-card:nth-child(2) > figcaption > .case-study-scroll-note` | 12 | — | gradient | Pending |
+| `.flow-trigger > .flow-icon` | 2 | 4 | non-text content | Pending |
+| `.flow-trigger > small` | 2 | 2 | pseudo-element | Pending |
+| `.flow-trigger > strong` | 2 | 4 | pseudo-element | Pending |
+| `.flow-worker > .flow-icon` | 1 | 1 | pseudo-element | Pending |
+| `.glass-controls > span:nth-child(1)` | 2 | 4 | pseudo-element | Pending |
+| `.glass-controls > span:nth-child(3)` | 2 | 2 | pseudo-element | Pending |
+| `.hero-title-line[dir="auto"]:nth-child(1)` | 1 | 1 | pseudo-element | Pending |
+| `.market-range > span:nth-child(1)` | 2 | 2 | pseudo-element | Pending |
+| `.market-range > span:nth-child(2)` | 1 | 1 | pseudo-element | Pending |
+| `.market-simulated` | 2 | 4 | pseudo-element | Pending |
+| `.market-symbol > span` | 2 | 4 | pseudo-element | Pending |
+| `.market-symbol > strong` | 2 | 4 | pseudo-element | Pending |
+| `.node-gateway` | 2 | 4 | pseudo-element | Pending |
+| `.node-gateway > small` | 2 | 4 | pseudo-element | Pending |
+| `.node-service` | 2 | 2 | pseudo-element | Pending |
+| `.node-service > small` | 1 | 1 | pseudo-element | Pending |
+| `.orbit-health-card > small` | 2 | 4 | pseudo-element | Pending |
+| `.orbit-health-card > strong` | 2 | 4 | pseudo-element | Pending |
+| `.orbit-stat-card > small` | 2 | 2 | pseudo-element | Pending |
+| `.orbit-stat-card > strong` | 1 | 1 | pseudo-element | Pending |
+| `.os-avatar` | 2 | 2 | pseudo-element | Pending |
+| `.os-terminal-line > span` | 1 | 1 | pseudo-element | Pending |
+| `.os-window-back > .os-titlebar > span` | 2 | 4 | pseudo-element | Pending |
+| `.os-window-front > .os-titlebar > span` | 2 | 4 | pseudo-element | Pending |
+| `.portfolio-brand[href$="pooya-labs-platform/"] > span:nth-child(2) > small` | 16 | 16 | gradient | Pending |
+| `.portfolio-brand[href$="pooya-labs-platform/"] > span:nth-child(2) > strong` | 32 | 32 | gradient | Pending |
+| `.portfolio-hero-copy > .portfolio-eyebrow` | 2 | 2 | pseudo-element | Pending |
+| `.portfolio-language` | 28 | 28 | gradient | Pending |
+| `.portfolio-primary[href$="#projects"]` | 1 | — | pseudo-element | Pending |
+| `.portfolio-workspace > span` | 16 | — | gradient | Pending |
+| `.product-a > b` | 2 | 4 | pseudo-element | Pending |
+| `.product-a > small` | 2 | 4 | pseudo-element | Pending |
+| `.product-b > b` | 2 | 2 | pseudo-element | Pending |
+| `.product-b > small` | 1 | 1 | pseudo-element | Pending |
+| `.scene-topline > i` | 14 | 28 | pseudo-element | Pending |
+| `.scene-topline > span` | 16 | 32 | pseudo-element | Pending |
+| `a[href$="#about"]` | 4 | 4 | gradient | Pending |
+| `a[href$="#contact"]` | 2 | 3 | gradient | Pending |
+| `a[href$="#novels"]` | 4 | 4 | gradient | Pending |
+| `a[href$="#stack"]` | 4 | 4 | gradient | Pending |
+| `header > .portfolio-brand[href$="#top"] > span:nth-child(2) > small` | 2 | 2 | gradient | Pending |
+| `header > .portfolio-brand[href$="#top"] > span:nth-child(2) > strong` | 4 | 4 | gradient | Pending |
+| `nav > a[href$="#projects"]` | 4 | 4 | gradient | Pending |
+| `span:nth-child(1) > b` | 2 | 4 | pseudo-element | Pending |
+| `span:nth-child(3) > b` | 1 | 1 | pseudo-element | Pending |
 
-## Completion rule
+**Distribution:** Dark — 159 gradient, 90 pseudo-element, 16 overlap, 2 non-text-content nodes (267 total). Light — 101 gradient, 151 pseudo-element, 32 overlap, 4 non-text-content nodes (288 total). The union is 57 unique selectors (57 present in dark, 48 in light). These are measurement targets, not confirmed contrast failures.
 
-Do not mark this review complete until a human reviewer records actual foreground/background samples and contrast ratios for all applicable target/theme/language/viewport combinations, inspects interactive focus states, and attaches evidence for any failure or ambiguous case. The current automated result is: zero confirmed Axe violations; 72 incomplete contrast checks (36 per theme); **human review pending**.
