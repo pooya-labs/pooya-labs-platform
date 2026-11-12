@@ -387,8 +387,8 @@
     "latestPagesAttemptStatus": "passed-build-and-deploy-on-exact-main-b7d4d136d58e2121d6bd2bd11c03ff774431a2d7;artifact-13941954722;https://pooya-labs.github.io/pooya-labs-platform/",
     "pagesArtifactId": 13941954722,
     "pagesArtifactSizeBytes": 3817565,
-    "latestDocumentationCommit": "a37de4cf21bc5e41f8fca9ea08ba6d6dfd350b67",
-    "portfolioBrowserQaRun": "42514976406",
+    "latestDocumentationCommit": "0e49120d787068f14fc275d161a8861632dd6357",
+    "portfolioBrowserQaRun": "43215080506",
     "cloudflareLatestAttemptRun": "42526088253;actual-publish-skipped-missing-CLOUDFLARE_API_TOKEN;no-deployment-of-558970f",
     "appsScriptLatestAttemptRun": "42399972770; configuration-check-passed; actual-production-deploy-job-skipped-missing-CLASPRC_JSON-CLASP_JSON-GAS_DEPLOYMENT_ID",
     "latestCloudflareAttemptRun": "43215080554;GitHub-Actions-job-skipped-missing-CLOUDFLARE_API_TOKEN;direct-Cloudflare-API-deployment-b7ed72f1-succeeded-exact-main-b7d4",
@@ -398,7 +398,7 @@
     "cloudflareProductionStage": "queued-success;initialize-success;clone_repo-success;build-success;deploy-success",
     "cloudflareAutoDeploy": "GitHub source main and path filters configured; native github:push trigger remains unverified; GitHub Actions automated deploy skipped for missing CLOUDFLARE_API_TOKEN; exact main b7d4 release was deployed manually through authenticated connected Cloudflare API.",
     "latestAppsScriptProductionDeploy": "43215080602;actual-publish-skipped-missing-three-secrets;no-new-web-app-deployment;not-required-for-current-static-pages-site",
-    "brandAssetParity": "GitHub-Pages-41ea1004;Cloudflare-a37de4cf-includes-41ea1004-asset;production-asset-parity-verified",
+    "brandAssetParity": "GitHub-Pages-and-Cloudflare-both-published-from-main-b7d4d136d58e2121d6bd2bd11c03ff774431a2d7;Salon-Booking-homepage-hero-is-new;original-AetherFlow-artwork-preserved",
     "githubPagesOwnerIdentityPublished": "PR-20-merge-558970f;Pooya-Monogram-name-and-centered-black-tile-live",
     "staticHostsProductionParity": true
   },
@@ -423,7 +423,7 @@
   },
   "blockers": [
     "Main governance gate is now active: repository ruleset 26861856 requires a pull request and strict success of the two required check contexts; no bypass actors. The normal path was exercised by PR #46 and post-merge main CI passed. Negative failed-check enforcement testing has not been run.",
-    "Phase 7 technical closeout is active. The owner review packet and read-only source inventory are prepared; manual accessibility/device review, authenticated social-cache review, owner content/media approvals, native Cloudflare Git-push remediation, Apps Script production publishing, and controlled rollback rehearsal remain open.",
+    "Phase 7 technical closeout remains active. Manual accessibility/device review, authenticated social-cache review, owner content/media permissions and controlled rollback rehearsal remain open. Cloudflare native Git-push automation is still unverified; the current static-host release was published successfully by direct connected API. Apps Script production publishing is optional for the static portfolio and is needed only if the owner chooses to resume the separate HtmlService deployment.",
     "Authenticated LinkedIn Post Inspector and Meta Sharing Debugger/cache-refresh validation remains open. Production-host User-Agent simulation on both hosts and the repeatable local Chromium regression gate on all 17 routes per User-Agent both pass; neither proves platform cache refresh.",
     "AetherFlow M08 remains experimental/in progress. Owner-confirmed live Apps Script private-Sheet persistence and 12-test browser QA are now recorded. The checked-in source correction for pending-only storage semantics still requires manual redeployment to the existing Apps Script Web App; production Rust ingress, PostgreSQL recovery, NATS server controls, SLOs and independent security review remain open.",
     "ORBIT's Cloudflare Worker is still not connected to a configured origin or secret; CF01-CF05 runtime acceptance remains open and must not be represented as live telemetry.",
@@ -1161,7 +1161,7 @@
       "latestObservedChange": "Latest main commit changed only the bilingual README ownership mark to the centered rounded black-tile platform monogram; owner permission and privacy-reviewed imagery restrictions remain."
     }
   },
-  "novelLibrary": "two-owner-supplied-books-connected-to-public-catalog-gavazn-and-ghazal;WebP-covers-and-PDF-assets-included;manual-live-reader-review-pending",
+  "novelLibrary": "two-owner-supplied-books-«گوزن»-and-«غزال»-connected-to-public-catalog;WebP-covers-and-PDF-assets-included;manual-live-reader-review-pending",
   "reconciliation": {
     "date": "2026-11-08",
     "inspectedMainCodeAndTestCheckpoint": "7a2d6c38731ea57e66bcedc5363566905ab5affe",
@@ -1705,7 +1705,7 @@
       "A": "Obsidian Editorial Systems",
       "B": "Warm Editorial Gallery"
     },
-    "recommendedDirection": "A",
+    "recommendedDirection": "historical-recommendation-only-not-owner-selection",
     "fullApplicationImplementationStarted": true,
     "firstOwnerReview": "complete-through-iterative-owner-feedback",
     "secondOwnerReview": "owner-explicitly-declared-redesign-finished-and-requested-main-promotion-2026-11-12",
