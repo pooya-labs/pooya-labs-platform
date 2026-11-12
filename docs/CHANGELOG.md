@@ -3,6 +3,7 @@
 - Rechecked the current default-branch heads and open pull-request inventory for all eight independent project repositories; updated [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md) and the machine-readable project state.
 - ORBIT now records main head `63ac457ad0b2`; PRs #186, #181, #190 and the documentation-only #192 are merged, with no open ORBIT PRs. Exact-head CI/Security for #181 and #190 passed and the current Pages deployment passed; cancelled jobs in later main push workflows remain explicitly disclosed.
 - AetherFlow PR #47 remains open. No other open PRs were returned in the six remaining project repositories. No independent project repository, source code, screenshot or deployment configuration was modified.
+- PR [#77](https://github.com/pooya-labs/pooya-labs-platform/pull/77) merged as [`860c067`](https://github.com/pooya-labs/pooya-labs-platform/commit/860c067bb1b19d94ebb67184bd59e1ebb5a85acb). Its exact-head Repository CI [43327481662](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43327481662) and Portfolio Browser QA [43327481659](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43327481659) both passed.
 - This is a read-only source-evidence refresh, not owner content/media acceptance, Phase 7 closure, Phase 9 integration authorization, or V1 approval.
 
 ---
