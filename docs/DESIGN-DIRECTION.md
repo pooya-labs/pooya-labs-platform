@@ -1,5 +1,14 @@
 # Visual Direction — Pooya Labs personal portfolio
 
+**Current as-built status (2026-11-12):** The owner-directed redesign is complete and live on both static production hosts at exact application SHA `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`. The as-built direction is a personal engineering portfolio with a restrained graphite/ivory/emerald visual system, editorial hierarchy, an animated proof/hero composition, systems-flow storytelling, project-specific visual scenes, and a craft gallery. It preserves English-first/LTR, Persian/RTL, dark/light themes, reduced-motion support and native pointer behavior. The removed cursor-following lens remains excluded.
+
+- Owner promotion: PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71); contrast correction: PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72).
+- CI: [43215080520](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080520); Browser QA: [43215080506](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080506).
+- GitHub Pages: [production site](https://pooya-labs.github.io/pooya-labs-platform/); Cloudflare Pages: [canonical production host](https://pooya-labs-platform.pages.dev/).
+- Phase 8 is complete. Phase 7 manual/owner acceptance remains open and still blocks Phase 9 final evidence integration and V1. No project-level content or client media has been implicitly approved by the design promotion.
+
+## Historical design brief and earlier baseline
+
 **Status:** The current motion-led portfolio is a review baseline, not the final design. A complete new redesign with two owner review/approval rounds is Phase 8, the penultimate stage before V1. Full portfolio-level integration of all eight projects is Phase 9, immediately before release.
 
 ## Product first
