@@ -1,6 +1,6 @@
 # Current platform status — 2026-11-12
 
-<badge>Design promoted to main</badge>
+**Status: redesign promoted to main; both static hosts published.**
 
 - The completed portfolio redesign was promoted through PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71); the targeted light-theme header-label contrast correction followed through PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72).
 - Current application source on `main`: `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`.
