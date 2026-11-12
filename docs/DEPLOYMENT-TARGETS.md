@@ -6,11 +6,22 @@ The repository is the shared source of truth, but each host has its own build ou
 
 | Target | Purpose | Build output | Release mechanism | Current state |
 |---|---|---|---|---|
-| GitHub Pages | Public static portfolio | `dist/pages` | `.github/workflows/pages-platform.yml` | Live; run 43215080845, application source SHA `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`, artifact 13941954722 |
-| Cloudflare Pages | Independent public-host mirror | `dist/cloudflare` | Connected Cloudflare Pages API; native Git push trigger not observed | Live; Production deployment `b7ed72f1-7507-4598-9e61-9f5745997751`, exact main SHA `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`, all five stages successful |
+| GitHub Pages | Public static portfolio | `dist/pages` | `.github/workflows/pages-platform.yml` | Live; run 43221461285, application source SHA `64c5966cba21a2d25d8f357b351593cbe51f26b2`, artifact 13944694071 |
+| Cloudflare Pages | Independent public-host mirror | `dist/cloudflare` | Connected Cloudflare Pages API; native Git push trigger not observed | Live; Production deployment `975b9e6d-8004-447a-9bfe-898c746036a9`, exact main SHA `64c5966cba21a2d25d8f357b351593cbe51f26b2`, all five stages successful |
 | Google Apps Script | Optional HtmlService application/runtime | `dist/gas/index.html` plus `Code.gs` and manifest | `.github/workflows/deploy-gas.yml` using `clasp` | Build covered by CI; production publish skipped on run 43215080602 because `CLASPRC_JSON`, `CLASP_JSON` and `GAS_DEPLOYMENT_ID` are not configured; not required for the static Pages portfolio |
 
-## Latest verified production parity — 2026-11-12
+## Latest verified production parity — 2026-11-12 (after PR #75)
+
+- Exact main application SHA: [`64c5966cba21a2d25d8f357b351593cbe51f26b2`](https://github.com/pooya-labs/pooya-labs-platform/commit/64c5966cba21a2d25d8f357b351593cbe51f26b2). PR #75 added a semantic group role to the named skill-chip collections; the PR head and merged main tree are identical.
+- Main Repository CI [43221461282](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461282) and Browser QA [43221461301](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461301) passed. Browser evidence: 18/18 routes, 36/36 viewport checks, 18/18 keyboard skip links, 12/12 gallery gutter swipes, 34/34 crawler checks, zero confirmed Axe violations, zero ARIA-prohibited-attribute incompletes and 36 contrast-only incompletes per theme.
+- GitHub Pages [run 43221461285](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461285) deployed artifact `13944694071` from this SHA. Public URL: [https://pooya-labs.github.io/pooya-labs-platform/](https://pooya-labs.github.io/pooya-labs-platform/).
+- Cloudflare Pages Production deployment [`975b9e6d`](https://975b9e6d.pooya-labs-platform.pages.dev/) (ID `975b9e6d-8004-447a-9bfe-898c746036a9`) completed queue, initialize, clone, build and deploy from the same SHA through the connected Cloudflare API. Current canonical URL: [https://pooya-labs-platform.pages.dev/](https://pooya-labs-platform.pages.dev/).
+- GitHub's Cloudflare workflow [43221461407](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461407) skipped its deploy job because `CLOUDFLARE_API_TOKEN` is absent; the direct authenticated API deployment succeeded. This does not prove native `github:push` automation.
+- Apps Script publish job [43221461361](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461361) was skipped because its private clasp secrets are not configured; the current static portfolio does not depend on Apps Script.
+- The platform remains pre-alpha; Phase 7 human/owner acceptance, Phase 9 complete integration and Phase 10 V1 release gates remain open.
+
+## Previous production parity checkpoint — before PR #75 (superseded)
+
 
 - The final promoted application source is exact main commit [`b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`](https://github.com/pooya-labs/pooya-labs-platform/commit/b7d4d136d58e2121d6bd2bd11c03ff774431a2d7).
 - PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71) promoted the owner-declared-complete redesign; PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72) applied the post-merge light-theme toggle-label contrast correction.
