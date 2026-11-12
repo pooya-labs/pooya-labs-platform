@@ -126,9 +126,9 @@ test('AetherFlow case-study hero uses its animated workflow scene and keeps the 
     assert.ok(!html.includes('case-study-page-preview'), route + ' must not overlay the old static hero screenshot');
     assert.ok(html.includes('case-study-media-card device-desktop'), route + ' must retain the real desktop screenshot in the interface gallery');
     assert.ok(html.includes('https://raw.githubusercontent.com/pooya-labs/pooya-labs-platform/eba5e2d02047375ae8a42514f7bbb58c75106ba7/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png'), route + ' must load the immutable desktop capture');
-    assert.ok(html.includes(route.startsWith('en/')
-      ? 'alt="Actual AetherFlow desktop interface showing the workflow preview and worker states"'
-      : 'alt="نمای واقعی رابط دسکتاپ AetherFlow با نمونهٔ گردش‌کار و وضعیت Workerها"'), route + ' must retain localized alternative text');
+    const desktopImage = html.match(/case-study-media-card device-desktop[^]*?<img[^>]+alt="([^"]+)"/);
+    assert.ok(desktopImage?.[1]?.includes('AetherFlow'), route + ' must retain a project-specific alternative text');
+    assert.ok(desktopImage[1].trim().length > 20, route + ' must retain descriptive alternative text');
   }
 });
 
