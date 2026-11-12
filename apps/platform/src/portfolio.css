@@ -3781,5 +3781,15 @@
   }
 }
 
-
-
+/* Keep the light-theme header theme control readable over the glass utility tray. */
+.portfolio-page[data-theme="light"] .portfolio-header-actions > .portfolio-theme {
+  color: #294b3b !important;
+  background: #fff !important;
+  border-color: rgba(35,55,45,.16);
+}
+.portfolio-page[data-theme="light"] .portfolio-header-actions > .portfolio-theme > span {
+  color: #294b3b !important;
+}
+.portfolio-page[data-theme="light"] .portfolio-header-actions > .portfolio-theme > svg {
+  color: #26775a;
+}
