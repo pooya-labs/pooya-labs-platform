@@ -125,10 +125,15 @@ The release target is a credible, distinctive personal portfolio that introduces
 - [ ] Complete a project-specific legal/title and third-party asset review before making any formal copyright/rights assignment claim.
 
 
-This phase is the work currently in progress. Complete every autonomous engineering, source-verification, documentation, deployment, performance, and accessibility-preparation task before starting the penultimate redesign. Do not begin the full redesign while known platform defects or unresolved technical uncertainty can still change its requirements.
+### Current carry-over status — 2026-11-12
+
+Phase 8 was subsequently opened by explicit owner instruction and is now complete; the full redesign was approved for promotion and merged through PRs #71 and #72. PR #75 then added a semantic `role="group"` to the skill chips, removing the four per-theme incomplete ARIA checks from the Browser QA report; the 36 contrast-only incomplete checks per theme remain. This does **not** retroactively close the Phase 7 exit gate. The remaining human contrast/ARIA review, physical-device and assistive-technology acceptance, owner content/media/privacy approvals, authenticated social-cache validation, deployment-automation decision and rollback rehearsal remain mandatory before Phase 9 integration and Phase 10/V1 publication. Read-only upstream source verification may proceed as preparation; do not begin final project content/media integration until the carry-over gates are closed.
+
+Phase 7 readiness work remains open. The autonomous engineering, source-verification and accessibility-preparation tasks below have been completed where evidenced; unresolved human/owner acceptance items are carried forward before Phase 9 and V1. The original Phase 7 exit gate below is historical because the owner separately authorized early Phase 8 entry.
+
 
 ### Product and content readiness
-- [x] Refresh the read-only source inventory for all eight upstream §main§ branches in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md) (latest: 2026-11-10). Distinguish verified PR-head CI/deployment evidence from commits without a current build/deploy; record AetherFlow PR #19/#20, merged ORBIT PR #138 and its unpromoted patched Keycloak digest, and GlobalCart's FX source-timestamp regression. No upstream repository was modified.
+- [x] Refresh the read-only source inventory for all eight upstream §main§ branches in [PROJECT-CONTENT-AUDIT.md](PROJECT-CONTENT-AUDIT.md) (latest: 2026-11-12). Distinguish exact-main CI/deployment evidence from skipped runtime checks; record AetherFlow PR #47, ORBIT PRs #192/#190/#181, GlobalCart's timestamped Nov 10 FX snapshot, and Salon Booking's debug-signed Android v1.2.0 release. No upstream repository was modified.
 - [ ] Complete the full feature/route, live-link, contribution, logo/media/source, caption, and alt-text acceptance for all eight projects. Final portfolio content/media integration remains Phase 9 work.
 - [ ] Keep every unverified claim, missing contribution statement, and unavailable runtime visibly bounded; never convert a prototype, simulated feed, synthetic demo, or unpublished service into a live/production claim.
 - [ ] Verify all current project links, logos, owner attributions, image sources, captions, and alt text against the newly rechecked upstream repositories; the new SHA inventory does not substitute for feature-level or owner acceptance.
@@ -179,7 +184,7 @@ This phase is the work currently in progress. Complete every autonomous engineer
 - [ ] Pooya/salon owner approves any public Salon Booking case-study attribution and privacy-reviewed synthetic/redacted imagery.
 - [ ] Complete the remaining human accessibility review with keyboard and assistive technology; record the exact browser/device/screen-reader combinations.
 
-**Exit gate:** autonomous readiness work is complete, all known defects are fixed or explicitly bounded, and the owner-review packet is ready. Only then begin Phase 8. Phase 7 does not include the final project-by-project media/content integration; that is intentionally reserved for Phase 9.
+**Carried-forward exit gate:** Phase 8 has since been completed by owner-directed promotion. Phase 7 is not marked fully accepted: the remaining human/owner/device/accessibility/privacy/social-cache/rollback items must close before Phase 9 final integration can begin. Project-by-project evidence and approved media remain reserved for Phase 9.
 
 ### Owner-authorized Phase 8 entry — 2026-11-10
 
