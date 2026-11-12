@@ -8,6 +8,8 @@
 - Cloudflare Pages Production deployment `975b9e6d-8004-447a-9bfe-898c746036a9` completed all five stages from the same SHA: [unique deployment](https://975b9e6d.pooya-labs-platform.pages.dev/) and [canonical host](https://pooya-labs-platform.pages.dev/). The authenticated connected Cloudflare API was used because the GitHub Actions Cloudflare secret is absent; native `github:push` deployment remains unverified.
 - Release is still **pre-alpha / portfolio draft**. Phase 8 is complete; Phase 7 human/owner acceptance gates still block Phase 9 final content integration and Phase 10/V1.
 
+## Historical checkpoint before PR #75 — 2026-11-12 (superseded)
+
 # Final redesign promotion and production parity — 2026-11-12
 
 - Pooya explicitly declared the redesign complete and instructed that it replace the primary repository version. Phase 8 owner approval is recorded; this is approval of the redesign promotion, **not** V1 approval.
@@ -21,6 +23,8 @@
 - The public Novels section now contains the two owner-uploaded manuscripts «گوزن» and «غزال», optimized WebP covers, PDF reader links, and the original uploaded copies retained in `novels/uploads/`.
 - The Workspace sign-in is intentionally a client-side demo gate only. It is not authentication and must never protect private data or privileged operations.
 - Release remains **pre-alpha / portfolio draft**. Phase 7 owner/device/accessibility/privacy/social-cache/rollback carry-over remains open; Phase 9 project evidence/content reconciliation and Phase 10 V1 hardening are still ahead.
+
+## Earlier status snapshot before PR #75 — 2026-11-12 (superseded)
 
 # Current platform status — 2026-11-12
 
