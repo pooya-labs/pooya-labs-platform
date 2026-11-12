@@ -1,3 +1,13 @@
+# Semantic accessibility fix and final static-host parity — 2026-11-12
+
+- Merged PR [#75](https://github.com/pooya-labs/pooya-labs-platform/pull/75), adding `role="group"` to the localized skill-chip collection and a contract test. Final application commit: `64c5966cba21a2d25d8f357b351593cbe51f26b2`.
+- Repository CI [43221461282](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461282) and exact-main Browser QA [43221461301](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461301) passed on that SHA.
+- Browser QA: 18/18 routes; 36/36 desktop/mobile viewports; 18/18 keyboard skip-link checks; 34/34 social crawler checks; zero page errors, missing image alt text, horizontal overflow or confirmed Axe violations.
+- Axe incomplete results are now 36 per theme, all `color-contrast`; the four `aria-prohibited-attr` incomplete checks per theme were eliminated by PR #75. Human rendered-background contrast review remains open (36 selectors/checks per theme); incomplete checks are not passes.
+- GitHub Pages [run 43221461285](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461285) deployed artifact `13944694071` from exact SHA `64c5966...`: [production site](https://pooya-labs.github.io/pooya-labs-platform/).
+- Cloudflare Pages Production deployment `975b9e6d-8004-447a-9bfe-898c746036a9` completed all five stages from the same SHA: [unique deployment](https://975b9e6d.pooya-labs-platform.pages.dev/) and [canonical host](https://pooya-labs-platform.pages.dev/). The authenticated connected Cloudflare API was used because the GitHub Actions Cloudflare secret is absent; native `github:push` deployment remains unverified.
+- Release is still **pre-alpha / portfolio draft**. Phase 8 is complete; Phase 7 human/owner acceptance gates still block Phase 9 final content integration and Phase 10/V1.
+
 # Final redesign promotion and production parity — 2026-11-12
 
 - Pooya explicitly declared the redesign complete and instructed that it replace the primary repository version. Phase 8 owner approval is recorded; this is approval of the redesign promotion, **not** V1 approval.
