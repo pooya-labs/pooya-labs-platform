@@ -8,9 +8,20 @@ const modulePath = new URL('apps/platform/src/NovelLibrary.tsx', root);
 const sourcePath = new URL('apps/platform/src/PortfolioHome.tsx', root);
 const guidePath = new URL('docs/NOVELS-GUIDE.md', root);
 
-test('novel catalog starts empty and uses the versioned public schema', async () => {
+test('novel catalog publishes the two approved books using the versioned public schema', async () => {
   const catalog = JSON.parse(await readFile(catalogPath, 'utf8'));
-  assert.deepEqual(catalog, { schemaVersion: 1, novels: [] });
+  assert.equal(catalog.schemaVersion, 1);
+  assert.deepEqual(
+    catalog.novels.map((novel) => [novel.slug, novel.title.fa, novel.cover, novel.manuscript, novel.published]),
+    [
+      ['gavazn', 'گوزن', 'covers/gavazn.webp', 'manuscripts/gavazn.pdf', true],
+      ['ghazal', 'غزال', 'covers/ghazal.webp', 'manuscripts/ghazal.pdf', true],
+    ],
+  );
+  for (const novel of catalog.novels) {
+    assert.equal(novel.language, 'fa');
+    assert.deepEqual(novel.genres, []);
+  }
 });
 
 test('novel library validates unique slugs, safe cover/manuscript paths, and explicit publication state', async () => {
@@ -57,5 +68,6 @@ test('Pages build copies the catalog into the public output when the artifact is
   const output = new URL('../../dist/pages/novels/catalog.json', import.meta.url);
   const built = await readFile(output, 'utf8').catch(() => null);
   if (built === null) { t.skip('Pages build output is not present in this test context.'); return; }
-  assert.deepEqual(JSON.parse(built), { schemaVersion: 1, novels: [] });
+  const sourceCatalog = JSON.parse(await readFile(catalogPath, 'utf8'));
+  assert.deepEqual(JSON.parse(built), sourceCatalog);
 });

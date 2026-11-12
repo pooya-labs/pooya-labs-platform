@@ -53,26 +53,34 @@ export const productDossiers = {
     },
     verification: {
       fa: [
-        "آخرین وضعیت upstream روی main برابر v0.2.3-dev / M09.8 است؛ HEAD فعلی 9afa4f5d726df51ae4f9b95b30982fb5ecd3482a است. کد برنامه در SHA 6192f8eccdbf8092c31e06a0f37a53485c3e3589 قرار دارد و commit نهایی فقط snapshot کاتالوگ data/catalog.json را ذخیره کرده است.",
-        "در commit 6192f8 برای اصلاح نام لینک‌های کارت hero، aria-label صریح حذف شده تا نام از متن قابل‌مشاهده گرفته شود؛ اما Browser E2E جدید نشان می‌دهد نام محاسبه‌شده همچنان خالی است و این اصلاح مشکل را نبسته است.",
-        "انتشار GitHub Pages، run 42393544307، و Security، run 42393544310، روی کد برنامه 6192f8 موفق شدند. اجرای Browser E2E، run 42393544303، با 137 passed / 3 failed / 9 skipped پایان یافت.",
-        "سه شکست E2E در Chromium mobile رخ داد: دو اسکن axe با اثر serious و rule برابر link-name برای لینک‌های .hero-product-tile، و یک انتظار storefront که نام قابل‌دسترسی لینک کالا را خالی دریافت کرد. لینک‌های hero هنوز برای فناوری‌های کمکی نام قابل‌تشخیص ندارند؛ assertion نباید حذف یا ضعیف شود.",
-        "Lighthouse lab run 42393731570، Post-deploy visual QA run 42393731697 و Shopify Catalog Smoke run 42393731548 روی HEAD فعلی 9afa4f5 موفق شدند. اجرای Publish portfolio screenshots، run 42394145400، skip شد.",
-        "M09.8 و انتشار 1.0.0 همچنان باز می‌مانند تا accessible name کارت‌ها واقعاً اصلاح و Browser E2E کامل روی SHA جاری سبز شود؛ تأیید تعامل گالری/PDP هر ۱۰۰۰ محصول و بازبینی دستی مالک نیز باقی است.",
-        "GlobalCart یک شبیه‌ساز marketplace است، نه فروشگاه واقعی؛ پرداخت، موجودی رزروشده، fulfillment یا فروش واقعی انجام نمی‌دهد. قیمت‌های برآوردی کاتالوگ باید با برچسب تخمینی باقی بمانند."
+        "نسخه پایدار GlobalCart v1.0.0 در ۸ نوامبر ۲۰۲۶ منتشر شده و tag آن به commit dfe9a98c70a9bbde3f5444c6f2cad2abd74269ac اشاره می‌کند.",
+        "workflow انتشار v1.0.0، run 42494416761، پس از TypeScript، unit tests، build، Browser Playwright/axe با ۱۵۱ موفق، ۹ مورد skip عمدی و صفر شکست، secret scan و route smoke انتشار را انجام داد.",
+        "Browser E2E روی main پس از انتشار، run 42516946135، با ۱۶۳ موفق، ۹ مورد skip عمدی و صفر شکست پایان یافت.",
+        "Lighthouse run 42517087881 شش گزارش route/mode را تأیید کرد: امتیاز Performance موبایل صفحه اصلی ۹۶، محصول ۹۶ و مطالعه موردی ۹۹؛ دسکتاپ هر سه ۱۰۰. Accessibility، Best Practices و SEO در همه گزارش‌ها ۱۰۰ و CLS برابر صفر بود.",
+        "Security run 42518528453، Pages run 42518528466، بررسی زنده دسکتاپ/موبایل run 42518731820 و Shopify Catalog Smoke run 42518731796 موفق شدند.",
+        "مالک در ۸ نوامبر مرور واقعی دسکتاپ/موبایل، بررسی screen reader و مرور RTL/LTR را تأیید کرد. گزارش‌های آزمایشگاهی جایگزین Core Web Vitals واقعی کاربران نیستند.",
+        "GlobalCart شبیه‌ساز marketplace است، نه فروشگاه زنده: سفارش، پرداخت، رزرو موجودی، ارسال، تسویه فروشنده یا بازپرداخت واقعی انجام نمی‌شود؛ قیمت‌های کاتالوگ تخمینی‌اند."
       ],
       en: [
-        "The upstream project remains v0.2.3-dev / M09.8. Current main HEAD is 9afa4f5d726df51ae4f9b95b30982fb5ecd3482a. Application code is at 6192f8eccdbf8092c31e06a0f37a53485c3e3589; the final main commit only persisted the data/catalog.json snapshot.",
-        "Commit 6192f8 attempted to fix hero-link names by removing explicit aria-label and relying on visible text. The new Browser E2E run shows the computed accessible name is still empty, so the attempted fix did not close the defect.",
-        "GitHub Pages deployment run 42393544307 and Security run 42393544310 passed on application SHA 6192f8. Browser E2E run 42393544303 finished with 137 passed / 3 failed / 9 skipped.",
-        "All three E2E failures occurred in Chromium mobile: two serious axe link-name violations on .hero-product-tile links, plus a storefront assertion that received an empty accessible name for a product link. Hero links remain unnamed for assistive technology; do not weaken the assertion.",
-        "Lighthouse lab run 42393731570, post-deploy visual QA run 42393731697, and Shopify Catalog Smoke run 42393731548 passed on current main. Publish portfolio screenshots run 42394145400 was skipped.",
-        "The 1.0.0 release remains blocked until hero links have real accessible names and full Browser E2E passes on current SHA. M09.8 also needs verification of all 1,000 gallery/PDP interactions and owner manual review.",
-        "GlobalCart is a marketplace simulation, not a live retailer; no real payments, inventory reservation, fulfillment, or sales occur. Estimated catalog prices must remain clearly labeled as estimates."
+        "GlobalCart stable v1.0.0 was released on November 8, 2026; its tag points to dfe9a98c70a9bbde3f5444c6f2cad2abd74269ac.",
+        "The v1.0.0 release workflow, run 42494416761, published after TypeScript, unit tests, production build, Playwright/axe browser checks (151 passed, 9 intentional skips, 0 failed), secret scan, and route smoke.",
+        "Post-release mainline Browser E2E, run 42516946135, completed with 163 passed, 9 intentional skips, and 0 failed.",
+        "Lighthouse run 42517087881 passed six route/mode reports: mobile Performance 96 (home), 96 (product), and 99 (case study); all three desktop reports scored 100. Accessibility, Best Practices, and SEO scored 100 in every report, with CLS 0 throughout.",
+        "Security run 42518528453, Pages run 42518528466, live desktop/mobile QA run 42518731820, and Shopify Catalog Smoke run 42518731796 passed.",
+        "On November 8, the owner confirmed real desktop/mobile review, an actual screen-reader pass, and full human RTL/LTR review. Lab reports are not real-user Core Web Vitals.",
+        "GlobalCart is a marketplace simulation, not a live retailer: it does not process real orders, payments, inventory reservations, shipping, seller payouts, or refunds; catalog prices are estimates."
       ]
     },
+
     references: [
-      { label: { fa: "کامیت تلاش برای اصلاح نام لینک‌های hero", en: "Attempted hero-link accessible-name fix commit" }, url: "https://github.com/pooya-labs/globalcart/commit/6192f8eccdbf8092c31e06a0f37a53485c3e3589" },
+      { label: { fa: "انتشار رسمی نسخه ۱٫۰٫۰", en: "Official v1.0.0 release" }, url: "https://github.com/pooya-labs/globalcart/releases/tag/v1.0.0" },
+      { label: { fa: "گزارش انتشار v1.0.0", en: "v1.0.0 release workflow" }, url: "https://github.com/pooya-labs/globalcart/actions/runs/42494416761" },
+      { label: { fa: "Browser E2E پس از انتشار", en: "Post-release Browser E2E" }, url: "https://github.com/pooya-labs/globalcart/actions/runs/42516946135" },
+      { label: { fa: "Lighthouse شش گزارش", en: "Six Lighthouse reports" }, url: "https://github.com/pooya-labs/globalcart/actions/runs/42517087881" },
+      { label: { fa: "Security", en: "Security" }, url: "https://github.com/pooya-labs/globalcart/actions/runs/42518528453" },
+      { label: { fa: "انتشار Pages", en: "Pages deployment" }, url: "https://github.com/pooya-labs/globalcart/actions/runs/42518528466" },
+      { label: { fa: "بررسی زنده دسکتاپ و موبایل", en: "Live desktop/mobile QA" }, url: "https://github.com/pooya-labs/globalcart/actions/runs/42518731820" },
+      { label: { fa: "Shopify Catalog Smoke", en: "Shopify Catalog Smoke" }, url: "https://github.com/pooya-labs/globalcart/actions/runs/42518731796" },
       { label: { fa: "README و وضعیت", en: "README and status" }, url: "https://github.com/pooya-labs/globalcart/blob/main/README.md" },
       { label: { fa: "PROJECT_CONTEXT", en: "PROJECT_CONTEXT" }, url: "https://github.com/pooya-labs/globalcart/blob/main/PROJECT_CONTEXT.md" },
       { label: { fa: "Architecture", en: "Architecture" }, url: "https://github.com/pooya-labs/globalcart/blob/main/docs/ARCHITECTURE.md" },
@@ -94,10 +102,10 @@ export const productDossiers = {
   },
   "salon-booking": {
     role: { fa: "README، پویا را مهندس/سازنده و مالک سالن را صاحب محصول معرفی می‌کند.", en: "The README identifies Pooya as engineer/creator and the salon owner as product owner." },
-    architecture: { fa: "GitHub Pages، React/TypeScript/Vite را سرو می‌کند. درخواست‌های same-origin از hidden iframe به bridge Apps Script و google.script.run می‌روند؛ Apps Script منطق API و Google Sheets خصوصی داده را نگه می‌دارند. Firebase Cloud Messaging برای push مدیر است؛ email اختیاری خاموش است. Worker/D1 قدیمی در مسیر فعال نیست و فقط recovery material باقی مانده.", en: "GitHub Pages serves React/TypeScript/Vite. Same-origin requests pass through a hidden iframe to the Apps Script bridge and google.script.run; Apps Script runs API logic and private Google Sheets stores records. Firebase Cloud Messaging supports manager push; optional email is off. The old Worker/D1 is not active and remains only as recovery material." },
+    architecture: { fa: "وب‌سایت GitHub Pages با React/TypeScript/Vite منتشر می‌شود و درخواست‌ها از hidden iframe و bridge به Google Apps Script می‌رسند؛ Google Sheets خصوصی منبع داده است. Firebase Cloud Messaging اعلان مدیر را فراهم می‌کند. اپ Android با Kotlin همان Apps Script API، نشست مدیر، Sheet خصوصی و Firebase موجود را استفاده می‌کند؛ Worker/D1 قدیمی در مسیر فعال نیست و فقط recovery material است.", en: "The GitHub Pages website uses React/TypeScript/Vite, with requests routed through a hidden iframe bridge to Google Apps Script and private Google Sheets. Firebase Cloud Messaging delivers manager notifications. The Kotlin Android companion reuses the same Apps Script API, manager session, private Sheet, and existing Firebase project; the old Worker/D1 is archival recovery material only." },
     implementation: {
-      fa: ["service catalog و availability بر اساس duration، ساعات هفتگی، استثناها، timezone، buffer و رزروهای فعال.", "تقویم Jalali با timezone سالن Asia/Tehran و ذخیره زمان UTC.", "booking با Idempotency-Key، recheck/write زیر LockService، reference code و customer management token یک‌بارمصرف.", "lookup/cancel مشتری با reference و proof-of-possession؛ اطلاعات تماس به API عمومی برگردانده نمی‌شود.", "پنل مالک: sign-in، رزروها، confirm/cancel/complete/no-show، خدمات/قیمت، ساعات چندبازه‌ای، date exceptions و TimeBlocks.", "AuditLog، IP-HMAC rate limit، hash کردن token/session و session چرخشی ۳۰روزه با logout revocation.", "push مدیر از FCM پس از config/device registration؛ ایمیل پیش‌فرض خاموش."],
-      en: ["Service catalog and availability from duration, weekly hours, exceptions, timezone, buffer, and active bookings.", "Jalali calendar in salon timezone Asia/Tehran with UTC persistence.", "Booking with Idempotency-Key, LockService-protected recheck/write, reference code, and one-time customer-management token.", "Customer lookup/cancel using reference and proof-of-possession; public API does not return contact details.", "Owner panel: sign-in, bookings, confirm/cancel/complete/no-show, services/prices, multi-interval hours, date exceptions, and TimeBlocks.", "AuditLog, IP-HMAC rate limits, hashed token/session, rolling 30-day sessions, and logout revocation.", "Manager push through FCM after configuration/device registration; email is off by default."]
+      fa: ["service catalog و availability بر اساس duration، ساعات هفتگی، استثناها، timezone، buffer و رزروهای فعال.", "تقویم Jalali با timezone سالن Asia/Tehran و ذخیره زمان UTC.", "booking با Idempotency-Key، recheck/write زیر LockService، reference code و customer management token یک‌بارمصرف.", "lookup/cancel مشتری با reference و proof-of-possession؛ اطلاعات تماس به API عمومی برگردانده نمی‌شود.", "پنل مالک: sign-in، رزروها، confirm/cancel/complete/no-show، خدمات/قیمت، ساعات چندبازه‌ای، date exceptions و TimeBlocks.", "AuditLog، IP-HMAC rate limit، hash کردن token/session و session چرخشی ۳۰روزه با logout revocation.", "push مدیر از FCM پس از config/device registration؛ ایمیل پیش‌فرض خاموش.", "اپ اندروید مدیر با تقویم هفتگی، time-block شمسی، سه حالت System/Light/Dark، اعلان بومی و ورود سریع زیست‌سنجی با Android Keystore."],
+      en: ["Service catalog and availability from duration, weekly hours, exceptions, timezone, buffer, and active bookings.", "Jalali calendar in salon timezone Asia/Tehran with UTC persistence.", "Booking with Idempotency-Key, LockService-protected recheck/write, reference code, and one-time customer-management token.", "Customer lookup/cancel using reference and proof-of-possession; public API does not return contact details.", "Owner panel: sign-in, bookings, confirm/cancel/complete/no-show, services/prices, multi-interval hours, date exceptions, and TimeBlocks.", "AuditLog, IP-HMAC rate limits, hashed token/session, rolling 30-day sessions, and logout revocation.", "Manager push through FCM after configuration/device registration; email is off by default.", "Native Android manager app with weekly calendar, Jalali time blocks, System/Light/Dark themes, native notifications, and Android Keystore-backed biometric quick sign-in."]
     },
     decisions: {
       fa: ["Cloudflare/D1 دیگر مسیر فعال نیست؛ داده قدیمی بدون تصمیم مالک حذف/منتقل نمی‌شود.", "نسخه محصول ۱٫۰٫۰ با پذیرش مالک منتشر شده است؛ تنظیمات عملیاتی و داده‌های واقعی مشتریان در اختیار مالک سالن باقی می‌مانند.", "timezone، ساعت کاری، خدمات و قیمت باید توسط صاحب سالن تأیید شوند.", "داده مشتری در screenshot یا پورتفولیو منتشر نمی‌شود."],
@@ -105,26 +113,30 @@ export const productDossiers = {
     },
     verification: {
       fa: [
-        "نسخه محصول ۱٫۰٫۰ در ۵ نوامبر ۲۰۲۶ با تأیید مالک منتشر شد؛ تگ رسمی v1.0.0 موجود است.",
-        "سورس Apps Script مقدار APP_VERSION_ = 1.5.3 را گزارش می‌کند؛ این شماره با نسخه محصول ۱٫۰٫۰ متفاوت است.",
-        "CI نسخه نهایی روی commit 56ff5cde با run 42086718663 موفق شد؛ GitHub Pages و read-only relay smoke نیز روی همان commit در run 42086718821 موفق بودند.",
-        "main فعلی روی SHA 4c4840c639da099379e8f65b387b1589685c6afd قرار دارد؛ چهار commit بعد از release checkpoint فقط README، ROADMAP.md، docs/DEPLOYMENT.md و docs/PROJECT-STATE.md را تغییر داده‌اند. مستندات جدید می‌گویند پذیرش deployment در Apps Script انجام شده و Worker/D1 قدیمی فقط recovery archive است و نباید دوباره ترافیک production بگیرد.",
-        "CI روی SHA فعلی، run 42394326231، قرمز است: آزمون owner-dashboard date-range روی Linux و Windows انتظار 2026-11-06 را داشت، اما مقدار واقعی 2026-11-08 برای slot ساعت 11:00 با duration برابر 15 دقیقه بود. lint، unit، migration، typecheck/build، responsive/RTL/keyboard و اسکن‌های axe پنل‌ها موفق شدند؛ شکست فعلی به آزمون بازه‌تاریخ محدود است و باید clock/fixture آن هم‌تراز شود.",
-        "Workflow انتشار Pages، run 42394326440، روی SHA فعلی موفق شد. این نتیجه، شکست آزمون بازه‌تاریخ را نادیده نمی‌گیرد و جایگزین CI سبز نیست.",
-        "مالک پذیرش مسیر عملیاتی و تنظیمات سالن را ثبت کرده است؛ انتشار case study همچنان نیازمند اجازه جداگانه مالک سالن و اسکرین‌شات synthetic یا کاملاً redacted است."
+        "نسخه محصول ۱٫۰٫۰ در ۵ نوامبر ۲۰۲۶ منتشر و توسط مالک سالن پذیرفته شد.",
+        "Apps Script نسخه ۱٫۵٫۵ منتشر شده و آدرس فعال Web App با /exec قبلی حفظ شده است؛ Google Sheets خصوصی همچنان منبع داده رزروهاست.",
+        "Firebase در پروژه موجود پیکربندی شده است. workflow اندروید run 42820405938 شامل source-contract tests، پردازش Google Services، آزمون‌های Kotlin و ساخت APK موفق شد؛ CI لینوکس/ویندوز run 42820405870 نیز موفق بود.",
+        "اپ اندروید Shayan Barber Studio نسخه ۱٫۲٫۰ به‌صورت GitHub prerelease با APK امضاشدهٔ debug منتشر شده است؛ کلید امضای تولیدی هنوز تنظیم نشده و این فایل انتشار فروشگاهی محسوب نمی‌شود.",
+        "آزمون‌های فیزیکی قبلی ورود مدیر و دریافت اعلان در حالت foreground، پس از بستن برنامه از Recents و پس از reboot را تأیید کرده‌اند؛ بررسی نهایی تغییرات جدید تقویم، ورود زیست‌سنجی و حالت‌های ظاهری هنوز نیازمند پذیرش مالک است.",
+        "سامانه وب نسخه ۱٫۰٫۰ تکمیل و پذیرفته شده است. اپ همراه Android یک انتشار prerelease جداگانه دارد و محدودیت امضای تولیدی آن باید شفاف بماند.",
+        "انتشار مطالعه موردی همچنان تابع اجازه مستقل مالک سالن است؛ هیچ اطلاعات شخصی یا رکورد مشتری نباید در تصاویر عمومی نمایش داده شود."
       ],
       en: [
-        "Product v1.0.0 was released and owner-accepted on November 5, 2026; the official v1.0.0 tag is published.",
-        "The Apps Script source reports APP_VERSION_ = 1.5.3; this is distinct from product version 1.0.0.",
-        "Release CI passed on commit 56ff5cde in run 42086718663; GitHub Pages and the read-only relay smoke passed on the same commit in run 42086718821.",
-        "Current main is 4c4840c639da099379e8f65b387b1589685c6afd. Four commits after the release checkpoint changed only README, ROADMAP.md, docs/DEPLOYMENT.md, and docs/PROJECT-STATE.md. The updated deployment documentation records Apps Script deployment acceptance and states that the old Worker/D1 is archival recovery material only, never a production traffic path.",
-        "CI on current SHA, run 42394326231, is red: the owner-dashboard date-range test failed on both Linux and Windows. It expected 2026-11-06 but received 2026-11-08 for an 11:00 / 15-minute slot. Lint, unit, migration, typecheck/build, responsive/RTL/keyboard checks, and owner-panel axe scans passed; the current failure is isolated to the date-range assertion and its clock/fixture alignment needs investigation.",
-        "The Pages deployment workflow, run 42394326440, succeeded on current SHA. This does not erase the date-range CI failure or make current CI green.",
-        "The owner has recorded operational and salon-configuration acceptance; portfolio publication still requires separate salon-owner permission and synthetic or fully redacted screenshots."
+        "Product v1.0.0 was released and accepted by the salon owner on November 5, 2026.",
+        "Apps Script source 1.5.5 was published while preserving the existing active /exec Web App URL; the private Google Sheet remains the booking data store.",
+        "Firebase was configured in the existing project. Android workflow run 42820405938 passed source-contract tests, Google Services processing, Kotlin tests, and APK assembly; Linux/Windows CI run 42820405870 also passed.",
+        "Shayan Barber Studio Android v1.2.0 is published as a GitHub prerelease with a debug-signed APK; a production signing key is not configured and this is not a store-signed release.",
+        "Earlier physical checks confirmed manager sign-in and notification delivery in the foreground, after dismissing the app from Recents, and after reboot. Final owner acceptance of the latest calendar, biometric sign-in, and appearance changes remains pending.",
+        "The web product v1.0.0 is complete and accepted. The Android companion has a separate prerelease state and its production-signing limitation remains explicit.",
+        "Case-study publication still requires separate salon-owner permission; no personal information or customer records may appear in public imagery."
       ]
     },
+
     references: [
-      { label: { fa: "README و معماری", en: "README and architecture" }, url: "https://github.com/pooya-labs/salon-booking/blob/main/README.md" },
+      { label: { fa: "README وب و معماری", en: "Web README and architecture" }, url: "https://github.com/pooya-labs/salon-booking/blob/main/README.md" },
+      { label: { fa: "راهنمای اپ اندروید", en: "Android manager app guide" }, url: "https://github.com/pooya-labs/salon-booking/blob/main/android/README.md" },
+      { label: { fa: "پیش‌انتشار Android v1.2.0", en: "Android v1.2.0 prerelease" }, url: "https://github.com/pooya-labs/salon-booking/releases/tag/v1.2.0" },
+      { label: { fa: "ساخت APK و آزمون Android", en: "Android APK build and tests" }, url: "https://github.com/pooya-labs/salon-booking/actions/runs/42820405938" },
       { label: { fa: "API", en: "API" }, url: "https://github.com/pooya-labs/salon-booking/blob/main/docs/API.md" },
       { label: { fa: "Project state", en: "Project state" }, url: "https://github.com/pooya-labs/salon-booking/blob/main/docs/PROJECT-STATE.md" },
       { label: { fa: "Deployment", en: "Deployment" }, url: "https://github.com/pooya-labs/salon-booking/blob/main/docs/DEPLOYMENT.md" },

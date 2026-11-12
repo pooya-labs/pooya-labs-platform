@@ -1,4 +1,29 @@
 {
   "schemaVersion": 1,
-  "novels": []
+  "novels": [
+    {
+      "slug": "gavazn",
+      "title": {
+        "fa": "گوزن",
+        "en": "Gavazn"
+      },
+      "language": "fa",
+      "genres": [],
+      "cover": "covers/gavazn.webp",
+      "manuscript": "manuscripts/gavazn.pdf",
+      "published": true
+    },
+    {
+      "slug": "ghazal",
+      "title": {
+        "fa": "غزال",
+        "en": "Ghazal"
+      },
+      "language": "fa",
+      "genres": [],
+      "cover": "covers/ghazal.webp",
+      "manuscript": "manuscripts/ghazal.pdf",
+      "published": true
+    }
+  ]
 }

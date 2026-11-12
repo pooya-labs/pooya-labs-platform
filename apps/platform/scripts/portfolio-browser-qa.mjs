@@ -72,7 +72,7 @@ const report = {
       findings: [],
     },
   },
-  note: 'Automated Chromium smoke and responsive checks. Homepage and bilingual project desktop/mobile screenshots are retained only as private workflow artifacts, never published to the website. Mobile case-study routes also exercise touch scroll chaining from the full-page screenshot frame to the outer page. This is not a manual screen-reader audit or WCAG certification.',
+  note: 'Automated Chromium smoke and responsive checks. Homepage and bilingual project desktop/mobile screenshots are retained only as private workflow artifacts, never published to the website. Mobile case-study routes also verify that a vertical swipe in the transparent side gutter advances the outer page while the centered screenshot remains independently scrollable. This is not a manual screen-reader audit or WCAG certification.',
 };
 
 function addFailure(route, viewport, message) {
@@ -104,6 +104,7 @@ try {
   const context = await browser.newContext({
     viewport: { width: 1440, height: 1000 },
     deviceScaleFactor: 1,
+    hasTouch: true,
     reducedMotion: 'no-preference',
   });
   await context.addInitScript(() => {
@@ -187,7 +188,7 @@ try {
           craftSectionCount: document.querySelectorAll('.portfolio-craft').length,
           craftPrincipleCount: document.querySelectorAll('.craft-principle').length,
           heroTitleRunsIsolated: Array.from(document.querySelectorAll('.portfolio-hero-title .hero-title-line')).every((node) => node.getAttribute('dir') === 'auto'),
-          thoughtfulWord: (() => {
+          heroWord: (() => {
             const word = document.querySelector('.portfolio-hero-title .hero-title-word');
             const line = word?.closest('.hero-title-word-line');
             const title = word?.closest('.portfolio-hero-title');
@@ -259,6 +260,10 @@ try {
             const image = document.querySelector('.case-study-visual-image.case-study-page-preview');
             return image instanceof HTMLImageElement ? { alt: image.alt, src: image.getAttribute('src') } : null;
           })(),
+          caseStudyDesktopCapture: (() => {
+            const image = document.querySelector('.case-study-media-card.device-desktop img');
+            return image instanceof HTMLImageElement ? { alt: image.alt, src: image.getAttribute('src') } : null;
+          })(),
           heroCapabilityTitleIsolated: document.querySelector('.portfolio-capabilities h2')?.getAttribute('dir') === 'auto',
         };
       });
@@ -266,11 +271,11 @@ try {
       routeRecord.headingCount = semantics.headingCount;
       routeRecord.mainId = semantics.mainId;
       routeRecord.missingImageAltCount = semantics.missingImageAltCount;
-      const ownerName = route.locale === 'fa' ? 'پویا مونوگرام' : 'POOYA MONOGRAM';
-      if (semantics.ownerAttributionCount !== 1) addFailure(route, null, 'Expected exactly one Pooya Monogram project-owner signature.');
+      const ownerName = route.locale === 'fa' ? 'پویا گودرزی' : 'POOYA GOODARZI';
+      if (semantics.ownerAttributionCount !== 1) addFailure(route, null, 'Expected exactly one Pooya Goodarzi project-owner attribution.');
       if (!semantics.ownerAttributionText.includes(ownerName)) addFailure(route, null, 'Project-owner signature does not match the route language.');
       if (!semantics.ownerAttributionImage?.src?.includes('brand/pooya-monogram-tile.svg') || !semantics.ownerAttributionImage.loaded) addFailure(route, null, 'Project-owner monogram tile is missing or failed to load.');
-      if (route.label === 'home-en') routeRecord.thoughtfulWordLayout = semantics.thoughtfulWord;
+      if (route.label === 'home-en') routeRecord.heroWordLayout = semantics.heroWord;
 
       if (routeRecord.title.trim().length === 0) addFailure(route, null, 'Page title is empty.');
       if (semantics.locale !== route.locale) addFailure(route, null, 'Document language does not match the route.');
@@ -287,8 +292,8 @@ try {
         if (semantics.systemFieldCount !== 1 || semantics.systemNodeCount !== 3) addFailure(route, null, 'The Systems in Motion section is incomplete.');
         if (semantics.craftSectionCount !== 1 || semantics.craftPrincipleCount !== 4) addFailure(route, null, 'The craft-principles section is incomplete.');
         if (!semantics.heroTitleRunsIsolated || !semantics.heroCapabilityTitleIsolated) addFailure(route, null, 'A first-page headline is not isolated from mixed bidirectional text.');
-        if (!semantics.thoughtfulWord || semantics.thoughtfulWord.text !== 'thoughtful' || !semantics.thoughtfulWord.fullyContained) {
-          addFailure(route, null, 'The English thoughtful headline word is missing, split, or clipped.');
+        if (!semantics.heroWord || semantics.heroWord.text !== 'intelligent' || !semantics.heroWord.fullyContained) {
+          addFailure(route, null, 'The English intelligent headline word is missing, split, or clipped.');
         }
       }
 
@@ -439,19 +444,23 @@ try {
             opacity: Number.parseFloat(getComputedStyle(art).opacity),
           };
         });
+        if (isAetherFlowPage || (route.label !== 'home-en' && route.label !== 'home-fa')) {
+          if (motionState.activeAnimationCount < 3) addFailure(route, viewport.name, 'The case-study hero does not expose at least three running visual animations.');
+          if ((motionState.opacity ?? 0) < .7) addFailure(route, viewport.name, 'The project motion layer is too faint to be a visible foreground visual.');
+        }
         if (isAetherFlowPage) {
-          const heroImageState = await page.locator('.case-study-visual-image.case-study-page-preview').evaluate(async (image) => {
+          const desktopCapture = page.locator('.case-study-media-card.device-desktop img').first();
+          await desktopCapture.scrollIntoViewIfNeeded();
+          const desktopCaptureState = await desktopCapture.evaluate(async (image) => {
             if (!(image instanceof HTMLImageElement)) return { loaded: false, naturalWidth: 0, src: '' };
             await image.decode().catch(() => undefined);
             return { loaded: image.complete && image.naturalWidth > 0, naturalWidth: image.naturalWidth, src: image.getAttribute('src') ?? '' };
           });
-          routeRecord.aetherflowHeroImage = heroImageState;
-          if (!heroImageState.loaded || heroImageState.naturalWidth < 1000) {
-            addFailure(route, viewport.name, 'The AetherFlow product screenshot did not load as a full-width local asset.');
+          routeRecord.aetherflowDesktopCapture = desktopCaptureState;
+          if (!desktopCaptureState.loaded || desktopCaptureState.naturalWidth < 1000 ||
+              !desktopCaptureState.src.includes('/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png')) {
+            addFailure(route, viewport.name, 'The AetherFlow authentic desktop screenshot is missing from its interface gallery.');
           }
-        } else if (route.label !== 'home-en' && route.label !== 'home-fa') {
-          if (motionState.activeAnimationCount < 3) addFailure(route, viewport.name, 'The case-study hero does not expose at least three running visual animations.');
-          if ((motionState.opacity ?? 0) < .7) addFailure(route, viewport.name, 'The project motion layer is too faint to be a visible foreground visual.');
         }
 
         let caseStudyGalleryScroll = { available: false, passed: true, skippedReason: 'Not a mobile case-study route.' };
@@ -461,32 +470,53 @@ try {
             await frame.scrollIntoViewIfNeeded();
             const setup = await frame.evaluate((element) => {
               const pageScroller = document.querySelector('.portfolio-page');
+              const card = element.closest('.case-study-media-card.device-mobile');
               const image = element.querySelector('img');
-              if (!(element instanceof HTMLElement) || !(pageScroller instanceof HTMLElement)) {
+              if (!(element instanceof HTMLElement) || !(pageScroller instanceof HTMLElement) || !(card instanceof HTMLElement)) {
                 return { available: false, reason: 'Scroll containers not found.' };
               }
               const innerMaxScroll = Math.max(0, element.scrollHeight - element.clientHeight);
               const outerMaxScroll = Math.max(0, pageScroller.scrollHeight - pageScroller.clientHeight);
-              element.scrollTop = innerMaxScroll;
+              const outerBefore = pageScroller.scrollTop;
+              const outerRemaining = Math.max(0, outerMaxScroll - outerBefore);
               const rect = element.getBoundingClientRect();
+              const cardRect = card.getBoundingClientRect();
+              const leftGutter = Math.max(0, rect.left - cardRect.left);
+              const rightGutter = Math.max(0, cardRect.right - rect.right);
+              const gutterSide = leftGutter >= rightGutter ? 'left' : 'right';
+              const gutterWidth = Math.max(leftGutter, rightGutter);
+              const gutterX = gutterSide === 'left'
+                ? cardRect.left + gutterWidth / 2
+                : cardRect.right - gutterWidth / 2;
               return {
-                available: innerMaxScroll > 40 && outerMaxScroll - pageScroller.scrollTop > 40,
-                reason: innerMaxScroll <= 40 ? 'The mobile capture has no internal overflow.' : 'No outer page content remains below the capture.',
+                available: innerMaxScroll > 40 && outerRemaining > 40 && gutterWidth > 6,
+                reason: innerMaxScroll <= 40
+                  ? 'The mobile capture has no internal overflow.'
+                  : outerRemaining <= 40
+                    ? 'No outer page scroll range remains.'
+                    : 'The mobile capture has no usable side gutter.',
                 innerMaxScroll,
-                outerBefore: pageScroller.scrollTop,
+                innerBefore: element.scrollTop,
+                outerBefore,
                 outerMaxScroll,
+                outerRemaining,
                 viewportHeight: window.innerHeight,
                 imageLoaded: image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0,
                 rect: { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom },
+                cardRect: { left: cardRect.left, right: cardRect.right, top: cardRect.top, bottom: cardRect.bottom },
+                gutterSide,
+                gutterWidth,
+                gutterX,
                 overflowY: getComputedStyle(element).overflowY,
                 overscrollBehaviorY: getComputedStyle(element).overscrollBehaviorY,
                 touchAction: getComputedStyle(element).touchAction,
+                cardTouchAction: getComputedStyle(card).touchAction,
               };
             });
             if (setup.available) {
-              const x = Math.round(Math.min(setup.rect.right - 24, Math.max(setup.rect.left + 24, setup.rect.left + (setup.rect.right - setup.rect.left) * .55)));
-              const startY = Math.round(Math.min(setup.rect.bottom - 28, setup.viewportHeight - 28));
-              const endY = Math.round(Math.max(setup.rect.top + 28, startY - 150));
+              const x = Math.round(setup.gutterX);
+              const startY = Math.round(Math.min(setup.cardRect.bottom - 24, setup.viewportHeight - 24));
+              const endY = Math.round(Math.max(setup.cardRect.top + 24, startY - 150));
               const touch = await context.newCDPSession(page);
               try {
                 await touch.send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 1 });
@@ -512,16 +542,17 @@ try {
               });
               caseStudyGalleryScroll = {
                 available: true,
-                passed: after.outerScrollTop > setup.outerBefore + 4,
+                passed: after.outerScrollTop > setup.outerBefore + 4 && after.innerScrollTop === setup.innerBefore,
                 ...setup,
                 ...after,
-                gesture: 'Chromium touch input at the inner gallery boundary',
+                gesture: 'Chromium touch swipe in the transparent side gutter',
               };
               if (!caseStudyGalleryScroll.passed) {
-                addFailure(route, viewport.name, 'A touch swipe at the end of the mobile screenshot did not continue scrolling the outer case-study page.');
+                addFailure(route, viewport.name, 'A touch swipe in the mobile screenshot side gutter did not scroll the outer case-study page independently.');
               }
-              if (setup.overflowY !== 'auto' || setup.overscrollBehaviorY !== 'auto' || !setup.touchAction.includes('pan-y')) {
-                addFailure(route, viewport.name, 'The mobile gallery does not expose native vertical touch scroll chaining.');
+              if (setup.overflowY !== 'auto' || setup.overscrollBehaviorY !== 'auto' ||
+                  !setup.touchAction.includes('pan-y') || !setup.cardTouchAction.includes('pan-y')) {
+                addFailure(route, viewport.name, 'The mobile screenshot and outer card do not expose native vertical touch scrolling.');
               }
               await page.evaluate(() => {
                 const pageScroller = document.querySelector('.portfolio-page');
@@ -735,11 +766,14 @@ try {
           addFailure(route, viewport.name, 'Horizontal overflow detected at this viewport.');
         }
         if (route.label === 'home-en' && !metrics.headlineWordContained) {
-          addFailure(route, viewport.name, 'The thoughtful headline word is clipped or escapes its own line bounds.');
+          addFailure(route, viewport.name, 'The intelligent headline word is clipped or escapes its own line bounds.');
         }
         if (isAetherFlowPage) {
-          if (!semantics.caseStudyPageImage?.src?.includes('interface-captures/aetherflow/aetherflow-fullpage-desktop.png') || !semantics.caseStudyPageImage.alt) {
-            addFailure(route, viewport.name, 'The AetherFlow product screenshot or its localized alternative text is missing.');
+          if (!semantics.caseStudyMotionScene?.split(' ').includes('scene-aetherflow')) {
+            addFailure(route, viewport.name, 'The AetherFlow hero is missing its dedicated workflow motion scene.');
+          }
+          if (!semantics.caseStudyDesktopCapture?.src?.includes('/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png') || !semantics.caseStudyDesktopCapture.alt) {
+            addFailure(route, viewport.name, 'The AetherFlow authentic desktop capture or localized alternative text is missing.');
           }
         } else if (route.label !== 'home-en' && route.label !== 'home-fa') {
           const slug = route.label.replace(/-(fa|en)$/, '');

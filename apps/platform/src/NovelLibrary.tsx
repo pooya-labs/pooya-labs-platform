@@ -1,4 +1,4 @@
-import { ArrowUpLeft, BookOpen, BookText, ChevronDown, LoaderCircle, Moon, Sun } from 'lucide-react';
+import { ArrowUpLeft, BookOpen, BookText, ChevronDown, Code2, LoaderCircle, Moon, Sun } from 'lucide-react';
 import { useEffect, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
 
 export type NovelLocaleText = { fa: string; en?: string };
@@ -41,7 +41,7 @@ export function validateNovelCatalog(value: unknown): NovelRecord[] {
       throw new Error('Novel synopsis values must be localized strings.');
     }
     if (!isSafeNovelPath(novel.cover, 'covers', 'webp|png|jpe?g')) throw new Error('Novel covers must be image files inside novels/covers/.');
-    if (!isSafeNovelPath(novel.manuscript, 'manuscripts', 'md|txt')) throw new Error('Novel manuscripts must be Markdown or text files inside novels/manuscripts/.');
+    if (!isSafeNovelPath(novel.manuscript, 'manuscripts', 'md|txt|pdf')) throw new Error('Novel manuscripts must be PDF, Markdown, or text files inside novels/manuscripts/.');
     if (typeof novel.published !== 'boolean') throw new Error('Every novel requires an explicit published flag.');
     if (novel.language !== undefined && !['fa', 'en', 'multi'].includes(String(novel.language))) throw new Error('Novel language must be fa, en, or multi.');
     if (novel.genres !== undefined && (!Array.isArray(novel.genres) || novel.genres.some((genre) => typeof genre !== 'string'))) {
@@ -151,8 +151,8 @@ function NovelManuscript({ source }: { source: string }): ReactNode {
   })}</div>;
 }
 
-interface NovelReaderProps { novel: NovelRecord | null; language: Language; theme: 'dark' | 'light'; onThemeChange: (theme: 'dark' | 'light') => void; loading: boolean; error: string | null; onBack: () => void; }
-export function NovelReader({ novel, language, theme, onThemeChange, loading, error, onBack }: NovelReaderProps): ReactNode {
+interface NovelReaderProps { novel: NovelRecord | null; language: Language; onLanguageChange: (language: Language) => void; theme: 'dark' | 'light'; onThemeChange: (theme: 'dark' | 'light') => void; loading: boolean; error: string | null; onBack: () => void; onOpenWorkspace: () => void; }
+export function NovelReader({ novel, language, onLanguageChange, theme, onThemeChange, loading, error, onBack, onOpenWorkspace }: NovelReaderProps): ReactNode {
   const rtl = language === 'fa';
   const [manuscript, setManuscript] = useState<string | null>(null);
   const [manuscriptLoading, setManuscriptLoading] = useState(false);
@@ -163,6 +163,10 @@ export function NovelReader({ novel, language, theme, onThemeChange, loading, er
     : { back: 'Back to library', subtitle: 'FROM THE STORY LIBRARY', loading: 'Loading the manuscript…', unavailable: 'The manuscript is not available yet.', missing: 'This novel could not be found in the library.', retry: 'Check the manuscript file or try again.' };
   useEffect(() => {
     if (!novel) return;
+    if (/\\.pdf$/i.test(novel.manuscript)) {
+      setManuscript(null); setManuscriptLoading(false); setManuscriptError(null);
+      return;
+    }
     const controller = new AbortController();
     setManuscript(null); setManuscriptLoading(true); setManuscriptError(null);
     fetch(novelAssetUrl(novel.manuscript), { signal: controller.signal })
@@ -181,9 +185,23 @@ export function NovelReader({ novel, language, theme, onThemeChange, loading, er
   return (
     <div className={'portfolio-page novel-reader ' + (rtl ? 'is-rtl' : 'is-ltr')} data-theme={theme}>
       <a className="portfolio-skip-link" href="#novel-reader-main">{rtl ? 'رفتن به متن رمان' : 'Skip to manuscript'}</a>
-      <header className="portfolio-header novel-reader-header">
-        <a className="portfolio-brand" href="#" onClick={(event) => { event.preventDefault(); onBack(); }}><span className="portfolio-brand-mark">P<span>.</span></span><span><strong>POOYA</strong><small>STORY LIBRARY</small></span></a>
-        <div className="portfolio-header-actions"><button className="portfolio-theme" type="button" onClick={() => onThemeChange(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? (rtl ? 'فعال‌کردن حالت روشن' : 'Switch to light mode') : (rtl ? 'فعال‌کردن حالت تیره' : 'Switch to dark mode')} title={theme === 'dark' ? (rtl ? 'حالت روشن' : 'Light mode') : (rtl ? 'حالت تیره' : 'Dark mode')}>{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}<span>{theme === 'dark' ? (rtl ? 'روشن' : 'Light') : (rtl ? 'تیره' : 'Dark')}</span></button><button className="portfolio-workspace novel-back-button" onClick={onBack}><span>{copy.back}</span><ArrowUpLeft size={15} /></button></div>
+      <header className="portfolio-header">
+        <a className="portfolio-brand" href={import.meta.env.BASE_URL} onClick={(event) => { event.preventDefault(); onBack(); }}>
+          <span className="portfolio-brand-mark"><img src={import.meta.env.BASE_URL + 'brand/pooya-monogram.webp'} alt="" aria-hidden="true" /></span>
+          <span><strong>POOYA LABS</strong><small>INDEPENDENT BUILDER</small></span>
+        </a>
+        <nav className="portfolio-nav" aria-label={rtl ? 'ناوبری اصلی' : 'Main navigation'}>
+          <a href={import.meta.env.BASE_URL + '#about'}>{rtl ? 'درباره من' : 'About'}</a>
+          <a href={import.meta.env.BASE_URL + '#projects'}>{rtl ? 'پروژه‌ها' : 'Projects'}</a>
+          <a href={import.meta.env.BASE_URL + '#novels'}>{rtl ? 'رمان‌ها' : 'Novels'}</a>
+          <a href={import.meta.env.BASE_URL + '#stack'}>{rtl ? 'مهارت‌ها' : 'Stack'}</a>
+          <a href={import.meta.env.BASE_URL + '#contact'}>{rtl ? 'ارتباط' : 'Contact'}</a>
+        </nav>
+        <div className="portfolio-header-actions">
+          <button className="portfolio-theme" type="button" onClick={() => onThemeChange(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? (rtl ? 'فعال‌کردن حالت روشن' : 'Switch to light mode') : (rtl ? 'فعال‌کردن حالت تیره' : 'Switch to dark mode')} title={theme === 'dark' ? (rtl ? 'حالت روشن' : 'Light mode') : (rtl ? 'حالت تیره' : 'Dark mode')}>{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}<span>{theme === 'dark' ? (rtl ? 'روشن' : 'Light') : (rtl ? 'تیره' : 'Dark')}</span></button>
+          <button className="portfolio-language" onClick={() => onLanguageChange(rtl ? 'en' : 'fa')}>{rtl ? 'English' : 'فارسی'}</button>
+          <button className="portfolio-workspace" onClick={onOpenWorkspace} aria-label={rtl ? 'ورود به فضای کاری' : 'Open workspace'} title={rtl ? 'ورود به فضای کاری' : 'Open workspace'}><span>{rtl ? 'فضای کاری' : 'Workspace'}</span><ArrowUpLeft size={15} /></button>
+        </div>
       </header>
       <main id="novel-reader-main" tabIndex={-1} className="novel-reader-main portfolio-container">
         {loading ? <div className="novel-empty-state" role="status"><LoaderCircle className="novel-spinner" size={22} />{rtl ? 'در حال بارگذاری کتابخانه…' : 'Loading the library…'}</div>
@@ -196,14 +214,34 @@ export function NovelReader({ novel, language, theme, onThemeChange, loading, er
             </section>
             <section className="novel-text-section" aria-label={rtl ? 'متن رمان' : 'Novel manuscript'}>
               <div className="novel-text-topline"><BookOpen size={17}/><span>{rtl ? 'متن اثر' : 'THE MANUSCRIPT'}</span><span className="novel-text-rule"/></div>
-              {manuscriptLoading ? <div className="novel-empty-state" role="status"><LoaderCircle size={20} className="novel-spinner"/>{copy.loading}</div>
+              {novel.manuscript.toLowerCase().endsWith('.pdf') ? <div className="novel-pdf-viewer">
+                  <iframe src={novelAssetUrl(novel.manuscript) + '#toolbar=1&navpanes=0&view=FitH'} title={title} loading="lazy" />
+                  <a href={novelAssetUrl(novel.manuscript)} target="_blank" rel="noreferrer">{rtl ? 'باز کردن فایل کامل' : 'Open full PDF'}</a>
+                </div>
+                : manuscriptLoading ? <div className="novel-empty-state" role="status"><LoaderCircle size={20} className="novel-spinner"/>{copy.loading}</div>
                 : manuscriptError ? <div className="novel-empty-state novel-empty-error" role="status"><strong>{copy.unavailable}</strong><p>{copy.retry} ({manuscriptError})</p></div>
                 : manuscript?.trim() ? <NovelManuscript source={manuscript}/>
                 : <div className="novel-empty-state"><BookText size={25}/><strong>{copy.unavailable}</strong></div>}
             </section>
           </>}
       </main>
-      <footer className="portfolio-footer portfolio-container"><a className="portfolio-brand" href="#" onClick={(event)=>{event.preventDefault();onBack();}}><span className="portfolio-brand-mark">P<span>.</span></span><span><strong>POOYA LABS</strong><small>PERSONAL PORTFOLIO</small></span></a><span>{title}</span><small>© {new Date().getFullYear()} POOYA LABS</small></footer>
+      <footer className="portfolio-footer portfolio-container">
+        <a className="portfolio-brand" href={import.meta.env.BASE_URL} onClick={(event) => { event.preventDefault(); onBack(); }}>
+          <span className="portfolio-brand-mark"><img src={import.meta.env.BASE_URL + 'brand/pooya-monogram.webp'} alt="" aria-hidden="true" /></span>
+          <span><strong>POOYA LABS</strong><small>PERSONAL PORTFOLIO</small></span>
+        </a>
+        <a className="portfolio-owner-attribution" href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer">
+          <img src={import.meta.env.BASE_URL + 'brand/pooya-monogram-tile.svg'} alt="" aria-hidden="true" width={42} height={42} decoding="async" />
+          <span className="portfolio-owner-attribution-copy">
+            <span className="portfolio-owner-attribution-label">{rtl ? 'مالک پروژه' : 'PROJECT OWNER'}</span>
+            <strong>{rtl ? 'پویا گودرزی' : 'POOYA GOODARZI'}</strong>
+            <span className="portfolio-owner-attribution-byline">{rtl ? 'ایجاد و نگه‌داری: پویا گودرزی' : 'Created & maintained by Pooya Goodarzi'}</span>
+          </span>
+        </a>
+        <span>{rtl ? 'طراحی و توسعه با کنجکاوی و وسواس مهندسی.' : 'Designed and built with curiosity and engineering care.'}</span>
+        <a href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><Code2 size={17} /> GitHub</a>
+        <small>© {new Date().getFullYear()} POOYA GOODARZI · POOYA LABS</small>
+      </footer>
     </div>
   );
 }

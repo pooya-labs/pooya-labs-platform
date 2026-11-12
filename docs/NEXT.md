@@ -1,3 +1,180 @@
+# Next — review Salon Booking and AetherFlow card images
+
+- On the latest Preview, confirm both project images fill their artwork frames consistently with the other cards on desktop and Android.
+- Confirm no other project-card artwork or card sizing changed.
+- Keep the change on `redesign/live-site-baseline`; do not merge or deploy Production.
+# Next — Workspace demo login
+
+1. Review the demo login on the current preview host.
+2. Confirm username `pooya` and the owner-provided password work, incorrect credentials are rejected, and returning to the portfolio clears the session.
+3. Treat this strictly as a visual gate; never place private data or privileged operations behind it.
+4. Keep changes on `redesign/live-site-baseline`; do not merge to `main` or deploy production before explicit approval.
+# Next — verify the Novels preview (2026-11-12)
+
+1. Open the latest Cloudflare Preview and navigate to the Novels section.
+2. Confirm both covers render and each PDF opens in the reader; use the open-full-file link if the browser does not support embedded PDF viewing.
+3. Keep all changes on `redesign/live-site-baseline`; do not merge to `main` or deploy Production without explicit approval.
+
+# Next — review Workspace v6 internal apps
+
+- Review the official Pooya Monogram in the Workspace header.
+- Open Settings, Terminal, Files, and Overview; confirm their window chrome and content now match the redesigned Workspace in both themes and on mobile.
+- Keep changes on `redesign/live-site-baseline`; Preview only. Do not merge or deploy Production.
+
+# Next — review Workspace preview status card
+
+- Check that the “System status” floating chip is now compact and attached to the lower-right edge of the snapshot preview in both English (LTR) and Persian (RTL).
+- Continue Workspace-only changes on `redesign/live-site-baseline`; Preview only. Full QA remains deferred until `بازطراحی پایان یافت`.
+
+# Next — owner review Workspace v5
+
+- Current Preview: https://cad4d67b.pooya-labs-platform.pages.dev (Cloudflare build and deploy succeeded on `d5e508256d23fa07bc82307397017fad338d7c73`).
+- Review the complete Workspace from header through footer on desktop and Android.
+- Check Persian/English direction and light/dark themes; verify that header controls stay aligned and the page scrolls naturally.
+- Keep all further Workspace-only changes on `redesign/live-site-baseline` and use the latest owner-designated Preview link.
+- Do not merge to `main` or deploy Production. Run full cross-device QA only after the owner says `بازطراحی پایان یافت`.
+
+# Next — review Workspace header controls
+
+- Confirm language switching and light/dark theme switching from the Workspace header on desktop and Android.
+- Confirm the public portfolio homepage and project pages remain unchanged.
+- Continue only on the owner-designated latest Preview deployment; do not merge or deploy Production without explicit approval.
+
+# Next — verify Workspace v4 interaction repair
+
+1. Reopen the latest Preview and confirm Android taps work on the header, hero actions, and app cards.
+2. Confirm vertical scrolling works on Windows desktop and Android.
+3. Once the owner says `بازطراحی پایان یافت`, run the deferred full responsive and interaction QA.
+4. Keep production and `main` untouched until explicit approval.
+
+# Next — Workspace v4 owner review\n\n1. Review the desktop composition on the v4 preview.\n2. If the owner approves the redesign, run the deferred desktop/mobile and interaction QA.\n3. Keep production untouched until explicit approval.\n\n## Next checkpoint — review Workspace redesign v3
+
+- Review the new structural layout at desktop and narrow Android widths, in Persian/English and light/dark themes.
+- Confirm the new forest hero, embedded workspace snapshot, summary strip, and app-launch cards feel meaningfully aligned with the portfolio rather than the previous dashboard.
+- Preserve all existing interactions and backend boundaries. Defer broad QA until `بازطراحی پایان یافت`.
+- Continue on `redesign/live-site-baseline`; do not merge or deploy Production.
+
+## Next refinement — Workspace v2 owner review
+
+- Review the new editorial workspace direction at desktop and narrow Android widths, in Persian/English and light/dark themes.
+- Preserve all existing app interactions and backend boundaries. Defer broad QA until `بازطراحی پایان یافت`.
+- Continue on `redesign/live-site-baseline`; no production merge/deploy.
+
+## Next refinement — Workspace dashboard owner review
+
+- Review the actual Workspace landing dashboard (not only the Files app) at desktop and narrow Android widths, in Persian/English and light/dark themes.
+- Preserve all existing app launch, command palette, local preview, and RPC status behavior.
+- Continue on `redesign/live-site-baseline`; do not merge or deploy Production. Defer broad QA until `بازطراحی پایان یافت`.
+
+## Next refinement — My workspace redesign
+
+- Review the redesigned Files app at desktop and narrow mobile widths, including Persian/English and light/dark themes.
+- Keep sample/local storage labeling explicit; do not imply cloud sync or functional folder creation.
+- Continue on `redesign/live-site-baseline`; no production merge/deploy. Defer broad QA until `بازطراحی پایان یافت`.
+
+## Next refinement — mobile hero headline
+
+- Check the wrapped English hero accent phrase on a narrow Android viewport when convenient; desktop styling is intentionally unchanged.
+- Continue on `redesign/live-site-baseline`; defer broad QA until `بازطراحی پایان یافت`.
+
+## Next refinement — social brand icon consistency
+
+- Review the GitHub and Telegram brand marks in the hero, contact section, footer, and hydrated case-study footer.
+- Keep the owner monogram and Instagram glyph as their own identity assets.
+- Continue on `redesign/live-site-baseline` only; defer tests and broad QA until `بازطراحی پایان یافت`.
+
+## Next refinement — AI engineering and design positioning preview
+
+- Review the updated AI Engineer positioning, C++/Python language entries, seven skill groups / 65 items, UI/UX and motion-design emphasis, and explicit Rust + Tokio wording in AetherFlow.
+- Keep AI focus-area labels distinct from verified project integrations; do not add model frameworks or production AI claims without repository evidence.
+- Continue on `redesign/live-site-baseline` only; do not merge or deploy Production without explicit approval.
+- Defer tests and broad QA until the owner says `بازطراحی پایان یافت`.
+
+## Current preview ready for owner review
+
+- Latest refreshed portfolio preview: `https://099b2bd5.pooya-labs-platform.pages.dev` (Cloudflare build and deploy succeeded on 2026-11-11).
+- Review the six bilingual skill groups, seven completed project cards, AetherFlow's in-development state, and corrected project case studies.
+- Continue all changes on `redesign/live-site-baseline`; do not merge to `main` or deploy Production without explicit owner approval.
+- Defer tests and broad QA until the owner says `بازطراحی پایان یافت`.
+
+## Next checkpoint — review refreshed portfolio copy and skills
+
+- The current portfolio snapshot is 8 projects: ORBIT, Pooya.OS, NexusCanvas, LuminaGlass, AuraPulse, GlobalCart, and Salon Booking are complete; AetherFlow is the only active development project.
+- The Skills section now lists 53 repository-backed technologies/capabilities across six bilingual groups. Treat the list as demonstrated project experience, not a self-rated proficiency scale.
+- Check the updated project summaries and case-study details in the Cloudflare Preview. Any owner feedback should be applied directly to `redesign/live-site-baseline`.
+- Keep production and `main` untouched. Defer tests, CI, accessibility sweeps, and broad QA until the owner says `بازطراحی پایان یافت`.
+
+## Owner identity clarification — restore full name (2026-11-11)
+
+- The `PROJECT OWNER` name must display the full identity: `POOYA GOODARZI` / `پویا گودرزی`, not the surname alone.
+- Preserve the full creator byline exactly: `Created & maintained by Pooya Goodarzi` / `ایجاد و نگه‌داری: پویا گودرزی`.
+- Preserve both copyright lines as `© 2026 POOYA GOODARZI · POOYA LABS` (year remains dynamic in the UI).
+- Explicitly bind the full owner name and byline in the shared component so both homepage and case-study footer placements use the same complete text.
+- Preview-only on `redesign/live-site-baseline`; no tests or QA run.
+
+
+
+- Corrected the footer creator/maintainer byline to `گودرزی` / `Goodarzi` only; removed `پویا` / `Pooya` from that byline in both language modes.
+- The primary footer name remains `Goodarzi`; layout, monogram artwork, and all other content remain unchanged.
+- Preview-only on `redesign/live-site-baseline`; no tests or QA run.
+
+## Latest owner correction — footer identity label (2026-11-11)
+
+- Replaced the incorrect `پویا مونوگرام / POOYA MONOGRAM` footer name with `Goodarzi` in the shared owner-attribution component, covering both footer placements and both language modes.
+- Kept the creator/maintainer byline and surrounding layout unchanged. No other page content or project branding was changed.
+- Preview-only on `redesign/live-site-baseline`; no tests or QA run.
+
+## Latest owner correction — use a real screenshot for the Salon Booking homepage card
+
+- Capture the actual published Shayan Salon Booking homepage at the top of the page, not the lower/full-page booking flow and not an isolated hero artwork.
+- The new 1440×1000 screenshot is stored at `apps/platform/public/interface-captures/salon-booking/salon-booking-home-hero.png` and is assigned only to Salon Booking's homepage-card `visualAsset`.
+- Preserve the full-page desktop/mobile captures for the case-study detail. Keep all other project cards unchanged.
+- Continue on `redesign/live-site-baseline`, deploy Preview only, and defer tests/QA until `بازطراحی پایان یافت`.
+
+## Latest owner direction — redesign all remaining project-card mini-scenes
+
+- Extend the successful AuraPulse and GlobalCart mini-scene redesign to all remaining homepage projects.
+- Implemented compact product-specific visuals for AetherFlow (workflow execution), Orbit (service health / incidents / telemetry), Pooya OS (desktop / app launcher), Nexus Canvas (connected graph), LuminaGlass (refractive optical lab), and Salon Booking (appointment slots / confirmation).
+- Keep all changes limited to homepage compact card windows. Preserve project detail pages and the existing card layout. Continue on `redesign/live-site-baseline`, publish Preview only, and defer QA until `بازطراحی پایان یافت`.
+
+## Latest owner correction — AuraPulse and GlobalCart project-card motion
+
+- AuraPulse must read as a multi-row market / paper-trading dashboard, not one row of bars with a decorative line. The mini scene now has BTC, ETH, and SOL rows, separate animated micro-bars, and a visible SIM marker.
+- GlobalCart must read as an actual marketplace storefront. Its compact motion now shows search, category navigation, a cart count, and a three-item product grid.
+- Keep the correction scoped to the compact homepage card windows. Continue on `redesign/live-site-baseline`, publish Preview only, and defer tests/QA until `بازطراحی پایان یافت`.
+
+## Latest motion adjustment — rays start from the bottom edge
+
+- The proof-section ray field now begins at one shared point near the bottom center (`y=382`), with the curves fanning outward earlier toward the upper edges.
+- The focal halo and center dot follow that point; lower page fade remains below the origin on desktop and mobile.
+- Continue using the current Preview branch only. Defer QA until `بازطراحی پایان یافت`.
+
+## Latest refinement — single-point foundation animation origin
+
+- Keep the lower origin of the foundation animation visually anchored at one clear point; the rays should fan outward from it.
+- The old curved baseline is removed. The animation visual no longer fades out before its focal origin; only the outer section edge has a short, soft fade into the page.
+- Continue owner-led visual iterations on `redesign/live-site-baseline`. No tests/QA until `بازطراحی پایان یافت`; Preview only.
+
+## Corrected target — fade the whole foundation section edge
+
+- The visible dividing line was the `.portfolio-proof` section's bottom border. That border is removed and the section's bottom edge is masked to fade into the page surface.
+- The internal curved SVG baseline is restored to its earlier appearance; future changes should target the actual visual surface the owner identifies.
+- Continue focused changes on `redesign/live-site-baseline`. No QA until `بازطراحی پایان یافت`; Preview only.
+
+## Most recent owner correction — fade the foundation animation baseline
+
+- The lower curved line beneath the animated foundation graphic now fades smoothly into the page instead of reading as a separate divider.
+- Continue from the current live-site baseline branch and preserve every other part of the animation unless the owner requests a specific change.
+- Keep all tests and QA deferred until `بازطراحی پایان یافت`; publish only Preview deployments after focused corrections.
+
+## Active owner-led redesign iteration — capability visuals
+
+- Current baseline: `redesign/live-site-baseline`, branched from the live `main` baseline; continue editing this branch only.
+- Most recent correction: preserve and strengthen light-theme legibility for the three animated capability mockups directly below the capability heading.
+- Continue applying each new owner instruction directly and publish a fresh Cloudflare Preview after each focused correction.
+- Do not run tests, CI, Browser QA, accessibility sweeps, or broad visual review until the owner explicitly says `بازطراحی پایان یافت`.
+- Preview deployment must remain Preview-only. Do not merge to `main` or deploy Production.
+
 ## Current next action — P8-01 owner selects a design direction (2026-11-10)
 
 Pooya authorized Phase 8 design exploration. Review [PHASE-8-DESIGN-OPTIONS.md](PHASE-8-DESIGN-OPTIONS.md): A — Obsidian Editorial Systems (recommended), or B — Warm Editorial Gallery.
@@ -385,3 +562,56 @@ The refreshed eight-repository source-of-truth table is in [PROJECT-CONTENT-AUDI
 - Do not modify independent project repositories during this platform readiness pass unless a concrete blocker is explicitly approved as an upstream task.
 - A missing owner approval, physical-device test, private credential, or third-party salon permission must remain an explicit blocker; do not mark it complete on the owner's behalf.
 
+## Active owner-directed redesign — clean current-site baseline (2026-11-11)
+
+- Continue on `redesign/live-site-baseline`, created directly from current `main` commit `f42e9bd889636b87b7deb774b085f3a90ffbd3f4`. Do not use the broken broad prototype preview from PR #70 as the new iteration base.
+- Each instruction: make the focused change on this branch, publish a fresh Cloudflare Pages preview from its latest head, and send Pooya the live link for immediate visual feedback.
+- Skip interim tests and QA. The preview build/deploy is only to make the actual current website visible; it is not a full validation pass.
+- Run the full test, browser, responsive, accessibility, performance, and debugging pass only after Pooya explicitly says **“بازطراحی پایان یافت”**.
+- Keep `main` and production unchanged until explicit final approval.
+- First change on this branch: light-theme contrast correction for the existing site animations. See `apps/platform/src/portfolio.css` and `docs/CHANGELOG.md`.
+
+## Active owner-directed redesign — Android responsive pass (2026-11-11)
+
+- Android/touch correction is implemented in `apps/platform/src/portfolio.css`: stable small-viewport sizing for the dedicated scroll surface, native pinch zoom, touch-safe anchor/navigation behavior, safe-area-aware sticky header positioning, flatter narrow-screen hero cards, and larger touch targets.
+- The desktop composition is unchanged. Review the new Cloudflare Pages preview on Android and report any remaining device-specific visual issue.
+- Continue the owner-led iteration loop: no tests or QA until **“بازطراحی پایان یافت”**; no merge to main or production deployment.
+
+## Active owner-directed redesign — mobile foundation animation (2026-11-11)
+
+- The radial foundation artwork below “The foundation behind every project.” now crops and magnifies its centered desktop SVG field on screens up to 680px instead of compressing the entire wide composition.
+- The same common lower origin, halo, particles, colors, Bézier fan, and animation timing are shared with desktop; only the mobile viewing frame changes.
+- Review the updated preview on Android. Continue the owner-led loop without interim QA until **“بازطراحی پایان یافت”**.
+
+## Active owner-directed redesign — Android project-detail gallery scrolling (2026-11-11)
+
+- Mobile interface captures retain a centered, independently scrollable image viewport.
+- Invisible side gutters sit outside the inner image viewport and belong to the main case-study document, so swiping beside the narrow phone screenshot advances the page.
+- Desktop and non-touch layouts remain unchanged. Verify the interaction on Android; do not run full tests or QA before **“بازطراحی پایان یافت”** and do not merge to main.
+
+## Latest owner-directed correction — Salon Booking homepage image
+
+- تصویر کارت Salon Booking در بخش Projects صفحه اصلی به تصویر اصلی بالای وب‌سایت شایان سالن (`shayan-hero.webp`) تغییر کرد. تصویر تمام‌صفحه قبلی در گالری مطالعه موردی دست‌نخورده باقی ماند.
+
+- Replaced the Salon Booking homepage Projects-card image with the Shayan Salon website hero asset (`shayan-hero.webp`). The previous full-page capture remains unchanged in the case-study gallery.
+
+**Next:** review the fresh Cloudflare Pages preview on the target device and provide the next focused correction. Do not run tests or QA until «بازطراحی پایان یافت».
+
+
+## Root-cause correction — Salon Booking homepage image (2026-11-11)
+
+- The prior data-only change did not affect the homepage because the Projects-card JSX preferred `caseStudyHeroAsset` before `visualAsset`.
+- Fixed the card renderer in `apps/platform/src/PortfolioHome.tsx` to prefer `visualAsset`; the Salon Booking card now uses `shayan-hero.webp`, while case-study media remains unchanged.
+- A fresh preview is required for owner review. No tests or QA before «بازطراحی پایان یافت».
+
+
+## Follow-up correction — keep other project cards unchanged (2026-11-11)
+
+- The initial renderer priority change affected all project cards. It has been narrowed to `salon-booking` only.
+- All other project cards retain the prior `caseStudyHeroAsset`-first behavior. Review the fresh preview; no tests/QA until «بازطراحی پایان یافت».
+
+
+## Latest owner-directed refinement — dark header glass
+
+- The sticky top bar (brand mark, navigation, language/theme controls, workspace action) now has a more visible translucent graphite/teal glass treatment in dark mode.
+- Light mode is unchanged. Preview only; no tests or QA before «بازطراحی پایان یافت».

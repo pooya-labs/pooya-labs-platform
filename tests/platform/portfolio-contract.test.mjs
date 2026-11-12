@@ -16,7 +16,7 @@ const sitemap = await readFile(new URL('../../dist/pages/sitemap.xml', import.me
 
 test('the root experience is the personal portfolio and the workspace is secondary', () => {
   assert.match(app, /return <PortfolioHome language=/);
-  assert.match(app, /onOpenWorkspace=\{\(\) => setWorkspaceOpen\(true\)\}/);
+  assert.match(app, /onOpenWorkspace=\{openWorkspace\}/);
   assert.match(portfolio, /onOpenWorkspace/);
   assert.match(portfolio, /POOYA LABS/);
   assert.match(app, /readPreference\('language-v2', 'en'\)/);
@@ -34,7 +34,7 @@ test('portfolio contains the core personal introduction and project sections', (
 
 test('portfolio project cards expose verified demos and source repositories', () => {
   assert.match(projectData, /status: \{ fa: 'در حال توسعه · M08', en: 'In development · M08' \}/);
-  assert.match(projectData, /status: \{ fa: 'نسخه پایدار ۱٫۰٫۰', en: 'Stable v1.0.0' \}/);
+  assert.match(projectData, /status: \{ fa: 'تکمیل‌شده · نسخه ۱٫۰٫۰', en: 'Completed · v1.0.0' \}/);
   assert.match(projectData, /repositoryUrl: 'https:\/\/github\.com\/pooya-labs\/aetherflow'/);
   assert.match(projectData, /previewUrl: 'https:\/\/pooya-labs\.github\.io\/aetherflow\//);
   assert.match(projectData, /caseStudyUrl: 'https:\/\/pooya-labs\.github\.io\/globalcart\/case-study\//);
@@ -109,7 +109,7 @@ test('project cards and shareable query routes expose in-site case studies', () 
 
 test('project artwork and interface screenshots are sourced from pinned commits with localized alt text', () => {
   assert.equal((projectData.match(/visualAsset: \{/g) ?? []).length, 8);
-  assert.equal((projectData.match(/caseStudyHeroAsset: \{/g) ?? []).length, 6);
+  assert.equal((projectData.match(/caseStudyHeroAsset: \{/g) ?? []).length, 7);
   assert.equal((projectData.match(/caseStudyPageAsset: \{/g) ?? []).length, 1);
   assert.equal((projectData.match(/caseStudyMedia: \[/g) ?? []).length, 8);
   const aetherFlowEntry = projectData.slice(projectData.indexOf("slug: 'aetherflow'"), projectData.indexOf("slug: 'orbit'"));
@@ -138,7 +138,8 @@ test('project artwork and interface screenshots are sourced from pinned commits 
   assert.match(projectData, /Case-study hero assets must be pinned to an immutable source commit/);
   assert.match(projectData, /Project visual asset URL/);
   assert.match(portfolio, /project-art-' \+ project\.slug/);
-  assert.match(css, /\.project-art-aetherflow \.project-art-image \{\s*object-position: top center;/);
+  assert.match(css, /\.project-art-salon-booking \.project-art-image,\s*\.project-art-aetherflow \.project-art-image/);
+  assert.match(css, /\.project-art-aetherflow \.project-art-image \{\s*object-fit: cover !important;\s*object-position: top center;/);
   assert.match(portfolio, /project-art-image/);
   assert.ok(portfolio.includes('<img className="case-study-visual-image visual-interface case-study-page-preview"'));
   assert.ok(portfolio.includes('caseStudyPageAsset.alt[language]'));
@@ -217,14 +218,14 @@ test('all eight case studies include bilingual roles, architecture, implementati
 });
 
 test('portfolio distinguishes in-progress release lines from stable demo releases', () => {
-  assert.match(projectData, /In development · v0\.2\.3-dev \/ M09\.8/);
-  assert.match(projectData, /Released · v1\.0\.0/);
-  assert.match(productDossiers, /APP_VERSION_ = 1\.5\.3/);
+  assert.match(projectData, /In development · M08/);
+  assert.match(projectData, /Completed · v1\.0\.0/);
+  assert.match(productDossiers, /Apps Script source 1\.5\.5/);
   assert.match(productDossiers, /42086718663/);
   assert.match(productDossiers, /42086718821/);
   assert.match(productDossiers, /do not process real sales|No real payment/i);
-  assert.match(productDossiers, /the 1\.0\.0 release remains blocked/i);
-  assert.match(productDossiers, /M09\.8/);
+  assert.match(productDossiers, /The web product v1\.0\.0 is complete and accepted/i);
+  assert.match(coreDossiers, /M08/);
   assert.match(coreDossiers, /Cloudflare Worker/);
   assert.match(coreDossiers, /ORBIT_GATEWAY_SECRET/);
   assert.match(coreDossiers, /workers\.dev route is disabled/);

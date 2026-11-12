@@ -1,9 +1,9 @@
 import {
   Activity, ArrowDownLeft, ArrowUpRight, Bell, Check, ChevronDown, Clock3,
-  Command, Cpu, FileText, Folder, Grid2X2, HardDrive, Home, Languages,
+  Command, FileText, Folder, Grid2X2, Home, Languages,
   LayoutDashboard, Maximize2, Minimize2, Monitor, Moon, MoreHorizontal,
   Plus, Search, Send, Settings, ShieldCheck, Sparkles, Sun, TerminalSquare,
-  Wifi, X, Zap, type LucideIcon,
+  Wifi, X, type LucideIcon,
 } from 'lucide-react';
 import {
   useCallback, useEffect, useMemo, useRef, useState,
@@ -12,6 +12,7 @@ import {
 import { isHtmlServiceHost, rpcCall, type RpcResponse } from './lib/rpc';
 import { APP_MANIFEST } from './lib/app-manifest';
 import PortfolioHome from './PortfolioHome';
+import WorkspaceLogin from './WorkspaceLogin';
 
 type Language = 'fa' | 'en';
 type Theme = 'dark' | 'light';
@@ -150,6 +151,8 @@ function getDate(language: Language, date: Date): string {
 
 function App(): ReactNode {
   const [workspaceOpen, setWorkspaceOpen] = useState(false);
+  const [workspaceAuthenticated, setWorkspaceAuthenticated] = useState(false);
+  const [workspaceAuthChecking, setWorkspaceAuthChecking] = useState(false);
   const [language, setLanguage] = useState<Language>(() => /\/en\/projects\//.test(window.location.pathname) ? 'en' : /\/projects\//.test(window.location.pathname) ? 'fa' : readPreference('language-v2', 'en'));
   const [theme, setTheme] = useState<Theme>(() => readPreference('theme', 'dark'));
   const [now, setNow] = useState(() => new Date());
@@ -168,6 +171,28 @@ function App(): ReactNode {
   const isRtl = language === 'fa';
   const t = copy[language];
   const htmlServiceHost = isHtmlServiceHost();
+
+  const openWorkspace = useCallback(() => {
+    let authenticated = false;
+    try {
+      authenticated = window.sessionStorage.getItem('pooya-labs:workspace-demo-auth') === '1';
+    } catch {
+      authenticated = false;
+    }
+    setWorkspaceAuthenticated(authenticated);
+    setWorkspaceAuthChecking(false);
+    setWorkspaceOpen(true);
+  }, []);
+
+  const exitWorkspace = useCallback(() => {
+    try {
+      window.sessionStorage.removeItem('pooya-labs:workspace-demo-auth');
+    } catch {
+      // Session storage may be unavailable in restricted browsing contexts.
+    }
+    setWorkspaceAuthenticated(false);
+    setWorkspaceOpen(false);
+  }, []);
 
   useEffect(() => {
     writePreference('language-v2', language);
@@ -349,25 +374,35 @@ function App(): ReactNode {
   };
 
   if (!workspaceOpen) {
-    return <PortfolioHome language={language} onLanguageChange={setLanguage} theme={theme} onThemeChange={setTheme} onOpenWorkspace={() => setWorkspaceOpen(true)} />;
+    return <PortfolioHome language={language} onLanguageChange={setLanguage} theme={theme} onThemeChange={setTheme} onOpenWorkspace={openWorkspace} />;
+  }
+
+  if (!workspaceAuthenticated) {
+    return <WorkspaceLogin language={language} theme={theme} checking={workspaceAuthChecking} onLanguageChange={setLanguage} onThemeChange={setTheme} onAuthenticated={() => setWorkspaceAuthenticated(true)} onBack={() => setWorkspaceOpen(false)} />;
   }
 
   return (
-    <div className="platform-shell" data-theme={theme}>
+    <div className="platform-shell workspace-v3 workspace-v4 workspace-v5" data-theme={theme} dir={isRtl ? 'rtl' : 'ltr'} lang={language} style={{ direction: isRtl ? 'rtl' : 'ltr' }}>
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
       <div className="ambient-grid" />
 
       <header className="topbar">
         <div className="brand-lockup">
-          <div className="brand-mark" aria-hidden="true"><span>P</span><i /></div>
+          <div className="brand-mark brand-mark-image" aria-hidden="true"><img src={`${import.meta.env.BASE_URL}brand/pooya-monogram-tile.svg`} alt="" /></div>
           <div className="brand-copy"><strong>Pooya Labs</strong><span>{t.personalWorkspace}</span></div>
         </div>
         <button className="global-search" onClick={() => setPaletteOpen(true)} aria-label={t.search}>
           <Search size={16} /><span>{t.search}</span><kbd><Command size={11} /> K</kbd>
         </button>
         <div className="topbar-actions">
-          <button className="text-button portfolio-return" onClick={() => setWorkspaceOpen(false)}>{language === 'fa' ? 'بازگشت به وب‌سایت' : 'Back to portfolio'}</button>
+          <button className="workspace-header-control" onClick={() => setLanguage((value) => value === 'fa' ? 'en' : 'fa')} aria-label={language === 'fa' ? 'تغییر زبان به انگلیسی' : 'Switch language to Persian'} title={language === 'fa' ? 'English' : 'فارسی'}>
+            <Languages size={16} /><span>{language === 'fa' ? 'EN' : 'FA'}</span>
+          </button>
+          <button className="workspace-header-control" onClick={() => setTheme((value) => value === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? (language === 'fa' ? 'فعال‌کردن حالت روشن' : 'Switch to light mode') : (language === 'fa' ? 'فعال‌کردن حالت تاریک' : 'Switch to dark mode')} title={theme === 'dark' ? t.lightMode : t.darkMode}>
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+          <button className="text-button portfolio-return" onClick={exitWorkspace}>{language === 'fa' ? 'بازگشت به وب‌سایت' : 'Back to portfolio'}</button>
           <div className={'connection-pill ' + (htmlServiceHost ? 'is-live' : '')}>
             <span className="status-dot" /><span>{htmlServiceHost ? t.liveRpc : t.localPreview}</span>
           </div>
@@ -400,12 +435,11 @@ function App(): ReactNode {
             })}
           </div>
           <div className="rail-bottom">
-            <button className="rail-button" onClick={() => setLanguage((value) => value === 'fa' ? 'en' : 'fa')} aria-label={t.language}><Languages size={18} /></button>
             <button className="rail-button" onClick={() => openApp('settings')} aria-label={t.appearance}><Settings size={18} /></button>
           </div>
         </aside>
 
-        <main className="desktop-stage">
+        <main className="desktop-stage workspace-redesign">
           <div className="desktop-scroll">
             <section className="welcome-row">
               <div>
@@ -422,7 +456,7 @@ function App(): ReactNode {
             <section className="hero-panel">
               <div className="hero-orbit orbit-a" /><div className="hero-orbit orbit-b" /><div className="hero-glow" />
               <div className="hero-content">
-                <div className="hero-label"><span className="hero-label-dot" /> POOYA LABS / SPATIAL OS</div>
+                <div className="hero-label"><span className="hero-label-dot" /> POOYA LABS / WORKSPACE</div>
                 <h2>{language === 'fa' ? 'از ایده تا خروجی، همه‌چیز زیر نظر تو.' : 'From intent to verified work.'}</h2>
                 <p>{t.welcome}</p>
                 <div className="hero-actions">
@@ -430,14 +464,25 @@ function App(): ReactNode {
                   <button className="quiet-button" onClick={() => setPaletteOpen(true)}><Command size={15} /> {t.allApps}</button>
                 </div>
               </div>
-              <div className="hero-visual" aria-hidden="true">
-                <div className="visual-ring ring-one" /><div className="visual-ring ring-two" />
-                <div className="visual-core"><span>P</span><i /></div>
-                <div className="visual-satellite satellite-one"><Zap size={16} /></div>
-                <div className="visual-satellite satellite-two"><Activity size={15} /></div>
-                <div className="visual-satellite satellite-three"><Cpu size={14} /></div>
+              <div className="workspace-preview" aria-hidden="true">
+                <div className="preview-window">
+                  <div className="preview-window-bar"><span /><span /><span /><small>POOYA LABS / OVERVIEW</small></div>
+                  <div className="preview-window-body">
+                    <div className="preview-kicker">WORKSPACE SNAPSHOT <i /></div>
+                    <div className="preview-stat"><strong>08</strong><span>PROJECTS</span><b>↗</b></div>
+                    <div className="preview-progress"><i /></div>
+                    <div className="preview-mini-grid"><span><i /> ORBIT <b>READY</b></span><span><i /> GLOBALCART <b>LIVE</b></span><span><i /> AETHERFLOW <b>BUILDING</b></span></div>
+                  </div>
+                </div>
+                <div className="preview-float"><span className="preview-float-icon"><Activity size={14} /></span><span><b>System status</b><small>All services ready</small></span><i /></div>
               </div>
               <div className="hero-bottomline"><span><ShieldCheck size={14} /> {t.uiReady}</span><span className="hero-bottom-divider" /><span>{t.version}</span></div>
+            </section>
+
+            <section className="workspace-metrics" aria-label={language === 'fa' ? 'خلاصه فضای کاری' : 'Workspace summary'}>
+              <div><span>{language === 'fa' ? 'پروژه‌های من' : 'MY PROJECTS'}</span><strong>08</strong><small>{language === 'fa' ? 'در مجموعه' : 'In the portfolio'}</small></div>
+              <div><span>{language === 'fa' ? 'ابزارهای محیط' : 'WORKSPACE APPS'}</span><strong>04</strong><small>{language === 'fa' ? 'آماده استفاده' : 'Ready to launch'}</small></div>
+              <div><span>{language === 'fa' ? 'وضعیت سیستم' : 'SYSTEM STATUS'}</span><strong className="metric-ready">{language === 'fa' ? 'آماده' : 'Ready'}</strong><small>{language === 'fa' ? 'پیش‌نمایش محلی' : 'Local preview'}</small></div>
             </section>
 
             <section className="section-heading">
@@ -478,7 +523,7 @@ function App(): ReactNode {
               </div>
             </section>
 
-            <footer className="desktop-footer"><span>POOYA LABS <i>·</i> SPATIAL WORKSPACE</span><span>{htmlServiceHost ? t.hostHtml : t.hostPreview}</span></footer>
+            <footer className="desktop-footer"><span>POOYA LABS <i>·</i> PERSONAL WORKSPACE</span><span>{htmlServiceHost ? t.hostHtml : t.hostPreview}</span></footer>
           </div>
 
           <div className="window-layer">
@@ -553,7 +598,6 @@ function App(): ReactNode {
         <div className="notification-empty"><Bell size={18} /><span>{t.noActivity}</span></div>
       </div>}
 
-      <div className="language-switcher"><button onClick={() => setLanguage((value) => value === 'fa' ? 'en' : 'fa')} aria-label={t.languageSwitch}><Languages size={14} /> {t.languageSwitch}</button></div>
     </div>
   );
 }
@@ -615,18 +659,49 @@ function WindowFrame(props: WindowFrameProps): ReactNode {
         </div>}
 
         {app.id === 'files' && <div className="files-app">
-          <div className="app-toolbar"><div><strong>{language === 'fa' ? 'فضای کاری من' : 'My workspace'}</strong><small>{t.localPreview}</small></div>
-            <button className="small-action"><Plus size={14} /> {language === 'fa' ? 'پوشه جدید' : 'New folder'}</button></div>
-          <div className="file-table">
-            <div className="file-row file-header"><span>{t.fileName}</span><span>{t.fileType}</span><span>{t.modified}</span><span>{t.state}</span></div>
-            {sampleFiles.map((file) => <div className="file-row" key={file.name}>
-              <span className="file-name"><i>{file.type === 'folder' ? <Folder size={16} /> : <FileText size={16} />}</i>{file.name}</span>
-              <span>{file.type === 'folder' ? t.folder : file.type === 'code' ? t.code : t.document}</span>
-              <span>{file.modified === 'today' ? t.today : language === 'fa' ? 'دیروز' : 'Yesterday'}</span>
-              <span className="file-sample"><i />{t.sample}</span>
-            </div>)}
+          <section className="files-welcome">
+            <div className="files-welcome-copy">
+              <div className="files-eyebrow"><span /> {language === 'fa' ? 'کتابخانه شخصی / فایل‌ها' : 'PERSONAL LIBRARY / FILES'}</div>
+              <h2>{language === 'fa' ? 'فضای کاری من' : 'My workspace'}<span>.</span></h2>
+              <p>{language === 'fa' ? 'فایل‌ها، یادداشت‌ها و منابع پروژه‌ها؛ مرتب و در دسترس.' : 'Your project files, notes, and resources — organized and close at hand.'}</p>
+            </div>
+            <div className="files-welcome-art" aria-hidden="true">
+              <div className="files-art-orbit files-art-orbit-a" /><div className="files-art-orbit files-art-orbit-b" />
+              <div className="files-art-folder"><Folder size={35} strokeWidth={1.35} /></div>
+              <span className="files-art-spark files-art-spark-a" /><span className="files-art-spark files-art-spark-b" />
+            </div>
+            <div className="files-welcome-meta"><span><span className="files-live-dot" /> {t.localPreview}</span><span>{language === 'fa' ? 'محتوای نمایشی' : 'SAMPLE CONTENT'}</span></div>
+          </section>
+
+          <div className="files-summary">
+            <div className="files-summary-card"><span className="files-summary-icon folder"><Folder size={17} /></span><div><strong>01</strong><small>{language === 'fa' ? 'پوشه' : 'Folder'}</small></div><span className="files-summary-note">{language === 'fa' ? 'اصلی' : 'Root'}</span></div>
+            <div className="files-summary-card"><span className="files-summary-icon document"><FileText size={17} /></span><div><strong>03</strong><small>{language === 'fa' ? 'فایل' : 'Files'}</small></div><span className="files-summary-note">{language === 'fa' ? 'همه موارد' : 'All items'}</span></div>
+            <div className="files-summary-card"><span className="files-summary-icon recent"><Clock3 size={17} /></span><div><strong>02</strong><small>{language === 'fa' ? 'به‌روزرسانی امروز' : 'Updated today'}</small></div><span className="files-summary-note">{language === 'fa' ? 'اخیر' : 'Recent'}</span></div>
           </div>
-          <div className="files-footnote"><HardDrive size={14} /> {t.localState}</div>
+
+          <section className="files-section">
+            <div className="files-section-heading"><div><span>{language === 'fa' ? 'ساختار' : 'STRUCTURE'}</span><h3>{language === 'fa' ? 'پوشه‌های اصلی' : 'Your folders'}</h3></div><small>{language === 'fa' ? '۱ پوشه' : '01 FOLDER'}</small></div>
+            <div className="files-folder-card">
+              <div className="files-folder-icon"><Folder size={23} strokeWidth={1.6} /></div>
+              <div className="files-folder-copy"><strong>Pooya Labs</strong><span>{language === 'fa' ? 'فضای اصلی پروژه‌ها و مستندات' : 'Main space for projects and documentation'}</span></div>
+              <span className="files-folder-count">{language === 'fa' ? '۳ فایل' : '3 ITEMS'}</span>
+              <ArrowUpRight size={17} className="files-folder-arrow" />
+            </div>
+          </section>
+
+          <section className="files-section files-recent-section">
+            <div className="files-section-heading"><div><span>{language === 'fa' ? 'دسترسی سریع' : 'QUICK ACCESS'}</span><h3>{language === 'fa' ? 'فایل‌های اخیر' : 'Recent files'}</h3></div><small>{language === 'fa' ? '۳ مورد' : '03 ITEMS'}</small></div>
+            <div className="files-list">
+              {sampleFiles.filter((file) => file.type !== 'folder').map((file) => <div className="files-list-row" key={file.name}>
+                <span className={'files-list-icon files-list-icon-' + file.type}>{file.type === 'code' ? <TerminalSquare size={18} /> : <FileText size={18} />}</span>
+                <span className="files-list-name"><strong>{file.name}</strong><small>{file.type === 'code' ? (language === 'fa' ? 'فایل کد' : 'Source file') : (language === 'fa' ? 'سند متنی' : 'Text document')}</small></span>
+                <span className="files-list-date">{file.modified === 'today' ? t.today : language === 'fa' ? 'دیروز' : 'Yesterday'}</span>
+                <span className="files-list-sample"><i />{t.sample}</span>
+                <MoreHorizontal size={17} className="files-list-more" />
+              </div>)}
+            </div>
+          </section>
+          <div className="files-footnote"><ShieldCheck size={14} /> {t.localState}<span>·</span>{language === 'fa' ? 'این محتوا صرفاً نمونه است و به فضای ابری متصل نیست.' : 'Sample content only — no cloud storage is connected.'}</div>
         </div>}
 
         {app.id === 'terminal' && <div className="terminal-app">

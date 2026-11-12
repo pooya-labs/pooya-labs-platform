@@ -11,9 +11,9 @@ const browserQa = await readFile(new URL('../../apps/platform/scripts/portfolio-
 const ownerPacket = await readFile(new URL('../../docs/OWNER-REVIEW-PACKET.md', import.meta.url), 'utf8');
 const releaseChecklist = await readFile(new URL('../../docs/RELEASE.md', import.meta.url), 'utf8');
 
-test('Pooya Monogram is shown as owner on homepage and all case-study routes', () => {
+test('Pooya Goodarzi is shown as owner on homepage and all case-study routes', () => {
   assert.equal((portfolio.match(/<OwnerAttribution language=/g) ?? []).length, 2);
-  for (const value of ['POOYA MONOGRAM','پویا مونوگرام','PROJECT OWNER','مالک پروژه','Created & maintained by Pooya Goodarzi','ایجاد و نگه‌داری: پویا گودرزی','brand/pooya-monogram-tile.svg']) assert.ok(portfolio.includes(value), 'Missing owner signature detail: ' + value);
+  for (const value of ['POOYA GOODARZI','پویا گودرزی','PROJECT OWNER','مالک پروژه','Created & maintained by Pooya Goodarzi','ایجاد و نگه‌داری: پویا گودرزی','brand/pooya-monogram-tile.svg']) assert.ok(portfolio.includes(value), 'Missing owner signature detail: ' + value);
   assert.ok(css.includes('.portfolio-owner-attribution'));
 });
 
@@ -28,7 +28,7 @@ test('structured data and the existing black-tile logo identify Pooya Monogram',
 });
 
 test('browser QA checks the owner name and loaded monogram on every localized route', () => {
-  for (const value of ['ownerAttributionCount','ownerAttributionText','ownerAttributionImage','brand/pooya-monogram-tile.svg','POOYA MONOGRAM','پویا مونوگرام']) assert.ok(browserQa.includes(value), 'Missing browser owner check: ' + value);
+  for (const value of ['ownerAttributionCount','ownerAttributionText','ownerAttributionImage','brand/pooya-monogram-tile.svg','POOYA GOODARZI','پویا گودرزی']) assert.ok(browserQa.includes(value), 'Missing browser owner check: ' + value);
 });
 
 test('owner approval is limited and the new release check stays open', () => {

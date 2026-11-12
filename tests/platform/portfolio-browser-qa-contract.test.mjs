@@ -108,11 +108,11 @@ test('browser QA validates homepage motion sections and bidi-isolated hero headl
 });
 
 
-test('thoughtful headline QA measures real text and terminal-glyph bounds after font loading', () => {
+test('intelligent headline QA measures real text and terminal-glyph bounds after font loading', () => {
   assert.ok(script.includes('document.fonts?.ready'));
   assert.ok(script.includes('document.createRange()'));
   assert.ok(script.includes('lastGlyphRight <= lineRect.right + 1'));
-  assert.ok(script.includes('thoughtfulWordLayout'));
+  assert.ok(script.includes('heroWordLayout'));
   assert.ok(!script.includes('word.scrollWidth <= word.clientWidth'));
   assert.ok(portfolioCss.includes('padding-inline-end:.18em'));
   assert.ok(portfolioCss.includes('margin-inline-end:0'));
@@ -127,19 +127,21 @@ test('QA stores visual screenshots as workflow artifacts, not public site assets
 });
 
 
-test('case-study Browser QA verifies the AetherFlow screenshot and active motion on the other routes', () => {
+test('case-study Browser QA verifies AetherFlow workflow motion and its desktop capture gallery', () => {
   assert.match(script, /reducedMotion: 'no-preference'/);
   assert.match(script, /art\.getAnimations\(\{ subtree: true \}\)/);
   assert.match(script, /activeAnimationCount < 3/);
-  assert.match(script, /heroImageState\.loaded/);
-  assert.match(script, /caseStudyPageImage/);
+  assert.match(script, /caseStudyDesktopCapture/);
+  assert.match(script, /aetherflowDesktopCapture/);
+  assert.match(script, /scene-aetherflow/);
+  assert.match(script, /interface-captures\/aetherflow\/aetherflow-fullpage-desktop\.png/);
   assert.match(script, /route\.label === 'orbit-en'/);
   assert.match(script, /await page\.emulateMedia\(\{ reducedMotion: 'reduce' \}\)/);
   assert.match(script, /reducedMotionAnimationName/);
   assert.match(script, /animations: 'allow'/);
 });
 
-test('the English headline avoids a gradient-clipped inline wrapper for thoughtful', () => {
+test('the English intelligent headline avoids a gradient-clipped inline wrapper', () => {
   assert.match(portfolioSource, /hero-title-word-line/);
   assert.match(portfolioCss, /-webkit-text-fill-color:#79e5c5!important/);
   assert.match(portfolioCss, /white-space:nowrap!important/);
@@ -164,7 +166,7 @@ test('About visual evidence waits for the reveal transition and the supplied wor
 });
 
 
-test('case-study heroes use AetherFlow product imagery and product-specific motion scenes elsewhere', () => {
+test('case-study heroes use AetherFlow workflow motion and authentic project-specific imagery', () => {
   for (const slug of ['orbit', 'pooya-os', 'nexus-canvas', 'lumina-glass', 'aura-pulse', 'global-cart', 'salon-booking']) {
     assert.ok(portfolioCss.includes(`.scene-${slug}`), `Missing dedicated hero scene styles for ${slug}`);
   }
@@ -174,29 +176,39 @@ test('case-study heroes use AetherFlow product imagery and product-specific moti
   assert.match(portfolioSource, /function ProjectMotionScene/);
   assert.match(portfolioSource, /case-study-motion-art scene-\$\{slug\}/);
   assert.ok(portfolioSource.includes('const caseStudyPageAsset = project.caseStudyPageAsset;'));
+  assert.ok(portfolioSource.includes("project.slug !== 'aetherflow'"));
   assert.ok(portfolioSource.includes('<img className="case-study-visual-image visual-interface case-study-page-preview"'));
   assert.match(portfolioSource, /<ProjectMotionScene slug=\{project\.slug\} \/>/);
+  assert.ok(portfolioSource.includes('case-study-motion-art scene-'));
   assert.match(portfolioSource, /<ProjectMotionScene slug=\{project\.slug\} compact \/>/);
   assert.match(portfolioSource, /market-simulated/);
   assert.match(portfolioSource, /SIMULATED/);
 });
 
-test('mobile case-study screenshots allow native Android scroll chaining into the remaining page', () => {
+test('mobile case-study screenshots keep an independently scrollable center and outer-page side gutters', () => {
   assert.match(portfolioCss, /overscroll-behavior-y:auto/);
   assert.match(portfolioCss, /touch-action:pan-y pinch-zoom/);
   assert.match(portfolioCss, /-webkit-overflow-scrolling:touch/);
   assert.match(portfolioSource, /data-gallery-scroll="true"/);
   assert.match(portfolioSource, /case-study-scroll-note/);
+  assert.match(script, /hasTouch: true/);
   assert.match(script, /Input\.dispatchTouchEvent/);
   assert.match(script, /Emulation\.setTouchEmulationEnabled/);
   assert.match(script, /caseStudyGalleryScroll/);
+  assert.match(script, /outerRemaining/);
+  assert.match(script, /gutterSide/);
+  assert.match(script, /gutterX/);
+  assert.match(script, /touch swipe in the transparent side gutter/);
   assert.match(script, /outerScrollTop > setup\.outerBefore/);
+  assert.match(portfolioCss, /overscroll-behavior-y:auto/);
+  assert.match(portfolioCss, /touch-action:pan-y pinch-zoom/);
 });
 
-test('reduced-motion QA checks a case study that still uses motion and excludes the static AetherFlow image route', () => {
+test('reduced-motion QA checks the animated AetherFlow scene and its authentic gallery capture', () => {
   assert.match(script, /\.case-study-motion-art \.scene-animated/);
   assert.match(script, /route\.label === 'orbit-en'/);
-  assert.match(script, /heroImageState\.loaded/);
+  assert.match(script, /aetherflowDesktopCapture/);
+  assert.match(script, /caseStudyDesktopCapture/);
   assert.match(script, /isAetherFlowPage/);
   assert.match(script, /reducedMotionAnimationName/);
   assert.match(portfolioCss, /\.case-study-motion-art \.scene-animated[\s\S]*?animation:none!important/);

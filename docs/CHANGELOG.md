@@ -1,3 +1,167 @@
+# 2026-11-12 — Replace Workspace server login with portable demo gate
+
+- Replaced the Cloudflare Pages Functions login flow with a host-independent client-side demo check.
+- Added a one-tab session flag using sessionStorage; returning to the portfolio clears the flag.
+- Removed the Cloudflare-specific login, session, logout endpoints and shared auth helper.
+- No external provider, database, API, or host connection is required.
+- Explicit security boundary: this is a visual/demo gate only; credentials are discoverable in public client code and it must not protect private data or privileged operations.
+- Preview branch only; production and main remain untouched.
+
+# 2026-11-12 — Add private Workspace sign-in gate
+
+- Added a responsive Persian/English login screen before entering the secondary Workspace.
+- Added Cloudflare Pages Functions for credential verification, HMAC-signed seven-day HttpOnly session cookies, session checks, and logout; no database or client-side credential persistence.
+- Credentials are not present in source control. Cloudflare Preview must be configured with WORKSPACE_USERNAME and WORKSPACE_PASSWORD Secret variables before the login flow can be verified.
+- This protects entry to the Workspace UI only; static SPA code remains public. Future private APIs must enforce the session server-side.
+- Preview branch only; no Production or main changes. Runtime verification is pending Preview secret setup.
+
+# 2026-11-12 — Connect uploaded novels to the public library
+
+- Added the «گوزن» and «غزال» cover and PDF assets to the platform's public novel directory, reusing the optimized WebP cover blobs.
+- Populated the novel catalog so both books appear in the existing homepage Novels section.
+- Extended the reader to display PDF manuscripts inline with a separate full-file link, while retaining Markdown/text support.
+- Preview branch only; deployment and browser rendering still pending.
+
+# 2026-11-12 — Workspace v6 brand and internal app alignment
+
+- Replaced the improvised header P glyph with the official Pooya Monogram SVG already used by the platform's brand assets.
+- Unified internal app window frames and updated Settings, Terminal, Overview, and Files surfaces to the current Workspace design system, including dark/light variants and mobile sizing.
+- Kept application behavior intact and scoped all changes to Workspace. Preview only; no Production/main changes.
+
+# 2026-11-12 — Workspace preview status-card width fix
+
+- Fixed the stretched blank bar under the Workspace snapshot preview. An inherited logical start inset conflicted with a physical right inset in the English LTR layout, forcing the absolutely positioned status chip to expand across the parent.
+- Reset the start inset and use a single logical end anchor with content-sized width. Other Workspace sections and portfolio surfaces are unchanged.
+- Preview-only; no production deploy or broad QA.
+
+# 2026-11-12 — Workspace v5 full-surface layout repair
+
+- Rebuilt the Workspace header, content canvas, hero, metrics, app launcher, lower panels, and footer as one responsive composition.
+- Corrected the mobile header's column mismatch and intermediate desktop header overflow; ensured language controls and theme controls remain together in the Workspace header.
+- Bound page direction to the selected language and restored a definite, touch-friendly scroll surface with clear overlay layering.
+- Cloudflare Preview build and deploy succeeded on `d5e508256d23fa07bc82307397017fad338d7c73`: https://cad4d67b.pooya-labs-platform.pages.dev (deployment `cad4d67b-f0a9-418c-86a6-868fb65a42c3`).
+- Scoped the implementation to Workspace only; portfolio surfaces, production, and `main` were not changed. Full QA is still deferred until owner completion.
+
+# 2026-11-12 — Workspace header language and theme controls
+
+- Moved the language control into the Workspace header and removed its floating and side-rail duplicates.
+- Added a header theme toggle for light/dark mode with localized accessible names.
+- Responsive header styling is scoped to Workspace v4 only; portfolio surfaces are unchanged.
+- Preview branch only; no production deploy or broad QA.
+
+# 2026-11-12 — Workspace v4 touch and scroll repair
+
+- Repaired the Workspace viewport sizing so the content stage and its scroll surface have a definite, bounded height.
+- Restored vertical scrolling for desktop and mobile browsers; enabled native touch panning and momentum scrolling.
+- Removed pointer interception from decorative preview/hero layers.
+- Preview branch only; no production deploy and no broad QA run.
+
+# Workspace v4 desktop composition reset (2026-11-12)\n\n- Replaced the retained desktop rail-and-dashboard composition with a full-width workspace header and a new two-column hero composition.\n- Expanded desktop metrics, app cards, and lower dashboard panels to use the available desktop canvas intentionally.\n- Kept mobile presentation compact and retained existing interactions.\n- Preview branch only; no production deploy.\n\n## 2026-11-12 — Workspace structural redesign v3
+
+- Replaced the previous hero monogram/orbit artwork with a compact workspace snapshot preview and status tile.
+- Added an explicit summary strip for portfolio projects, workspace apps, and local preview status.
+- Reworked the full Workspace visual system with a forest-green hero, editorial hierarchy, stronger spacing, clearer launch cards, refined navigation, and dedicated mobile composition.
+- Preserved existing app interactions, local-preview honesty, bilingual support, and light/dark themes. Preview-only; no broad QA run.
+
+## 2026-11-12 — Workspace design language reset v2
+
+- Replaced the previous neon/glass-heavy design with a quieter editorial product UI using warm neutrals, graphite, restrained forest green, clean typography, and simple bordered surfaces.
+- Reworked workspace navigation, hero, app cards, status panels, and mobile presentation; preserved behavior and bilingual/theme support.
+- Added a matching dark theme with graphite surfaces and soft sage accents.
+- Preview-only; no broad QA run.
+
+## 2026-11-11 — Complete Workspace dashboard redesign
+
+- Rebuilt the main Workspace landing experience to match the current Pooya Labs portfolio: editorial welcome header, emerald glass hero, redesigned app launcher cards, refined recent-activity and runtime-status surfaces, and mobile-specific composition.
+- Scoped the visual changes to the Workspace dashboard while preserving existing interactions and the separate Files app.
+- Preserved bilingual content, theme support, local-preview labels, and existing backend boundaries.
+- Preview-only; no broad QA run.
+
+## 2026-11-11 — My workspace visual redesign
+
+- Replaced the legacy Files app table-first layout with a polished workspace library: editorial hero, emerald glass folder visual, at-a-glance counts, folder card, and recent-file rows.
+- Added responsive mobile behavior and coordinated light-theme styling, preserving Persian/English support.
+- Kept the content clearly labeled as local sample data; no cloud storage or new backend behavior was added.
+- Preview-only; no broad QA run.
+
+## 2026-11-11 — Android mobile hero headline fix
+
+- Reworked the narrow-screen English accent phrase to wrap between its text prefix and highlighted word rather than overflowing and being cut off at both viewport edges.
+- Kept the fix scoped to mobile widths; desktop styling is unchanged.
+- Preview-only; no broad QA run.
+
+## 2026-11-11 — Official GitHub and Telegram marks
+
+- Replaced generic social symbols with recognizable GitHub and Telegram brand SVG marks across the hero, contact actions, and footer, including hydrated case-study pages.
+- Preserved the Pooya Labs owner monogram and Instagram glyph.
+- Preview-only; no tests or QA run.
+
+## 2026-11-11 — AI engineering, UI/UX, motion, and language refinement
+
+- Repositioned the bilingual portfolio hero and About section around AI engineering, software engineering, UI/UX, and motion-rich product experiences.
+- Added C++ and Python to the language skills.
+- Expanded the skills taxonomy to seven groups and 65 items, including UI/UX design, interaction design, motion design, micro-interactions, design systems, prototyping, and an AI engineering focus group.
+- Clarified in both AetherFlow project summary and technical dossier that its asynchronous Rust core uses the Tokio runtime.
+- Preserved scope honesty: AI focus areas are presented as declared areas of focus, not claims of specific model-training stacks or deployed AI systems.
+- Preview-only; no tests or QA run.
+
+## 2026-11-11 — Portfolio refresh preview successfully deployed
+
+- Repaired the typed case-study dossier interface and restored AetherFlow's dossier entry after the first Cloudflare Preview build exposed a parse error.
+- Cloudflare Pages build and deploy succeeded on commit `33d7eedc9bdbb9330df68cd9f6c86ea8acc57f5a`.
+- Preview URL: `https://099b2bd5.pooya-labs-platform.pages.dev`.
+- Production and `main` remain untouched. No tests or QA were run.
+
+## 2026-11-11 — Portfolio content, project statuses, and skills refreshed
+
+- Updated bilingual homepage copy, portfolio status metrics, project descriptions, focus areas, and the skills section from current repository evidence.
+- Replaced the preliminary technology strip with six responsive skill groups and 53 listed items spanning languages/native development, UI, backend/integrations, data/observability, system/product engineering, and quality/security/delivery.
+- Updated status labels to seven completed projects and one active project (AetherFlow).
+- Rewrote stale GlobalCart v0.2.3 verification with the v1.0.0 release, E2E, Lighthouse, security, Pages, and live-review results; updated Salon Booking's Apps Script 1.5.5 and Android v1.2 prerelease notes; corrected Pooya.OS's nine project profiles; included ORBIT Local Work v1.1.0 and current AetherFlow M08 work.
+- Preserved explicit limitations and non-production boundaries in the relevant case studies.
+- Preview-only on `redesign/live-site-baseline`; no tests or QA run.
+
+## Owner identity clarification — restore full name (2026-11-11)
+
+- The `PROJECT OWNER` name must display the full identity: `POOYA GOODARZI` / `پویا گودرزی`, not the surname alone.
+- Preserve the full creator byline exactly: `Created & maintained by Pooya Goodarzi` / `ایجاد و نگه‌داری: پویا گودرزی`.
+- Preserve both copyright lines as `© 2026 POOYA GOODARZI · POOYA LABS` (year remains dynamic in the UI).
+- Explicitly bind the full owner name and byline in the shared component so both homepage and case-study footer placements use the same complete text.
+- Preview-only on `redesign/live-site-baseline`; no tests or QA run.
+
+
+
+- Corrected the footer creator/maintainer byline to `گودرزی` / `Goodarzi` only; removed `پویا` / `Pooya` from that byline in both language modes.
+- The primary footer name remains `Goodarzi`; layout, monogram artwork, and all other content remain unchanged.
+- Preview-only on `redesign/live-site-baseline`; no tests or QA run.
+
+## Latest owner correction — footer identity label (2026-11-11)
+
+- Replaced the incorrect `پویا مونوگرام / POOYA MONOGRAM` footer name with `Goodarzi` in the shared owner-attribution component, covering both footer placements and both language modes.
+- Kept the creator/maintainer byline and surrounding layout unchanged. No other page content or project branding was changed.
+- Preview-only on `redesign/live-site-baseline`; no tests or QA run.
+
+## 2026-11-11 — Salon Booking homepage card uses the live homepage screenshot
+
+- Captured the published Shayan Salon Booking homepage's first viewport (1440×1000), including the navigation, full hero message, booking actions, and feature strip.
+- Added the capture as `apps/platform/public/interface-captures/salon-booking/salon-booking-home-hero.png` and updated only the Salon Booking card's `visualAsset` URL.
+- Preserved the full-page desktop and mobile images for the case-study page; all other project-card images remain unchanged.
+- Preview-only on `redesign/live-site-baseline`; no tests or QA run.
+
+## 2026-11-11 — Remaining homepage project-card mini-scenes redesigned
+
+- Replaced generic abstract compact animations with product-specific mini interfaces for AetherFlow, Orbit, Pooya OS, Nexus Canvas, LuminaGlass, and Salon Booking.
+- AetherFlow: trigger → worker → durable commit workflow. Orbit: service health, incident state, telemetry. Pooya OS: spatial desktop and app launcher. Nexus Canvas: connected graph nodes. LuminaGlass: refractive prism with optical controls. Salon Booking: weekly appointment slots and confirmed booking.
+- Combined with AuraPulse and GlobalCart, all eight homepage project-card mini-scenes are now product-aligned.
+- Preview only on `redesign/live-site-baseline`; tests and QA remain deferred.
+
+## 2026-11-11 — AuraPulse and GlobalCart homepage motion corrected
+
+- Rebuilt AuraPulse's compact project-card visual as a three-row, explicitly simulated market terminal with BTC / ETH / SOL tickers and animated per-row micro-candles. Removed the unrelated decorative line.
+- Rebuilt GlobalCart's compact project-card visual as a miniature marketplace storefront with product search, category navigation, cart count, and distinct product tiles.
+- Only the two homepage mini-scenes changed; project-detail animations and card layout remain untouched.
+- Changes are on `redesign/live-site-baseline` for owner review. Preview only; no tests or QA run.
+
 ## 2026-11-10 — Phase 8 opened by owner; design direction comparison prepared
 
 - Recorded Pooya's explicit instruction to enter Phase 8 design exploration.
@@ -615,3 +779,112 @@
 - Merged PR [#6](https://github.com/pooya-labs/pooya-labs-platform/pull/6) for visual round 3 and PR [#7](https://github.com/pooya-labs/pooya-labs-platform/pull/7) for unique screenshot-landmark names. The latter removed 32 repeated `landmark-unique` moderate axe findings.
 - Validation on main `fa5d412506387622ca39df792fcaed62eb88cb67`: Repository CI **67/67 tests**, Browser QA **17/17 routes and 34/34 viewports with zero axe violations**, GitHub Pages/Cloudflare Pages/Apps Script deployments all succeeded.
 - Manual review is still required for 36 incomplete axe checks (34 color-contrast, 2 aria-prohibited-attr), keyboard/screen-reader behavior, external social-preview crawlers, and explicit owner V1 approval.
+
+## 2026-11-11 — Restart incremental redesign on the exact current site
+
+- The prior preview based on the isolated Phase 8 visual-system prototype was rejected by the owner because it did not preserve the current website.
+- Created `redesign/live-site-baseline` directly from the current `main` SHA `f42e9bd889636b87b7deb774b085f3a90ffbd3f4`. This branch does not include the prototype stylesheet or its broader visual changes.
+- Applied the first requested correction directly to the existing `apps/platform/src/portfolio.css`: stronger light-theme contrast for the current site's animated details and scenes. Existing structure, scene composition, keyframes, and animation timing are unchanged.
+- Workflow: publish a Cloudflare Pages preview after each owner instruction, let the owner inspect it and provide the next correction, and defer all test/QA/debugging runs until the explicit **“بازطراحی پایان یافت”** signal. No merge to main or production deployment is authorized by these iterations.
+
+
+## 2026-11-11 — Light-theme capability motion contrast
+
+- Increased contrast in the capability section's interface, topology, and terminal mini-scenes.
+- Strengthened animated paths, chart bars, tiny labels, code syntax, borders, and card copy in light mode.
+- Preserved scene layout, dark miniature surfaces, animation keyframes, timing, and movement.
+- Preview only; no tests or QA executed by owner-directed workflow.
+
+
+## 2026-11-11 — Foundation animation baseline fade
+
+- Replaced the crisp lower curved divider-like stroke with a very subtle emerald gradient that fades toward both ends.
+- Left the radial animation, particles, typography, spacing, and surrounding layout unchanged.
+- Preview only; no tests or QA executed.
+
+
+## 2026-11-11 — Corrected foundation section edge fade
+
+- Removed the bottom border from the foundation section and faded its lower edge into the page background with a section-level mask.
+- Restored the internal SVG curve to its original styling; the earlier edit targeted the wrong line.
+- Preview only; no tests or QA executed.
+
+
+## 2026-11-11 — Single-point foundation animation origin
+
+- Moved the radial ray convergence point slightly upward so it remains visible above the lower page fade.
+- Removed the broad curved baseline and added a subtle focal glow/point to make the rays visibly originate from one point.
+- Preserved particle motion, primary glow composition, and animation timing. Preview only; no tests or QA executed.
+
+
+## 2026-11-11 — Foundation rays bottom focal point
+
+- Moved the radial ray origin, halo, and focal dot to the bottom-center edge of the SVG field.
+- Reworked the first Bézier control point to let the rays fan outward from the origin earlier.
+- Preserved the surrounding section fade and reserved lower breathing room for the point on desktop and mobile.
+- Preview only; no tests or QA executed.
+
+## 2026-11-11 — Android touch layout and viewport stabilization
+
+- Replaced the dynamic viewport height with the stable small viewport height for touch-first devices, preventing the portfolio scroll surface from resizing with Android browser chrome.
+- Kept page scrolling vertical, restored pinch-to-zoom, made the sticky header safe-area-aware, and improved horizontal navigation touch behavior.
+- Flattened the hero preview stack on narrow touch screens without removing its slow drift, enlarged important tap targets, and removed persistent hover lift/scale states from project cards.
+- Desktop layout and production were left unchanged. Preview only; no tests or QA executed.
+
+## 2026-11-11 — Mobile foundation animation framing
+
+- Fixed the radial animation under “The foundation behind every project.” on narrow phone screens.
+- Magnified and centered the shared desktop SVG within a clipped mobile viewport so the rays spread visibly from the same single lower focal point rather than appearing vertically compressed.
+- Preserved the desktop scene, rays, halo, particles, gradients, and animation timing. Preview only; no tests or QA executed.
+
+## 2026-11-11 — Soft mobile foundation edges and lower transition
+
+- Added left/right gradient fades to the magnified mobile radial animation to remove the visibly cropped ends.
+- Replaced the narrow-screen outer section mask with layered surface and bottom gradients, avoiding the Android mask-compositing artifact at the lower edge.
+- Matched overlay colors for the light theme while preserving the shared desktop artwork, single-point origin, rays, particles, and animation timing. Preview only; no tests or QA executed.
+
+## 2026-11-11 — Restore desktop-style mobile foundation framing
+
+- Removed the mobile dark-tinted left/right overlays and the extra bottom overlay that caused an unwanted dark-to-purple transition over the radial animation.
+- Restored the original section background and outer mask behavior shared with desktop, with a transparent horizontal edge fade on the magnified mobile visual.
+- Preserved the SVG artwork, origin, rays, particles, and animation timing. Preview only; no tests or QA executed.
+
+## 2026-11-11 — Continuous lower fade on mobile radial animation
+
+- Extended the mobile visual frame below the SVG and applied a bottom alpha mask across the frame, overlapping the SVG's lower halo to remove the hard cutoff/disconnected fade appearance.
+- Kept the side fades, desktop section styling, artwork geometry, focal origin, and animation behavior unchanged. Preview only; no tests or QA executed.
+
+## 2026-11-11 — AetherFlow project-detail animation
+
+- Activated the existing AetherFlow workflow animation in the case-study hero instead of the static full-page product image.
+- Retained the actual desktop screenshot as a separate interface capture.
+- Improved light-theme contrast for the dark-glass scene, workflow cards, animated edges, and status labels. Preview only; no tests or QA executed.
+
+## 2026-11-11 — Even mobile header navigation spacing
+
+- Distributed the five primary navigation links into equal-width mobile columns with centered labels and compact padding.
+- Removed the content-width/scroll-based uneven spacing from the narrow header row; desktop navigation is unchanged. Preview only; no tests or QA executed.
+
+## 2026-11-11 — Android project-detail gallery scroll gutters
+
+- Expanded the mobile capture section's invisible side gutters and separated them from the centered inner image scroller, allowing the outer case-study page to scroll from either side while preserving image scrolling in the middle.
+- Desktop and non-touch layouts are unchanged. Preview only; no tests or QA executed.
+- تصویر کارت Salon Booking در بخش Projects صفحه اصلی به تصویر اصلی بالای وب‌سایت شایان سالن (`shayan-hero.webp`) تغییر کرد. تصویر تمام‌صفحه قبلی در گالری مطالعه موردی دست‌نخورده باقی ماند.
+- Replaced the Salon Booking homepage Projects-card image with the Shayan Salon website hero asset (`shayan-hero.webp`). The previous full-page capture remains unchanged in the case-study gallery.
+
+
+## 2026-11-11 — Correct Salon Booking homepage card image priority
+
+- Fixed the Projects-card JSX to prefer `visualAsset` over `caseStudyHeroAsset`, resolving why the earlier hero-image data change was invisible on the homepage.
+- Salon Booking now displays the Shayan Salon top/hero asset on its homepage card; the full-page case-study image remains intact. Preview only; no tests or QA executed.
+
+
+## 2026-11-11 — Limit homepage image priority override to Salon Booking
+
+- Scoped the `visualAsset`-first selection to the Salon Booking card only; all other project cards preserve their original image selection order. Preview only; no tests or QA executed.
+
+
+## 2026-11-11 — Dark-theme glass navigation bar
+
+- Increased the dark header's transparency and backdrop blur, added a subtle graphite-to-teal glass gradient, refined the border and inner highlights, and lightly tinted the navigation/control trays.
+- Scoped all visual changes to dark mode; light-mode glass styling is untouched. Preview only; no tests or QA executed.

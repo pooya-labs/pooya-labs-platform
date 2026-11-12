@@ -1,4 +1,4 @@
-import { Activity, ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Layers3, Monitor, Moon, Send, Sun, TerminalSquare } from 'lucide-react';
+import { Activity, ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Layers3, Monitor, Moon, Sun, TerminalSquare } from 'lucide-react';
 import { useEffect, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
 import { portfolioProjects as projects, type PortfolioProject } from './content/projects';
 import { coreDossiers } from './content/case-study-dossiers-core';
@@ -7,18 +7,28 @@ import { architectureDiagrams } from './content/architecture-diagrams';
 import type { CaseStudyDossier } from './content/case-study-dossiers-types';
 import { NovelLibrarySection, NovelReader, loadNovelCatalog, localizedNovelText, type NovelRecord } from './NovelLibrary';
 
+
+function GitHubBrandIcon({ size = 18, className = '' }: { size?: number; className?: string }) {
+  return <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .297a12 12 0 0 0-3.793 23.385c.6.111.82-.26.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.304-5.466-1.333-5.466-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 0 1 6.004 0c2.29-1.552 3.297-1.23 3.297-1.23.655 1.652.243 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.805 5.623-5.476 5.921.43.372.814 1.103.814 2.222v3.293c0 .32.216.694.825.576A12.001 12.001 0 0 0 12 .297Z" /></svg>;
+}
+function TelegramBrandIcon({ size = 18, className = '' }: { size?: number; className?: string }) {
+  return <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M23.91 3.79 20.3 20.83c-.27 1.2-.98 1.5-1.98.94l-5.47-4.03-2.64 2.54c-.29.29-.53.53-1.09.53l.39-5.56L19.63 6.1c.42-.38-.09-.59-.65-.21L6.24 13.96.82 12.26c-1.18-.37-1.2-1.18.25-1.75L22.26 2.2c.98-.36 1.84.24 1.65 1.59Z" /></svg>;
+}
+
 type Language = 'fa' | 'en';
 type Theme = 'dark' | 'light';
 
 function OwnerAttribution({ language, assetBase }: { language: Language; assetBase: string }) {
   const isPersian = language === 'fa';
+  const ownerName = isPersian ? 'پویا گودرزی' : 'POOYA GOODARZI';
+  const ownerByline = isPersian ? 'ایجاد و نگه‌داری: پویا گودرزی' : 'Created & maintained by Pooya Goodarzi';
   return (
     <a className="portfolio-owner-attribution" href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer">
       <img src={`${assetBase}brand/pooya-monogram-tile.svg`} alt="" aria-hidden="true" width={42} height={42} decoding="async" />
       <span className="portfolio-owner-attribution-copy">
         <span className="portfolio-owner-attribution-label">{isPersian ? 'مالک پروژه' : 'PROJECT OWNER'}</span>
-        <strong>{isPersian ? 'پویا مونوگرام' : 'POOYA MONOGRAM'}</strong>
-        <span className="portfolio-owner-attribution-byline">{isPersian ? 'ایجاد و نگه‌داری: پویا گودرزی' : 'Created & maintained by Pooya Goodarzi'}</span>
+        <strong>{ownerName}</strong>
+        <span className="portfolio-owner-attribution-byline">{ownerByline}</span>
       </span>
     </a>
   );
@@ -46,8 +56,8 @@ const proofRays = Array.from({ length: 112 }, (_, index) => {
   const spread = Math.abs(progress - 0.5) * 2;
   const y = 26 + spread * 112 + ((index * 17) % 9) * 2;
   const bend = (index % 7 - 3) * 7;
-  const c1x = 600 + (x - 600) * 0.16 + bend;
-  const c2x = 600 + (x - 600) * 0.78 - bend;
+  const c1x = 600 + (x - 600) * 0.36 + bend;
+  const c2x = 600 + (x - 600) * 0.88 - bend;
   const c2y = y + 88 + ((index * 13) % 20);
   return { id: index, x, y, c1x, c2x, c2y, opacity: 0.2 + ((index * 19) % 55) / 100, width: index % 9 === 0 ? 1.6 : 0.85 };
 });
@@ -72,32 +82,32 @@ const text = {
     navAbout: 'درباره من',
     navWork: 'پروژه‌ها',
     navNovels: 'رمان‌ها',
-    navStack: 'فناوری‌ها',
+    navStack: 'مهارت‌ها',
     navContact: 'ارتباط',
-    eyebrow: 'مهندسی کامپیوتر · ساخت نرم‌افزار',
-    headlineA: 'ایده‌ها را',
-    headlineB: 'به تجربه‌های دیجیتال',
+    eyebrow: 'مهندس هوش مصنوعی · طراحی UI/UX · مهندسی نرم‌افزار',
+    headlineA: 'مهندسی هوش مصنوعی',
+    headlineB: 'و طراحی تجربه‌های دیجیتال',
     headlineWord: '',
-    headlineC: 'تبدیل می‌کنم.',
-    intro: 'من پویا هستم؛ دانشجوی مهندسی کامپیوتر با تمرکز بر طراحی محصول، مهندسی فرانت‌اند و تفکر سیستمی. اینجا پروژه‌هایی را می‌بینی که می‌سازم، همراه با مسیر فنی، تصمیم‌ها و وضعیت واقعی هرکدام.',
+    headlineC: 'با جزئیات.',
+    intro: 'من پویا هستم؛ دانشجوی مهندسی کامپیوتر و مهندس هوش مصنوعی و نرم‌افزار. تمرکزم بر تبدیل ایده‌ها به محصولات هوشمند و خوش‌ساخت است: از طراحی UI/UX، تجربه‌های تعاملی و انیمیشن‌های دقیق تا توسعهٔ بک‌اند و سیستم‌های توزیع‌شده. در هشت پروژهٔ مستقل این مسیر را از طراحی تا پیاده‌سازی و انتشار دنبال کرده‌ام؛ هفت پروژه تکمیل شده‌اند و توسعهٔ AetherFlow ادامه دارد.',
     explore: 'دیدن پروژه‌ها',
     github: 'گیت‌هاب من',
     scroll: 'برای آشنایی بیشتر پایین برو',
     selected: 'کارهای منتخب',
-    selectedSub: 'پروژه‌ها و آزمایش‌هایی که بخشی از مسیر یادگیری و مهندسی من هستند.',
-    allProjects: '۸ پروژه در ویترین',
-    proofEyebrow: 'بنیان مهندسی', proofTitle: 'پشت هر پروژه، یک بنیان مهندسی.', proofSub: 'نرم‌افزار، سیستم و تجربه‌های محصولی که با شواهد واقعی ساخته شده‌اند.', proofStat1: 'پروژه مستقل', proofStat2: 'صفحه مطالعه موردی', proofStat3: 'زبان رابط', proofStat4: 'مسیر انتشار',
+    selectedSub: 'هفت پروژهٔ تکمیل‌شده و AetherFlow که توسعهٔ آن ادامه دارد؛ هر صفحه جزئیات فنی و محدودهٔ واقعی محصول را نشان می‌دهد.',
+    allProjects: '۸ پروژه · ۷ تکمیل‌شده · ۱ در حال توسعه',
+    proofEyebrow: 'بنیان مهندسی', proofTitle: 'پشت هر پروژه، یک بنیان مهندسی.', proofSub: 'هشت پروژهٔ مستقل در حوزهٔ محصول و مهندسی نرم‌افزار؛ هفت پروژه تکمیل شده و AetherFlow تنها مسیر توسعهٔ فعال است.', proofStat1: 'پروژه مستقل', proofStat2: 'پروژه تکمیل‌شده', proofStat3: 'زبان رابط', proofStat4: 'پروژه در حال توسعه',
     aboutEyebrow: 'کمی درباره من',
-    aboutTitle: 'از طراحی محصول تا ساخت سیستم‌های نرم‌افزاری.',
-    aboutBody: 'در پروژه‌هایم از رابط‌های تعاملی و ابزارهای بصری تا سیستم‌های توزیع‌شده، داشبوردهای داده و محصولات وب کار کرده‌ام. تلاشم این است که هر پروژه با معماری مشخص، مرزهای روشن، تست و توضیح صادقانه از وضعیت واقعی ارائه شود.',
-    focus: 'حوزه‌های تمرکز',
-    focus1: 'طراحی محصول و مهندسی فرانت‌اند',
-    focus2: 'سیستم‌های توزیع‌شده و مشاهده‌پذیری',
-    focus3: 'ابزارهای بصری و تجربه‌های تعاملی',
-    focus4: 'محصولات داده‌محور و اتوماسیون',
-    stackEyebrow: 'جعبه ابزار',
-    stackTitle: 'فناوری‌هایی که با آن‌ها می‌سازم.',
-    stackSub: 'فهرست اولیه ابزارهای استفاده‌شده در پروژه‌ها؛ با رشد نمونه‌کارها دقیق‌تر می‌شود.',
+    aboutTitle: 'مهندسی هوش مصنوعی، تجربهٔ کاربری و ساخت محصول؛ از ایده تا اجرا.',
+    aboutBody: 'رویکرد من در مهندسی هوش مصنوعی فقط به مدل و کد محدود نیست؛ روی تبدیل قابلیت‌های هوشمند به محصولی قابل استفاده تمرکز دارم. در کنار توسعهٔ نرم‌افزار، برای طراحی UI/UX، معماری اطلاعات، طراحی تعامل، سیستم‌های طراحی، نمونه‌سازی و انیمیشن‌های هدفمند اهمیت ویژه‌ای قائلم. تجربهٔ پروژه‌هایم از ابزارهای تعاملی و رابط‌های واکنش‌گرا تا اپلیکیشن اندروید، سامانه‌های رزرو و مارکت‌پلیس، داشبوردهای داده و زیرساخت‌های توزیع‌شده را در بر می‌گیرد.',
+    focus: 'حوزه‌های مهارتی',
+    focus1: 'مهندسی هوش مصنوعی و ساخت محصولات هوشمند',
+    focus2: 'طراحی UI/UX، طراحی تعامل و انیمیشن رابط',
+    focus3: 'مهندسی فرانت‌اند، معماری نرم‌افزار و APIها',
+    focus4: 'سیستم‌های توزیع‌شده، داده و زیرساخت',
+    stackEyebrow: 'مهارت‌ها، هوش مصنوعی و طراحی محصول',
+    stackTitle: 'از مهندسی هوش مصنوعی تا ساخت تجربه‌های دیجیتال ممتاز.',
+    stackSub: 'این فهرست ترکیبی از زبان‌ها و حوزه‌هایی است که معرفی کرده‌ام و فناوری‌ها و قابلیت‌های به‌کاررفته در پروژه‌هاست؛ رتبه‌بندی سطح مهارت یا ادعای استفادهٔ تولیدی از همهٔ فناوری‌ها نیست.',
     contactEyebrow: 'در تماس باشیم',
     contactTitle: 'ایده‌ای برای ساختن داریم؟',
     contactBody: 'برای دیدن کدها، روند توسعه و پروژه‌های تازه، از گیت‌هاب من شروع کن.',
@@ -152,32 +162,32 @@ const text = {
     navAbout: 'About',
     navWork: 'Projects',
     navNovels: 'Novels',
-    navStack: 'Stack',
+    navStack: 'Skills',
     navContact: 'Contact',
-    eyebrow: 'Computer engineering · Software builder',
-    headlineA: 'Turning ideas',
-    headlineB: 'into',
-    headlineWord: 'thoughtful',
+    eyebrow: 'AI Engineer · UI/UX Design · Software Engineering',
+    headlineA: 'AI engineering',
+    headlineB: 'meets expressive',
+    headlineWord: 'intelligent',
     headlineC: 'digital experiences.',
-    intro: 'I’m Pooya, a computer engineering student focused on product design, frontend engineering, and systems thinking. Here I share the projects I build, along with their technical journey, decisions, and honest current status.',
+    intro: 'I’m Pooya, a computer engineering student focused on AI engineering and software product development. I build intelligent, carefully crafted digital products — combining UI/UX design, expressive interaction and motion, and robust software architecture. Across eight independent projects, I have taken ideas from interface design through implementation and release. Seven are complete; AetherFlow is the only active development track.',
     explore: 'Explore projects',
     github: 'My GitHub',
     scroll: 'Scroll to explore',
     selected: 'Selected work',
-    selectedSub: 'Projects and experiments that are part of my engineering journey.',
-    allProjects: '8 projects featured',
-    proofEyebrow: 'THE ENGINEERING FOUNDATION', proofTitle: 'The foundation behind every project.', proofSub: 'Software, systems, and product experiences built with visible evidence.', proofStat1: 'Independent projects', proofStat2: 'Case-study routes', proofStat3: 'Interface languages', proofStat4: 'Publishing targets',
+    selectedSub: 'Seven completed projects, alongside AetherFlow as the one active engineering track. Each case study documents the product, its technical decisions, and its real boundaries.',
+    allProjects: '8 projects · 7 completed · 1 in development',
+    proofEyebrow: 'THE ENGINEERING FOUNDATION', proofTitle: 'The foundation behind every project.', proofSub: 'Eight independent product and software-engineering projects: seven are complete, with AetherFlow as the only active development track.', proofStat1: 'Independent projects', proofStat2: 'Completed projects', proofStat3: 'Interface languages', proofStat4: 'In development',
     aboutEyebrow: 'A little about me',
-    aboutTitle: 'From product design to building software systems.',
-    aboutBody: 'My projects span interactive interfaces and visual tools, distributed systems, data dashboards, and web products. I aim to present each one with a clear architecture, honest boundaries, testing, and an accurate account of its current state.',
-    focus: 'Areas of focus',
-    focus1: 'Product design and frontend engineering',
-    focus2: 'Distributed systems and observability',
-    focus3: 'Visual tools and interactive experiences',
-    focus4: 'Data-driven products and automation',
-    stackEyebrow: 'Toolbox',
-    stackTitle: 'Technologies I build with.',
-    stackSub: 'An initial list of tools used across these projects; it will become more precise as case studies are published.',
+    aboutTitle: 'AI engineering, thoughtful UX, and product craft — from idea to execution.',
+    aboutBody: 'My approach to AI engineering goes beyond code: I focus on turning intelligent capabilities into useful, coherent product experiences. I care deeply about UI/UX design, information architecture, interaction design, design systems, prototyping, and purposeful motion — alongside software architecture and implementation. My project work spans interactive tools, responsive interfaces, native Android, booking and marketplace systems, data dashboards, and distributed infrastructure.',
+    focus: 'Engineering focus areas',
+    focus1: 'AI engineering and intelligent product development',
+    focus2: 'UI/UX, interaction design, and interface motion',
+    focus3: 'Frontend engineering, software architecture, and APIs',
+    focus4: 'Distributed systems, data, and infrastructure',
+    stackEyebrow: 'AI ENGINEERING · DESIGN · TECHNOLOGY',
+    stackTitle: 'From AI engineering to polished digital experiences.',
+    stackSub: 'This list combines the languages and focus areas I have identified with technologies and capabilities used across my projects; it is not a proficiency ranking or a claim that every technology is deployed in production.',
     contactEyebrow: 'Let’s connect',
     contactTitle: 'Have something worth building?',
     contactBody: 'For source code, development updates, and new projects, start with my GitHub profile.',
@@ -234,14 +244,60 @@ function ProjectMotionScene({ slug, compact = false }: { slug: string; compact?:
   if (compact) {
     return (
       <div className={`project-card-motion card-scene-${slug}`} aria-hidden="true">
-        {slug === 'aetherflow' && <><i className="mini-flow-node" /><i className="mini-flow-edge" /><i className="mini-flow-node second" /><i className="mini-flow-edge second" /><i className="mini-flow-node third" /><b className="mini-flow-packet" /></>}
-        {slug === 'orbit' && <><i className="mini-orbit-ring" /><i className="mini-orbit-ring second" /><b className="mini-orbit-pulse" /><span className="mini-orbit-bars"><i /><i /><i /><i /><i /></span></>}
-        {slug === 'pooya-os' && <><i className="mini-os-window back" /><i className="mini-os-window front" /><b className="mini-os-cursor" /></>}
-        {slug === 'nexus-canvas' && <><i className="mini-nexus-edge one" /><i className="mini-nexus-edge two" /><i className="mini-nexus-edge three" /><b className="mini-nexus-node one" /><b className="mini-nexus-node two" /><b className="mini-nexus-node three" /><b className="mini-nexus-node four" /></>}
-        {slug === 'lumina-glass' && <><i className="mini-glass-orb" /><i className="mini-glass-orbit one" /><i className="mini-glass-orbit two" /><b className="mini-glass-sheen" /></>}
-        {slug === 'aura-pulse' && <><span className="mini-market-bars"><i /><i /><i /><i /><i /><i /><i /></span><b className="mini-market-line" /></>}
-        {slug === 'global-cart' && <><i className="mini-cart-product one" /><i className="mini-cart-product two" /><i className="mini-cart-product three" /><b className="mini-cart-basket" /></>}
-        {slug === 'salon-booking' && <><span className="mini-booking-grid">{Array.from({ length: 12 }, (_, index) => <i key={index} />)}</span><b className="mini-booking-slot" /></>}
+        {slug === 'aetherflow' && <div className="mini-flow-console">
+          <div className="mini-scene-head"><span className="mini-scene-live" />WORKFLOW RUN <b>LIVE</b></div>
+          <div className="mini-flow-track"><div><i>↳</i><b>TRIGGER</b><small>event</small></div><span /><div><i>01</i><b>WORKER</b><small>execute</small></div><span /><div><i>✓</i><b>COMMIT</b><small>persist</small></div></div>
+          <div className="mini-flow-foot"><span>RETRY</span><i /><i /><i /><b>3 STEPS</b></div>
+        </div>}
+        {slug === 'orbit' && <div className="mini-orbit-console">
+          <div className="mini-scene-head"><span className="mini-scene-live" />SERVICE OBSERVABILITY <b>DEMO</b></div>
+          <div className="mini-orbit-metrics"><div><small>HEALTH</small><strong>99.9%</strong><i>OPERATIONAL</i></div><div><small>INCIDENTS</small><strong>01</strong><i>MONITORING</i></div></div>
+          <div className="mini-orbit-chart"><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /></div>
+          <div className="mini-orbit-log"><span />trace.span.completed <b>12ms</b></div>
+        </div>}
+        {slug === 'pooya-os' && <div className="mini-os-desktop">
+          <div className="mini-os-topbar"><b>P</b><span>POOYA.OS</span><i>LOCAL WORKSPACE</i></div>
+          <div className="mini-os-body"><div className="mini-os-sidebar"><i /><i /><i /><i /></div><div className="mini-os-apps"><div><i className="files" /><b>FILES</b></div><div><i className="terminal" /><b>TERMINAL</b></div><div><i className="studio" /><b>STUDIO</b></div><div><i className="settings" /><b>SETTINGS</b></div></div></div>
+          <div className="mini-os-dock"><i /><i /><i /><i /></div>
+        </div>}
+        {slug === 'nexus-canvas' && <div className="mini-nexus-canvas">
+          <div className="mini-scene-head">NEXUS CANVAS <b>GRAPH / 04</b></div>
+          <div className="mini-nexus-graph"><i className="edge a" /><i className="edge b" /><i className="edge c" /><i className="edge d" /><span className="node gateway">API</span><span className="node worker">JOB</span><span className="node service">CORE</span><span className="node store">DB</span></div>
+          <div className="mini-nexus-foot"><span>4 NODES</span><span>3 CONNECTIONS</span><b>SYNCED</b></div>
+        </div>}
+        {slug === 'lumina-glass' && <div className="mini-glass-lab">
+          <div className="mini-scene-head">LUMINAGLASS <b>OPTICAL LAB</b></div>
+          <div className="mini-glass-stage"><i className="mini-glass-ray one" /><i className="mini-glass-ray two" /><div className="mini-glass-prism"><i /></div><span className="mini-glass-orbit one" /><span className="mini-glass-orbit two" /></div>
+          <div className="mini-glass-controls"><span>BLUR <b>24</b></span><i><b /></i><span>DEPTH <b>0.72</b></span></div>
+        </div>}
+        {slug === 'aura-pulse' && (
+          <div className="mini-aura-terminal">
+            <div className="mini-aura-head"><span className="mini-aura-indicator" /><span className="mini-aura-title">MARKET OVERVIEW</span><span className="mini-aura-chip">SIM</span></div>
+            <div className="mini-aura-markets">
+              <div className="mini-aura-row"><span className="mini-aura-symbol">BTC</span><span className="mini-aura-spark"><i /><i /><i /><i /><i /><i /></span><strong>68.4K</strong></div>
+              <div className="mini-aura-row"><span className="mini-aura-symbol">ETH</span><span className="mini-aura-spark"><i /><i /><i /><i /><i /><i /></span><strong>3.4K</strong></div>
+              <div className="mini-aura-row"><span className="mini-aura-symbol">SOL</span><span className="mini-aura-spark"><i /><i /><i /><i /><i /><i /></span><strong>164</strong></div>
+            </div>
+            <div className="mini-aura-foot"><span>PAPER TRADING</span><span>ORDERS 02</span></div>
+          </div>
+        )}
+        {slug === 'global-cart' && (
+          <div className="mini-commerce">
+            <div className="mini-commerce-head"><span className="mini-commerce-brand">G</span><span className="mini-commerce-search">SEARCH PRODUCTS</span><span className="mini-commerce-bag">02</span></div>
+            <div className="mini-commerce-categories"><span>TECH</span><span>HOME</span><span>LIVING</span></div>
+            <div className="mini-commerce-grid">
+              <div className="mini-commerce-item"><span className="mini-commerce-image audio" /><span className="mini-commerce-item-copy"><span /><span className="mini-commerce-price-line" /></span></div>
+              <div className="mini-commerce-item"><span className="mini-commerce-image device" /><span className="mini-commerce-item-copy"><span /><span className="mini-commerce-price-line" /></span></div>
+              <div className="mini-commerce-item"><span className="mini-commerce-image home" /><span className="mini-commerce-item-copy"><span /><span className="mini-commerce-price-line" /></span></div>
+            </div>
+          </div>
+        )}
+        {slug === 'salon-booking' && <div className="mini-booking-calendar">
+          <div className="mini-scene-head">APPOINTMENTS <b>THIS WEEK</b></div>
+          <div className="mini-booking-days"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span></div>
+          <div className="mini-booking-times"><span>09:00</span><i /><i /><i /><span>10:30</span><i /><i className="selected" /><i /><span>12:00</span><i /><i /><i /><span>13:30</span><i className="busy" /><i /><i /></div>
+          <div className="mini-booking-confirm"><b>✓</b><span>11:30 APPOINTMENT</span><strong>CONFIRMED</strong></div>
+        </div>}
       </div>
     );
   }
@@ -375,6 +431,7 @@ export function ProjectCaseStudy({ project, language, onLanguageChange, theme, o
   const architectureDiagram = architectureDiagrams[project.slug];
   const architectureImage = baseUrl === './' ? null : `${baseUrl}architecture/${project.slug}${language === 'en' ? '-en' : ''}.svg`;
   const caseStudyPageAsset = project.caseStudyPageAsset;
+  const showCaseStudyPageAsset = Boolean(caseStudyPageAsset && project.slug !== 'aetherflow');
   const desktopCapture = project.caseStudyMedia?.find((item) => item.device === 'desktop') ?? project.caseStudyHeroAsset;
   const mobileCaptures = (project.caseStudyMedia ?? []).filter((item) => item.device !== 'desktop');
   return (
@@ -396,8 +453,8 @@ export function ProjectCaseStudy({ project, language, onLanguageChange, theme, o
       <main id="main-content" tabIndex={-1} className="case-study-main portfolio-container">
         <a className="case-study-back" href={baseUrl} onClick={(event) => { event.preventDefault(); onBack(); }}><ArrowUpLeft size={15} />{t.backProjects}</a>
         <section className="case-study-hero" data-reveal="case-study-hero">
-          <div className={`case-study-visual${caseStudyPageAsset ? ' has-visual' : ''}`}>
-            {caseStudyPageAsset
+          <div className={`case-study-visual${showCaseStudyPageAsset ? ' has-visual' : ''}`}>
+            {showCaseStudyPageAsset && caseStudyPageAsset
               ? <img className="case-study-visual-image visual-interface case-study-page-preview" src={`${baseUrl}${caseStudyPageAsset.path}`} alt={caseStudyPageAsset.alt[language]} loading="eager" decoding="async" />
               : <ProjectMotionScene slug={project.slug} />}
             <span className="case-study-index">{project.number} / POOYA LABS</span>
@@ -494,11 +551,11 @@ export function ProjectCaseStudy({ project, language, onLanguageChange, theme, o
           <OwnerAttribution language={language} assetBase={baseUrl} />
           <p>{t.footer}</p>
           <div className="portfolio-footer-socials">
-            <a href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Code2 size={17} /> GitHub</a>
-            <a href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><Send size={16} /> @pooyayee</a>
+            <a href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><GitHubBrandIcon size={17} /> GitHub</a>
+            <a href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><TelegramBrandIcon size={16} /> @pooyayee</a>
             <a href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><img className="instagram-brand-icon" src={`${baseUrl}brand/instagram-glyph.svg`} alt="" aria-hidden="true" /> @_p.ooya</a>
           </div>
-          <small>© {new Date().getFullYear()} POOYA MONOGRAM · POOYA LABS</small>
+          <small>© {new Date().getFullYear()} POOYA GOODARZI · POOYA LABS</small>
         </div>
       </footer>
     </div>
@@ -617,6 +674,27 @@ export function HydratedCaseStudy({ project, language: initialLanguage, baseUrl 
   );
 }
 
+const skillGroups = {
+  fa: [
+    { title: 'زبان‌ها و توسعهٔ بومی', items: ['Rust', 'Go', 'C++', 'Python', 'TypeScript', 'JavaScript', 'SQL', 'Kotlin', 'Android'] },
+    { title: 'وب، طراحی UI/UX و تجربهٔ محصول', items: ['React', 'Next.js', 'Vite', 'Tailwind CSS', 'UI/UX Design', 'Interaction Design', 'Motion Design', 'Micro-interactions', 'Design Systems', 'Prototyping', 'Framer Motion', 'SVG', 'Canvas', 'Web Audio API', 'BroadcastChannel', 'Responsive UI', 'RTL / LTR', 'Accessibility'] },
+    { title: 'هوش مصنوعی و مهندسی محصولات هوشمند', items: ['AI Engineering', 'Applied AI', 'AI Product Engineering', 'AI-assisted Workflows'] },
+    { title: 'بک‌اند و یکپارچه‌سازی', items: ['Tokio', 'REST APIs', 'OpenAPI', 'Google Apps Script', 'Cloudflare Workers', 'Firebase Cloud Messaging', 'OAuth 2.0 / OIDC'] },
+    { title: 'داده، زیرساخت و مشاهده‌پذیری', items: ['PostgreSQL', 'NATS JetStream', 'Google Sheets', 'Docker Compose', 'OpenTelemetry', 'Prometheus', 'Loki', 'Tempo', 'localStorage'] },
+    { title: 'معماری و مهندسی محصول', items: ['Distributed Workflows', 'Durable Execution', 'Worker Recovery', 'Event-driven Architecture', 'Graph Algorithms', 'Incident & SLO Management', 'Marketplace & Catalog Systems', 'Booking & Scheduling', 'Market Data & Paper Trading'] },
+    { title: 'کیفیت، امنیت و انتشار', items: ['GitHub Actions', 'CI/CD', 'Playwright', 'axe-core', 'Unit & Integration Testing', 'Browser E2E Testing', 'Access Control', 'GitHub Pages', 'Cloudflare Pages'] }
+  ],
+  en: [
+    { title: 'Languages & native development', items: ['Rust', 'Go', 'C++', 'Python', 'TypeScript', 'JavaScript', 'SQL', 'Kotlin', 'Android'] },
+    { title: 'Web, UI/UX & product experience', items: ['React', 'Next.js', 'Vite', 'Tailwind CSS', 'UI/UX Design', 'Interaction Design', 'Motion Design', 'Micro-interactions', 'Design Systems', 'Prototyping', 'Framer Motion', 'SVG', 'Canvas', 'Web Audio API', 'BroadcastChannel', 'Responsive UI', 'RTL / LTR', 'Accessibility'] },
+    { title: 'AI & intelligent product engineering', items: ['AI Engineering', 'Applied AI', 'AI Product Engineering', 'AI-assisted Workflows'] },
+    { title: 'Backend & integrations', items: ['Tokio', 'REST APIs', 'OpenAPI', 'Google Apps Script', 'Cloudflare Workers', 'Firebase Cloud Messaging', 'OAuth 2.0 / OIDC'] },
+    { title: 'Data, infrastructure & observability', items: ['PostgreSQL', 'NATS JetStream', 'Google Sheets', 'Docker Compose', 'OpenTelemetry', 'Prometheus', 'Loki', 'Tempo', 'localStorage'] },
+    { title: 'System & product engineering', items: ['Distributed Workflows', 'Durable Execution', 'Worker Recovery', 'Event-driven Architecture', 'Graph Algorithms', 'Incident & SLO Management', 'Marketplace & Catalog Systems', 'Booking & Scheduling', 'Market Data & Paper Trading'] },
+    { title: 'Quality, security & delivery', items: ['GitHub Actions', 'CI/CD', 'Playwright', 'axe-core', 'Unit & Integration Testing', 'Browser E2E Testing', 'Access Control', 'GitHub Pages', 'Cloudflare Pages'] }
+  ]
+} as const;
+
 export default function PortfolioHome({ language, onLanguageChange, theme, onThemeChange, onOpenWorkspace }: PortfolioHomeProps): ReactNode {
   const t = text[language];
   const rtl = language === 'fa';
@@ -638,8 +716,22 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
     if (!root || !('IntersectionObserver' in window)) return;
     const targets = Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'));
     if (!targets.length) return;
-    // .portfolio-page owns scrolling; reset it on route changes and observe within that viewport.
-    root.scrollTop = 0;
+    // .portfolio-page owns scrolling. Keep the list position when returning from a
+    // project or novel, rather than sending the reader back to the top.
+    const isDetailRoute = Boolean(selectedProject?.slug || selectedNovelSlug);
+    if (isDetailRoute) {
+      root.scrollTop = 0;
+    } else {
+      try {
+        const savedPosition = window.sessionStorage.getItem('pooya-labs:portfolio-return-scroll');
+        if (savedPosition !== null) {
+          root.scrollTop = Math.max(0, Number(savedPosition) || 0);
+          window.sessionStorage.removeItem('pooya-labs:portfolio-return-scroll');
+        }
+      } catch {
+        // Session storage may be unavailable in restricted browsing contexts.
+      }
+    }
     root.classList.add('motion-ready');
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
@@ -698,10 +790,16 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
   const openCaseStudy = (event: ReactMouseEvent<HTMLAnchorElement>, project: PortfolioProject) => {
     event.preventDefault();
     const url = new URL(getProjectRouteHref(project.slug, language), window.location.href);
+    try {
+      const page = document.querySelector<HTMLElement>('.portfolio-page');
+      window.sessionStorage.setItem('pooya-labs:portfolio-return-scroll', String(page?.scrollTop ?? 0));
+    } catch {
+      // Session storage may be unavailable in restricted browsing contexts.
+    }
     window.history.pushState({}, '', url);
     setSelectedProject(project);
     setSelectedNovelSlug(null);
-    window.scrollTo({ top: 0, behavior: 'auto' });
+
   };
 
   const closeCaseStudy = () => {
@@ -720,6 +818,12 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
     url.search = '';
     url.hash = '';
     url.searchParams.set('novel', novel.slug);
+    try {
+      const page = document.querySelector<HTMLElement>('.portfolio-page');
+      window.sessionStorage.setItem('pooya-labs:portfolio-return-scroll', String(page?.scrollTop ?? 0));
+    } catch {
+      // Session storage may be unavailable in restricted browsing contexts.
+    }
     window.history.pushState({}, '', url);
     setSelectedProject(null);
     setSelectedNovelSlug(novel.slug);
@@ -744,7 +848,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
   }, [language, rtl]);
 
   if (selectedProject) return <ProjectCaseStudy project={selectedProject} language={language} onLanguageChange={onLanguageChange} theme={theme} onThemeChange={onThemeChange} onBack={closeCaseStudy} baseUrl={import.meta.env.BASE_URL} />;
-  if (selectedNovelSlug) return <NovelReader novel={selectedNovel} language={language} theme={theme} onThemeChange={onThemeChange} loading={novelCatalogLoading} error={novelCatalogError} onBack={closeNovel} />;
+  if (selectedNovelSlug) return <NovelReader novel={selectedNovel} language={language} onLanguageChange={onLanguageChange} theme={theme} onThemeChange={onThemeChange} loading={novelCatalogLoading} error={novelCatalogError} onBack={closeNovel} onOpenWorkspace={onOpenWorkspace} />;
 
   return (
     <div className={`portfolio-page ${rtl ? 'is-rtl' : 'is-ltr'}`} data-theme={theme}>
@@ -780,7 +884,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             <p className="portfolio-intro" dir="auto">{t.intro}</p>
             <div className="portfolio-hero-actions">
               <a className="portfolio-primary" href="#projects">{t.explore}<ArrowDown size={16} /></a>
-              <a className="portfolio-secondary portfolio-github-link" href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><img className="portfolio-github-mark" src={`${import.meta.env.BASE_URL}brand/pooya-monogram.webp`} alt="" aria-hidden="true" />{t.github}<ExternalLink size={13} /></a>
+              <a className="portfolio-secondary portfolio-github-link" href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><GitHubBrandIcon size={18} className="portfolio-github-mark" />{t.github}<ExternalLink size={13} /></a>
             </div>
             <div className="portfolio-social-proof"><span className="proof-line" /><span>POOYA LABS</span><span className="proof-dot">·</span><span>BUILDING IN PUBLIC</span></div>
           </div>
@@ -830,20 +934,26 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
           </div>
           <div className="portfolio-proof-stats" role="group" aria-label={t.proofEyebrow}>
             <article><strong>08</strong><small>{t.proofStat1}</small></article>
-            <article><strong>16</strong><small>{t.proofStat2}</small></article>
+            <article><strong>07</strong><small>{t.proofStat2}</small></article>
             <article><strong>02</strong><small>{t.proofStat3}</small></article>
-            <article><strong>03</strong><small>{t.proofStat4}</small></article>
+            <article><strong>01</strong><small>{t.proofStat4}</small></article>
           </div>
           <div className="portfolio-proof-visual" aria-hidden="true">
             <svg className="proof-radial-svg" viewBox="0 0 1200 390" preserveAspectRatio="xMidYMax meet">
               <defs>
                 <radialGradient id="proof-core-gradient"><stop stopColor="#bda7ff" stopOpacity=".42" /><stop offset=".42" stopColor="#8f78df" stopOpacity=".16" /><stop offset="1" stopColor="#8f78df" stopOpacity="0" /></radialGradient>
                 <linearGradient id="proof-line-gradient" x1="0" y1="1" x2="1" y2="0"><stop stopColor="#8775d8" stopOpacity=".12" /><stop offset=".52" stopColor="#a99df1" stopOpacity=".82" /><stop offset="1" stopColor="#81b7d5" stopOpacity=".18" /></linearGradient>
+                <radialGradient id="proof-origin-gradient">
+                  <stop offset="0" stopColor="#d8ccff" stopOpacity=".72" />
+                  <stop offset=".38" stopColor="#aa9bff" stopOpacity=".28" />
+                  <stop offset="1" stopColor="#aa9bff" stopOpacity="0" />
+                </radialGradient>
               </defs>
               <ellipse className="proof-radial-glow" cx="600" cy="365" rx="450" ry="220" fill="url(#proof-core-gradient)" />
-              {proofRays.map((ray) => <path key={ray.id} className="proof-ray" d={'M 600 386 C ' + ray.c1x.toFixed(1) + ' 220, ' + ray.c2x.toFixed(1) + ' ' + ray.c2y.toFixed(1) + ', ' + ray.x.toFixed(1) + ' ' + ray.y.toFixed(1)} stroke="url(#proof-line-gradient)" strokeWidth={ray.width} strokeOpacity={ray.opacity} fill="none" />)}
+              {proofRays.map((ray) => <path key={ray.id} className="proof-ray" d={'M 600 382 C ' + ray.c1x.toFixed(1) + ' 318, ' + ray.c2x.toFixed(1) + ' ' + ray.c2y.toFixed(1) + ', ' + ray.x.toFixed(1) + ' ' + ray.y.toFixed(1)} stroke="url(#proof-line-gradient)" strokeWidth={ray.width} strokeOpacity={ray.opacity} fill="none" />)}
               {proofParticles.map((particle) => <circle key={particle.id} className="proof-particle" cx={particle.x} cy={particle.y} r={particle.radius} style={{ animationDelay: particle.delay + 's' }} />)}
-              <path className="proof-baseline" d="M 175 385 Q 600 300 1025 385" fill="none" />
+              <circle className="proof-origin-halo" cx="600" cy="382" r="18" />
+              <circle className="proof-origin-point" cx="600" cy="382" r="2.8" />
             </svg>
           </div>
         </section>
@@ -940,9 +1050,9 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             {projects.map((project) => (
               <article className="portfolio-project-card" key={project.name}>
                 <div className="project-card-top"><span className="project-number">{project.number} / POOYA LABS</span><span className="project-status"><i />{project.status[language]}</span></div>
-                <div className={'project-art project-art-' + project.slug + ((project.caseStudyHeroAsset ?? project.visualAsset) ? ' has-visual visual-' + (project.caseStudyHeroAsset ?? project.visualAsset)!.kind : '')}>
-                  {(project.caseStudyHeroAsset ?? project.visualAsset) && <img className="project-art-image" src={(project.caseStudyHeroAsset ?? project.visualAsset)!.url}
-                    alt={(project.caseStudyHeroAsset ?? project.visualAsset)!.alt[language]} loading="lazy" decoding="async"
+                <div className={'project-art project-art-' + project.slug + ((project.slug === 'salon-booking' ? (project.visualAsset ?? project.caseStudyHeroAsset) : (project.caseStudyHeroAsset ?? project.visualAsset)) ? ' has-visual visual-' + (project.slug === 'salon-booking' ? (project.visualAsset ?? project.caseStudyHeroAsset) : (project.caseStudyHeroAsset ?? project.visualAsset))!.kind : '')}>
+                  {(project.slug === 'salon-booking' ? (project.visualAsset ?? project.caseStudyHeroAsset) : (project.caseStudyHeroAsset ?? project.visualAsset)) && <img className="project-art-image" src={(project.slug === 'salon-booking' ? (project.visualAsset ?? project.caseStudyHeroAsset) : (project.caseStudyHeroAsset ?? project.visualAsset))!.url}
+                    alt={(project.slug === 'salon-booking' ? (project.visualAsset ?? project.caseStudyHeroAsset) : (project.caseStudyHeroAsset ?? project.visualAsset))!.alt[language]} loading="lazy" decoding="async"
                     onError={(event) => { event.currentTarget.remove(); event.currentTarget.parentElement?.classList.remove('has-visual'); }} />}
                   <ProjectMotionScene slug={project.slug} compact />
                   <div className="project-art-fallback" aria-hidden="true">
@@ -1036,9 +1146,14 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             <div><div className="portfolio-eyebrow"><span className="eyebrow-index">04 /</span>{t.stackEyebrow}</div><h2>{t.stackTitle}</h2><p>{t.stackSub}</p></div>
             <TerminalSquare size={32} strokeWidth={1.2} />
           </div>
-          <div className="stack-list">
-            {['Rust', 'Next.js', 'React', 'TypeScript', 'Go', 'PostgreSQL', 'NATS JetStream', 'OpenTelemetry', 'Vite', 'Google Apps Script', 'SVG / Canvas', 'Web Audio API'].map((technology, index) => (
-              <span key={technology}><small>0{index + 1}</small>{technology}</span>
+          <div className="skill-groups">
+            {skillGroups[language].map((group, index) => (
+              <article className="skill-group" key={group.title}>
+                <h3 dir="auto"><small>{String(index + 1).padStart(2, '0')}</small><bdi dir="auto">{group.title}</bdi></h3>
+                <div className="skill-group-items" aria-label={group.title}>
+                  {group.items.map((skill) => <span key={skill}>{skill}</span>)}
+                </div>
+              </article>
             ))}
           </div>
         </section>
@@ -1049,8 +1164,8 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
           <h2>{t.contactTitle}</h2>
           <p>{t.contactBody}</p>
           <div className="portfolio-contact-actions">
-            <a className="portfolio-primary portfolio-contact-github" href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer"><Code2 size={18} /><span>{t.contactAction}<small>github.com/pooya-labs</small></span><ArrowUpRight size={16} /></a>
-            <a className="portfolio-social-button" href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><Send size={17} /><span>{t.contactTelegram}<small>@pooyayee</small></span><ArrowUpRight size={15} /></a>
+            <a className="portfolio-primary portfolio-contact-github" href="https://github.com/pooya-labs" target="_blank" rel="noopener noreferrer"><GitHubBrandIcon size={18} /><span>{t.contactAction}<small>github.com/pooya-labs</small></span><ArrowUpRight size={16} /></a>
+            <a className="portfolio-social-button" href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><TelegramBrandIcon size={17} /><span>{t.contactTelegram}<small>@pooyayee</small></span><ArrowUpRight size={15} /></a>
             <a className="portfolio-social-button" href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><img className="instagram-brand-icon" src={`${import.meta.env.BASE_URL}brand/instagram-glyph.svg`} alt="" aria-hidden="true" /><span>{t.contactInstagram}<small>@_p.ooya</small></span><ArrowUpRight size={15} /></a>
           </div>
         </section>
@@ -1061,7 +1176,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         <OwnerAttribution language={language} assetBase={import.meta.env.BASE_URL} />
         <span>{t.footer}</span>
         <a href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><Code2 size={17} /> GitHub</a>
-        <small>© {new Date().getFullYear()} POOYA MONOGRAM · POOYA LABS</small>
+        <small>© {new Date().getFullYear()} POOYA GOODARZI · POOYA LABS</small>
       </footer>
     </div>
   );
