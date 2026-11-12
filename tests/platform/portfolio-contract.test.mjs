@@ -272,3 +272,6 @@ test('project evidence capture records private desktop/mobile screenshots and mo
   assert.match(capture, /salon-booking/);
   assert.match(capture, /connection required/);
 });
+test('skill chips expose an accessible named group for screen readers', () => {
+  assert.match(portfolio, /className="skill-group-items" role="group" aria-label=\{group\.title\}/);
+});
