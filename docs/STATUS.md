@@ -1,3 +1,17 @@
+# Final redesign promotion and production parity — 2026-11-12
+
+- Pooya explicitly declared the redesign complete and instructed that it replace the primary repository version. Phase 8 owner approval is recorded; this is approval of the redesign promotion, **not** V1 approval.
+- Final application commit on `main`: `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`. PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71) promoted the redesign; PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72) corrected the light-theme header toggle label after post-merge QA identified two language-specific contrast failures.
+- Repository CI [43215080520](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080520) and Browser QA [43215080506](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080506) both passed on the exact final `main` SHA.
+- Browser QA: 18/18 localized routes returned HTTP 200; 36/36 desktop/mobile viewport checks passed; 18/18 keyboard skip-link checks passed; 12/12 mobile case-study gallery scroll checks passed; zero horizontal overflow, missing image alt text, or page errors; 34/34 social-crawler checks passed across 17 routes and LinkedIn/Facebook user agents.
+- Axe reported zero confirmed violations in dark and light themes. It still reports 40 incomplete checks per theme (36 color-contrast checks and four ARIA-related checks in the report); these are not passes and remain part of human accessibility review.
+- Performance baseline: 20 samples per host, zero probe failures, p75 CLS 0.000 on local, GitHub Pages and Cloudflare Pages. GitHub Pages p75 TTFB/FCP/LCP: 99/348/388 ms; Cloudflare Pages: 103/432/488 ms. These are lab baselines, not field Core Web Vitals or physical-Android acceptance.
+- GitHub Pages run [43215080845](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080845) deployed artifact `13941954722` from the final SHA: [pooya-labs.github.io/pooya-labs-platform](https://pooya-labs.github.io/pooya-labs-platform/).
+- Cloudflare Pages Production deployment `b7ed72f1-7507-4598-9e61-9f5745997751` completed all five stages from that same SHA: [b7ed72f1.pooya-labs-platform.pages.dev](https://b7ed72f1.pooya-labs-platform.pages.dev/); canonical host: [pooya-labs-platform.pages.dev](https://pooya-labs-platform.pages.dev/). Trigger was an account-connected API deployment (`ad_hoc`); native Git-push deployment remains unverified.
+- The public Novels section now contains the two owner-uploaded manuscripts «گوزن» and «غزال», optimized WebP covers, PDF reader links, and the original uploaded copies retained in `novels/uploads/`.
+- The Workspace sign-in is intentionally a client-side demo gate only. It is not authentication and must never protect private data or privileged operations.
+- Release remains **pre-alpha / portfolio draft**. Phase 7 owner/device/accessibility/privacy/social-cache/rollback carry-over remains open; Phase 9 project evidence/content reconciliation and Phase 10 V1 hardening are still ahead.
+
 # Current platform status — 2026-11-12
 
 **Status: redesign promoted to main; both static hosts published.**
