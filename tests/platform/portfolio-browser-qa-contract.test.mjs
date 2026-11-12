@@ -191,10 +191,14 @@ test('mobile case-study screenshots allow native Android scroll chaining into th
   assert.match(portfolioCss, /-webkit-overflow-scrolling:touch/);
   assert.match(portfolioSource, /data-gallery-scroll="true"/);
   assert.match(portfolioSource, /case-study-scroll-note/);
+  assert.match(script, /hasTouch: true/);
   assert.match(script, /Input\.dispatchTouchEvent/);
   assert.match(script, /Emulation\.setTouchEmulationEnabled/);
   assert.match(script, /caseStudyGalleryScroll/);
+  assert.match(script, /outerRemaining/);
   assert.match(script, /outerScrollTop > setup\.outerBefore/);
+  assert.match(portfolioCss, /overscroll-behavior-y:auto/);
+  assert.match(portfolioCss, /touch-action:pan-y pinch-zoom/);
 });
 
 test('reduced-motion QA checks the animated AetherFlow scene and its authentic gallery capture', () => {
