@@ -1,33 +1,35 @@
 # Manual Contrast Review Matrix
 
-**Status:** Prepared for human review. No manual color measurement, WCAG certification, or owner acceptance is claimed.  
-**Evidence:** [Browser QA run 42815065767](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767), [artifact 13765540433](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767/artifacts/13765540433).  
-**Source commit:** `5af6dd2ca19cdc87783f6312f890c6244e9240b1`.  
-**Axe:** 4.14.0; `color-contrast` rule; WCAG 2.2 AA and best-practice tags.
+**Status:** Prepared for human rendered-background measurements. No manual color measurement, WCAG certification, or owner acceptance is claimed.  
+**Latest evidence:** [Exact-main Browser QA run 43221461301](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461301), artifact [13946521920](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461301/artifacts/13946521920).  
+**Source commit:** `64c5966cba21a2d25d8f357b351593cbe51f26b2`.  
+**Axe:** 4.14.0; WCAG 2.2 AA and best-practice tags.
 
-## Current evidence snapshot
+## Current evidence snapshot — 12 November 2026
 
-The exact-main run covered 18 localized routes (homepage plus eight project case studies in Persian and English), each at desktop 1440×1000 and mobile 390×844. Axe ran separately in dark and light themes.
+The exact-main run covered 18 localized routes (homepage plus eight project case studies in Persian and English), each at desktop and mobile sizes. Axe ran separately in dark and light themes.
 
-| Theme | Incomplete rule checks | Node occurrences | Unique CSS selectors | Confirmed Axe violations |
-|---|---:|---:|---:|---:|
-| Dark | 36 | 228 | 74 | 0 |
-| Light | 36 | 288 | 56 | 0 |
-| **Combined** | **72** | **516** | **87 across both themes** | **0** |
+| Theme | Incomplete checks | Color-contrast incomplete | ARIA incomplete | Node occurrences | Unique selectors | Confirmed Axe violations |
+|---|---:|---:|---:|---:|---:|---:|
+| Dark | 36 | 36 | 0 | 267 | 57 | 0 |
+| Light | 36 | 36 | 0 | 288 | 48 | 0 |
+| **Combined** | **72** | **72** | **0** | **555** | **57 selector union** | **0** |
 
-The 87-selector total is the union of the two theme inventories; 43 selectors occur in both inventories. The counts are not 87 failures. They are text targets for which Axe could not confidently derive the rendered background. An incomplete check is neither a pass nor a confirmed failure.
+The four `aria-prohibited-attr` incomplete checks per theme that were present in the previous report were resolved by PR [#75](https://github.com/pooya-labs/pooya-labs-platform/pull/75), which gives the labeled skill-chip container `role="group"`. The only remaining Axe-incomplete rule is `color-contrast`: Axe could not reliably derive the rendered background behind text because of gradients, pseudo-elements or overlap. These are neither passes nor confirmed failures.
 
-### Why Axe could not resolve the background
+### Unresolved rendered-background causes
 
-| Unresolved background cause | Dark nodes | Light nodes | Combined |
+| Cause | Dark node occurrences | Light node occurrences | Combined |
 |---|---:|---:|---:|
-| Pseudo-element / decorative layer | 129 | 138 | 267 |
-| Background gradient | 83 | 118 | 201 |
-| Overlap by another element | 14 | 30 | 44 |
-| Partial overlap | 2 | 2 | 4 |
-| **Total** | **228** | **288** | **516** |
+| Background gradient | 159 | 101 | 260 |
+| Pseudo-element / decorative layer | 90 | 151 | 241 |
+| Overlap by another element | 16 | 32 | 48 |
+| Other / image-only or non-text context | 2 | 4 | 6 |
+| **Total** | **267** | **288** | **555** |
 
-The latest report also records 18/18 route checks, 36/36 desktop/mobile viewport checks, 18/18 fresh-load keyboard skip-link checks, zero failures, and zero confirmed Axe violations in either theme. Automated browser checks do not replace rendered-color measurement, physical-device review, or screen-reader acceptance.
+The 57 unique CSS selectors are available in the downloadable `qa-report.json` inside artifact [13946521920](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461301/artifacts/13946521920). It is the current source of truth for the selector-level review; the earlier 2026-11-10 inventory below is retained only for historical comparison.
+
+## Historical selector inventory — 10 November 2026 (superseded)
 
 ## Human review procedure
 
@@ -41,7 +43,7 @@ Review each selector in the theme column where it has a non-zero occurrence coun
 
 ## Selector inventory
 
-Counts are node occurrences in the latest 36 route/viewport records for each theme, not counts of unique pages. A dash means the selector was not present in that theme's incomplete-result set. Every human result remains pending.
+Historical counts are from the 2026-11-10 snapshot, not the current selector set. Use the downloadable 2026-11-12 report above for the live manual review; every human result remains pending.
 
 | CSS selector | Dark nodes | Light nodes | Unresolved background | Human result |
 |---|---:|---:|---|---|
