@@ -1,3 +1,18 @@
+# Current next action — close Phase 7 human and owner acceptance (2026-11-12)
+
+The redesign is complete, merged and live on both static hosts. PR #75 removed the skill-group ARIA ambiguity. The latest exact-main Browser QA leaves only 36 incomplete color-contrast checks in each theme; no Axe ARIA-incomplete records remain. Do not tag V1 or begin final Phase 9 content/media integration yet.
+
+1. Complete human rendered-background contrast measurements for the remaining 36 dark-theme and 36 light-theme Axe checks. Record the measured ratios, element selectors and browser/theme combinations in `docs/ACCESSIBILITY-MANUAL-REVIEW.md`.
+2. Complete actual keyboard/focus and screen-reader acceptance in Persian/English, plus physical Windows desktop and Android review. Record exact device, OS, browser and assistive-technology combinations.
+3. Review/approve public biography, headline, role/contribution wording, featured-project order, contact details, statuses and all portfolio media. Obtain separate Salon Booking owner permission for attribution/imagery; never publish admin views or appointment data.
+4. Validate authenticated LinkedIn Post Inspector and Meta Sharing Debugger/cache refreshes, complete the public/private binary-asset audit, and rehearse non-destructive rollback for both static hosts.
+5. Keep Phase 9 as read-only source-evidence preparation only until Phase 7 gates are closed. Then integrate all eight projects with owner-reviewed bilingual case studies, verified claims, links, screenshots, captions, alt text and technical limitations.
+6. Complete Phase 10 release hardening only after Phase 9 acceptance. The project remains pre-alpha until V1 is explicitly approved.
+
+Latest application SHA: `64c5966cba21a2d25d8f357b351593cbe51f26b2`.
+GitHub Pages: https://pooya-labs.github.io/pooya-labs-platform/
+Cloudflare Pages: https://pooya-labs-platform.pages.dev/
+
 # Next — Phase 9 project evidence and source reconciliation (2026-11-12)
 
 The final redesign is approved, merged and published to both static production hosts. Do not reopen Phase 8 design selection or the superseded prototype PR. Do not tag V1 yet.
