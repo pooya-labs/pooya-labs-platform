@@ -8,7 +8,7 @@ The repository is the shared source of truth, but each host has its own build ou
 |---|---|---|---|---|
 | GitHub Pages | Public static portfolio | `dist/pages` | `.github/workflows/pages-platform.yml` | Live; run 43221461285, application source SHA `64c5966cba21a2d25d8f357b351593cbe51f26b2`, artifact 13944694071 |
 | Cloudflare Pages | Independent public-host mirror | `dist/cloudflare` | Connected Cloudflare Pages API; native Git push trigger not observed | Live; Production deployment `975b9e6d-8004-447a-9bfe-898c746036a9`, exact main SHA `64c5966cba21a2d25d8f357b351593cbe51f26b2`, all five stages successful |
-| Google Apps Script | Optional HtmlService application/runtime | `dist/gas/index.html` plus `Code.gs` and manifest | `.github/workflows/deploy-gas.yml` using `clasp` | Build covered by CI; production publish skipped on run 43215080602 because `CLASPRC_JSON`, `CLASP_JSON` and `GAS_DEPLOYMENT_ID` are not configured; not required for the static Pages portfolio |
+| Google Apps Script | Optional HtmlService application/runtime | `dist/gas/index.html` plus `Code.gs` and manifest | `.github/workflows/deploy-gas.yml` using `clasp` | Build covered by CI; production publish skipped on run 43221461361 because `CLASPRC_JSON`, `CLASP_JSON` and `GAS_DEPLOYMENT_ID` are not configured; not required for the static Pages portfolio |
 
 ## Latest verified production parity — 2026-11-12 (after PR #75)
 
