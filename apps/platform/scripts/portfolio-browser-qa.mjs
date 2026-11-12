@@ -187,7 +187,7 @@ try {
           craftSectionCount: document.querySelectorAll('.portfolio-craft').length,
           craftPrincipleCount: document.querySelectorAll('.craft-principle').length,
           heroTitleRunsIsolated: Array.from(document.querySelectorAll('.portfolio-hero-title .hero-title-line')).every((node) => node.getAttribute('dir') === 'auto'),
-          thoughtfulWord: (() => {
+          heroWord: (() => {
             const word = document.querySelector('.portfolio-hero-title .hero-title-word');
             const line = word?.closest('.hero-title-word-line');
             const title = word?.closest('.portfolio-hero-title');
@@ -259,6 +259,10 @@ try {
             const image = document.querySelector('.case-study-visual-image.case-study-page-preview');
             return image instanceof HTMLImageElement ? { alt: image.alt, src: image.getAttribute('src') } : null;
           })(),
+          caseStudyDesktopCapture: (() => {
+            const image = document.querySelector('.case-study-media-card.device-desktop img');
+            return image instanceof HTMLImageElement ? { alt: image.alt, src: image.getAttribute('src') } : null;
+          })(),
           heroCapabilityTitleIsolated: document.querySelector('.portfolio-capabilities h2')?.getAttribute('dir') === 'auto',
         };
       });
@@ -266,11 +270,11 @@ try {
       routeRecord.headingCount = semantics.headingCount;
       routeRecord.mainId = semantics.mainId;
       routeRecord.missingImageAltCount = semantics.missingImageAltCount;
-      const ownerName = route.locale === 'fa' ? 'پویا مونوگرام' : 'POOYA MONOGRAM';
-      if (semantics.ownerAttributionCount !== 1) addFailure(route, null, 'Expected exactly one Pooya Monogram project-owner signature.');
+      const ownerName = route.locale === 'fa' ? 'پویا گودرزی' : 'POOYA GOODARZI';
+      if (semantics.ownerAttributionCount !== 1) addFailure(route, null, 'Expected exactly one Pooya Goodarzi project-owner attribution.');
       if (!semantics.ownerAttributionText.includes(ownerName)) addFailure(route, null, 'Project-owner signature does not match the route language.');
       if (!semantics.ownerAttributionImage?.src?.includes('brand/pooya-monogram-tile.svg') || !semantics.ownerAttributionImage.loaded) addFailure(route, null, 'Project-owner monogram tile is missing or failed to load.');
-      if (route.label === 'home-en') routeRecord.thoughtfulWordLayout = semantics.thoughtfulWord;
+      if (route.label === 'home-en') routeRecord.heroWordLayout = semantics.heroWord;
 
       if (routeRecord.title.trim().length === 0) addFailure(route, null, 'Page title is empty.');
       if (semantics.locale !== route.locale) addFailure(route, null, 'Document language does not match the route.');
@@ -287,8 +291,8 @@ try {
         if (semantics.systemFieldCount !== 1 || semantics.systemNodeCount !== 3) addFailure(route, null, 'The Systems in Motion section is incomplete.');
         if (semantics.craftSectionCount !== 1 || semantics.craftPrincipleCount !== 4) addFailure(route, null, 'The craft-principles section is incomplete.');
         if (!semantics.heroTitleRunsIsolated || !semantics.heroCapabilityTitleIsolated) addFailure(route, null, 'A first-page headline is not isolated from mixed bidirectional text.');
-        if (!semantics.thoughtfulWord || semantics.thoughtfulWord.text !== 'thoughtful' || !semantics.thoughtfulWord.fullyContained) {
-          addFailure(route, null, 'The English thoughtful headline word is missing, split, or clipped.');
+        if (!semantics.heroWord || semantics.thoughtfulWord.text !== 'intelligent' || !semantics.thoughtfulWord.fullyContained) {
+          addFailure(route, null, 'The English intelligent headline word is missing, split, or clipped.');
         }
       }
 
@@ -439,19 +443,23 @@ try {
             opacity: Number.parseFloat(getComputedStyle(art).opacity),
           };
         });
+        if (isAetherFlowPage || (route.label !== 'home-en' && route.label !== 'home-fa')) {
+          if (motionState.activeAnimationCount < 3) addFailure(route, viewport.name, 'The case-study hero does not expose at least three running visual animations.');
+          if ((motionState.opacity ?? 0) < .7) addFailure(route, viewport.name, 'The project motion layer is too faint to be a visible foreground visual.');
+        }
         if (isAetherFlowPage) {
-          const heroImageState = await page.locator('.case-study-visual-image.case-study-page-preview').evaluate(async (image) => {
+          const desktopCapture = page.locator('.case-study-media-card.device-desktop img').first();
+          await desktopCapture.scrollIntoViewIfNeeded();
+          const desktopCaptureState = await desktopCapture.evaluate(async (image) => {
             if (!(image instanceof HTMLImageElement)) return { loaded: false, naturalWidth: 0, src: '' };
             await image.decode().catch(() => undefined);
             return { loaded: image.complete && image.naturalWidth > 0, naturalWidth: image.naturalWidth, src: image.getAttribute('src') ?? '' };
           });
-          routeRecord.aetherflowHeroImage = heroImageState;
-          if (!heroImageState.loaded || heroImageState.naturalWidth < 1000) {
-            addFailure(route, viewport.name, 'The AetherFlow product screenshot did not load as a full-width local asset.');
+          routeRecord.aetherflowDesktopCapture = desktopCaptureState;
+          if (!desktopCaptureState.loaded || desktopCaptureState.naturalWidth < 1000 ||
+              !desktopCaptureState.src.includes('/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png')) {
+            addFailure(route, viewport.name, 'The AetherFlow authentic desktop screenshot is missing from its interface gallery.');
           }
-        } else if (route.label !== 'home-en' && route.label !== 'home-fa') {
-          if (motionState.activeAnimationCount < 3) addFailure(route, viewport.name, 'The case-study hero does not expose at least three running visual animations.');
-          if ((motionState.opacity ?? 0) < .7) addFailure(route, viewport.name, 'The project motion layer is too faint to be a visible foreground visual.');
         }
 
         let caseStudyGalleryScroll = { available: false, passed: true, skippedReason: 'Not a mobile case-study route.' };
@@ -738,8 +746,11 @@ try {
           addFailure(route, viewport.name, 'The thoughtful headline word is clipped or escapes its own line bounds.');
         }
         if (isAetherFlowPage) {
-          if (!semantics.caseStudyPageImage?.src?.includes('interface-captures/aetherflow/aetherflow-fullpage-desktop.png') || !semantics.caseStudyPageImage.alt) {
-            addFailure(route, viewport.name, 'The AetherFlow product screenshot or its localized alternative text is missing.');
+          if (!semantics.caseStudyMotionScene?.split(' ').includes('scene-aetherflow')) {
+            addFailure(route, viewport.name, 'The AetherFlow hero is missing its dedicated workflow motion scene.');
+          }
+          if (!semantics.caseStudyDesktopCapture?.src?.includes('/apps/platform/public/interface-captures/aetherflow/aetherflow-fullpage-desktop.png') || !semantics.caseStudyDesktopCapture.alt) {
+            addFailure(route, viewport.name, 'The AetherFlow authentic desktop capture or localized alternative text is missing.');
           }
         } else if (route.label !== 'home-en' && route.label !== 'home-fa') {
           const slug = route.label.replace(/-(fa|en)$/, '');
