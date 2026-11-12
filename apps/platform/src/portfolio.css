@@ -3793,3 +3793,8 @@
 .portfolio-page[data-theme="light"] .portfolio-header-actions > .portfolio-theme > svg {
   color: #26775a;
 }
+/* Axe evaluates the label node separately; give it the same opaque light surface. */
+.portfolio-page[data-theme="light"] .portfolio-header-actions > .portfolio-theme > span {
+  color: #294b3b !important;
+  background-color: #fff !important;
+}
