@@ -1,6 +1,18 @@
 # Manual Contrast Review Matrix
 
-**Status:** Prepared for human review. No manual color measurement, WCAG certification, or owner acceptance is claimed.  
+**Latest exact-main evidence — 12 November 2026:** [Browser QA run 43215080506](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080506), artifact [13942484705](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43215080506/artifacts/13942484705), source commit `b7d4d136d58e2121d6bd2bd11c03ff774431a2d7`. This supersedes the older 2026-11-10 counts below.
+
+| Theme | Incomplete rule checks | Color-contrast checks | ARIA-prohibited-attribute checks | Node occurrences | Unique CSS selectors | Confirmed Axe violations |
+|---|---:|---:|---:|---:|---:|---:|
+| Dark | 40 | 36 | 4 | 294 | 70 | 0 |
+| Light | 40 | 36 | 4 | 316 | 61 | 0 |
+| **Combined** | **80** | **72** | **8** | **610** | **70-selector union** | **0** |
+
+The 36 color-contrast records in each theme are incomplete because Axe could not reliably determine the rendered background behind text (gradients, pseudo-elements, overlap/partial overlap). The four ARIA records in each theme concern `aria-label` on generic `div` elements without an explicit role; Axe records these as incomplete, not confirmed violations. Their reported node occurrences are 28 per theme. These ARIA cases need a source-level semantic review (appropriate grouping role or removal of redundant labels), not a contrast measurement.
+
+The current report passed 18/18 routes, all 36 desktop/mobile viewport checks, all 18 fresh-load keyboard skip-link checks, all 12 available mobile case-study gallery-gutter swipe checks, and all 34 social-crawler route/user-agent checks. It reported zero page errors, missing image alt text, horizontal overflow, or confirmed Axe violations. This remains automated Chromium evidence, not WCAG certification, physical-device acceptance, or screen-reader sign-off.
+
+**Status:** Prepared for human review. No manual color measurement, ARIA semantic review, WCAG certification, or owner acceptance is claimed.  
 **Evidence:** [Browser QA run 42815065767](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767), [artifact 13765540433](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42815065767/artifacts/13765540433).  
 **Source commit:** `5af6dd2ca19cdc87783f6312f890c6244e9240b1`.  
 **Axe:** 4.14.0; `color-contrast` rule; WCAG 2.2 AA and best-practice tags.
