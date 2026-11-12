@@ -21,18 +21,6 @@ The repository is the shared source of truth, but each host has its own build ou
 - GitHub Actions Cloudflare publish [43221461407](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461407) skipped the actual deploy job because `CLOUDFLARE_API_TOKEN` is absent; the direct connected API deployment succeeded. Native `github:push` remains unverified.
 - Apps Script publish [43221461361](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461361) skipped because its three private deployment secrets are not configured; this is not required for the current static Pages portfolio.
 
-## Previous production parity checkpoint — 2026-11-12 before PR #75 (superseded)
-
-- The final promoted application source is exact main commit [`64c5966cba21a2d25d8f357b351593cbe51f26b2`](https://github.com/pooya-labs/pooya-labs-platform/commit/64c5966cba21a2d25d8f357b351593cbe51f26b2).
-- PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71) promoted the owner-declared-complete redesign; PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72) applied the post-merge light-theme toggle-label contrast correction.
-- Repository CI [43221461282](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461282) and Browser QA [43221461301](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461301) passed on the exact main SHA.
-- Browser QA passed 18/18 routes, 36/36 desktop/mobile viewports, 18/18 keyboard skip-link checks, 34/34 social crawler checks, and reported zero confirmed Axe violations in either theme. Forty incomplete contrast checks per theme remain for manual review; this is not WCAG certification.
-- GitHub Pages [run 43221461285](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461285) deployed artifact `13944694071` from this SHA. Public URL: [https://pooya-labs.github.io/pooya-labs-platform/](https://pooya-labs.github.io/pooya-labs-platform/).
-- Cloudflare Pages Production deployment [`975b9e6d`](https://975b9e6d.pooya-labs-platform.pages.dev/) (ID `975b9e6d-8004-447a-9bfe-898c746036a9`) completed queue, initialize, clone, build and deploy successfully from the same SHA. Canonical project domain: [https://pooya-labs-platform.pages.dev/](https://pooya-labs-platform.pages.dev/). Trigger type was `ad_hoc` through the connected Cloudflare API.
-- GitHub's Cloudflare workflow [43221461407](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461407) skipped its actual deploy job because `CLOUDFLARE_API_TOKEN` is absent. The direct connected Cloudflare API deployment above succeeded; this does not prove native `github:push` automation. Add the GitHub secret only if automatic workflow deployment is required.
-- Apps Script workflow [43221461361](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461361) skipped the actual publish job because its three private deployment secrets are not configured. The current public site is static and does not depend on Apps Script.
-- V1 remains blocked by Phase 7 human/owner acceptance, Phase 9 project integration and Phase 10 release gates.
-
 ## Historical production parity checkpoint — 2026-11-09 17:16 UTC (superseded)
 
 - Repository main is documentation-only commit [`d4402211cc6fcca59f143018574bd3cd9cf64aab`](https://github.com/pooya-labs/pooya-labs-platform/commit/d4402211cc6fcca59f143018574bd3cd9cf64aab). PR #44 exact-head CI [42661281955](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42661281955), Browser QA [42661281908](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42661281908), and post-merge main CI [42661735358](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/42661735358) passed.
