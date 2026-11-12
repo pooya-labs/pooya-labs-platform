@@ -138,7 +138,8 @@ test('project artwork and interface screenshots are sourced from pinned commits 
   assert.match(projectData, /Case-study hero assets must be pinned to an immutable source commit/);
   assert.match(projectData, /Project visual asset URL/);
   assert.match(portfolio, /project-art-' \+ project\.slug/);
-  assert.match(css, /\.project-art-aetherflow \.project-art-image \{\s*object-position: top center;/);
+  assert.match(css, /\.project-art-salon-booking \.project-art-image,\s*\.project-art-aetherflow \.project-art-image/);
+  assert.match(css, /\.project-art-aetherflow \.project-art-image \{\s*object-fit: cover !important;\s*object-position: top center;/);
   assert.match(portfolio, /project-art-image/);
   assert.ok(portfolio.includes('<img className="case-study-visual-image visual-interface case-study-page-preview"'));
   assert.ok(portfolio.includes('caseStudyPageAsset.alt[language]'));
@@ -224,7 +225,7 @@ test('portfolio distinguishes in-progress release lines from stable demo release
   assert.match(productDossiers, /42086718821/);
   assert.match(productDossiers, /do not process real sales|No real payment/i);
   assert.match(productDossiers, /The web product v1\.0\.0 is complete and accepted/i);
-  assert.match(productDossiers, /M09\.8/);
+  assert.match(coreDossiers, /M08/);
   assert.match(coreDossiers, /Cloudflare Worker/);
   assert.match(coreDossiers, /ORBIT_GATEWAY_SECRET/);
   assert.match(coreDossiers, /workers\.dev route is disabled/);
