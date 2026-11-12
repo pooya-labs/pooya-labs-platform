@@ -71,7 +71,7 @@ export const productDossiers = {
         "GlobalCart is a marketplace simulation, not a live retailer: it does not process real orders, payments, inventory reservations, shipping, seller payouts, or refunds; catalog prices are estimates."
       ]
     },
-    
+
     references: [
       { label: { fa: "انتشار رسمی نسخه ۱٫۰٫۰", en: "Official v1.0.0 release" }, url: "https://github.com/pooya-labs/globalcart/releases/tag/v1.0.0" },
       { label: { fa: "گزارش انتشار v1.0.0", en: "v1.0.0 release workflow" }, url: "https://github.com/pooya-labs/globalcart/actions/runs/42494416761" },
@@ -131,7 +131,7 @@ export const productDossiers = {
         "Case-study publication still requires separate salon-owner permission; no personal information or customer records may appear in public imagery."
       ]
     },
-    
+
     references: [
       { label: { fa: "README وب و معماری", en: "Web README and architecture" }, url: "https://github.com/pooya-labs/salon-booking/blob/main/README.md" },
       { label: { fa: "راهنمای اپ اندروید", en: "Android manager app guide" }, url: "https://github.com/pooya-labs/salon-booking/blob/main/android/README.md" },
