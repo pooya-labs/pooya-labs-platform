@@ -100,6 +100,14 @@ The release target is a credible, distinctive personal portfolio that introduces
 
 ## Phase 7 — Pre-redesign readiness and engineering closeout
 
+### Phase 7 readiness history — P7-35 final PR #79 accessibility artifact reconciliation (2026-11-13)
+
+- [x] Run exact-head Repository CI [43332873662](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43332873662) and Portfolio Browser QA [43332873670](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43332873670) on PR #79; 124/124 contract tests passed and browser QA completed successfully.
+- [x] Reconcile [ACCESSIBILITY-MANUAL-REVIEW.md](ACCESSIBILITY-MANUAL-REVIEW.md) against final artifact [13995024749](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43332873670/artifacts/13995024749): 36 incomplete contrast checks per theme; 267 dark nodes / 57 selectors and 288 light nodes / 48 selectors. Record the PR #78 variance as report-only because application source did not change.
+- [x] Record 20-sample p75 performance baseline for local, GitHub Pages and Cloudflare Pages; preserve its lab-only interpretation.
+- [ ] Complete manual rendered-background contrast measurements, focus visibility, keyboard-only and screen-reader flow in both languages and themes. Automated rechecks do not satisfy human or physical-device acceptance.
+
+
 ### Phase 7 readiness history — P7-34 latest dual-theme contrast inventory (2026-11-13)
 
 - [x] Re-run the full portfolio Browser QA after the PR #77 source-inventory refresh. PR #78's documentation-only head `dd37e1f37b646137280f1a315143f82aef549bc6` was based on `860c067bb1b19d94ebb67184bd59e1ebb5a85acb`; the application source remained `64c5966cba21a2d25d8f357b351593cbe51f26b2`. Exact-head Repository CI [43328360853](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43328360853) and Browser QA [43328360741](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43328360741) passed.
