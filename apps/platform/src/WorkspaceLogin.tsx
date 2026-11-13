@@ -74,7 +74,7 @@ export default function WorkspaceLogin({ language, theme, checking, onLanguageCh
       <div className="ambient-grid" />
       <header className="workspace-auth-header">
         <a className="workspace-auth-brand" href="/" onClick={(event) => { event.preventDefault(); onBack(); }}>
-          <img src="/brand/pooya-monogram-tile.svg" alt="" />
+          <img src={`${import.meta.env.BASE_URL}brand/pooya-monogram-tile.svg`} alt="" />
           <span><strong>Pooya Labs</strong><small>PRIVATE WORKSPACE</small></span>
         </a>
         <div className="workspace-auth-controls">
