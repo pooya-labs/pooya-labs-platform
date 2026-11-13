@@ -1,5 +1,20 @@
 # Accessibility manual review matrix
 
+## Latest corroborating evidence — PR #82 post-merge checkpoint Browser QA (13 November 2026)
+
+- PR [#82](https://github.com/pooya-labs/pooya-labs-platform/pull/82) head d91070cba1434904108cce75a238b7604f34d1b2 was a four-file documentation-only change based on 4da12e06572a61a9da7388d80c551914a603636a; application source remained 64c5966cba21a2d25d8f357b351593cbe51f26b2.
+- Repository CI [43336079868](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43336079868) and Portfolio Browser QA [43336080028](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43336080028) passed; Browser QA artifact [13997895518](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43336080028/artifacts/13997895518). The run passed 18/18 localized routes, 36/36 viewport checks and 34/34 social-crawler checks, with zero confirmed Axe violations and zero failures.
+- The console summary reports 36 incomplete checks in the default-theme Axe summary. The script stores light-theme counts and findings separately in the report. Keep the PR #79 selector inventory above as the latest fully extracted per-theme matrix; do not infer new selector/node counts from the PR #82 console summary alone. Incomplete checks remain human review targets, not confirmed failures or passes.
+- The three-host 20-sample p75 performance baseline was:
+
+| Host | TTFB | FCP | LCP | CLS |
+|---|---:|---:|---:|---:|
+| Local build | 5 ms | 216 ms | 272 ms | 0.000 |
+| GitHub Pages | 134 ms | 336 ms | 408 ms | 0.000 |
+| Cloudflare Pages | 61 ms | 300 ms | 360 ms | 0.000 |
+
+- These are CI lab measurements against the current static hosts, not field Core Web Vitals, a representative mobile network, or physical-device acceptance. Performance enforcement remains report-only.
+
 **Status:** Human color-contrast, focus, physical-device and assistive-technology acceptance remains open. No manual color measurement, WCAG certification or owner acceptance is claimed.
 
 ## Latest exact-main evidence — 12 November 2026
