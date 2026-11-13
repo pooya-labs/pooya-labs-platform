@@ -33,90 +33,99 @@ The report passed 18/18 localized routes, all 36 desktop/mobile viewport checks,
 - Browser QA: [exact-main run 43221461301](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461301), [artifact 13946521920](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43221461301/artifacts/13946521920).
 - Axe version: 4.14.0; tags include WCAG 2.2 AA and best-practice checks. PR [#75](https://github.com/pooya-labs/pooya-labs-platform/pull/75) resolved the prior `aria-prohibited-attr` incomplete checks by adding `role="group"` to the named skill-chip collections and an automated contract assertion.
 
-## Latest corroborating evidence — PR #78 documentation-only head, 13 November 2026
+## Previous corroborating evidence — PR #78 documentation-only head (13 November 2026)
 
-- PR [#78](https://github.com/pooya-labs/pooya-labs-platform/pull/78) head: `dd37e1f37b646137280f1a315143f82aef549bc6`; base: `860c067bb1b19d94ebb67184bd59e1ebb5a85acb`. Its diff contains documentation changes only. The portfolio application source remained `64c5966cba21a2d25d8f357b351593cbe51f26b2`; this run therefore rechecks the same app source and is **not** a new exact-main build or production deployment.
-- Repository CI: [run 43328360853](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43328360853) — passed. Portfolio Browser QA: [run 43328360741](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43328360741) — passed. [Browser QA artifact 13994116607](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43328360741/artifacts/13994116607).
-- The artifact report was generated at `2026-11-12T23:23:27Z`. It covers 18 localized routes and 36 desktop/mobile viewport records, 18 keyboard skip-navigation checks and 34 social-crawler checks. There were zero route failures, page errors, missing image alt attributes, or confirmed Axe violations.
-- All 36 incomplete checks in each theme remain `color-contrast`. The refreshed report records 269 dark-theme and 288 light-theme node occurrences across 56 and 48 unique selectors. The six `.flow-trigger > .flow-icon` occurrences are non-text icon content and are not text-contrast measurements. These are unresolved Axe checks, not confirmed failures and not passes.
-- The dark node count is two higher than the previous exact-main report (269 versus 267); because application source was unchanged, this difference is recorded as a report-inventory variance, not as a confirmed CSS regression. The latest selector counts below supersede the previous table.
+- PR #78 head `dd37e1f37b646137280f1a315143f82aef549bc6` was documentation-only and used the same application source `64c5966cba21a2d25d8f357b351593cbe51f26b2`.
+- Its exact-head Repository CI [43328360853](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43328360853) and Browser QA [43328360741](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43328360741), artifact [13994116607](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43328360741/artifacts/13994116607), passed.
+- That report recorded 36 incomplete contrast checks per theme, with 269 dark / 288 light node occurrences and 56 / 48 selectors. The newer PR #79 artifact below supersedes that inventory: it records 267 dark / 288 light node occurrences and 57 / 48 selectors on the same app source. Treat the two-node / one-selector difference as a report-inventory variance, not a code change or proven accessibility regression.
+
+## Latest corroborating evidence — PR #79 exact-head Browser QA (13 November 2026)
+
+- PR [#79](https://github.com/pooya-labs/pooya-labs-platform/pull/79) head: `0ea35d3910551332b5edd81a2906f39229caa41b`; merged into main as [`56b2f8a`](https://github.com/pooya-labs/pooya-labs-platform/commit/56b2f8a0d94d4ef6575183b7dfe8f74d54a7130a). Its 7-file diff was documentation-only; the application source remained `64c5966cba21a2d25d8f357b351593cbe51f26b2`, and production deployments were not changed.
+- Repository CI [run 43332873662](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43332873662) passed, including all 124 contract tests. Portfolio Browser QA [run 43332873670](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43332873670) passed; [artifact 13995024749](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43332873670/artifacts/13995024749).
+- The report was generated at `2026-11-12T23:56:06Z`. It checked 18 localized routes, 36 desktop/mobile viewport records, 18 keyboard skip-navigation checks, 12 mobile gallery-scroll checks and 34 social-crawler checks. It recorded zero route failures, page errors, missing image alt attributes, horizontal overflow or confirmed Axe violations.
+- The latest artifact records 36 incomplete `color-contrast` rule checks in each theme. Dark mode has 267 node occurrences across 57 selectors; light mode has 288 occurrences across 48 selectors. The union is 57 selectors and 555 node occurrences.
+- Unresolved-background reasons: dark — 159 gradient, 90 pseudo-element/decorative layer, 16 overlap and 2 non-text; light — 101 gradient, 151 pseudo-element/decorative layer, 32 overlap and 4 non-text. Six icon-only `.flow-trigger > .flow-icon` occurrences are not text-contrast measurements. These findings are unresolved checks, not confirmed failures or passes.
+- The PR #78 report had 269 dark nodes / 56 selectors. Since both PRs used the unchanged application source, use the PR #79 result as the latest inventory and preserve the PR #78 variance as report-only.
+- Performance baseline: 20 samples per host. p75 TTFB / FCP / LCP / CLS were local `3 / 185 / 229 ms / 0.000`, GitHub Pages `121 / 293 / 364 ms / 0.000`, and Cloudflare Pages `74 / 338 / 396 ms / 0.000`. These are CI lab baselines, not field Core Web Vitals or physical-device measurements.
 
 | Theme | Incomplete rule checks | Color-contrast checks | ARIA-prohibited-attribute checks | Node occurrences | Unique CSS selectors | Confirmed Axe violations |
 |---|---:|---:|---:|---:|---:|---:|
-| Dark | 36 | 36 | 0 | 269 | 56 | 0 |
+| Dark | 36 | 36 | 0 | 267 | 57 | 0 |
 | Light | 36 | 36 | 0 | 288 | 48 | 0 |
-| **Combined** | **72** | **72** | **0** | **557** | **56-selector union** | **0** |
+| **Combined** | **72** | **72** | **0** | **555** | **57-selector union** | **0** |
 
 | Unresolved background reason | Dark nodes | Light nodes |
 |---|---:|---:|
-| Gradient | 161 | 101 |
+| Gradient | 159 | 101 |
 | Pseudo-element / decorative layer | 90 | 151 |
 | Overlap by another element | 16 | 32 |
 | Non-text content | 2 | 4 |
-| **Total** | **269** | **288** |
+| **Total** | **267** | **288** |
 
-## Current selector inventory — PR #78 Browser QA run 43328360741
+## Current selector inventory — PR #79 Browser QA run 43332873670
 
-Counts are node occurrences from the latest downloaded artifact, grouped by unique CSS selector. A dash means no incomplete node for that selector in the theme. The table identifies where Axe could not resolve the background; it does not establish whether measured contrast passes WCAG.
+Counts are node occurrences by selector. Background notes identify Axe's unresolved reason in each theme. These rows do not establish that contrast passes or fails WCAG.
 
-| CSS selector | Dark | Light | Unresolved background |
-|---|---:|---:|---|
-| `.booking-calendar-head > span:nth-child(1)` | 2 | 4 | pseudo-element |
-| `.booking-calendar-head > span:nth-child(2)` | 2 | 4 | pseudo-element |
-| `.booking-calendar-head > span:nth-child(3)` | 2 | 2 | pseudo-element |
-| `.booking-calendar-head > span:nth-child(4)` | 1 | 1 | pseudo-element |
-| `.case-study-back` | 16 | 32 | overlap |
-| `.case-study-scroll-note` | 4 | — | gradient |
-| `.case-study-section-grid > .case-study-panel:nth-child(1) > .portfolio-eyebrow` | 4 | — | gradient |
-| `.case-study-section-grid > .case-study-panel:nth-child(1) > .portfolio-eyebrow > .eyebrow-index` | 2 | — | gradient |
-| `.device-desktop > figcaption` | 8 | — | gradient |
-| `.device-mobile > figcaption` | 4 | — | gradient |
-| `.device-mobile.case-study-media-card:nth-child(2) > figcaption` | 11 | — | gradient |
-| `.device-mobile.case-study-media-card:nth-child(2) > figcaption > .case-study-scroll-note` | 12 | — | gradient |
-| `.flow-trigger > .flow-icon` | 2 | 4 | non-text |
-| `.flow-trigger > small` | 2 | 2 | pseudo-element |
-| `.flow-trigger > strong` | 2 | 4 | pseudo-element |
-| `.flow-worker > .flow-icon` | 1 | 1 | pseudo-element |
-| `.glass-controls > span:nth-child(1)` | 2 | 4 | pseudo-element |
-| `.glass-controls > span:nth-child(3)` | 2 | 2 | pseudo-element |
-| `.hero-title-line[dir="auto"]:nth-child(1)` | 1 | 1 | pseudo-element |
-| `.market-range > span:nth-child(1)` | 2 | 2 | pseudo-element |
-| `.market-range > span:nth-child(2)` | 1 | 1 | pseudo-element |
-| `.market-simulated` | 2 | 4 | pseudo-element |
-| `.market-symbol > span` | 2 | 4 | pseudo-element |
-| `.market-symbol > strong` | 2 | 4 | pseudo-element |
-| `.node-gateway` | 2 | 4 | pseudo-element |
-| `.node-gateway > small` | 2 | 4 | pseudo-element |
-| `.node-service` | 2 | 2 | pseudo-element |
-| `.node-service > small` | 1 | 1 | pseudo-element |
-| `.orbit-health-card > small` | 2 | 4 | pseudo-element |
-| `.orbit-health-card > strong` | 2 | 4 | pseudo-element |
-| `.orbit-stat-card > small` | 2 | 2 | pseudo-element |
-| `.orbit-stat-card > strong` | 1 | 1 | pseudo-element |
-| `.os-avatar` | 2 | 2 | pseudo-element |
-| `.os-terminal-line > span` | 1 | 1 | pseudo-element |
-| `.os-window-back > .os-titlebar > span` | 2 | 4 | pseudo-element |
-| `.os-window-front > .os-titlebar > span` | 2 | 4 | pseudo-element |
-| `.portfolio-brand[href$="pooya-labs-platform/"] > span:nth-child(2) > small` | 16 | 16 | gradient |
-| `.portfolio-brand[href$="pooya-labs-platform/"] > span:nth-child(2) > strong` | 32 | 32 | gradient |
-| `.portfolio-hero-copy > .portfolio-eyebrow` | 3 | 2 | pseudo-element |
-| `.portfolio-language` | 28 | 28 | gradient |
-| `.portfolio-workspace > span` | 16 | — | gradient |
-| `.product-a > b` | 2 | 4 | pseudo-element |
-| `.product-a > small` | 2 | 4 | pseudo-element |
-| `.product-b > b` | 2 | 2 | pseudo-element |
-| `.product-b > small` | 1 | 1 | pseudo-element |
-| `.scene-topline > i` | 14 | 28 | pseudo-element |
-| `.scene-topline > span` | 16 | 32 | pseudo-element |
-| `a[href$="#about"]` | 4 | 4 | gradient |
-| `a[href$="#contact"]` | 2 | 3 | gradient |
-| `a[href$="#novels"]` | 4 | 4 | gradient |
-| `a[href$="#stack"]` | 4 | 4 | gradient |
-| `header > .portfolio-brand[href$="#top"] > span:nth-child(2) > small` | 2 | 2 | gradient |
-| `header > .portfolio-brand[href$="#top"] > span:nth-child(2) > strong` | 4 | 4 | gradient |
-| `nav > a[href$="#projects"]` | 4 | 4 | gradient |
-| `span:nth-child(1) > b` | 2 | 4 | pseudo-element |
-| `span:nth-child(3) > b` | 1 | 1 | pseudo-element |
+| CSS selector | Dark nodes | Dark background note | Light nodes | Light background note |
+|---|---:|---|---:|---|
+| `.booking-calendar-head > span:nth-child(1)` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `.booking-calendar-head > span:nth-child(2)` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `.booking-calendar-head > span:nth-child(3)` | 2 | pseudo-element (2) | 2 | pseudo-element (2) |
+| `.booking-calendar-head > span:nth-child(4)` | 1 | pseudo-element (1) | 1 | pseudo-element (1) |
+| `.case-study-back` | 16 | overlap (16) | 32 | overlap (32) |
+| `.case-study-scroll-note` | 4 | gradient (4) | — | — |
+| `.case-study-section-grid > .case-study-panel:nth-child(1) > .portfolio-eyebrow` | 3 | gradient (3) | — | — |
+| `.case-study-section-grid > .case-study-panel:nth-child(1) > .portfolio-eyebrow > .eyebrow-index` | 1 | gradient (1) | — | — |
+| `.device-desktop > figcaption` | 8 | gradient (8) | — | — |
+| `.device-mobile > figcaption` | 4 | gradient (4) | — | — |
+| `.device-mobile.case-study-media-card:nth-child(2) > figcaption` | 11 | gradient (11) | — | — |
+| `.device-mobile.case-study-media-card:nth-child(2) > figcaption > .case-study-scroll-note` | 12 | gradient (12) | — | — |
+| `.flow-trigger > .flow-icon` | 2 | non-text (2) | 4 | non-text (4) |
+| `.flow-trigger > small` | 2 | pseudo-element (2) | 2 | pseudo-element (2) |
+| `.flow-trigger > strong` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `.flow-worker > .flow-icon` | 1 | pseudo-element (1) | 1 | pseudo-element (1) |
+| `.glass-controls > span:nth-child(1)` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `.glass-controls > span:nth-child(3)` | 2 | pseudo-element (2) | 2 | pseudo-element (2) |
+| `.hero-gradient` | 1 | pseudo-element (1) | — | — |
+| `.hero-title-line[dir="auto"]:nth-child(1)` | 1 | pseudo-element (1) | 1 | pseudo-element (1) |
+| `.market-range > span:nth-child(1)` | 2 | pseudo-element (2) | 2 | pseudo-element (2) |
+| `.market-range > span:nth-child(2)` | 1 | pseudo-element (1) | 1 | pseudo-element (1) |
+| `.market-simulated` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `.market-symbol > span` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `.market-symbol > strong` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `.node-gateway` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `.node-gateway > small` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `.node-service` | 2 | pseudo-element (2) | 2 | pseudo-element (2) |
+| `.node-service > small` | 1 | pseudo-element (1) | 1 | pseudo-element (1) |
+| `.orbit-health-card > small` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `.orbit-health-card > strong` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `.orbit-stat-card > small` | 2 | pseudo-element (2) | 2 | pseudo-element (2) |
+| `.orbit-stat-card > strong` | 1 | pseudo-element (1) | 1 | pseudo-element (1) |
+| `.os-avatar` | 2 | pseudo-element (2) | 2 | pseudo-element (2) |
+| `.os-terminal-line > span` | 1 | pseudo-element (1) | 1 | pseudo-element (1) |
+| `.os-window-back > .os-titlebar > span` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `.os-window-front > .os-titlebar > span` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `.portfolio-brand[href$="pooya-labs-platform/"] > span:nth-child(2) > small` | 16 | gradient (16) | 16 | gradient (16) |
+| `.portfolio-brand[href$="pooya-labs-platform/"] > span:nth-child(2) > strong` | 32 | gradient (32) | 32 | gradient (32) |
+| `.portfolio-hero-copy > .portfolio-eyebrow` | 2 | pseudo-element (2) | 2 | pseudo-element (2) |
+| `.portfolio-language` | 28 | gradient (28) | 28 | gradient (28) |
+| `.portfolio-workspace > span` | 16 | gradient (16) | — | — |
+| `.product-a > b` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `.product-a > small` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `.product-b > b` | 2 | pseudo-element (2) | 2 | pseudo-element (2) |
+| `.product-b > small` | 1 | pseudo-element (1) | 1 | pseudo-element (1) |
+| `.scene-topline > i` | 14 | pseudo-element (14) | 28 | pseudo-element (28) |
+| `.scene-topline > span` | 16 | pseudo-element (16) | 32 | pseudo-element (32) |
+| `a[href$="#about"]` | 4 | gradient (4) | 4 | gradient (4) |
+| `a[href$="#contact"]` | 2 | gradient (2) | 3 | gradient (3) |
+| `a[href$="#novels"]` | 4 | gradient (4) | 4 | gradient (4) |
+| `a[href$="#stack"]` | 4 | gradient (4) | 4 | gradient (4) |
+| `header > .portfolio-brand[href$="#top"] > span:nth-child(2) > small` | 2 | gradient (2) | 2 | gradient (2) |
+| `header > .portfolio-brand[href$="#top"] > span:nth-child(2) > strong` | 4 | gradient (4) | 4 | gradient (4) |
+| `nav > a[href$="#projects"]` | 4 | gradient (4) | 4 | gradient (4) |
+| `span:nth-child(1) > b` | 2 | pseudo-element (2) | 4 | pseudo-element (4) |
+| `span:nth-child(3) > b` | 1 | pseudo-element (1) | 1 | pseudo-element (1) |
 
 ## Human review procedure
 
