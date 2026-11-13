@@ -1,4 +1,6 @@
-# Current platform status — 2026-11-13 (post-PR #79 and latest accessibility recheck)
+# Current platform status — 2026-11-13 (post-PR #80 accessibility evidence reconciliation)
+
+- PR [#80](https://github.com/pooya-labs/pooya-labs-platform/pull/80) merged as `5495b3c8b173382f15fa5d7f425722038851bf26`. Its seven-file diff was documentation-only. Exact PR-head Repository CI [43334166569](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43334166569) passed all 124 contract tests; Portfolio Browser QA [43334166432](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43334166432) passed and uploaded artifact [13995399360](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43334166432/artifacts/13995399360). The run completed responsive, route, metadata, keyboard and performance checks against the unchanged application source `64c5966cba21a2d25d8f357b351593cbe51f26b2`. No application code, public assets, independent source repositories or production deployments changed.
 
 - Final application source on `main`: `64c5966cba21a2d25d8f357b351593cbe51f26b2`.
 - PR [#71](https://github.com/pooya-labs/pooya-labs-platform/pull/71) promoted the owner-approved redesign; PR [#72](https://github.com/pooya-labs/pooya-labs-platform/pull/72) fixed the light-theme toggle label; PR [#75](https://github.com/pooya-labs/pooya-labs-platform/pull/75) added `role="group"` to localized named skill-chip collections and a regression contract.
