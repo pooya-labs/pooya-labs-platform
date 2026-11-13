@@ -30,6 +30,25 @@
 
 This refresh is not owner acceptance and does not approve biographies, individual contribution claims, featured order, screenshots, captions, alt text, or client media. Preserve each project's simulation, demo, debug-build, connection-required, deployment and attribution boundaries. Phase 9 implementation remains blocked until the outstanding Phase 7 owner/device/accessibility/privacy gates are closed; read-only source verification may continue.
 
+## Public asset path inventory — 2026-11-13 (metadata-only)
+
+**Source:** recursive Git tree at main 4da12e06572a61a9da7388d80c551914a603636a (194 tree entries, 161 tracked blobs, truncated=false). This scan enumerates paths and Git-reported file sizes only; it did not download or inspect binary file contents, embedded image metadata, PDF pages, or image pixels.
+
+| Location / type | Count | Scope |
+|---|---:|---|
+| Files under apps/platform/public/ | 41 | Public build root, including metadata/placeholders |
+| PNG | 25 | Interface-capture images; 14 are the previously reviewed full-page desktop/mobile files whose hashes and byte sizes matched the approval manifest; 11 additional capture variants were counted but not visually reviewed in this pass |
+| SVG | 5 | Brand/favicon/project-mark vectors |
+| WebP | 5 | Three brand assets and two novel covers |
+| PDF | 2 | The gavazn and ghazal manuscripts referenced by the public novel catalog |
+| Other public-root files | 4 | One JSON catalog, two .gitkeep placeholders and robots.txt |
+
+The public novel catalog sets both owner-supplied entries (gavazn / «گوزن» and ghazal / «غزال») to published=true, with matching WebP covers and PDF manuscript paths. This records current publication configuration, not a fresh manual reader/cover review.
+
+A filename-pattern scan over the 161 tracked blob paths found no names matching the selected .env, secret, credential, token, private, customer, booking, backup, dump, PEM or key patterns. This is **not** a content secret scan, binary DLP, Git-history scan, malware scan, external-link safety test, legal/title review, or publication permission. Existing CI secret scanning has its separately documented UTF-8/pattern/binary limitations in [SECURITY-MODEL.md](SECURITY-MODEL.md).
+
+**Still open:** inspect the unreviewed capture variants, remaining brand/vector/cover assets, all other published binary files and external links; verify metadata and visible pixels for personal/client data; obtain owner approval for personal/profile content and separate Salon Booking attribution/media permission. The 14-file capture manifest check does not approve all 25 capture PNGs or every public asset. Do not mark the public/private boundary review complete from this inventory.
+
 ## Portfolio-layer integration verified — P7-27, 2026-11-10
 
 PR [#53](https://github.com/pooya-labs/pooya-labs-platform/pull/53) merged as [`1ba198d`](https://github.com/pooya-labs/pooya-labs-platform/commit/1ba198d1293305c9b0a64c91746989570f952ec2). The checks verify the portfolio layer—not embedded or live project backends.
