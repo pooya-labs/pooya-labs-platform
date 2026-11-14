@@ -708,7 +708,6 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
   const [novelCatalogError, setNovelCatalogError] = useState<string | null>(null);
   const [cmdOpen, setCmdOpen] = useState(false);
   const [cmdQuery, setCmdQuery] = useState('');
-  const heroCanvasRef = useRef<HTMLCanvasElement | null>(null);
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
@@ -722,66 +721,6 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  useEffect(() => {
-    const canvas = heroCanvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    let animId: number;
-    let width = (canvas.width = canvas.offsetWidth);
-    let height = (canvas.height = canvas.offsetHeight);
-
-    const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = canvas.offsetWidth;
-      height = canvas.height = canvas.offsetHeight;
-    };
-    window.addEventListener('resize', handleResize);
-
-    const particles = Array.from({ length: 28 }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      radius: Math.random() * 1.5 + 1,
-    }));
-
-    const render = () => {
-      ctx.clearRect(0, 0, width, height);
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(104, 221, 220, 0.4)';
-        ctx.fill();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const dist = Math.hypot(p.x - p2.x, p2.y - p2.y);
-          if (dist < 110) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(104, 221, 220, ${0.15 * (1 - dist / 110)})`;
-            ctx.lineWidth = 0.75;
-            ctx.stroke();
-          }
-        }
-      }
-      animId = requestAnimationFrame(render);
-    };
-    render();
-
-    return () => {
-      cancelAnimationFrame(animId);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   const selectedNovel = novelCatalog.find((novel) => novel.slug === selectedNovelSlug && novel.published) ?? null;
   const heroPreviewProjects = ['global-cart', 'orbit', 'nexus-canvas', 'lumina-glass', 'aura-pulse']
@@ -959,7 +898,6 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
 
       <main id="top" tabIndex={-1}>
         <section className="portfolio-hero portfolio-container">
-          <canvas ref={heroCanvasRef} className="hero-mesh-canvas" aria-hidden="true" />
           <div className="portfolio-hero-copy" data-reveal="hero-copy">
             <div className="portfolio-eyebrow"><span className="eyebrow-pulse" />{t.eyebrow}</div>
             <h1 className="portfolio-hero-title" dir="auto"><span dir="auto" className="hero-title-line">{t.headlineA}</span><span dir="auto" className={t.headlineWord ? 'hero-title-line hero-title-word-line' : 'hero-title-line hero-gradient'}>{t.headlineWord ? <><bdi dir="ltr" className="hero-title-prefix">{t.headlineB}</bdi><bdi dir="ltr" className="hero-title-word">{t.headlineWord}</bdi></> : t.headlineB}</span><span dir="auto" className="hero-title-line">{t.headlineC}</span></h1>
