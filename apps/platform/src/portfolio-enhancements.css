@@ -190,3 +190,19 @@ code, pre, kbd, .cmd-palette-item-tag, .cmd-palette-hints kbd {
   border-radius: 3px;
   font-size: 10px;
 }
+/* Interactive Particle Canvas / Mini-Shader */
+.portfolio-interactive-particles {
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  width: 100%;
+  height: min(850px, 95vh);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-interactive-particles {
+    display: none;
+  }
+}
