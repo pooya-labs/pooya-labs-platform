@@ -886,9 +886,9 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
           <a href="#contact">{t.navContact}</a>
         </nav>
         <div className="portfolio-header-actions">
-          <button className="portfolio-cmd-btn" type="button" onClick={() => setCmdOpen(true)} aria-label={rtl ? 'جستجو و پالت دستورات' : 'Search and command palette'} title={rtl ? 'جستجو (⌘K)' : 'Search (⌘K)'}>
+          <button className="portfolio-cmd-btn" type="button" onClick={() => setCmdOpen(true)} title={rtl ? 'جستجو و پالت دستورات (⌘K)' : 'Search & Command Palette (⌘K)'}>
             <span>{rtl ? 'جستجو' : 'Search'}</span>
-            <kbd>⌘K</kbd>
+            <kbd aria-hidden="true">⌘K</kbd>
           </button>
           <button className="portfolio-theme" type="button" onClick={() => onThemeChange(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? t.themeToggle : (rtl ? 'حالت تیره' : 'Switch to dark mode')} title={theme === 'dark' ? t.themeToggle : (rtl ? 'حالت تیره' : 'Dark mode')}>{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}<span>{theme === 'dark' ? (rtl ? 'روشن' : 'Light') : (rtl ? 'تیره' : 'Dark')}</span></button>
           <button className="portfolio-language" onClick={() => onLanguageChange(rtl ? 'en' : 'fa')}>{t.language}</button>
