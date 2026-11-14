@@ -10,22 +10,6 @@ code, pre, kbd, .cmd-palette-item-tag, .cmd-palette-hints kbd {
   font-family: var(--pf-font-mono);
 }
 
-/* Interactive Hero Canvas */
-.hero-interactive-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.65;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-interactive-canvas {
-    display: none;
-  }
-}
-
 /* Command Palette (Cmd+K) */
 .portfolio-cmd-btn {
   display: inline-flex;
