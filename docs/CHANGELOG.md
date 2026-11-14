@@ -1,3 +1,13 @@
+# 2026-11-13 — Reconcile PR #82 browser QA baseline and public asset inventory
+
+- PR [#82](https://github.com/pooya-labs/pooya-labs-platform/pull/82) merged as [`4da12e0`](https://github.com/pooya-labs/pooya-labs-platform/commit/4da12e06572a61a9da7388d80c551914a603636a); the four-file diff was documentation-only. Exact-head Repository CI [43336079868](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43336079868) and Browser QA [43336080028](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43336080028) passed on PR head d91070cba1434904108cce75a238b7604f34d1b2; artifact [13997895518](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43336080028/artifacts/13997895518).
+- Browser QA: 18/18 routes, 36/36 viewports, 34/34 social-crawler checks; zero confirmed Axe violations and zero failures. The default-theme console summary recorded 36 incomplete Axe checks; detailed light-theme findings are stored separately in the report. The PR #79 artifact remains the source of the reconciled 57-selector dark / 48-selector light matrix until a newer full selector inventory is extracted.
+- Twenty samples per host produced p75 TTFB / FCP / LCP / CLS: local 5 / 216 / 272 ms / 0.000; GitHub Pages 134 / 336 / 408 ms / 0.000; Cloudflare Pages 61 / 300 / 360 ms / 0.000. These are CI lab measurements, not field Core Web Vitals or physical-device evidence.
+- A non-truncated recursive tree inventory at main 4da12e06572a61a9da7388d80c551914a603636a contained 161 tracked blobs and 41 files under apps/platform/public: 25 PNG, five SVG, five WebP and two PDF media files, plus one JSON catalog, two .gitkeep placeholders and robots.txt. A filename-pattern scan found no selected secret/private/credential path names. This did not inspect binary contents or metadata, external links, publication rights, or Git history; the manual asset review remains open.
+- Application source stayed 64c5966cba21a2d25d8f357b351593cbe51f26b2; no application code, public assets, upstream project repositories or production deployments changed. Phase 7 human/device/owner acceptance remains open; Phase 9 and Phase 10 remain blocked.
+
+---
+
 # 2026-11-13 — Merge PR #81 post-merge handoff checkpoint
 
 - PR [#81](https://github.com/pooya-labs/pooya-labs-platform/pull/81) merged as `83af9c0ae7aed70e200b8c5e7a3a54c600793087`; its four-file diff updates only STATUS, NEXT, CHANGELOG and the machine-readable project state.

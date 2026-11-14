@@ -7,9 +7,9 @@
   "phase": 8,
   "phaseName": "Complete redesign and owner approval",
   "currentTask": {
-    "id": "P7-POST-PR81-HANDOFF-CHECKPOINT",
-    "title": "Record merged PR #81 and preserve the Phase 7 handoff",
-    "status": "PR #81 merged as 83af9c0ae7aed70e200b8c5e7a3a54c600793087. Exact-head Repository CI 43335010521 and Portfolio Browser QA 43335010782 passed; QA artifact 13995919380. Four changed files are documentation only. Both workflows ran on PR head 5b7825da18674817449b4d898221316bcb2baf50 against unchanged application source 64c5966cba21a2d25d8f357b351593cbe51f26b2. No app source, public assets, upstream projects or production deployments changed. Phase 7 human/device/owner acceptance remains open; Phase 9/10 are not authorized."
+    "id": "P7-POST-PR82-QA-AND-PUBLIC-ASSET-INVENTORY",
+    "title": "Record the latest three-host performance baseline and public asset path inventory",
+    "status": "PR #82 merged as 4da12e06572a61a9da7388d80c551914a603636a; exact-head Repository CI 43336079868 and Browser QA 43336080028 passed; artifact 13997895518. Browser QA: 18/18 routes, 36/36 viewports, 34/34 crawlers, zero confirmed Axe violations and zero failures. p75 TTFB/FCP/LCP/CLS: local 5/216/272/0, GitHub Pages 134/336/408/0, Cloudflare Pages 61/300/360/0 (20 samples each; CI lab only). Public build-root path inventory: 41 files, 37 media; no selected secret/private/credential path names matched. Binary content, external links and publication permissions remain unreviewed. App source 64c5966cba21a2d25d8f357b351593cbe51f26b2; no deployment. Phase 7 human gates remain open."
   },
   "lastCheckpointDate": "2026-11-13",
   "latestVerifiedCodeCommit": "64c5966cba21a2d25d8f357b351593cbe51f26b2",
@@ -583,46 +583,28 @@
         "cumulativeLayoutShift": 0
       }
     },
-    "latestVerificationRun": "42815065767",
-    "latestVerificationArtifact": "13765540433",
-    "latestVerificationSourceCommit": "5af6dd2ca19cdc87783f6312f890c6244e9240b1",
+    "latestVerificationRun": "43336080028",
+    "latestVerificationArtifact": "13997895518",
+    "latestVerificationSourceCommit": "64c5966cba21a2d25d8f357b351593cbe51f26b2",
     "latestCloudflareDeployment": "107de2a2-d69c-4b9d-ae2c-38da68c7bad4",
     "latestP75": {
       "localBuild": {
         "ttfbMs": 5,
-        "domContentLoadedMs": 109,
-        "loadEventMs": 111,
         "firstContentfulPaintMs": 216,
-        "largestContentfulPaintMs": 288,
-        "cumulativeLayoutShift": 0,
-        "totalResourceBytes": 184439,
-        "javascriptBytes": 130040,
-        "stylesheetBytes": 41099,
-        "imageBytes": 13300
+        "largestContentfulPaintMs": 272,
+        "cumulativeLayoutShift": 0
       },
       "githubPages": {
-        "ttfbMs": 47,
-        "domContentLoadedMs": 165,
-        "loadEventMs": 182,
-        "firstContentfulPaintMs": 292,
-        "largestContentfulPaintMs": 340,
-        "cumulativeLayoutShift": 0,
-        "totalResourceBytes": 187563,
-        "javascriptBytes": 131452,
-        "stylesheetBytes": 42730,
-        "imageBytes": 13381
+        "ttfbMs": 134,
+        "firstContentfulPaintMs": 336,
+        "largestContentfulPaintMs": 408,
+        "cumulativeLayoutShift": 0
       },
       "cloudflarePages": {
-        "ttfbMs": 52,
-        "domContentLoadedMs": 228,
-        "loadEventMs": 260,
-        "firstContentfulPaintMs": 336,
-        "largestContentfulPaintMs": 404,
-        "cumulativeLayoutShift": 0,
-        "totalResourceBytes": 174474,
-        "javascriptBytes": 128247,
-        "stylesheetBytes": 42995,
-        "imageBytes": 3368
+        "ttfbMs": 61,
+        "firstContentfulPaintMs": 300,
+        "largestContentfulPaintMs": 360,
+        "cumulativeLayoutShift": 0
       }
     }
   },
@@ -1254,16 +1236,16 @@
     "validation": "CI 43221461282;Browser-QA 43221461301;Pages 43221461285;Cloudflare-deployment-975b9e6d",
     "release": "phase8-complete;both-static-hosts-parity;phase7-phase9-phase10-open"
   },
-  "latestTask": "Merge and verify PR #81 post-merge handoff checkpoint",
+  "latestTask": "Reconcile PR #82 QA evidence and public asset path inventory",
   "latestTaskBranch": "main",
   "lastUpdated": "2026-11-13",
-  "latestDocumentationCommit": "83af9c0ae7aed70e200b8c5e7a3a54c600793087",
-  "latestDocumentationCheckpoint": "2026-11-13-PR81-merged;main-83af9c0ae7aed70e200b8c5e7a3a54c600793087;CI-43335010521-success;BrowserQA-43335010782-success;artifact-13995919380;docs-only;app-64c5966cba21a2d25d8f357b351593cbe51f26b2;production-unchanged;phase7-human-gates-open;phase9-phase10-blocked",
-  "latestRepositoryCiRun": "43335010521;success;PR81-exact-head-5b7825da18674817449b4d898221316bcb2baf50",
-  "latestBrowserQaRun": "43335010782;success;PR81-exact-head-5b7825da18674817449b4d898221316bcb2baf50;artifact-13995919380;responsive-route-metadata-keyboard-performance;0-failures",
+  "latestDocumentationCommit": "4da12e06572a61a9da7388d80c551914a603636a",
+  "latestDocumentationCheckpoint": "2026-11-13-PR82-merged;main-4da12e06572a61a9da7388d80c551914a603636a;CI-43336079868-success;BrowserQA-43336080028-success;artifact-13997895518;app-64c5966cba21a2d25d8f357b351593cbe51f26b2;docs-only;production-unchanged;phase7-human-gates-open;phase9-phase10-blocked",
+  "latestRepositoryCiRun": "43336079868;success;PR82-exact-head-d91070cba1434904108cce75a238b7604f34d1b2",
+  "latestBrowserQaRun": "43336080028;success;PR82-exact-head-d91070cba1434904108cce75a238b7604f34d1b2;artifact-13997895518;18-routes;36-viewports;34-crawler;0-axe-violations;0-failures",
   "latestPerformanceBaseline": {
-    "run": "42815065767",
-    "artifact": "13765540433",
+    "run": "43336080028",
+    "artifact": "13997895518",
     "samplesPerHost": 20,
     "hosts": [
       "local-build",
@@ -1275,18 +1257,18 @@
     "p75Ms": {
       "ttfb": {
         "local": 5,
-        "githubPages": 47,
-        "cloudflarePages": 52
+        "githubPages": 134,
+        "cloudflarePages": 61
       },
       "fcp": {
         "local": 216,
-        "githubPages": 292,
-        "cloudflarePages": 336
+        "githubPages": 336,
+        "cloudflarePages": 300
       },
       "lcp": {
-        "local": 288,
-        "githubPages": 340,
-        "cloudflarePages": 404
+        "local": 272,
+        "githubPages": 408,
+        "cloudflarePages": 360
       }
     }
   },
@@ -1832,6 +1814,12 @@
       "event": "PR #81 merged as 83af9c0ae7aed70e200b8c5e7a3a54c600793087. Exact-head Repository CI 43335010521 and Portfolio Browser QA 43335010782 passed; QA artifact 13995919380. Four changed files are documentation only. Both workflows ran on PR head 5b7825da18674817449b4d898221316bcb2baf50 against unchanged application source 64c5966cba21a2d25d8f357b351593cbe51f26b2. No app source, public assets, upstream projects or production deployments changed. Phase 7 human/device/owner acceptance and Phase 9/10 release gates remain open.",
       "branch": "main",
       "status": "merged-and-verified;docs-only;production-unchanged;phase7-human-gates-open;phase9-phase10-blocked"
+    },
+    {
+      "date": "2026-11-13",
+      "event": "PR #82 merged as 4da12e06572a61a9da7388d80c551914a603636a. Exact-head Repository CI 43336079868 and Portfolio Browser QA 43336080028 passed; artifact 13997895518. Browser QA reported 18/18 routes, 36/36 viewports, 34/34 social-crawler checks, zero confirmed Axe violations and zero failures. Twenty-sample p75 TTFB/FCP/LCP/CLS values were local 5/216/272/0, GitHub Pages 134/336/408/0 and Cloudflare Pages 61/300/360/0. A path-only inventory found 41 public-root files, including 37 media files; binary content and publication permission review remain open. All changes were docs-only; app source 64c5966cba21a2d25d8f357b351593cbe51f26b2 and production deployments unchanged.",
+      "branch": "main",
+      "status": "merged-and-verified;docs-only;lab-performance-recorded;public-asset-path-inventory-only;phase7-human-gates-open;phase9-phase10-blocked"
     }
   ],
   "ownerRedesignWorkflow": {
@@ -1995,6 +1983,12 @@
       "event": "PR #81 merged as 83af9c0ae7aed70e200b8c5e7a3a54c600793087. Exact-head Repository CI 43335010521 and Portfolio Browser QA 43335010782 passed; QA artifact 13995919380. Four changed files are documentation only. Both workflows ran on PR head 5b7825da18674817449b4d898221316bcb2baf50 against unchanged application source 64c5966cba21a2d25d8f357b351593cbe51f26b2. No app source, public assets, upstream projects or production deployments changed. Phase 7 human/device/owner acceptance and Phase 9/10 release gates remain open.",
       "branch": "main",
       "status": "merged-and-verified;docs-only;production-unchanged;phase7-human-gates-open;phase9-phase10-blocked"
+    },
+    {
+      "date": "2026-11-13",
+      "event": "PR #82 merged as 4da12e06572a61a9da7388d80c551914a603636a. Exact-head Repository CI 43336079868 and Portfolio Browser QA 43336080028 passed; artifact 13997895518. Browser QA reported 18/18 routes, 36/36 viewports, 34/34 social-crawler checks, zero confirmed Axe violations and zero failures. Twenty-sample p75 TTFB/FCP/LCP/CLS values were local 5/216/272/0, GitHub Pages 134/336/408/0 and Cloudflare Pages 61/300/360/0. A path-only inventory found 41 public-root files, including 37 media files; binary content and publication permission review remain open. All changes were docs-only; app source 64c5966cba21a2d25d8f357b351593cbe51f26b2 and production deployments unchanged.",
+      "branch": "main",
+      "status": "merged-and-verified;docs-only;lab-performance-recorded;public-asset-path-inventory-only;phase7-human-gates-open;phase9-phase10-blocked"
     }
   ],
   "portfolioContentSnapshot": {
@@ -2113,5 +2107,53 @@
   "latestCodeCommit": "64c5966cba21a2d25d8f357b351593cbe51f26b2",
   "latestMainRepositoryCiCommit": "64c5966cba21a2d25d8f357b351593cbe51f26b2",
   "latestMainRepositoryCi": "passed-run-43221461282;exact-main-64c5966cba21a2d25d8f357b351593cbe51f26b2;lint;format;typecheck;three-target-build;secret-scan;contract-tests",
-  "latestPagesDeploymentRun": "43221461285;success;exact-main-64c5966cba21a2d25d8f357b351593cbe51f26b2;artifact-13944694071"
+  "latestPagesDeploymentRun": "43221461285;success;exact-main-64c5966cba21a2d25d8f357b351593cbe51f26b2;artifact-13944694071",
+  "publicAssetInventory": {
+    "checkedAt": "2026-11-13",
+    "treeCommit": "4da12e06572a61a9da7388d80c551914a603636a",
+    "treeEntries": 194,
+    "trackedBlobs": 161,
+    "treeTruncated": false,
+    "publicRoot": "apps/platform/public/",
+    "publicRootFiles": 41,
+    "mediaFiles": 37,
+    "mediaTypes": {
+      "png": 25,
+      "svg": 5,
+      "webp": 5,
+      "pdf": 2
+    },
+    "interfaceCapturePngs": 25,
+    "previouslyManifestReviewedFullPageCaptures": 14,
+    "additionalCaptureVariantsCountedNotVisuallyReviewed": 11,
+    "publicNovelCatalog": {
+      "entries": 2,
+      "publishedTrue": 2,
+      "slugs": [
+        "gavazn",
+        "ghazal"
+      ],
+      "coverFormat": "webp",
+      "manuscriptFormat": "pdf"
+    },
+    "pathNamePatternScan": {
+      "pathsExamined": 161,
+      "selectedSensitiveNameMatches": 0,
+      "patterns": [
+        ".env",
+        "secret",
+        "credential",
+        "token",
+        "private",
+        "customer",
+        "booking",
+        "backup",
+        "dump",
+        "pem",
+        "key"
+      ]
+    },
+    "scope": "metadata/path-only; no binary pixels, PDF pages, embedded metadata, malware, Git history, external URL availability, legal title or publication permission review",
+    "status": "inventory-recorded;binary-content-and-owner-review-open"
+  }
 }

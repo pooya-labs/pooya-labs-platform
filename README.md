@@ -4,7 +4,13 @@ Pooya Labs is Pooya's personal engineering portfolio and project showcase. Its m
 
 This is a portfolio first—not a generic SaaS dashboard or customer-account product.
 
-## Latest project update — 13 November 2026, Phase 7 QA reconciliation
+## Latest project update — 13 November 2026, PR #82 QA baseline and asset inventory
+
+PR [#82](https://github.com/pooya-labs/pooya-labs-platform/pull/82) is merged; its QA evidence is recorded below. The latest main commit is [`4da12e0`](https://github.com/pooya-labs/pooya-labs-platform/commit/4da12e06572a61a9da7388d80c551914a603636a). Exact-head Repository CI [43336079868](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43336079868) and Portfolio Browser QA [43336080028](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43336080028) passed on PR head d91070cba1434904108cce75a238b7604f34d1b2; report [13997895518](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43336080028/artifacts/13997895518). Browser QA covered 18/18 routes, 36/36 viewports and 34/34 social-crawler checks, with zero confirmed Axe violations and zero failures. The 20-sample p75 LCP baseline was 272 ms local, 408 ms on GitHub Pages and 360 ms on Cloudflare Pages; p75 CLS was zero on all three. These are CI lab measurements, not field Core Web Vitals.
+
+A path-only inventory of the public asset root found 41 tracked files, including 37 media files (25 PNG, five SVG, five WebP and two PDF). This does not inspect binary content or grant publication permission. Application source remains 64c5966cba21a2d25d8f357b351593cbe51f26b2; no production deployment was triggered by these docs-only merges.
+
+## Earlier evidence — PR #79 accessibility reconciliation
 
 The approved portfolio application remains published on GitHub Pages and Cloudflare Pages from application source `64c5966cba21a2d25d8f357b351593cbe51f26b2`. Platform PRs [#77](https://github.com/pooya-labs/pooya-labs-platform/pull/77), [#78](https://github.com/pooya-labs/pooya-labs-platform/pull/78) and [#79](https://github.com/pooya-labs/pooya-labs-platform/pull/79) refreshed the source inventory, project checkpoint and accessibility evidence. PR #79 merged as [`56b2f8a`](https://github.com/pooya-labs/pooya-labs-platform/commit/56b2f8a0d94d4ef6575183b7dfe8f74d54a7130a); all three were documentation-only changes. PR #79's exact-head Repository CI [43332873662](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43332873662) passed 124/124 contract tests, and Portfolio Browser QA [43332873670](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43332873670) passed; see [artifact 13995024749](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43332873670/artifacts/13995024749). Application code and both production deployments are unchanged.
 

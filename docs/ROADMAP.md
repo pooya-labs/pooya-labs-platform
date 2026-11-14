@@ -100,6 +100,16 @@ The release target is a credible, distinctive personal portfolio that introduces
 
 ## Phase 7 — Pre-redesign readiness and engineering closeout
 
+### Phase 7 readiness history — P7-36 PR #82 QA and public asset path inventory (2026-11-13)
+
+- [x] Run exact-head Repository CI [43336079868](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43336079868) and Portfolio Browser QA [43336080028](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43336080028) on PR #82; both passed on head d91070cba1434904108cce75a238b7604f34d1b2, with no test or Browser QA failures.
+- [x] Record 18/18 routes, 36/36 viewports, 34/34 social-crawler checks and zero confirmed Axe violations. Keep the default-theme 36 incomplete findings as human review targets; do not infer light-theme selector counts from the console summary.
+- [x] Record 20-sample p75 TTFB/FCP/LCP/CLS baselines: local 5/216/272 ms/0.000, GitHub Pages 134/336/408 ms/0.000, Cloudflare Pages 61/300/360 ms/0.000. Lab-only; not field Core Web Vitals or physical-device acceptance.
+- [x] Inventory the public build-root path metadata at 4da12e06572a61a9da7388d80c551914a603636a: 41 public-root files, including 37 media assets (25 PNG, five SVG, five WebP and two PDF); selected secret/private/credential path-name patterns returned no matches. Binary content, image metadata, external-link safety and legal/owner permission review remain open.
+- [ ] Complete manual rendered-background contrast measurements, focus visibility, keyboard-only and screen-reader flow in both languages and themes. Automated rechecks do not satisfy human or physical-device acceptance.
+- [ ] Complete remaining binary asset, public/private boundary, external-link safety and project-specific owner/media permissions. This path inventory is not visual or legal approval.
+
+
 ### Phase 7 readiness history — P7-35 final PR #79 accessibility artifact reconciliation (2026-11-13)
 
 - [x] Run exact-head Repository CI [43332873662](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43332873662) and Portfolio Browser QA [43332873670](https://github.com/pooya-labs/pooya-labs-platform/actions/runs/43332873670) on PR #79; 124/124 contract tests passed and browser QA completed successfully.
