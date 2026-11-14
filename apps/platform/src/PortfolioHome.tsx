@@ -706,6 +706,22 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
   const [novelCatalog, setNovelCatalog] = useState<NovelRecord[]>([]);
   const [novelCatalogLoading, setNovelCatalogLoading] = useState(true);
   const [novelCatalogError, setNovelCatalogError] = useState<string | null>(null);
+  const [cmdOpen, setCmdOpen] = useState(false);
+  const [cmdQuery, setCmdQuery] = useState('');
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setCmdOpen((prev) => !prev);
+      } else if (e.key === 'Escape') {
+        setCmdOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+
   const selectedNovel = novelCatalog.find((novel) => novel.slug === selectedNovelSlug && novel.published) ?? null;
   const heroPreviewProjects = ['global-cart', 'orbit', 'nexus-canvas', 'lumina-glass', 'aura-pulse']
     .map((slug) => projects.find((project) => project.slug === slug))
@@ -870,6 +886,10 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
           <a href="#contact">{t.navContact}</a>
         </nav>
         <div className="portfolio-header-actions">
+          <button className="portfolio-cmd-btn" type="button" onClick={() => setCmdOpen(true)} title={rtl ? 'جستجو و پالت دستورات (⌘K)' : 'Search & Command Palette (⌘K)'}>
+            <span>{rtl ? 'جستجو' : 'Search'}</span>
+            <kbd aria-hidden="true">⌘K</kbd>
+          </button>
           <button className="portfolio-theme" type="button" onClick={() => onThemeChange(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? t.themeToggle : (rtl ? 'حالت تیره' : 'Switch to dark mode')} title={theme === 'dark' ? t.themeToggle : (rtl ? 'حالت تیره' : 'Dark mode')}>{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}<span>{theme === 'dark' ? (rtl ? 'روشن' : 'Light') : (rtl ? 'تیره' : 'Dark')}</span></button>
           <button className="portfolio-language" onClick={() => onLanguageChange(rtl ? 'en' : 'fa')}>{t.language}</button>
           <button className="portfolio-workspace" onClick={onOpenWorkspace} aria-label={t.workspace} title={t.workspace}><span>{t.workspace}</span><ArrowUpLeft size={15} /></button>
@@ -1178,6 +1198,112 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         <a href="https://github.com/pooya-labs" target="_blank" rel="noreferrer"><Code2 size={17} /> GitHub</a>
         <small>© {new Date().getFullYear()} POOYA GOODARZI · POOYA LABS</small>
       </footer>
+
+      {cmdOpen && (
+        <div className="cmd-palette-backdrop" onClick={() => setCmdOpen(false)}>
+          <div className="cmd-palette-modal" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-label={rtl ? 'پالت دستورات' : 'Command Palette'}>
+            <div className="cmd-palette-search">
+              <Code2 size={18} />
+              <input
+                type="text"
+                className="cmd-palette-input"
+                placeholder={rtl ? 'جستجو در پروژه‌ها، رمان‌ها، مهارت‌ها و بخش‌ها…' : 'Search projects, novels, stack, or navigate…'}
+                value={cmdQuery}
+                autoFocus
+                onChange={(e) => setCmdQuery(e.target.value)}
+              />
+              <button className="portfolio-cmd-btn" type="button" onClick={() => setCmdOpen(false)} style={{ padding: '3px 8px' }}>Esc</button>
+            </div>
+            <div className="cmd-palette-list">
+              {projects
+                .filter((p) => [p.name, p.slug, p.description[language], ...(p.tags || [])].join(' ').toLowerCase().includes(cmdQuery.toLowerCase()))
+                .map((p) => (
+                  <button
+                    key={p.slug}
+                    className="cmd-palette-item"
+                    type="button"
+                    onClick={() => {
+                      setCmdOpen(false);
+                      openCaseStudy({ preventDefault: () => {} } as ReactMouseEvent<HTMLAnchorElement>, p);
+                    }}
+                  >
+                    <div className="cmd-palette-item-main">
+                      <Layers3 size={16} className="cmd-palette-item-icon" />
+                      <div className="cmd-palette-item-info">
+                        <span className="cmd-palette-item-title">{p.name}</span>
+                        <span className="cmd-palette-item-subtitle">{p.category[language]}</span>
+                      </div>
+                    </div>
+                    <span className="cmd-palette-item-tag">{p.status[language]}</span>
+                  </button>
+                ))}
+              {novelCatalog
+                .filter((n) => [localizedNovelText(n.title, language), n.slug].join(' ').toLowerCase().includes(cmdQuery.toLowerCase()))
+                .map((n) => (
+                  <button
+                    key={n.slug}
+                    className="cmd-palette-item"
+                    type="button"
+                    onClick={() => {
+                      setCmdOpen(false);
+                      openNovel({ preventDefault: () => {} } as ReactMouseEvent<HTMLAnchorElement>, n);
+                    }}
+                  >
+                    <div className="cmd-palette-item-main">
+                      <BookOpen size={16} className="cmd-palette-item-icon" />
+                      <div className="cmd-palette-item-info">
+                        <span className="cmd-palette-item-title">{localizedNovelText(n.title, language)}</span>
+                        <span className="cmd-palette-item-subtitle">{rtl ? 'رمان دیجیتال' : 'Digital novel'}</span>
+                      </div>
+                    </div>
+                    <span className="cmd-palette-item-tag">Novel</span>
+                  </button>
+                ))}
+              <button
+                className="cmd-palette-item"
+                type="button"
+                onClick={() => {
+                  setCmdOpen(false);
+                  onLanguageChange(rtl ? 'en' : 'fa');
+                }}
+              >
+                <div className="cmd-palette-item-main">
+                  <Activity size={16} className="cmd-palette-item-icon" />
+                  <div className="cmd-palette-item-info">
+                    <span className="cmd-palette-item-title">{rtl ? 'تغییر زبان به English' : 'Switch language to فارسی'}</span>
+                    <span className="cmd-palette-item-subtitle">{rtl ? 'Language switcher' : 'تغییر زبان'}</span>
+                  </div>
+                </div>
+                <span className="cmd-palette-item-tag">Action</span>
+              </button>
+              <button
+                className="cmd-palette-item"
+                type="button"
+                onClick={() => {
+                  setCmdOpen(false);
+                  onThemeChange(theme === 'dark' ? 'light' : 'dark');
+                }}
+              >
+                <div className="cmd-palette-item-main">
+                  <Sun size={16} className="cmd-palette-item-icon" />
+                  <div className="cmd-palette-item-info">
+                    <span className="cmd-palette-item-title">{theme === 'dark' ? (rtl ? 'فعال‌سازی حالت روشن' : 'Switch to Light mode') : (rtl ? 'فعال‌سازی حالت تیره' : 'Switch to Dark mode')}</span>
+                    <span className="cmd-palette-item-subtitle">Theme</span>
+                  </div>
+                </div>
+                <span className="cmd-palette-item-tag">Action</span>
+              </button>
+            </div>
+            <div className="cmd-palette-footer">
+              <div className="cmd-palette-hints">
+                <span><kbd>Esc</kbd> {rtl ? 'بستن' : 'Close'}</span>
+                <span><kbd>↵</kbd> {rtl ? 'انتخاب' : 'Select'}</span>
+              </div>
+              <span>Pooya Labs Platform</span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

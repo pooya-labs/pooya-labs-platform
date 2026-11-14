@@ -157,13 +157,15 @@ export function NovelReader({ novel, language, onLanguageChange, theme, onThemeC
   const [manuscript, setManuscript] = useState<string | null>(null);
   const [manuscriptLoading, setManuscriptLoading] = useState(false);
   const [manuscriptError, setManuscriptError] = useState<string | null>(null);
+  const [readerTheme, setReaderTheme] = useState<'default' | 'sepia' | 'light'>('default');
+  const [fontSizeStep, setFontSizeStep] = useState<number>(0);
   const title = novel ? localizedNovelText(novel.title, language) : '';
   const copy = language === 'fa'
     ? { back: 'بازگشت به کتابخانه', subtitle: 'از کتابخانه داستان‌ها', loading: 'در حال بارگذاری متن…', unavailable: 'متن این رمان هنوز در دسترس نیست.', missing: 'این رمان در کتابخانه پیدا نشد.', retry: 'فایل متن را بررسی کن یا دوباره تلاش کن.' }
     : { back: 'Back to library', subtitle: 'FROM THE STORY LIBRARY', loading: 'Loading the manuscript…', unavailable: 'The manuscript is not available yet.', missing: 'This novel could not be found in the library.', retry: 'Check the manuscript file or try again.' };
   useEffect(() => {
     if (!novel) return;
-    if (/\\.pdf$/i.test(novel.manuscript)) {
+    if (/\.pdf$/i.test(novel.manuscript)) {
       setManuscript(null); setManuscriptLoading(false); setManuscriptError(null);
       return;
     }
@@ -212,11 +214,29 @@ export function NovelReader({ novel, language, onLanguageChange, theme, onThemeC
               <div className="novel-reader-cover"><img src={novelAssetUrl(novel.cover)} alt={title} onError={(event)=>{event.currentTarget.hidden=true;event.currentTarget.parentElement?.classList.add('is-missing-cover');}}/><div className="novel-cover-fallback" aria-hidden="true"><BookText size={42}/></div></div>
               <div className="novel-reader-intro"><div className="portfolio-eyebrow"><span className="eyebrow-index">NOVEL /</span>{copy.subtitle}</div><h1>{title}</h1>{novel.synopsis && <p>{localizedNovelText(novel.synopsis,language)}</p>}{!!novel.genres?.length && <div className="novel-genre-list">{novel.genres.map((genre)=><span key={genre}>{genre}</span>)}</div>}</div>
             </section>
-            <section className="novel-text-section" aria-label={rtl ? 'متن رمان' : 'Novel manuscript'}>
+            <section className={"novel-text-section novel-reader-theme-" + readerTheme} style={{ fontSize: fontSizeStep !== 0 ? `calc(18px + ${fontSizeStep * 2}px)` : undefined }} aria-label={rtl ? 'متن رمان' : 'Novel manuscript'}>
+              <div className="novel-reader-toolbar">
+                <div className="novel-reading-meta"><BookOpen size={15}/><span>{rtl ? 'زمان تخمینی مطالعه: ۴ ساعت · نسخه کامل' : 'Estimated reading: ~4h · Full manuscript'}</span></div>
+                <div className="novel-reader-controls">
+                  <div className="novel-font-controls">
+                    <button className="novel-font-btn" type="button" onClick={() => setFontSizeStep((s) => Math.max(s - 1, -2))} aria-label="A-">A-</button>
+                    <button className="novel-font-btn" type="button" onClick={() => setFontSizeStep(0)} aria-label="Reset font size">A</button>
+                    <button className="novel-font-btn" type="button" onClick={() => setFontSizeStep((s) => Math.min(s + 1, 3))} aria-label="A+">A+</button>
+                  </div>
+                  <div className="novel-reader-themes">
+                    <button className={readerTheme === 'default' ? 'novel-theme-btn active' : 'novel-theme-btn'} type="button" onClick={() => setReaderTheme('default')}>{rtl ? 'تیره' : 'Dark'}</button>
+                    <button className={readerTheme === 'sepia' ? 'novel-theme-btn active' : 'novel-theme-btn'} type="button" onClick={() => setReaderTheme('sepia')}>{rtl ? 'سپیا' : 'Sepia'}</button>
+                    <button className={readerTheme === 'light' ? 'novel-theme-btn active' : 'novel-theme-btn'} type="button" onClick={() => setReaderTheme('light')}>{rtl ? 'روشن' : 'Light'}</button>
+                  </div>
+                </div>
+              </div>
               <div className="novel-text-topline"><BookOpen size={17}/><span>{rtl ? 'متن اثر' : 'THE MANUSCRIPT'}</span><span className="novel-text-rule"/></div>
               {novel.manuscript.toLowerCase().endsWith('.pdf') ? <div className="novel-pdf-viewer">
                   <iframe src={novelAssetUrl(novel.manuscript) + '#toolbar=1&navpanes=0&view=FitH'} title={title} loading="lazy" />
-                  <a href={novelAssetUrl(novel.manuscript)} target="_blank" rel="noreferrer">{rtl ? 'باز کردن فایل کامل' : 'Open full PDF'}</a>
+                  <div className="novel-pdf-actions">
+                    <a className="novel-pdf-btn" href={novelAssetUrl(novel.manuscript)} target="_blank" rel="noreferrer"><ArrowUpLeft size={14} />{rtl ? 'باز کردن در پنجرهٔ تمام‌صفحه' : 'Open in fullscreen reader'}</a>
+                    <a className="novel-pdf-btn" href={novelAssetUrl(novel.manuscript)} download><BookText size={14} />{rtl ? 'دریافت نسخهٔ PDF آفلاین' : 'Download offline PDF'}</a>
+                  </div>
                 </div>
                 : manuscriptLoading ? <div className="novel-empty-state" role="status"><LoaderCircle size={20} className="novel-spinner"/>{copy.loading}</div>
                 : manuscriptError ? <div className="novel-empty-state novel-empty-error" role="status"><strong>{copy.unavailable}</strong><p>{copy.retry} ({manuscriptError})</p></div>
