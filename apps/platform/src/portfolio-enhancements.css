@@ -260,3 +260,208 @@ code, pre, kbd, .cmd-palette-item-tag, .cmd-palette-hints kbd {
     display: none;
   }
 }
+
+/* Command Palette Esc Button — Sleek Keyboard Pill Badge */
+.cmd-palette-esc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border: 1px solid rgba(104, 221, 220, 0.28);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--pf-cyan);
+  font-family: var(--pf-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  line-height: 1;
+  outline: none;
+}
+.cmd-palette-esc-btn:hover {
+  background: rgba(104, 221, 220, 0.16);
+  border-color: rgba(104, 221, 220, 0.55);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+.cmd-palette-input {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.cmd-palette-input:focus,
+.cmd-palette-input:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Light Theme Styling for Command Palette Modal */
+.portfolio-page[data-theme="light"] .cmd-palette-backdrop {
+  background: rgba(18, 32, 28, 0.42);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.portfolio-page[data-theme="light"] .cmd-palette-modal {
+  background: #ffffff;
+  border: 1px solid rgba(38, 118, 87, 0.22);
+  box-shadow: 0 25px 70px rgba(18, 43, 33, 0.2), 0 0 35px rgba(38, 118, 87, 0.08);
+}
+.portfolio-page[data-theme="light"] .cmd-palette-search {
+  border-bottom: 1px solid rgba(35, 55, 45, 0.1);
+  background: #fbfdfc;
+}
+.portfolio-page[data-theme="light"] .cmd-palette-search svg {
+  color: #26775a;
+}
+.portfolio-page[data-theme="light"] .cmd-palette-input {
+  color: #172b43;
+}
+.portfolio-page[data-theme="light"] .cmd-palette-input::placeholder {
+  color: #6b7d91;
+}
+.portfolio-page[data-theme="light"] .cmd-palette-esc-btn {
+  background: rgba(38, 118, 87, 0.08);
+  border: 1px solid rgba(38, 118, 87, 0.22);
+  color: #26775a;
+}
+.portfolio-page[data-theme="light"] .cmd-palette-esc-btn:hover {
+  background: rgba(38, 118, 87, 0.16);
+  border-color: rgba(38, 118, 87, 0.4);
+  color: #164e3b;
+  box-shadow: 0 4px 12px rgba(38, 118, 87, 0.15);
+}
+.portfolio-page[data-theme="light"] .cmd-palette-item {
+  color: #172b43;
+}
+.portfolio-page[data-theme="light"] .cmd-palette-item:hover,
+.portfolio-page[data-theme="light"] .cmd-palette-item.active {
+  background: rgba(38, 118, 87, 0.08);
+  border-color: rgba(38, 118, 87, 0.24);
+  color: #172b43;
+}
+.portfolio-page[data-theme="light"] .cmd-palette-item-icon {
+  color: #26775a;
+}
+.portfolio-page[data-theme="light"] .cmd-palette-item-title {
+  color: #172b43;
+  font-weight: 600;
+}
+.portfolio-page[data-theme="light"] .cmd-palette-item-subtitle {
+  color: #55687d;
+}
+.portfolio-page[data-theme="light"] .cmd-palette-item-tag {
+  background: rgba(38, 118, 87, 0.08);
+  border-color: rgba(38, 118, 87, 0.2);
+  color: #26775a;
+  font-weight: 550;
+}
+.portfolio-page[data-theme="light"] .cmd-palette-footer {
+  border-top: 1px solid rgba(35, 55, 45, 0.1);
+  background: #f4f8f6;
+  color: #55687d;
+}
+.portfolio-page[data-theme="light"] .cmd-palette-hints kbd {
+  background: rgba(38, 118, 87, 0.1);
+  border: 1px solid rgba(38, 118, 87, 0.2);
+  color: #26775a;
+}
+
+/* Enhanced Proof Radial Animation — Luminous Depth & Dual-Theme Contrast */
+.portfolio-proof-visual {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+.proof-radial-svg {
+  overflow: visible;
+  filter: drop-shadow(0 14px 40px rgba(0, 0, 0, 0.24));
+}
+.proof-radial-glow {
+  filter: blur(28px);
+  transform-origin: 50% 95%;
+  animation: proof-glow-breathe 7s ease-in-out infinite alternate;
+}
+@keyframes proof-glow-breathe {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+.proof-ray {
+  stroke-dasharray: 4 10;
+  animation: proof-ray-flow 20s linear infinite;
+  transform-origin: 50% 100%;
+  transition: opacity 0.3s ease;
+}
+.proof-ray:nth-of-type(2n) {
+  animation-duration: 15s;
+  stroke-dasharray: 3 8;
+}
+.proof-ray:nth-of-type(3n) {
+  animation-duration: 25s;
+  stroke-dasharray: 5 12;
+}
+.proof-particle {
+  fill: #8be4d8;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 6px rgba(100, 221, 220, 0.75));
+  animation: proof-particle-twinkle 4s ease-in-out infinite alternate;
+}
+@keyframes proof-particle-twinkle {
+  0% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0.95;
+    transform: scale(1.25);
+  }
+}
+.proof-origin-halo {
+  animation: proof-halo-pulse 3.5s ease-in-out infinite alternate;
+  transform-origin: 600px 382px;
+}
+@keyframes proof-halo-pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0.95;
+  }
+}
+.proof-origin-point {
+  fill: #72efdd;
+  filter: drop-shadow(0 0 8px #72efdd);
+}
+
+/* Light Theme Proof Radial Animation — Rich Jewel Contrast */
+.portfolio-page[data-theme="light"] .proof-radial-svg {
+  filter: drop-shadow(0 14px 40px rgba(38, 118, 87, 0.12));
+}
+.portfolio-page[data-theme="light"] .proof-radial-glow {
+  fill: url(#proof-core-gradient-light) !important;
+  opacity: 0.82;
+}
+.portfolio-page[data-theme="light"] .proof-ray {
+  stroke: url(#proof-line-gradient-light) !important;
+  stroke-dasharray: 4 9;
+}
+.portfolio-page[data-theme="light"] .proof-particle {
+  fill: #1a6b54 !important;
+  opacity: 0.9 !important;
+  filter: drop-shadow(0 0 5px rgba(26, 107, 84, 0.6));
+}
+.portfolio-page[data-theme="light"] .proof-origin-halo {
+  fill: url(#proof-origin-gradient-light) !important;
+}
+.portfolio-page[data-theme="light"] .proof-origin-point {
+  fill: #145945 !important;
+  filter: drop-shadow(0 0 8px rgba(20, 89, 69, 0.8));
+}
