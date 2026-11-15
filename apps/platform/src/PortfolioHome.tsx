@@ -1007,9 +1007,8 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             onClick={() => setCmdOpen(true)}
             title={rtl ? 'جستجو و پالت دستورات (⌘K)' : 'Search & Command Palette (⌘K)'}
           >
-            <Search size={15} aria-hidden="true" />
+            <Search size={16} aria-hidden="true" />
             <span>{rtl ? 'جستجو' : 'Search'}</span>
-            <kbd aria-hidden="true">⌘K</kbd>
           </button>
           <button className="portfolio-theme" type="button" onClick={() => onThemeChange(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? t.themeToggle : (rtl ? 'حالت تیره' : 'Switch to dark mode')} title={theme === 'dark' ? t.themeToggle : (rtl ? 'حالت تیره' : 'Dark mode')}>{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}<span>{theme === 'dark' ? (rtl ? 'روشن' : 'Light') : (rtl ? 'تیره' : 'Dark')}</span></button>
           <button className="portfolio-language" onClick={() => onLanguageChange(rtl ? 'en' : 'fa')}>{t.language}</button>

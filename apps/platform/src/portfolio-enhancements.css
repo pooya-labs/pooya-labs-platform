@@ -12,22 +12,15 @@ code, pre, kbd, .cmd-palette-item-tag, .cmd-palette-hints kbd {
 
 /* Command Palette (Cmd+K) & Search Trigger */
 .portfolio-cmd-btn {
-  min-height: 38px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  padding: 0 11px;
   border: 1px solid var(--pf-line);
-  border-radius: 10px;
   background: rgba(255, 255, 255, 0.04);
   color: var(--pf-text);
-  font-size: 11px;
-  font-weight: 550;
   cursor: pointer;
   transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   line-height: 1;
-  white-space: nowrap;
 }
 .portfolio-cmd-btn:hover {
   background: rgba(255, 255, 255, 0.09);
@@ -41,15 +34,29 @@ code, pre, kbd, .cmd-palette-item-tag, .cmd-palette-hints kbd {
   flex-shrink: 0;
   transition: color 0.2s ease;
 }
-.portfolio-cmd-btn kbd {
-  display: inline-block;
-  padding: 2px 5px;
-  border: 1px solid var(--pf-line);
-  border-radius: 4px;
-  background: rgba(0, 0, 0, 0.35);
-  color: var(--pf-cyan);
-  font-size: 10px;
-  line-height: 1.2;
+
+/* Header Search Trigger Button — Pure Icon Button across Desktop and Mobile */
+.portfolio-header-actions .portfolio-cmd-btn {
+  width: 36px;
+  height: 36px;
+  min-height: 36px;
+  padding: 0;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.portfolio-header-actions .portfolio-cmd-btn span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.portfolio-header-actions .portfolio-cmd-btn kbd {
+  display: none;
 }
 
 /* Light Theme Styling for Search Button */
@@ -74,52 +81,12 @@ code, pre, kbd, .cmd-palette-item-tag, .cmd-palette-hints kbd {
   color: #26775a;
 }
 
-/* Responsive Adaptations for Search Button in Header */
-@media (max-width: 1150px) {
-  .portfolio-header-actions .portfolio-cmd-btn kbd {
-    display: none;
-  }
-}
-
-@media (max-width: 980px) {
-  .portfolio-header-actions .portfolio-cmd-btn span {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
-}
-
+/* Mobile & Android Adaptations */
 @media (max-width: 680px) {
   .portfolio-header-actions .portfolio-cmd-btn {
-    min-height: 34px;
-    height: 34px;
     width: 34px;
-    padding: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    gap: 0;
-  }
-  .portfolio-header-actions .portfolio-cmd-btn span {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
-  .portfolio-header-actions .portfolio-cmd-btn kbd {
-    display: none;
+    height: 34px;
+    min-height: 34px;
   }
   .portfolio-header-actions .portfolio-cmd-btn svg {
     width: 14px;
