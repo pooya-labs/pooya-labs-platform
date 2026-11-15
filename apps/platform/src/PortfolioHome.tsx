@@ -1,4 +1,4 @@
-import { Activity, ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Layers3, Monitor, Moon, Sun, TerminalSquare } from 'lucide-react';
+import { Activity, ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Layers3, Monitor, Moon, Search, Sun, TerminalSquare } from 'lucide-react';
 import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
 import { portfolioProjects as projects, type PortfolioProject } from './content/projects';
 import { coreDossiers } from './content/case-study-dossiers-core';
@@ -1001,7 +1001,13 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
           <a href="#contact">{t.navContact}</a>
         </nav>
         <div className="portfolio-header-actions">
-          <button className="portfolio-cmd-btn" type="button" onClick={() => setCmdOpen(true)} title={rtl ? 'جستجو و پالت دستورات (⌘K)' : 'Search & Command Palette (⌘K)'}>
+          <button
+            className="portfolio-cmd-btn"
+            type="button"
+            onClick={() => setCmdOpen(true)}
+            title={rtl ? 'جستجو و پالت دستورات (⌘K)' : 'Search & Command Palette (⌘K)'}
+          >
+            <Search size={15} aria-hidden="true" />
             <span>{rtl ? 'جستجو' : 'Search'}</span>
             <kbd aria-hidden="true">⌘K</kbd>
           </button>
