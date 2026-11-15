@@ -1081,12 +1081,19 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
           <div className="portfolio-proof-visual" aria-hidden="true">
             <svg className="proof-radial-svg" viewBox="0 0 1200 390" preserveAspectRatio="xMidYMax meet">
               <defs>
-                <radialGradient id="proof-core-gradient"><stop stopColor="#bda7ff" stopOpacity=".42" /><stop offset=".42" stopColor="#8f78df" stopOpacity=".16" /><stop offset="1" stopColor="#8f78df" stopOpacity="0" /></radialGradient>
-                <linearGradient id="proof-line-gradient" x1="0" y1="1" x2="1" y2="0"><stop stopColor="#8775d8" stopOpacity=".12" /><stop offset=".52" stopColor="#a99df1" stopOpacity=".82" /><stop offset="1" stopColor="#81b7d5" stopOpacity=".18" /></linearGradient>
+                <radialGradient id="proof-core-gradient"><stop stopColor="#64dddc" stopOpacity=".45" /><stop offset=".42" stopColor="#7928ca" stopOpacity=".22" /><stop offset="1" stopColor="#0a101a" stopOpacity="0" /></radialGradient>
+                <linearGradient id="proof-line-gradient" x1="0" y1="1" x2="1" y2="0"><stop stopColor="#64dddc" stopOpacity=".15" /><stop offset=".52" stopColor="#38ef7d" stopOpacity=".85" /><stop offset="1" stopColor="#0070f3" stopOpacity=".22" /></linearGradient>
                 <radialGradient id="proof-origin-gradient">
-                  <stop offset="0" stopColor="#d8ccff" stopOpacity=".72" />
-                  <stop offset=".38" stopColor="#aa9bff" stopOpacity=".28" />
-                  <stop offset="1" stopColor="#aa9bff" stopOpacity="0" />
+                  <stop offset="0" stopColor="#72efdd" stopOpacity=".85" />
+                  <stop offset=".38" stopColor="#48bfe3" stopOpacity=".35" />
+                  <stop offset="1" stopColor="#48bfe3" stopOpacity="0" />
+                </radialGradient>
+                <radialGradient id="proof-core-gradient-light"><stop stopColor="#2ec4b6" stopOpacity=".42" /><stop offset=".45" stopColor="#1b8570" stopOpacity=".2" /><stop offset="1" stopColor="#1b8570" stopOpacity="0" /></radialGradient>
+                <linearGradient id="proof-line-gradient-light" x1="0" y1="1" x2="1" y2="0"><stop stopColor="#1a6b54" stopOpacity=".25" /><stop offset=".5" stopColor="#1b6894" stopOpacity=".9" /><stop offset="1" stopColor="#5842b0" stopOpacity=".4" /></linearGradient>
+                <radialGradient id="proof-origin-gradient-light">
+                  <stop offset="0" stopColor="#26775a" stopOpacity=".88" />
+                  <stop offset=".4" stopColor="#1b6894" stopOpacity=".4" />
+                  <stop offset="1" stopColor="#1b6894" stopOpacity="0" />
                 </radialGradient>
               </defs>
               <ellipse className="proof-radial-glow" cx="600" cy="365" rx="450" ry="220" fill="url(#proof-core-gradient)" />
@@ -1332,7 +1339,15 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
                 autoFocus
                 onChange={(e) => setCmdQuery(e.target.value)}
               />
-              <button className="portfolio-cmd-btn" type="button" onClick={() => setCmdOpen(false)} style={{ padding: '3px 8px' }}>Esc</button>
+              <button
+                className="cmd-palette-esc-btn"
+                type="button"
+                onClick={() => setCmdOpen(false)}
+                aria-label={rtl ? 'بستن (Esc)' : 'Close (Esc)'}
+                title={rtl ? 'بستن (Esc)' : 'Close (Esc)'}
+              >
+                Esc
+              </button>
             </div>
             <div className="cmd-palette-list">
               {projects
