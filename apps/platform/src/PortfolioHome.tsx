@@ -1005,7 +1005,6 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             className="portfolio-cmd-btn"
             type="button"
             onClick={() => setCmdOpen(true)}
-            aria-label={rtl ? 'جستجو' : 'Search'}
             title={rtl ? 'جستجو و پالت دستورات (⌘K)' : 'Search & Command Palette (⌘K)'}
           >
             <Search size={15} aria-hidden="true" />
