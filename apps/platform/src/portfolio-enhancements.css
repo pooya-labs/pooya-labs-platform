@@ -83,7 +83,15 @@ code, pre, kbd, .cmd-palette-item-tag, .cmd-palette-hints kbd {
 
 @media (max-width: 980px) {
   .portfolio-header-actions .portfolio-cmd-btn span {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
   }
 }
 
@@ -99,7 +107,17 @@ code, pre, kbd, .cmd-palette-item-tag, .cmd-palette-hints kbd {
     border-radius: 10px;
     gap: 0;
   }
-  .portfolio-header-actions .portfolio-cmd-btn span,
+  .portfolio-header-actions .portfolio-cmd-btn span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
   .portfolio-header-actions .portfolio-cmd-btn kbd {
     display: none;
   }
