@@ -1,4 +1,4 @@
-import { Activity, ArrowDown, ArrowUpLeft, ArrowUpRight, BookOpen, Code2, ExternalLink, Layers3, Monitor, Moon, Search, Sun, TerminalSquare } from 'lucide-react';
+import { Activity, ArrowDown, ArrowUp, ArrowUpLeft, ArrowUpRight, BookOpen, Check, Code2, Copy, ExternalLink, Layers3, Monitor, Moon, Search, Sun, TerminalSquare, Volume2, VolumeX } from 'lucide-react';
 import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
 import { portfolioProjects as projects, type PortfolioProject } from './content/projects';
 import { coreDossiers } from './content/case-study-dossiers-core';
@@ -695,6 +695,35 @@ const skillGroups = {
   ]
 } as const;
 
+interface ProjectCategoryDef {
+  id: string;
+  label: { fa: string; en: string };
+}
+
+const projectCategories: ProjectCategoryDef[] = [
+  { id: 'all', label: { fa: 'همه پروژه‌ها', en: 'All Projects' } },
+  { id: 'systems', label: { fa: 'سیستم‌های توزیع‌شده و کلاود', en: 'Distributed & Cloud' } },
+  { id: 'creative', label: { fa: 'رابط‌های کاربری و خلاقانه', en: 'Creative & UI' } },
+  { id: 'tools', label: { fa: 'ابزارها و مانیتورینگ', en: 'Tools & Observability' } },
+];
+
+function matchesProjectCategory(project: PortfolioProject, categoryId: string): boolean {
+  if (categoryId === 'all') return true;
+  if (categoryId === 'systems') {
+    return ['aetherflow', 'salon-booking', 'pulse'].includes(project.slug) ||
+      project.tags.some((t) => /distributed|workflow|system|service/i.test(t));
+  }
+  if (categoryId === 'creative') {
+    return ['pooya-os', 'nexuscanvas', 'aura', 'synergy'].includes(project.slug) ||
+      project.tags.some((t) => /desktop|canvas|ui|design|workspace/i.test(t));
+  }
+  if (categoryId === 'tools') {
+    return ['orbit', 'pulse', 'aetherflow'].includes(project.slug) ||
+      project.tags.some((t) => /monitoring|telemetry|observability|tool/i.test(t));
+  }
+  return true;
+}
+
 export default function PortfolioHome({ language, onLanguageChange, theme, onThemeChange, onOpenWorkspace }: PortfolioHomeProps): ReactNode {
   const t = text[language];
   const rtl = language === 'fa';
@@ -708,6 +737,59 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
   const [novelCatalogError, setNovelCatalogError] = useState<string | null>(null);
   const [cmdOpen, setCmdOpen] = useState(false);
   const [cmdQuery, setCmdQuery] = useState('');
+  const [activeProjectCategory, setActiveProjectCategory] = useState<string>('all');
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [soundEnabled, setSoundEnabled] = useState(false);
+  const audioCtxRef = useRef<AudioContext | null>(null);
+
+  const playMicroClick = (freq = 750) => {
+    if (!soundEnabled) return;
+    try {
+      if (!audioCtxRef.current) {
+        const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+        if (AudioContextClass) audioCtxRef.current = new AudioContextClass();
+      }
+      const ctx = audioCtxRef.current;
+      if (ctx) {
+        if (ctx.state === 'suspended') ctx.resume();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(180, ctx.currentTime + 0.045);
+        gain.gain.setValueAtTime(0.04, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.045);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.05);
+      }
+    } catch {
+      // AudioContext not supported
+    }
+  };
+
+  const copyToClipboard = (text: string, successLabel: string) => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => {
+        setToastMessage(successLabel);
+        setTimeout(() => setToastMessage(null), 2500);
+      }).catch(() => {});
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+      setScrollProgress(progress);
+      setShowBackToTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   const particleCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -760,6 +842,22 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
       ctx.clearRect(0, 0, width, height);
 
       const isLight = document.querySelector('.portfolio-page')?.getAttribute('data-theme') === 'light';
+
+      // Fluid cosmic ambient glow in background
+      const cx1 = width * 0.35 + Math.sin(elapsed * 0.35) * 75;
+      const cy1 = height * 0.45 + Math.cos(elapsed * 0.3) * 55;
+      const g1 = ctx.createRadialGradient(cx1, cy1, 10, cx1, cy1, Math.max(width * 0.35, 260));
+      if (isLight) {
+        g1.addColorStop(0, 'rgba(46, 196, 182, 0.12)');
+        g1.addColorStop(0.6, 'rgba(56, 189, 248, 0.04)');
+        g1.addColorStop(1, 'rgba(255, 255, 255, 0)');
+      } else {
+        g1.addColorStop(0, 'rgba(56, 239, 125, 0.07)');
+        g1.addColorStop(0.5, 'rgba(121, 40, 202, 0.05)');
+        g1.addColorStop(1, 'rgba(10, 16, 26, 0)');
+      }
+      ctx.fillStyle = g1;
+      ctx.fillRect(0, 0, width, height);
       const nodeColor = isLight ? 'rgba(16, 120, 140, 0.45)' : 'rgba(102, 230, 238, 0.55)';
       const lineColor = isLight ? '16, 120, 140' : '102, 230, 238';
 
@@ -982,6 +1080,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
 
   return (
     <div className={`portfolio-page ${rtl ? 'is-rtl' : 'is-ltr'}`} data-theme={theme}>
+      <div className="portfolio-scroll-progress-bar" style={{ width: `${scrollProgress}%` }} aria-hidden="true" />
       <a className="portfolio-skip-link" href="#top">{t.skipToContent}</a>
       <div className="portfolio-atmosphere atmosphere-a" />
       <div className="portfolio-atmosphere atmosphere-b" />
@@ -1012,6 +1111,21 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
           </button>
           <button className="portfolio-theme" type="button" onClick={() => onThemeChange(theme === 'dark' ? 'light' : 'dark')} aria-label={theme === 'dark' ? t.themeToggle : (rtl ? 'حالت تیره' : 'Switch to dark mode')} title={theme === 'dark' ? t.themeToggle : (rtl ? 'حالت تیره' : 'Dark mode')}>{theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}<span>{theme === 'dark' ? (rtl ? 'روشن' : 'Light') : (rtl ? 'تیره' : 'Dark')}</span></button>
           <button className="portfolio-language" onClick={() => onLanguageChange(rtl ? 'en' : 'fa')}>{t.language}</button>
+          <button
+            className="portfolio-sound-btn"
+            type="button"
+            onClick={() => {
+              const next = !soundEnabled;
+              setSoundEnabled(next);
+              if (next) playMicroClick(880);
+              setToastMessage(next ? (rtl ? 'صدای رابط کاربری فعال شد' : 'UI sound enabled') : (rtl ? 'صدای رابط کاربری غیرفعال شد' : 'UI sound muted'));
+              setTimeout(() => setToastMessage(null), 2000);
+            }}
+            aria-label={soundEnabled ? (rtl ? 'بی‌صدا کردن رابط کاربری' : 'Mute UI sounds') : (rtl ? 'فعال‌سازی صدای رابط کاربری' : 'Enable UI sounds')}
+            title={soundEnabled ? (rtl ? 'صدا روشن' : 'Sound ON') : (rtl ? 'بی‌صدا' : 'Sound OFF')}
+          >
+            {soundEnabled ? <Volume2 size={16} aria-hidden="true" /> : <VolumeX size={16} aria-hidden="true" />}
+          </button>
           <button className="portfolio-workspace" onClick={onOpenWorkspace} aria-label={t.workspace} title={t.workspace}><span>{t.workspace}</span><ArrowUpLeft size={15} /></button>
         </div>
       </header>
@@ -1019,6 +1133,15 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
       <main id="top" tabIndex={-1}>
         <section className="portfolio-hero portfolio-container">
           <div className="portfolio-hero-copy" data-reveal="hero-copy">
+            <div className="portfolio-live-beacon" role="status" aria-live="polite">
+              <span className="beacon-indicator">
+                <span className="beacon-ping" />
+                <span className="beacon-core" />
+              </span>
+              <span className="beacon-text">
+                {rtl ? 'آماده همکاری در پروژه‌های سطح بالا و سیستم‌های هوشمند' : 'Available for high-impact roles & intelligent systems'}
+              </span>
+            </div>
             <div className="portfolio-eyebrow"><span className="eyebrow-pulse" />{t.eyebrow}</div>
             <h1 className="portfolio-hero-title" dir="auto"><span dir="auto" className="hero-title-line">{t.headlineA}</span><span dir="auto" className={t.headlineWord ? 'hero-title-line hero-title-word-line' : 'hero-title-line hero-gradient'}>{t.headlineWord ? <><bdi dir="ltr" className="hero-title-prefix">{t.headlineB}</bdi><bdi dir="ltr" className="hero-title-word">{t.headlineWord}</bdi></> : t.headlineB}</span><span dir="auto" className="hero-title-line">{t.headlineC}</span></h1>
             <p className="portfolio-intro" dir="auto">{t.intro}</p>
@@ -1193,8 +1316,30 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             <div><div className="portfolio-eyebrow"><span className="eyebrow-index">01 /</span>{t.selected}</div><h2>{t.selected}</h2><p>{t.selectedSub}</p></div>
             <span className="portfolio-section-meta">{t.allProjects}</span>
           </div>
+          <div className="portfolio-project-filters" role="tablist" aria-label={rtl ? 'فیلتر دسته‌بندی پروژه‌ها' : 'Project category filters'}>
+            {projectCategories.map((cat) => {
+              const isSelected = activeProjectCategory === cat.id;
+              const count = cat.id === 'all' ? projects.length : projects.filter((p) => matchesProjectCategory(p, cat.id)).length;
+              return (
+                <button
+                  key={cat.id}
+                  className={`portfolio-filter-tab ${isSelected ? 'active' : ''}`}
+                  type="button"
+                  role="tab"
+                  aria-selected={isSelected}
+                  onClick={() => {
+                    playMicroClick(660);
+                    setActiveProjectCategory(cat.id);
+                  }}
+                >
+                  <span>{cat.label[language]}</span>
+                  <small className="filter-tab-count">{count}</small>
+                </button>
+              );
+            })}
+          </div>
           <div className="portfolio-project-grid">
-            {projects.map((project) => (
+            {(activeProjectCategory === 'all' ? projects : projects.filter((p) => matchesProjectCategory(p, activeProjectCategory))).map((project) => (
               <article className="portfolio-project-card" key={project.name}>
                 <div className="project-card-top"><span className="project-number">{project.number} / POOYA LABS</span><span className="project-status"><i />{project.status[language]}</span></div>
                 <div className={'project-art project-art-' + project.slug + ((project.slug === 'salon-booking' ? (project.visualAsset ?? project.caseStudyHeroAsset) : (project.caseStudyHeroAsset ?? project.visualAsset)) ? ' has-visual visual-' + (project.slug === 'salon-booking' ? (project.visualAsset ?? project.caseStudyHeroAsset) : (project.caseStudyHeroAsset ?? project.visualAsset))!.kind : '')}>
@@ -1315,6 +1460,47 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             <a className="portfolio-social-button" href="https://t.me/pooyayee" target="_blank" rel="noopener noreferrer" aria-label="Telegram @pooyayee"><TelegramBrandIcon size={17} /><span>{t.contactTelegram}<small>@pooyayee</small></span><ArrowUpRight size={15} /></a>
             <a className="portfolio-social-button" href="https://instagram.com/_p.ooya" target="_blank" rel="noopener noreferrer" aria-label="Instagram @_p.ooya"><img className="instagram-brand-icon" src={`${import.meta.env.BASE_URL}brand/instagram-glyph.svg`} alt="" aria-hidden="true" /><span>{t.contactInstagram}<small>@_p.ooya</small></span><ArrowUpRight size={15} /></a>
           </div>
+          <div className="contact-quick-copy-bar" aria-label={rtl ? 'کپی سریع آیدی‌ها' : 'Quick copy handles'}>
+            <span className="quick-copy-title">{rtl ? 'کپی سریع با یک کلیک:' : 'Quick copy:'}</span>
+            <div className="quick-copy-group">
+              <button
+                type="button"
+                className="quick-copy-pill"
+                onClick={() => {
+                  playMicroClick(780);
+                  copyToClipboard('https://github.com/pooya-labs', rtl ? 'آدرس گیت‌هاب کپی شد!' : 'GitHub URL copied!');
+                }}
+                title={rtl ? 'کپی آدرس گیت‌هاب' : 'Copy GitHub URL'}
+              >
+                <Copy size={12} aria-hidden="true" />
+                <span>github.com/pooya-labs</span>
+              </button>
+              <button
+                type="button"
+                className="quick-copy-pill"
+                onClick={() => {
+                  playMicroClick(780);
+                  copyToClipboard('@pooyayee', rtl ? 'آیدی تلگرام کپی شد!' : 'Telegram handle copied!');
+                }}
+                title={rtl ? 'کپی آیدی تلگرام' : 'Copy Telegram handle'}
+              >
+                <Copy size={12} aria-hidden="true" />
+                <span>@pooyayee</span>
+              </button>
+              <button
+                type="button"
+                className="quick-copy-pill"
+                onClick={() => {
+                  playMicroClick(780);
+                  copyToClipboard('@_p.ooya', rtl ? 'آیدی اینستاگرام کپی شد!' : 'Instagram handle copied!');
+                }}
+                title={rtl ? 'کپی آیدی اینستاگرام' : 'Copy Instagram handle'}
+              >
+                <Copy size={12} aria-hidden="true" />
+                <span>@_p.ooya</span>
+              </button>
+            </div>
+          </div>
         </section>
       </main>
 
@@ -1350,6 +1536,39 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
               </button>
             </div>
             <div className="cmd-palette-list">
+              {[
+                { id: 'jump-projects', title: rtl ? 'پرش به بخش پروژه‌های برگزیده' : 'Jump to Selected Projects', subtitle: '#projects', icon: Layers3, target: 'projects' },
+                { id: 'jump-novels', title: rtl ? 'پرش به کتابخانه داستان‌ها' : 'Jump to Digital Novels Library', subtitle: '#novels', icon: BookOpen, target: 'novels' },
+                { id: 'jump-about', title: rtl ? 'پرش به درباره من و اهداف' : 'Jump to About Section', subtitle: '#about', icon: Code2, target: 'about' },
+                { id: 'jump-stack', title: rtl ? 'پرش به مهارت‌ها و فناوری‌ها' : 'Jump to Tech Stack', subtitle: '#stack', icon: TerminalSquare, target: 'stack' },
+                { id: 'jump-contact', title: rtl ? 'پرش به راه‌های ارتباطی' : 'Jump to Contact', subtitle: '#contact', icon: Activity, target: 'contact' },
+              ]
+                .filter((act) => [act.title, act.subtitle].join(' ').toLowerCase().includes(cmdQuery.toLowerCase()))
+                .map((act) => {
+                  const Icon = act.icon;
+                  return (
+                    <button
+                      key={act.id}
+                      className="cmd-palette-item"
+                      type="button"
+                      onClick={() => {
+                        playMicroClick(700);
+                        setCmdOpen(false);
+                        const el = document.getElementById(act.target);
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                    >
+                      <div className="cmd-palette-item-main">
+                        <Icon size={16} className="cmd-palette-item-icon" />
+                        <div className="cmd-palette-item-info">
+                          <span className="cmd-palette-item-title">{act.title}</span>
+                          <span className="cmd-palette-item-subtitle">{act.subtitle}</span>
+                        </div>
+                      </div>
+                      <span className="cmd-palette-item-tag">{rtl ? 'بخش' : 'Section'}</span>
+                    </button>
+                  );
+                })}
               {projects
                 .filter((p) => [p.name, p.slug, p.description[language], ...(p.tags || [])].join(' ').toLowerCase().includes(cmdQuery.toLowerCase()))
                 .map((p) => (
@@ -1437,6 +1656,28 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
               <span>Pooya Labs Platform</span>
             </div>
           </div>
+        </div>
+      )}
+
+      {showBackToTop && (
+        <button
+          className="portfolio-back-to-top"
+          type="button"
+          onClick={() => {
+            playMicroClick(800);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          aria-label={rtl ? 'بازگشت به ابتدای صفحه' : 'Back to top'}
+          title={rtl ? 'بازگشت به بالای صفحه' : 'Back to top'}
+        >
+          <ArrowUp size={18} aria-hidden="true" />
+        </button>
+      )}
+
+      {toastMessage && (
+        <div className="portfolio-toast" role="status" aria-live="polite">
+          <Check size={15} className="toast-check-icon" aria-hidden="true" />
+          <span>{toastMessage}</span>
         </div>
       )}
     </div>
