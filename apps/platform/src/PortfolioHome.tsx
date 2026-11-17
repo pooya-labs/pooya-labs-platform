@@ -741,11 +741,21 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
-  const [soundEnabled, setSoundEnabled] = useState(false);
+  const [soundEnabled, setSoundEnabled] = useState(() => {
+    try {
+      return window.localStorage.getItem('pooya-labs:ui-sound') === 'true';
+    } catch {
+      return false;
+    }
+  });
   const audioCtxRef = useRef<AudioContext | null>(null);
+  const lastSoundTimeRef = useRef<number>(0);
 
   const playMicroClick = (freq = 750) => {
     if (!soundEnabled) return;
+    const now = performance.now();
+    if (now - lastSoundTimeRef.current < 25) return;
+    lastSoundTimeRef.current = now;
     try {
       if (!audioCtxRef.current) {
         const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
@@ -758,18 +768,52 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         const gain = ctx.createGain();
         osc.type = 'sine';
         osc.frequency.setValueAtTime(freq, ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(180, ctx.currentTime + 0.045);
-        gain.gain.setValueAtTime(0.04, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.045);
+        osc.frequency.exponentialRampToValueAtTime(freq * 0.35, ctx.currentTime + 0.04);
+        gain.gain.setValueAtTime(0.045, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.04);
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start();
-        osc.stop(ctx.currentTime + 0.05);
+        osc.stop(ctx.currentTime + 0.045);
       }
     } catch {
       // AudioContext not supported
     }
   };
+
+  useEffect(() => {
+    if (!soundEnabled) return;
+
+    const handleGlobalClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+
+      const interactive = target.closest<HTMLElement>(
+        'button, a, input[type="button"], input[type="submit"], [role="button"], [role="tab"], .portfolio-filter-tab, .portfolio-social-button, .cmd-palette-item, .quick-copy-pill, .portfolio-theme, .portfolio-lang, .portfolio-language, .portfolio-workspace, .portfolio-cmd-btn, .portfolio-back-to-top, .craft-principle, .system-field-node, .novel-card'
+      );
+
+      if (interactive) {
+        if (interactive.matches('.portfolio-theme, .portfolio-lang, .portfolio-language, .portfolio-sound-btn')) {
+          playMicroClick(880);
+        } else if (interactive.matches('.portfolio-filter-tab, [role="tab"]')) {
+          playMicroClick(680);
+        } else if (interactive.matches('.quick-copy-pill')) {
+          playMicroClick(820);
+        } else if (interactive.matches('.portfolio-cmd-btn, .cmd-palette-esc-btn')) {
+          playMicroClick(720);
+        } else if (interactive.matches('.portfolio-back-to-top')) {
+          playMicroClick(840);
+        } else {
+          playMicroClick(760);
+        }
+      }
+    };
+
+    document.addEventListener('click', handleGlobalClick, { capture: true, passive: true });
+    return () => {
+      document.removeEventListener('click', handleGlobalClick, { capture: true });
+    };
+  }, [soundEnabled]);
 
   const fallbackCopy = (text: string, successLabel: string) => {
     try {
@@ -978,14 +1022,20 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
-        setCmdOpen((prev) => !prev);
+        setCmdOpen((prev) => {
+          playMicroClick(!prev ? 720 : 600);
+          return !prev;
+        });
       } else if (e.key === 'Escape') {
-        setCmdOpen(false);
+        setCmdOpen((prev) => {
+          if (prev) playMicroClick(600);
+          return false;
+        });
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [soundEnabled]);
 
 
   const selectedNovel = novelCatalog.find((novel) => novel.slug === selectedNovelSlug && novel.published) ?? null;
@@ -1171,9 +1221,12 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
             onClick={() => {
               const next = !soundEnabled;
               setSoundEnabled(next);
+              try {
+                window.localStorage.setItem('pooya-labs:ui-sound', String(next));
+              } catch {}
               if (next) playMicroClick(880);
-              setToastMessage(next ? (rtl ? 'صدای رابط کاربری فعال شد' : 'UI sound enabled') : (rtl ? 'صدای رابط کاربری غیرفعال شد' : 'UI sound muted'));
-              setTimeout(() => setToastMessage(null), 2000);
+              setToastMessage(next ? (rtl ? 'صدای رابط کاربری در کل سایت فعال شد' : 'UI sound enabled across site') : (rtl ? 'صدای رابط کاربری غیرفعال شد' : 'UI sound muted'));
+              setTimeout(() => setToastMessage(null), 2200);
             }}
             aria-label={soundEnabled ? (rtl ? 'بی‌صدا کردن رابط کاربری' : 'Mute UI sounds') : (rtl ? 'فعال‌سازی صدای رابط کاربری' : 'Enable UI sounds')}
             title={soundEnabled ? (rtl ? 'صدا روشن' : 'Sound ON') : (rtl ? 'بی‌صدا' : 'Sound OFF')}
