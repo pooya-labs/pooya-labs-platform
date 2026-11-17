@@ -710,16 +710,16 @@ const projectCategories: ProjectCategoryDef[] = [
 function matchesProjectCategory(project: PortfolioProject, categoryId: string): boolean {
   if (categoryId === 'all') return true;
   if (categoryId === 'systems') {
-    return ['aetherflow', 'salon-booking', 'pulse'].includes(project.slug) ||
-      project.tags.some((t) => /distributed|workflow|system|service/i.test(t));
+    return ['aetherflow', 'salon-booking', 'orbit', 'aura-pulse', 'global-cart'].includes(project.slug) ||
+      project.tags.some((t) => /distributed|workflow|system|service|trading|cloud/i.test(t));
   }
   if (categoryId === 'creative') {
-    return ['pooya-os', 'nexuscanvas', 'aura', 'synergy'].includes(project.slug) ||
-      project.tags.some((t) => /desktop|canvas|ui|design|workspace/i.test(t));
+    return ['pooya-os', 'nexus-canvas', 'lumina-glass'].includes(project.slug) ||
+      project.tags.some((t) => /desktop|canvas|ui|design|workspace|glass|audio/i.test(t));
   }
   if (categoryId === 'tools') {
-    return ['orbit', 'pulse', 'aetherflow'].includes(project.slug) ||
-      project.tags.some((t) => /monitoring|telemetry|observability|tool/i.test(t));
+    return ['orbit', 'aetherflow', 'lumina-glass', 'aura-pulse'].includes(project.slug) ||
+      project.tags.some((t) => /monitoring|telemetry|observability|tool|lab/i.test(t));
   }
   return true;
 }
@@ -771,25 +771,79 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
     }
   };
 
-  const copyToClipboard = (text: string, successLabel: string) => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(text).then(() => {
-        setToastMessage(successLabel);
-        setTimeout(() => setToastMessage(null), 2500);
-      }).catch(() => {});
+  const fallbackCopy = (text: string, successLabel: string) => {
+    try {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      textArea.style.top = '0';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setToastMessage(successLabel);
+      setTimeout(() => setToastMessage(null), 2500);
+    } catch {
+      setToastMessage(successLabel);
+      setTimeout(() => setToastMessage(null), 2500);
     }
   };
 
+  const copyToClipboard = (text: string, successLabel: string) => {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(() => {
+        setToastMessage(successLabel);
+        setTimeout(() => setToastMessage(null), 2500);
+      }).catch(() => fallbackCopy(text, successLabel));
+    } else {
+      fallbackCopy(text, successLabel);
+    }
+  };
+
+  const scrollToTop = () => {
+    playMicroClick(800);
+    const page = document.querySelector<HTMLElement>('.portfolio-page');
+    if (page) {
+      page.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   useEffect(() => {
+    const getTarget = () => document.querySelector<HTMLElement>('.portfolio-page');
+
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
-      setScrollProgress(progress);
-      setShowBackToTop(window.scrollY > 400);
+      const page = getTarget();
+      const scrollTop = page ? page.scrollTop : (window.pageYOffset || document.documentElement.scrollTop || 0);
+      const scrollHeight = page ? page.scrollHeight : (document.documentElement.scrollHeight || 0);
+      const clientHeight = page ? page.clientHeight : (window.innerHeight || 0);
+      const totalHeight = scrollHeight - clientHeight;
+      const progress = totalHeight > 0 ? (scrollTop / totalHeight) * 100 : 0;
+      setScrollProgress(Math.min(100, Math.max(0, progress)));
+      setShowBackToTop(scrollTop > 350);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+    const page = getTarget();
+    if (page) {
+      page.addEventListener('scroll', handleScroll, { passive: true });
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true, capture: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
+
+    handleScroll();
+    const timer = setTimeout(handleScroll, 120);
+
+    return () => {
+      if (page) {
+        page.removeEventListener('scroll', handleScroll);
+      }
+      window.removeEventListener('scroll', handleScroll, { capture: true });
+      window.removeEventListener('resize', handleScroll);
+      clearTimeout(timer);
+    };
+  }, [selectedProject]);
   const particleCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -1663,10 +1717,7 @@ export default function PortfolioHome({ language, onLanguageChange, theme, onThe
         <button
           className="portfolio-back-to-top"
           type="button"
-          onClick={() => {
-            playMicroClick(800);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
+          onClick={scrollToTop}
           aria-label={rtl ? 'بازگشت به ابتدای صفحه' : 'Back to top'}
           title={rtl ? 'بازگشت به بالای صفحه' : 'Back to top'}
         >
