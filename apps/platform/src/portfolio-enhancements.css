@@ -854,18 +854,19 @@ code, pre, kbd, .cmd-palette-item-tag, .cmd-palette-hints kbd {
 
 /* ==========================================================================
    Android & Mobile Viewport Polish:
-   1. Grid-Preserving Two-Row Layout (Row 1: Brand & Actions, Row 2: Navigation)
-   2. Zero Brand Collision via minmax(0, 1fr) and graceful text-overflow
-   3. Fully Compliant Axe Touch Target Sizes (>= 34px on nav links and tabs)
+   1. Proportional Brand Scaling: Monogram and full "POOYA LABS" text fit perfectly
+      without truncation, clipping, or ellipsis into "POOYA LA...".
+   2. Optimized Two-Row Layout: Row 1 holds brand & actions; Row 2 holds nav links.
+   3. Compliant Axe Touch Target Sizes: >= 32px on action buttons and >= 36px on nav.
    ========================================================================== */
 @media (max-width: 768px) {
   .portfolio-header {
     display: grid !important;
-    grid-template-columns: minmax(0, 1fr) auto !important;
+    grid-template-columns: auto 1fr !important;
     align-items: center !important;
-    gap: 7px 8px !important;
-    padding: 7px 10px !important;
-    min-height: 58px !important;
+    gap: 6px 8px !important;
+    padding: 6px 10px !important;
+    min-height: 56px !important;
     height: auto !important;
   }
 
@@ -874,28 +875,49 @@ code, pre, kbd, .cmd-palette-item-tag, .cmd-palette-hints kbd {
     grid-row: 1 !important;
     display: inline-flex !important;
     align-items: center !important;
-    gap: 7px !important;
+    gap: 5px !important;
     min-width: 0 !important;
-    max-width: 100% !important;
-    overflow: hidden !important;
+    max-width: none !important;
+    flex-shrink: 0 !important;
+  }
+
+  .portfolio-brand > span:not(.portfolio-brand-mark) {
+    display: inline-flex !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    flex-shrink: 0 !important;
   }
 
   .portfolio-brand-mark {
-    width: 34px !important;
-    height: 34px !important;
-    flex: 0 0 34px !important;
-    border-radius: 9px !important;
+    width: 22px !important;
+    height: 32px !important;
+    flex: 0 0 22px !important;
+    border-radius: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  .portfolio-brand-mark img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    border: 0 !important;
   }
 
   .portfolio-brand strong {
-    font-size: 10.5px !important;
-    letter-spacing: 0.07em !important;
+    font-size: 10px !important;
+    letter-spacing: 0.04em !important;
+    font-weight: 750 !important;
     white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    max-width: 100px !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    max-width: none !important;
     display: inline-block !important;
+    flex-shrink: 0 !important;
     color: var(--pf-control-text) !important;
+    line-height: 1.1 !important;
   }
 
   .portfolio-brand small {
@@ -909,22 +931,86 @@ code, pre, kbd, .cmd-palette-item-tag, .cmd-palette-hints kbd {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: flex-end !important;
-    gap: 4px !important;
-    padding: 3px !important;
+    gap: 3px !important;
+    padding: 2px !important;
     flex: 0 0 auto !important;
     margin-inline-start: auto !important;
-    border-radius: 12px !important;
+    border-radius: 11px !important;
   }
 
   .portfolio-header-actions .portfolio-cmd-btn,
   .portfolio-header-actions .portfolio-sound-btn {
-    width: 34px !important;
-    height: 34px !important;
-    min-height: 34px !important;
-    min-width: 34px !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    min-width: 32px !important;
     padding: 0 !important;
-    border-radius: 9px !important;
+    border-radius: 8px !important;
     flex-shrink: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .portfolio-header-actions .portfolio-cmd-btn svg,
+  .portfolio-header-actions .portfolio-sound-btn svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .portfolio-header-actions .portfolio-theme {
+    min-height: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    padding: 0 7px !important;
+    border-radius: 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .portfolio-header-actions .portfolio-theme span {
+    display: none !important;
+  }
+
+  .portfolio-header-actions .portfolio-theme svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .portfolio-header-actions .portfolio-language {
+    min-height: 32px !important;
+    height: 32px !important;
+    padding: 0 7px !important;
+    font-size: 9.5px !important;
+    border-radius: 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .portfolio-header-actions .portfolio-workspace {
+    min-height: 32px !important;
+    height: 32px !important;
+    width: 32px !important;
+    min-width: 32px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .portfolio-header-actions .portfolio-workspace span {
+    display: none !important;
+  }
+
+  .portfolio-header-actions .portfolio-workspace svg {
+    width: 15px !important;
+    height: 15px !important;
   }
 
   .portfolio-nav {
@@ -961,14 +1047,45 @@ code, pre, kbd, .cmd-palette-item-tag, .cmd-palette-hints kbd {
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 360px) {
+  .portfolio-header {
+    padding: 5px 7px !important;
+    gap: 4px 6px !important;
+  }
+  .portfolio-brand {
+    gap: 4px !important;
+  }
+  .portfolio-brand-mark {
+    width: 19px !important;
+    height: 28px !important;
+    flex: 0 0 19px !important;
+  }
   .portfolio-brand strong {
-    max-width: 78px !important;
-    font-size: 10px !important;
-    letter-spacing: 0.04em !important;
+    font-size: 9px !important;
+    letter-spacing: 0.02em !important;
   }
   .portfolio-header-actions {
-    gap: 3px !important;
+    gap: 2px !important;
     padding: 2px !important;
+  }
+  .portfolio-header-actions .portfolio-cmd-btn,
+  .portfolio-header-actions .portfolio-sound-btn,
+  .portfolio-header-actions .portfolio-workspace {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+  }
+  .portfolio-header-actions .portfolio-theme {
+    min-width: 30px !important;
+    min-height: 30px !important;
+    height: 30px !important;
+    padding: 0 6px !important;
+  }
+  .portfolio-header-actions .portfolio-language {
+    min-height: 30px !important;
+    height: 30px !important;
+    padding: 0 5px !important;
+    font-size: 8.5px !important;
   }
 }
