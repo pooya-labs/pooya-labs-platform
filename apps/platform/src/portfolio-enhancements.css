@@ -602,14 +602,33 @@ code, pre, kbd, .cmd-palette-item-tag, .cmd-palette-hints kbd {
   align-items: center;
   justify-content: flex-start;
   gap: 8px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
+  margin-bottom: 26px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-block: 4px 6px;
+  padding-inline: 2px;
+  width: 100%;
+  mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+}
+.portfolio-page.is-rtl .portfolio-project-filters {
+  mask-image: linear-gradient(to left, black calc(100% - 24px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to left, black calc(100% - 24px), transparent 100%);
+}
+.portfolio-project-filters::-webkit-scrollbar {
+  display: none;
 }
 .portfolio-filter-tab {
+  flex: 0 0 auto;
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 6px 14px;
+  padding: 7px 15px;
   border-radius: 9999px;
   border: 1px solid var(--pf-line);
   background: rgba(255, 255, 255, 0.04);
@@ -830,4 +849,110 @@ code, pre, kbd, .cmd-palette-item-tag, .cmd-palette-hints kbd {
   border-color: rgba(38, 118, 87, 0.45);
   color: #0d382b;
   box-shadow: 0 12px 30px rgba(20, 48, 38, 0.22);
+}
+
+/* ==========================================================================
+   Android & Mobile Viewport Polish:
+   1. Brand & Header Actions Non-Colliding Flex Layout
+   2. Compact Header Action Buttons for Android
+   3. Adaptive Live Beacon Scaling
+   ========================================================================== */
+@media (max-width: 768px) {
+  .portfolio-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding-inline: 9px !important;
+    min-height: 56px !important;
+    height: auto !important;
+  }
+
+  .portfolio-brand {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    max-width: fit-content !important;
+    overflow: hidden !important;
+  }
+
+  .portfolio-brand-mark {
+    width: 33px !important;
+    height: 33px !important;
+    flex: 0 0 33px !important;
+    border-radius: 9px !important;
+  }
+
+  .portfolio-brand strong {
+    font-size: 10.5px !important;
+    letter-spacing: 0.08em !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 105px !important;
+    display: inline-block !important;
+    color: var(--pf-control-text) !important;
+  }
+
+  .portfolio-brand small {
+    display: none !important;
+  }
+
+  .portfolio-header-actions {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 3px !important;
+    padding: 3px !important;
+    flex: 0 0 auto !important;
+    margin-inline-start: auto !important;
+    border-radius: 11px !important;
+  }
+
+  .portfolio-header-actions .portfolio-cmd-btn,
+  .portfolio-header-actions .portfolio-sound-btn,
+  .portfolio-header-actions .portfolio-theme,
+  .portfolio-header-actions .portfolio-workspace {
+    width: 31px !important;
+    height: 31px !important;
+    min-height: 31px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .portfolio-header-actions .portfolio-theme span,
+  .portfolio-header-actions .portfolio-workspace span {
+    display: none !important;
+  }
+
+  .portfolio-header-actions .portfolio-language {
+    height: 31px !important;
+    min-height: 31px !important;
+    padding: 0 7px !important;
+    font-size: 10.5px !important;
+    border-radius: 8px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .portfolio-live-beacon {
+    font-size: 11px !important;
+    padding: 3px 10px !important;
+    gap: 7px !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .portfolio-brand strong {
+    max-width: 82px !important;
+    font-size: 10px !important;
+    letter-spacing: 0.05em !important;
+  }
+  .portfolio-header-actions {
+    gap: 2px !important;
+    padding: 2px !important;
+  }
 }
